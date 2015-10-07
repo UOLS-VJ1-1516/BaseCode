@@ -12,7 +12,7 @@ private:
 	void HandleKeys(SDL_Scancode);
 	bool Fullscreen;
 	bool Running;
-	int r, g, b;
+	int r, g, b, a;
 public:
 	Game();
 	~Game();

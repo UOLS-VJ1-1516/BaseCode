@@ -11,7 +11,7 @@ void Game::HandleKeys(SDL_Scancode code)
 		if (Fullscreen)
 			SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 		else
-			SDL_SetWindowFullscreen(window, 0);
+			SDL_SetWindowFullscreen(window, SDL_WINDOW_BORDERLESS);
 		break;
 	}	
 }
@@ -26,7 +26,9 @@ Game::Game()
 
 Game::~Game()
 {
-		
+	window = 0;
+	renderer = 0;
+	Running = NULL;
 }
 
 bool Game::Init(const char * title, int xpos, int ypos, int width, int height, bool fullscreen)
@@ -38,6 +40,9 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		if (fullscreen) {
 			SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 			Fullscreen = true;
+		}
+		else {
+			Fullscreen = false;
 		}
 	}
 	if (window == 0 || renderer == 0)
@@ -83,7 +88,8 @@ void Game::Update()
 	r = rand() % 256;
 	g = rand() % 256;
 	b = rand() % 256;
-	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+	a = rand() % 256;
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 }
 
 void Game::Render()
