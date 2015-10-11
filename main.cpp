@@ -1,4 +1,6 @@
 #include "SDL.h"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 SDL_Window* g_pWindow = 0;
 SDL_Renderer* g_pRenderer = 0;
@@ -27,8 +29,11 @@ int main(int argc, char* args[])
 
 	// everything succeeded lets draw the window
 	// set to black // This function expects Red, Green, Blue and
+
+	int r = 0, g = 0, b = 0, a = 0;
+
 	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
+	SDL_SetRenderDrawColor(g_pRenderer, 255, 0, 0, 10);
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
@@ -36,8 +41,26 @@ int main(int argc, char* args[])
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
 
-	// set a delay before quitting
-	SDL_Delay(5000);
+	while (true) {
+
+		r = rand() % 255 + 0; 
+		g = rand() % 255 + 0;
+		b = rand() % 255 + 0;
+
+
+		for (a = 0; a < 255; a += 5) {
+			// Alpha as color values
+			SDL_SetRenderDrawColor(g_pRenderer, r, g, b, a);
+
+			// clear the window to black
+			SDL_RenderClear(g_pRenderer);
+
+			// show the window
+			SDL_RenderPresent(g_pRenderer);
+
+			SDL_Delay(10);
+		}
+	}
 
 	// clean up SDL
 	SDL_Quit();
