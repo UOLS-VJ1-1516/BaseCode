@@ -7,6 +7,7 @@
 int main(int argc, char* args[])
 {
 	// initialize SDL
+
 	/*if(SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 	// if succeeded create our window
