@@ -25,8 +25,7 @@ private:
 	int numeroPixelesDivision;
 	int pixel;
 	int divisionActual;
-	Uint32 start = SDL_GetTicks();
-	Uint32 lastTime = SDL_GetTicks();
+	Uint32 lastTime;
 	int tiempo;
 };
 	
