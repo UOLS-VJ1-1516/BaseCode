@@ -47,7 +47,7 @@ int main(int argc, char* args[])
 		SDL_RenderClear(g_pRenderer);
 
 		int numeroDivisiones = 6;
-		int numeroPixelesDivision = *pixelesDeAncho / 6;
+		int numeroPixelesDivision = *pixelesDeAncho / numeroDivisiones;
 		int pixel = 0;
 		int divisionActual = 0;
 		tiempo += SDL_GetTicks()-lastTime;
