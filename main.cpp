@@ -30,8 +30,43 @@ int main(int argc, char* args[])
 	// Alpha as color values
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
 
+
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
+
+	int numeroDivisiones = 6;
+	int numeroPixelesDivision = 640 / 6;
+	int pixel = 0;
+	int divisionActual = 0;
+	for (pixel = 0; pixel < numeroPixelesDivision*(divisionActual+1); pixel++) {
+		SDL_SetRenderDrawColor(g_pRenderer, 255, (Uint8)(255*(pixel- numeroPixelesDivision*divisionActual)/ numeroPixelesDivision), 0, 255); //Rojo a Amarillo
+		SDL_RenderDrawLine(g_pRenderer, pixel, 0, pixel, 480);
+	}
+	divisionActual++;
+	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+		SDL_SetRenderDrawColor(g_pRenderer, 255-(Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 0, 255); //Amarillo a Verde
+		SDL_RenderDrawLine(g_pRenderer, pixel, 0, pixel, 480);
+	}
+	divisionActual++;
+	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+		SDL_SetRenderDrawColor(g_pRenderer, 0, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Verde a Cyan
+		SDL_RenderDrawLine(g_pRenderer, pixel, 0, pixel, 480);
+	}
+	divisionActual++;
+	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+		SDL_SetRenderDrawColor(g_pRenderer, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 255); //Cyan a Blue
+		SDL_RenderDrawLine(g_pRenderer, pixel, 0, pixel, 480);
+	}
+	divisionActual++;
+	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+		SDL_SetRenderDrawColor(g_pRenderer, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255, 255); //Blue a Lila
+		SDL_RenderDrawLine(g_pRenderer, pixel, 0, pixel, 480);
+	}
+	divisionActual++;
+	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+		SDL_SetRenderDrawColor(g_pRenderer, 255, 0, 255- (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Lila a Rojo
+		SDL_RenderDrawLine(g_pRenderer, pixel, 0, pixel, 480);
+	}
 
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
