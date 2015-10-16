@@ -1,27 +1,23 @@
 #include "Game.h"
 
 Game::Game() {
-	g_pWindow = 0;
-	flag = true;
-	g_pRenderer = 0;
-	tiempo = 0;
-	lastTime = SDL_GetTicks();
-	numeroPixelesDivision = 0;
-	lastTime = SDL_GetTicks();
 	pixelesDeAncho = new int(0);
 	pixelesDeAlto = new int(0);
+	running = true;
+	numeroDivisiones = 1;
+	numeroPixelesDivision = 0;
+	lastTime = 0;
+	tiempo = 0;
+	paused = false;
 }
 
 Game::~Game() {
-	SDL_DestroyWindow(g_pWindow);
-	SDL_DestroyRenderer(g_pRenderer);
-	SDL_Quit();
 }
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen){
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0){
-		*(pixelesDeAncho) = width;
-		*(pixelesDeAlto) = height;
+		*pixelesDeAncho = width;
+		*pixelesDeAlto = height;
 		if (fullscreen){ 
 			g_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_FULLSCREEN_DESKTOP);
 		}
@@ -31,6 +27,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		SDL_GetWindowSize(g_pWindow, pixelesDeAncho, pixelesDeAlto);
 
+		if (g_pWindow != 0) {
+			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+		}
+
+		numeroDivisiones = 6;
+		numeroPixelesDivision = *pixelesDeAncho / numeroDivisiones;
+
 		return true;
 	}else{ 
 		return false; 
@@ -38,32 +41,15 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
-	if (g_pWindow != 0) {
-		g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-	}
-}
 
-void Game::update() {
-	SDL_RenderPresent(g_pRenderer);
-}
 
-void Game::handleEvents() {
-	if (SDL_PollEvent(&event) == 1 && (event.type == SDL_QUIT || event.type == SDL_KEYDOWN)) {
-		flag = false;
-	}
-}
-
-void Game::clean() {
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
 
-	numeroDivisiones = 6;
-	numeroPixelesDivision = *pixelesDeAncho / numeroDivisiones;
-	pixel = 0;
-	divisionActual = 0;
 
-	tiempo += SDL_GetTicks() - lastTime;
-	lastTime = SDL_GetTicks();
+
+	int pixel = 0;
+	int divisionActual = 0;
 
 	for (pixel = 0; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
 		SDL_SetRenderDrawColor(g_pRenderer, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255); //Rojo a Amarillo
@@ -95,8 +81,47 @@ void Game::clean() {
 		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
 	}
 
+	SDL_RenderPresent(g_pRenderer);
+
+}
+
+void Game::update() {
+	tiempo += SDL_GetTicks() - lastTime;
+	lastTime = SDL_GetTicks();
+}
+
+void Game::handleEvents() {
+	if (SDL_PollEvent(&event) > 0 ) {
+		if (event.type == SDL_KEYDOWN) {
+			if (!paused) {
+				paused = true;
+			}
+			else {
+				lastTime = SDL_GetTicks(); //Si quitamos la pausa, ponemos el lastTime al momento del click, sino daria saltos la imagen al salir del pausa.
+				paused = false;
+			}
+		}
+		if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+			running = false;
+			paused = true;
+		}
+	}
+}
+
+void Game::clean() {
+	SDL_DestroyWindow(g_pWindow);
+	SDL_DestroyRenderer(g_pRenderer);
+	SDL_Quit();
+}
+
+void Game::pause() {
+	paused = true;
 }
 
 bool Game::isRunning() {
-	return flag;
+	return running;
+}
+
+bool Game::isPaused() {
+	return paused;
 }

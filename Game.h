@@ -12,19 +12,20 @@ public:
 	void render();
 	void update();
 	void handleEvents();
+	void pause();
 	void clean();
 	bool isRunning();
+	bool isPaused();
 private:
 	int* pixelesDeAncho;
 	int* pixelesDeAlto;
 	SDL_Window* g_pWindow;
 	SDL_Renderer* g_pRenderer;
 	SDL_Event event;
-	bool flag;
+	bool running;
+	bool paused;
 	int numeroDivisiones;
 	int numeroPixelesDivision;
-	int pixel;
-	int divisionActual;
 	Uint32 lastTime;
 	int tiempo;
 };
