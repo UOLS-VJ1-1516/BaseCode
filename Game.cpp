@@ -20,6 +20,8 @@ bool Game::init(const char* tittle,int xPos, int yPos, int width, int height, in
 		g_pWindow = SDL_CreateWindow(tittle,xPos, yPos,width, height,typeWindow);
 		if (g_pWindow != 0) g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		state = true;	
+		
+		return 0;
 	}
 	return 1; // sdl could not initialize
 }
