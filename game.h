@@ -4,8 +4,10 @@ class game
 {
 
 	//declaramos las variables tal y como estaban en el main.cpp
+	bool on = true;
 	SDL_Window* g_pWindow = 0;
 	SDL_Renderer* g_pRenderer = 0;
+	
 
 	//creamos las funciones que se piden en el pdf
 

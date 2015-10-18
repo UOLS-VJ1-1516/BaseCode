@@ -1,26 +1,51 @@
 #include "SDL.h"
 #include "game.h"
+#include "cstdlib" //libreria para random
 
 
-int main(int argc, char* args[]){
-	// initialize SDL
-	
 
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
+int main(int argc, char* args[]) {
+
+	//declaramos las variables que corresponden a los colores rgb rojo verde azul
+	int a;
+	int b;
+	int c;
+	 
 
 	game game;
+	
 
-	game.init("Videojuegos1", 
+   
+	//generamos la pantalla
+
+	game.init("Videojuegos1",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, true);
 
-	    int a = 255;
-		int b = 255;
-		int c = 255;
+	//fuente:http://www.cplusplus.com/reference/cstdlib/rand/
 
-		game.clean();
+	
+	//hacemos que mientras el juego esta en marcha se vayan modificando los colores ya que se le ira asignando un valor random a las variables cada
+	//vez que se carge una nueva ventana.
 
+	while (game.isRunning()) {
+
+
+	a = (rand() % 255) + 1;
+	b = (rand() % 255) + 1;
+    c = 30;
+
+
+		game.render(a, b, c);
+		SDL_Delay(4000);
+		
+		
+	}
+
+	    game.clean();
+		
 		return 0;
+
+
 	
 }
+

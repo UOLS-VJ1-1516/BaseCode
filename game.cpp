@@ -1,4 +1,5 @@
 #include "game.h"
+#include "cstdlib" //libreria para random
 
 
 
@@ -14,11 +15,13 @@ game::~game()
 
 
 //ahora añadimos las funciones declaradas en game.h y las rellenamos
+
+//en este caso añadimos el codigo que estaba incluido en el main.cpp
+// initialize SDL
 bool game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
 
 
-	//en este caso añadimos el codigo que estaba incluido en el main.cpp
-	// initialize SDL
+
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
@@ -40,20 +43,22 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void game::render(int a, int b, int c) {
 	   
-	//a=red
-	//b=green
-	//c=blue
+	//a=rojo
+	//b=verde
+	//c=azul
 
 	SDL_SetRenderDrawColor(g_pRenderer, 
-		a, b, c, 255);
+		a, b, c, rand() % 255);
 
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
 
-	// show the window
+	//show the window
 	SDL_RenderPresent(g_pRenderer);
-	SDL_Delay(9000);
+
+
+	SDL_Delay(2000);
 	
 };
 
@@ -83,10 +88,11 @@ void game::clean() {
 
 bool game::isRunning() {
 
-	return 1;
+	return on;
 
 
 };
+
 
 
 
