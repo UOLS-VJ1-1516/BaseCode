@@ -5,43 +5,47 @@
 
 game::game()
 {
-}
+};
 
 
 game::~game()
 {
-}
+};
 
 
 //ahora añadimos las funciones declaradas en game.h y las rellenamos
 bool game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
+
+
 	//en este caso añadimos el codigo que estaba incluido en el main.cpp
 	// initialize SDL
+
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow("Videjuegos 1 - Victor Cordobés",
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			640, 480,
-			SDL_WINDOW_SHOWN);
+		g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
 
 		// if the window creation succeeded create our renderer
-		if (g_pWindow != 0)
-		{
+		if (g_pWindow != 0){
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
+
+	  return 0;
 	}
-	else
-	{
+	else{
 		return 1; // sdl could not initialize
 	}
 
 };
 
-void game::render() {
+void game::render(int a, int b, int c) {
+	   
+	//a=red
+	//b=green
+	//c=blue
 
-
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
+	SDL_SetRenderDrawColor(g_pRenderer, 
+		a, b, c, 255);
 
 
 	// clear the window to black
@@ -49,15 +53,12 @@ void game::render() {
 
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
-
+	SDL_Delay(9000);
 	
 };
 
 
 void game::update() {
-
-
-	SDL_Delay(9000);
 
 };
 
@@ -70,6 +71,9 @@ void game::handleEvents() {
 
 void game::clean() {
 
+	SDL_DestroyWindow(g_pWindow);
+
+	SDL_DestroyRenderer(g_pRenderer);
 
 	// clean up SDL
 	SDL_Quit();
@@ -79,7 +83,7 @@ void game::clean() {
 
 bool game::isRunning() {
 
-	//return running;
+	return 1;
 
 
 };

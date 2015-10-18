@@ -7,13 +7,13 @@ class game
 	SDL_Window* g_pWindow = 0;
 	SDL_Renderer* g_pRenderer = 0;
 
-
+	//creamos las funciones que se piden en el pdf
 
 public:
 	game();
 	~game();
 	bool init( const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-	void render();
+	void render(int a, int b, int c);
 	void update();
 	void handleEvents();
 	void clean();
