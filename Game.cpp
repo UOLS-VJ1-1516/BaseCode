@@ -77,6 +77,6 @@ void Game::clean() {
 }
 
 bool Game::isRunning() {
-	if (flag) { return true; }
-	return false;
+	//if (flag==false) { return false; }
+	return true;
 }
