@@ -17,9 +17,6 @@ Game::Game() {
 }
 
 Game::~Game() {
-	SDL_DestroyWindow(g_pWindow);
-	SDL_DestroyRenderer(g_pRenderer);
-	SDL_Quit();
 }
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
@@ -35,6 +32,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		SDL_GetWindowSize(g_pWindow, pixelesDeAncho, pixelesDeAlto);
 
+		if (g_pWindow != 0) {
+			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+		}
+
 		return true;
 	}
 	else {
@@ -43,13 +44,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
-	if (g_pWindow != 0) {
-		g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-		SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
-	}
-}
+	SDL_RenderClear(g_pRenderer);
+	SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 
-void Game::update() {
 	switch (marquesina)
 	{
 	case true:
@@ -94,7 +91,7 @@ void Game::update() {
 		break;
 
 	case false:
-		if (SDL_GetTicks() % 100 == 0) {
+		if (SDL_GetTicks() % 15 == 0) {
 			if (red == 255) {
 				if (green < 255)
 					green++;
@@ -114,10 +111,11 @@ void Game::update() {
 					green--;
 			}
 		}
-
-		SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 		break;
 	}
+}
+
+void Game::update() {
 	SDL_RenderPresent(g_pRenderer);
 }
 
@@ -149,7 +147,10 @@ void Game::handleEvents() {
 }
 
 void Game::clean() {
-	SDL_RenderClear(g_pRenderer);
+	
+	SDL_DestroyWindow(g_pWindow);
+	SDL_DestroyRenderer(g_pRenderer);
+	SDL_Quit();
 }
 
 bool Game::isRunning() {
