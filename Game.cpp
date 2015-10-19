@@ -54,7 +54,7 @@ void Game::handleEvents() {
 
 void Game::clean() {
 	SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
-	SDL_Delay(100);
+	SDL_Delay(10);
 	if (red == 255) {
 		if (green < 255)
 			green++;
