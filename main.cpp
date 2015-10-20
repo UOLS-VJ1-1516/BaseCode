@@ -1,10 +1,48 @@
 #include "game.h"
 
+
+void cambioColor(int &r, int &g, int &b) {
+
+	if ((r > 0) && (b == 0)) {
+		r--;
+		g++;
+	}
+
+	if ((g > 0) && (r == 0)) {
+		g--;
+		b++;
+	}
+
+	if ((g == 0) && (b > 0)) {
+		b--;
+		r++;
+	}
+
+}
+
+
 int main(int argc, char* args[])
 {
-	Game colors;
+	int r = 255;
+	int g = 0;
+	int b = 0;
 
-	colors.run();
+	Game game;
+	
+	if (game.init("Videjuegos 1 - bachelor",
+		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+		640, 480, SDL_WINDOW_FULLSCREEN)) {
 
+		while (game.isRunning())
+		{
+			game.handleEvents();
+			//game.update();
+			game.render(r, g, b);
+			cambioColor(r, g, b);
+
+		}
+
+		game.clean();
+	}
 	return 0;
 }
