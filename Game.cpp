@@ -35,7 +35,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-			SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
+			//SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 		}
 
 		TextureManager::Instance()->load("player.bmp", "A", g_pRenderer);
@@ -48,7 +48,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
-	TextureManager::Instance()->draw("A",0,0,800,600, g_pRenderer, SDL_FLIP_NONE);
+	TextureManager::Instance()->draw("A",0,0, 43, 61, g_pRenderer, SDL_FLIP_NONE);
 	//SDL_RenderClear(g_pRenderer);
 	//SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 
@@ -121,7 +121,6 @@ void Game::render() {
 }
 
 void Game::update() {
-	SDL_RenderClear(g_pRenderer);
 	SDL_RenderPresent(g_pRenderer);
 }
 
@@ -153,7 +152,7 @@ void Game::handleEvents() {
 }
 
 void Game::clean() {
-	
+	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
 	SDL_DestroyRenderer(g_pRenderer);
 	SDL_Quit();
