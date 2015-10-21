@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "TextureManager.h"
 
 Game::Game() {
 	g_pWindow = 0;
@@ -12,7 +13,7 @@ Game::Game() {
 	pixelesDeAlto = new int(0);
 	blue = 0;
 	green = 0;
-	red = 255;
+	red = 0;
 	marquesina = true;
 }
 
@@ -34,7 +35,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+			SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 		}
+
+		TextureManager::Instance()->load("player.bmp", "A", g_pRenderer);
 
 		return true;
 	}
@@ -44,78 +48,80 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
-	SDL_RenderClear(g_pRenderer);
-	SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
+	TextureManager::Instance()->draw("A",0,0,800,600, g_pRenderer, SDL_FLIP_NONE);
+	//SDL_RenderClear(g_pRenderer);
+	//SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 
-	switch (marquesina)
-	{
-	case true:
-		numeroDivisiones = 6;
-		numeroPixelesDivision = *pixelesDeAncho / numeroDivisiones;
-		pixel = 0;
-		divisionActual = 0;
+	//switch (marquesina)
+	//{
+	//case true:
+	//	numeroDivisiones = 6;
+	//	numeroPixelesDivision = *pixelesDeAncho / numeroDivisiones;
+	//	pixel = 0;
+	//	divisionActual = 0;
 
-		tiempo += SDL_GetTicks() - lastTime;
-		lastTime = SDL_GetTicks();
+	//	tiempo += SDL_GetTicks() - lastTime;
+	//	lastTime = SDL_GetTicks();
 
-		for (pixel = 0; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-			SDL_SetRenderDrawColor(g_pRenderer, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255); //Rojo a Amarillo
-			SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-		}
-		divisionActual++;
-		for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-			SDL_SetRenderDrawColor(g_pRenderer, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 0, 255); //Amarillo a Verde
-			SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-		}
-		divisionActual++;
-		for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-			SDL_SetRenderDrawColor(g_pRenderer, 0, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Verde a Cyan
-			SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-		}
-		divisionActual++;
-		for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-			SDL_SetRenderDrawColor(g_pRenderer, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 255); //Cyan a Blue
-			SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-		}
-		divisionActual++;
-		for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-			SDL_SetRenderDrawColor(g_pRenderer, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255, 255); //Blue a Lila
-			SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-		}
-		divisionActual++;
-		for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-			SDL_SetRenderDrawColor(g_pRenderer, 255, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Lila a Rojo
-			SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-		}
+	//	for (pixel = 0; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+	//		SDL_SetRenderDrawColor(g_pRenderer, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255); //Rojo a Amarillo
+	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
+	//	}
+	//	divisionActual++;
+	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+	//		SDL_SetRenderDrawColor(g_pRenderer, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 0, 255); //Amarillo a Verde
+	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
+	//	}
+	//	divisionActual++;
+	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+	//		SDL_SetRenderDrawColor(g_pRenderer, 0, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Verde a Cyan
+	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
+	//	}
+	//	divisionActual++;
+	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+	//		SDL_SetRenderDrawColor(g_pRenderer, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 255); //Cyan a Blue
+	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
+	//	}
+	//	divisionActual++;
+	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+	//		SDL_SetRenderDrawColor(g_pRenderer, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255, 255); //Blue a Lila
+	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
+	//	}
+	//	divisionActual++;
+	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
+	//		SDL_SetRenderDrawColor(g_pRenderer, 255, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Lila a Rojo
+	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
+	//	}
 
-		break;
+	//	break;
 
-	case false:
-		if (SDL_GetTicks() % 15 == 0) {
-			if (red == 255) {
-				if (green < 255)
-					green++;
-				if (blue > 0)
-					blue--;
-			}
-			if (green == 255) {
-				if (blue < 255)
-					blue++;
-				if (red > 0)
-					red--;
-			}
-			if (blue == 255) {
-				if (red < 255)
-					red++;
-				if (green > 0)
-					green--;
-			}
-		}
-		break;
-	}
+	//case false:
+	//	if (SDL_GetTicks() % 15 == 0) {
+	//		if (red == 255) {
+	//			if (green < 255)
+	//				green++;
+	//			if (blue > 0)
+	//				blue--;
+	//		}
+	//		if (green == 255) {
+	//			if (blue < 255)
+	//				blue++;
+	//			if (red > 0)
+	//				red--;
+	//		}
+	//		if (blue == 255) {
+	//			if (red < 255)
+	//				red++;
+	//			if (green > 0)
+	//				green--;
+	//		}
+	//	}
+	//	break;
+	//}
 }
 
 void Game::update() {
+	SDL_RenderClear(g_pRenderer);
 	SDL_RenderPresent(g_pRenderer);
 }
 
