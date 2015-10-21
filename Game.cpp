@@ -22,9 +22,7 @@ bool Game::init(const char* title, int xpos, int
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow(title,
-			xpos, ypos,
-			width, height, fullscreen);
+		g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
 
 		// if the window creation succeeded create our renderer
 		if (g_pWindow != 0)
