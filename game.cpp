@@ -78,7 +78,7 @@ void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	int h = rand();
 	SDL_SetRenderDrawColor(g_lRenderer, x, y, z, h);
 	SDL_RenderClear(g_lRenderer);
-	
+	//Testeando
 	//SDL_RenderCopy(g_lRenderer, SDL_Texture, 0, 0);//mal
 	SDL_RenderPresent(g_lRenderer);
 
