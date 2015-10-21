@@ -1,5 +1,4 @@
 #include "SDL.h"
-#include "SDL_image.h"
 #include "game.h"
 #include "time.h"
 #include <iostream>
@@ -8,10 +7,6 @@
 
 SDL_Window* g_lWindow = 0;
 SDL_Renderer* g_lRenderer = 0;
-SDL_Surface *image;
-SDL_Rect location = { 0,0,600,400 };
-//SDL_Texture* image;
-bool running = false;
 
 Game::Game() {  //Constructor
 
@@ -39,23 +34,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_lRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 		}
 		running = true;
-		image=SDL_LoadBMP("images/player.bmp");
-		if (image == NULL) {
-			printf("Unable to load bitmap: %s\n", SDL_GetError());
-			return 1;
-		}
-		SDL_CreateTextureFromSurface(g_lRenderer, image);
-		SDL_FreeSurface(image);
-
-	
-
-
 	}
 	else
 	{
-	
 		return 1; // sdl could not initialize
-
 	}
 
 	// everything succeeded lets draw the window
@@ -64,22 +46,20 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	// Especifiquem el color amb que pintarem
 
 
-	
+	return true;
 }
 
 void Game::update() {  //Actualitzara el colors
-	
-
-}
-void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	int x = rand();
 	int y = rand();
 	int z = rand();
 	int h = rand();
 	SDL_SetRenderDrawColor(g_lRenderer, x, y, z, h);
+
+}
+void Game::render() { //Actualitzara el buffer i mostrara per pantalla
+	update();
 	SDL_RenderClear(g_lRenderer);
-	//Testeando
-	//SDL_RenderCopy(g_lRenderer, SDL_Texture, 0, 0);//mal
 	SDL_RenderPresent(g_lRenderer);
 
 

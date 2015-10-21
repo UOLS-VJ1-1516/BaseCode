@@ -9,9 +9,9 @@ int main(int argc, char* args[])
 
 	while (joc.isRunning()) { 
 		joc.handleEvents();	
-		//joc.update();
+		joc.update();
 		joc.render();
-		SDL_Delay(350);
+		SDL_Delay(550); 
 	}
 
 	joc.clean();

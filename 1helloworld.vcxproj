@@ -42,8 +42,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL\lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>../libs/SDL/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/SDL/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>libs/SDL/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
