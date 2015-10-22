@@ -28,5 +28,4 @@ private:
 	SDL_Texture* s_texture;
 	SDL_Rect SrcR;
 	SDL_Rect DestR;
-
 };

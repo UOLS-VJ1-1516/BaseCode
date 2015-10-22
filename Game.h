@@ -27,10 +27,8 @@ private:
 	int divisionActual;
 	Uint32 lastTime;
 	int tiempo;
-	int blue;
-	int red;
-	int green;
 	bool marquesina;
+	int spriteNum;
 };
 
 #endif

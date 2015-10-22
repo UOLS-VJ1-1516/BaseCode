@@ -38,8 +38,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			//SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
 		}
 
-		TextureManager::Instance()->load("player.bmp", "A", g_pRenderer);
-
+		TextureManager::Instance()->load("tintin.bmp", "A", g_pRenderer);
+		TextureManager::Instance()->load("tintin.bmp", "B", g_pRenderer);
+		TextureManager::Instance()->load("tintin.bmp", "C", g_pRenderer);
+		TextureManager::Instance()->load("tintin.bmp", "D", g_pRenderer);
+		TextureManager::Instance()->load("tintin.bmp", "E", g_pRenderer);
+		TextureManager::Instance()->load("tintin.bmp", "F", g_pRenderer);
 		return true;
 	}
 	else {
@@ -48,76 +52,18 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
-	TextureManager::Instance()->draw("A",0,0, 43, 61, g_pRenderer, SDL_FLIP_NONE);
-	//SDL_RenderClear(g_pRenderer);
-	//SDL_SetRenderDrawColor(g_pRenderer, red, green, blue, 255);
-
-	//switch (marquesina)
-	//{
-	//case true:
-	//	numeroDivisiones = 6;
-	//	numeroPixelesDivision = *pixelesDeAncho / numeroDivisiones;
-	//	pixel = 0;
-	//	divisionActual = 0;
-
-	//	tiempo += SDL_GetTicks() - lastTime;
-	//	lastTime = SDL_GetTicks();
-
-	//	for (pixel = 0; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-	//		SDL_SetRenderDrawColor(g_pRenderer, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255); //Rojo a Amarillo
-	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-	//	}
-	//	divisionActual++;
-	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-	//		SDL_SetRenderDrawColor(g_pRenderer, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 0, 255); //Amarillo a Verde
-	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-	//	}
-	//	divisionActual++;
-	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-	//		SDL_SetRenderDrawColor(g_pRenderer, 0, 255, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Verde a Cyan
-	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-	//	}
-	//	divisionActual++;
-	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-	//		SDL_SetRenderDrawColor(g_pRenderer, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255, 255); //Cyan a Blue
-	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-	//	}
-	//	divisionActual++;
-	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-	//		SDL_SetRenderDrawColor(g_pRenderer, (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 0, 255, 255); //Blue a Lila
-	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-	//	}
-	//	divisionActual++;
-	//	for (; pixel < numeroPixelesDivision*(divisionActual + 1); pixel++) {
-	//		SDL_SetRenderDrawColor(g_pRenderer, 255, 0, 255 - (Uint8)(255 * (pixel - numeroPixelesDivision*divisionActual) / numeroPixelesDivision), 255); //Lila a Rojo
-	//		SDL_RenderDrawLine(g_pRenderer, (pixel + tiempo) % *pixelesDeAncho, 0, (pixel + tiempo) % *pixelesDeAncho, *pixelesDeAlto);
-	//	}
-
-	//	break;
-
-	//case false:
-	//	if (SDL_GetTicks() % 15 == 0) {
-	//		if (red == 255) {
-	//			if (green < 255)
-	//				green++;
-	//			if (blue > 0)
-	//				blue--;
-	//		}
-	//		if (green == 255) {
-	//			if (blue < 255)
-	//				blue++;
-	//			if (red > 0)
-	//				red--;
-	//		}
-	//		if (blue == 255) {
-	//			if (red < 255)
-	//				red++;
-	//			if (green > 0)
-	//				green--;
-	//		}
-	//	}
-	//	break;
-	//}
+	//TextureManager::Instance()->draw("A",0,0, 43, 61, g_pRenderer, SDL_FLIP_NONE);
+	//TextureManager::Instance()->draw("B", 0, 0, 43, 61, g_pRenderer, SDL_FLIP_NONE);
+	spriteNum = (int)((SDL_GetTicks() / 100) % 6);
+	switch (spriteNum) {
+		case 0: TextureManager::Instance()->drawFrame("A", 0, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE); break;
+		case 1: TextureManager::Instance()->drawFrame("B", 104, 0, 104, 152, 1, 1, g_pRenderer, SDL_FLIP_NONE); break;
+		case 2: TextureManager::Instance()->drawFrame("C", 208, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE); break;
+		case 3: TextureManager::Instance()->drawFrame("D", 312, 0, 104, 152, 1, 1, g_pRenderer, SDL_FLIP_NONE);  break;
+		case 4: TextureManager::Instance()->drawFrame("E", 416, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE);  break;
+		case 5: TextureManager::Instance()->drawFrame("F", 520, 0, 104, 152, 1, 1, g_pRenderer, SDL_FLIP_NONE); break;
+	}
+	
 }
 
 void Game::update() {
