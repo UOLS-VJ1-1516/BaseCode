@@ -21,6 +21,8 @@ public:
 	int handleEvents();
 	void clean();
 	bool isRunning();
+	SDL_Rect dst;
+	SDL_Rect org;
 
 
 };
