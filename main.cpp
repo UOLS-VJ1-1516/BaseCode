@@ -1,5 +1,6 @@
 #include "game.h"
 
+
 Game joc;
 
 int main(int argc, char* args[])

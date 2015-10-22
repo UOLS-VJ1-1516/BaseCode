@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include "SDL_image.h"
 #include "game.h"
 #include "time.h"
 #include <iostream>
@@ -7,6 +8,9 @@
 
 SDL_Window* g_lWindow = 0;
 SDL_Renderer* g_lRenderer = 0;
+SDL_Texture* texture;
+SDL_Surface* img;
+
 
 Game::Game() {  //Constructor
 
@@ -33,7 +37,19 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			g_lRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 		}
+		
+
+
+		//image = SDL_Displayf
+		///DL_FreeSurface(temp);
+		img= SDL_LoadBMP("./images/player.bmp");
+		if (!img) return 1;
+		texture = SDL_CreateTextureFromSurface(g_lRenderer, img);
+		if (!texture) return 1;
+		SDL_FreeSurface(img);
+
 		running = true;
+
 	}
 	else
 	{
@@ -60,6 +76,7 @@ void Game::update() {  //Actualitzara el colors
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	update();
 	SDL_RenderClear(g_lRenderer);
+	SDL_RenderCopy(g_lRenderer, texture, NULL, NULL);
 	SDL_RenderPresent(g_lRenderer);
 
 
@@ -67,8 +84,9 @@ void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 
 
 void Game::clean() {
-	SDL_DestroyWindow(g_lWindow);
+	SDL_DestroyTexture(texture);
 	SDL_DestroyRenderer(g_lRenderer);
+	SDL_DestroyWindow(g_lWindow);
 	SDL_Quit();
 
 
