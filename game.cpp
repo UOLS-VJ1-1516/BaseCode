@@ -6,10 +6,17 @@
 #include <cstdlib>
 #include <ctime>
 
+
+
+
 SDL_Window* g_lWindow = 0;
 SDL_Renderer* g_lRenderer = 0;
 SDL_Texture* texture;
 SDL_Surface* img;
+
+
+
+
 
 
 Game::Game() {  //Constructor
@@ -70,13 +77,17 @@ void Game::update() {  //Actualitzara el colors
 	int y = rand();
 	int z = rand();
 	int h = rand();
-	SDL_SetRenderDrawColor(g_lRenderer, x, y, z, h);
+	SDL_SetRenderDrawColor(g_lRenderer, x, y, z,h);
 
 }
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
-	update();
+	
 	SDL_RenderClear(g_lRenderer);
-	SDL_RenderCopy(g_lRenderer, texture, NULL, NULL);
+	SDL_Rect dst;
+	dst.x = 0;  //1600*900 es els pixels
+	dst.y = 0;
+	SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
+	SDL_RenderCopy(g_lRenderer, texture, NULL,&dst);
 	SDL_RenderPresent(g_lRenderer);
 
 
