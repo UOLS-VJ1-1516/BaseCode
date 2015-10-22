@@ -8,7 +8,7 @@ int main(int argc, char* args[])
 		while (game.isRunning()) {
 			game.render();
 			game.handleEvents();
-			game.update();
+			game.update();	
 		}
 		game.clean();
 	}

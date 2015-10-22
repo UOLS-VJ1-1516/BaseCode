@@ -15,19 +15,10 @@ public:
 	void clean();
 	bool isRunning();
 private:
-	int* pixelesDeAncho;
-	int* pixelesDeAlto;
 	SDL_Window* g_pWindow;
 	SDL_Renderer* g_pRenderer;
 	SDL_Event event;
 	bool flag;
-	int numeroDivisiones;
-	int numeroPixelesDivision;
-	int pixel;
-	int divisionActual;
-	Uint32 lastTime;
-	int tiempo;
-	bool marquesina;
 	int spriteNum;
 };
 
