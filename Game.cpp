@@ -1,9 +1,14 @@
 #include "SDL.h"
+#include "SDL_image.h"
 #include "Game.h"
+SDL_Window* win = 0;
+SDL_Renderer* ren = 0;
+SDL_Surface* bmp = NULL;
+SDL_Texture* tex = NULL;
+SDL_Rect dst;
 
-
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
+const int P_ANC = 640;
+const int P_ALT = 480;
 
 Game::Game() {  //Constructor
 
@@ -22,15 +27,22 @@ bool Game::init(const char* title, int xpos, int
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
+		win = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
 
 		// if the window creation succeeded create our renderer
-		if (g_pWindow != 0)
+		if (win != 0)
 		{
-			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+			ren = SDL_CreateRenderer(win, -1, 0);
 		}
 
 		//SESSIO 2! texture manager instance load
+
+		if (ren != 0)
+		{
+			 bmp = SDL_LoadBMP("player.bmp");
+			 tex= SDL_CreateTextureFromSurface(ren, bmp);
+			 SDL_FreeSurface(bmp);
+		}
 
 		running = true;
 		return true;
@@ -68,11 +80,22 @@ void Game::handleEvents() {
 
 void Game::render(int r, int g, int b) {
 
-	SDL_SetRenderDrawColor(g_pRenderer, r, g, b, 255);
+	SDL_RenderClear(ren);
+	SDL_SetRenderDrawColor(ren, r, g, b, 255);
+	
+
+	dst.x = P_ANC / 2;
+	dst.y = P_ALT / 2;
+
+	SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
+
+	SDL_RenderCopy(ren, tex, NULL, &dst);
+	
+	//SDL_SetRenderDrawColor(ren, r, g, b, 255);
 	// clear the window to black
-	SDL_RenderClear(g_pRenderer);
+	//SDL_RenderClear(ren);
 	// show the window
-	SDL_RenderPresent(g_pRenderer);
+	SDL_RenderPresent(ren);
 	// set a delay before quitting
 	SDL_Delay(10);
 
@@ -80,13 +103,12 @@ void Game::render(int r, int g, int b) {
 
 
 void Game::clean() {
-	SDL_DestroyWindow(g_pWindow);
-	SDL_DestroyRenderer(g_pRenderer);
+	SDL_DestroyTexture(tex);
+	SDL_DestroyWindow(win);
+	SDL_DestroyRenderer(ren);
 
 	// clean up SDL
 	SDL_Quit();
-
-
 }
 
 
