@@ -1,14 +1,18 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "Game.h"
+#include "TextureManager.h"
+
 SDL_Window* win = 0;
 SDL_Renderer* ren = 0;
 SDL_Surface* bmp = NULL;
 SDL_Texture* tex = NULL;
 SDL_Rect dst;
+SDL_Rect clips[5];
+TextureManager texture;
 
-const int P_ANC = 640;
-const int P_ALT = 480;
+const int P_ANC = 1280;
+const int P_ALT = 720;
 
 Game::Game() {  //Constructor
 
@@ -20,7 +24,7 @@ Game::~Game() {
 bool running = false;
 
 
-bool Game::init(const char* title, int xpos, int
+bool Game::init(const char* title, int xpos, int 
 	ypos, int width, int height, bool fullscreen) {
 
 	// initialize SDL
@@ -35,14 +39,32 @@ bool Game::init(const char* title, int xpos, int
 			ren = SDL_CreateRenderer(win, -1, 0);
 		}
 
+		texture.load("monster.png", "monster", ren);
+
 		//SESSIO 2! texture manager instance load
 
-		if (ren != 0)
+		//tex = SDL_CreateTextureFromSurface(ren, bmp);
+
+		/*if (ren != 0)
 		{
-			 bmp = SDL_LoadBMP("player.bmp");
-			 tex= SDL_CreateTextureFromSurface(ren, bmp);
+			 bmp = IMG_Load("monster.png");
+			 
 			 SDL_FreeSurface(bmp);
-		}
+
+
+
+			/* int iW = 100, iH = 100;
+			 int x = P_ALT / 2 - iW / 2;
+			 int y = P_ANC / 2 - iH / 2;
+
+			 
+			 for (int i = 0; i < 6; ++i) {
+				 clips[i].x = i / 2 * iW;
+				 clips[i].y = i % 2 * iH;
+				 clips[i].w = iW;
+				 clips[i].h = iH;
+			 }
+		}*/
 
 		running = true;
 		return true;
@@ -84,20 +106,43 @@ void Game::render(int r, int g, int b) {
 	SDL_SetRenderDrawColor(ren, r, g, b, 255);
 	
 
-	dst.x = P_ANC / 2;
-	dst.y = P_ALT / 2;
 
-	SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 
-	SDL_RenderCopy(ren, tex, NULL, &dst);
+	int iW = 100, iH = 100;
+	int x = P_ALT / 2;
+	int y = P_ANC / 2;
+	/*
+
+	for (int i = 0; i < 6; ++i) {
+	clips[i].x = i / 2 * iW;
+	clips[i].y = i % 2 * iH;
+	clips[i].w = iW;
+	clips[i].h = iH;
+	}*/
+
+	int spriteNum = (int)((SDL_GetTicks() / 100) % 7);
+
+
+	//dst.x =x;
+	//dst.y = y;
+	//dst.w = iW;
+	//dst.h = iH;
+
+	//texture.draw("monster", (P_ANC/2)-iW/2, (P_ALT/2)-iH/2, iW, iH, ren, SDL_FLIP_NONE);
+	texture.drawFrame("monster", (P_ANC / 2) - iW / 2, (P_ALT / 2) - iH / 2, iW, iH, 1, spriteNum,ren, SDL_FLIP_NONE);
+
+
+	//SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
+
+
+	//SDL_RenderCopy(ren, tex, NULL, &dst);
 	
-	//SDL_SetRenderDrawColor(ren, r, g, b, 255);
-	// clear the window to black
-	//SDL_RenderClear(ren);
-	// show the window
-	SDL_RenderPresent(ren);
-	// set a delay before quitting
+	
+ 	SDL_RenderPresent(ren);
+	
 	SDL_Delay(10);
+
+	//spriteNum = (int)((SDL_GetTicks() / 100) % 8)
 
 }
 

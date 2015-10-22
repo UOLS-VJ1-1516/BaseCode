@@ -1,7 +1,7 @@
 #include "game.h"
 
-const int P_ANC = 640;
-const int P_ALT = 480;
+const int P_ANC = 1280;
+const int P_ALT = 720;
 
 
 void cambioColor(int &r, int &g, int &b) {
