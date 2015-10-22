@@ -7,10 +7,7 @@ TextureManager* TextureManager::s_pInstance = 0;
 
 
 
-
-
-
-
-
-
-
+bool TextureManager::load()
+{
+	return false;
+}
