@@ -7,10 +7,13 @@ class Game
 
 	SDL_Window* m_pWindow = 0;
 	SDL_Renderer* m_pRenderer = 0;
-	int r;
-	int g;
-	int b;
+	SDL_Surface* load_Surf;
+	SDL_Texture* player;
+	//SDL_Surface* walker;
+	SDL_Rect Src;
+	SDL_Rect Dest;
 	int quit;
+	int spriteNum;
 
 
 public:
