@@ -13,7 +13,8 @@ SDL_Window* g_lWindow = 0;
 SDL_Renderer* g_lRenderer = 0;
 SDL_Texture* texture;
 SDL_Surface* img;
-int x;
+int x,y, ancho, alto;
+int desplazamiento = -200;
 
 Game::Game() {  //Constructor
 
@@ -34,6 +35,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		// if succeeded create our window
 		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
+		ancho = width;
+		alto = height;
 
 		// if the window creation succeeded create our renderer
 		if (g_lWindow != 0)
@@ -62,9 +65,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::update() {  //Actualitzara el colors
-	int x = rand()%255;
+	/*int x = rand()%255;
 	int y = rand()%255;
-	int z = rand()%255;
+	int z = rand()%255;*/
 	int h = rand()%255;
 	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, h);
 
@@ -72,12 +75,11 @@ void Game::update() {  //Actualitzara el colors
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
 	SDL_RenderClear(g_lRenderer); 
-	texturemanager.draw("bird", 0, 0, 400, 180, g_lRenderer, SDL_FLIP_NONE);
-	SDL_RenderClear(g_lRenderer);
-	x = ((SDL_GetTicks() / 250) % 7);
-	
-    texturemanager.drawFrame("bird", 0, 0, 195, 180,1, x, g_lRenderer, SDL_FLIP_NONE);
-
+	x = ((SDL_GetTicks() / 100) % 7);
+	y = (alto / 2);
+    texturemanager.drawFrame("bird", desplazamiento, y, 200, 180,1, x, g_lRenderer, SDL_FLIP_NONE);
+	desplazamiento = desplazamiento + 2;
+	if (desplazamiento > ancho)desplazamiento = -200;
 	SDL_RenderCopy(g_lRenderer, texture, NULL,&dst);
 	SDL_RenderPresent(g_lRenderer);
 
