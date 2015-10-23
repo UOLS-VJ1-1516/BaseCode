@@ -60,7 +60,7 @@ void TextureManager::drawFrame(char* id, int x, int y, int width, int height, in
 	src.y = 0;
 	src.w = width;
 	src.h = height;
-	//Donde y cuanto acabo pintando de la imagen
+	//Donde y cuanto acabo pintando de la imagen seleccionada
 	dest.x = currentFrame*width; //Ahora lo tengo que se mueve por la pantalla si lo quiero quieto sería 600 en el centro la pantalla;  
 	dest.y = 300;  
 	dest.w = width;
