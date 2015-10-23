@@ -67,7 +67,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 void Game::update() {  //Actualitzara el colors
 	/*int x = rand()%255;
 	int y = rand()%255;
-	int z = rand()%255;*/
+	int z = rand()%255;*/ No utilitzare mes de un color
 	int h = rand()%255;
 	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, h);
 
