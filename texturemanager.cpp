@@ -47,7 +47,7 @@ void TextureManager::draw(char* id, int x, int y, int width, int height, SDL_Ren
 	dest.x = x+width;
 	dest.y = y+height;
 
-	//SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],&src, &dest, 0, center, flip);
+	SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],&src, &dest, 0, center, flip);
 
 }
 
@@ -56,13 +56,13 @@ void TextureManager::drawFrame(char* id, int x, int y, int width, int height, in
 	SDL_Rect dest;
 
 	//src-->origen, lo que cojo de la imagen
-	src.x = currentFrame*width;
+	src.x = currentFrame*width;  //Me voy a la fila que correspond del currentframe para coger la imagen que quiero
 	src.y = 0;
 	src.w = width;
 	src.h = height;
 	//Donde y cuanto acabo pintando de la imagen
-	dest.x = 600;  //En este caso en el centro de la pantalla
-	dest.y = 300;  //currentframe*100  si quiero que se mueva
+	dest.x = currentFrame*width; //Ahora lo tengo que se mueve por la pantalla si lo quiero quieto sería 600 en el centro la pantalla;  
+	dest.y = 300;  
 	dest.w = width;
 	dest.h = height;
 	
