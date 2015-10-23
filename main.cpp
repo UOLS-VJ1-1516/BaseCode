@@ -13,7 +13,7 @@ int main(int argc, char* args[])
 		joc.handleEvents();	
 		joc.update();
 		joc.render();
-		SDL_Delay(500); 
+		SDL_Delay(250); 
 	}
 
 	joc.clean();

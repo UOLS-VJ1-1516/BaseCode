@@ -13,7 +13,7 @@ SDL_Window* g_lWindow = 0;
 SDL_Renderer* g_lRenderer = 0;
 SDL_Texture* texture;
 SDL_Surface* img;
-
+int x;
 
 Game::Game() {  //Constructor
 
@@ -39,18 +39,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		if (g_lWindow != 0)
 		{
 			g_lRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
-		}
+		}	
 		
-
-
-		//image = SDL_Displayf
-		///DL_FreeSurface(temp);
+		if (!(texturemanager.load("./images/bird.png", "bird", g_lRenderer))) { return false; }
 		
-		img=IMG_Load("./images/megaman.png");
-		if (!img) return 1;
-		texture = SDL_CreateTextureFromSurface(g_lRenderer, img);
-		if (!texture) return 1;
-		SDL_FreeSurface(img);
 
 		running = true;
 
@@ -70,33 +62,22 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::update() {  //Actualitzara el colors
-	/*int x = rand()%255;
+	int x = rand()%255;
 	int y = rand()%255;
 	int z = rand()%255;
 	int h = rand()%255;
-	SDL_SetRenderDrawColor(g_lRenderer, x, y, z,h*/
+	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, h);
 
 }
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
 	SDL_RenderClear(g_lRenderer); 
-	SDL_Rect org; //Aqui pixeles totales dela imagen
-	org.x = 100;  //1600*900 es els pixels
-	org.y = 100;
-	org.w = 500;
-	org.y = 500;
+	texturemanager.draw("bird", 0, 0, 400, 180, g_lRenderer, SDL_FLIP_NONE);
+	SDL_RenderClear(g_lRenderer);
+	x = ((SDL_GetTicks() / 250) % 7);
 	
-	//SDL_SetTextInputRect(&org);
-	//(texture, NULL, NULL, &org.w, &org.h);
-	
-	SDL_Rect dst; //
-	dst.x = 101;  //1600*900 es els pixels
-	dst.y = 110;
-	dst.w = 500;
-	dst.y = 500;
-	//SDL_QueryTexture(texture, NULL, NULL, &dst.w,& dst.h);
-	
-	//dst.x = ((SDL_GetTicks() / 100) % 50);
+    texturemanager.drawFrame("bird", 0, 0, 195, 180,1, x, g_lRenderer, SDL_FLIP_NONE);
+
 	SDL_RenderCopy(g_lRenderer, texture, NULL,&dst);
 	SDL_RenderPresent(g_lRenderer);
 
