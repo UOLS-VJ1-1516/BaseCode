@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "texturemanager.h"
-
+int currrentFrame = 0;
 TextureManager texturemanager;
 
 SDL_Window* g_lWindow = 0;
