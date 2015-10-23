@@ -8,11 +8,18 @@ SDL_Renderer* ren = 0;
 SDL_Surface* bmp = NULL;
 SDL_Texture* tex = NULL;
 SDL_Rect dst;
-SDL_Rect clips[5];
 TextureManager texture;
 
 const int P_ANC = 1280;
 const int P_ALT = 720;
+int desp = -50;
+int r = 255;
+int g = 0;
+int b = 0;
+int iW = 100, iH = 100;
+
+bool running = false;
+
 
 Game::Game() {  //Constructor
 
@@ -20,9 +27,6 @@ Game::Game() {  //Constructor
 Game::~Game() {
 
 }
-
-bool running = false;
-
 
 bool Game::init(const char* title, int xpos, int 
 	ypos, int width, int height, bool fullscreen) {
@@ -41,31 +45,6 @@ bool Game::init(const char* title, int xpos, int
 
 		texture.load("monster.png", "monster", ren);
 
-		//SESSIO 2! texture manager instance load
-
-		//tex = SDL_CreateTextureFromSurface(ren, bmp);
-
-		/*if (ren != 0)
-		{
-			 bmp = IMG_Load("monster.png");
-			 
-			 SDL_FreeSurface(bmp);
-
-
-
-			/* int iW = 100, iH = 100;
-			 int x = P_ALT / 2 - iW / 2;
-			 int y = P_ANC / 2 - iH / 2;
-
-			 
-			 for (int i = 0; i < 6; ++i) {
-				 clips[i].x = i / 2 * iW;
-				 clips[i].y = i % 2 * iH;
-				 clips[i].w = iW;
-				 clips[i].h = iH;
-			 }
-		}*/
-
 		running = true;
 		return true;
 
@@ -73,12 +52,8 @@ bool Game::init(const char* title, int xpos, int
 	else
 	{
 		running = false;
-		return false; // sdl could not initialize
+		return false; 
 	}
-
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
 
 }
 
@@ -95,55 +70,45 @@ void Game::handleEvents() {
 	}
 }
 
-//void Game::update() {
+void Game::update() {
 
-//}
+		if ((r > 0) && (b == 0)) {
+			r--;
+			g++;
+		}
+
+		if ((g > 0) && (r == 0)) {
+			g--;
+			b++;
+		}
+
+		if ((g == 0) && (b > 0)) {
+			b--;
+			r++;
+		}
+
+		if (desp >(P_ANC/2)) {
+			desp = -50;
+		}
+		desp++;
+}
 
 
-void Game::render(int r, int g, int b) {
+void Game::render() {
 
 	SDL_RenderClear(ren);
 	SDL_SetRenderDrawColor(ren, r, g, b, 255);
 	
 
-
-
-	int iW = 100, iH = 100;
-	int x = P_ALT / 2;
-	int y = P_ANC / 2;
-	/*
-
-	for (int i = 0; i < 6; ++i) {
-	clips[i].x = i / 2 * iW;
-	clips[i].y = i % 2 * iH;
-	clips[i].w = iW;
-	clips[i].h = iH;
-	}*/
-
 	int spriteNum = (int)((SDL_GetTicks() / 100) % 7);
 
-
-	//dst.x =x;
-	//dst.y = y;
-	//dst.w = iW;
-	//dst.h = iH;
-
 	//texture.draw("monster", (P_ANC/2)-iW/2, (P_ALT/2)-iH/2, iW, iH, ren, SDL_FLIP_NONE);
-	texture.drawFrame("monster", (P_ANC / 2) - iW / 2, (P_ALT / 2) - iH / 2, iW, iH, 1, spriteNum,ren, SDL_FLIP_NONE);
 
-
-	//SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
-
-
-	//SDL_RenderCopy(ren, tex, NULL, &dst);
-	
+	texture.drawFrame("monster", desp*2 , (P_ALT / 2) - iH / 2, iW, iH, 1, spriteNum,ren, SDL_FLIP_NONE);
 	
  	SDL_RenderPresent(ren);
 	
 	SDL_Delay(10);
-
-	//spriteNum = (int)((SDL_GetTicks() / 100) % 8)
-
 }
 
 
@@ -160,8 +125,3 @@ void Game::clean() {
 bool Game::isRunning() {
 	return running;
 }
-
-
-
-//GetAsyncKeyState(VK_ESCAPE) == 0)
-

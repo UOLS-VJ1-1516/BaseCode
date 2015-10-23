@@ -40,8 +40,7 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 	destRect.x = x;
 	destRect.y = y;
 
-	SDL_RenderCopyEx(pRender, m_textureMap[id],
-		&srcRect, &destRect, 0, 0, flip);
+	SDL_RenderCopyEx(pRender, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 
 }
 
@@ -59,7 +58,6 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	destRect.x = x;
 	destRect.y = y;
 
-	SDL_RenderCopyEx(pRender, m_textureMap[id],
-		&srcRect, &destRect, 0, 0, flip);
+	SDL_RenderCopyEx(pRender, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 
 }
