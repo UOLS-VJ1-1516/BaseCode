@@ -27,11 +27,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		TextureManager::Instance()->load("tintin.bmp", "A", g_pRenderer);
-		TextureManager::Instance()->load("tintin.bmp", "B", g_pRenderer);
-		TextureManager::Instance()->load("tintin.bmp", "C", g_pRenderer);
-		TextureManager::Instance()->load("tintin.bmp", "D", g_pRenderer);
-		TextureManager::Instance()->load("tintin.bmp", "E", g_pRenderer);
-		TextureManager::Instance()->load("tintin.bmp", "F", g_pRenderer);
+		TextureManager::Instance()->setSizeFrames("A", 104, 151);
 		return true;
 	}
 	else {
@@ -40,16 +36,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
+	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
+	SDL_RenderClear(g_pRenderer);
 	spriteNum = (int)((SDL_GetTicks() / 100) % 6);
-	switch (spriteNum) {
-		case 0: TextureManager::Instance()->drawFrame("A", 0, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE); break;
-		case 1: TextureManager::Instance()->drawFrame("B", 104, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE); break;
-		case 2: TextureManager::Instance()->drawFrame("C", 208, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE); break;
-		case 3: TextureManager::Instance()->drawFrame("D", 312, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE);  break;
-		case 4: TextureManager::Instance()->drawFrame("E", 416, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE);  break;
-		case 5: TextureManager::Instance()->drawFrame("F", 520, 0, 104, 152, 1, 0, g_pRenderer, SDL_FLIP_NONE); break;
-	}
-	
+	TextureManager::Instance()->drawFrame("A", 300, 200, 200, 300, 0, spriteNum, g_pRenderer, SDL_FLIP_NONE);
 }
 
 void Game::update() {
