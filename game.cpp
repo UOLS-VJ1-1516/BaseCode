@@ -11,7 +11,9 @@ Game::Game()
 	quit = 0;
 	spriteNum = 0;
 	SDL_Surface *load_Surf;
-	SDL_Texture *player;
+	//SDL_Texture *player;
+	SDL_Texture *texture;
+	SDL_Surface *walker;
 	SDL_Rect Src;
 	SDL_Rect Dest;
 
@@ -37,10 +39,15 @@ bool Game::init(const char* title, int xpos, int
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 
-		load_Surf = SDL_LoadBMP("./player.bmp");
+		/*load_Surf = SDL_LoadBMP("./player.bmp");
 		player = SDL_CreateTextureFromSurface(m_pRenderer, load_Surf);
-		SDL_FreeSurface(load_Surf);
+		SDL_FreeSurface(load_Surf);*/
+		IMG_INIT_PNG;
+		walker = IMG_Load("./walker.png");
+		IMG_Quit();
 
+		texture = SDL_CreateTextureFromSurface(m_pRenderer, walker);
+		SDL_FreeSurface(walker);
 		//TextureManager::Instance()->load(…);
 	}
 	else
@@ -55,20 +62,23 @@ bool Game::init(const char* title, int xpos, int
 void Game::render()
 {
 
-	Src.x = 0;
+	Src.x = spriteNum;
 	Src.y = 0;
 	Src.w = 58;
-	Src.h = 61;
+	Src.h = 38;
 
 	Dest.x = 640 / 2 - 61 / 2;
 	Dest.y = 480 / 2 - 61 / 2;
 	Dest.w = 58;
-	Dest.h = 61;
+	Dest.h = 38;
 
 	// clear the window to black
 	SDL_RenderClear(m_pRenderer);
 
-	SDL_RenderCopy(m_pRenderer, player, &Src, &Dest);
+	SDL_RenderCopy(m_pRenderer, texture, &Src, &Dest);
+
+	//SDL_RenderCopyEx(m_pRenderer, texture, &Src, &Dest, 0, NULL, SDL_FLIP_HORIZONTAL);
+	//SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 	//TextureManager::Instance()->drawFrame(…);
 
@@ -77,11 +87,8 @@ void Game::render()
 }
 
 void Game::update()
-{
-	
-	//spriteNum = ( int )( ( SDL_GetTicks() / 100 ) % 12 );
-
-	SDL_Delay(20);
+{	
+	spriteNum = 58 * int((SDL_GetTicks() / 100) % 12);
 }
 
 void Game::handleEvents()
