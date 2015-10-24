@@ -10,6 +10,7 @@ Game::Game()
 	m_pWindow = 0;
 	quit = 0;
 	spriteNum = 0;
+	spriteNum2 = 0;
 	SDL_Surface *load_Surf;
 	//SDL_Texture *player;
 	SDL_Texture *texture;
@@ -62,13 +63,13 @@ bool Game::init(const char* title, int xpos, int
 void Game::render()
 {
 
-	Src.x = spriteNum;
-	Src.y = 0;
+	Src.x = 58 * spriteNum;
+	Src.y = 38 * spriteNum2;
 	Src.w = 58;
 	Src.h = 38;
 
-	Dest.x = 640 / 2 - 61 / 2;
-	Dest.y = 480 / 2 - 61 / 2;
+	Dest.x = 640 / 2 - 58 / 2;
+	Dest.y = 480 / 2 - 38 / 2;
 	Dest.w = 58;
 	Dest.h = 38;
 
@@ -88,7 +89,12 @@ void Game::render()
 
 void Game::update()
 {	
-	spriteNum = 58 * int((SDL_GetTicks() / 100) % 12);
+	spriteNum = int((SDL_GetTicks() / 100) % 12);
+	//printf("SpriteNum: %d \n", spriteNum);
+	spriteNum2 = int((SDL_GetTicks() / 1200) % 2);
+	//printf("SpriteNum2: %d \n", spriteNum2);
+
+	
 }
 
 void Game::handleEvents()

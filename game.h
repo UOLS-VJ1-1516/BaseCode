@@ -16,7 +16,7 @@ class Game
 	SDL_Rect Dest;
 	int quit;
 	int spriteNum;
-
+	int spriteNum2;
 
 public:
 	Game();
