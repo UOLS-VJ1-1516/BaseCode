@@ -1,7 +1,10 @@
 #pragma once
+#include "Tools.h"
 #include "SDL.h"
+#include "Loaders.h"
 #include <ctime>
 #include <random>
+#include "Player.h"
 
 class Game
 {
@@ -9,9 +12,13 @@ private:
 	SDL_Window * window;
 	SDL_Renderer * renderer;
 	SDL_Event event;
+
+	Player player;
+	int width, height;
 	void HandleKeys(SDL_Scancode);
 	bool Fullscreen;
 	bool Running;
+	bool takeScreenshot;
 	int r, g, b, a;
 public:
 	Game();
@@ -24,4 +31,3 @@ public:
 	void Render();
 	void Close();
 };
-

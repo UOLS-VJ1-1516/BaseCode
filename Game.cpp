@@ -13,6 +13,14 @@ void Game::HandleKeys(SDL_Scancode code)
 		else
 			SDL_SetWindowFullscreen(window, SDL_WINDOW_BORDERLESS);
 		break;
+	case SDL_SCANCODE_F2:
+		takeScreenshot = true;
+		break;
+	case SDL_SCANCODE_A:
+		player.Move(-7);
+		break;
+	case SDL_SCANCODE_D:
+		player.Move(7);
 	}	
 }
 
@@ -21,6 +29,8 @@ Game::Game()
 	Game::window = 0;
 	Game::renderer = 0;
 	Game::Running = true;
+	Game::takeScreenshot = false;
+	player = Player("player", 32, 32, 3, 6);
 }
 
 
@@ -29,10 +39,13 @@ Game::~Game()
 	window = 0;
 	renderer = 0;
 	Running = NULL;
+	takeScreenshot = NULL;
 }
 
 bool Game::Init(const char * title, int xpos, int ypos, int width, int height, bool fullscreen)
 {	
+	this->width = width;
+	this->height = height;
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		if (window != 0) 
@@ -46,7 +59,12 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		}
 	}
 	if (window == 0 || renderer == 0)
+	{		
 		return false;
+	}	
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	player.SetPosY((height / 2) - (player.GetSize('h') / 2));
+	TextureManager::GetInstance()->Load("assets/img/Actor1.bmp", player.GetId(), renderer);
 	return true;
 }
 
@@ -84,17 +102,20 @@ void Game::EventHandler()
 
 void Game::Update()
 {
-	srand(time(0));
-	r = rand() % 256;
-	g = rand() % 256;
-	b = rand() % 256;
-	a = rand() % 256;
-	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+	if (takeScreenshot)
+	{
+		takeScreenShot(width, height, renderer);
+		takeScreenshot = false;
+	}
 }
 
 void Game::Render()
 {
 	SDL_RenderClear(renderer);
+	if (player.HaveAnimation())
+		TextureManager::GetInstance()->DrawFrame(&player, renderer);
+	else
+		TextureManager::GetInstance()->Draw(&player, renderer);
 	SDL_RenderPresent(renderer);
 }
 
