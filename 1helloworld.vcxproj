@@ -94,6 +94,9 @@
   <ItemGroup>
     <Image Include="majin.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\SDL\lib\SDL2_image.lib" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
