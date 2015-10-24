@@ -1,10 +1,9 @@
-#pragma once
-#include "TextureManger.h"
-#include "SDL_image"
-#include "SDL.h"
+
+#include "TextureManager.h"
 
 
 TextureManager* TextureManager::s_pInstance = 0;
+TextureManager::TextureManager() {};
 SDL_Surface*img;
 SDL_Texture*texture;
 SDL_Point*center;
@@ -13,23 +12,17 @@ SDL_Rect dest;
 
 bool load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 
-	img = IMG_Load(fileName);
+	img = SDL_LoadBMP(fileName);
 
-	if (img == 0) {
-		return false;
-	}
+
 	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 72, 104, 112));
 	SDL_Texture *textura = SDL_CreateTextureFromSurface(m_pRenderer, img);
 	SDL_FreeSurface(img);
 
-	if (textura != 0) {
-		m_pTextureMap[id] = texture;
+	
+		m_pTextureMap[*id] = texture;
 
-		return true;
-	}
-	else {
-		return false;
-	}
+	
 }
 
 void draw(char* id, int x, int y, int width, int height,
