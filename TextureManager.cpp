@@ -1,6 +1,6 @@
 #pragma once
 #include "TextureManger.h"
-#include "SDL_image.h"
+#include "SDL_image"
 #include "SDL.h"
 
 
@@ -8,6 +8,8 @@ TextureManager* TextureManager::s_pInstance = 0;
 SDL_Surface*img;
 SDL_Texture*texture;
 SDL_Point*center;
+SDL_Rect inicio;
+SDL_Rect dest;
 
 bool load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 
@@ -33,10 +35,37 @@ bool load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 void draw(char* id, int x, int y, int width, int height,
 	SDL_Renderer*pRender, SDL_RendererFlip flip = SDL_FLIP_NONE) {
 
+	
+
+	inicio.x = x;
+	inicio.y = y;
+	inicio.w = width;
+	inicio.h = height;
+	dest.h = height;
+	dest.w = width;
+	dest.x = x;
+	dest.y = y;
+
+	SDL_RenderCopyEx(pRender, m_pTextureMap[id], &inicio, &dest, 0, center, flip);
+
 }
 
 void drawFrame(char* id, int x, int y, int width, int height,
 	int currentRow, int currentFrame,
-	SDL_Renderer* pRender, SDL_RendererFlip = SDL_FLIP_NONE) {
+	SDL_Renderer* pRender, SDL_RendererFlip flip) {
+
+	inicio.x = (currentFrame*width);
+	inicio.y = height*(currentRow - 1);
+	inicio.w = width;
+	inicio.h = height;
+
+
+	dest.x = x;
+	dest.y = y - (height - 2);
+	dest.w = width;
+	dest.h = height;
+
+	SDL_RenderCopyEx(pRender, m_pTextureMap[id], &inicio, &dest, 0, 0, flip);
+
 
 }
