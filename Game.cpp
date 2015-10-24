@@ -1,6 +1,6 @@
 #include "game.h"
 #include "SDL_keycode.h"
-#include "TextureManger.h"
+#include "TextureManager.h"
 
 int r = 255;
 int g = 0;
@@ -11,7 +11,7 @@ Game::Game(){
 //Nom de la classe :: Nom
 	m_pWindow = 0;
 	m_pRenderer = 0;
-	SrcR;
+	
 
 	
 }
@@ -37,8 +37,10 @@ bool Game::init(const char* title, int xpos, int
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 			// Alpha as color values
-			SDL_SetRenderDrawColor(m_pRenderer, r, g, b, 255);
-
+			//SDL_SetRenderDrawColor(m_pRenderer, r, g, b, 255);
+			if (!TextureManager::Instance()->load("kirby.bmp", "A", m_pRenderer)) {
+				return false;
+			}
 		}
 	}
 

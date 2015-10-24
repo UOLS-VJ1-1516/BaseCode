@@ -19,10 +19,9 @@ bool load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 	SDL_Texture *textura = SDL_CreateTextureFromSurface(m_pRenderer, img);
 	SDL_FreeSurface(img);
 
+	return true;
 	
 		m_pTextureMap[*id] = texture;
-
-	
 }
 
 void draw(char* id, int x, int y, int width, int height,
