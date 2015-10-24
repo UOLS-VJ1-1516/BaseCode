@@ -46,7 +46,8 @@ int main(int argc, char* args[])
 
 	Game game;
 
-	game.init("videojocs 1", 100, 100, 1600, 900, true);
+	game.init("videojocs 1", 100, 100, 1600, 900, false);
+	
 
 	while (game.isRunning() == true)//mentres s'esta corrent executa les seguentes funcions
 	{

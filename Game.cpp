@@ -1,16 +1,17 @@
 #include "game.h"
 #include "SDL_keycode.h"
+#include "TextureManger.h"
 
 int r = 255;
 int g = 0;
 int b = 10;
 
+
 Game::Game(){
 //Nom de la classe :: Nom
 	m_pWindow = 0;
 	m_pRenderer = 0;
-	
-	
+	SrcR;
 
 	
 }
@@ -20,7 +21,6 @@ Game::~Game(){
 bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
 	
-
 
 	//inicialitzem el SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
@@ -36,21 +36,31 @@ bool Game::init(const char* title, int xpos, int
 		if (m_pWindow != 0)
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-
 			// Alpha as color values
 			SDL_SetRenderDrawColor(m_pRenderer, r, g, b, 255);
+
 		}
 	}
+
 	else
 	{
 		return false; // sdl could not initialize
 	}
-
+	
+		img = SDL_LoadBMP("player.bmp");
+		create = SDL_CreateTextureFromSurface(m_pRenderer, img);
+		SDL_FreeSurface(img);
+		screen = SDL_CreateTexture(m_pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 43, 65);
+	
 	return true;
 
 	}
 void Game::render() {
 	SDL_RenderClear(m_pRenderer);
+	SDL_RenderCopy(m_pRenderer, create, NULL, NULL);
+	//SDL_RenderCopyEx(m_pRenderer, screen, NULL, NULL, 0, NULL, SDL_FLIP_HORIZONTAL);
+	
+	//TextureManager::Instance()->drawFrame("img",0,0,195,180,1,0,m_pRenderer,SDL_FLIP_NONE);
 	SDL_RenderPresent(m_pRenderer);
 }
 
@@ -90,7 +100,7 @@ void Game::handleEvents(SDL_Event event) {
 	
 
 void Game::clean() {
-
+	
 	SDL_Quit();
 }
 

@@ -6,6 +6,11 @@ class Game
 {
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
+	SDL_Surface * img;
+	SDL_Texture * screen;
+	SDL_Texture *create;
+	SDL_Rect SrcR;
+	SDL_Rect DestR;
 	bool running = true;
 public:
 	Game();
