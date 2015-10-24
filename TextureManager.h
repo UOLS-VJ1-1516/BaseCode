@@ -1,3 +1,4 @@
+#pragma once
 #include <SDL.h>
 #include <map>
 
@@ -25,5 +26,5 @@ public:
 
 private:
 	static TextureManager* s_pInstance;
-	std::map<char, SDL_Texture* > m_textureMap;		
+	std::map<char, SDL_Texture* > m_textureMap;
 };
