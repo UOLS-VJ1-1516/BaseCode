@@ -7,6 +7,7 @@ Game::Game() {
 	green = 0;
 	blue = 0;
 	alpha = 255;
+	spriteNum = 0;
 }
 
 Game::~Game() {}
@@ -27,6 +28,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		return false; // sdl could not initialize
 	}
 	running = true;
+	TextureManager::getInstance()->load("assets/images/sprite.bmp", "player", m_pRenderer);
 	return true;
 }
 
@@ -34,11 +36,25 @@ void Game::render() {
 	// clear the window to black
 	SDL_RenderClear(m_pRenderer);
 
+	TextureManager::getInstance()->drawFrame(
+		"player",
+		(SDL_GetWindowSurface(m_pWindow)->w / 2),
+		(SDL_GetWindowSurface(m_pWindow)->h / 2),
+		128/4,
+		48,
+		0,
+		spriteNum,
+		m_pRenderer
+	);
+
 	// show the window
 	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update() {
+
+	//SPRITENUMS
+	spriteNum = (int)((SDL_GetTicks() / 120) % 4);
 	
 	//RED
 	if(red < maxColorValue && green == 0 && blue == 0 || red < maxColorValue && green == 0 && blue == maxColorValue){

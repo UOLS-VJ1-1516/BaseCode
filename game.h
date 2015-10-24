@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDL.h"
+#include "TextureManager.h"
 
 class Game {
 	SDL_Window* m_pWindow;
@@ -8,6 +9,7 @@ class Game {
 	int red, green, blue, alpha;
 	const int maxColorValue = 255;
 	bool running;
+	int spriteNum;
 
 public:
 	Game();
