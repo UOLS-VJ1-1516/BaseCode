@@ -47,7 +47,7 @@ bool Game::init(const char* title, int xpos, int
 		return false; // sdl could not initialize
 	}
 	
-		img = SDL_LoadBMP("player.bmp");
+		img = SDL_LoadBMP("kirby.bmp");
 		create = SDL_CreateTextureFromSurface(m_pRenderer, img);
 		SDL_FreeSurface(img);
 		screen = SDL_CreateTexture(m_pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 43, 65);
