@@ -3,7 +3,7 @@
 const int P_ANC = 1280;
 const int P_ALT = 720;
 
-
+ 
 int main(int argc, char* args[])
 {
 	Game game;
