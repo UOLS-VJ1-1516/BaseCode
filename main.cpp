@@ -1,46 +1,22 @@
 #include "SDL.h"
+#undef main
+#include <iostream>
+#include "Game.h"
+using namespace std;
 
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
-
-int main(int argc, char* args[])
-{
-	// initialize SDL
-	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0)
-	{
-		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow("Videjuegos 1 - bachelor",
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		640, 480,
-		SDL_WINDOW_SHOWN);
-
-		// if the window creation succeeded create our renderer
-		if(g_pWindow != 0)
-		{
-			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-		}
+int main(int argc, char* args[]) {
+	Game joc;
+	cout << "Prem ESC per tancar el programa." << endl;
+	cout << "Prem F11 per canviar de pantalla completa a finestra." << endl;
+	cout << "Si estas llegint aquest missatge, vol dir que tens el programa en mode finestra. Prem F11 per posar-lo a pantalla completa." << endl;
+	if (!joc.Init("Videojocs I", 100, 100, 1280, 720, false)) {
+		return 1;
 	}
-	else
-	{
-		return 1; // sdl could not initialize
+	while (joc.IsRunning()) {
+		joc.EventHandler();
+		joc.Update();
+		joc.Render();
 	}
-
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
-
-	// clear the window to black
-	SDL_RenderClear(g_pRenderer);
-
-	// show the window
-	SDL_RenderPresent(g_pRenderer);
-
-	// set a delay before quitting
-	SDL_Delay(5000);
-
-	// clean up SDL
-	SDL_Quit();
-
+	joc.Clear();
 	return 0;
 }
