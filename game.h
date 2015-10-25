@@ -1,12 +1,14 @@
 #pragma once
-
-#include <SDL.h>
+#ifndef GAME_H
+#define GAME_H
+#include "SDL.h"
 
 class Game {
+private:
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool running;
-	int red, green, blue, alpha;
+	int mov;
 
 public: 
 	Game();
@@ -17,5 +19,8 @@ public:
 	void handleEvents();
 	void clean();
 	bool isRunning();
-};
+}
+;
+
+#endif
 

@@ -1,8 +1,9 @@
 #include "game.h"
+#include "SDL.h"
 
 int main(int argc, char* args[]) {
 	Game game;
-	game.init("Videojocs 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 720, SDL_WINDOW_FULLSCREEN);
+	game.init("Videojocs 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, 0);
 
 	while (game.isRunning()) {
 		game.handleEvents();

@@ -1,13 +1,10 @@
 #include "game.h"
-#include <stdlib.h>
+#include "TextureManager.h"
 
 Game::Game() {
 	m_pWindow = 0;
 	m_pRenderer = 0;
-	red = 0;
-	green = 0;
-	blue = 0;
-	alpha = 0;
+	running = false;
 }
 
 Game::~Game() {
@@ -18,14 +15,19 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 	// initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 		// if succeeded create our window
-		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
+		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, 0);
 
 		// if the window creation succeeded create our renderer
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-
-			running = true;
 		}
+		
+		//load img in my img list
+		TextureManager::Instance()->load("frames.bmp", "frames", m_pRenderer);
+
+		//app starts
+		running = true;
+		return 0;
 	}
 	else {
 		return 1; // sdl could not initialize
@@ -33,37 +35,39 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 	
 }
 
-void Game::update() {
-	red = rand() % 255 + 1;
-	green = rand() % 255 + 1;
-	blue = rand() % 255 + 1;
-	alpha = rand() % 255 + 1;
+void Game::render() {
+	//set color background
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-	SDL_SetRenderDrawColor(m_pRenderer, red, green, blue, alpha);
-	// set a delay before quitting
-	SDL_Delay(750);
+	//clean screen
+	SDL_RenderClear(m_pRenderer);
+
+	//get a number 
+	mov = (int)((SDL_GetTicks() / 100) % 6);
+
+	//refresh img
+	TextureManager::Instance()->drawFrame("frames", 300, 200, 104, 151, mov, m_pRenderer, SDL_FLIP_NONE);
+}
+
+void Game::update() {
+	//show print buffer
+	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::handleEvents() {
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_KEYDOWN) {
+		if (event.type == SDL_KEYUP) {
 			running = false;
 		}
 	}
 }
 
-void Game::render() {
-	// clear the window to black
-	SDL_RenderClear(m_pRenderer);
-
-	// show the window
-	SDL_RenderPresent(m_pRenderer);
-
-}
-
 void Game::clean() { 
+	SDL_RenderClear(m_pRenderer);
+	SDL_DestroyWindow(m_pWindow);
+	SDL_DestroyRenderer(m_pRenderer);
 	// clean up SDL
 	SDL_Quit();
 }
