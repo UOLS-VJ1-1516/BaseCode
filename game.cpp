@@ -64,7 +64,8 @@ void game::render(int a, int b, int c) {
 	rectanguloDestino.y = 600 /2 - 200;
 	rectanguloDestino.w = 100;
 	rectanguloDestino.h = 200;
-
+	
+	//SDL_SetColorKey(textureSurface, 1, SDL_MapRGB(textureSurface->format, 255, 255, 255)); para quitar el fondo blanco
 
 	//a=rojo
 	//b=verde
