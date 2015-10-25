@@ -15,7 +15,6 @@ Game::Game() {
 	m_pRenderer = 0;
 
 
-
 }
 Game::~Game() {
 

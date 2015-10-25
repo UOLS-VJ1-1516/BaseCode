@@ -14,6 +14,7 @@ bool TextureManager::load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 	m_pTextureMap[*id] = texture;
 	return true;
 
+
 	
 }
 

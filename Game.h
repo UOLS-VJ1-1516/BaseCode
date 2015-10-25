@@ -11,6 +11,7 @@ class Game
 	//SDL_Texture *create;
 	int spriteNum;
 
+
 	bool running = true;
 public:
 	Game();
