@@ -12,9 +12,11 @@ TextureManager texturemanager;
 SDL_Window* g_lWindow = 0;
 SDL_Renderer* g_lRenderer = 0;
 SDL_Texture* texture;
-SDL_Surface* img;
+
 int x,y, ancho, alto;
 int desplazamiento = -200;
+int desplazamientoizq = 300;
+int desplazamientoizq2 = 2000;
 
 Game::Game() {  //Constructor
 
@@ -45,7 +47,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}	
 		
 		if (!(texturemanager.load("./images/bird.png", "bird", g_lRenderer))) { return false; }
-		
+		if (!(texturemanager.load("./images/nubes.png", "nubes", g_lRenderer))) { return false; }
+		if (!(texturemanager.load("./images/nubes2.png", "nubes2", g_lRenderer))) { return false; }
 
 		running = true;
 
@@ -55,32 +58,30 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		return 1; // sdl could not initialize
 	}
 
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
-	// Especifiquem el color amb que pintarem
-
-
 	return true;
 }
 
-void Game::update() {  //Actualitzara el colors
+void Game::update() {  //Actualitzara parametres diversos
 	/*int x = rand()%255;
 	int y = rand()%255;
-	int z = rand()%255;*/ No utilitzare mes de un color
+	int z = rand()%255;*/// No utilitzare mes de un color
 	int h = rand()%255;
 	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, h);
-
+	x = ((SDL_GetTicks() / 100) % 7);
+	y = (alto / 2);
+	desplazamiento = desplazamiento + 2;
+	desplazamientoizq = desplazamientoizq - 2;
+	desplazamientoizq2 = desplazamientoizq2 - 2;
+	if (desplazamiento > ancho)desplazamiento = -200;
+	if (desplazamientoizq < -1700)desplazamientoizq = 1600;
+	if (desplazamientoizq2 < -1700)desplazamientoizq2 = 1600;
 }
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
 	SDL_RenderClear(g_lRenderer); 
-	x = ((SDL_GetTicks() / 100) % 7);
-	y = (alto / 2);
     texturemanager.drawFrame("bird", desplazamiento, y, 200, 180,1, x, g_lRenderer, SDL_FLIP_NONE);
-	desplazamiento = desplazamiento + 2;
-	if (desplazamiento > ancho)desplazamiento = -200;
-	SDL_RenderCopy(g_lRenderer, texture, NULL,&dst);
+    texturemanager.drawFrame("nubes", desplazamientoizq, y, 1900, 900, 1, 0, g_lRenderer, SDL_FLIP_NONE);
+	texturemanager.drawFrame("nubes2", desplazamientoizq2, y, 1900, 900, 1, 0, g_lRenderer, SDL_FLIP_NONE);
 	SDL_RenderPresent(g_lRenderer);
 
 
@@ -88,7 +89,7 @@ void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 
 
 void Game::clean() {
-	SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(texture);
 	SDL_DestroyRenderer(g_lRenderer);
 	SDL_DestroyWindow(g_lWindow);
 	SDL_Quit();
