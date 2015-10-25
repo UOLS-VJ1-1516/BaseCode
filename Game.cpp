@@ -20,10 +20,8 @@ bool Game::init(const char* tittle,int xPos, int yPos, int typeWindow)
 	{
 		g_pWindow = SDL_CreateWindow(tittle,xPos,yPos,SIZE_WINDOW_WIDTH, SIZE_WINDOW_HEIGHT,0);
 		if (g_pWindow != 0) g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-		state = true;			
-		
+		state = true;				
 		TextureManager::Instance()->load("majin.bmp", "img", g_pRenderer);	
-
 		return 0;
 	}
 	return 1; 
@@ -31,11 +29,10 @@ bool Game::init(const char* tittle,int xPos, int yPos, int typeWindow)
 
 void Game::render()
 {	
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(g_pRenderer, 255, 255, 255, 255);
 	SDL_RenderClear(g_pRenderer);
 	sprit = (int)((SDL_GetTicks() / 100) % 4);
 	TextureManager::Instance()->drawFrame("img", SIZE_WINDOW_WIDTH / 2 -40, SIZE_WINDOW_HEIGHT / 2 - 100, 81, 200, 0, sprit, g_pRenderer, SDL_FLIP_NONE);
-//	TextureManager::Instance()->drawFrame("img", 150, 200, 104, 300, 0, sprit, g_pRenderer, SDL_FLIP_NONE);
 }
 
 void Game::update(int delay)
