@@ -3,8 +3,8 @@
 #include "SDL.h"
 #include "stdio.h"
 
-//#define SPRITE_HEIGHT 120
-//#define SPRITE_WIDHT 103
+#define SPRITE_HEIGHT 35
+#define SPRITE_WIDHT 45
 
 Game::Game()
 {
@@ -40,12 +40,9 @@ bool Game::init(const char* title, int xpos, int
 		if (m_pWindow != 0)
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+			TextureManager::Instance()->load("bomberman.bmp", "player", m_pRenderer);
 		}
 
-		//TextureManager::Instance()->load("sonic.bmp", "player", m_pRenderer);
-		tSurface = SDL_LoadBMP("player.bmp");
-		t = SDL_CreateTextureFromSurface(m_pRenderer, tSurface);
-		SDL_FreeSurface(tSurface); //elimina surface
 		return 0;
 
 	}
@@ -57,28 +54,18 @@ bool Game::init(const char* title, int xpos, int
 
 void Game::render()
 {
-	marcI.x = 0;
-	marcI.y = 0;
-	marcI.w = 40; //anchura de la imagen
-	marcI.h = 100; //altura de la imagen
-
-	marcF.x = 800 / 2 - 40;
-	marcF.y = 600 / 2 - 100;
-	marcF.w = 40;
-	marcF.h = 100;
-
 	SDL_SetRenderDrawColor(m_pRenderer, r, g, b, 255);
 	// clear the window to black
 	SDL_RenderClear(m_pRenderer);
-	SDL_RenderCopy(m_pRenderer, t, &marcI, &marcF);
-	//TextureManager::Instance()->drawFrame("player", SPRITE_WIDHT, 0, SPRITE_WIDHT, SPRITE_HEIGHT, rowNum, spriteNum, m_pRenderer);
-	SDL_RenderPresent(m_pRenderer);
-	SDL_Delay(10);
+	pSprite = (int)((SDL_GetTicks() / 100) % 8); //moviment de l'sprite
+	TextureManager::Instance()->drawFrame("player", 50, 100, 56, 60, 0, pSprite, m_pRenderer, SDL_FLIP_NONE);
+	
 };
 
 void Game::update()
 {
-	
+	SDL_RenderPresent(m_pRenderer);
+	/*
 	if (r == 255 && b == 0) {
 		g++;
 		if (g == 255) {
@@ -112,26 +99,11 @@ void Game::update()
 	else {
 		b--;
 	}
-	
-	/*
-	if (rowNum == 0) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 10);
-		if (spriteNum == 9)
-			rowNum++;
-	}
-	else if (rowNum == 1) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 4);
-		if (spriteNum == 3)
-			rowNum++;
-	}
-	else if (rowNum == 2) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 8);
-		if (spriteNum == 7)
-			rowNum = 0;
-	}
 	*/
+	
+	
 
-	SDL_Delay(10);
+	//SDL_Delay(10);
 };
 
 void Game::handleEvents()
