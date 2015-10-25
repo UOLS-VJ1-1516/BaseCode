@@ -11,6 +11,7 @@ class game
 	SDL_Texture* texture;
 	SDL_Rect  rectanguloFuente;
 	SDL_Rect  rectanguloDestino;
+	int PosicionSprite;
 
 
 	

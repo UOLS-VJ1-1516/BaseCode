@@ -19,7 +19,7 @@ int main(int argc, char* args[]) {
 	//generamos la pantalla
 
 	game.init("Videojuegos1",
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, true);
+		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
 	//fuente:http://www.cplusplus.com/reference/cstdlib/rand/
 
@@ -34,9 +34,10 @@ int main(int argc, char* args[]) {
 	b = (rand() % 255) + 1;
     c = 30;
 
-
+	game.update();
 		game.render(a, b, c);
-		SDL_Delay(4000);
+		
+		SDL_Delay(200);
 		
 		
 	}

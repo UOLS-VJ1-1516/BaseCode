@@ -1,5 +1,6 @@
 #include "game.h"
 #include "cstdlib" //libreria para random
+#include "SDL_image.h"
 
 
 
@@ -37,7 +38,7 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		//Creacion y carga de una textura
 
-		textureSurface = SDL_LoadBMP("player.bmp");
+		textureSurface = SDL_LoadBMP("player1.bmp");
 
 			texture = SDL_CreateTextureFromSurface(g_pRenderer, textureSurface);
 			SDL_FreeSurface(textureSurface); //elimina surface
@@ -54,15 +55,15 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 void game::render(int a, int b, int c) {
 	   
 
-	rectanguloFuente.x = 0;
+	rectanguloFuente.x = PosicionSprite *100;
 	rectanguloFuente.y = 0;
-	rectanguloFuente.w = 40; //anchura de la imagen
-	rectanguloFuente.h = 100; //altura de la imagen
+	rectanguloFuente.w = 100; //anchura de la imagen
+	rectanguloFuente.h = 200; //altura de la imagen
 
-	rectanguloDestino.x = 800 / 2 -40;
-	rectanguloDestino.y = 600 /2 - 100;
-	rectanguloDestino.w = 40;
-	rectanguloDestino.h = 100;
+	rectanguloDestino.x = 800 / 2 -100;
+	rectanguloDestino.y = 600 /2 - 200;
+	rectanguloDestino.w = 100;
+	rectanguloDestino.h = 200;
 
 
 	//a=rojo
@@ -70,10 +71,12 @@ void game::render(int a, int b, int c) {
 	//c=azul
 
 	SDL_SetRenderDrawColor(g_pRenderer, a, b, c, rand() % 255);
+	//PosicionSprite = (int)((SDL_GetTicks() / 100) % 6);
 
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
+	
 
 	SDL_RenderCopy(g_pRenderer, texture, &rectanguloFuente, &rectanguloDestino);
 
@@ -81,14 +84,19 @@ void game::render(int a, int b, int c) {
 	SDL_RenderPresent(g_pRenderer);
 
 
-	SDL_Delay(2000);
+    SDL_Delay(10);
+
+	
 	
 };
 
 
 void game::update() {
 
-};
+	PosicionSprite = (int)((SDL_GetTicks() / 100) % 6);
+
+
+}
 
 
 void game::handleEvents() {

@@ -83,9 +83,12 @@
   <ItemGroup>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
