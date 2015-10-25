@@ -1,6 +1,8 @@
 #pragma once
 #include "SDL.h"
 #include "map"
+#include "game.h"
+#include "SDL_image.h"
 class TextureManager
 {
 private:
@@ -17,6 +19,7 @@ public:
 		return s_pInstance;
 	}
 	~TextureManager();
+
 	bool load(char* fileName, char* id, SDL_Renderer *m_pRenderer);
 	void draw(char* id, int x, int y, int width, int height,
 		SDL_Renderer*pRender, SDL_RendererFlip flip );
@@ -25,14 +28,10 @@ public:
 		int currentRow, int currentFrame,
 		SDL_Renderer* pRender, SDL_RendererFlip flip);
 
-
-	
-	
-	
 private:
 	static TextureManager* s_pInstance;
 		std::map<char, SDL_Texture*>m_pTextureMap;
-		std::map<char, int[2]>m_pTextureSize;
+		
 		
 
 	
