@@ -43,7 +43,7 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			texture = SDL_CreateTextureFromSurface(g_pRenderer, textureSurface);
 			SDL_FreeSurface(textureSurface); //elimina surface
 
-
+			//TextureManager::Instance()->load(player1.bmp)...
 	  return 0;
 	}
 	else{
@@ -69,6 +69,9 @@ void game::render(int a, int b, int c) {
 	//a=rojo
 	//b=verde
 	//c=azul
+
+
+	//TextureManager:: Instance()-> drawFrame("player")
 
 	SDL_SetRenderDrawColor(g_pRenderer, a, b, c, rand() % 255);
 	//PosicionSprite = (int)((SDL_GetTicks() / 100) % 6);
