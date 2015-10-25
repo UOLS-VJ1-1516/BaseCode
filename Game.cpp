@@ -2,6 +2,9 @@
 #include "SDL_keycode.h"
 #include "TextureManager.h"
 
+#define SPRITE_HEIGHT 35
+#define SPRITE_WIDHT 32
+
 int r = 255;
 int g = 0;
 int b = 10;
@@ -52,16 +55,29 @@ bool Game::init(const char* title, int xpos, int
 		create = SDL_CreateTextureFromSurface(m_pRenderer, img);
 		SDL_FreeSurface(img);
 		screen = SDL_CreateTexture(m_pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 43, 65);
+		
+	//TextureManager::Instance()->load("Kirby.bmp", "img", m_pRenderer);
+
 	
 	return true;
 
 	}
 void Game::render() {
 	SDL_RenderClear(m_pRenderer);
-	SDL_RenderCopy(m_pRenderer, create, NULL, NULL);
+	SDL_RenderCopy(m_pRenderer, create, &SrcI, &DestR);
 	
 	
-	TextureManager::Instance()->drawFrame("img",0,0,195,180,1, spriteNum,m_pRenderer, SDL_FLIP_HORIZONTAL);
+	SrcI.x = 0;
+	SrcI.y = 0;
+	SrcI.w = 40; //anchura de la imagen
+	SrcI.h = 100; //altura de la imagen
+
+	DestR.x = 800 / 2 - 40;
+	DestR.y = 600 / 2 - 100;
+	DestR.w = 70;
+	DestR.h = 64;
+
+	//TextureManager::Instance()->drawFrame("img",0,0, SPRITE_WIDHT, SPRITE_HEIGHT, SPRITE_WIDHT, spriteNum,m_pRenderer, SDL_FLIP_HORIZONTAL);
 
 	SDL_RenderPresent(m_pRenderer);
 }

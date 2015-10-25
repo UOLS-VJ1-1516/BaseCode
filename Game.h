@@ -10,7 +10,12 @@ class Game
 	SDL_Surface * img;
 	SDL_Texture * screen;
 	SDL_Texture *create;
+	SDL_Rect SrcI;
+	SDL_Rect DestR;
+	int x;
+	int y;
 	int spriteNum;
+	int rowNum =0;
 	
 	bool running = true;
 public:
