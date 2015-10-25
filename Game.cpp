@@ -48,11 +48,10 @@ bool Game::init(const char* title, int xpos, int
 		return false; // sdl could not initialize
 	}
 	
-		//img = SDL_LoadBMP("kirby.bmp");
-		//create = SDL_CreateTextureFromSurface(m_pRenderer, img);
-		//SDL_FreeSurface(img);
-	TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
-		//screen = SDL_CreateTexture(m_pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 43, 65);
+		img = SDL_LoadBMP("kirby.bmp");
+		create = SDL_CreateTextureFromSurface(m_pRenderer, img);
+		SDL_FreeSurface(img);
+		screen = SDL_CreateTexture(m_pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 43, 65);
 	
 	return true;
 
@@ -62,7 +61,7 @@ void Game::render() {
 	SDL_RenderCopy(m_pRenderer, create, NULL, NULL);
 	
 	
-	TextureManager::Instance()->drawFrame("player",35,0,35,32,1, spriteNum,m_pRenderer, SDL_FLIP_HORIZONTAL);
+	TextureManager::Instance()->drawFrame("img",0,0,195,180,1, spriteNum,m_pRenderer, SDL_FLIP_HORIZONTAL);
 
 	SDL_RenderPresent(m_pRenderer);
 }
@@ -70,7 +69,7 @@ void Game::render() {
 void Game::update() {
 
 	SDL_SetRenderDrawColor(m_pRenderer, r, g, b, 255);
-	/*r--;
+	r--;
 	g++;
 	b++;
 	if (r<=0 && r>=255) {
@@ -85,7 +84,7 @@ void Game::update() {
 		r++;
 		g++;
 	}
-	SDL_Delay(10);*/
+	SDL_Delay(10);
 	spriteNum = (int)((SDL_GetTicks() / 100) % 10);
 
 }

@@ -5,6 +5,7 @@
 #include "SDL_image.h"
 class TextureManager
 {
+
 private:
 	TextureManager();
 public:
