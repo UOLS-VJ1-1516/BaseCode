@@ -19,7 +19,7 @@ int main(int argc, char* args[])
 
 	game.clean();
 
-	SDL_Delay(1000);
+	//SDL_Delay(1000);
 	SDL_Quit();
 
 	return 0;
