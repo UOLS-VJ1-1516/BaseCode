@@ -64,7 +64,12 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 	}	
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	player.SetPosY((height / 2) - (player.GetSize('h') / 2));
-	TextureManager::GetInstance()->Load("assets/img/Actor1.bmp", player.GetId(), renderer);
+	int initFlags = IMG_INIT_PNG;
+	if (!(IMG_Init(initFlags) & initFlags))
+	{
+		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
+	}
+	TextureManager::GetInstance()->Load("assets/img/Actor3.png", player.GetId(), renderer);
 	return true;
 }
 
@@ -102,6 +107,11 @@ void Game::EventHandler()
 
 void Game::Update()
 {
+	srand(time(NULL));
+	r = rand() % 256;
+	g = rand() % 256;
+	b = rand() % 256;
+	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 	if (takeScreenshot)
 	{
 		takeScreenShot(width, height, renderer);

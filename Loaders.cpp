@@ -55,7 +55,9 @@ void TextureManager::DrawFrame(const char * id, int x, int y, int width, int hei
 
 bool TextureManager::Load(const char * filename, const char * id, SDL_Renderer * renderer)
 {
-	SDL_Texture * textura = IMG_LoadTexture(renderer, filename);
+	SDL_Surface * surface = IMG_Load(filename);
+	SDL_Texture * textura = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_FreeSurface(surface);
 	textures[id] = textura;
 	if (textura == NULL)
 		return false;
