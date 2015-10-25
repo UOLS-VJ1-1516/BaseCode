@@ -33,6 +33,16 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
+
+
+		//Creacion y carga de una textura
+
+		textureSurface = SDL_LoadBMP("player.bmp");
+
+			texture = SDL_CreateTextureFromSurface(g_pRenderer, textureSurface);
+			SDL_FreeSurface(textureSurface); //elimina surface
+
+
 	  return 0;
 	}
 	else{
@@ -43,16 +53,29 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void game::render(int a, int b, int c) {
 	   
+
+	rectanguloFuente.x = 0;
+	rectanguloFuente.y = 0;
+	rectanguloFuente.w = 40; //anchura de la imagen
+	rectanguloFuente.h = 100; //altura de la imagen
+
+	rectanguloDestino.x = 800 / 2 -40;
+	rectanguloDestino.y = 600 /2 - 100;
+	rectanguloDestino.w = 40;
+	rectanguloDestino.h = 100;
+
+
 	//a=rojo
 	//b=verde
 	//c=azul
 
-	SDL_SetRenderDrawColor(g_pRenderer, 
-		a, b, c, rand() % 255);
+	SDL_SetRenderDrawColor(g_pRenderer, a, b, c, rand() % 255);
 
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
+
+	SDL_RenderCopy(g_pRenderer, texture, &rectanguloFuente, &rectanguloDestino);
 
 	//show the window
 	SDL_RenderPresent(g_pRenderer);

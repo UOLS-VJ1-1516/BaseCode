@@ -7,6 +7,12 @@ class game
 	bool on = true;
 	SDL_Window* g_pWindow = 0;
 	SDL_Renderer* g_pRenderer = 0;
+	SDL_Surface* textureSurface;
+	SDL_Texture* texture;
+	SDL_Rect  rectanguloFuente;
+	SDL_Rect  rectanguloDestino;
+
+
 	
 
 	//creamos las funciones que se piden en el pdf
