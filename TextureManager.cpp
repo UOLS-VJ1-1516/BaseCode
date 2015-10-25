@@ -1,33 +1,24 @@
-
 #include "TextureManager.h"
-#include "Game.h"
 
 TextureManager* TextureManager::s_pInstance = 0;
 TextureManager::TextureManager() {};
-SDL_Surface*img;
-SDL_Texture*texture;
-SDL_Point*center;
-SDL_Rect inicio;
-SDL_Rect dest;
+TextureManager::~TextureManager() {};
 
 bool TextureManager::load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 
 	img = SDL_LoadBMP(fileName);
 
-
-	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 72, 104, 112));
+	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 0, 255));
 	texture = SDL_CreateTextureFromSurface(m_pRenderer, img);
-	SDL_FreeSurface(img);
-
+	//SDL_FreeSurface(img);
+	m_pTextureMap[*id] = texture;
 	return true;
-	
-		m_pTextureMap[*id] = texture;
+
+	//m_pTextureMap[*id] = texture; **CUIDADO: NUNCA después de un return pongas nada, el método se saltará todo lo quepongas salvo que esté en una condición.
 }
 
 void TextureManager::draw(char* id, int x, int y, int width, int height,
 	SDL_Renderer*pRender, SDL_RendererFlip flip = SDL_FLIP_NONE) {
-
-	
 
 	inicio.x = 0;
 	inicio.y = 0;
@@ -46,14 +37,16 @@ void TextureManager::drawFrame(char* id, int x, int y, int width, int height,
 	int currentRow, int currentFrame,
 	SDL_Renderer* pRender, SDL_RendererFlip flip) {
 
-	inicio.x = (currentFrame*25);
-	inicio.y = height*(currentRow - 1);
+	inicio.x = currentFrame*width;//alto y anchod de los frames
+	inicio.y = height*currentRow;//fila 0
 	inicio.w = width;
 	inicio.h = height;
 
 
+	//dest.x = x;
+	//dest.y = y - (height - 2);
 	dest.x = x;
-	dest.y = y - (height - 2);
+	dest.y = y;
 	dest.w = width;
 	dest.h = height;
 
