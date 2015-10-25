@@ -4,8 +4,9 @@
 
 class Game
 {
-	SDL_Window* m_pWindow;
-	SDL_Renderer* m_pRenderer;
+	SDL_Window* g_pWindow;
+	SDL_Renderer* g_pRenderer;
+	int spriteNum;
 
 public:
 	Game();
