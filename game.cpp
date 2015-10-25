@@ -1,11 +1,16 @@
 	#include "game.h"
 	#include "SDL.h"
-	#include "stdio.h"
+	#include "SDL_image.h"
+	#include "TextureManager.h"
+	#include "iostream"
 	
 	bool running = true;
-	int r = 255, g = 0, b = 0;
-	int enable_r = 0, enable_g = 0, enable_b = 0;
-	int value = 0;
+	SDL_Surface* s_sprite;
+	SDL_Texture* s_texture;
+
+	SDL_PixelFormat* format;
+	int spriteNum;
+	int row=0;
 	Game::Game()
 	{
 		
@@ -32,9 +37,10 @@
 				m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 				SDL_SetRenderDrawColor(m_pRenderer, 0, 10, 40, 255);
-			} else {
+			} 
 
-			}
+			//afegir textura
+			TextureManager::Instance()->load("61933.bmp","player",m_pRenderer);
 
 		}
 		else
@@ -45,32 +51,18 @@
 	}
 	void Game::render()
 	{
-
 		// clear the window to black
 		SDL_RenderClear(m_pRenderer);
+	//	TextureManager::Instance()->draw("player", 73, 58, 73, 58,m_pRenderer);
+		TextureManager::Instance()->drawFrame("player", 73, 58, 73, 58,
+			row, spriteNum, m_pRenderer);
 
 		// show the window
 		SDL_RenderPresent(m_pRenderer);
-	
-		if (r == 255 && g == 0 && b == 0) { value = 1; enable_g = 1; enable_b = 0; }
-		if (g == 255 && b == 0 && r == 0) { value = 1; enable_b = 1; enable_r = 0; }
-		if (b == 255 && r == 0 && g == 0) { value = 1; enable_r = 1; enable_g = 0; }
-		if (r == 255 && g == 255 && b == 0) { value = -1; enable_r = 1; enable_g = 0; enable_b = 0; }
-		if (g == 255 && b == 255 && r == 0) { value = -1; enable_g = 1; enable_b = 0; enable_r = 0; }
-		if (b == 255 && r == 255 && g == 0) { value = -1; enable_b = 1; enable_r = 0; enable_g = 0; }
-		if (enable_g == 1 ) g = g + value;
-		if (enable_b == 1 ) b = b + value;
-		if (enable_r == 1 ) r = r + value;
-		printf("operation R: %i \n", r);
-		printf("operation G: %i \n", g);
-		printf("operation B: %i \n", b);
-		printf("________________\n");
-		SDL_SetRenderDrawColor(m_pRenderer, r, g, b, 255);
-		SDL_Delay(10);
 	}
 	
 	void Game::update(){
-
+		spriteNum = (int)((SDL_GetTicks() / 100) % 8);
 
 	}
 	
@@ -79,8 +71,13 @@
 		case SDL_KEYUP:
 			switch (event.key.keysym.sym)
 			{
-			case SDLK_ESCAPE:
-				running = false;
+				case SDLK_ESCAPE:
+					running = false;
+				case SDLK_UP:
+				{
+					row = row + 1;
+					if (row > 8)row = 0;
+				}
 			}
 			break;
 		default:
