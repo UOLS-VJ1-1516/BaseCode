@@ -3,18 +3,14 @@
 int main(int argc, char* args[])
 {
 	Game game = Game();
-	//if (game.init("Videjuegos 1 - bachelor", 0, 0, 640, 480, true)) {
 
-	game.init("Videjuegos 1 - bachelor", 0, 0, 1200, 720, true);
-		game.render();
+	if (game.init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, false)) {
 		while (game.isRunning()) {
-
-			game.clean();
-			game.update();
+			game.render();
 			game.handleEvents();
+			game.update();
 		}
-		
-	//}
-	game.~Game();
+		game.clean();
+	}
 	return 0;
 }

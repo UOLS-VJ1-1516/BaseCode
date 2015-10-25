@@ -1,6 +1,7 @@
+
 #pragma once
-#ifndef _Game_H
-#define _Game_H
+#ifndef GAME_H
+#define GAME_H
 #include "SDL.h"
 
 class Game
@@ -8,21 +9,20 @@ class Game
 public:
 	Game();
 	~Game();
-	bool init(const char* title, int xpos, int
-		ypos, int width, int height, bool fullscreen);
+	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 	void render();
 	void update();
 	void handleEvents();
 	void clean();
 	bool isRunning();
-
+private:
+	int* pixelesDeAncho;
+	int* pixelesDeAlto;
 	SDL_Window* g_pWindow;
 	SDL_Renderer* g_pRenderer;
-	SDL_Event events;
+	SDL_Event event;
 	bool flag;
-	int red;
-	int green;
-	int blue;
+	int spriteNum;
 };
 
 #endif
