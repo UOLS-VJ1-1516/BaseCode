@@ -14,7 +14,7 @@ bool TextureManager::load(char* fileName, char* id, SDL_Renderer *m_pRenderer) {
 	m_pTextureMap[*id] = texture;
 	return true;
 
-	//m_pTextureMap[*id] = texture; **CUIDADO: NUNCA después de un return pongas nada, el método se saltará todo lo quepongas salvo que esté en una condición.
+	
 }
 
 void TextureManager::draw(char* id, int x, int y, int width, int height,
