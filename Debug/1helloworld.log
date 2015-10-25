@@ -1,14 +1,56 @@
-﻿Compilación iniciada a las 18/10/2015 17:04:01.
-     1>Proyecto "C:\Users\Alune\Desktop\BaseCode\BaseCode-master\1helloworld.vcxproj" en el nodo 2 (Build destinos).
+﻿Compilación iniciada a las 24/10/2015 22:07:26.
+     1>Proyecto "C:\Users\Alune\Desktop\BaseCodeDavidViñas\1helloworld.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-     1>c:\users\alune\desktop\basecode\basecode-master\main.cpp(53): warning C4806: '==': operación no segura: ningún valor del tipo 'bool' promovido al tipo 'int' puede igualar la constante proporcionada
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt TextureManager.cpp game.cpp
+         game.cpp
+         TextureManager.cpp
+     1>c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(198): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(198): note: No se puede generar el constructor de copias o el operador de asignación de copias cuando el tipo definido por el usuario contiene una matriz de tamaño cero
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(1449): note: vea la referencia a la creación de instancias de plantilla de clase 'std::pair<const _Kty,_Ty>' que se está compilando
+                 with
+                 [
+                     _Kty=char,
+                     _Ty=int [0]
+                 ]
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(1448): note: durante la compilación de la función miembro de plantilla de clase 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>> std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::erase(std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>>,std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>>)'
+                 with
+                 [
+                     _Kty=char,
+                     _Ty=int [0],
+                     _Pr=std::less<char>,
+                     _Alloc=std::allocator<std::pair<const char,int [0]>>
+                 ]
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\xtree(2196): note: vea la referencia a la creación de instancias de plantilla de función 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>> std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>::erase(std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>>,std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>>)' que se está compilando
+                 with
+                 [
+                     _Kty=char,
+                     _Ty=int [0],
+                     _Pr=std::less<char>,
+                     _Alloc=std::allocator<std::pair<const char,int [0]>>
+                 ]
+         c:\program files (x86)\microsoft visual studio 14.0\vc\include\map(73): note: vea la referencia a la creación de instancias de plantilla de clase 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>' que se está compilando
+                 with
+                 [
+                     _Kty=char,
+                     _Ty=int [0],
+                     _Pr=std::less<char>,
+                     _Alloc=std::allocator<std::pair<const char,int [0]>>
+                 ]
+         c:\users\alune\desktop\basecodedavidviñas\texturemanager.h(18): note: vea la referencia a la creación de instancias de plantilla de clase 'std::map<char,int [0],std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' que se está compilando
+                 with
+                 [
+                     _Kty=char,
+                     _Ty=int [0]
+                 ]
+         Generando código...
+     1>c:\users\alune\desktop\basecodedavidviñas\game.cpp(45): warning C4715: 'Game::init': no todas las rutas de acceso de control devuelven un valor
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\BaseCode\BaseCode-master\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\BaseCode\BaseCode-master\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\BaseCode\BaseCode-master\Debug\1-helloworld.lib" /MACHINE:X86 Debug\main.obj
-         1helloworld.vcxproj -> C:\Users\Alune\Desktop\BaseCode\BaseCode-master\Debug\1-helloworld.exe
-     1>Compilación del proyecto terminada "C:\Users\Alune\Desktop\BaseCode\BaseCode-master\1helloworld.vcxproj" (Build destinos).
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\BaseCodeDavidViñas\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\BaseCodeDavidViñas\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\BaseCodeDavidViñas\Debug\1-helloworld.lib" /MACHINE:X86 Debug\main.obj
+         Debug\game.obj
+         Debug\TextureManager.obj
+         1helloworld.vcxproj -> C:\Users\Alune\Desktop\BaseCodeDavidViñas\Debug\1-helloworld.exe
+     1>Compilación del proyecto terminada "C:\Users\Alune\Desktop\BaseCodeDavidViñas\1helloworld.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:01.23
+Tiempo transcurrido 00:00:01.16
