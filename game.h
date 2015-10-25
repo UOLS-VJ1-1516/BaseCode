@@ -1,8 +1,13 @@
+#pragma once
 #include "SDL.h"
+#include "SDL_image.h"
+
 class game
 {
-	SDL_Window* g_pWindow = 0;
-	SDL_Renderer* g_pRenderer = 0;
+	SDL_Window* g_pWindow;
+	SDL_Renderer* g_pRenderer;
+	int spriteNum;
+	int rowNum = 0;
 	bool running = true;
 
 public:
@@ -14,6 +19,7 @@ public:
 	void update();
 	void handleEvents(SDL_Event event);
 	void clean();
-	bool isRunning();
+	bool isRunning();
+
 };
 
