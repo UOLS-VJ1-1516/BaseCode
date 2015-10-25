@@ -12,6 +12,7 @@ class Game
 	SDL_Surface* image;
 	int quit;
 	int spriteNum;
+	int numRow;
 
 public:
 	Game();

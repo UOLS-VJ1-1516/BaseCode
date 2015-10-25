@@ -52,13 +52,15 @@ void Game::render()
 
 	spriteNum = int((SDL_GetTicks() / 100) % 12);
 	//printf("SpriteNum: %d \n", spriteNum);
-	TextureManager::Instance()->drawFrame("walker", 58, 38, 58, 38, 0, spriteNum, m_pRenderer, SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame("walker", 58, 38, 58, 38, numRow, spriteNum, m_pRenderer, SDL_FLIP_NONE);
 
 }
 
 void Game::update()
 {	
 	
+	spriteNum = int((SDL_GetTicks() / 100) % 12);
+	numRow = int((SDL_GetTicks() / 1200) % 2);
 	SDL_RenderPresent(m_pRenderer);
 	
 }
