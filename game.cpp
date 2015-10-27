@@ -60,6 +60,7 @@ void Game::render(int r, int g, int b)
 
 void Game::update()
 {
+
 	if (rowNum == 0) {
 		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
 		if (spriteNum == 6)
