@@ -1,5 +1,7 @@
 #include "Game.h"
 
+Game * Game::joc = 0;
+
 void Game::HandleKeys(SDL_Scancode code)
 {
 	switch (code) {
@@ -17,10 +19,11 @@ void Game::HandleKeys(SDL_Scancode code)
 		takeScreenshot = true;
 		break;
 	case SDL_SCANCODE_A:
-		player.Move(-7);
+		player->Move(-7);
 		break;
 	case SDL_SCANCODE_D:
-		player.Move(7);
+		player->Move(7);
+		break;
 	}	
 }
 
@@ -30,14 +33,15 @@ Game::Game()
 	Game::renderer = 0;
 	Game::Running = true;
 	Game::takeScreenshot = false;
-	player = Player("player", 32, 32, 3, 6);
 }
 
 
 Game::~Game()
 {
-	window = 0;
-	renderer = 0;
+	entitats.clear();
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 	Running = NULL;
 	takeScreenshot = NULL;
 }
@@ -63,13 +67,18 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		return false;
 	}	
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	player.SetPosY((height / 2) - (player.GetSize('h') / 2));
+	
 	int initFlags = IMG_INIT_PNG;
 	if (!(IMG_Init(initFlags) & initFlags))
 	{
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
 	}
-	TextureManager::GetInstance()->Load("assets/img/Actor3.png", player.GetId(), renderer);
+	player = new Player();
+	EntityParams * params = new EntityParams("player", 0, 0, 32, 32, 3, 6);
+	player->Load(params, "Actor3.png");
+	entitats.push_back(player);
+
+	TextureManager::GetInstance()->Load("player.bmp", "primitiu");
 	return true;
 }
 
@@ -79,15 +88,14 @@ bool Game::IsRunning()
 }
 
 void Game::Clear()
-{
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
+{	
 	Game::~Game();
 }
 
 void Game::EventHandler()
 {
+	if ((SDL_GetTicks() / 20) % 5 != 0)
+		return;
 	while (SDL_PollEvent(&event)) {
 		if (&event == NULL)
 			return;
@@ -107,14 +115,14 @@ void Game::EventHandler()
 
 void Game::Update()
 {
-	srand(time(NULL));
+	srand((int)time(NULL));
 	r = rand() % 256;
 	g = rand() % 256;
 	b = rand() % 256;
 	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 	if (takeScreenshot)
 	{
-		takeScreenShot(width, height, renderer);
+		takeScreenShot(width, height);
 		takeScreenshot = false;
 	}
 }
@@ -122,10 +130,14 @@ void Game::Update()
 void Game::Render()
 {
 	SDL_RenderClear(renderer);
-	if (player.HaveAnimation())
-		TextureManager::GetInstance()->DrawFrame(&player, renderer);
-	else
-		TextureManager::GetInstance()->Draw(&player, renderer);
+	for each (LivingEntity * var in entitats)
+	{
+		if (var->HaveAnimation())
+			var->DrawFrame();
+		else
+			var->Draw();
+	}
+	
 	SDL_RenderPresent(renderer);
 }
 

@@ -16,6 +16,15 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityParams.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LivingEntity.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -24,10 +33,22 @@
     <ClInclude Include="Tools.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Loaders.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Loaders.h">
+    <ClInclude Include="Entity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityParams.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LivingEntity.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

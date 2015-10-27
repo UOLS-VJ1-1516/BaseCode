@@ -81,14 +81,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EntityParams.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LivingEntity.cpp" />
     <ClCompile Include="Loaders.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityParams.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="LivingEntity.h" />
     <ClInclude Include="Loaders.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tools.h" />

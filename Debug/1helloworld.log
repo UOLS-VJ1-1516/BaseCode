@@ -1,18 +1,29 @@
-﻿Build started 25/10/2015 17:20:09.
-     1>Project "C:\Users\KyuRicard\Source\Repos\BaseCode\1helloworld.vcxproj" on node 2 (Build target(s)).
+﻿Compilación iniciada a las 27/10/2015 21:04:39.
+     1>Proyecto "C:\Users\KyuRicard\Source\Repos\BaseCode\1helloworld.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Enemy.cpp EntityParams.cpp Game.cpp LivingEntity.cpp Loaders.cpp Main.cpp Player.cpp Tools.cpp
+         Tools.cpp
+         Player.cpp
+         Main.cpp
+         Loaders.cpp
+     1>c:\users\kyuricard\source\repos\basecode\loaders.cpp(22): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
+         LivingEntity.cpp
          Game.cpp
-     1>c:\users\kyuricard\source\repos\basecode\game.cpp(110): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+         EntityParams.cpp
+         Enemy.cpp
+         Generando código...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.lib" /MACHINE:X86 Debug\Game.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.lib" /MACHINE:X86 Debug\Enemy.obj
+         Debug\EntityParams.obj
+         Debug\Game.obj
+         Debug\LivingEntity.obj
          Debug\Loaders.obj
          Debug\Main.obj
          Debug\Player.obj
          Debug\Tools.obj
          1helloworld.vcxproj -> C:\Users\KyuRicard\Source\Repos\BaseCode\Debug\Plataformes 2D.exe
-     1>Done Building Project "C:\Users\KyuRicard\Source\Repos\BaseCode\1helloworld.vcxproj" (Build target(s)).
+     1>Compilación del proyecto terminada "C:\Users\KyuRicard\Source\Repos\BaseCode\1helloworld.vcxproj" (Build destinos).
 
-Build succeeded.
+Compilación correcta.
 
-Time Elapsed 00:00:02.29
+Tiempo transcurrido 00:00:04.72
