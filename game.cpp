@@ -1,4 +1,7 @@
 #include "game.h"
+#include "Player.h"
+
+Game * Game::instance = 0;
 
 Game::Game() {
 	m_pWindow = 0;
@@ -11,6 +14,10 @@ Game::Game() {
 }
 
 Game::~Game() {}
+
+SDL_Renderer * Game::getRenderer() {
+	return m_pRenderer;
+}
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
@@ -28,7 +35,15 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		return false; // sdl could not initialize
 	}
 	running = true;
-	TextureManager::getInstance()->load("assets/images/sprite.png", "player", m_pRenderer);
+	//OBJECTS
+	GameObject* player = new Player();
+	//LoaderParams loaderparams(,,,)
+	//player->load(new LoaderParams(100, 200, 50, 90, "img_player"));
+
+	gameObjects.push_back(player);
+	//TEXTURES
+	TextureManager::getInstance()->load("assets/images/sprite.png", "img_player", m_pRenderer);
+
 	return true;
 }
 
@@ -37,7 +52,7 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer);
 
 	TextureManager::getInstance()->drawFrame(
-		"player",
+		"img_player",
 		(SDL_GetWindowSurface(m_pWindow)->w / 2),
 		(SDL_GetWindowSurface(m_pWindow)->h / 2),
 		128/4,
@@ -90,6 +105,7 @@ void Game::handleEvents() {
 }
 
 void Game::clean() {
+	gameObjects.clear;
 	SDL_Quit();
 }
 

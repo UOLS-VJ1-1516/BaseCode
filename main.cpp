@@ -5,16 +5,16 @@
 
 int main(int argc, char* args[])
 {
-	Game game;
 	bool fullscreen = true;
-	game.init("Videojocs 1", 0, 0, 800, 600, !fullscreen);
+	Game* game = Game::getInstance();
+	game->init("Videojocs 1", 0, 0, 800, 600, !fullscreen);
 
-	while (game.isRunning()) {
-		game.handleEvents();
-		game.update();
-		game.render();
+	while (game->isRunning()) {
+		game->handleEvents();
+		game->update();
+		game->render();
 	}
-	game.clean();
+	game->clean();
 
 	return 0;
 }
