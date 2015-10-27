@@ -6,7 +6,7 @@ int main(int argc, char* args[])
 	Game game;
 	SDL_Event event;
 
-	game.init("Entrega1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, true);
+	game.init("Entrega1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 500, false);
 
 	while (game.isRunning())
 	{

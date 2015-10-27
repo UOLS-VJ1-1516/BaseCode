@@ -2,8 +2,8 @@
 #include "TextureManager.h"
 #include "stdio.h"
 
-#define SPRITE_HEIGHT 155
-#define SPRITE_WIDHT 132
+#define SPRITE_HEIGHT 148
+#define SPRITE_WIDHT 129
 
 
 
@@ -31,7 +31,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
-		TextureManager::Instance()->load("corredor2.bmp", "player", g_pRenderer);
+		TextureManager::Instance()->load("corredor3.bmp", "player", g_pRenderer);
 
 		return 0;
 	}
@@ -55,34 +55,13 @@ void Game::render(int r, int g, int b)
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
 
-	SDL_Delay(5);
+	SDL_Delay(100);
+
 };
 
 void Game::update()
 {
-
-	if (rowNum == 0) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
-		if (spriteNum == 6)
-			rowNum++;
-	}
-	else if (rowNum == 1) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
-		if (spriteNum == 6)
-			rowNum++;
-	}
-	else if (rowNum == 2) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
-		if (spriteNum == 6)
-			rowNum++;
-	}
-	else if (rowNum == 3) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 6);
-		if (spriteNum == 5)
-			rowNum = 0;
-	}
-	
-	
+		spriteNum = (int)((SDL_GetTicks() / 100) % 27);
 };
 
 void Game::handleEvents(SDL_Event event)
