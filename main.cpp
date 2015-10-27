@@ -7,7 +7,7 @@ int main(int argc, char* args[])
 {
 	Game game;
 	bool fullscreen = true;
-	game.init("Videojocs 1", 0, 0, 800, 600, fullscreen);
+	game.init("Videojocs 1", 0, 0, 800, 600, !fullscreen);
 
 	while (game.isRunning()) {
 		game.handleEvents();

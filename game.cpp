@@ -28,7 +28,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		return false; // sdl could not initialize
 	}
 	running = true;
-	TextureManager::getInstance()->load("assets/images/sprite.bmp", "player", m_pRenderer);
+	TextureManager::getInstance()->load("assets/images/sprite.png", "player", m_pRenderer);
 	return true;
 }
 
