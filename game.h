@@ -6,6 +6,8 @@ class Game
 	SDL_Renderer* g_pRenderer = 0;
 	bool abierto = true;
 
+	int rowNum = 0, spriteNum = 0;
+
 public:
 	Game();
 	~Game();

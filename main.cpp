@@ -14,7 +14,7 @@ int main(int argc, char* args[])
 			game.handleEvents(event);
 		}
 		game.update();
-		game.render(rand() % 255, rand() % 255, rand() % 255);
+		game.render(255, 255, 255);
 	}
 	game.clean();
 	return 0;

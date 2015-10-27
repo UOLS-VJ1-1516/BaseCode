@@ -1,5 +1,11 @@
 #include "game.h"
+#include "TextureManager.h"
 #include "stdio.h"
+
+#define SPRITE_HEIGHT 155
+#define SPRITE_WIDHT 132
+
+
 
 Game::Game()
 {
@@ -25,6 +31,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
+		TextureManager::Instance()->load("corredor2.bmp", "player", g_pRenderer);
+
 		return 0;
 	}
 	else
@@ -42,26 +50,45 @@ void Game::render(int r, int g, int b)
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
-
+	
+	TextureManager::Instance()->drawFrame("player", SPRITE_WIDHT, 0, SPRITE_WIDHT, SPRITE_HEIGHT, rowNum, spriteNum, g_pRenderer);
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
 
-	SDL_Delay(1000);
+	SDL_Delay(5);
 };
 
 void Game::update()
 {
-
+	if (rowNum == 0) {
+		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
+		if (spriteNum == 6)
+			rowNum++;
+	}
+	else if (rowNum == 1) {
+		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
+		if (spriteNum == 6)
+			rowNum++;
+	}
+	else if (rowNum == 2) {
+		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
+		if (spriteNum == 6)
+			rowNum++;
+	}
+	else if (rowNum == 3) {
+		spriteNum = (int)((SDL_GetTicks() / 100) % 6);
+		if (spriteNum == 5)
+			rowNum = 0;
+	}
+	
+	
 };
 
 void Game::handleEvents(SDL_Event event)
 {
 	if (event.type == SDL_KEYDOWN)
-	{
-		if (event.key.keysym.sym == SDLK_ESCAPE) {
+		if (event.key.keysym.sym == SDLK_ESCAPE)
 			abierto = false;
-		}
-	}
 };
 
 void Game::clean()
