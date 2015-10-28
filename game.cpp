@@ -1,6 +1,7 @@
 #include "game.h"
 #include "TextureManager.h"
 
+Game* Game::s_pInstance = 0;
 Game::Game() {
 	m_pWindow = 0;
 	m_pRenderer = 0;
@@ -20,6 +21,9 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 		// if the window creation succeeded create our renderer
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+			m_pGo = new GameObject();
+			m_pGo->load(xpos, ypos, width, height, "frames");
+			m_gameObjects.push_back(m_pGo);
 		}
 		
 		//load img in my img list
@@ -42,14 +46,16 @@ void Game::render() {
 	//clean screen
 	SDL_RenderClear(m_pRenderer);
 
-	//get a number 
-	mov = (int)((SDL_GetTicks() / 100) % 6);
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+		m_gameObjects[i]->draw();
+	}
 
-	//refresh img
-	TextureManager::Instance()->drawFrame("frames", 300, 200, 104, 151, mov, m_pRenderer, SDL_FLIP_NONE);
 }
 
 void Game::update() {
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+		m_gameObjects[i]->update();
+	}
 	//show print buffer
 	SDL_RenderPresent(m_pRenderer);
 }
@@ -74,4 +80,9 @@ void Game::clean() {
 
 bool Game::isRunning() {
 	return running;
+}
+
+SDL_Renderer* Game::getRender() {
+
+	return m_pRenderer;
 }

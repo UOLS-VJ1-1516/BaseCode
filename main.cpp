@@ -2,15 +2,14 @@
 #include "SDL.h"
 
 int main(int argc, char* args[]) {
-	Game game;
-	game.init("Videojocs 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, 0);
+	Game::Instance()->init("Videojocs 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, 0);
 
-	while (game.isRunning()) {
-		game.handleEvents();
-		game.update();
-		game.render();
+	while (Game::Instance()->isRunning()) {
+		Game::Instance()->handleEvents();
+		Game::Instance()->update();
+		Game::Instance()->render();
 	}
-	game.clean();
+	Game::Instance()->clean();
 
 	return 0;
 }
