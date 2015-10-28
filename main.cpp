@@ -2,15 +2,14 @@
 
 int main(int argc, char* args[])
 {
-	Game game = Game();
+	if (Game::Instance()->init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false)) {
+		while (Game::Instance()->isRunning()) {
+			Game::Instance()->render();
+			Game::Instance()->handleEvents();
+			Game::Instance()->update();
 
-	if (game.init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false)) {
-		while (game.isRunning()) {
-			game.render();
-			game.handleEvents();
-			game.update();	
 		}
-		game.clean();
+		Game::Instance()->clean();
 	}
 	return 0;
 }
