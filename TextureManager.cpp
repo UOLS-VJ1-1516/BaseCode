@@ -37,8 +37,8 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	TextureManager::SrcR.h = height;
 	
 
-	TextureManager::DestR.x = 0;
-	TextureManager::DestR.y = 0;
+	TextureManager::DestR.x = x;
+	TextureManager::DestR.y = y;
 	TextureManager::DestR.w = width;
 	TextureManager::DestR.h = height;
 

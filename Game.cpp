@@ -3,6 +3,10 @@
 #include "Game.h"
 #include "TextureManager.h"
 
+
+
+Game* Game::g_Instance = 0;
+
 Game::Game() {
 	g_pWindow = 0;
 	flag = true;
@@ -30,11 +34,15 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 			
+			GO = new GameObject();
+			GO->load(xpos, ypos, width, height, "Sprite");
+			m_gameObjects.push_back(GO);
+
+			TextureManager::Instance()->load("animation1.png", "Sprite", g_pRenderer);
 			
 		}
 		
-		TextureManager::Instance()->load("animation1.png", "Sprite", g_pRenderer);
-		
+		//Game::Instance()->
 
 		
 		return true;
@@ -48,12 +56,23 @@ void Game::render() {
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
 
-	spriteNum = (int)((SDL_GetTicks() / 100) % 6);
-	TextureManager::Instance()->drawFrame("Sprite", 0, 0, 72, 91, 0, spriteNum, g_pRenderer, SDL_FLIP_NONE);
+	//spriteNum = (int)((SDL_GetTicks() / 100) % 6);
+	
+
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+		
+	}
 
 }
 
 void Game::update() {
+	
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 	SDL_RenderPresent(g_pRenderer);
 }
 
@@ -75,4 +94,9 @@ void Game::clean() {
 
 bool Game::isRunning() {
 	return flag;
+}
+
+SDL_Renderer* Game::getRender(){
+
+	return g_pRenderer;
 }
