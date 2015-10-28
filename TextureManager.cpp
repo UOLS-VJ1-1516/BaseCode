@@ -23,10 +23,10 @@ bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer* pR
 };
 
 void TextureManager::draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip) {
-	TextureManager::SrcR.x = 0;
-	TextureManager::SrcR.y = 0;
-	/*TextureManager::SrcR.w = m_textureSizes[*id][0];
-	TextureManager::SrcR.h = m_textureSizes[*id][1];*/
+	//TextureManager::SrcR.x = 0;
+	//TextureManager::SrcR.y = 0;
+	TextureManager::SrcR.w = m_textureSizes[*id][0];
+	TextureManager::SrcR.h = m_textureSizes[*id][1];
 	TextureManager::SrcR.w = width;
 	TextureManager::SrcR.h = height;
 
@@ -39,16 +39,17 @@ void TextureManager::draw(const char* id, int x, int y, int width, int height, S
 };
 
 void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
-	/*TextureManager::SrcR.x = currentFrame*m_textureSizes[*id][0];
+	//Recuadro de origen donde pasamos el frame y tamaño por el que nos vamos a desplazar en la imagen. Puntos de origen y tamaño del rectángulo.
+	TextureManager::SrcR.x = currentFrame*m_textureSizes[*id][0];
 	TextureManager::SrcR.y = currentRow*m_textureSizes[*id][1];
 	TextureManager::SrcR.w = m_textureSizes[*id][0];
-	TextureManager::SrcR.h = m_textureSizes[*id][1];*/ //Parte reservada para otra versión de programa, donde poder jugar con el tamaño final del sprite.
+	TextureManager::SrcR.h = m_textureSizes[*id][1];
 	
 	//Recuadro de origen donde pasamos el frame y tamaño por el que nos vamos a desplazar en la imagen. Puntos de origen y tamaño del rectángulo.
-	TextureManager::SrcR.x = currentFrame*width;
-	TextureManager::SrcR.y = currentRow*height;
-	TextureManager::SrcR.w = width;
-	TextureManager::SrcR.h = height;
+	//TextureManager::SrcR.x = currentFrame*width;
+	//TextureManager::SrcR.y = currentRow*height;
+	//TextureManager::SrcR.w = width;
+	//TextureManager::SrcR.h = height;
 
 	//Recuadro destino donde vamos a pintarlo
 	TextureManager::DestR.x = x;

@@ -7,7 +7,7 @@ Player::~Player() {};
 
 void Player::draw()
 {
-	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, 0, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
 }
 
 void Player::load(const LoaderParams* pParams)

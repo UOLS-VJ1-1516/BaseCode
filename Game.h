@@ -2,7 +2,6 @@
 #ifndef GAME_H
 #define GAME_H
 #include "SDL.h"
-#include "GameObject.h"
 #include "vector"
 #include "Player.h"
 
@@ -15,7 +14,12 @@ private:
 	SDL_Event event;
 	bool flag;
 	static Game* s_pInstance;
+	LoaderParams* l;
 	Player* p;
+	LoaderParams* l2;
+	Player* p2;
+	LoaderParams* l3;
+	Player* p3;
 public:
 	static Game* Instance()
 	{
@@ -35,7 +39,7 @@ public:
 	bool isRunning();
 	SDL_Renderer* getRender();
 	int getTicks();
-	std::vector< Player* > m_gameObjects;
+	std::vector<Player*> m_gameObjects;
 };
 
 #endif

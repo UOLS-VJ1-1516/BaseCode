@@ -8,6 +8,12 @@ Game::Game() {
 	g_pWindow = 0;
 	flag = true;
 	g_pRenderer = 0;
+	p = new Player();
+	p2 = new Player();
+	p3 = new Player();
+	l = new LoaderParams(0, 0, 120, 200, "Player", 6);
+	l2 = new LoaderParams(200, 200, 36, 64, "Key", 8);
+	l3 = new LoaderParams(400, 300, 120, 60, "Tim", 3);
 }
 
 Game::~Game() {
@@ -27,16 +33,23 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-			LoaderParams* l = new LoaderParams(0, 0, 104, 152, "Player", 6);
-			p = new Player();
+			
 			p->load(l);
 			m_gameObjects.push_back(p);
 
-			if (!TextureManager::Instance()->load("tintin.bmp", "Player", g_pRenderer)) {
+			p2->load(l2);
+			m_gameObjects.push_back(p2);
+
+			p3->load(l3);
+			m_gameObjects.push_back(p3);
+
+			if (!TextureManager::Instance()->load("tintin.bmp", "Player", g_pRenderer) || !TextureManager::Instance()->load("llave.bmp", "Key", g_pRenderer) || !TextureManager::Instance()->load("tim.bmp", "Tim", g_pRenderer)) {
 				return false;
 			}
 			//Este método permitirá almacenar el tamaño del sprite de origen, para poder jugar con el tamaño del sprite final.
-			//TextureManager::Instance()->setSizeFrames("A", 104, 151); Esta parte comentada para más adelante.
+			TextureManager::Instance()->setSizeFrames("Player", 104, 151);
+			TextureManager::Instance()->setSizeFrames("Key", 18, 32);
+			TextureManager::Instance()->setSizeFrames("Tim", 26, 18);
 		}
 
 		return true;
