@@ -1,4 +1,6 @@
 #pragma once
+#ifndef TEXTUREMANAGER_H
+#define TEXTUREMANAGER_H
 #include "SDL.h"
 #include "map"
 
@@ -32,3 +34,4 @@ private:
 	SDL_Rect SrcR;
 	SDL_Rect DestR;
 };
+#endif

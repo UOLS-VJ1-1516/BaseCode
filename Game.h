@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include "GameObject.h"
 #include "vector"
+#include "Player.h"
 
 class Game
 {
@@ -14,7 +15,7 @@ private:
 	SDL_Event event;
 	bool flag;
 	static Game* s_pInstance;
-	GameObject* go;
+	Player* p;
 public:
 	static Game* Instance()
 	{
@@ -33,7 +34,8 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRender();
-	std::vector< GameObject* > m_gameObjects;
+	int getTicks();
+	std::vector< Player* > m_gameObjects;
 };
 
 #endif
