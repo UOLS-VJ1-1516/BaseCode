@@ -53,7 +53,7 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer);
 
 	spriteNum = (int)((SDL_GetTicks() / 100) % 10);
-	TextureManager::Instance()->drawFrame("player", 100, 100, 35.7, 32, 0, spriteNum, m_pRenderer, SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame("player", 100, 100, 35, 32, 0, spriteNum, m_pRenderer, SDL_FLIP_NONE);
 }
 
 void Game::update() {
