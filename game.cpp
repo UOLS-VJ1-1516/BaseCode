@@ -1,20 +1,22 @@
 #include "game.h"
 #include "TextureManager.h"
-#include "stdio.h"
 
-#define SPRITE_HEIGHT 120
-#define SPRITE_WIDHT 103
+//Instancias
+Game* Game::g_pInstance = 0;
 
-Game::Game() 
-{
-	
+// Constructor donde se inicializan variables y los GameObjects
+Game::Game(){
+	player1 = new Player();
+	params1 = new LoaderParams(500, 200, 103, 120, "player", "assets/sonic.bmp", 9, 0);
+	enemy1 = new Enemy();
+	params2 = new LoaderParams(800, 400, 110, 100, "enemy", "assets/enemy.bmp", 4, 0);
+	enemy2 = new Enemy();
+	params3 = new LoaderParams(600, 600, 65, 65, "xplosion", "assets/enemy2.bmp", 4, 0);
 };
+// Destructor
+Game::~Game(){};
 
-Game::~Game()
-{
-
-};
-
+// Inicializamos el game
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	// initialize SDL
@@ -29,7 +31,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
-		TextureManager::Instance()->load("sonic.bmp", "player", g_pRenderer);
+		// Inicializamos GameObjects, los cargamos, y los guardamos en el vector de GameObjects
+		player1->load(params1);
+		m_gameObjects.push_back(player1);
+		enemy1->load(params2);
+		m_gameObjects.push_back(enemy1);
+		enemy2->load(params3);
+		m_gameObjects.push_back(enemy2);
 
 		return 0;
 	}
@@ -49,8 +57,12 @@ void Game::render(int r, int g, int b)
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
 
-	TextureManager::Instance()->drawFrame("player", SPRITE_WIDHT, 0, SPRITE_WIDHT, SPRITE_HEIGHT, rowNum, spriteNum, g_pRenderer);
-	
+	// Hacemos que todos los gamobjects se printen en pantalla
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}
+
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
 
@@ -59,20 +71,10 @@ void Game::render(int r, int g, int b)
 
 void Game::update()
 {
-	if (rowNum == 0) { 
-		spriteNum = (int)((SDL_GetTicks() / 100) % 10); 
-		if(spriteNum == 9)
-			rowNum++;
-	}
-	else if (rowNum == 1) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 4);
-		if (spriteNum == 3)
-			rowNum++;
-	}
-	else if (rowNum == 2) {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 8);
-		if (spriteNum == 7)
-			rowNum = 0;
+	// Hacemos que todos los gamobjects hagan sus respectivos updates
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
 	}
 };
 
@@ -93,4 +95,13 @@ void Game::clean()
 bool Game::isRunning()
 {
 	return running;
+};
+
+SDL_Renderer* Game::getRenderer()
+{
+	return g_pRenderer;
+};
+
+int Game::getTicks() {
+	return (int)(SDL_GetTicks());
 };

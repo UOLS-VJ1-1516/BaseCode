@@ -2,20 +2,21 @@
 
 int main(int argc, char* args[])
 {
-	Game game;
 	SDL_Event event;
 	int r = 255, g = 255, b = 0;
 
-	game.init("Ejercicio 2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, false);
+	// Iniciamos el game
+	Game::Instance()->init("Ejercicio 3", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800, true);
 
-	while(game.isRunning())
+	//Mientras no se quiera cerrar el game, se llama repetidamente a las funciones del while
+	while(Game::Instance()->isRunning())
 	{
 		while (SDL_PollEvent(&event)) {
-			game.handleEvents(event);	
+			Game::Instance()->handleEvents(event);
 		}
-		game.update();
-		game.render(r-=1,g+=1,b);
+		Game::Instance()->update();
+		Game::Instance()->render(r -= 1, g += 1, b);
 	}
-	game.clean();
+	Game::Instance()->clean();
 	return 0;
 }
