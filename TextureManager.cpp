@@ -4,6 +4,7 @@ TextureManager* TextureManager::s_pInstance = 0;
 TextureManager::TextureManager() {};
 TextureManager::~TextureManager() {};
 
+
 bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer *m_pRenderer) {
 
 	img = SDL_LoadBMP(fileName);
