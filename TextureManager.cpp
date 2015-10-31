@@ -1,52 +1,55 @@
 #include "TextureManager.h"
 
+TextureManager * TextureManager::s_pInstance = 0;
+TextureManager::TextureManager() {};
 
-TextureManager* TextureManager::s_pInstance = 0;
-TextureManager::TextureManager()
-{
-};
+bool TextureManager::load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer) {
 
-bool TextureManager::load(const char* filename, const char * clave, SDL_Renderer * imgRender) {
-
-	SDL_Surface *image = SDL_LoadBMP(filename);
+	SDL_Surface *image = SDL_LoadBMP(fileName);
 	if (!image)	return 1;
-	mapaTexture[*clave] = SDL_CreateTextureFromSurface(imgRender, image);
+
+	m_textureMap[textureID] = SDL_CreateTextureFromSurface(g_pRenderer, image);
 	SDL_FreeSurface(image);
 	return 0;
 
 };
 
-void TextureManager::draw(const char*  clave, int x, int y, int width, int height, SDL_Renderer* imgRender, SDL_RendererFlip flip) {
-	SDL_RenderClear(imgRender);
+void TextureManager::draw(std::string textureID, int x, int y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip) {
+	SDL_RenderClear(g_pRenderer);
 
-	SDL_Rect inTexture, outTexture;
+	SDL_Rect source, destination;
 
-	inTexture.x = 0;
-	inTexture.y = 0;
-	inTexture.w = width;
-	inTexture.h = height;
+	source.x = 0;
+	source.y = 0;
+	source.w = width;
+	source.h = height;
 
-	outTexture.x = x;
-	outTexture.y = y;
-	outTexture.w = width;
-	outTexture.h = height;
-	SDL_RenderCopyEx(imgRender, mapaTexture[*clave], &inTexture, &outTexture, 0, 0, flip);
+	destination.x = x;
+	destination.y = y;
+	destination.w = width;
+	destination.h = height;
+	SDL_RenderCopyEx(g_pRenderer, m_textureMap[textureID], &source, &destination, 0, 0, flip);
 };
 
-void TextureManager::drawFrame(const char*  clave, int x, int y, int width, int height, int currentFrame, SDL_Renderer* imgRender, SDL_RendererFlip flip) {
+void TextureManager::drawFrame(std::string textureID, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip) {
 
-	SDL_Rect inTexture, outTexture;
+	SDL_Rect source, destination;
+	SDL_RendererFlip rendererFlip;
 
-	inTexture.x = currentFrame * width;
-	inTexture.y = 0;
-	inTexture.w = width;
-	inTexture.h = height;
+	// Imágen propiedades internas
+	source.x = currentFrame * width;
+	source.y = currentRow;
+	source.w = width;
+	source.h = height;
 
+	// Imagen respecto a la ventana.
+	destination.x = x;
+	destination.y = y;
+	destination.w = width;
+	destination.h = height;
 
-	outTexture.x = x;
-	outTexture.y = y;
-	outTexture.w = width;
-	outTexture.h = height;
-
-	SDL_RenderCopyEx(imgRender, mapaTexture[*clave], &inTexture, &outTexture, 0, 0, flip);
+	SDL_RenderCopyEx(g_pRenderer, m_textureMap[textureID], &source, &destination, 0, 0, flip);
 };
+
+
+

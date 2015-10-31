@@ -1,72 +1,89 @@
 #include "game.h"
 #include "TextureManager.h"
+#include "LoaderParams.h"
 
 const int WINDOW_HEIGHT = 800;
 const int WINDOW_WIDTH = 800;
 
-game::game()
+Game::Game()
 {
 	g_pWindow = 0;
 	imgRender = 0;
 	running = false;
 
 }
-
-game::~game(){
-}
+Game * Game::s_pInstance = 0;
 
 
-bool game::init(const char* titulo, int xpos, int ypos, int typeWindow) {
+bool Game::init(const char* titulo, int xpos, int ypos, int typeWindow) {
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
-	{		
+	{
 		// Creo mi ventana
-		g_pWindow = SDL_CreateWindow(titulo,xpos, ypos, WINDOW_WIDTH, WINDOW_HEIGHT,0);
+		g_pWindow = SDL_CreateWindow(titulo, xpos, ypos, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
 		// Creo mi imagen en memoria
 		if (g_pWindow != 0) imgRender = SDL_CreateRenderer(g_pWindow, -1, 0);
 		// Añado mi imagen a mi lista de imagenes
 		TextureManager::Instance()->load("hola.bmp", "hola", imgRender);
 		// Indico que mi aplicación ha empezado
 		running = true;
+
+
+		GameObject *player = new Player();
+		player->load(new LoaderParams(WINDOW_WIDTH / 2 - 60, WINDOW_HEIGHT / 2 - 100, 116, 200, "player", 0, 6, 0));
+		GameObject *player2 = new Player();
+		player2->load(new LoaderParams(100, 0, 350, 300, "vulture", 0, 6, 0));
+
+		m_gameObjects.push_back(player);
+		m_gameObjects.push_back(player2);
+
+		TextureManager::Instance()->load("player1.bmp", "player", imgRender);
+		TextureManager::Instance()->load("vulture_sprites.bmp", "vulture", imgRender);
+
+
 		return 0;
 	}
-		
+
 	return 1;
 }
-	
 
 
-void game::render() {
+
+void Game::render() {
 	// Elijo el color con que voy a pintar la pantalla
 	SDL_SetRenderDrawColor(imgRender, 255, 255, 255, 255);
 	// Limpio la pantalla con el color seleccionado.
 	SDL_RenderClear(imgRender);
-	// Obtengo un número entre el 0 y el 4
-	mov = (int)((SDL_GetTicks() / 100) % 5);
-	// llamo a drawFrame para que me actualice la imagen dependiendo del numero mov
-	TextureManager::Instance()->drawFrame("hola", WINDOW_WIDTH / 2 - 40, WINDOW_HEIGHT / 2 - 100, 50, 200, mov, imgRender, SDL_FLIP_NONE);
+
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw(imgRender);
+	}
 }
 
 
-void game::update() {
+void Game::update() {
 
 	//Mostra bufer pintat
-	SDL_RenderPresent(imgRender);
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 	SDL_Delay(60);
 
 }
 
 
-void game::handleEvents() {
+void Game::handleEvents() {
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_KEYUP) running = false;
-		}
+	}
 }
 
 
-void game::clean() {
+void Game::clean() {
 
 	SDL_RenderClear(imgRender);
 	SDL_DestroyWindow(g_pWindow);
@@ -75,4 +92,4 @@ void game::clean() {
 }
 
 
-bool game::isRunning() { return running; }
+bool Game::isRunning() { return running; }
