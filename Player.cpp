@@ -17,12 +17,33 @@ void Player::load(const LoaderParams* pParams)
 	m_x = pParams->getX();
 	m_y = pParams->getY();
 	m_textureID = pParams->getTextureID();
-	spriteNum = pParams->getNum();
+	m_spriteNum = pParams->getNum();
 	m_currentRow = 0;
+	m_speed = pParams->getSpeed();
 };
 
 void Player::update() {
-	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % spriteNum);
+	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+	if (m_speed < 0) {
+		if ((Game::Instance()->getTicks() / 5) % (100 / m_speed) == 0) {
+			if (m_x > (-1)*m_width) {
+				m_x -= 1;
+			}
+			else {
+				m_x = Game::Instance()->getScreenWidth() + m_width;
+			}
+		}
+	}
+	else if (m_speed > 0) {
+		if ((Game::Instance()->getTicks() / 5) % (100 / m_speed*(-1)) == 0) {
+			if (m_x < Game::Instance()->getScreenWidth()) {
+				m_x += 1;
+			}
+			else {
+				m_x = 0 - m_width;
+			}
+		}
+	}
 };
 
 void Player::clean() {

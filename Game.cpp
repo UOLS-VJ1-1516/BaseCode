@@ -8,12 +8,16 @@ Game::Game() {
 	g_pWindow = 0;
 	flag = true;
 	g_pRenderer = 0;
+	screenWidth = 0;
+	screenHeigth = 0;
+	//Inicializamos los objetos.
 	p = new Player();
-	p2 = new Player();
-	p3 = new Player();
-	l = new LoaderParams(0, 0, 120, 200, "Player", 6);
-	l2 = new LoaderParams(200, 200, 36, 64, "Key", 8);
-	l3 = new LoaderParams(400, 300, 120, 60, "Tim", 3);
+	o = new StaticObjects();
+	e = new Enemy();
+	//Cargamos los parámetros de cada uno.
+	lp = new LoaderParams(0, 0, 100, 91, "Player", 8, +7); //Los dos últimos parámetros son cantidad de sprites que tenemos del objeto y velocidad de desplazamiento.
+	lo = new LoaderParams(300, 500, 36, 64, "Key", 8, 0); //Velocidad 0 es que no se mueve el objeto.
+	le = new LoaderParams(500, 300, 120, 70, "Tim", 3, -5); //Velocidad positiva o negativa solo afecta a la dirección del movimiento.
 }
 
 Game::~Game() {
@@ -33,21 +37,26 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+			screenWidth = width;
+			screenHeigth = height;
 			
-			p->load(l);
-			m_gameObjects.push_back(p);
+			//Ejemplo de player
+			p->load(lp);
+			m_players.push_back(p);
 
-			p2->load(l2);
-			m_gameObjects.push_back(p2);
+			//Ejemplo de objeto estático
+			o->load(lo);
+			m_objects.push_back(o);
 
-			p3->load(l3);
-			m_gameObjects.push_back(p3);
+			//Ejemplo de enemigo
+			e->load(le);
+			m_enemies.push_back(e);
 
-			if (!TextureManager::Instance()->load("tintin.bmp", "Player", g_pRenderer) || !TextureManager::Instance()->load("llave.bmp", "Key", g_pRenderer) || !TextureManager::Instance()->load("tim.bmp", "Tim", g_pRenderer)) {
+			if (!TextureManager::Instance()->load("player.bmp", "Player", g_pRenderer) || !TextureManager::Instance()->load("llave.bmp", "Key", g_pRenderer) || !TextureManager::Instance()->load("tim.bmp", "Tim", g_pRenderer)) {
 				return false;
 			}
 			//Este método permitirá almacenar el tamaño del sprite de origen, para poder jugar con el tamaño del sprite final.
-			TextureManager::Instance()->setSizeFrames("Player", 104, 151);
+			TextureManager::Instance()->setSizeFrames("Player", 40, 31);
 			TextureManager::Instance()->setSizeFrames("Key", 18, 32);
 			TextureManager::Instance()->setSizeFrames("Tim", 26, 18);
 		}
@@ -64,20 +73,41 @@ void Game::render() {
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
 
-	for (std::vector<Player*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	for (std::vector<Player*>::size_type i = 0; i < m_players.size(); i++)
 	{
-		m_gameObjects[i]->draw();
+		m_players[i]->draw();
 	}
 
+	for (std::vector<Enemy*>::size_type i = 0; i < m_enemies.size(); i++)
+	{
+		m_enemies[i]->draw();
+	}
+
+	for (std::vector<StaticObjects*>::size_type i = 0; i < m_objects.size(); i++)
+	{
+		m_objects[i]->draw();
+	}
 
 	SDL_RenderPresent(g_pRenderer);
 }
 
 void Game::update() {
-	for (std::vector<Player*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	//Recalculamos los valores de cada uno de los ojbetos de la pantalla.
+	for (std::vector<Player*>::size_type i = 0; i < m_players.size(); i++)
 	{
-		m_gameObjects[i]->update();
+		m_players[i]->update();
 	}
+
+	for (std::vector<Enemy*>::size_type i = 0; i < m_enemies.size(); i++)
+	{
+		m_enemies[i]->update();
+	}
+
+	for (std::vector<StaticObjects*>::size_type i = 0; i < m_objects.size(); i++)
+	{
+		m_objects[i]->update();
+	}
+
 }
 
 void Game::handleEvents() {
@@ -89,6 +119,9 @@ void Game::handleEvents() {
 }
 
 void Game::clean() {
+	m_objects.clear();
+	m_enemies.clear();
+	m_players.clear();
 	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
 	SDL_DestroyRenderer(g_pRenderer);
@@ -105,4 +138,12 @@ SDL_Renderer* Game::getRender() {
 
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
+};
+
+int Game::getScreenWidth() {
+	return screenWidth;
+};
+
+int Game::getScreenHeight() {
+	return screenWidth;
 };

@@ -4,6 +4,8 @@
 #include "SDL.h"
 #include "vector"
 #include "Player.h"
+#include "StaticObjects.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -13,13 +15,15 @@ private:
 	SDL_Renderer* g_pRenderer;
 	SDL_Event event;
 	bool flag;
+	int screenWidth;
+	int screenHeigth;
 	static Game* s_pInstance;
-	LoaderParams* l;
+	LoaderParams* lp;
 	Player* p;
-	LoaderParams* l2;
-	Player* p2;
-	LoaderParams* l3;
-	Player* p3;
+	LoaderParams* lo;
+	StaticObjects* o;
+	LoaderParams* le;
+	Enemy* e;
 public:
 	static Game* Instance()
 	{
@@ -39,7 +43,11 @@ public:
 	bool isRunning();
 	SDL_Renderer* getRender();
 	int getTicks();
-	std::vector<Player*> m_gameObjects;
+	std::vector<Player*> m_players;
+	std::vector<Enemy*> m_enemies;
+	std::vector<StaticObjects*> m_objects;
+	int getScreenWidth();
+	int getScreenHeight();
 };
 
 #endif

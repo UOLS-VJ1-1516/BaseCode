@@ -12,12 +12,13 @@ public:
 	virtual void clean() = 0;
 protected:
 	int m_width;
-	int spriteNum;
+	int m_spriteNum;
 	int m_height;
 	int m_x;
 	int m_y;
 	int m_currentFrame;
 	int m_currentRow;
+	int m_speed;
 	const char* m_textureID;
 };
 
