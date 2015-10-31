@@ -3,18 +3,18 @@
 TextureManager * TextureManager::s_pInstance = 0;
 TextureManager::TextureManager() {};
 
-bool TextureManager::load(const char* fileName, const char* key, SDL_Renderer* g_pRenderer) {
+bool TextureManager::load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer) {
 
 	SDL_Surface *image = SDL_LoadBMP(fileName);
 	if (!image)	return 1;
 
-	m_textureMap[*key] = SDL_CreateTextureFromSurface(g_pRenderer, image);
+	m_textureMap[textureID] = SDL_CreateTextureFromSurface(g_pRenderer, image);
 	SDL_FreeSurface(image);
 	return 0;
 
 };
 
-void TextureManager::draw(const char*  key, int x, int y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip) {
+void TextureManager::draw(std::string textureID, int x, int y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip) {
 	SDL_RenderClear(g_pRenderer);
 
 	SDL_Rect source, destination;
@@ -28,16 +28,17 @@ void TextureManager::draw(const char*  key, int x, int y, int width, int height,
 	destination.y = y;
 	destination.w = width;
 	destination.h = height;
-	SDL_RenderCopyEx(g_pRenderer, m_textureMap[*key], &source, &destination, 0, 0, flip);
+	SDL_RenderCopyEx(g_pRenderer, m_textureMap[textureID], &source, &destination, 0, 0, flip);
 };
 
-void TextureManager::drawFrame(const char*  key, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip) {
+void TextureManager::drawFrame(std::string textureID, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer, int flip) {
 
 	SDL_Rect source, destination;
+	SDL_RendererFlip rendererFlip;
 
 	// Imágen propiedades internas
 	source.x = currentFrame * width;
-	source.y = 0;
+	source.y = currentRow;
 	source.w = width;
 	source.h = height;
 
@@ -47,6 +48,12 @@ void TextureManager::drawFrame(const char*  key, int x, int y, int width, int he
 	destination.w = width;
 	destination.h = height;
 
-	SDL_RenderCopyEx(g_pRenderer, m_textureMap[*key], &source, &destination, 0, 0, flip);
+	if (flip == 0) rendererFlip = SDL_FLIP_NONE;
+	if (flip == 1) rendererFlip = SDL_FLIP_HORIZONTAL;
+	if (flip == 2) rendererFlip = SDL_FLIP_VERTICAL;
+
+	SDL_RenderCopyEx(g_pRenderer, m_textureMap[textureID], &source, &destination, 0, 0, rendererFlip);
 };
+
+
 

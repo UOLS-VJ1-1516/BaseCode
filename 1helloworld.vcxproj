@@ -81,17 +81,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Element.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LoaderParams.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Element.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="fusion.bmp" />
     <Image Include="majin.bmp" />
   </ItemGroup>
   <ItemGroup>

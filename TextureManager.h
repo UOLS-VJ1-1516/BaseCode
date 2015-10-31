@@ -19,12 +19,12 @@ public:
 	}
 	~TextureManager();
 
-	bool load(const char* fileName, const char* key, SDL_Renderer* g_pRenderer);
-	void draw(const char* key, int x, int y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip);
-	void drawFrame(const char* key, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer,
-		SDL_RendererFlip flip);
+	bool load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer);
+	void draw(std::string textureID, int x, int y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip);
+	void drawFrame(std::string textureID, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer,
+		int flip);
 
 private:
 	static TextureManager* s_pInstance;
-	std::map<char, SDL_Texture* > m_textureMap;
+	std::map<std::string, SDL_Texture* > m_textureMap;
 };
