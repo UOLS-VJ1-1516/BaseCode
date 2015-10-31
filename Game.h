@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "Player.h"
+#include "Enemy.h"
 #include "SDL_image.h"
 #include <vector>
 

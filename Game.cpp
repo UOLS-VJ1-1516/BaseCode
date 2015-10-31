@@ -24,7 +24,7 @@ bool Game::init(const char* tittle,int xPos, int yPos, int typeWindow)
 		if (g_pWindow != 0) g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		state = true;		
 		
-		GameObject *player = new Player();
+		GameObject *player = new Enemy();
 		player->load(new LoaderParams(SIZE_WINDOW_WIDTH / 2 - 40, SIZE_WINDOW_HEIGHT / 2 - 100, 81, 200, "majin",0,4,0));
 		GameObject *player2 = new Player();
 		player2->load(new LoaderParams( 40, 100, 50, 70, "goku",0,12,0));
