@@ -34,4 +34,4 @@ private:
 	SDL_Rect SrcR;
 	SDL_Rect DestR;
 };
-#endif
+#endif TEXTUREMANAGER_H
