@@ -37,7 +37,7 @@ bool Game::init(const char* titulo, int xpos, int ypos, int typeWindow) {
 		player2->load(new LoaderParams(20, 150, 125, 100, "vulture", 0, 6, 0));
 		
 		GameObject *player3 = new Player();
-		player3->load(new LoaderParams(400, 20, 300, 310, "dragon", 0, 8, 0));
+		player3->load(new LoaderParams(400, 0, 300, 310, "dragon", 0, 8, 0));
 
 		//Arrai
 		m_gameObjects.push_back(player);
