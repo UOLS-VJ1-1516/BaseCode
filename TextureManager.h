@@ -9,6 +9,7 @@ private:
 	TextureManager();
 
 public:
+
 	static TextureManager* Instance()
 	{
 		if (s_pInstance == 0)

@@ -7,6 +7,7 @@ const int WINDOW_WIDTH = 800;
 
 Game::Game()
 {
+
 	g_pWindow = 0;
 	imgRender = 0;
 	running = false;

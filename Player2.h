@@ -4,6 +4,7 @@
 class Player2 : public GameObject
 {
 public:
+
 	Player2();
 	~Player2();
 	void draw(SDL_Renderer* pRender);

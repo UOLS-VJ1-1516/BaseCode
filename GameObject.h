@@ -15,6 +15,7 @@ public:
 	virtual void update() = 0;
 	virtual void clean() = 0;
 
+
 protected:
 	std::string m_textureID;
 	int m_width;

@@ -6,6 +6,7 @@ SDL_Renderer* g_pRenderer = 0;
 
 int main(int argc, char* args[])
 {
+
 	int running = Game::Instance()->init("SDL_RenderCopy Example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0);
 
 	if (running == 1) return 0;
@@ -21,4 +22,5 @@ int main(int argc, char* args[])
 	Game::Instance()->clean();
 
 	return 0;
+
 }
