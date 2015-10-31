@@ -1,9 +1,29 @@
 #include "TextureManager.h"
 #include "Player.h"
+#include "Game.h"
 
-
-	void Player::draw(SDL_Renderer* pRender)
+//Player::Player() {};
+//Player::~Player() {};
+	void Player::draw()
 	{
-		spriteNum = (int)((SDL_GetTicks() / 100) % 10);
-		TextureManager::Instance()->drawFrame("player", 100, 100, 35, 32, 0, spriteNum, pRender, SDL_FLIP_NONE);
+		/*GameObject::draw();
+		spriteNum = (int)((SDL_GetTicks() / 100) % 10);*/
+		TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
 	}
+	void Player::load(const LoaderParams* pParams)
+	{
+		m_width = pParams->getWidth();
+		m_height = pParams->getHeight();
+		m_x = pParams->getX();
+		m_y = pParams->getY();
+		m_textureID = pParams->getTextureID();
+		spriteNum = pParams->getNum();
+		m_currentRow = 0;
+		
+	};
+	void Player::update() {
+	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % spriteNum);
+};
+
+void Player::clean() {
+};

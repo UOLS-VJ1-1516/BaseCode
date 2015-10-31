@@ -1,6 +1,7 @@
-#include "GameObject.h"
+/*#include "GameObject.h"
 #include "TextureManager.h"
 
+//GameObject::GameObject() {}
 int m_width;
 int m_height;
 int m_currentFrame;
@@ -9,8 +10,8 @@ int m_x;
 int m_y;
 std::string m_textureID;
 
-GameObject::GameObject() {}
-GameObject::~GameObject() {}
+
+//GameObject::~GameObject() {}
 
 void load(int x, int y, int width, int height,
 	std::string textureID) {
@@ -34,3 +35,4 @@ void update() {
 }
 
 void clean() {}
+*/

@@ -22,13 +22,15 @@ public:
 	void draw(char* id, int x, int y, int width, int height,
 		SDL_Renderer*pRender, SDL_RendererFlip flip);
 
-	void drawFrame(char* id, int x, int y, int width, int height,
+	void drawFrame(const char* id, int x, int y, int width, int height,
 		int currentRow, int currentFrame,
 		SDL_Renderer* pRender, SDL_RendererFlip flip);
+	void setSizeFrames(const char* id, int width, int height);
 
 private:
 	static TextureManager* s_pInstance;
 	std::map<char, SDL_Texture*>m_pTextureMap;
+	std::map<char, int[2] > m_textureSizes;
 	SDL_Surface*img;
 	SDL_Texture*texture;
 	SDL_Point*center;
