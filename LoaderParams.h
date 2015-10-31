@@ -4,13 +4,13 @@
 class LoaderParams
 {
 public:
-	LoaderParams(int x, int y, int width, int height, const char* textureID, int num) {
+	LoaderParams(int x, int y, int width, int height, const char* textureID, int spriteNum) {
 		m_x = x;
 		m_y = y;
 		m_width = width;
 		m_height = height;
 		m_textureID = textureID;
-		m_num = num;
+		m_num = spriteNum;
 	}
 	int getX() const { return m_x; }
 	int getY() const { return m_y; }

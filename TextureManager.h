@@ -18,8 +18,8 @@ public:
 	}
 	~TextureManager();
 
-	bool load(char* fileName, char* id, SDL_Renderer *m_pRenderer);
-	void draw(char* id, int x, int y, int width, int height,
+	bool load(const char* fileName, const char* id, SDL_Renderer *m_pRenderer);
+	void draw(const char* id, int x, int y, int width, int height,
 		SDL_Renderer*pRender, SDL_RendererFlip flip);
 
 	void drawFrame(const char* id, int x, int y, int width, int height,
