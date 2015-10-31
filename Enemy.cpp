@@ -39,7 +39,6 @@ void Enemy::load(const LoaderParams* pParams)
 
 void Enemy::draw(SDL_Renderer* pRender) {
 	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, pRender, m_flip);
-	SDL_RenderPresent(pRender);
 }
 
 void Enemy::update() {

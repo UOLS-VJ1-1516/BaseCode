@@ -52,7 +52,8 @@ void Game::render()
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{		
 		m_gameObjects[i]->draw(g_pRenderer);
-	}		
+	}	
+	SDL_RenderPresent(g_pRenderer);
 }
 
 void Game::update(int delay)
