@@ -29,17 +29,26 @@ bool Game::init(const char* titulo, int xpos, int ypos, int typeWindow) {
 		// Indico que mi aplicación ha empezado
 		running = true;
 
-
+		//Parametros del LoaderParams
 		GameObject *player = new Player();
 		player->load(new LoaderParams(WINDOW_WIDTH / 2 - 60, WINDOW_HEIGHT / 2 - 100, 116, 200, "player", 0, 6, 0));
+		
 		GameObject *player2 = new Player();
-		player2->load(new LoaderParams(100, 0, 350, 300, "vulture", 0, 6, 0));
+		player2->load(new LoaderParams(20, 150, 125, 100, "vulture", 0, 6, 0));
+		
+		GameObject *player3 = new Player();
+		player3->load(new LoaderParams(400, 20, 300, 310, "dragon", 0, 8, 0));
 
+		//Arrai
 		m_gameObjects.push_back(player);
 		m_gameObjects.push_back(player2);
+		m_gameObjects.push_back(player3);
 
+
+		//Carga la imagen
 		TextureManager::Instance()->load("player1.bmp", "player", imgRender);
 		TextureManager::Instance()->load("vulture_sprites.bmp", "vulture", imgRender);
+		TextureManager::Instance()->load("dragon.bmp", "dragon", imgRender);
 
 
 		return 0;
