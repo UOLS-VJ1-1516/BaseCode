@@ -1,6 +1,8 @@
 #pragma once
-#include "SDL.h"
-#include "String"
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
+//#include "SDL.h"
+//#include "String"
 #include "LoaderParams.h"
 
 
@@ -20,5 +22,6 @@ protected:
 	int m_currentFrame;
 	int m_currentRow;
 	const char* m_textureID;
-};
+};
 
+#endif 

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef GAME_H
+#define GAME_H
 #include "SDL.h"
 #include "TextureManager.h"
 #include "vector"
@@ -7,16 +9,18 @@
 
 class Game
 {
+private:
+	Game();
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	SDL_Surface * img;
 	static Game* s_pInstance;
-	LoaderParams* l;
-	Player* p;
-	LoaderParams* l2;
-	Player* e1;
-	LoaderParams* l3;
-	Player* e2;
+	LoaderParams* load;
+	Player* player;
+	LoaderParams* load2;
+	Player* enemy1;
+	LoaderParams* load3;
+	Player* enemy2;
 	int spriteNum;
 
 
@@ -30,7 +34,6 @@ public:
 		}
 		return s_pInstance;
 	}
-	Game();
 	~Game();
 	bool init(const char* title, int xpos, int
 		ypos, int width, int height, bool fullscreen);
@@ -43,3 +46,4 @@ public:
 	int getTicks();
 	std::vector<Player*> m_gameObjects;
 };
+#endif

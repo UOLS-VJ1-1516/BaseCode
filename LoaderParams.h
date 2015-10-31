@@ -1,28 +1,30 @@
 #pragma once
 
-
+#ifndef LOADERPARAMS_H
+#define LOADERPARAMS_H
 class LoaderParams
 {
 public:
 	LoaderParams(int x, int y, int width, int height, const char* textureID, int spriteNum) {
-		m_x = x;
-		m_y = y;
-		m_width = width;
-		m_height = height;
-		m_textureID = textureID;
-		m_num = spriteNum;
+		p_x = x;
+		p_y = y;
+		p_width = width;
+		p_height = height;
+		p_textureID = textureID;
+		p_num = spriteNum;
 	}
-	int getX() const { return m_x; }
-	int getY() const { return m_y; }
-	int getWidth() const { return m_width; }
-	int getHeight() const { return m_height; }
-	const char* getTextureID() const { return m_textureID; }
-	int getNum() const { return m_num; }
+	int getX() const { return p_x; }
+	int getY() const { return p_y; }
+	int getWidth() const { return p_width; }
+	int getHeight() const { return p_height; }
+	const char* getTextureID() const { return p_textureID; }
+	int getNum() const { return p_num; }
 private:
-	int m_x;
-	int m_y;
-	int m_width;
-	int m_height;
-	int m_num;
-	const char* m_textureID;
+	int p_x;
+	int p_y;
+	int p_width;
+	int p_height;
+	int p_num;
+	const char* p_textureID;
 };
+#endif

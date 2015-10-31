@@ -1,4 +1,4 @@
-#include "game.h"
+#include "Game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
 
@@ -15,12 +15,12 @@ Game::Game() {
 	//Nom de la classe :: Nom
 	m_pWindow = 0;
 	m_pRenderer = 0;
-	p = new Player();
-	e1 = new Player();
-	e2 = new Player();
-	l = new LoaderParams(0, 0, 35, 32, "player", 10);
-	l2 = new LoaderParams(200, 200, 84, 62, "enemy1", 1);
-	l3 = new LoaderParams(400, 300, 70, 64, "enemy2", 1);
+	player = new Player();
+	enemy1 = new Player();
+	enemy2 = new Player();
+	load = new LoaderParams(100, 100, 35, 32, "player", 10);
+	load2 = new LoaderParams(200, 200, 84, 62, "zep", 1);
+	load3 = new LoaderParams(400, 300, 70, 64, "gordo", 1);
 
 }
 Game::~Game() {
@@ -45,31 +45,31 @@ bool Game::init(const char* title, int xpos, int
 		{
 
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-			p->load(l);
-			m_gameObjects.push_back(p);
+			player->load(load);
+			m_gameObjects.push_back(player);
 
-			e1->load(l2);
-			m_gameObjects.push_back(e1);
+			enemy1->load(load2);
+			m_gameObjects.push_back(enemy1);
 
-			e2->load(l3);
-			m_gameObjects.push_back(e2);
+			enemy2->load(load3);
+			m_gameObjects.push_back(enemy2);
 
 			TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
-			TextureManager::Instance()->load("Enemy1.bmp", "enemy1", m_pRenderer);
-			TextureManager::Instance()->load("Enemy2.bmp", "enemy2", m_pRenderer);
+			TextureManager::Instance()->load("Zep.bmp", "zep", m_pRenderer);
+			TextureManager::Instance()->load("Gordo.bmp", "gordo", m_pRenderer);
+			TextureManager::Instance()->setSizeFrames("player", 35, 32);
+			TextureManager::Instance()->setSizeFrames("zep", 84, 62);
+			TextureManager::Instance()->setSizeFrames("gordo", 70, 64);
 		}
-		TextureManager::Instance()->setSizeFrames("Player", 104, 151);
-		TextureManager::Instance()->setSizeFrames("Key", 18, 32);
-		TextureManager::Instance()->setSizeFrames("Tim", 26, 18);
-	}
 
+		return true;
+	}
 	else
 	{
 		return false; // sdl could not initialize
 	}
-	return true;
-
 }
+
 void Game::render() {
 	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(m_pRenderer);
@@ -77,9 +77,9 @@ void Game::render() {
 	{
 		m_gameObjects[i]->draw();
 	}
-	spriteNum = (int)((SDL_GetTicks() / 100) % 10);
+	
 	SDL_RenderPresent(m_pRenderer);
-	//TextureManager::Instance()->drawFrame("player", 100, 100, 35, 32, 0, spriteNum, m_pRenderer, SDL_FLIP_NONE);
+	
 }
 
 void Game::update() {
@@ -87,7 +87,7 @@ void Game::update() {
 	{
 		m_gameObjects[i]->update();
 	}
-	
+
 }
 
 void Game::handleEvents(SDL_Event event) {

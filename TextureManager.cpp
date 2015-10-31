@@ -16,23 +16,16 @@ bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer *m_
 	return true;
 
 
-	
+
 }
 
 void TextureManager::draw(const char* id, int x, int y, int width, int height,
-	SDL_Renderer*pRender, SDL_RendererFlip flip = SDL_FLIP_NONE) {
+	SDL_Renderer* pRender, SDL_RendererFlip flip = SDL_FLIP_NONE) {
 	TextureManager::inicio.w = m_textureSizes[*id][0];
 	TextureManager::inicio.h = m_textureSizes[*id][1];
 	TextureManager::inicio.w = width;
 	TextureManager::inicio.h = height;
-	/*inicio.x = 0;
-	inicio.y = 0;
-	inicio.w = width;
-	inicio.h = height;
-	dest.h = height;
-	dest.w = width;
-	dest.x = 50;
-	dest.y = 100;*/
+	
 	TextureManager::dest.x = x;
 	TextureManager::dest.y = y;
 	TextureManager::dest.w = width;
@@ -54,13 +47,10 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	TextureManager::dest.y = y;
 	TextureManager::dest.w = width;
 	TextureManager::dest.h = height;
-	
-	/*dest.x = x;
-	dest.y = y;
-	dest.w = width;
-	dest.h = height;*/
 
-	SDL_RenderCopyEx(pRender, texture, &inicio, &dest, 0, 0, flip);
+
+
+	SDL_RenderCopyEx(pRender, m_pTextureMap[*id], &inicio, &dest, 0, 0, flip);
 
 
 }
