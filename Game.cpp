@@ -57,9 +57,7 @@ bool Game::init(const char* title, int xpos, int
 			TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
 			TextureManager::Instance()->load("Zep.bmp", "zep", m_pRenderer);
 			TextureManager::Instance()->load("Gordo.bmp", "gordo", m_pRenderer);
-			TextureManager::Instance()->setSizeFrames("player", 35, 32);
-			TextureManager::Instance()->setSizeFrames("zep", 84, 62);
-			TextureManager::Instance()->setSizeFrames("gordo", 70, 64);
+			
 		}
 
 		return true;

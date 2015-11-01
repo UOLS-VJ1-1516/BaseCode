@@ -27,7 +27,7 @@ public:
 	void drawFrame(const char* id, int x, int y, int width, int height,
 		int currentRow, int currentFrame,
 		SDL_Renderer* pRender, SDL_RendererFlip flip);
-	void setSizeFrames(const char* id, int width, int height);
+	
 
 private:
 	static TextureManager* s_pInstance;

@@ -9,7 +9,7 @@ class Player : public GameObject
 	int spriteNum;
 public:
 	Player();
-	~Player(); //**NUNCA pongas {} aquí, esto es la cabecera.
+	~Player(); //Cabecera
 	void draw();
 	void load(const LoaderParams* pParams);
 	void update();
