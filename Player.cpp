@@ -37,7 +37,7 @@ void Player::load(const LoaderParams* pParams)
 
 void Player::draw(SDL_Renderer* pRender) {
 	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, pRender, SDL_FLIP_NONE);
-	SDL_RenderPresent(pRender);
+	
 }
 
 void Player::update() {
