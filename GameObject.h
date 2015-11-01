@@ -20,8 +20,7 @@ class GameObject
 		int m_currentRow;
 		int m_x;
 		int m_y;
-		int m_spriteNum;
 		int numRow;
 		char* m_textureID;
-		
+		int m_spriteNum;
 };

@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include "vector"
 #include "Player.h"
+#include "Enemy.h"
 
 
 class Game
@@ -40,10 +41,9 @@ public:
 private:
 	static Game* s_pInstance;
 	Player* p1;
-	Player* p2;
-	Player* p3;
+	Enemy* p2;
+	Enemy* p3;
 	std::map< char, SDL_Texture* > m_textureMap;
-	std::vector< Player* > m_gameObjects;
-
-
+	std::vector< Player* > m_players;
+	std::vector< Enemy* > m_enemies;
 };
