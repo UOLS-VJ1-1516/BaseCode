@@ -1,5 +1,6 @@
 #include "game.h"
 #include "TextureManager.h"
+#include "LoaderParams.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -25,17 +26,17 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 
-		//TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer);
-		go = new GameObject();
-		go->load(xpos, ypos, width, height, "walker");
-		m_gameObjects.push_back(go);
-	}
-	else
-	{
-		return false; // sdl could not initialize
+		if (TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer)) {
+			LoaderParams* load = new LoaderParams(0, 0, 58, 38, "walker");
+			p1 = new Player();
+			p1->load(load);
+			m_gameObjects.push_back(p1);
+		}
+		return true;
+		
 	}
 
-	return true;
+	return false;
 
 }
 
@@ -45,12 +46,9 @@ void Game::render()
 	// clear the window to black
 	SDL_RenderClear(m_pRenderer);
 
-	//spriteNum = int((SDL_GetTicks() / 100) % 12);
-	//printf("SpriteNum: %d \n", spriteNum);
-	//TextureManager::Instance()->drawFrame("walker", 58, 38, 58, 38, numRow, spriteNum, m_pRenderer, SDL_FLIP_NONE);
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	for (std::vector<Player*>::size_type i = 0; i != m_gameObjects.size(); i++)
 	{
-		m_gameObjects[i]->draw();
+		m_gameObjects[i]->draw(m_pRenderer);
 	}
 
 	SDL_RenderPresent(m_pRenderer);
@@ -60,11 +58,7 @@ void Game::render()
 void Game::update()
 {	
 
-	/*spriteNum = int((SDL_GetTicks() / 100) % 12);
-	numRow = int((SDL_GetTicks() / 1200) % 2);
-	SDL_RenderPresent(m_pRenderer);*/
-
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	for (std::vector<Player*>::size_type i = 0; i != m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
 	}

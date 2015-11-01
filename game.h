@@ -1,8 +1,8 @@
 #pragma once
 #include "SDL.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "vector"
+#include "Player.h"
 
 
 class Game
@@ -14,6 +14,7 @@ class Game
 	int quit = 0;
 	int spriteNum;
 	int numRow;
+	
 
 public:
 	Game();
@@ -35,13 +36,13 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRender();
-	
+	int getTicks();
 
 private:
 	static Game* s_pInstance;
-	GameObject* go;
+	Player* p1;
 	std::map< char, SDL_Texture* > m_textureMap;
-	std::vector< GameObject* > m_gameObjects;
+	std::vector< Player* > m_gameObjects;
 
 
 };
