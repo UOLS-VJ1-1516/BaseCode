@@ -16,10 +16,11 @@ void Player::load(const LoaderParams* pParams) {
 	m_y = pParams->getY();
 	m_textureID = pParams->getTextureID();
 	m_currentRow = 0;
+	m_spriteNum = pParams->getSpriteNum();
 }
 
 void Player::update() {
-	m_currentFrame = int((SDL_GetTicks() / 100) % 12);
+	m_currentFrame = int((SDL_GetTicks() / 100) % m_spriteNum);
 }
 
 void Player::clean() {};

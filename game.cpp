@@ -27,15 +27,26 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		if (TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer)) {
-			LoaderParams* load = new LoaderParams(0, 0, 58, 38, "walker");
+			LoaderParams* load = new LoaderParams(300, 200, 58, 38, "walker", 12);
 			p1 = new Player();
 			p1->load(load);
 			m_gameObjects.push_back(p1);
 		}
-		return true;
-		
-	}
+		if (TextureManager::Instance()->load("kirby.bmp", "kirby", m_pRenderer)) {
+			LoaderParams* load2 = new LoaderParams(50, 50, 30, 27, "kirby", 6);
+			p2 = new Player();
+			p2->load(load2);
+			m_gameObjects.push_back(p2);
+		}
+		if (TextureManager::Instance()->load("tanooki.bmp", "tanooki", m_pRenderer)) {
+			LoaderParams* load3 = new LoaderParams(550, 400, 37, 35, "tanooki", 4);
+			p3 = new Player();
+			p3->load(load3);
+			m_gameObjects.push_back(p3);
+		}
 
+		return true;
+	}
 	return false;
 
 }

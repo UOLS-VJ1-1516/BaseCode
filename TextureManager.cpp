@@ -42,8 +42,8 @@ void TextureManager::drawFrame(char* id, int x, int y, int width, int height, in
 	Src.w = width;
 	Src.h = height;
 
-	Dest.x = 640 / 2 - width / 2;
-	Dest.y = 480 / 2 - height / 2;
+	Dest.x = x;
+	Dest.y = y;
 	Dest.w = width;
 	Dest.h = height;
 

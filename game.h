@@ -36,11 +36,12 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRender();
-	int getTicks();
 
 private:
 	static Game* s_pInstance;
 	Player* p1;
+	Player* p2;
+	Player* p3;
 	std::map< char, SDL_Texture* > m_textureMap;
 	std::vector< Player* > m_gameObjects;
 
