@@ -1,17 +1,21 @@
 #include "SDL.h"
 #include "SDL_image.h"
-#include "game.h"
 #include "time.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "game.h"
 #include "texturemanager.h"
+#include "LoadPar.h"
 int currrentFrame = 0;
 TextureManager texturemanager;
-
+SDL_Renderer* Renderer;
 SDL_Window* g_lWindow = 0;
-SDL_Renderer* g_lRenderer = 0;
+
+
+
 SDL_Texture* texture;
+Game * Game::s_pInstance = 0;
 
 int x,y, ancho, alto;
 int desplazamiento = -200;
@@ -19,11 +23,12 @@ int desplazamientoizq = 300;
 int desplazamientoizq2 = 2000;
 
 Game::Game() {  //Constructor
-
+	g_lRenderer = 0;
 }
 Game::~Game() {
 
 }
+
 
 
 
@@ -46,9 +51,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_lRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 		}	
 		
-		if (!(texturemanager.load("./images/bird.png", "bird", g_lRenderer))) { return false; }
-		if (!(texturemanager.load("./images/nubes.png", "nubes", g_lRenderer))) { return false; }
-		if (!(texturemanager.load("./images/nubes2.png", "nubes2", g_lRenderer))) { return false; }
+		Renderer = GetRenderer();
+		//TextureManager::Instance()->load("./images/bird.png", "bird", Renderer);
+		
+		if (!(texturemanager.load("./images/bird.png", "bird", Renderer))) { return false; }
+		if (!(texturemanager.load("./images/nubes.png", "nubes", Renderer))) { return false; }
+		if (!(texturemanager.load("./images/nubes2.png", "nubes2", Renderer))) { return false; }
 
 		running = true;
 
@@ -107,7 +115,7 @@ int Game::handleEvents() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
 		running = true;
-		if (event.type == SDL_KEYUP) {
+		if (event.key.keysym.sym == SDLK_ESCAPE) {  //SDL_KEYDOWN
 			running = false;
 		}
 	}
