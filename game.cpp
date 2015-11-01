@@ -62,7 +62,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		player2->load(new LoadPar("bird2", ancho / 2 - 60, alto / 2, 81, 200, 1, 1,1, 0));
 		GameObject* player3 = new Player();
 		player3->load(new LoadPar("bird3", ancho / 2 - 80, alto / 2, 81, 200, 1, 1,1, 0));
-
 		m_gameObjects.push_back(player1);
 		m_gameObjects.push_back(player2);
 		m_gameObjects.push_back(player3);

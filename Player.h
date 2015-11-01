@@ -1,7 +1,8 @@
 #pragma once
+#include "GameObject.h"
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "GameObject.h"
+
 
 
 class Player : public GameObject

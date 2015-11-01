@@ -20,7 +20,7 @@ int main(int argc, char* args[])
 	joc.clean();
 
 	return 0;
-}
+};
 
 
 

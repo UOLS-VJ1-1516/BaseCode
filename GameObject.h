@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
 #include "SDL.h"
 #include "SDL_image.h"
 #include <string>
@@ -30,5 +31,5 @@ protected:
 
 
 };
-
+#endif GAMEOBJECT_h
 
