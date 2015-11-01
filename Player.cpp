@@ -44,8 +44,6 @@ void Player::draw() {
 
 	TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
 
-	//id, x, y, width, height, currentRow, currentFrame, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
-
 }
 void Player::update() {
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_currentFrame);

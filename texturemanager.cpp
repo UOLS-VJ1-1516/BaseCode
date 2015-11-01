@@ -11,11 +11,9 @@ SDL_Point* center;
 
 bool TextureManager::load(char* fileName, char* id, SDL_Renderer* g_lRenderer) {
 
-
-
 	imagen = IMG_Load(fileName);
 
-	if (imagen == 0) return false;
+	if (!imagen) return false;
 	SDL_SetColorKey(imagen, 1, SDL_MapRGB(imagen->format, 255, 255, 255));
 	SDL_Texture* textura = SDL_CreateTextureFromSurface(g_lRenderer, imagen);
 	
