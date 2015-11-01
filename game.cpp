@@ -1,26 +1,18 @@
 #include "game.h"
-#include "SDL.h"
-#include "SDL_image.h"
-#include <stdio.h>
 #include "TextureManager.h"
 
+Game* Game::s_pInstance = 0;
 
 Game::Game()
 {
-	m_pRenderer = 0;
-	m_pWindow = 0;
-	quit = 0;
-	
+
 }
 
 Game::~Game()
 {}
 
-bool Game::init(const char* title, int xpos, int
-	ypos, int width, int height, bool fullscreen)
-
+bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-
 	// initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
@@ -33,7 +25,10 @@ bool Game::init(const char* title, int xpos, int
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 
-		TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer);
+		//TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer);
+		go = new GameObject();
+		go->load(xpos, ypos, width, height, "walker");
+		m_gameObjects.push_back(go);
 	}
 	else
 	{
@@ -50,19 +45,29 @@ void Game::render()
 	// clear the window to black
 	SDL_RenderClear(m_pRenderer);
 
-	spriteNum = int((SDL_GetTicks() / 100) % 12);
+	//spriteNum = int((SDL_GetTicks() / 100) % 12);
 	//printf("SpriteNum: %d \n", spriteNum);
-	TextureManager::Instance()->drawFrame("walker", 58, 38, 58, 38, numRow, spriteNum, m_pRenderer, SDL_FLIP_NONE);
+	//TextureManager::Instance()->drawFrame("walker", 58, 38, 58, 38, numRow, spriteNum, m_pRenderer, SDL_FLIP_NONE);
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}
 
+	SDL_RenderPresent(m_pRenderer);
 }
+
 
 void Game::update()
 {	
-	
-	spriteNum = int((SDL_GetTicks() / 100) % 12);
+
+	/*spriteNum = int((SDL_GetTicks() / 100) % 12);
 	numRow = int((SDL_GetTicks() / 1200) % 2);
-	SDL_RenderPresent(m_pRenderer);
-	
+	SDL_RenderPresent(m_pRenderer);*/
+
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 }
 
 void Game::handleEvents()
@@ -94,3 +99,7 @@ bool Game::isRunning()
 	}
 	return true;
 }
+
+SDL_Renderer* Game::getRender() {
+	return m_pRenderer;
+};

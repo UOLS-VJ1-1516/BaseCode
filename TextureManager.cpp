@@ -47,6 +47,6 @@ void TextureManager::drawFrame(char* id, int x, int y, int width, int height, in
 	Dest.w = width;
 	Dest.h = height;
 
-	SDL_RenderCopyEx(pRender, texture, &Src, &Dest, 0, 0, flip);
+	SDL_RenderCopyEx(pRender, m_textureMap[*id], &Src, &Dest, 0, 0, flip);
 
 };

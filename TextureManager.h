@@ -9,6 +9,7 @@ class TextureManager
 	SDL_Rect Src;
 	SDL_Rect Dest;
 
+
 	private:
 		TextureManager();
 
@@ -31,5 +32,5 @@ class TextureManager
 	private:
 		static TextureManager* s_pInstance;
 		std::map< char, SDL_Texture* > m_textureMap;
-
+		
 };

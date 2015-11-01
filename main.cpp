@@ -3,17 +3,16 @@
 int main(int argc, char* args[])
 {
 
-	Game game;
+	Game::Instance()->init("videojocs 1", 100, 100, 800, 600, false);
 
-	game.init("videojocs 1", 100, 100, 800, 600, false);
 
-	while (game.isRunning() == true) {
-		game.handleEvents();
-		game.update();
-		game.render();
+	while (Game::Instance()->isRunning() == true) {
+		Game::Instance()->handleEvents();
+		Game::Instance()->update();
+		Game::Instance()->render();
 	}
 
-	game.clean();
+	Game::Instance()->clean();
 
 	return false;
 }
