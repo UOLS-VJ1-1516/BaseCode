@@ -1,4 +1,6 @@
 #include "SDL.h"
+#include "SDL_image.h"
+#pragma once
 
 class game
 {
@@ -7,11 +9,11 @@ class game
 	bool on = true;
 	SDL_Window* g_pWindow = 0;
 	SDL_Renderer* g_pRenderer = 0;
-	SDL_Surface* textureSurface;
-	SDL_Texture* texture;
-	SDL_Rect  rectanguloFuente;
-	SDL_Rect  rectanguloDestino;
-	int PosicionSprite;
+	//SDL_Surface* textureSurface;
+	//SDL_Texture* texture;
+	//DL_Rect  rectanguloFuente;
+	//SDL_Rect  rectanguloDestino;
+	int PosicionSprite =0;
 
 
 	

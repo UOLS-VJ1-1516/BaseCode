@@ -1,8 +1,7 @@
 #include "game.h"
 #include "cstdlib" //libreria para random
+#include "TextureManager.h"
 #include "SDL_image.h"
-
-
 
 
 game::game()
@@ -23,7 +22,6 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 
-
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 		// if succeeded create our window
@@ -34,16 +32,15 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
-
-
 		//Creacion y carga de una textura
 
-		textureSurface = SDL_LoadBMP("player1.bmp");
+		//textureSurface = SDL_LoadBMP("player1.bmp");
 
-			texture = SDL_CreateTextureFromSurface(g_pRenderer, textureSurface);
-			SDL_FreeSurface(textureSurface); //elimina surface
+		//	texture = SDL_CreateTextureFromSurface(g_pRenderer, textureSurface);
+		//	SDL_FreeSurface(textureSurface); //elimina surface
 
-			//TextureManager::Instance()->load(player1.bmp)...
+		TextureManager::Instance()->load("player1.bmp", "player", g_pRenderer);
+
 	  return 0;
 	}
 	else{
@@ -53,8 +50,8 @@ bool game::init(const char* title, int xpos, int ypos, int width, int height, bo
 };
 
 void game::render(int a, int b, int c) {
-	   
-
+	  
+	/*
 	rectanguloFuente.x = PosicionSprite *100;
 	rectanguloFuente.y = 0;
 	rectanguloFuente.w = 100; //anchura de la imagen
@@ -64,13 +61,14 @@ void game::render(int a, int b, int c) {
 	rectanguloDestino.y = 600 /2 - 200;
 	rectanguloDestino.w = 100;
 	rectanguloDestino.h = 200;
+
+	*/
 	
 	//SDL_SetColorKey(textureSurface, 1, SDL_MapRGB(textureSurface->format, 255, 255, 255)); para quitar el fondo blanco
 
 	//a=rojo
 	//b=verde
 	//c=azul
-
 
 	//TextureManager:: Instance()-> drawFrame("player")
 
@@ -82,7 +80,9 @@ void game::render(int a, int b, int c) {
 	SDL_RenderClear(g_pRenderer);
 	
 
-	SDL_RenderCopy(g_pRenderer, texture, &rectanguloFuente, &rectanguloDestino);
+	TextureManager::Instance()->drawFrame("player", 300, 300, 100, 200, 0, PosicionSprite, g_pRenderer);
+
+	//SDL_RenderCopy(g_pRenderer, texture, &rectanguloFuente, &rectanguloDestino);
 
 	//show the window
 	SDL_RenderPresent(g_pRenderer);
