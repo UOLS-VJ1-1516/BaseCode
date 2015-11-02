@@ -5,11 +5,6 @@
 Enemy::Enemy() {};
 Enemy::~Enemy() {};
 
-void Enemy::draw()
-{
-	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
-}
-
 void Enemy::load(int x, int y, int width, int height,
 	std::string textureID)
 {
@@ -37,13 +32,12 @@ void Enemy::load(const LoaderParams* pParams)
 
 };
 
-void Enemy::draw(SDL_Renderer* pRender) {
-	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, pRender, m_flip);
-}
+void Enemy::draw() {
+	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), m_flip);
+};
 
 void Enemy::update() {
-	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-}
+	m_currentFrame = (int)((Game::Instance()->getTicks() / 100) % m_sprits);
+};
 
-
-void Enemy::clean() {}
+void Enemy::clean() {};

@@ -36,5 +36,6 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRenderer() const{ return g_pRenderer; }
+	int getTicks();
 };
 

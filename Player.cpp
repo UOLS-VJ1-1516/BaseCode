@@ -5,10 +5,6 @@
 Player::Player() {};
 Player::~Player() {};
 
-void Player::draw()
-{
-	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
-}
 
 void Player::load(int x, int y, int width, int height,
 	std::string textureID)
@@ -37,13 +33,13 @@ void Player::load(const LoaderParams* pParams)
 
 };
 
-void Player::draw(SDL_Renderer* pRender) {	
-	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, pRender, m_flip);
-}
+void Player::draw() {	
+	TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), m_flip);
+};
 
 void Player::update() {
-	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-}
+	m_currentFrame = (int)((Game::Instance()->getTicks() / 100) % m_sprits);
+};
 
 
-void Player::clean() {}
+void Player::clean() {};
