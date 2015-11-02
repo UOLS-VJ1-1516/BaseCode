@@ -37,7 +37,7 @@ void Enemy::draw()
 	//TextureManager::Instance()->drawFrame(m_texid,m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
 	TextureManager::Instance()->drawFrame("bird2", m_x, m_y, 200, 180, 1, 1, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
 }
-//char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip
+//char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, SDL_RendererFlip  flip
 
 void Enemy::draw(SDL_Renderer* g_lRender) {
 	//TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, g_lRender, SDL_FLIP_NONE);
