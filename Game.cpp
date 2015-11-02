@@ -42,15 +42,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			
 			//Ejemplo de player
 			p->load(lp);
-			m_players.push_back(p);
-
+			m_gobjects.push_back(p);
 			//Ejemplo de objeto estático
 			o->load(lo);
-			m_objects.push_back(o);
+			m_gobjects.push_back(o);
 
 			//Ejemplo de enemigo
 			e->load(le);
-			m_enemies.push_back(e);
+			m_gobjects.push_back(e);
 
 			if (!TextureManager::Instance()->load("player.bmp", "Player", g_pRenderer) || !TextureManager::Instance()->load("llave.bmp", "Key", g_pRenderer) || !TextureManager::Instance()->load("tim.bmp", "Tim", g_pRenderer)) {
 				return false;
@@ -73,19 +72,9 @@ void Game::render() {
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
 
-	for (std::vector<Player*>::size_type i = 0; i < m_players.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
-		m_players[i]->draw();
-	}
-
-	for (std::vector<Enemy*>::size_type i = 0; i < m_enemies.size(); i++)
-	{
-		m_enemies[i]->draw();
-	}
-
-	for (std::vector<StaticObjects*>::size_type i = 0; i < m_objects.size(); i++)
-	{
-		m_objects[i]->draw();
+		m_gobjects[i]->draw();
 	}
 
 	SDL_RenderPresent(g_pRenderer);
@@ -93,21 +82,10 @@ void Game::render() {
 
 void Game::update() {
 	//Recalculamos los valores de cada uno de los ojbetos de la pantalla.
-	for (std::vector<Player*>::size_type i = 0; i < m_players.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
-		m_players[i]->update();
+		m_gobjects[i]->update();
 	}
-
-	for (std::vector<Enemy*>::size_type i = 0; i < m_enemies.size(); i++)
-	{
-		m_enemies[i]->update();
-	}
-
-	for (std::vector<StaticObjects*>::size_type i = 0; i < m_objects.size(); i++)
-	{
-		m_objects[i]->update();
-	}
-
 }
 
 void Game::handleEvents() {
@@ -119,9 +97,7 @@ void Game::handleEvents() {
 }
 
 void Game::clean() {
-	m_objects.clear();
-	m_enemies.clear();
-	m_players.clear();
+	m_gobjects.clear();
 	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
 	SDL_DestroyRenderer(g_pRenderer);

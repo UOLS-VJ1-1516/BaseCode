@@ -43,9 +43,7 @@ public:
 	bool isRunning();
 	SDL_Renderer* getRender();
 	int getTicks();
-	std::vector<Player*> m_players;
-	std::vector<Enemy*> m_enemies;
-	std::vector<StaticObjects*> m_objects;
+	std::vector<GameObject*> m_gobjects;
 	int getScreenWidth();
 	int getScreenHeight();
 };
