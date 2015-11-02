@@ -33,5 +33,7 @@ public:
 	void handleEvents();
 	void clean();
 	bool isRunning();
+	SDL_Renderer * getRenderer();
+	int getTicks();
 	SDL_Renderer* getRenderer() const { return imgRender; }
 };

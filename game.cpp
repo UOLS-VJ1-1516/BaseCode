@@ -67,7 +67,7 @@ void Game::render() {
 
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
-		m_gameObjects[i]->draw(imgRender);
+		m_gameObjects[i]->draw();
 
 		 
 	}
@@ -107,3 +107,13 @@ void Game::clean() {
 
 
 bool Game::isRunning() { return running; }
+
+SDL_Renderer* Game::getRenderer() {
+
+	return imgRender;
+
+}
+
+int Game::getTicks() {
+	return (int)(SDL_GetTicks());
+};
