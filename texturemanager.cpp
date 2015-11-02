@@ -9,7 +9,7 @@ SDL_Texture* textura;
 SDL_Point* center;
 
 
-bool TextureManager::load(char* fileName, char* id, SDL_Renderer* g_lRenderer) {
+bool TextureManager::load(char* fileName, std::string id, SDL_Renderer* g_lRenderer) {
 
 	imagen = IMG_Load(fileName);
 
@@ -30,7 +30,7 @@ bool TextureManager::load(char* fileName, char* id, SDL_Renderer* g_lRenderer) {
 	}
 	
 }
-void TextureManager::draw(char* id, int x, int y, int width, int height, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip) {
+void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip) {
 	//´flip ha de ser  SDL_FLIP_NONE
 	
 	SDL_Rect src;
@@ -49,7 +49,7 @@ void TextureManager::draw(char* id, int x, int y, int width, int height, SDL_Ren
 
 }
 
-void TextureManager::drawFrame(char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip) {
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip) {
 	SDL_Rect src;
 	SDL_Rect dest;
 

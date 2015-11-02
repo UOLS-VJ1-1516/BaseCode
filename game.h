@@ -4,7 +4,13 @@
 #include <vector>
 #include <SDL.h>
 #include "SDL_image.h"
+#include "time.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "SDL_image.h"
 #include "Player.h"
+#include "Enemy.h"
 
 
 
@@ -15,15 +21,15 @@ class Game {
 private:
 	SDL_Window* g_lWindow;
 	SDL_Renderer* g_lRenderer;
-	std::vector <GameObject> m_gameObjects;
+	std::vector <GameObject* > m_gameObjects;
 	bool running;
-	Game();
+	
 
 
 
 public:
 	
-
+	Game();
 	static Game* Instance() {
 		if (s_pInstance == 0) {
 			s_pInstance = new Game();

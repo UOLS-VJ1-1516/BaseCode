@@ -42,7 +42,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\include;../libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,12 +54,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\include;libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\lib;libs/SDL/lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -82,14 +82,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Element.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="texturemanager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Element.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LoadPar.h" />

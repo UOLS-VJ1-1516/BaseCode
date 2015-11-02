@@ -8,7 +8,7 @@ Player::~Player() {}
 
 
 
-bool Player::load(const LoadPar* lPar) {
+void Player::load(const LoadPar* lPar) {
 
 	m_width = lPar->getwidth();
 	m_height = lPar->getheight();
@@ -18,11 +18,11 @@ bool Player::load(const LoadPar* lPar) {
 	m_currentRow = lPar->getcurrentRow();
 	m_currentFrame = lPar->getcurrentFrame();
 	m_flip = lPar->getflip();
-	return true;
+	
 }
 
 
-bool Player::load(int x, int y, int width, int height, char* id) {
+void Player::load(int x, int y, int width, int height, std::string id) {
 
 	m_x = x;
 	m_y = y;
@@ -32,7 +32,7 @@ bool Player::load(int x, int y, int width, int height, char* id) {
 	m_currentFrame = 0;
 	m_currentRow = 0;
 	m_flip = 0;
-	return true;
+	
 }
 
 void Player::draw(SDL_Renderer* lRender) {
