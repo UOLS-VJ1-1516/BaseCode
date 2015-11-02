@@ -81,16 +81,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Element.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Fons.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="texturemanager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Element.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Fons.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LoadPar.h" />

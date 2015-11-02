@@ -1,11 +1,10 @@
 
 #include "game.h"
-#include "Enemy.h"
 #include "texturemanager.h"
 #include "LoadPar.h"
 
 
-TextureManager texturemanager;
+
 SDL_Renderer* g_lRenderer=0;
 SDL_Renderer* Renderer = 0;
 SDL_Window* g_lWindow = 0;
@@ -16,9 +15,7 @@ SDL_Texture* texture;
 Game * Game::s_pInstance = 0;
 
 int x,y, ancho, alto;
-int desplazamiento = -200;
-int desplazamientoizq = 300;
-int desplazamientoizq2 = 2000;
+
 bool running = false;
 
 Game::Game() {  //Constructor
@@ -51,28 +48,52 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}	
 		
 		Renderer = GetRenderer();
+	
 		
-		GameObject* player1 = new Enemy();
-		player1->load(new LoadPar("bird",ancho / 2-40, alto / 2, 81, 200, 1, 1,1, 0));
-		//char* id, int x, int y, int width, int height, int currentRow, int currentFrame, int sprits, int flip
-		GameObject* player2 = new Enemy();
-		player2->load(new LoadPar("bird2", ancho / 2 - 60, alto / 2, 81, 200, 1, 1,1, 0));
-		GameObject* player3 = new Enemy();
-		player3->load(new LoadPar("bird3", ancho / 2 - 80, alto / 2, 81, 200, 1, 1,1, 0));
-		m_gameObjects.push_back(player1);
-		m_gameObjects.push_back(player2);
-		m_gameObjects.push_back(player3);
+		GameObject* player1 = new Player();
+		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, SDL_FLIP_NONE));
 
-		if (!TextureManager::Instance()->load("./images/bird.png", "bird", Renderer)) { return false; }
+
+		GameObject* enemy1 = new Enemy();
+		enemy1->load(new LoadPar(500, 600, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+
+		GameObject* enemy2 = new Enemy();
+		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+
+		GameObject* enemy3 = new Enemy();
+		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+
+		GameObject* enemy4 = new Enemy();
+		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+
+		GameObject* coin1 = new Enemy();
+		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, SDL_FLIP_HORIZONTAL));
+
+	
+
+		GameObject* fons = new Fons();
+		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, SDL_FLIP_NONE));
+
+		GameObject* fons2 = new Fons();
+		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, SDL_FLIP_NONE));
+
+
+		m_gameObjects.push_back(player1);
+		m_gameObjects.push_back(enemy1);
+		m_gameObjects.push_back(enemy2);
+		m_gameObjects.push_back(enemy3);
+		m_gameObjects.push_back(enemy4);
+		m_gameObjects.push_back(coin1);
+		m_gameObjects.push_back(fons);
+		m_gameObjects.push_back(fons2);
 		
-		if (!TextureManager::Instance()->load("./images/bird.png", "bird2", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/bird.png", "bird3", Renderer)) { return false; }
-		//if (!TextureManager::Instance()->load("./images/nubes.png", "nubes", Renderer)) { return false; }
-		//if (!TextureManager::Instance()->load("./images/nubes2.png", "nubes2", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
+	
 		
-		//if (!(texturemanager.load("./images/bird.png", "bird", Renderer))) { return false; }
-		//if (!(texturemanager.load("./images/nubes.png", "nubes", Renderer))) { return false; }
-		//if (!(texturemanager.load("./images/nubes2.png", "nubes2", Renderer))) { return false; }
+	
 	
 		running = true;
 
@@ -86,39 +107,26 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::update() {  //Actualitzara parametres diversos
-	/*int x = rand()%255;
-	int y = rand()%255;
-	int z = rand()%255;*/// No utilitzare mes de un color
-	int h = rand()%255;
-	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, h);
+
+	
+	SDL_SetRenderDrawColor(Renderer, 25, 158, 218, 255);
+
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
-		//TextureManager::Instance()->drawFrame("bird2", desplazamiento, y,300, 280, 1, x, g_lRenderer, SDL_FLIP_NONE);
-
-		m_gameObjects[i]->draw(Renderer);
-
+		m_gameObjects[i]->update();
 	}
-	y = (alto / 2);
-	desplazamiento = desplazamiento + 2;
-	desplazamientoizq = desplazamientoizq - 2;
-	desplazamientoizq2 = desplazamientoizq2 - 2;
-	if (desplazamiento > ancho)desplazamiento = -200;
-	if (desplazamientoizq < -1700)desplazamientoizq = 1600;
-	if (desplazamientoizq2 < -1700)desplazamientoizq2 = 1600;
+
+	
 }
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
 	SDL_RenderClear(g_lRenderer); 
-	x = ((SDL_GetTicks() / 100) % 7);
-	//TextureManager::Instance()->drawFrame("bird",desplazamiento, y, 200, 180, 1, x, g_lRenderer, SDL_FLIP_NONE);
+	
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
-		TextureManager::Instance()->drawFrame("bird2", desplazamiento, y,200, 180, 1, x, g_lRenderer, SDL_FLIP_NONE);
-		
+
 		m_gameObjects[i]->draw(Renderer);
 
+
 	}
-   // texturemanager.drawFrame("bird", desplazamiento, y, 200, 180,1, x, g_lRenderer, SDL_FLIP_NONE);
-   /* texturemanager.drawFrame("nubes", desplazamientoizq, y, 1900, 900, 1, 0, g_lRenderer, SDL_FLIP_NONE);
-	texturemanager.drawFrame("nubes2", desplazamientoizq2, y, 1900, 900, 1, 0, g_lRenderer, SDL_FLIP_NONE);*/
 	SDL_RenderPresent(g_lRenderer);
 
 

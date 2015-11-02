@@ -2,8 +2,11 @@
 #include "Enemy.h"
 #include "TextureManager.h"
 
+
 Enemy::Enemy() {};
 Enemy::~Enemy() {};
+
+
 
 
 void Enemy::load(int x, int y, int width, int height,
@@ -17,7 +20,6 @@ void Enemy::load(int x, int y, int width, int height,
 	m_currentFrame = 1;
 	m_currentRow = 1;
 	m_sprits = 1;
-	m_flip = 0;
 	}
 
 void Enemy::load(const LoadPar* lPar)
@@ -34,17 +36,22 @@ void Enemy::load(const LoadPar* lPar)
 	};
 void Enemy::draw()
 {
-	//TextureManager::Instance()->drawFrame(m_texid,m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
-	TextureManager::Instance()->drawFrame("bird2", m_x, m_y, 200, 180, 1, 1, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
+	
+	TextureManager::Instance()->drawFrame(m_texid,m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
+	
 }
-//char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, SDL_RendererFlip  flip
 
-void Enemy::draw(SDL_Renderer* g_lRender) {
-	//TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, g_lRender, SDL_FLIP_NONE);
-	TextureManager::Instance()->drawFrame("bird2", m_x, m_y, 200, 180, 1, 1, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
+
+void Enemy::draw(SDL_Renderer* Renderer) {
+	TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, SDL_FLIP_HORIZONTAL);	
+
 }
 
 void Enemy::update() {
+
+	m_x = m_x-3;
+	if (m_x< -200)m_x = 1600;
+
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
 	
 }

@@ -1,13 +1,13 @@
 #pragma once
 #include "GameObject.h"
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef FONS_H
+#define FONS_H
 
-class Player : public GameObject
+class Fons : public GameObject
 {
 public:
-	Player();
-	~Player();
+	Fons();
+	~Fons();
 	void draw(SDL_Renderer* lRender);
 	void draw();
 	void load(const LoadPar* lPar);
@@ -15,4 +15,4 @@ public:
 	void update();
 	void clean();
 };
-#endif PLAYER_H
+#endif  FONS_H

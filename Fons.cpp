@@ -1,13 +1,15 @@
 #include "Game.h"
-#include "Player.h"
+#include "Fons.h"
 #include "TextureManager.h"
 
 
-Player::Player() {};
-Player::~Player() {};
-int desplaza = -100;
+Fons::Fons() {};
+Fons::~Fons() {};
 
-void Player::load(int x, int y, int width, int height,
+
+
+
+void Fons::load(int x, int y, int width, int height,
 	std::string texid)
 {
 	m_x = x;
@@ -18,10 +20,9 @@ void Player::load(int x, int y, int width, int height,
 	m_currentFrame = 1;
 	m_currentRow = 1;
 	m_sprits = 1;
-	
 }
 
-void Player::load(const LoadPar* lPar)
+void Fons::load(const LoadPar* lPar)
 {
 	m_width = lPar->getwidth();
 	m_height = lPar->getheight();
@@ -33,25 +34,21 @@ void Player::load(const LoadPar* lPar)
 	m_flip = lPar->getflip();
 
 };
-void Player::draw()
+void Fons::draw()
 {
-
 	TextureManager::Instance()->drawFrame(m_texid,m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
-
 }
 
 
-void Player::draw(SDL_Renderer* Renderer) {
-	TextureManager::Instance()->drawFrame(m_texid, desplaza, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, SDL_FLIP_NONE);
-
+void Fons::draw(SDL_Renderer* Renderer) {
+	TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, SDL_FLIP_HORIZONTAL);
 }
 
-void Player::update() {
+void Fons::update() {
+	m_x = m_x - 1;
+	if (m_x< -1600)m_x = 1600;
 
-	desplaza = desplaza + 2;
-	if (desplaza >1600)desplaza= -100;
-
-	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+	m_currentFrame = (int)((SDL_GetTicks() / 100) % 1);
 
 }
-void Player::clean() {}
+void Fons::clean() {}

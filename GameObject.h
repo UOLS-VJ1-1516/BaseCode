@@ -24,7 +24,6 @@ protected:
 	int	m_y;
 	int	m_sprits;
 	int	m_flip;
-	
 	std::string m_texid;
 
 

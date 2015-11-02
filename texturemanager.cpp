@@ -4,14 +4,14 @@
 #include "texturemanager.h"
 
 TextureManager* TextureManager::s_pInstance = 0;
-SDL_Surface* imagen;
 SDL_Texture* textura;
 SDL_Point* center;
 
 
-bool TextureManager::load(char* fileName, std::string id, SDL_Renderer* g_lRenderer) {
 
-	imagen = IMG_Load(fileName);
+bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_lRenderer) {
+
+	SDL_Surface *imagen = IMG_Load(fileName);
 
 	if (!imagen) return false;
 	SDL_SetColorKey(imagen, 1, SDL_MapRGB(imagen->format, 255, 255, 255));
@@ -36,16 +36,16 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 	SDL_Rect src;
 	SDL_Rect dest;
 
-	src.x = x;
-	src.y = y;
+	src.x = 0;
+	src.y = 0;
 	src.w = width;   
 	src.h = height;
 	dest.w = width;
 	dest.h = height;
-	dest.x = x+width;
-	dest.y = y+height;
+	dest.x = x;
+	dest.y = y;
 
-	SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],&src, &dest, 0, center, flip);
+	SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],&src, &dest, 0, 0, flip);
 
 }
 

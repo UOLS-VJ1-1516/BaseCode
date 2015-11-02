@@ -11,6 +11,7 @@
 #include "SDL_image.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Fons.h"
 
 
 
