@@ -36,12 +36,12 @@ void TextureManager::draw(const char* key, int x, int y, int width, int height, 
 	SDL_RenderCopyEx(m_pRenderer, textureMap[*key], &srcrect, &dstrect, 0, 0, m_pFlip);
 };
 
-void TextureManager::drawFrame(const char* key, int x, int y, int width, int height, int currentFrame, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip) {
+void TextureManager::drawFrame(const char* key, int x, int y, int width, int height, int currentFrame, int currentRow, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip) {
 
 	SDL_Rect srcrect, dstrect;
 
 	srcrect.x = currentFrame * width;
-	srcrect.y = 0;
+	srcrect.y = currentRow * height;
 	srcrect.w = width;
 	srcrect.h = height;
 

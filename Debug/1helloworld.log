@@ -1,21 +1,16 @@
-﻿Compilación iniciada a las 28/10/2015 17:53:14.
+﻿Compilación iniciada a las 02/11/2015 19:27:10.
 Proyecto "C:\Users\Alex\Source\Repos\BaseCode\1helloworld.vcxproj" en el nodo 2 (Build destinos).
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameObject.cpp game.cpp main.cpp
-  GameObject.cpp
-  Generando código...
-  Compilando...
-  main.cpp
-  game.cpp
-  Generando código...
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
+  Player.cpp
 Link:
   C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alex\Source\Repos\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alex\Source\Repos\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alex\Source\Repos\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\game.obj
-  Debug\GameObject.obj
   Debug\main.obj
+  Debug\Player.obj
   Debug\TextureManager.obj
   1helloworld.vcxproj -> C:\Users\Alex\Source\Repos\BaseCode\Debug\1-helloworld.exe
 Compilación del proyecto terminada "C:\Users\Alex\Source\Repos\BaseCode\1helloworld.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:04.54
+Tiempo transcurrido 00:00:04.68

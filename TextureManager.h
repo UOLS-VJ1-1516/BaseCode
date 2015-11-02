@@ -1,7 +1,10 @@
 #pragma once
 
-#include <SDL.h>
-#include <map>
+#ifndef TEXTUREMANAGER_H
+#define TEXTUREMANAGER_H
+
+#include "SDL.h"
+#include "map"
 
 class TextureManager {
 	private:
@@ -18,9 +21,11 @@ class TextureManager {
 
 		bool load(const char* fileName, const char* key, SDL_Renderer* m_pRenderer);
 		void draw(const char* key, int x, int y, int width, int height, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip);
-		void drawFrame(const char* key, int x, int y, int width, int height, int currentFrame, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip);
+		void drawFrame(const char* key, int x, int y, int width, int height, int currentFrame, int currentRow, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip);
 
 	private:
 		static TextureManager* s_pInstance;
 		std::map<char, SDL_Texture* > textureMap;
 };
+
+#endif

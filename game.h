@@ -4,12 +4,24 @@
 #define GAME_H
 
 #include "SDL.h"
-#include "GameObject.h"
+#include "Player.h"
 #include "vector"
 
-class Game{
+class Game {
 	private:
 		Game();
+		SDL_Window* m_pWindow;
+		SDL_Renderer* m_pRenderer;
+		SDL_Event event;
+		bool running;
+		static Game* s_pInstance;
+		std::vector<GameObject*> m_gameObjects;
+		Player* player1;
+		Player* player2;
+		Player* player3;
+		LoaderParams* paramsPlayer1;
+		LoaderParams* paramsPlayer2;
+		LoaderParams* paramsPlayer3;
 
 	public:
 		static Game* Instance() {
@@ -27,15 +39,8 @@ class Game{
 		void clean();
 		bool isRunning();
 		SDL_Renderer* getRender();
+		int getTicks();
 
-	private:
-		SDL_Window* m_pWindow;
-		SDL_Renderer* m_pRenderer;
-		bool running;
-		int mov;
-		static Game* s_pInstance;
-		std::vector<GameObject*> m_gameObjects;
-		GameObject* m_pGo;
 };
 
 #endif
