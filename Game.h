@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "vector"
 #include "GameObject.h"
+#include "Player.h"
 
 class Game
 {
@@ -30,9 +31,11 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRender();
+	int getScreenWidth();
+	int getScreenHeight();
+	int getTicks();
+	//std::vector<Player*> m_players;
 private:
-	int* pixelesDeAncho;
-	int* pixelesDeAlto;
 	SDL_Window* g_pWindow;
 	SDL_Renderer* g_pRenderer;
 	SDL_Event event;
@@ -40,7 +43,16 @@ private:
 	int spriteNum;
 	std::vector< GameObject* > m_gameObjects;
 	static Game* g_Instance;
-	GameObject* GO;
+	int screenWidth;
+	int screenHeigth;
+	
+	LoaderParams* lp;
+	LoaderParams* lp2;
+	LoaderParams* lp3;
+	Player* p1;
+	Player* p2;
+	Player* p3;
+	
 
 };
 

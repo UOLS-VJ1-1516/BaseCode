@@ -1,31 +1,25 @@
 #pragma once
-#include "string"
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
+#include "LoaderParams.h"
 
 class GameObject
 {
-
 public:
-	GameObject();
-	~GameObject();
-
-
-	void load(int x, int y, int width, int height,std::string textureID);
-	void draw();
-	void update();
-	void clean();
-
-private:
-	std::string m_textureID;
+	virtual void load(const LoaderParams* pParams) = 0;
+	virtual void draw() = 0;
+	virtual void update() = 0;
+	virtual void clean() = 0;
+protected:
 	int m_width;
+	int m_spriteNum;
 	int m_height;
-	int m_currentFrame;
-	int m_currentRow;
 	int m_x;
 	int m_y;
-	int spriteNum;
-
-	//afegir gameobject
-
-	//pushback afegir elemnt al final del array
-	//getrender dintre de la clase draw
+	int m_currentFrame;
+	int m_currentRow;
+	int m_speed;
+	const char* m_textureID;
 };
+
+#endif GAMEOBJECT_H
