@@ -4,20 +4,19 @@
 
 int main(int argc, char* args[])
 {
-	Game game;
 	SDL_Event event;
 	
-	game.init("videojocs 1 - PROJECTO", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, true);
+	Game::Instance()->init("videojocs 1 - PROJECTO", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 	
-	while(game.isRunning()){
+	while(Game::Instance()->isRunning()){
 		while (SDL_PollEvent(&event)) {
-			game.handleEvents(event);
+			Game::Instance()->handleEvents(event);
 		}
-		game.update();
-		game.render();
+		Game::Instance()->update();
+		Game::Instance()->render();
 		
 	}
-	game.clean();
+	Game::Instance()->clean();
 	return 0;
 
 }
