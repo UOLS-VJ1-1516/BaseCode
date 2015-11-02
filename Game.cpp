@@ -5,7 +5,6 @@
 #include "LoaderParams.h"
 
 
-
 Game* Game::g_Instance = 0;
 
 Game::Game() {
