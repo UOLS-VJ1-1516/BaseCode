@@ -6,7 +6,7 @@
 
 class Player : public GameObject
 {
-	int spriteNum;
+	//int spriteNum;
 public:
 	Player();
 	~Player(); //Cabecera

@@ -16,11 +16,11 @@ Game::Game() {
 	m_pWindow = 0;
 	m_pRenderer = 0;
 	player = new Player();
-	enemy1 = new Player();
-	enemy2 = new Player();
+	enemy1 = new Zep();
+	enemy2 = new Gordo();
 	load = new LoaderParams(100, 100, 35, 32, "player", 10);
-	load2 = new LoaderParams(200, 200, 84, 62, "zep", 1);
-	load3 = new LoaderParams(400, 300, 70, 64, "gordo", 1);
+	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
+	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);
 
 }
 Game::~Game() {
@@ -55,8 +55,8 @@ bool Game::init(const char* title, int xpos, int
 			m_gameObjects.push_back(enemy2);
 
 			TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
-			TextureManager::Instance()->load("Zep.bmp", "zep", m_pRenderer);
-			TextureManager::Instance()->load("Gordo.bmp", "gordo", m_pRenderer);
+			TextureManager::Instance()->load("ZepS.bmp", "zep", m_pRenderer);
+			TextureManager::Instance()->load("GordoS.bmp", "gordo", m_pRenderer);
 			
 		}
 
@@ -71,7 +71,7 @@ bool Game::init(const char* title, int xpos, int
 void Game::render() {
 	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(m_pRenderer);
-	for (std::vector<Player*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->draw();
 	}
@@ -81,7 +81,7 @@ void Game::render() {
 }
 
 void Game::update() {
-	for (std::vector<Player*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
 	}

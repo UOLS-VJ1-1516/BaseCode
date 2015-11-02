@@ -5,7 +5,8 @@
 #include "TextureManager.h"
 #include "vector"
 #include "Player.h"
-
+#include "Zep.h"
+#include "Gordo.h"
 
 class Game
 {
@@ -18,9 +19,9 @@ private:
 	LoaderParams* load;
 	Player* player;
 	LoaderParams* load2;
-	Player* enemy1;
+	Zep* enemy1;
 	LoaderParams* load3;
-	Player* enemy2;
+	Gordo* enemy2;
 	int spriteNum;
 
 
@@ -44,6 +45,6 @@ public:
 	bool isRunning();
 	SDL_Renderer* getRender();
 	int getTicks();
-	std::vector<Player*> m_gameObjects;
+	std::vector<GameObject*> m_gameObjects;
 };
 #endif

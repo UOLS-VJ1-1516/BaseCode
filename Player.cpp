@@ -16,12 +16,14 @@ void Player::load(const LoaderParams* pParams)
 	m_x = pParams->getX();
 	m_y = pParams->getY();
 	m_textureID = pParams->getTextureID();
-	spriteNum = pParams->getNum();
+	m_spriteNum = pParams->getNum();
 	m_currentRow = 0;
+	m_currentFrame = 0;
 
 }
 void Player::update() {
-	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % spriteNum);
+	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+	
 }
 
 void Player::clean() {

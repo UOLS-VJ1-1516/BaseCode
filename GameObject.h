@@ -15,7 +15,7 @@ public:
 	virtual void clean() = 0;
 protected:
 	int m_width;
-	int spriteNum;
+	int m_spriteNum;
 	int m_height;
 	int m_x;
 	int m_y;
