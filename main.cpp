@@ -1,46 +1,35 @@
-#include "SDL.h"
+#include "game.h"
 
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
+//SDL_Window* g_pWindow = 0;
+//SDL_Renderer* g_pRenderer = 0;
 
 int main(int argc, char* args[])
 {
-	// initialize SDL
-	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0)
-	{
-		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow("Videjuegos 1 - bachelor",
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		640, 480,
-		SDL_WINDOW_SHOWN);
+	//Game game;**NO SE PUEDE INSTANCIAR UNA CLASE SINGLETON!
 
-		// if the window creation succeeded create our renderer
-		if(g_pWindow != 0)
-		{
-			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+	//game.init("videojocs 1", 100, 100, 1600, 900, false); 
+
+	SDL_Event event;
+	//**asi se instancia un singleton!
+	Game::Instance()->init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+
+
+	while (Game::Instance()->isRunning())//mentres s'esta corrent executa les seguentes funcions
+	{
+
+		if (SDL_PollEvent(&event) == 1) {
+			Game::Instance()->handleEvents(event); //**SINGLETON
+
 		}
+		//game.handleEvents(event); //**NEVER!! NO SE PUEDE CREAR OBJETOS DE UN SINGLETON
+		Game::Instance()->render(); //**SINGLETON
+		Game::Instance()->update(); //**SINGLETON
+
+
 	}
-	else
-	{
-		return 1; // sdl could not initialize
-	}
 
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
-
-	// clear the window to black
-	SDL_RenderClear(g_pRenderer);
-
-	// show the window
-	SDL_RenderPresent(g_pRenderer);
-
-	// set a delay before quitting
-	SDL_Delay(5000);
-
-	// clean up SDL
-	SDL_Quit();
+	Game::Instance()->clean();//neteja el buffer abans de tancar la aplicacio
 
 	return 0;
+
 }
