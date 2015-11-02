@@ -5,7 +5,7 @@
 
 Player::Player() {};
 Player::~Player() {};
-int desplaza = -100;
+
 
 void Player::load(int x, int y, int width, int height,
 	std::string texid)
@@ -42,14 +42,14 @@ void Player::draw()
 
 
 void Player::draw(SDL_Renderer* Renderer) {
-	TextureManager::Instance()->drawFrame(m_texid, desplaza, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, SDL_FLIP_NONE);
 
 }
 
 void Player::update() {
 
-	desplaza = desplaza + 2;
-	if (desplaza >1600)desplaza= -100;
+	m_x = m_x + 2;
+	if (m_x >1600)m_x= -100;
 
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
 
