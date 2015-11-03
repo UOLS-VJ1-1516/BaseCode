@@ -3,7 +3,7 @@
 
 class Entity
 {
-protected:
+public:
 	EntityParams * params;
 public:
 	virtual void Load(EntityParams * params, const char * textureFile) = 0;

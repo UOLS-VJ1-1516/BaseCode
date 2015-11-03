@@ -8,6 +8,7 @@
 #include <random>
 #include "Entity.h"
 #include "Player.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -47,4 +48,5 @@ public:
 	void Render();
 	void Close();
 	SDL_Renderer * GetRenderer() { return this->renderer; }
+	SDL_Window * GetWindow() { return this->window; }
 };

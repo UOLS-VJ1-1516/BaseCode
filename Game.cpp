@@ -73,12 +73,22 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 	{
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
 	}
+
 	player = new Player();
 	EntityParams * params = new EntityParams("player", 0, 0, 32, 32, 3, 6);
 	player->Load(params, "Actor3.png");
 	entitats.push_back(player);
 
-	TextureManager::GetInstance()->Load("player.bmp", "primitiu");
+	Enemy * enemy1 = new Enemy(IGNORE_ENEMY);
+	EntityParams * enemy1Params = new EntityParams("enemy1", 150, 135, 32, 32, 3, 6);
+	enemy1->Load(enemy1Params, "Monster1.png");
+	entitats.push_back(enemy1);
+
+	Enemy * enemy2 = new Enemy(FOLLOWER_ENEMY);
+	EntityParams * enemy2Params = new EntityParams("enemy2", 150, 75, 32, 32, 3, 2);
+	enemy2->Load(enemy2Params, "Monster1.png");
+	entitats.push_back(enemy2);
+
 	return true;
 }
 
@@ -120,6 +130,13 @@ void Game::Update()
 	g = rand() % 256;
 	b = rand() % 256;
 	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+	for each (LivingEntity * var in entitats)
+	{
+		if (Enemy * en = dynamic_cast<Enemy *>(var)) {
+			en->Update(player);
+		}
+		var->Update();
+	}
 	if (takeScreenshot)
 	{
 		takeScreenShot(width, height);
