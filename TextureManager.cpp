@@ -3,11 +3,11 @@
 #include "map"
 
 TextureManager* TextureManager::s_pInstance = 0;
-std::map<std::string, SDL_Texture*> m_textureMap;
+TextureManager::TextureManager() {};
 
-bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer) {
+bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* pRenderer) {
 
-	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+	SDL_Surface* pTempSurface = IMG_Load(fileName);
 
 	if (pTempSurface == 0) {
 
@@ -25,7 +25,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 	return false;
 }
 
-void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer * pRender, SDL_RendererFlip flip)
+void TextureManager::draw(const char* id, int x, int y, int width, int height, SDL_Renderer * pRender, SDL_RendererFlip flip)
 {
 
 	SDL_Rect srcRect;
@@ -44,7 +44,7 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 
 }
 
-void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer * pRender, SDL_RendererFlip flip)
+void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer * pRender, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
