@@ -27,6 +27,7 @@ public:
 		return s_pInstance;
 	}
 	~TextureManager();
+	//~TextureManager();
 
 	bool load(char* fileName, const char* id, SDL_Renderer* pRenderer);
 	//void drawFrame(char * id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer * pRender);
