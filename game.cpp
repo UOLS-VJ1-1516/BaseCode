@@ -79,12 +79,10 @@ void Game::Render()
 
 	idImatg = (int)((SDL_GetTicks() / 100) % 6);
 	TextureManager::Instance()->drawFrame("A", 300, 200, 104, 151, 0, idImatg, g_pRenderer, SDL_FLIP_NONE);
+
 };
 
 void Game::Update()
 {
-
-	//SDL_RenderClear(g_pRenderer);
-
 	SDL_RenderPresent(g_pRenderer);
 };
