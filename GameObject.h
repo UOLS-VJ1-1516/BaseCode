@@ -1,5 +1,5 @@
 #pragma once
-#include "LoaderParams.h"
+#include "Param.h"
 
 class GameObject
 {
@@ -8,7 +8,6 @@ public:
 	virtual void draw() = 0;
 	virtual void update() = 0;
 	virtual void clean() = 0;
-protected:
 	const char* m_textureID;
 	char* m_fileName;
 	int m_width;

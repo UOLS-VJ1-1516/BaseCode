@@ -1,34 +1,48 @@
-#include "SDL.h"
-#include "SDL_image.h"
 #pragma once
+#include "SDL.h"
+#include "vector"
+#include "Player.h"
+#include "Enemy.h"
 
-class game
-{
-
-	//declaramos las variables tal y como estaban en el main.cpp
-	bool on = true;
-	SDL_Window* g_pWindow = 0;
-	SDL_Renderer* g_pRenderer = 0;
-	//SDL_Surface* textureSurface;
-	//SDL_Texture* texture;
-	//DL_Rect  rectanguloFuente;
-	//SDL_Rect  rectanguloDestino;
-	int PosicionSprite =0;
-
-
+class game {
 	
-
-	//creamos las funciones que se piden en el pdf
-
 public:
-	game();
+		game();
+	
+			
+	static game* Instance() {
+
+			if (g_pInstance == 0){
+
+				g_pInstance = new game();
+	}
+				
+return g_pInstance;
+}
 	~game();
-	bool init( const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-	void render(int a, int b, int c);
-	void update();
-	void handleEvents();
-	void clean();
-	bool isRunning();
+			
+	 bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
+     void render(int r, int g, int b);
+	 void update();
+	 void clean();
+	 bool isRunning();
+	 SDL_Renderer* getRenderer();
+	 int getTicks();
 
-};
+ public:
 
+		static game* g_pInstance;
+		SDL_Window* g_pWindow = 0;
+		SDL_Renderer* g_pRenderer = 0;
+		bool on = true;
+		std::vector< GameObject* > m_gameObjects;
+
+		Param* para1;
+		Param* para2;
+		Param* para3;
+
+
+		GameObject* player1;
+		GameObject* enemy1;
+		GameObject* enemy2;
+	};
