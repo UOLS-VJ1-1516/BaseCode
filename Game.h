@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "Tools.h"
 #include <SDL.h>
 #include <SDL_image.h>
@@ -9,13 +10,13 @@
 #include "Entity.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "EventHandler.h"
 
 class Game
 {
 private:
 	SDL_Window * window;
 	SDL_Renderer * renderer;
-	SDL_Event event;
 
 	Game();
 
@@ -25,12 +26,15 @@ private:
 	Player * player;
 
 	int width, height;
-	void HandleKeys(SDL_Scancode);
 	bool Fullscreen;
 	bool Running;
 	bool takeScreenshot;
 	int r, g, b, a;
 public:
+	double delta;
+	Player * GetPlayer() { return player; }
+	void ToggleFullscreen();
+	void TakeScreenshot() { takeScreenshot = true; }
 	static Game * GetInstance() 
 	{
 		if (joc == NULL)

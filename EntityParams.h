@@ -4,7 +4,7 @@ class EntityParams
 {
 private:
 	const char * id;
-	int xPos, yPos;
+	float xPos, yPos;
 	int width, height;
 	int frame;
 	int maxFrame, row;
@@ -14,11 +14,11 @@ public:
 
 	const char * GetId() { return id; }
 
-	void SetXPos(int xPos) { this->xPos = xPos; }
-	int GetXPos() { return xPos; }
+	void SetXPos(float xPos) { this->xPos = xPos; }
+	float GetXPos() { return xPos; }
 
-	void SetYPos(int yPos) { this->yPos = yPos; }
-	int GetYPos() { return yPos; }
+	void SetYPos(float yPos) { this->yPos = yPos; }
+	float GetYPos() { return yPos; }
 
 	int GetWidth() { return width; }
 	int GetHeight() { return height; }
@@ -33,5 +33,5 @@ public:
 	void Flip() { flipped = !flipped; }
 
 	void AddFrame();
-	void AddXPos(int);
+	void AddXPos(float);
 };

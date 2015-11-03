@@ -7,6 +7,7 @@
 #include "Game.h"
 
 using namespace std;
+double lastFrame = GetTime();
 
 void takeScreenShot(int width, int height)
 {
@@ -23,4 +24,17 @@ void takeScreenShot(int width, int height)
 	SDL_RenderReadPixels(Game::GetInstance()->GetRenderer(), NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
 	IMG_SavePNG(sshot, str.c_str());
 	SDL_FreeSurface(sshot);
+}
+
+double GetDeltaTime()
+{
+	long currentTime = GetTime();
+	double delta = ((double)currentTime - lastFrame) / 1000;
+	lastFrame = GetTime();
+	return delta;
+}
+
+long GetTime()
+{
+	return SDL_GetTicks() * 1000;
 }

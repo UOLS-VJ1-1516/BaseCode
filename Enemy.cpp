@@ -4,20 +4,20 @@
 
 void Enemy::FollowPlayer(Player * player)
 {
-	int xPos = params->GetXPos();
-	int playerXPos = player->params->GetXPos();
-	if ((SDL_GetTicks()) % 250 == 0)
-	{
-		if (xPos > playerXPos) {
-			Move(-1);
-		}
-		else if (xPos < playerXPos) {
-			Move(1);
-		}
-		else {
-			Move(0);
-		}
+	float xPos = params->GetXPos();
+	float playerXPos = player->params->GetXPos();
+	float delta = Game::GetInstance()->delta;
+
+	if (xPos > playerXPos) {
+		Move(-5 / delta, 0);
 	}
+	else if (xPos < playerXPos) {
+		Move(5 / delta, 0);
+	}
+	else {
+		Move(0, 0);
+	}
+	
 }
 
 void Enemy::BeStatic(Player * player)
@@ -33,7 +33,7 @@ void Enemy::BeStatic(Player * player)
 			params->Flip();
 		}
 		else {
-			Move(0);
+			Move(0, 0);
 		}
 	}
 }
@@ -43,21 +43,20 @@ void Enemy::TheIgnored()
 	int w = NULL;
 	SDL_GetWindowSize(Game::GetInstance()->GetWindow(), &w, NULL);
 	
-	if ((SDL_GetTicks()) % 250 == 0)
+	float delta = Game::GetInstance()->delta;
+	if (params->GetXPos() <= 0 || params->GetXPos() >= w)
 	{
-		if (params->GetXPos() <= 0 || params->GetXPos() >= w)
-		{
-			params->Flip();
-		}
-		if (params->IsFlipped())
-		{
-			Move(-1);
-		}
-		else
-		{
-			Move(1);
-		}
+		params->Flip();
 	}
+	if (params->IsFlipped())
+	{
+		Move(-5 / delta, 0);
+	}
+	else
+	{
+		Move(5 / delta, 0);
+	}
+	
 }
 
 Enemy::Enemy(int type)

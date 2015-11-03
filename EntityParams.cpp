@@ -20,7 +20,7 @@ void EntityParams::AddFrame()
 		frame = 0;
 }
 
-void EntityParams::AddXPos(int xPos)
+void EntityParams::AddXPos(float xPos)
 {
 	this->xPos += xPos;
 }

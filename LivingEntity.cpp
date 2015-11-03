@@ -12,12 +12,20 @@ LivingEntity::~LivingEntity()
 {
 }
 
-void LivingEntity::Move(int pos)
+void LivingEntity::Move(float xPos, float yPos)
 {
-	if (pos < 0 && !params->IsFlipped() || pos > 0 && params->IsFlipped())
+	
+	if (xPos < 0 && !params->IsFlipped() || xPos > 0 && params->IsFlipped())
 		params->Flip();
-	params->AddFrame();	
-	params->AddXPos(pos);
+	if (SDL_GetTicks() % 100 / (int)Game::GetInstance()->delta == 0)
+		params->AddFrame();
+	params->AddXPos(xPos);
+	
+}
+
+void LivingEntity::Accelerate(int aX, int aY)
+{
+
 }
 
 void LivingEntity::Load(EntityParams * params, const char * file)
@@ -34,8 +42,8 @@ void LivingEntity::Draw()
 	img.w = params->GetWidth();
 	img.h = params->GetHeight();
 
-	draw.x = params->GetXPos();
-	draw.y = params->GetYPos();
+	draw.x = position.X;
+	draw.y = position.Y;
 	draw.h = params->GetHeight();
 	draw.w = params->GetWidth();
 
