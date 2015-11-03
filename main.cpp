@@ -5,12 +5,12 @@
 
 int main(int argc, char* args[])
 {
-	//gas 
+	
 	int a = 0;
 	int b = 0;
 	int c = 0;
 
-	game::Instance()->init("Videojuegos 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800 , true);
+	game::Instance()->init("Juego classe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800 , false);
 
 	while (game::Instance()->isRunning())
 	{
@@ -28,4 +28,4 @@ int main(int argc, char* args[])
 }
 
 
-//Entrega de Victor Cordobés ls31253.zip
+//Entrega deVictor Cordobés ls31253.zip
