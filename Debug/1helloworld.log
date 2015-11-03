@@ -1,16 +1,17 @@
-﻿Compilación iniciada a las 03/11/2015 2:37:13.
-     1>Proyecto "C:\Users\Alune\Desktop\BaseCodeGit\BaseCode\1helloworld.vcxproj" en el nodo 2 (Build destinos).
+﻿Compilación iniciada a las 03/11/2015 2:19:42.
+     1>Proyecto "C:\Users\Alune\Desktop\BaseCode-master\1helloworld.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt game.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt game.cpp
          game.cpp
-     1>c:\users\alune\desktop\basecodegit\basecode\game.cpp(45): warning C4715: 'Game::init': no todas las rutas de acceso de control devuelven un valor
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\BaseCodeGit\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\BaseCodeGit\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\BaseCodeGit\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\main.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\BaseCode-master\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\BaseCode-master\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\BaseCode-master\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Enemy.obj
          Debug\game.obj
+         Debug\main.obj
+         Debug\Player.obj
          Debug\TextureManager.obj
-         1helloworld.vcxproj -> C:\Users\Alune\Desktop\BaseCodeGit\BaseCode\Debug\1-helloworld.exe
-     1>Compilación del proyecto terminada "C:\Users\Alune\Desktop\BaseCodeGit\BaseCode\1helloworld.vcxproj" (Build destinos).
+         1helloworld.vcxproj -> C:\Users\Alune\Desktop\BaseCode-master\Debug\1-helloworld.exe
+     1>Compilación del proyecto terminada "C:\Users\Alune\Desktop\BaseCode-master\1helloworld.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:01.18
+Tiempo transcurrido 00:00:01.11

@@ -1,88 +1,93 @@
 #include "game.h"
 #include "TextureManager.h"
 
+Game* Game::g_pInstance = 0;
 
-//Nom de la clase::Constructor a implementar
-Game::Game() {
-
-g_pWindow = 0;
-g_pRenderer = 0;
-
-//Tecla Esc
-tancar = true;
-
+Game::Game(){
+	goku = new Player();
+	p1 = new LoaderParams(400, 150, 103, 120, "Goku", "dgz.bmp", 4, 0);
+	freezer = new Enemy();
+	p2 = new LoaderParams(400, 300, 110, 100, "Freezer", "enemy.bmp", 4, 0);
+	shenron = new Enemy();
+	p3 = new LoaderParams(400, 400, 100, 110, "dragon", "dragon.bmp", 4, 0);
 };
 
-Game::~Game()
-{
-};
+Game::~Game(){};
 
-bool Game::init(const char* title, int xpos, int
-	ypos, int width, int height, bool fullscreen)
+bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-	// initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
-		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow("Videjuegos 1 - bachelor",
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			640, 480,
-			SDL_WINDOW_SHOWN);
+		g_pWindow = SDL_CreateWindow(title,	xpos, ypos,	width, height, fullscreen);
 
-		// if the window creation succeeded create our renderer
 		if (g_pWindow != 0)
 		{
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-			if (!TextureManager::Instance()->load("dgz.bmp", "A", g_pRenderer)) {
-				return false;
-			}
 		}
+
+		goku->load(p1);
+		m_gameObjects.push_back(goku);
+		freezer->load(p2);
+		m_gameObjects.push_back(freezer);
+		shenron->load(p3);
+		m_gameObjects.push_back(shenron);
+
+		return 0;
 	}
 	else
 	{
-		return false;
+		return 1;
 	}
 };
 
-void Game::EventHandler()
+void Game::render(int r, int g, int b)
 {
-	if (SDL_PollEvent(&event) == 1) {
-		if (event.key.keysym.sym == SDLK_ESCAPE) {
-			tancar = false;
-		}
+	SDL_SetRenderDrawColor(g_pRenderer, r, g, b, 255);
+
+	SDL_RenderClear(g_pRenderer);
+
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}
+
+	SDL_RenderPresent(g_pRenderer);
+
+	SDL_Delay(10);
+};
+
+void Game::update()
+{
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
 	}
 };
 
-void Game::Clear()
+void Game::handleEvents(SDL_Event event)
 {
+	if (event.type == SDL_KEYDOWN)
+		if (event.key.keysym.sym == SDLK_ESCAPE) 
+			running = false;
+};
 
-	SDL_DestroyRenderer(g_pRenderer);
+void Game::clean()
+{
 	SDL_DestroyWindow(g_pWindow);
+	SDL_DestroyRenderer(g_pRenderer);
 	SDL_Quit();
 };
 
-bool Game::IsRunning()
+bool Game::isRunning()
 {
-
-	return tancar;
+	return running;
 };
 
-void Game::Render() 
+SDL_Renderer* Game::getRenderer()
 {
-	// clear the window to black
-	SDL_RenderClear(g_pRenderer);
-
-	// show the window
-	SDL_RenderPresent(g_pRenderer);
-
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
-
-	idImatg = (int)((SDL_GetTicks() / 100) % 6);
-	TextureManager::Instance()->drawFrame("A", 300, 200, 104, 151, 0, idImatg, g_pRenderer, SDL_FLIP_NONE);
-
+	return g_pRenderer;
 };
 
-void Game::Update()
-{
-	SDL_RenderPresent(g_pRenderer);
+int Game::getTicks() {
+	return (int)(SDL_GetTicks());
 };

@@ -1,33 +1,32 @@
 #pragma once
 #include "SDL.h"
+#include "SDL_image.h"
 #include "map"
 
 class TextureManager
 {
-	
-public:
-	~TextureManager();
-	TextureManager();
-	static TextureManager* s_pInstance;
-	SDL_Surface* s_surface;
-	SDL_Texture* s_texture;
-	SDL_Rect SrcR;
-	SDL_Rect DestR;
+	public:
+		TextureManager();
 
-	std::map<char, SDL_Texture* > m_textureMap;
-	std::map<char, int[0] > m_textureSizes;
-
-	static TextureManager* Instance()
-	{
-		if (s_pInstance == 0)
+		static TextureManager* Instance()
 		{
-			s_pInstance = new TextureManager();
+			if (s_pInstance == 0)
+			{
+				s_pInstance = new TextureManager();
+			}
+			return s_pInstance;
 		}
-		return s_pInstance;
-	}
+		~TextureManager();
 
-	bool load(const char* fileName, const char* id, SDL_Renderer* pRenderer);
-	void draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip);
-	void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender,SDL_RendererFlip flip);
-	void setSizeFrames(const char* id, int width, int height);
+		bool load(char* fileName, const char* id, SDL_Renderer* pRenderer);
+		void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
+		void setFrame(const char* id, int x, int y, int width, int height);
+
+		static TextureManager* s_pInstance;
+		SDL_Texture* texture;
+		SDL_Rect SrcR;
+		SDL_Rect DestR;
+		std::map<char, SDL_Texture* > m_textureMap;
+		std::map<char, int[2] > m_texturePositions;
+		std::map<char, int[2] > m_textureSizes;
 };

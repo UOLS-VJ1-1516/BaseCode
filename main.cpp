@@ -2,19 +2,19 @@
 
 int main(int argc, char* args[])
 {
+	SDL_Event event;
+	int r = 0, g = 0, b = 0;
 
-	Game game = Game();
+	Game::Instance()->init("Juego classe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
-	if (game.init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false)) {
-
-		while (game.IsRunning()) {
-
-			game.EventHandler();
-			game.Update();
-			game.Render();
+	while(Game::Instance()->isRunning())
+	{
+		while (SDL_PollEvent(&event)) {
+			Game::Instance()->handleEvents(event);
 		}
-		game.Clear();
+		Game::Instance()->update();
+		Game::Instance()->render(0, 0, 0);
 	}
-		
+	Game::Instance()->clean();
 	return 0;
 }
