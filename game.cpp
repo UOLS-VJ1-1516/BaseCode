@@ -1,22 +1,22 @@
 #include "game.h"
 #include "TextureManager.h"
-#include "stdio.h"
 
-#define SPRITE_HEIGHT 148
-#define SPRITE_WIDHT 129
+//Instancias
+Game* Game::g_pInstance = 0;
 
-
-
-Game::Game()
-{
-
+// Constructor donde se inicializan variables y los GameObjects
+Game::Game() {
+	player1 = new Player();
+	params1 = new LoaderParams(100, 50, 129, 148, "player", "corredor3.bmp", 27, 0);
+	enemy1 = new Enemy();
+	params2 = new LoaderParams(500, 150, 61, 98, "enemy", "corredor1.bmp", 6, 0);
+	enemy2 = new Enemy();
+	params3 = new LoaderParams(120, 300, 61, 98, "aenemy", "corredor2.bmp", 6, 0);
 };
+// Destructor
+Game::~Game() {};
 
-Game::~Game()
-{
-
-};
-
+// Inicializamos el game
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	// initialize SDL
@@ -31,7 +31,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
-		TextureManager::Instance()->load("corredor3.bmp", "player", g_pRenderer);
+		// Inicializamos GameObjects, los cargamos, y los guardamos en el vector de GameObjects
+		player1->load(params1);
+		m_gameObjects.push_back(player1);
+		enemy1->load(params2);
+		m_gameObjects.push_back(enemy1);
+		enemy2->load(params3);
+		m_gameObjects.push_back(enemy2);
 
 		return 0;
 	}
@@ -50,25 +56,33 @@ void Game::render(int r, int g, int b)
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
-	
-	TextureManager::Instance()->drawFrame("player", SPRITE_WIDHT, 0, SPRITE_WIDHT, SPRITE_HEIGHT, rowNum, spriteNum, g_pRenderer);
+
+	// Hacemos que todos los gamobjects se printen en pantalla
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}
+
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
 
-	SDL_Delay(100);
-
+	SDL_Delay(10);
 };
 
 void Game::update()
 {
-		spriteNum = (int)((SDL_GetTicks() / 100) % 27);
+	// Hacemos que todos los gamobjects hagan sus respectivos updates
+	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 };
 
 void Game::handleEvents(SDL_Event event)
 {
 	if (event.type == SDL_KEYDOWN)
 		if (event.key.keysym.sym == SDLK_ESCAPE)
-			abierto = false;
+			running = false;
 };
 
 void Game::clean()
@@ -80,5 +94,14 @@ void Game::clean()
 
 bool Game::isRunning()
 {
-	return abierto;
+	return running;
+};
+
+SDL_Renderer* Game::getRenderer()
+{
+	return g_pRenderer;
+};
+
+int Game::getTicks() {
+	return (int)(SDL_GetTicks());
 };
