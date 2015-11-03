@@ -4,6 +4,7 @@
 #include "TextureManager.h"
 #include <vector>
 #include "GameObject.h"
+#include "LoaderParams.h"
 
 class Game {
 	Game();
@@ -12,7 +13,6 @@ class Game {
 	int red, green, blue, alpha;
 	const int maxColorValue = 255;
 	bool running;
-	int spriteNum;
 	static Game* instance;
 	std::vector< GameObject* > gameObjects;
 
@@ -25,6 +25,7 @@ public:
 		return instance;
 	}
 	SDL_Renderer* getRenderer();
+	SDL_Window* getWindow();
 	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 	void render();
 	void update();

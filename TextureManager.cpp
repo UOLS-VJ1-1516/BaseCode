@@ -6,8 +6,9 @@ TextureManager * TextureManager::instance = 0;
 
 TextureManager::TextureManager(){/*VOID*/};
 
-bool TextureManager::load(const char* file, string id, SDL_Renderer * renderer) {
-	SDL_Surface * surface = IMG_Load(file);
+bool TextureManager::load(string file, string id, SDL_Renderer * renderer) {
+	//const char* charFile = ;
+	SDL_Surface * surface = IMG_Load(file.c_str());
 	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	textures[id] = texture;
