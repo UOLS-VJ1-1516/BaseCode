@@ -9,7 +9,7 @@ int main(int argc, char* args[])
 	int a = 0;
 	int b = 0;
 	int c = 0;
-
+	//
 	game::Instance()->init("Videojuegos1 Ejercicio3", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800 , false);
 
 	while (game::Instance()->isRunning())
