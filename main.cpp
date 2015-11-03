@@ -10,7 +10,7 @@ int main(int argc, char* args[])
 	int b = 0;
 	int c = 0;
 
-	game::Instance()->init("Videojuegos1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800 , false);
+	game::Instance()->init("Juego classe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800 , false);
 
 	while (game::Instance()->isRunning())
 	{
