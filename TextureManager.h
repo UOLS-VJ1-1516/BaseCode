@@ -2,6 +2,8 @@
 #pragma once
 #include "SDL.h"
 #include<map>
+#ifndef TEXTUREMANAGER_H
+#define TEXTUREMANAGER_H
 class TextureManager
 {
 private:
@@ -17,3 +19,4 @@ private:
 	static TextureManager* s_pInstance;
 	SDL_Texture* texture;
 };
+#endif TEXTUREMANAGER_H

@@ -1,15 +1,37 @@
-#include "SDL.h"
 #include "game.h"
+#include "GameObject.h"
 #include <stdlib.h>
-#include "TextureManager.h"
 #include "SDL_image.h"
+#include <vector>
+#include "Player.h"
+#include "Dog.h"
 
+
+std::vector<GameObject*> m_gameObjects;
 TextureManager* TextureManager::s_pInstance = 0;
+Player *p;
+Dog *d;
+std::vector<const char*> textur;
+
+Game* Game::s_pInstanceG = 0;
 
 	Game::Game(){
 	}
 
 	Game::~Game(){
+	}
+
+	Game* Game::Instance()
+	{
+		if (s_pInstanceG == 0)
+		{
+			s_pInstanceG = new Game();
+		}
+		return s_pInstanceG;
+	}
+
+	SDL_Renderer* Game::getRender() {
+		return g_lRenderer;
 	}
 
 	bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
@@ -28,60 +50,36 @@ TextureManager* TextureManager::s_pInstance = 0;
 		{
 			return false; // sdl could not initialize
 		}
-		if (!TextureManager::Instance()->load("spritesheet.png", "imatge", g_lRenderer)) {
-			return false;
+
+		p = new Player;
+		d = new Dog;
+
+		m_gameObjects.push_back(p);
+		m_gameObjects.push_back(d);
+
+		textur.push_back("imatge");
+		textur.push_back("imatge2");
+		
+		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+		{
+			m_gameObjects[i]->load(xpos, ypos, width, height, textur[i]);
 		}
 		running = true;
 		return true;
 	}
 	
 	void Game::render() {
-		//va cambiando el color, en este caso aleatorio con la funcion rand()
-		if ((mov==0)||(mov==150)||(mov==300)||(mov==450)||(mov == 650)||(mov==850)||(mov==1000)||(mov==1250)) {
-			SDL_SetRenderDrawColor(g_lRenderer, rand() % 256, rand() % 256, rand() % 256, rand() % 256);
-		}
+		SDL_SetRenderDrawColor(g_lRenderer, 255, 229, 204, 255);
 
 		// clear the window to black
 		SDL_RenderClear(g_lRenderer);
 
-		//Mostrem la imatge
-		//TextureManager::Instance()->draw("imatge", pos, 180, 97, 132, g_lRenderer, SDL_FLIP_NONE);
-		TextureManager::Instance()->drawFrame("imatge", pos, 180, 97, 132, animacion, spriteNum, g_lRenderer, SDL_FLIP_NONE);
-		
-		mov = mov + 1; //incrementamos la posición para que la imagen se mueva
+		//Mostrem les imatges
+		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+		{
+			m_gameObjects[0]->draw();
+		}
 
-		if (mov < 650) { //primera animació
-			pos = mov;
-		}
-		else {
-			if (mov < 850) { //segona animació
-				cont++;
-				animacion = 2;
-				pos = mov - 425;
-				SDL_Delay(10);
-				if (cont == 4) {
-					pos = pos - 1;
-				}
-				if (cont == 5) {
-					pos = pos - 1;
-				}
-				if (cont == 6) {
-					pos = pos - 1;
-					cont = 0;
-				}
-			}
-			else {
-				if (mov < 1250) { // tercera animació
-					animacion = 3;
-					pos = 275;
-				}
-				else { //fi de la tercera animació, tornem a la primera
-					animacion = 1;
-					mov = 0;
-				}
-			}
-		}
-		
 		// show the window
 		//SDL_RenderPresent(g_lRenderer);
 		SDL_RenderPresent(g_lRenderer);
@@ -91,8 +89,11 @@ TextureManager* TextureManager::s_pInstance = 0;
 
 	}
 	void Game::update() {
-		//Función para saber que sprite
-		spriteNum = (int)((SDL_GetTicks() / 100) % 7);
+		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+		{
+			m_gameObjects[0]->update();
+		}
+		
 	}
 	void Game::handleEvents() {
 		SDL_Event event;
@@ -104,6 +105,12 @@ TextureManager* TextureManager::s_pInstance = 0;
 		}
 	}
 	void Game::clean() {
+		
+		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
+		{
+			m_gameObjects[0]->clean();
+		}
+		
 		SDL_DestroyWindow(g_lWindow);
 		SDL_DestroyRenderer(g_lRenderer);
 		SDL_Quit();
