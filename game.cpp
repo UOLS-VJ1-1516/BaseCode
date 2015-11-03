@@ -9,10 +9,10 @@ Game::Game() {
 	running = false;
 	player1 = new Player();
 	player2 = new Player();
-	player3 = new Player();
+	enemy1 = new Enemy();
 	paramsPlayer1 = new LoaderParams(50, 50, 105, 156, "Player", 6);
 	paramsPlayer2 = new LoaderParams(150, 300, 44, 40, "coin", 10);
-	paramsPlayer3 = new LoaderParams(300, 50, 155, 204, "Shadow", 10);
+	paramsEnemy1 = new LoaderParams(300, 50, 155, 204, "Shadow", 10);
 }
 
 Game::~Game() {
@@ -31,10 +31,10 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 		
 			player1->load(paramsPlayer1);
 			player2->load(paramsPlayer2);
-			player3->load(paramsPlayer3);
+			enemy1->load(paramsEnemy1);
 			m_gameObjects.push_back(player1);
 			m_gameObjects.push_back(player2);
-			m_gameObjects.push_back(player3);
+			m_gameObjects.push_back(enemy1);
 
 			//load img in my img list
 			TextureManager::Instance()->load("frames.bmp", "Player", m_pRenderer);

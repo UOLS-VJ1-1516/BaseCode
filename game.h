@@ -5,6 +5,7 @@
 
 #include "SDL.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "vector"
 
 class Game {
@@ -18,10 +19,10 @@ class Game {
 		std::vector<GameObject*> m_gameObjects;
 		Player* player1;
 		Player* player2;
-		Player* player3;
+		Enemy* enemy1;
 		LoaderParams* paramsPlayer1;
 		LoaderParams* paramsPlayer2;
-		LoaderParams* paramsPlayer3;
+		LoaderParams* paramsEnemy1;
 
 	public:
 		static Game* Instance() {
