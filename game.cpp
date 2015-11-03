@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 #include "SDL_image.h"
 
-
+//comienzo Ejercicio 4
 //Instancias
 game* game::g_pInstance = 0;
 
