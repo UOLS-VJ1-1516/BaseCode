@@ -36,22 +36,29 @@ void Player::load(const LoadPar* lPar)
 void Player::draw()
 {
 
-	TextureManager::Instance()->drawFrame(m_texid,m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame(m_texid,m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), m_flip);
 
 }
 
 
 void Player::draw(SDL_Renderer* Renderer) {
-	TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, SDL_FLIP_NONE);
-
+	TextureManager::Instance()->drawFrame(m_texid, m_x, m_y, m_width, m_height, m_currentRow, m_currentFrame, Renderer, m_flip);
+	
 }
 
 void Player::update() {
 
 	m_x = m_x + 2;
 	if (m_x >1600)m_x= -100;
-
-	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-
+	
+	//if ((m_currentRow == 2) &&(m_currentFrame == 6)) { m_currentRow = 3; m_currentFrame = 1; m_sprits = 1; }
+	
+	//if ((m_currentRow == 1) && (m_currentFrame == 2)) { m_currentRow = 3; m_currentFrame = 1; m_sprits = 1; }
+		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+		
+	
+	
+	//if ((m_currentRow == 3) && (m_currentFrame == 1)) { m_currentRow = 1; m_currentFrame = 1; m_sprits = 4; }
+	
 }
 void Player::clean() {}

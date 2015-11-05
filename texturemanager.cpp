@@ -6,7 +6,7 @@
 TextureManager* TextureManager::s_pInstance = 0;
 SDL_Texture* textura;
 SDL_Point* center;
-
+SDL_RendererFlip Sflip;
 
 
 bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_lRenderer) {
@@ -30,7 +30,7 @@ bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_
 	}
 	
 }
-void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip) {
+void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* g_lRenderer, int flip) {
 	//´flip ha de ser  SDL_FLIP_NONE si vull que no es giri
 	
 	SDL_Rect src;
@@ -44,12 +44,14 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 	dest.h = height;
 	dest.x = x;
 	dest.y = y;
-
-	SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],&src, &dest, 0, 0, flip);
+	if (flip == 1) Sflip = SDL_FLIP_NONE;
+	if (flip == 2) Sflip = SDL_FLIP_HORIZONTAL;
+	if (flip == 3) Sflip = SDL_FLIP_VERTICAL;
+	SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],&src, &dest, 0, 0, Sflip);
 
 }
 
-void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, SDL_RendererFlip flip) {
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, int flip) {
 	SDL_Rect src;
 	SDL_Rect dest;
 
@@ -64,6 +66,10 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	dest.y = y - (height / 2);
 	dest.w = width;
 	dest.h = height;
+	if (flip == 1) Sflip = SDL_FLIP_NONE;
+	if (flip == 2) Sflip = SDL_FLIP_HORIZONTAL;
+	if (flip == 3) Sflip = SDL_FLIP_VERTICAL;
+
 	SDL_RenderCopyEx(g_lRenderer, m_textureMap[id],
-		&src, &dest, 0, 0, flip);
+		&src, &dest, 0, 0, Sflip);
 }

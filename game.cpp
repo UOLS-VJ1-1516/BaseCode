@@ -37,7 +37,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 
 		// if succeeded create our window
-		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
+		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, false);
 		ancho = width;
 		alto = height;
 
@@ -48,23 +48,25 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}	
 		
 		Renderer = GetRenderer();
-	
+
+
+	//	flip=1->SDL_FLIP_NONE;  flip =2-> SDL_FLIP_HORIZONTAL; flip = 3 ->SDL_FLIP_VERTICAL;
 		
 		GameObject* player1 = new Player();
-		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, SDL_FLIP_NONE));
+		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1));
 
 
-		GameObject* enemy1 = new Enemy();
-		enemy1->load(new LoadPar(500, 600, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+		GameObject* enemy1 = new Player();
+		enemy1->load(new LoadPar(230, 160, 200, 220, "behemot", 3, 6, 1));
 
 		GameObject* enemy2 = new Enemy();
-		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2));
 
 		GameObject* enemy3 = new Enemy();
-		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, 2));
 
 		GameObject* enemy4 = new Enemy();
-		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, SDL_FLIP_HORIZONTAL));
+		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2));
 
 		GameObject* coin1 = new Enemy();
 		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, SDL_FLIP_HORIZONTAL));
@@ -88,6 +90,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_gameObjects.push_back(fons2);
 		
 		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/behemot.png", "behemot", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }

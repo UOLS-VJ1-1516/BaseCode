@@ -14,7 +14,7 @@ int main(int argc, char* args[])
 		joc.handleEvents();	
 		joc.update();
 		joc.render();
-		SDL_Delay(10); 
+		SDL_Delay(40); 
 	}
 
 	joc.clean();
