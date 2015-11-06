@@ -3,6 +3,7 @@
 #include "game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
+#include "Vector2D.h"
 
 class GameObject
 {
@@ -18,9 +19,11 @@ class GameObject
 		int m_height;
 		int m_currentFrame;
 		int m_currentRow;
-		int m_x;
-		int m_y;
-		int numRow;
 		char* m_textureID;
 		int m_spriteNum;
+		Vector2D m_position;
+		Vector2D m_velocity;
+		Vector2D m_maxVelocity;
+		Vector2D m_acceleration;
+		Vector2D m_friction;
 };
