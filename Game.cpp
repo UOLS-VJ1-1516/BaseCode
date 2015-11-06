@@ -8,15 +8,13 @@
 #include "LoaderParams.h"
 
 Game* Game::s_pInstance = 0;
-std::vector< GameObject* > m_gameObjects;
+
 
 Game::Game() {  //Constructor
 	running = false;
-	p = new Player();
-	ghost = new Ghost();
+	
 	//int x, int y, int width, int height,const char* textureID, int currentRow, int sprits, int flip)
-	lp = new LoaderParams(500, 400, 100, 100, "monster", 1, 7, 0);
-	loadghost = new LoaderParams(200, 300, 310, 245, "ghost", 1, 3, 0);
+
 }
 Game::~Game() {}
 
@@ -24,6 +22,8 @@ Game::~Game() {}
 bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
 
+	m_PANC = width;
+	m_PALT = height;
 	win = 0;
 	ren = 0;
 	bmp = NULL;
@@ -41,15 +41,25 @@ bool Game::init(const char* title, int xpos, int
 			ren = SDL_CreateRenderer(win, -1, 0);
 		}
 
-	
 
-		p->load(lp);
-		m_gameObjects.push_back(p);
-		ghost->load(loadghost);
-		m_gameObjects.push_back(ghost);
+		//Carga la imagen
 		TextureManager::Instance()->load("monster.png", "monster", ren);
 		TextureManager::Instance()->load("ghost.png", "ghost", ren);
+
+		//Parametros del LoaderParams
+		GameObject *player = new Player();
+		player->load(new LoaderParams(500, 400, 100, 100, "monster", 1, 7, 0));
+
+		GameObject *ghost = new Ghost();
+		ghost->load(new LoaderParams(200, 300, 310, 245, "ghost", 1, 3, 0));
+
+		//Arrai
+		m_gameObjects.push_back(player);
+		m_gameObjects.push_back(ghost);
 		
+
+
+			
 
 		running = true;
 		return true;
@@ -117,6 +127,14 @@ void Game::clean() {
 
 bool Game::isRunning() {
 	return running;
+}
+
+int Game::getP_ANC() {
+	return  m_PANC;
+}
+
+int Game::getP_ALT() {
+	return m_PALT;
 }
 
 SDL_Renderer* Game::getRender() {

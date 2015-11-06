@@ -11,9 +11,6 @@ class Game
 
 private:
 
-	const int P_ANC = 1280;
-	const int P_ALT = 720;
-
 	SDL_Window* win;
 	SDL_Renderer* ren;
 	SDL_Surface* bmp;
@@ -25,6 +22,7 @@ private:
 	Ghost* ghost;
 	LoaderParams* loadghost;
 	LoaderParams* lp;
+	std::vector< GameObject* > m_gameObjects;
 
 	Game();
 	static Game* s_pInstance;
@@ -46,8 +44,13 @@ public:
 	void handleEvents();
 	void clean();
 	bool isRunning();
+	int getP_ANC();
+	int getP_ALT();
 	SDL_Renderer* getRender();
 
+protected:
+	int m_PANC;
+	int m_PALT;
 	
 	
 };

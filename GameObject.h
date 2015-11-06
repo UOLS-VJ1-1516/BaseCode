@@ -3,6 +3,7 @@
 #define GAMEOBJECT_H
 #include "string"
 #include "LoaderParams.h"
+#include "Vector2D.h"
 
 class GameObject
 {
@@ -25,6 +26,12 @@ protected:
 	int m_currentRow;
 	int m_speed;
 	const char* m_textureID;
+
+	Vector2D m_position;
+	Vector2D m_velocity;
+	Vector2D m_maxVelocity;
+	Vector2D m_acceleration;
+	Vector2D m_friction;
 };
 
 #endif GAMEOBJECT_H

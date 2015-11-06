@@ -32,10 +32,9 @@ void Player::draw() {
 
 void Player::update() {
 
-
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % 7);
 
-	if (m_x >(P_ANC / 2)) {
+	if (m_x >(Game::Instance()->getP_ANC() / 2)) {
 		m_x = -50;
 	}
 	m_x++;
