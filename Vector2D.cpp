@@ -26,6 +26,7 @@ Vector2D & Vector2D::operator*=(float scalar)
 {
 	m_x *= scalar;
 	m_y *= scalar;
+	return *this;
 }
 
 Vector2D Vector2D::operator-(const Vector2D& v2) const
@@ -55,7 +56,7 @@ Vector2D & Vector2D::operator/=(float scalar)
 
 float Vector2D::length()
 {
-	return sqrt(m_x * m_x + m_y * m_y);
+	return (float)sqrt(m_x * m_x + m_y * m_y);
 }
 
 void Vector2D::normalize()
@@ -69,7 +70,7 @@ void Vector2D::normalize()
 
 Vector2D & Vector2D::operator=(const Vector2D & v2)
 {
-	// TODO: insertar una instrucción return aquí
+	return (*this);
 }
 
 

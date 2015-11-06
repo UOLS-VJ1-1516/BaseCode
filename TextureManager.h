@@ -25,7 +25,7 @@ public:
 
 	bool load(const char* fileName, std::string id, SDL_Renderer* pRenderer);
 
-	void draw(const char* id, int x, int y, int width, int height,
+	void draw(const char* id, float x, float y, int width, int height,
 		SDL_Renderer* pRender, SDL_RendererFlip flip);
 
 	void drawFrame(const char* id, int x, int y, int width, int height, int

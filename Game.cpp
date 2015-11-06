@@ -12,8 +12,6 @@ Game* Game::s_pInstance = 0;
 
 Game::Game() {  //Constructor
 	running = false;
-	
-	//int x, int y, int width, int height,const char* textureID, int currentRow, int sprits, int flip)
 
 }
 Game::~Game() {}
@@ -48,10 +46,10 @@ bool Game::init(const char* title, int xpos, int
 
 		//Parametros del LoaderParams
 		GameObject *player = new Player();
-		player->load(new LoaderParams(500, 400, 100, 100, "monster", 1, 7, 0));
+		player->load(new LoaderParams(200, 150, 100, 100, "monster", 1, 7, 0));
 
 		GameObject *ghost = new Ghost();
-		ghost->load(new LoaderParams(200, 300, 310, 245, "ghost", 1, 3, 0));
+		ghost->load(new LoaderParams(200, 350, 310, 245, "ghost", 1, 3, 0));
 
 		//Arrai
 		m_gameObjects.push_back(player);
