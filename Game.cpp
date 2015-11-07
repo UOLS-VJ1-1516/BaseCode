@@ -1,5 +1,4 @@
 #include "Game.h"
-#include "TextureManager.h"
 #include "LoaderParams.h"
 
 Game* Game::s_pInstance = 0;
@@ -8,16 +7,19 @@ Game::Game() {
 	g_pWindow = 0;
 	flag = true;
 	g_pRenderer = 0;
-	screenWidth = 0;
-	screenHeigth = 0;
+	m_screenWidth = 800;
+	m_screenHeight = 600;
 	//Inicializamos los objetos.
 	p = new Player();
 	o = new StaticObjects();
 	e = new Enemy();
+	e2 = new Enemy();
 	//Cargamos los parámetros de cada uno.
-	lp = new LoaderParams(0, 0, 100, 91, "Player", 8, +7); //Los dos últimos parámetros son cantidad de sprites que tenemos del objeto y velocidad de desplazamiento.
-	lo = new LoaderParams(300, 500, 36, 64, "Key", 8, 0); //Velocidad 0 es que no se mueve el objeto.
-	le = new LoaderParams(500, 300, 120, 70, "Tim", 3, -5); //Velocidad positiva o negativa solo afecta a la dirección del movimiento.
+	lp = new LoaderParams(0, 0, 70, 61, "Player",  8, 0, 0, 30, 0.1); 
+	lo = new LoaderParams(300, 500, 36, 64, "Key",  8, 0, 0, 0, 0.1); 
+	le = new LoaderParams(250, 150, 60, 35, "Tim", 3, 8, 0, 10, 0.1);
+	TheTextureManager = TextureManager::Instance();
+	TheInputHandler = InputHandler::Instance();
 }
 
 Game::~Game() {
@@ -33,12 +35,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		}
 
+
+		m_screenWidth = width;
+		m_screenHeight = height;
 		SDL_GetWindowSize(g_pWindow, &width, &height);
 
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-			screenWidth = width;
-			screenHeigth = height;
 			
 			//Ejemplo de player
 			p->load(lp);
@@ -46,18 +49,21 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			//Ejemplo de objeto estático
 			o->load(lo);
 			m_gobjects.push_back(o);
-
-			//Ejemplo de enemigo
+			//Ejemplo de enemigo	
 			e->load(le);
 			m_gobjects.push_back(e);
+			le = new LoaderParams(500, 300, 60, 35, "Tim", 3, 8, 0, 10, 0.1);
+			e2->load(le);
+			m_gobjects.push_back(e2);
+			
 
-			if (!TextureManager::Instance()->load("player.bmp", "Player", g_pRenderer) || !TextureManager::Instance()->load("llave.bmp", "Key", g_pRenderer) || !TextureManager::Instance()->load("tim.bmp", "Tim", g_pRenderer)) {
+			if (!TheTextureManager->load("player.bmp", "Player", g_pRenderer) || !TheTextureManager->load("llave.bmp", "Key", g_pRenderer) || !TheTextureManager->load("tim.bmp", "Tim", g_pRenderer)) {
 				return false;
 			}
 			//Este método permitirá almacenar el tamaño del sprite de origen, para poder jugar con el tamaño del sprite final.
-			TextureManager::Instance()->setSizeFrames("Player", 40, 31);
-			TextureManager::Instance()->setSizeFrames("Key", 18, 32);
-			TextureManager::Instance()->setSizeFrames("Tim", 26, 18);
+			TheTextureManager->setSizeFrames("Player", 40, 31);
+			TheTextureManager->setSizeFrames("Key", 18, 32);
+			TheTextureManager->setSizeFrames("Tim", 26, 18);
 		}
 
 		return true;
@@ -82,6 +88,9 @@ void Game::render() {
 
 void Game::update() {
 	//Recalculamos los valores de cada uno de los ojbetos de la pantalla.
+	e->update(m_screenWidth);
+	e2->update(m_screenWidth);
+	p->update(m_screenWidth, m_screenHeight);
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
 		m_gobjects[i]->update();
@@ -89,11 +98,29 @@ void Game::update() {
 }
 
 void Game::handleEvents() {
-	if (SDL_PollEvent(&event) == 1) {
-		if ((event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)) {
-			flag = false;
-		}
+	TheInputHandler->update();
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_ESCAPE) || TheInputHandler->isExitRequired()) {
+		flag = false;
 	}
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		p->incrementAccelerationX();
+	}
+	else if (TheInputHandler->isKeyDown(SDL_SCANCODE_LEFT)) {
+		p->decrementAccelerationX();
+	}
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_UP)) {
+		p->decrementAccelerationY();
+	}
+	else if (TheInputHandler->isKeyDown(SDL_SCANCODE_DOWN)) {
+		p->incrementAccelerationY();
+	}
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_A)) {
+		p->impulseLeft();
+	}
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_S)) {
+		p->impulseRight();
+	}
+	TheInputHandler->clean();
 }
 
 void Game::clean() {
@@ -116,10 +143,12 @@ int Game::getTicks() {
 	return (int)(SDL_GetTicks());
 };
 
-int Game::getScreenWidth() {
-	return screenWidth;
-};
+int Game::getScreenWidth()
+{
+	return m_screenWidth;
+}
 
-int Game::getScreenHeight() {
-	return screenWidth;
-};
+int Game::getScreenHeight()
+{
+	return m_screenHeight;
+}
