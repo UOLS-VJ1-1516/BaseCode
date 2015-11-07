@@ -9,6 +9,8 @@ class GameObject
 {
 
 	public:
+		GameObject() {}
+		virtual ~GameObject() {}
 		virtual void load(const LoaderParams* pParams) = 0;
 		virtual void draw(SDL_Renderer* pRender) = 0;
 		virtual void update() = 0;
@@ -23,7 +25,7 @@ class GameObject
 		int m_spriteNum;
 		Vector2D m_position;
 		Vector2D m_velocity;
-		Vector2D m_maxVelocity;
+		const Vector2D m_maxVelocity; 
 		Vector2D m_acceleration;
-		Vector2D m_friction;
+		const Vector2D m_friction;
 };

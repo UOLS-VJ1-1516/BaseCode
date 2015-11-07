@@ -12,4 +12,7 @@ public:
 	void update();
 	void clean();
 
+private:
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
+
 };

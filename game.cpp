@@ -1,6 +1,7 @@
 #include "game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -27,7 +28,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		if (TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer)) {
-			LoaderParams* load = new LoaderParams(300, 200, 58, 38, "walker", 12);
+			LoaderParams* load = new LoaderParams(300, 200, 60, 38, "walker", 12);
 			p1 = new Player();
 			p1->load(load);
 			m_players.push_back(p1);
@@ -85,8 +86,9 @@ void Game::update()
 
 void Game::handleEvents()
 {
+	//InputHandler::Instance()->isKeyDown();
 	SDL_Event esc_event;
-
+	
 	while (SDL_PollEvent(&esc_event)) {
 		switch (esc_event.type) {
 		case SDL_KEYUP:

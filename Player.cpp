@@ -1,3 +1,4 @@
+#pragma once
 #include "game.h"
 #include "Player.h"
 #include "TextureManager.h"
@@ -22,7 +23,15 @@ void Player::load(const LoaderParams* pParams) {
 
 void Player::update() {
 	m_currentFrame = int((SDL_GetTicks() / 100) % m_spriteNum);
-	m_position.setX(m_position.getX() + 1);
+
+	if (m_position.getX() >= 600) {
+		m_velocity.setX(-5);
+		flip = SDL_FLIP_HORIZONTAL;
+	}
+	else if (m_position.getX() <= 0) {
+		m_velocity.setX(5);
+		flip = SDL_FLIP_NONE;
+	}
 }
 
 void Player::clean() {};
