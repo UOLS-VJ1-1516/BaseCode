@@ -27,7 +27,7 @@ SDL_Window * Game::getWindow()
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 		// if succeeded create our window
-		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
+		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
 
 		// if the window creation succeeded create our renderer
 		if (m_pWindow != 0) {
