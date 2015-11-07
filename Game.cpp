@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
+#include "InputHandler.h"
 
 //#include "SDL_keycode.h"
 
@@ -90,11 +91,13 @@ void Game::update() {
 
 void Game::handleEvents(SDL_Event event) {
 
+	InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN);
 	if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym = SDLK_ESCAPE) {
 			running = false;
 		}
 	}
+	
 
 
 }

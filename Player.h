@@ -3,11 +3,13 @@
 #define PLAYER_H
 #include "GameObject.h"
 #include "LoaderParams.h"
+#include "InputHandler.h"
 
 class Player : public GameObject
 {
 	//int spriteNum;
 public:
+	
 	Player();
 	~Player(); //Cabecera
 	void draw();
