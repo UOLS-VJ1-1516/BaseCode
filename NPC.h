@@ -6,7 +6,8 @@ class NPC : public GameObject
 {
 	int spriteCol, spriteRow, nCols, nRows;
 	int xDirection, yDirection;
-	float xVel, yVel;
+	float speed, maxSpeed, accel, friction;
+	int startMove;
 
 public:
 	NPC(std::string id);

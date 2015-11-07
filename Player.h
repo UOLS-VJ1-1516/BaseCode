@@ -5,7 +5,8 @@ class Player : public GameObject
 {
 	int spriteCol, spriteRow, nCols, nRows;
 	int xDirection, yDirection;
-	float xVel, yVel;
+	float speed, maxSpeed, accel, friction;
+	int startMove;
 
 public:
 	Player(std::string id);

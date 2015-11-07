@@ -94,38 +94,35 @@ void Game::render() {
 }
 
 void Game::update() {
-	//60FPS
-	if (SDL_GetTicks() % 16 == 0) {
-		//OBJECTS
-		for (int i = 0; i < gameObjects.size(); i++) {
-			gameObjects[i]->update();
-		}
-
-		//BACKGROUND COLOR
-
-		//RED
-		if (red < maxColorValue && green == 0 && blue == 0 || red < maxColorValue && green == 0 && blue == maxColorValue) {
-			red++;
-		}
-		else {
-			if (red > 0 && green == maxColorValue && blue == 0) red--;
-		}
-		//GREEN
-		if (red == maxColorValue && green < maxColorValue && blue == 0) {
-			green++;
-		}
-		else {
-			if (red == 0 && green > 0 && blue == maxColorValue) green--;
-		}
-		//BLUE
-		if (red == 0 && green == maxColorValue && blue < maxColorValue) {
-			blue++;
-		}
-		else {
-			if (red == maxColorValue && green == 0 && blue > 0) blue--;
-		}
-		SDL_SetRenderDrawColor(m_pRenderer, red, green, blue, alpha);
+	//OBJECTS
+	for (int i = 0; i < gameObjects.size(); i++) {
+		gameObjects[i]->update();
 	}
+
+	//BACKGROUND COLOR
+
+	//RED
+	if (red < maxColorValue && green == 0 && blue == 0 || red < maxColorValue && green == 0 && blue == maxColorValue) {
+		red++;
+	}
+	else {
+		if (red > 0 && green == maxColorValue && blue == 0) red--;
+	}
+	//GREEN
+	if (red == maxColorValue && green < maxColorValue && blue == 0) {
+		green++;
+	}
+	else {
+		if (red == 0 && green > 0 && blue == maxColorValue) green--;
+	}
+	//BLUE
+	if (red == 0 && green == maxColorValue && blue < maxColorValue) {
+		blue++;
+	}
+	else {
+		if (red == maxColorValue && green == 0 && blue > 0) blue--;
+	}
+	SDL_SetRenderDrawColor(m_pRenderer, red, green, blue, alpha);
 }
 
 void Game::handleEvents() {

@@ -8,8 +8,11 @@ Player::Player(std::string id) {
 	Player::spriteRow = 0;
 	Player::xDirection = 0;
 	Player::yDirection = 0;
-	Player::xVel = 1;
-	Player::yVel = 1;
+	Player::speed = 0;
+	Player::maxSpeed = 5;
+	Player::accel = 0.001;
+	Player::friction = 0;
+	Player::startMove = 0;
 }
 Player::~Player() {
 	Player::id = id;
@@ -17,8 +20,11 @@ Player::~Player() {
 	Player::spriteRow = 0;
 	Player::xDirection = 0;
 	Player::yDirection = 0;
-	Player::xVel = 1;
-	Player::yVel = 1;
+	Player::speed = 0;
+	Player::maxSpeed = 5;
+	Player::accel = 0;
+	Player::friction = 1;
+	Player::startMove = 0;
 }
 
 void Player::load(LoaderParams* params) {
@@ -43,22 +49,29 @@ void Player::draw() {
 void Player::update() {
 	
 	if (xDirection != 0 || yDirection != 0) {
-		spriteCol = (int)((SDL_GetTicks() / 120) % nCols);
+		//VELOCITY
+		float acceleration = (accel - friction);
+		if (acceleration < 0) acceleration = 0;
+		if (startMove == 0) startMove = SDL_GetTicks();
+		speed += acceleration * (SDL_GetTicks()-startMove);
+		if (speed > maxSpeed) speed = maxSpeed;
+		
 		//MOVEMENT
+		spriteCol = (int)((SDL_GetTicks() / 120) % nCols);
 		if (xDirection > 0) {
-			position += Vector2(xVel, 0);
+			position += Vector2(speed, 0);
 			spriteRow = 2;
 		} else if (xDirection < 0) {
-			position -= Vector2(xVel, 0);
+			position -= Vector2(speed, 0);
 			spriteRow = 1;
 		}
 		//MOVEMENT
 		if (yDirection > 0) {
-			position += Vector2(0, yVel);
+			position += Vector2(0, speed);
 			spriteRow = 0;
 		}
 		else if (yDirection < 0) {
-			position -= Vector2(0, yVel);
+			position -= Vector2(0, speed);
 			spriteRow = 3;
 		}
 		//FIX POSITION
@@ -70,6 +83,9 @@ void Player::update() {
 			position.setY(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h - (height/2));
 		if (position.getY() < (height / 2))
 			position.setY((height / 2));
+	} else {
+		startMove = 0;
+		speed = 0;
 	}
 }
 
