@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "StaticObjects.h"
 #include "Enemy.h"
+#include "InputHandler.h"
+#include "TextureManager.h"
 
 class Game
 {
@@ -15,8 +17,8 @@ private:
 	SDL_Renderer* g_pRenderer;
 	SDL_Event event;
 	bool flag;
-	int screenWidth;
-	int screenHeigth;
+	int m_screenWidth;
+	int m_screenHeight;
 	static Game* s_pInstance;
 	LoaderParams* lp;
 	Player* p;
@@ -24,6 +26,9 @@ private:
 	StaticObjects* o;
 	LoaderParams* le;
 	Enemy* e;
+	Enemy* e2;
+	InputHandler* TheInputHandler;
+	TextureManager* TheTextureManager;
 public:
 	static Game* Instance()
 	{

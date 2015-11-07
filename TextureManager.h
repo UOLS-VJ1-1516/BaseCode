@@ -6,8 +6,6 @@
 
 class TextureManager
 {
-private:
-	TextureManager();
 public:
 	static TextureManager* Instance()
 	{
@@ -26,6 +24,7 @@ public:
 	void setSizeFrames(const char* id, int width, int height);
 
 private:
+	TextureManager();
 	static TextureManager* s_pInstance;
 	std::map<char, SDL_Texture* > m_textureMap;
 	std::map<char, int[2] > m_textureSizes;

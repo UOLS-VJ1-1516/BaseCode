@@ -15,7 +15,6 @@ bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer* pR
 
 	//Creamos la textura.
 	s_texture = SDL_CreateTextureFromSurface(pRenderer, s_surface);
-
 	//Almacenamos la textura en un map.
 	m_textureMap[*id] = s_texture;
 
