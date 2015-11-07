@@ -5,7 +5,9 @@
 class NPC : public GameObject
 {
 	int spriteCol, spriteRow, nCols, nRows;
-	int xDirection;
+	int xDirection, yDirection;
+	float xVel, yVel;
+
 public:
 	NPC(std::string id);
 	~NPC();
@@ -13,6 +15,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	virtual void handleEvents(SDL_Event e);
 	void setTexture(std::string textureID, std::string texturePath, int nCols, int nRows);
 	std::string getTextureId();
 	std::string getTexturePath();

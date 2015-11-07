@@ -27,7 +27,7 @@ SDL_Window * Game::getWindow()
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 		// if succeeded create our window
-		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
+		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 
 		// if the window creation succeeded create our renderer
 		if (m_pWindow != 0) {
@@ -50,7 +50,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		128 / 4,
 		48
 	));
-	((Player*) player)->setTexture("img_player", "assets/images/player.png", 4, 1);
+	((Player*) player)->setTexture("img_player", "assets/images/player_allmove.png", 4, 1);
 
 	GameObject* npc1 = new NPC("princess");
 	npc1->load(new LoaderParams(
@@ -132,7 +132,16 @@ void Game::handleEvents() {
 	SDL_Event event;
 	
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_KEYUP) running = false;
+		//OBJECTS
+		for (int i = 0; i < gameObjects.size(); i++) {
+			gameObjects[i]->handleEvents(event);
+		}
+
+		//INTERFACE
+			//EXIT
+			if (event.type == SDL_KEYUP && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+				running = false;
+			}
 	}
 }
 

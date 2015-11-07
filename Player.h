@@ -4,6 +4,8 @@
 class Player : public GameObject
 {
 	int spriteCol, spriteRow, nCols, nRows;
+	int xDirection, yDirection;
+	float xVel, yVel;
 
 public:
 	Player(std::string id);
@@ -12,6 +14,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	virtual void handleEvents(SDL_Event e);
 	void setTexture(std::string textureID, std::string texturePath, int nCols, int nRows);
 	std::string getTextureId();
 	std::string getTexturePath();
@@ -19,4 +22,5 @@ public:
 private:
 	std::string textureID;
 	std::string texturePath;
-};
+};
+
