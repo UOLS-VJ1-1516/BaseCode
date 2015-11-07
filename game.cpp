@@ -1,7 +1,9 @@
+#pragma once
 #include "game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+
 
 Game* Game::s_pInstance = 0;
 
@@ -86,8 +88,9 @@ void Game::update()
 
 void Game::handleEvents()
 {
-	//InputHandler::Instance()->isKeyDown();
-	SDL_Event esc_event;
+	InputHandler::Instance()->update();
+
+	/*SDL_Event esc_event;
 	
 	while (SDL_PollEvent(&esc_event)) {
 		switch (esc_event.type) {
@@ -98,7 +101,7 @@ void Game::handleEvents()
 					break;
 			}				
 		}
-	}	
+	}	*/
 }
 
 void Game::clean()

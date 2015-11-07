@@ -4,6 +4,7 @@
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "Vector2D.h"
+#include "InputHandler.h"
 
 class GameObject
 {
@@ -25,7 +26,7 @@ class GameObject
 		int m_spriteNum;
 		Vector2D m_position;
 		Vector2D m_velocity;
-		const Vector2D m_maxVelocity; 
+		Vector2D m_maxVelocity; 
 		Vector2D m_acceleration;
-		const Vector2D m_friction;
+		Vector2D m_friction;
 };
