@@ -12,6 +12,7 @@ SDL_Window* g_lWindow = 0;
 int i = 0;
 int currrentFrame = 0;
 
+
 SDL_Texture* texture;
 Game * Game::s_pInstance = 0;
 

@@ -35,14 +35,15 @@ void Player::load(const LoadPar* lPar)
 
 	m_velocity.setX(0);  //Velocidad horizontal inicial
 	m_velocity.setY(0);
-	m_acceleration.setX(0.5);
+	m_acceleration.setX(0);
 	m_acceleration.setY(0);
-	m_maxvelocity.setX(15);
-	m_maxvelocity.setY(0);
-	m_maxvelocityneg.setX(-15);
-	m_maxvelocityneg.setY(0);
+	m_maxvelocity.setX(10);
+	m_maxvelocity.setY(10);
+	m_maxvelocityneg.setX(-10);
+	m_maxvelocityneg.setY(-10);
     m_anchopantalla=lPar->getanchopantalla();
     m_altopantalla=lPar->getaltopantalla();
+	m_friction.setX(0.5);
 
 };
 void Player::draw()
@@ -68,40 +69,53 @@ void Player::update() {
 	}
 	if (key == SDL_SCANCODE_RIGHT) {
 		m_velocity.setX(15);
+		m_acceleration.setY(0);
+		m_acceleration.setX(m_acceleration.getX()+0.5);
+		m_velocity += m_acceleration;
+		m_position += m_velocity;
+		
 		m_flip = 1;
 		
 	}
 	
 	if (key == SDL_SCANCODE_LEFT) {
 		m_velocity.setX(-15);
+		m_acceleration.setY(0);
+		m_acceleration.setX(m_acceleration.getX()-0.5);
+		m_velocity += m_acceleration;
+		m_position += m_velocity;
+
 		m_flip = 2;
 
 	}
 	if (key == SDL_SCANCODE_UP) {
 		m_velocity.setY(-15);
+		m_acceleration.setX(0);
+		m_acceleration.setY(m_acceleration.getY()+0.5);
+		m_velocity += m_acceleration;
+		m_position += m_velocity;
+
 
 	}
 	if (key == SDL_SCANCODE_DOWN) {
 		m_velocity.setY(15);
+		m_acceleration.setX(0);
+		m_acceleration.setY(m_acceleration.getY()-0.5);
+		m_velocity += m_acceleration;
+		m_position += m_velocity;
+		
 
-	}
+	}	m_velocity.setX(0);
+	m_velocity.setY(0);	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+	
+	//---Controlo que no se vaya la aceleracion a infinito
+	if (m_acceleration.getX() >= m_maxvelocity.getX()) m_acceleration.setX(m_maxvelocity.getX());
+	if (m_acceleration.getX() <= m_maxvelocityneg.getX()) m_acceleration.setX(m_maxvelocityneg.getX());
+	if (m_acceleration.getY() >= m_maxvelocity.getY()) m_acceleration.setY(m_maxvelocity.getY());
+	if (m_acceleration.getY() <= m_maxvelocityneg.getY()) m_acceleration.setY(m_maxvelocityneg.getY());
 
 	
-
-
-
-
-
 	
-	
-	if (m_acceleration.getX()>=m_maxvelocity.getX()) m_acceleration.setX(0.5);
-	if (m_acceleration.getX() <= m_maxvelocityneg.getX()) m_acceleration.setX(-0.5);
-	//m_velocity += m_acceleration; //Suma de vectores sobrecargando operador +=
-	m_position += m_velocity; 
-
-	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-	m_velocity.setX(0);
-	m_velocity.setY(0);
 	//------------------LIMITANDO PANTALLA para que salga por el otro lado
 	if (m_position.getX() > m_anchopantalla+80) { m_position.setX(0-120);}
 	if (m_position.getX() < 0-150) { m_position.setX(m_anchopantalla +15); }

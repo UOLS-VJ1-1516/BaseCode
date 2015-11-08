@@ -53,7 +53,7 @@ void Enemy::update() {
 
 	m_position.setX(m_position.getX()-3);
 	if (m_position.getX() < -200)m_position.setX(1600);
-	/*
+	/* Cuando añada columnas y filas en mi sprite
 	if ((m_currentRow == 1) &(m_currentFrame == 4)) { m_currentRow = 2; m_currentFrame = 1; m_sprits = 6; }
 	if ((m_currentRow == 2) &(m_currentFrame == 6)) { m_currentRow = 3; m_currentFrame = 1; m_sprits = 1; }
 	if ((m_currentRow == 3) &(m_currentFrame == 1)) { m_currentRow = 1; m_currentFrame = 1; m_sprits = 4; }*/

@@ -25,6 +25,7 @@ protected:
 	Vector2D m_acceleration;
 	Vector2D m_maxvelocity;
 	Vector2D m_maxvelocityneg;
+	Vector2D m_friction;
 
 	float x;
 	float y;
