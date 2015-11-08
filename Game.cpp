@@ -91,12 +91,14 @@ void Game::update() {
 
 void Game::handleEvents(SDL_Event event) {
 
-	InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN);
-	if (event.type == SDL_KEYDOWN) {
+	InputHandler::Instance()->update();
+	/*if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym = SDLK_ESCAPE) {
 			running = false;
 		}
-	}
+	}*/
+
+	
 	
 
 

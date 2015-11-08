@@ -3,8 +3,9 @@
 #include "Game.h"
 #include "InputHandler.h"
 
+
 Player::Player() {
-	m_velocity.setX(0.1);
+	m_velocity.setX(0);
 	m_velocity.setY(0);
 	
 
@@ -31,45 +32,32 @@ void Player::load(const LoaderParams* pParams)
 }
 void Player::update() {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-	m_velocity.setX(0.1);
-
-		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-		{
-			m_velocity.setX(0.1);
-
-		}
-		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-		{
-			m_velocity.setX(-0.1);
-		}
-		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-		{
-			m_velocity.setY(-0.1);
-		}
-		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
-		{
-			m_velocity.setY(0.1);
-		}
+	//m_velocity.setX(0.1);
 	
-	
-	//m_position.setX(m_position.getX());
-	//m_position.setY(m_position.getX());
-	/*if (m_position.getX() <=0) {
+	if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+	{
 		m_velocity.setX(0.1);
-		m_velocity.setY(0);
 		turn = SDL_FLIP_NONE;
-		
-	}
 
-	else if (m_position.getX() >= 600) {
+	}
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+	{
 		m_velocity.setX(-0.1);
 		turn = SDL_FLIP_HORIZONTAL;
+	}
+	else {
+		m_velocity.setX(0);
 		
+	}
+	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+	{
+		m_velocity.setY(-0.1);
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
+	{
+		m_velocity.setY(0.1);
 	}*/
 	m_position += m_velocity;
-	
-	
-	
 	
 }
 
