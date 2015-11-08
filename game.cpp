@@ -38,7 +38,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 
 		// if succeeded create our window
-		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, false);
+		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, true);
 		ancho = width;
 		alto = height;
 
@@ -54,30 +54,30 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	//	flip=1->SDL_FLIP_NONE;  flip =2-> SDL_FLIP_HORIZONTAL; flip = 3 ->SDL_FLIP_VERTICAL;
 		
 		GameObject* player1 = new Player();
-		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1));
+		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1,ancho,alto));
 
 
 		GameObject* enemy1 = new Player();
-		enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1));
+		enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1, ancho, alto));
 
 		GameObject* enemy2 = new Enemy();
-		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2));
+		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2, ancho, alto));
 
 		GameObject* enemy3 = new Enemy();
-		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, 2));
+		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, 2, ancho, alto));
 
 		GameObject* enemy4 = new Enemy();
-		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2));
+		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2, ancho, alto));
 
 		GameObject* coin1 = new Enemy();
-		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2));
+		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2, ancho, alto));
 
 	
 		GameObject* fons = new Fons();
-		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1));
+		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1, ancho, alto));
 
 		GameObject* fons2 = new Fons();
-		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1));
+		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1, ancho, alto));
 
 
 		m_gameObjects.push_back(player1);

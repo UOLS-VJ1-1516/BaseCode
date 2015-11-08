@@ -41,6 +41,8 @@ void Player::load(const LoadPar* lPar)
 	m_maxvelocity.setY(0);
 	m_maxvelocityneg.setX(-15);
 	m_maxvelocityneg.setY(0);
+    m_anchopantalla=lPar->getanchopantalla();
+    m_altopantalla=lPar->getaltopantalla();
 
 };
 void Player::draw()
@@ -89,17 +91,7 @@ void Player::update() {
 
 
 
-	if (m_position.getX() > 1400) {   //Adaptarlo al ancho de pantalla
-		//m_velocity.setX(-2);
-		m_acceleration.setX(-1);
-		m_flip = 2;
-		
-	}
-	else if (m_position.getX() < 0) {
-		//m_velocity.setX(2);
-		m_acceleration.setX(1);
-		m_flip = 1;
-	}
+
 	
 	
 	if (m_acceleration.getX()>=m_maxvelocity.getX()) m_acceleration.setX(0.5);
@@ -111,10 +103,10 @@ void Player::update() {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	//------------------LIMITANDO PANTALLA para que salga por el otro lado
-	if (m_position.getX() > 1400) { m_position.setX(0);}
-	if (m_position.getX() < 0) { m_position.setX(1400); }
-	if (m_position.getY() > 800) { m_position.setY(0); }
-	if (m_position.getY() < 0) { m_position.setY(800); }
+	if (m_position.getX() > m_anchopantalla+80) { m_position.setX(0-120);}
+	if (m_position.getX() < 0-150) { m_position.setX(m_anchopantalla +15); }
+	if (m_position.getY() > m_altopantalla+80) { m_position.setY(0- 15); }
+	if (m_position.getY() < 0-150) { m_position.setY(m_altopantalla+ 15); }
 	
 }
 void Player::clean() {}

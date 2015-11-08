@@ -36,6 +36,8 @@ protected:
 	int	m_currentRow;
 	int	m_sprits;
 	int	m_flip;
+	int m_anchopantalla;
+	int m_altopantalla;
 	std::string m_texid;
 
 

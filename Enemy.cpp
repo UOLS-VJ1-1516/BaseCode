@@ -29,6 +29,8 @@ void Enemy::load(const LoadPar* lPar)
 	m_position.setX(lPar->getx());
 	m_position.setY(lPar->gety());
 	m_texid = lPar->gettexid();
+	m_anchopantalla = lPar->getanchopantalla();
+	m_altopantalla = lPar->getaltopantalla();
 	m_currentRow = lPar->getcurrentRow();
 	m_sprits = lPar->getsprits();
 	m_flip = lPar->getflip();

@@ -31,6 +31,8 @@ void Fons::load(const LoadPar* lPar)
 	m_texid = lPar->gettexid();
 	m_currentRow = lPar->getcurrentRow();
 	m_sprits = lPar->getsprits();
+	m_anchopantalla = lPar->getanchopantalla();
+	m_altopantalla = lPar->getaltopantalla();
 	m_flip = lPar->getflip();
 
 };
