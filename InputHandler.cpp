@@ -13,25 +13,24 @@ InputHandler::~InputHandler() {};
 
 
 void InputHandler::update() {
-
-	
-		SDL_Event event;
-		while (SDL_PollEvent(&event))
-		{
-			switch (event.type) {
-			case SDL_KEYUP:
-				switch (event.key.keysym.sym)
-				{
-				case SDLK_ESCAPE:
-					Game::Instance()->quit();
-					break;
-				}
-				break;
-			default:
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type) {
+		case SDL_KEYUP:
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_ESCAPE:
+				Game::Instance()->quit();
 				break;
 			}
+			break;
+		default:
+			break;
+
+
 		}
-	
+	}
 
 };
 void InputHandler::clean() {

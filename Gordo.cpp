@@ -5,6 +5,8 @@
 Gordo::Gordo() {
 	m_velocity.setX(0.1);
 	m_velocity.setY(0);
+	m_friction.setX(m_velocity.getX() - 0.08);
+
 };
 Gordo::~Gordo() {};
 SDL_RendererFlip turnGordo = SDL_FLIP_NONE;
@@ -27,17 +29,19 @@ void Gordo::load(const LoaderParams* pParams)
 void Gordo::update() {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 	if (m_position.getX() <= 0) {
+		
 		m_velocity.setX(0.1);
-		m_velocity.setY(0);
+		m_velocity.setX((m_velocity.getX() - m_friction.getX()));
 		turnGordo = SDL_FLIP_NONE;
 	}
 
 	else if (m_position.getX() >= 600) {
 		m_velocity.setX(-0.1);
+		m_velocity.setX((m_velocity.getX() + m_friction.getX()));
 		turnGordo = SDL_FLIP_HORIZONTAL;
 
 	}
-	m_position += m_velocity;
+	GameObject::update();
 }
 
 void Gordo::clean() {
