@@ -2,6 +2,7 @@
 #include "game.h"
 #include "texturemanager.h"
 #include "LoadPar.h"
+#include "InputHandler.h"
 
 
 
@@ -148,13 +149,13 @@ return running;
 
 
 int Game::handleEvents() {
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
-		running = true;
-		if (event.key.keysym.sym == SDLK_ESCAPE) {  //SDL_KEYDOWN
-			running = false;
-		}
+	bool exit=InputHandler::Instance()->Quit();
+
+	if (exit) {
+		running = false;
+
 	}
+
 	return 1;
 }
 
