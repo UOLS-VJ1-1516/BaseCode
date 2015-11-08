@@ -38,7 +38,6 @@ void Player::update() {
 	{
 		m_velocity.setX(0.1);
 		turn = SDL_FLIP_NONE;
-
 	}
 	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
@@ -57,7 +56,8 @@ void Player::update() {
 	{
 		m_velocity.setY(0.1);
 	}*/
-	m_position += m_velocity;
+	GameObject::update();
+	//m_position += m_velocity;
 	
 }
 

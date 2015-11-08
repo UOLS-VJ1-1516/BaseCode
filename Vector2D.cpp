@@ -93,7 +93,7 @@ float Vector2D::length()
 void Vector2D::normalize()
 {
 	float distancia = length();
-	if (distancia > 0) // we never want to attempt to divide by 0
+	if (distancia > 0) 
 	{
 		(*this) *= 1 / distancia;
 	}
