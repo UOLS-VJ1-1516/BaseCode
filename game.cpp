@@ -4,6 +4,7 @@
 	#include "SDL_image.h"
 	#include "TextureManager.h"
 	#include "iostream"
+	#include "InputHandler.h"
 
 	Player *player;
 	Enemy *enemy;
@@ -12,7 +13,7 @@
 	const LoaderParams* enemyLoader;
 	const LoaderParams* enemy2Loader;
 
-	bool running = true;
+	
 	int row=0;
 	std::vector<GameObject*> m_gameObjects;
 
@@ -99,23 +100,19 @@
 
 	}
 	
-	void Game::handleEvents(SDL_Event event){
-		switch (event.type) {
+	void Game::handleEvents(){
+		InputHandler::Instance()->update();
+		/*switch (event.type) {
 		case SDL_KEYUP:
 			switch (event.key.keysym.sym)
 			{
 				case SDLK_ESCAPE:
-					running = false;
-				case SDLK_UP:
-				{
-					row = row + 1;
-					if (row > 8)row = 0;
-				}
+					Game::quit();
 			}
 			break;
 		default:
 			break;
-		}
+		}*/
 	}
 	
 	void Game::clean(){

@@ -10,8 +10,8 @@ GameObject::~GameObject()
 
 void GameObject::load(const LoaderParams* pParams){
 
-	m_x = pParams->getX();
-	m_y = pParams->getY();
+	m_position.setX(pParams->getX());
+	m_position.setY(pParams->getY());
 
 	m_width = pParams->getWidth();
 	m_height = pParams->getHeight();
@@ -31,7 +31,7 @@ void GameObject::draw()
 
 void GameObject::update()
 {
-	
+	m_position += m_velocity;
 }
 void GameObject::clean()
 {

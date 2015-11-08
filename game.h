@@ -2,8 +2,7 @@
 
 #include "SDL.h"
 #include "vector"
-//#include "GameObject.h"
-//#include "LoaderParams.h"
+
 class Game
 {
 	SDL_Window* m_pWindow;
@@ -23,12 +22,15 @@ class Game
 		ypos , int width, int height , bool fullscreen );
 	void render();
 	void update();
-	void handleEvents(SDL_Event event);
+	void handleEvents();
 	void clean();
+	void quit() { running = false; };
 	bool isRunning();
 	SDL_Renderer* getRenderer();
 
 private:
+	bool running = true;
+
 	static Game* g_pInstance;
 	SDL_Renderer* m_pRenderer;
 

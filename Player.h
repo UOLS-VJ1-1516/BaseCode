@@ -8,4 +8,6 @@ public:
 	void load(const LoaderParams *pParams);
 	virtual void update();
 	virtual void clean();
+private:
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
