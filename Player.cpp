@@ -32,6 +32,9 @@ void Player::load(const LoadPar* lPar)
 	m_sprits = lPar->getsprits();
 	m_flip = lPar->getflip();
 
+	m_velocity.setX(10);  //Velocidad horizontal inicial
+	m_velocity.setY(0);
+
 };
 void Player::draw()
 {
@@ -47,12 +50,19 @@ void Player::draw(SDL_Renderer* Renderer) {
 }
 
 void Player::update() {
-	if (m_flip == 1) m_position.setX(m_position.getX() + 10);   //Aixi controlo en quin sentit esta
-	if (m_flip == 2) m_position.setX(m_position.getX() - 10);
-	if (m_position.getX() >1400)m_flip=2;
-	if (m_position.getX() <0)m_flip=1;
+
+	if (m_position.getX() > 1400) {   //Adaptarlo al ancho de pantalla
+		m_velocity.setX(-10);
+		m_flip = 2;
+	}
+	else if (m_position.getX() < 0) {
+		m_velocity.setX(10);
+		m_flip = 1;
+	}
+
+	m_position+=m_velocity; //Suma de vectores sobrecargando operador +=
 	
-		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
 		
 	
 }

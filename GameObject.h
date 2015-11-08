@@ -21,6 +21,7 @@ public:
 	
 protected:
 	Vector2D m_position;
+	Vector2D m_velocity;
 	float x;
 	float y;
 
