@@ -57,7 +57,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 		GameObject* enemy1 = new Player();
-		enemy1->load(new LoadPar(230, 160, 200, 220, "behemot", 3, 6, 1));
+		enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1));
 
 		GameObject* enemy2 = new Enemy();
 		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2));
@@ -69,15 +69,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2));
 
 		GameObject* coin1 = new Enemy();
-		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, SDL_FLIP_HORIZONTAL));
+		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2));
 
 	
-
 		GameObject* fons = new Fons();
-		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, SDL_FLIP_NONE));
+		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1));
 
 		GameObject* fons2 = new Fons();
-		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, SDL_FLIP_NONE));
+		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1));
 
 
 		m_gameObjects.push_back(player1);
@@ -90,11 +89,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_gameObjects.push_back(fons2);
 		
 		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/behemot.png", "behemot", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
-	
+		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
 		running = true;
 
 	}

@@ -30,7 +30,7 @@ bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_
 	}
 	
 }
-void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* g_lRenderer, int flip) {
+void TextureManager::draw(std::string id, float x, float y, int width, int height, SDL_Renderer* g_lRenderer, int flip) {
 	//´flip ha de ser  SDL_FLIP_NONE si vull que no es giri
 	
 	SDL_Rect src;
@@ -42,8 +42,8 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 	src.h = height;
 	dest.w = width;
 	dest.h = height;
-	dest.x = x;
-	dest.y = y;
+	dest.x = (int)x;
+	dest.y = (int)y;
 	if (flip == 1) Sflip = SDL_FLIP_NONE;
 	if (flip == 2) Sflip = SDL_FLIP_HORIZONTAL;
 	if (flip == 3) Sflip = SDL_FLIP_VERTICAL;
@@ -51,7 +51,7 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 
 }
 
-void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, int flip) {
+void TextureManager::drawFrame(std::string id, float x, float y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, int flip) {
 	SDL_Rect src;
 	SDL_Rect dest;
 

@@ -2,12 +2,13 @@
 #ifndef LOADPAR_h
 #define LOADPAR_H
 #include <string>
+#include "Vector2D.h"
 
 class LoadPar {
 
 public:	
 
-	LoadPar(int x, int y, int width, int height, std::string id, int currentRow, int sprits, int flip) {
+	LoadPar(float x, float y, int width, int height, std::string id, int currentRow, int sprits, int flip) {
 		m_x = x;
 		m_y = y;
 		m_width = width;
@@ -17,8 +18,11 @@ public:
 		m_sprits = sprits;
 		m_flip = flip;
 	}
-	int getx() const { return m_x; }
-	int gety() const { return m_y; }
+
+
+
+	float getx() const { return m_x; }
+	float gety() const { return m_y; }
 	int getwidth() const { return m_width; }
 	int getheight() const { return m_height; }
 	int getcurrentRow() const { return m_currentRow; }
@@ -33,8 +37,8 @@ private:
 	int m_height;
 	int m_currentFrame;
 	int m_currentRow;
-	int m_x;
-	int m_y;
+	float m_x;
+	float m_y;
 	int m_flip;
 	int m_sprits;
 	std::string m_texid;

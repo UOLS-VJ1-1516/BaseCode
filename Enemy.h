@@ -11,7 +11,7 @@ class Enemy : public GameObject
 		void draw(SDL_Renderer* lRender);
 		void draw();
 		void load(const LoadPar* lPar);
-		void load(int x, int y, int width, int height,std::string texid);
+		void load(float x, float y, int width, int height,std::string texid);
 		void update();
 		void clean();
 		};
