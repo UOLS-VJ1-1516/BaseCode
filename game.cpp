@@ -39,7 +39,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 
 		// if succeeded create our window
-		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, true);
+		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, false);
 		ancho = width;
 		alto = height;
 

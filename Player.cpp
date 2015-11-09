@@ -91,7 +91,7 @@ void Player::update() {
 	if (key == SDL_SCANCODE_UP) {
 		m_velocity.setY(-15);
 		m_acceleration.setX(0);
-		m_acceleration.setY(m_acceleration.getY()+0.5);
+		m_acceleration.setY(m_acceleration.getY()-0.5);
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
 
@@ -100,7 +100,7 @@ void Player::update() {
 	if (key == SDL_SCANCODE_DOWN) {
 		m_velocity.setY(15);
 		m_acceleration.setX(0);
-		m_acceleration.setY(m_acceleration.getY()-0.5);
+		m_acceleration.setY(m_acceleration.getY()+0.5);
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
 		
