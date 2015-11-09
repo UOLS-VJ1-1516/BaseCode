@@ -1,44 +1,50 @@
 #pragma once
+#ifndef GAME_H
+#define GAME_H
 #include "SDL.h"
+#include "TextureManager.h"
 #include "vector"
 #include "Player.h"
-#include "enemy.h"
+#include "Enemy.h"
+#include "Enemy2.h"
 
-class game
-{
+class Game {
 private:
-	game();
+	Game();
+	SDL_Window* m_pWindow;
+	SDL_Renderer* m_pRenderer;
+	SDL_Surface * img;
+	static Game* s_pInstance;
+	LoaderParams* load;
+	Player* player;
+	LoaderParams* load2;
+	Enemy* enemy1;
+	LoaderParams* load3;
+	Enemy2* enemy2;
+	int spriteNum;
+	bool running = true;
+
 public:
-
-	static game* Instance()
+	static Game* Instance()
 	{
-		if (g_pInstance == 0)
+		if (s_pInstance == 0)
 		{
-			g_pInstance = new game();
+			s_pInstance = new Game();
 		}
-		return g_pInstance;
+		return s_pInstance;
 	}
-	~game();
 
-	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-	void render(int r, int g, int b);
+	~Game();
+	bool init(const char* title, int xpos, int
+		ypos, int width, int height, bool fullscreen);
+	void render();
 	void update();
 	void handleEvents(SDL_Event event);
 	void clean();
+	void quit() {running == false; }
 	bool isRunning();
-	SDL_Renderer* getRenderer();
+	SDL_Renderer* getRender();
 	int getTicks();
-
-private:
-	static game* g_pInstance;
-	SDL_Window* g_pWindow = 0;
-	SDL_Renderer* g_pRenderer = 0;
-	bool running = true;
-	std::vector< GameObject* > m_gameObjects;
-	LoaderParams* params1;
-	LoaderParams* params2;
-	LoaderParams* params3;
-	GameObject* player1;
-	GameObject* enemy1;
-	GameObject* enemy2;
+	std::vector<GameObject*> m_gameObjects;
 };
+#endif

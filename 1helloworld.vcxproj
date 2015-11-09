@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include; libs/SDL_image/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib; libs/SDL_image/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib; SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>libs/SDL/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,20 +81,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Enemy2.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="enemy.h" />
-    <ClInclude Include="game.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Enemy2.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

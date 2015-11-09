@@ -1,22 +1,28 @@
 #include "game.h"
 
-int main(int argc, char* args[])
-{
+const int FPS = 60;
+const int DELAY_TIME = 1000.0f / FPS;
+
+int main(int argc, char* args[]) { 
+	Uint32 frameStart, frameTime;
 	SDL_Event event;
-	int r = 255, g = 255, b = 255;
+	Game::Instance()->init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
-	// Iniciamos el game
-	game::Instance()->init("Ejercicio 3", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 800, true);
+	while (Game::Instance()->isRunning()) {
+		frameStart = SDL_GetTicks();
 
-	//Mientras no se quiera cerrar el game, se llama repetidamente a las funciones del while
-	while (game::Instance()->isRunning())
-	{
-		while (SDL_PollEvent(&event)) {
-			game::Instance()->handleEvents(event);
+		if (SDL_PollEvent(&event) == 1) {
+			Game::Instance()->handleEvents(event); 
 		}
-		game::Instance()->update();
-		game::Instance()->render(r -= 1, g += 1, b);
+
+		Game::Instance()->render(); 
+		Game::Instance()->update(); 
+		frameTime = SDL_GetTicks() - frameStart;
+
+		if (frameStart < DELAY_TIME) {
+			SDL_Delay((int)(DELAY_TIME - frameTime));
+		}
 	}
-	game::Instance()->clean();
+	Game::Instance()->clean();//neteja el buffer abans de tancar la aplicacio
 	return 0;
 }

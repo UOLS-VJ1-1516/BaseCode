@@ -1,43 +1,45 @@
 #include "TextureManager.h"
 
-// Instancia de TextureManager
 TextureManager* TextureManager::s_pInstance = 0;
-
-// Constructor y destructor
 TextureManager::TextureManager() {};
 TextureManager::~TextureManager() {};
 
-// Funcion para cargar la textura
-bool TextureManager::load(char* fileName, const char* id, SDL_Renderer* pRenderer) {
-	texture = IMG_LoadTexture(pRenderer, fileName);
+bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer *m_pRenderer) {
+	img = SDL_LoadBMP(fileName);
+	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 0, 255));
+	texture = SDL_CreateTextureFromSurface(m_pRenderer, img);
+	m_pTextureMap[*id] = texture;
 	return true;
-};
+}
 
-void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
-	// Posición (x,y) del rectangulo rojo indicando posicion del spritesheet
-	SrcR.x = currentFrame * m_textureSizes[*id][0];
-	SrcR.y = currentRow * m_textureSizes[*id][1];
+void TextureManager::draw(const char* id, int x, int y, int width, int height,
+	SDL_Renderer* pRender, SDL_RendererFlip flip = SDL_FLIP_NONE) {
+	TextureManager::inicio.w = 0;
+	TextureManager::inicio.h = 0;
+	TextureManager::inicio.w = width;
+	TextureManager::inicio.h = height;
+	
+	TextureManager::dest.x = x;
+	TextureManager::dest.y = y;
+	TextureManager::dest.w = width;
+	TextureManager::dest.h = height;
 
-	// Tamaño del trozo de spritesheet que coje
-	SrcR.w = m_textureSizes[*id][0];
-	SrcR.h = m_textureSizes[*id][1];
+	SDL_RenderCopyEx(pRender, m_pTextureMap[*id], &inicio, &dest, 0, center, flip);
 
-	// Posicion donde colocar el rectangulo rojo
-	DestR.x = m_texturePositions[*id][0];
-	DestR.y = m_texturePositions[*id][1];
+}
 
-	// Tamaño del rectangulo rojo
-	DestR.w = m_textureSizes[*id][0];
-	DestR.h = m_textureSizes[*id][1];
+void TextureManager::drawFrame(const char* id, int x, int y, int width, int height,
+	int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
 
-	SDL_RenderCopy(pRender, m_textureMap[*id], &SrcR, &DestR);
-};
+	TextureManager::inicio.x=currentFrame*width;
+	TextureManager::inicio.y = height*currentRow;
+	TextureManager::inicio.w = width;
+	TextureManager::inicio.h = height;
+	
+	TextureManager::dest.x = x;
+	TextureManager::dest.y = y;
+	TextureManager::dest.w = width;
+	TextureManager::dest.h = height;
 
-//Funcion para crear el mapa de texturas
-void TextureManager::setFrame(const char* id, int x, int y, int w, int h) {
-	m_textureMap[*id] = texture;
-	m_texturePositions[*id][0] = x;
-	m_texturePositions[*id][1] = y;
-	m_textureSizes[*id][0] = w;
-	m_textureSizes[*id][1] = h;
+	SDL_RenderCopyEx(pRender, m_pTextureMap[*id], &inicio, &dest, 0, 0, flip);
 }

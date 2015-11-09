@@ -1,13 +1,14 @@
 #pragma once
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef PLAYER_H
+#define PLAYER_H
 #include "GameObject.h"
 #include "LoaderParams.h"
+#include "InputHandler.h"
 
-class Enemy : public GameObject {
+class Player : public GameObject {
 public:
-	Enemy();
-	~Enemy();
+	Player();
+	~Player();
 	void draw();
 	void load(const LoaderParams* pParams);
 	void update();
