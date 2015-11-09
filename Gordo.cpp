@@ -5,7 +5,8 @@
 Gordo::Gordo() {
 	m_velocity.setX(0.1);
 	m_velocity.setY(0);
-	m_friction.setX(m_velocity.getX() - 0.08);
+	m_frictionRight.setX(m_velocity.getX() - 0.08);
+	m_frictionLeft.setX(m_velocity.getX() - 0.08);
 
 };
 Gordo::~Gordo() {};
@@ -31,13 +32,13 @@ void Gordo::update() {
 	if (m_position.getX() <= 0) {
 		
 		m_velocity.setX(0.1);
-		m_velocity.setX((m_velocity.getX() - m_friction.getX()));
+		m_velocity.setX((m_velocity.getX() - m_frictionRight.getX()));
 		turnGordo = SDL_FLIP_NONE;
 	}
 
 	else if (m_position.getX() >= 600) {
 		m_velocity.setX(-0.1);
-		m_velocity.setX((m_velocity.getX() + m_friction.getX()));
+		m_velocity.setX((m_velocity.getX() + m_frictionLeft.getX()));
 		turnGordo = SDL_FLIP_HORIZONTAL;
 
 	}

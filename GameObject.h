@@ -1,7 +1,7 @@
 #pragma once
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-//#include "SDL.h"
+#include "SDL.h"
 //#include "String"
 #include "LoaderParams.h"
 #include "Vector2D.h"
@@ -25,7 +25,9 @@ protected:
 	Vector2D m_position;
 	Vector2D m_velocity;
 	Vector2D m_acceleration;
-	Vector2D m_friction;
+	Vector2D m_desacceleration;
+	Vector2D m_frictionLeft;
+	Vector2D m_frictionRight;
 	Vector2D m_maxVelocity;
 	int m_currentFrame;
 	int m_currentRow;

@@ -2,7 +2,6 @@
 #include "SDL.h"
 class InputHandler
 {
-
 public:
 	static InputHandler* Instance()
 	{
@@ -12,13 +11,16 @@ public:
 		}
 		return s_pInstance;
 	}
-	InputHandler();
+	~InputHandler();
 	void update();
 	void clean();
 	// Métodos de acceso
+	//	void onKeyUp();
+	//	void onKeyDown();
 	bool isKeyDown(SDL_Scancode key);
+	InputHandler();
 	static InputHandler* s_pInstance;
-	~InputHandler();
 private:
-	Uint8* m_keystate;
+	const Uint8* m_keystate;
+
 };

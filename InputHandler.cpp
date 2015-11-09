@@ -1,18 +1,15 @@
-#pragma once
 #include "InputHandler.h"
-#include "Game.h"
+#include "game.h"
 
+InputHandler * InputHandler::s_pInstance = 0;
+InputHandler::InputHandler() {
+	m_keystate = SDL_GetKeyboardState(0);
+}
+InputHandler::~InputHandler() {
+}
 
-
-
-InputHandler* InputHandler::s_pInstance = 0;
-InputHandler::InputHandler() { InputHandler::m_keystate = 0; };
-InputHandler::~InputHandler() {};
-
-
-
-
-void InputHandler::update() {
+void InputHandler::update()
+{
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -27,22 +24,24 @@ void InputHandler::update() {
 			break;
 		default:
 			break;
-
-
 		}
 	}
+}
 
-};
-void InputHandler::clean() {
+void InputHandler::clean()
+{
+}
 
-};
-// Métodos de acceso
-bool InputHandler::isKeyDown(SDL_Scancode key) {
-	if (m_keystate != 0) {
-		if (m_keystate[key] == 1) {
+bool InputHandler::isKeyDown(SDL_Scancode key)
+{
+	if (m_keystate != 0)
+	{
+		if (m_keystate[key] == 1)
+		{
 			return true;
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
