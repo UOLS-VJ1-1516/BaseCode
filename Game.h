@@ -27,6 +27,8 @@ private:
 	LoaderParams* le;
 	Enemy* e;
 	Enemy* e2;
+	Enemy* e3;
+	Enemy* e4;
 	InputHandler* TheInputHandler;
 	TextureManager* TheTextureManager;
 public:
