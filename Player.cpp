@@ -118,7 +118,7 @@ void Player::update() {
 		m_position += m_velocity;
 		flag = 4; 
 
-	}		m_velocity.setX(0);
+	}		
 	m_velocity.setY(0);	//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada (Faltaria implementar la friccion vertical
 		//----Friccion en caso negativo
 		if (m_velocity.getX() < 0) {
@@ -129,12 +129,18 @@ void Player::update() {
 
 			}
 		}
-		//Friccion caso positivo
-		if (m_velocity.getX() > 0) {
-			if (m_velocity.getX() != 0) {
-				m_friction.setX(-0.1);
-				m_velocity += m_friction;
-				m_position += m_velocity;
+		else {
+			//Friccion caso positivo
+			if (m_velocity.getX() > 0) {
+				if (m_velocity.getX() != 0) {
+					m_friction.setX(-0.1);
+					m_velocity += m_friction;
+					m_position += m_velocity;
+				}
+			 }
+			else {
+
+				m_velocity.setX(0);
 			}
 		}
 		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);	
