@@ -149,8 +149,8 @@ void Player::update() {
 	
 	
 	//------------------LIMITANDO PANTALLA para que salga por el otro lado
-	if (m_position.getX() > m_anchopantalla+80) { m_position.setX(0-120);}
-	if (m_position.getX() < 0-150) { m_position.setX(m_anchopantalla +15); }
+	if (m_position.getX() > m_anchopantalla-150) { m_position.setX(m_anchopantalla-150);}
+	if (m_position.getX() < 0) { m_position.setX(0); }
 	if (m_position.getY() > m_altopantalla+80) { m_position.setY(0- 15); }
 	if (m_position.getY() < 0-150) { m_position.setY(m_altopantalla+ 15); }
 	
