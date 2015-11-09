@@ -116,7 +116,7 @@ void Player::update() {
 		if (m_acceleration.getY() >= m_maxacceleration.getY()) m_acceleration.setY(m_maxacceleration.getY());
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
-		flag = 4;
+		flag = 4; 
 
 	}		m_velocity.setX(0);
 	m_velocity.setY(0);	//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada (Faltaria implementar la friccion vertical
