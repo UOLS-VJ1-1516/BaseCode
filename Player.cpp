@@ -7,7 +7,7 @@
 Player::Player() {};
 Player::~Player() {};
 bool quit;
-
+int flag;
 void Player::load(float x, float y, int width, int height,
 	std::string texid)
 {
@@ -37,10 +37,10 @@ void Player::load(const LoadPar* lPar)
 	m_velocity.setY(0);
 	m_acceleration.setX(0);
 	m_acceleration.setY(0);
-	m_maxvelocity.setX(10);
-	m_maxvelocity.setY(10);
-	m_maxvelocityneg.setX(-10);
-	m_maxvelocityneg.setY(-10);
+	m_maxacceleration.setX(30);
+	m_maxacceleration.setY(30);
+	m_maxaccelerationneg.setX(-30);
+	m_maxaccelerationneg.setY(-30);
     m_anchopantalla=lPar->getanchopantalla();
     m_altopantalla=lPar->getaltopantalla();
 	m_friction.setX(0.5);
@@ -64,56 +64,80 @@ void Player::update() {
 	quit = false;
 	SDL_Scancode key = InputHandler::Instance()->update();
 	if (key == SDL_SCANCODE_ESCAPE) {
-		
+
 		quit = true;
 	}
+	//Flag, 1->Right 2->Left 3->Up 4->Down
 	if (key == SDL_SCANCODE_RIGHT) {
-		m_velocity.setX(15);
+		m_velocity.setX(15);  //Velocidad inicial
 		m_acceleration.setY(0);
-		m_acceleration.setX(m_acceleration.getX()+0.5);
+		if (flag != 1) m_acceleration.setX(0);
+		m_acceleration.setX(m_acceleration.getX() + 0.25);
+		//---Controlo que no se vaya la aceleracion a infinito
+		if (m_acceleration.getX() >= m_maxacceleration.getX()) m_acceleration.setX(m_maxacceleration.getX());
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
-		
+		flag = 1;
 		m_flip = 1;
-		
+
 	}
-	
+
 	if (key == SDL_SCANCODE_LEFT) {
-		m_velocity.setX(-15);
+		m_velocity.setX(-15); //Velocidad inicial
 		m_acceleration.setY(0);
-		m_acceleration.setX(m_acceleration.getX()-0.5);
+		if (flag != 2) m_acceleration.setX(0);
+		m_acceleration.setX(m_acceleration.getX() - 0.25);
+		//---Controlo que no se vaya la aceleracion a infinito
+		if (m_acceleration.getX() <= m_maxaccelerationneg.getX()) m_acceleration.setX(m_maxaccelerationneg.getX());
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
-
+		flag = 2;
 		m_flip = 2;
 
 	}
 	if (key == SDL_SCANCODE_UP) {
-		m_velocity.setY(-15);
+		m_velocity.setY(-15); //Velocidad inicial
 		m_acceleration.setX(0);
-		m_acceleration.setY(m_acceleration.getY()+0.5);
+		m_acceleration.setY(m_acceleration.getY() - 0.25);
+		if (flag != 3) m_acceleration.setY(0);
+		//---Controlo que no se vaya la aceleracion a infinito
+		if (m_acceleration.getY() <= m_maxaccelerationneg.getY()) m_acceleration.setY(m_maxaccelerationneg.getY());
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
-
+		flag = 3;
 
 	}
 	if (key == SDL_SCANCODE_DOWN) {
-		m_velocity.setY(15);
+		m_velocity.setY(15); //Velocidad inicial
 		m_acceleration.setX(0);
-		m_acceleration.setY(m_acceleration.getY()-0.5);
+		m_acceleration.setY(m_acceleration.getY() + 0.25);
+		if (flag != 4) m_acceleration.setY(0);
+		//---Controlo que no se vaya la aceleracion a infinito
+		if (m_acceleration.getY() >= m_maxacceleration.getY()) m_acceleration.setY(m_maxacceleration.getY());
 		m_velocity += m_acceleration;
 		m_position += m_velocity;
-		
+		flag = 4;
 
-	}	m_velocity.setX(0);
-	m_velocity.setY(0);	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-	
-	//---Controlo que no se vaya la aceleracion a infinito
-	if (m_acceleration.getX() >= m_maxvelocity.getX()) m_acceleration.setX(m_maxvelocity.getX());
-	if (m_acceleration.getX() <= m_maxvelocityneg.getX()) m_acceleration.setX(m_maxvelocityneg.getX());
-	if (m_acceleration.getY() >= m_maxvelocity.getY()) m_acceleration.setY(m_maxvelocity.getY());
-	if (m_acceleration.getY() <= m_maxvelocityneg.getY()) m_acceleration.setY(m_maxvelocityneg.getY());
+	}		m_velocity.setX(0);
+	m_velocity.setY(0);	//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada (Faltaria implementar la friccion vertical
+		//----Friccion en caso negativo
+		if (m_velocity.getX() < 0) {
+			if(m_velocity.getX() != 0) {
+				m_friction.setX(+0.1);
+				m_velocity += m_friction;
+				m_position += m_velocity;
 
+			}
+		}
+		//Friccion caso positivo
+		if (m_velocity.getX() > 0) {
+			if (m_velocity.getX() != 0) {
+				m_friction.setX(-0.1);
+				m_velocity += m_friction;
+				m_position += m_velocity;
+			}
+		}
+		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);	
 	
 	
 	//------------------LIMITANDO PANTALLA para que salga por el otro lado
