@@ -14,10 +14,12 @@ Game::Game() {
 	o = new StaticObjects();
 	e = new Enemy();
 	e2 = new Enemy();
+	e3 = new Enemy();
+	e4 = new Enemy();
 	//Cargamos los parámetros de cada uno.
 	lp = new LoaderParams(0, 0, 70, 61, "Player",  8, 0, 0, 30, 0.1); 
 	lo = new LoaderParams(300, 500, 36, 64, "Key",  8, 0, 0, 0, 0.1); 
-	le = new LoaderParams(250, 150, 60, 35, "Tim", 3, 8, 0, 10, 0.1);
+	le = new LoaderParams(250, 150, 60, 35, "Tim", 3, 3, 0, 10, 0.1);
 	TheTextureManager = TextureManager::Instance();
 	TheInputHandler = InputHandler::Instance();
 }
@@ -30,11 +32,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		if (fullscreen) {
 			g_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_FULLSCREEN_DESKTOP);
+			SDL_GetWindowSize(g_pWindow, &width, &height);
 		}
 		else {
 			g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		}
-
 
 		m_screenWidth = width;
 		m_screenHeight = height;
@@ -55,6 +57,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			le = new LoaderParams(500, 300, 60, 35, "Tim", 3, 8, 0, 10, 0.1);
 			e2->load(le);
 			m_gobjects.push_back(e2);
+			le = new LoaderParams(500, 450, 60, 35, "Tim", 3, 10, 0, 10, 0.1);
+			e3->load(le);
+			m_gobjects.push_back(e3);
+			le = new LoaderParams(500, 600, 60, 35, "Tim", 3, 5, 0, 10, 0.1);
+			e4->load(le);
+			m_gobjects.push_back(e4);
 			
 
 			if (!TheTextureManager->load("player.bmp", "Player", g_pRenderer) || !TheTextureManager->load("llave.bmp", "Key", g_pRenderer) || !TheTextureManager->load("tim.bmp", "Tim", g_pRenderer)) {
@@ -90,6 +98,8 @@ void Game::update() {
 	//Recalculamos los valores de cada uno de los ojbetos de la pantalla.
 	e->update(m_screenWidth);
 	e2->update(m_screenWidth);
+	e3->update(m_screenWidth);
+	e4->update(m_screenWidth);
 	p->update(m_screenWidth, m_screenHeight);
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
