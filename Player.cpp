@@ -105,7 +105,18 @@ void Player::update() {
 		m_position += m_velocity;
 		
 
-	}	m_velocity.setX(0);
+	}		//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada		if (key == NULL) {			m_velocity.setY(0);
+			m_velocity.setX(15);
+			//----Friccion en caso negativo
+			if ((m_velocity.getX() < 0) || (m_velocity.getY() < 0)) {
+				if ((m_velocity.getX() != 0) && (m_velocity.getY()) != 0) {
+					m_friction.setX(+0.5);
+					m_velocity += m_friction;
+					m_position += m_velocity;				}			}			if ((m_velocity.getX() > 0) || (m_velocity.getY() > 0)) {
+				if ((m_velocity.getX() != 0) && (m_velocity.getY()) != 0) {
+					m_friction.setX(-0.5);
+					m_velocity += m_friction;
+					m_position += m_velocity;				}			}		}		m_velocity.setX(0);
 	m_velocity.setY(0);	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
 	
 	//---Controlo que no se vaya la aceleracion a infinito
