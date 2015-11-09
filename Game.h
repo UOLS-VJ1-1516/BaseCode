@@ -44,9 +44,12 @@ public:
 	void handleEvents();
 	void clean();
 	bool isRunning();
+	void quit();
+
 	int getP_ANC();
 	int getP_ALT();
 	SDL_Renderer* getRender();
+
 
 protected:
 	int m_PANC;

@@ -6,16 +6,15 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "LoaderParams.h"
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
-
 
 Game::Game() {  //Constructor
 	running = false;
 
 }
 Game::~Game() {}
-
 
 bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
@@ -39,25 +38,20 @@ bool Game::init(const char* title, int xpos, int
 			ren = SDL_CreateRenderer(win, -1, 0);
 		}
 
-
-		//Carga la imagen
+		//Carguem sprits
 		TextureManager::Instance()->load("monster.png", "monster", ren);
 		TextureManager::Instance()->load("ghost.png", "ghost", ren);
 
-		//Parametros del LoaderParams
+		//Carguem parametres
 		GameObject *player = new Player();
 		player->load(new LoaderParams(200, 150, 100, 100, "monster", 1, 7, 0));
 
 		GameObject *ghost = new Ghost();
 		ghost->load(new LoaderParams(200, 350, 310, 245, "ghost", 1, 3, 0));
 
-		//Arrai
+		//Afegim gameObjects
 		m_gameObjects.push_back(player);
 		m_gameObjects.push_back(ghost);
-		
-
-
-			
 
 		running = true;
 		return true;
@@ -74,11 +68,8 @@ bool Game::init(const char* title, int xpos, int
 
 void Game::handleEvents() {
 
-	if (SDL_PollEvent(&event) == 1) {
-		if ((event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)) {
-			running = false;
-		}
-	}
+	TheInputHandler::Instance()->update();
+
 }
 
 
@@ -95,11 +86,7 @@ void Game::render() {
 
 	SDL_RenderClear(ren);
 	SDL_SetRenderDrawColor(ren, 200, 0, 0, 255);
-	
 
-	//texture.draw("monster", (P_ANC/2)-iW/2, (P_ALT/2)-iH/2, iW, iH, ren, SDL_FLIP_NONE);
-
-	//texture.drawFrame("monster", desp*2 , (P_ALT / 2) - iH / 2, iW, iH, 1, spriteNum,ren, SDL_FLIP_NONE);
 	
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
@@ -113,13 +100,13 @@ void Game::render() {
 
 
 void Game::clean() {
+
+	TheInputHandler::Instance()->clean();
 	m_gameObjects.clear();
 	SDL_DestroyTexture(tex);
 	SDL_DestroyWindow(win);
 	SDL_DestroyRenderer(ren);
 
-	// clean up SDL
-	SDL_Quit();
 }
 
 
@@ -138,3 +125,8 @@ int Game::getP_ALT() {
 SDL_Renderer* Game::getRender() {
 	return ren;
 };
+
+void Game::quit() {
+	running = false;
+	SDL_Quit();
+}

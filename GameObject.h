@@ -19,7 +19,9 @@ protected:
 
 	Vector2D m_position;
 	Vector2D m_velocity;
-
+	Vector2D m_acceleration;
+	Vector2D m_maxVelocity;
+	Vector2D m_friction;
 
 	int m_width;
 	int m_spriteNum;
@@ -31,10 +33,6 @@ protected:
 	const char* m_textureID;
 
 	
-	
-	Vector2D m_maxVelocity;
-	Vector2D m_acceleration;
-	Vector2D m_friction;
 };
 
 #endif GAMEOBJECT_H
