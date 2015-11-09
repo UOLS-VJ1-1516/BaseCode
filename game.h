@@ -2,17 +2,19 @@
 #include <SDL.h>
 #include "Player.h"
 #include "Player2.h"
+#include "InputHandler.h"
 #include <vector>
+
 
 class Game
 {
 
 private:
 	SDL_Window* g_pWindow;
-	SDL_Renderer* imgRender;
+	SDL_Renderer* g_pRenderer;
 	std::vector< GameObject* > m_gameObjects;
-	bool running;
-	int sprite;
+	bool state;
+	int sprit;
 	Game();
 
 public:
@@ -27,13 +29,13 @@ public:
 	~Game();
 
 	static Game* s_pInstance;
-	bool init(const char * titulo, int xpos, int ypos, int typeWindow);
+	bool init(const char* tittle, int xPos, int yPos, int typeWindow);
 	void render();
-	void update();
+	void update(int delay);
 	void handleEvents();
 	void clean();
 	bool isRunning();
-	SDL_Renderer * getRenderer();
+	SDL_Renderer* getRenderer() const { return g_pRenderer; }
 	int getTicks();
-	SDL_Renderer* getRenderer() const { return imgRender; }
+	const int get_ancho_ventana() const;
 };
