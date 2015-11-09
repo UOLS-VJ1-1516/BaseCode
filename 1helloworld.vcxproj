@@ -100,8 +100,10 @@
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="enemy.bmp" />
     <Image Include="fusion.bmp" />
     <Image Include="majin.bmp" />
+    <Image Include="mario.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\SDL\lib\SDL2_image.lib" />
