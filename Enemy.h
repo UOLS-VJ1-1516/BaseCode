@@ -8,9 +8,9 @@ public:
 	~Enemy();
 	void draw();
 	void load(const LoaderParams* pParams);
-	void load(int x, int y, int width, int height,
-		std::string textureID);
 	void update();
 	void clean();
+private :
+	bool stateFlip;
 };
 #pragma once

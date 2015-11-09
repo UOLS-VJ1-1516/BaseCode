@@ -10,9 +10,28 @@ public:
 	~Player();
 	void draw();
 	void load(const LoaderParams* pParams);
-	void load(int x, int y, int width, int height,
-		std::string textureID);
 	void update();
 	void clean();
+	void calculateAcceleration();
+	void calculateVelocity();
+	void calculateFriction();
+	void calculateFrame();
+	void registerEvents();
+	void frontHorizontal();
+	void incrementAccelerationX();
+	void incrementFriction();
+	bool isCalculateAcceleration();
+	bool iscalculateFriction();
+	void resetParams();
+
+
+private: 
+	bool m_changes;
+	bool m_accelerationCalculate;
+	bool m_frictionCalculate;
+	bool eventRightDown;
+	bool eventLeftDown;
+	bool eventRightUp;
+	bool eventLeftUp;
 };
 #endif PLAYER_H

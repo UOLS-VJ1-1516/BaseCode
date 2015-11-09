@@ -20,8 +20,8 @@ public:
 	~TextureManager();
 
 	bool load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer);
-	void draw(std::string textureID, int x, int y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip);
-	void drawFrame(std::string textureID, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer,
+	void draw(std::string textureID, float x, float y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip);
+	void drawFrame(std::string textureID, float x, float y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer,
 		int flip);
 
 private:

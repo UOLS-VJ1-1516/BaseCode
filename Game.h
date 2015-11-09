@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "Player.h"
 #include "Enemy.h"
+#include "InputHandler.h"
 #include "SDL_image.h"
 #include <vector>
 
@@ -37,5 +38,6 @@ public:
 	bool isRunning();
 	SDL_Renderer* getRenderer() const{ return g_pRenderer; }
 	int getTicks();
+	const int getwidthWindow() const;
 };
 
