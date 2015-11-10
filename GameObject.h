@@ -4,6 +4,7 @@
 #define GAMEOBJECT_H
 
 #include "LoaderParams.h"
+#include "Vector2D.h"
 
 class GameObject {
 	public:
@@ -13,14 +14,19 @@ class GameObject {
 		virtual void clean() = 0;
 
 	protected:
-		int m_x;
-		int m_y;
+		Vector2D m_position;
+		Vector2D m_velocity;
+		Vector2D m_acceleration;
+		Vector2D m_friction;
 		int m_width;
 		int m_height;
 		int m_currentFrame;
 		int m_currentRow;
 		const char* m_textureID;
 		int m_numSprite;
+		float m_maxVelocity;
+		float m_frictionCo;
+
 };
 
 #endif

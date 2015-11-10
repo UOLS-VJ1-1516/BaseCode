@@ -6,6 +6,9 @@
 #include "SDL.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "StaticObject.h"
+#include "TextureManager.h"
+#include "InputHandler.h"
 #include "vector"
 
 class Game {
@@ -18,11 +21,11 @@ class Game {
 		static Game* s_pInstance;
 		std::vector<GameObject*> m_gameObjects;
 		Player* player1;
-		Player* player2;
 		Enemy* enemy1;
+		StaticObject* stObj1;
 		LoaderParams* paramsPlayer1;
-		LoaderParams* paramsPlayer2;
 		LoaderParams* paramsEnemy1;
+		LoaderParams* paramsStObj1;
 
 	public:
 		static Game* Instance() {
@@ -41,7 +44,8 @@ class Game {
 		bool isRunning();
 		SDL_Renderer* getRender();
 		int getTicks();
-
+		int getWindowWidth();
+		int getWindowHeight();
 };
 
 #endif

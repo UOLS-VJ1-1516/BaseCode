@@ -1,5 +1,4 @@
 #include "game.h"
-#include "TextureManager.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -8,11 +7,11 @@ Game::Game() {
 	m_pRenderer = 0;
 	running = false;
 	player1 = new Player();
-	player2 = new Player();
 	enemy1 = new Enemy();
-	paramsPlayer1 = new LoaderParams(50, 50, 105, 156, "Player", 6);
-	paramsPlayer2 = new LoaderParams(150, 300, 44, 40, "coin", 10);
-	paramsEnemy1 = new LoaderParams(300, 50, 155, 204, "Shadow", 10);
+	stObj1 = new StaticObject();
+	paramsPlayer1 = new LoaderParams(0, 400, 100, 101, "Player", 6, 0, 0, 30, 0.1);
+	paramsEnemy1 = new LoaderParams(350, 100, 256, 256, "Zombie", 6, 3, 0, 10, 0.1);
+	paramsStObj1 = new LoaderParams(150, 50, 44, 40, "coin", 10, 0, 0, 0, 0);
 }
 
 Game::~Game() {
@@ -30,16 +29,16 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		
 			player1->load(paramsPlayer1);
-			player2->load(paramsPlayer2);
 			enemy1->load(paramsEnemy1);
+			stObj1->load(paramsStObj1);
 			m_gameObjects.push_back(player1);
-			m_gameObjects.push_back(player2);
 			m_gameObjects.push_back(enemy1);
+			m_gameObjects.push_back(stObj1);
 
 			//load img in my img list
-			TextureManager::Instance()->load("frames.bmp", "Player", m_pRenderer);
+			TextureManager::Instance()->load("buffon.bmp", "Player", m_pRenderer);
 			TextureManager::Instance()->load("coin.bmp", "coin", m_pRenderer);
-			TextureManager::Instance()->load("shadow.bmp", "Shadow", m_pRenderer);
+			TextureManager::Instance()->load("zombie1.bmp", "Zombie", m_pRenderer);
 		}
 		
 		//app starts
@@ -67,24 +66,35 @@ void Game::render() {
 }
 
 void Game::update() {
+	
 	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
 }
 
 void Game::handleEvents() {
-	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_KEYUP) {
-			running = false;
-		}
+	InputHandler::Instance()->update();
+
+	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+		running = false;
 	}
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		player1->incrementAcceleration();
+	}
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+		player1->decrementAcceleration();
+	}
+
+	InputHandler::Instance()->clean();
 }
 
 void Game::clean() { 
+	m_gameObjects.clear();
 	SDL_RenderClear(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
-	// clean up SDL
 	SDL_Quit();
 }
 
@@ -98,4 +108,12 @@ SDL_Renderer* Game::getRender() {
 
 int Game::getTicks() {
 	return (int) (SDL_GetTicks());
+}
+
+int Game::getWindowWidth() {
+	return (SDL_GetWindowSurface(m_pWindow)->w);
+}
+
+int Game::getWindowHeight() {
+	return (SDL_GetWindowSurface(m_pWindow)->h);
 }
