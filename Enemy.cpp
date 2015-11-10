@@ -4,26 +4,24 @@
 
 void Enemy::FollowPlayer(Player * player)
 {
-	float xPos = params->GetXPos();
-	float playerXPos = player->params->GetXPos();
-	float delta = Game::GetInstance()->delta;
+	float xPos = position.X;
+	float playerXPos = player->xPos;
+	float delta = (float)Game::GetInstance()->delta;
 
-	if (xPos > playerXPos) {
-		Move(-5 / delta, 0);
-	}
-	else if (xPos < playerXPos) {
-		Move(5 / delta, 0);
-	}
-	else {
-		Move(0, 0);
-	}
-	
+	if (abs(xPos - playerXPos) < 1) {
+		Accelerate(NULL, NULL);	
+		xPos = playerXPos;
+	} else if (xPos > playerXPos) {
+		Accelerate(NEGATIVE, NULL);
+	} else if (xPos < playerXPos) {
+		Accelerate(POSITIVE, NULL);
+	}	
 }
 
 void Enemy::BeStatic(Player * player)
 {
-	int xPos = params->GetXPos();
-	int playerXPos = player->params->GetXPos();
+	float xPos = position.X;
+	float playerXPos = player->xPos;
 	if ((SDL_GetTicks()) % 250 == 0)
 	{
 		if (xPos > playerXPos && !params->IsFlipped()) {
@@ -31,10 +29,7 @@ void Enemy::BeStatic(Player * player)
 		}
 		else if (xPos < playerXPos && params->IsFlipped()) {
 			params->Flip();
-		}
-		else {
-			Move(0, 0);
-		}
+		}		
 	}
 }
 
@@ -43,18 +38,18 @@ void Enemy::TheIgnored()
 	int w = NULL;
 	SDL_GetWindowSize(Game::GetInstance()->GetWindow(), &w, NULL);
 	
-	float delta = Game::GetInstance()->delta;
-	if (params->GetXPos() <= 0 || params->GetXPos() >= w)
+	float delta = (float)Game::GetInstance()->delta;
+	if (position.X <= 0 || position.X >= w)
 	{
 		params->Flip();
 	}
 	if (params->IsFlipped())
 	{
-		Move(-5 / delta, 0);
+		Accelerate(NEGATIVE, NULL);
 	}
 	else
 	{
-		Move(5 / delta, 0);
+		Accelerate(POSITIVE, NULL);
 	}
 	
 }
@@ -62,6 +57,8 @@ void Enemy::TheIgnored()
 Enemy::Enemy(int type)
 {
 	this->type = type;
+	maxVel = Vector2D(7.5, 7.5);
+	acceleration = Vector2D(0.75, 0.75);
 }
 
 

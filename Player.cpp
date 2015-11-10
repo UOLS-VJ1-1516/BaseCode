@@ -1,21 +1,26 @@
 #include "Player.h"
 #include "Game.h"
+#include <string>
 
 Player::~Player()
 {
 }
 
-void Player::Move(float pos)
+void Player::Accelerate(int aX, int aY)
 {
-	if (pos < 0 && !params->IsFlipped() || pos > 0 && params->IsFlipped())
-		params->Flip();
-	if (SDL_GetTicks() % 50 / (int)Game::GetInstance()->delta == 0)
-		params->AddFrame();
-	params->AddXPos(pos);
+	LivingEntity::Accelerate(aX, aY);
+	xPos = position.X;	
 }
 
 
 Player::Player() : LivingEntity()
 {
-	
+	maxVel = Vector2D(10, 10);
+	acceleration = Vector2D(1, 1);
+}
+
+void Player::Update()
+{
+	Accelerate(xAccel, yAccel);
+	LivingEntity::Update();	
 }

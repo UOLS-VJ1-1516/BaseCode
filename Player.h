@@ -5,7 +5,10 @@
 class Player : public LivingEntity
 {
 public:
+	int xAccel = 0, yAccel = 0;
 	Player();
-	~Player();
-	void Move(float);
+	~Player();	
+	float xPos = 0;
+	void Accelerate(int, int);
+	void Update();
 };

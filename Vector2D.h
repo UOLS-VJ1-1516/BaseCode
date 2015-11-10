@@ -3,11 +3,11 @@ class Vector2D
 {
 public:
 	Vector2D();
-	Vector2D(int, int);
+	Vector2D(float, float);
 	~Vector2D();
 
-	int X;
-	int Y;
+	float X;
+	float Y;
 
 	Vector2D operator+(const Vector2D&) const;
 	Vector2D& operator+=(const Vector2D&);
@@ -17,7 +17,9 @@ public:
 	Vector2D& operator-=(const Vector2D&);
 
 	Vector2D operator*(float);
+	Vector2D operator*(const Vector2D&) const;
 	Vector2D& operator*=(float);
+	Vector2D& operator*=(const Vector2D&);
 
 	Vector2D operator/(float);
 	Vector2D& operator/=(float);

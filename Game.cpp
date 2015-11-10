@@ -92,9 +92,9 @@ void Game::Clear()
 void Game::EventHandler()
 {
 	delta = GetDeltaTime();
-	std::string str = "FPS:";
+	/*std::string str = "FPS:";
 	str.append(std::to_string(1000 / delta));
-	SDL_SetWindowTitle(window, str.c_str());
+	SDL_SetWindowTitle(window, str.c_str());*/
 	
 	EventHandler::GetInstance()->HandleEvents();
 }

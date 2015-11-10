@@ -31,6 +31,7 @@ public:
 
 	bool IsFlipped() { return flipped; }
 	void Flip() { flipped = !flipped; }
+	void SetFlipped(bool flipped) { this->flipped = flipped; }
 
 	void AddFrame();
 	void AddXPos(float);

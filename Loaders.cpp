@@ -19,7 +19,7 @@ bool TextureManager::Load(const char * filename, const char * id)
 	SDL_FreeSurface(surface);
 	textures[id] = textura;
 	if (textura == NULL) {	   
-		printf("Error al carregar la textura %s.", file);
+		printf("Error al carregar la textura %s.", file.c_str());
 		return false;
 	}
 	return true;

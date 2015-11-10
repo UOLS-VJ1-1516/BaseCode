@@ -8,6 +8,7 @@ private:
 	EventHandler();
 	static EventHandler * handler;
 	void HandleKeys(SDL_Scancode);
+	void HandleUps(SDL_Scancode);
 public:
 	static EventHandler * GetInstance() 
 	{
