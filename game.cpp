@@ -1,5 +1,4 @@
 #include "game.h"
-#include "TextureManager.h"
 
 //Instancias
 Game* Game::g_pInstance = 0;
@@ -7,11 +6,11 @@ Game* Game::g_pInstance = 0;
 // Constructor donde se inicializan variables y los GameObjects
 Game::Game(){
 	player1 = new Player();
-	params1 = new LoaderParams(500, 200, 103, 120, "player", "assets/sonic.bmp", 9, 0);
+	params1 = new LoaderParams(500, 200, 103, 120, "player", "assets/sonic.bmp", 10, 0);
 	enemy1 = new Enemy();
 	params2 = new LoaderParams(800, 400, 110, 100, "enemy", "assets/enemy.bmp", 4, 0);
 	enemy2 = new Enemy();
-	params3 = new LoaderParams(600, 600, 65, 65, "xplosion", "assets/enemy2.bmp", 4, 0);
+	enemy3 = new Enemy();
 };
 // Destructor
 Game::~Game(){};
@@ -31,14 +30,23 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
+		screenWidth = width;
+		screenHeigth = height;
+
 		// Inicializamos GameObjects, los cargamos, y los guardamos en el vector de GameObjects
 		player1->load(params1);
 		m_gameObjects.push_back(player1);
+		
 		enemy1->load(params2);
 		m_gameObjects.push_back(enemy1);
-		enemy2->load(params3);
-		m_gameObjects.push_back(enemy2);
 
+		params2 = new LoaderParams(100, 100, 110, 100, "enemy1", "assets/enemy.bmp", 4, 0);
+		enemy2->load(params2);
+		m_gameObjects.push_back(enemy2);
+		
+		params2 = new LoaderParams(900, 700, 110, 100, "enemy2", "assets/enemy.bmp", 4, 0);
+		enemy3->load(params2);
+		m_gameObjects.push_back(enemy3);
 		return 0;
 	}
 	else
@@ -47,12 +55,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 };
 
-void Game::render(int r, int g, int b)
+void Game::render()
 {
 	// everything succeeded lets draw the window
 	// set to black // This function expects Red, Green, Blue and
 	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, r, g, b, 255);
+	SDL_SetRenderDrawColor(g_pRenderer, 255, 255, 255, 255);
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
@@ -65,8 +73,6 @@ void Game::render(int r, int g, int b)
 
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
-
-	SDL_Delay(10);
 };
 
 void Game::update()
@@ -78,15 +84,14 @@ void Game::update()
 	}
 };
 
-void Game::handleEvents(SDL_Event event)
+void Game::handleEvents()
 {
-	if (event.type == SDL_KEYDOWN)
-		if (event.key.keysym.sym == SDLK_ESCAPE) 
-			running = false;
+	InputHandler::Instance()->update();
 };
 
 void Game::clean()
 {
+	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
 	SDL_DestroyRenderer(g_pRenderer);
 	SDL_Quit();
@@ -104,4 +109,16 @@ SDL_Renderer* Game::getRenderer()
 
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
+};
+
+int Game::getScreenHeight(){
+	return screenHeigth;
+};
+
+int Game::getScreenWidth() {
+	return screenWidth;
+};
+
+void Game::exit() {
+	running = false;
 };

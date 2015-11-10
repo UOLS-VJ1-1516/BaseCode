@@ -23,21 +23,19 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	SrcR.h = m_textureSizes[*id][1];
 
 	// Posicion donde colocar el rectangulo rojo
-	DestR.x = m_texturePositions[*id][0];
-	DestR.y = m_texturePositions[*id][1];
+	DestR.x = x;
+	DestR.y = y;
 
 	// Tamaño del rectangulo rojo
 	DestR.w = m_textureSizes[*id][0];
 	DestR.h = m_textureSizes[*id][1];
 
-	SDL_RenderCopy(pRender, m_textureMap[*id], &SrcR, &DestR);
+	SDL_RenderCopyEx(pRender, m_textureMap[*id], &SrcR, &DestR, 0, 0, flip);
 };
 
 //Funcion para crear el mapa de texturas
-void TextureManager::setFrame(const char* id, int x, int y, int w, int h) {
+void TextureManager::setFrame(const char* id, int w, int h) {
 	m_textureMap[*id] = texture;
-	m_texturePositions[*id][0] = x;
-	m_texturePositions[*id][1] = y;
 	m_textureSizes[*id][0] = w;
 	m_textureSizes[*id][1] = h;
 }

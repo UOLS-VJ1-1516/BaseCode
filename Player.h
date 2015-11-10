@@ -10,4 +10,8 @@ class Player : public GameObject
 		void draw();
 		void update();
 		void clean();
+		void moveLeft();
+		void moveRight();
+		void noMoveX();
+		void controlPosition();
 };
