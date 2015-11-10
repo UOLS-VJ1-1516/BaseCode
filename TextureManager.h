@@ -2,6 +2,7 @@
 #pragma once
 #include "SDL.h"
 #include<map>
+
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 class TextureManager

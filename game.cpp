@@ -9,10 +9,11 @@
 
 std::vector<GameObject*> m_gameObjects;
 TextureManager* TextureManager::s_pInstance = 0;
-Player *p;
-Dog *d;
-std::vector<const char*> textur;
-
+GameObject* player;
+GameObject* dog;
+std::vector<LoaderParams*> loader;
+LoaderParams* l1;
+LoaderParams* l2;
 Game* Game::s_pInstanceG = 0;
 
 	Game::Game(){
@@ -51,18 +52,21 @@ Game* Game::s_pInstanceG = 0;
 			return false; // sdl could not initialize
 		}
 
-		p = new Player;
-		d = new Dog;
+		player = new Player();
+		dog = new Dog();
 
-		m_gameObjects.push_back(p);
-		m_gameObjects.push_back(d);
+		m_gameObjects.push_back(player);
+		m_gameObjects.push_back(dog);
 
-		textur.push_back("imatge");
-		textur.push_back("imatge2");
+		l1 = new LoaderParams(0, 180, 97, 132, "imatge");
+		l2 = new LoaderParams(0, 230, 64, 80, "imatge2");
+
+		loader.push_back(l1);
+		loader.push_back(l2);
 		
 		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 		{
-			m_gameObjects[i]->load(xpos, ypos, width, height, textur[i]);
+			m_gameObjects[i]->load(loader[i]);
 		}
 		running = true;
 		return true;
@@ -75,11 +79,12 @@ Game* Game::s_pInstanceG = 0;
 		SDL_RenderClear(g_lRenderer);
 
 		//Mostrem les imatges
+		
 		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 		{
-			m_gameObjects[0]->draw();
+			m_gameObjects[i]->draw();
 		}
-
+		
 		// show the window
 		//SDL_RenderPresent(g_lRenderer);
 		SDL_RenderPresent(g_lRenderer);
@@ -91,24 +96,18 @@ Game* Game::s_pInstanceG = 0;
 	void Game::update() {
 		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 		{
-			m_gameObjects[0]->update();
+			m_gameObjects[i]->update();
 		}
 		
 	}
 	void Game::handleEvents() {
-		SDL_Event event;
-		if (SDL_PollEvent(&event))
-		{
-			if (event.type == SDL_KEYDOWN) { //cuando nos pulsen una tecla
-				running = false;
-			}
-		}
+		InputHandler::Instance()->update();
 	}
 	void Game::clean() {
 		
 		for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 		{
-			m_gameObjects[0]->clean();
+			m_gameObjects[i]->clean();
 		}
 		
 		SDL_DestroyWindow(g_lWindow);

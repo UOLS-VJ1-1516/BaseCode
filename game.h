@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL.h"
 #include "TextureManager.h"
+#include "InputHandler.h"
 #ifndef GAME_H
 #define GAME_H
 class Game
@@ -18,10 +19,11 @@ public:
 	void clean();
 	bool isRunning();
 	static Game* Instance();
+	bool running = false;
 private:
 	SDL_Window* g_lWindow = 0;
 	SDL_Renderer* g_lRenderer = 0;
-	bool running = false;
+	//bool running = false;
 	//int spriteNum;
 	/*
 	int mov = 0;

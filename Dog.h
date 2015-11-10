@@ -4,14 +4,12 @@
 #include "SDL.h"
 #ifndef DOG_H
 #define DOG_H
-class Dog :
-	public GameObject
+class Dog : public GameObject
 {
 public:
 	Dog();
 	~Dog();
-	//void load(const LoaderParams* pParams);
-	void load(int x, int y, int width, int height, const char* textureID);
+	void load(const LoaderParams* pParams);
 	void draw();
 	void update();
 	void clean();
