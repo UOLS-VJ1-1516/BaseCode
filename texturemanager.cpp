@@ -31,7 +31,7 @@ bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_
 	
 }
 void TextureManager::draw(std::string id, float x, float y, int width, int height, SDL_Renderer* g_lRenderer, int flip) {
-	//´flip ha de ser  SDL_FLIP_NONE si vull que no es giri
+	//Cambio el flip a un int,  1->none 2->horitzontal 3->vertical
 	
 	SDL_Rect src;
 	SDL_Rect dest;

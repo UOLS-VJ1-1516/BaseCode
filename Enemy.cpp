@@ -29,7 +29,7 @@ void Enemy::load(const LoadPar* lPar)
 	m_position.setX(lPar->getx());
 	m_position.setY(lPar->gety());
 	m_texid = lPar->gettexid();
-	m_anchopantalla = lPar->getanchopantalla();
+	m_anchopantalla = (lPar->getanchopantalla());
 	m_altopantalla = lPar->getaltopantalla();
 	m_currentRow = lPar->getcurrentRow();
 	m_sprits = lPar->getsprits();
@@ -52,11 +52,7 @@ void Enemy::draw(SDL_Renderer* Renderer) {
 void Enemy::update() {
 
 	m_position.setX(m_position.getX()-3);
-	if (m_position.getX() < -200)m_position.setX(1600);
-	/* Cuando añada columnas y filas en mi sprite
-	if ((m_currentRow == 1) &(m_currentFrame == 4)) { m_currentRow = 2; m_currentFrame = 1; m_sprits = 6; }
-	if ((m_currentRow == 2) &(m_currentFrame == 6)) { m_currentRow = 3; m_currentFrame = 1; m_sprits = 1; }
-	if ((m_currentRow == 3) &(m_currentFrame == 1)) { m_currentRow = 1; m_currentFrame = 1; m_sprits = 4; }*/
+	if (m_position.getX() < -200.00)m_position.setX((float)m_anchopantalla);
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
 }
 void Enemy::clean() {}

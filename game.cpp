@@ -92,10 +92,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
+		
 		running = true;
 
 	}

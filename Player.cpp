@@ -34,16 +34,16 @@ void Player::load(const LoadPar* lPar)
 	m_flip = lPar->getflip();
 
 	m_velocity.setX(0);  //Velocidad horizontal inicial
-	m_velocity.setY(0);
+	m_velocity.setY(0);  //Velocidad verical inicial
 	m_acceleration.setX(0);
 	m_acceleration.setY(0);
-	m_maxacceleration.setX(20);
-	m_maxacceleration.setY(30);
+	m_maxacceleration.setX(20);   //Prefiero jugar con la aceleracion maxima antes que con la Velmax, creo que me ayudara en un futuro
+	m_maxacceleration.setY(30);   
 	m_maxaccelerationneg.setX(-20);
 	m_maxaccelerationneg.setY(-30);
-    m_anchopantalla=lPar->getanchopantalla();
+    m_anchopantalla=lPar->getanchopantalla();  //Para que sea mas facil de adaptar
     m_altopantalla=lPar->getaltopantalla();
-	m_friction.setX(0.5);
+	m_friction.setX(0.5);  //Será mi frenada
 
 };
 void Player::draw()
@@ -99,9 +99,9 @@ void Player::update() {
 			if (key == SDL_SCANCODE_UP) {
 				m_velocity.setY(0); //Velocidad inicial
 				m_acceleration.setX(0);
-				//---Controlo que no se vaya la aceleracion a infinito
 				if (flag != 3) m_acceleration.setY(0);
 				m_acceleration.setY(m_acceleration.getY() - 0.5);
+				//---Controlo que no se vaya la aceleracion a infinito
 				if (m_acceleration.getY() <= m_maxaccelerationneg.getY()) m_acceleration.setY(m_maxaccelerationneg.getY());
 				m_velocity += m_acceleration;
 				m_position += m_velocity;
@@ -112,22 +112,21 @@ void Player::update() {
 					m_velocity.setY(0); //Velocidad inicial
 					m_acceleration.setX(0);
 					if (flag != 4) m_acceleration.setY(0);
-					//---Controlo que no se vaya la aceleracion a infinito
 					m_acceleration.setY(m_acceleration.getY() + 0.5);
+					//---Controlo que no se vaya la aceleracion a infinito
 					if (m_acceleration.getY() >= m_maxacceleration.getY()) m_acceleration.setY(m_maxacceleration.getY());
 					m_velocity += m_acceleration;
 					m_position += m_velocity;
 					flag = 4;
 				}				else {
 
-					//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada (Faltaria implementar la friccion vertical
+					//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada, solo habrá fricción horizontal
 						//----Friccion en caso negativo
 					if (m_velocity.getX() < 0) {
 						if (m_velocity.getX() != 0) {
 							m_velocity += m_friction;
 							m_velocity.setY(0);
 							m_position += m_velocity;
-
 						}
 					}
 					else {
@@ -148,8 +147,8 @@ void Player::update() {
 				}			}		}	}		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);	
 	
 	
-	//------------------LIMITANDO PANTALLA para que salga por el otro lado
-	if (m_position.getX() > m_anchopantalla-150) { m_position.setX(m_anchopantalla-150);}
+	//------------------Netejo pantalla--------> para que salga por el otro lado eje vertical, limitando eje horizontal
+	if (m_position.getX() > m_anchopantalla-175) { m_position.setX(m_anchopantalla-175);}
 	if (m_position.getX() < 0) { m_position.setX(0); }
 	if (m_position.getY() > m_altopantalla+80) { m_position.setY(0- 15); }
 	if (m_position.getY() < 0-150) { m_position.setY(m_altopantalla+ 15); }
