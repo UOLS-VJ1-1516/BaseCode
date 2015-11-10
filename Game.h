@@ -7,10 +7,9 @@
 #include "Loaders.h"
 #include <ctime>
 #include <random>
-#include "Entity.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "EventHandler.h"
+#include "StateManager.h"
+
+#define TheGame Game::GetInstance()
 
 class Game
 {
@@ -21,9 +20,7 @@ private:
 	Game();
 
 	static Game * joc;
-
-	std::vector<Entity *> entitats;
-	Player * player;
+	StateManager * manager;
 
 	int width, height;
 	bool Fullscreen;
@@ -32,9 +29,9 @@ private:
 	int r, g, b, a;
 public:
 	double delta;
-	Player * GetPlayer() { return player; }
 	void ToggleFullscreen();
 	void TakeScreenshot() { takeScreenshot = true; }
+	
 	static Game * GetInstance() 
 	{
 		if (joc == NULL)
@@ -53,4 +50,5 @@ public:
 	void Close();
 	SDL_Renderer * GetRenderer() { return this->renderer; }
 	SDL_Window * GetWindow() { return this->window; }
+	StateManager * GetManager() { return this->manager; }
 };

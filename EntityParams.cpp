@@ -3,8 +3,8 @@
 EntityParams::EntityParams(const char * id, int xPos, int yPos, int width, int height, int maxFrame, int row)
 {
 	this->id = id;
-	this->xPos = xPos;
-	this->yPos = yPos;
+	this->xPos = (float)xPos;
+	this->yPos = (float)yPos;
 	this->width = width;
 	this->height = height;
 	this->maxFrame = maxFrame;

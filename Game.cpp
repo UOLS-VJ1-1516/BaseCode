@@ -1,8 +1,7 @@
 #include "Game.h"
+#include "StateManager.h"
 
 Game * Game::joc = 0;
-
-
 
 Game::Game()
 {
@@ -11,7 +10,6 @@ Game::Game()
 	Game::Running = true;
 	Game::takeScreenshot = false;
 }
-
 
 void Game::ToggleFullscreen()
 {
@@ -24,7 +22,6 @@ void Game::ToggleFullscreen()
 
 Game::~Game()
 {
-	entitats.clear();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -61,21 +58,8 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
 	}
 
-	player = new Player();
-	EntityParams * params = new EntityParams("player", 0, 0, 32, 32, 3, 6);
-	player->Load(params, "Actor3.png");
-	entitats.push_back(player);
-
-	Enemy * enemy1 = new Enemy(IGNORE_ENEMY);
-	EntityParams * enemy1Params = new EntityParams("enemy1", 150, 135, 32, 32, 3, 6);
-	enemy1->Load(enemy1Params, "Monster1.png");
-	entitats.push_back(enemy1);
-
-	Enemy * enemy2 = new Enemy(FOLLOWER_ENEMY);
-	EntityParams * enemy2Params = new EntityParams("enemy2", 150, 75, 32, 32, 3, 2);
-	enemy2->Load(enemy2Params, "Monster1.png");
-	entitats.push_back(enemy2);
-
+	manager = new StateManager();
+	
 	return true;
 }
 
@@ -92,27 +76,12 @@ void Game::Clear()
 void Game::EventHandler()
 {
 	delta = GetDeltaTime();
-	/*std::string str = "FPS:";
-	str.append(std::to_string(1000 / delta));
-	SDL_SetWindowTitle(window, str.c_str());*/
-	
-	EventHandler::GetInstance()->HandleEvents();
+	manager->HandleEvents();
 }
 
 void Game::Update()
 {
-	srand((int)time(NULL));
-	r = rand() % 256;
-	g = rand() % 256;
-	b = rand() % 256;
-	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
-	for each (LivingEntity * var in entitats)
-	{
-		if (Enemy * en = dynamic_cast<Enemy *>(var)) {
-			en->Update(player);
-		}
-		var->Update();
-	}
+	manager->Update();
 	if (takeScreenshot)
 	{
 		takeScreenShot(width, height);
@@ -123,14 +92,7 @@ void Game::Update()
 void Game::Render()
 {
 	SDL_RenderClear(renderer);
-	for each (LivingEntity * var in entitats)
-	{
-		if (var->HaveAnimation())
-			var->DrawFrame();
-		else
-			var->Draw();
-	}
-	
+	manager->Render();
 	SDL_RenderPresent(renderer);
 }
 

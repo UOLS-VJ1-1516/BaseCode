@@ -43,11 +43,11 @@ void LivingEntity::Accelerate(int aX, int aY)
 	
 	if (velocity.X > 0)
 	{
-		velocity.X -= friction.X * Game::GetInstance()->delta / 1000;
+		velocity.X -= (float)(friction.X * Game::GetInstance()->delta / 1000);
 	}
 	else if (velocity.X < 0)
 	{
-		velocity.X += friction.X * Game::GetInstance()->delta / 1000;
+		velocity.X += (float)(friction.X * Game::GetInstance()->delta / 1000);
 	}
 
 	position.X += velocity.X + (acceleration.X * aX);
