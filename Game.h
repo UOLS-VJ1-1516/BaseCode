@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "InputHandler.h"
 #include "TextureManager.h"
+#include "PlayState.h"
 
 class Game
 {
@@ -31,6 +32,7 @@ private:
 	Enemy* e4;
 	InputHandler* TheInputHandler;
 	TextureManager* TheTextureManager;
+	PlayState* plstate;
 public:
 	static Game* Instance()
 	{
