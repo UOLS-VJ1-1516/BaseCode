@@ -6,6 +6,7 @@
 #include "StaticObjects.h"
 #include "Enemy.h"
 #include "SDL.h"
+#include "InputHandler.h"
 
 #ifndef PLAYSTATE_H
 #define PLAYSTATE_H

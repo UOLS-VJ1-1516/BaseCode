@@ -19,5 +19,6 @@ private:
 	std::vector<GameObject*> m_gameObjects;
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
+	void handleEvents();
 };
 #endif MENUSTATE_H

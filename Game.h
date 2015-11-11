@@ -8,7 +8,9 @@
 #include "Enemy.h"
 #include "InputHandler.h"
 #include "TextureManager.h"
+#include "GameStateMachine.h"
 #include "PlayState.h"
+#include "MenuState.h"
 
 class Game
 {
@@ -32,7 +34,9 @@ private:
 	Enemy* e4;
 	InputHandler* TheInputHandler;
 	TextureManager* TheTextureManager;
-	PlayState* plstate;
+	GameStateMachine* gsm;
+	PlayState* ps;
+	MenuState* ms;
 public:
 	static Game* Instance()
 	{
@@ -55,6 +59,8 @@ public:
 	std::vector<GameObject*> m_gobjects;
 	int getScreenWidth();
 	int getScreenHeight();
+	void setflag(bool b);
+	bool getflag();
 };
 
 #endif

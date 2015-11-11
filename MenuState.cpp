@@ -1,6 +1,5 @@
 #include "MenuState.h"
 #include "MenuButton.h"
-#include "LoaderParams.h"
 
 void MenuState::update() {
 

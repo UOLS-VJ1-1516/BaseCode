@@ -12,6 +12,30 @@ void PlayState::update() {
 	{
 		m_gobjects[i]->update();
 	}
+
+	InputHandler::Instance()->update();
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE) || InputHandler::Instance()->isExitRequired()) {
+		Game::Instance()->setflag(false);
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		p->incrementAccelerationX();
+	}
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+		p->decrementAccelerationX();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
+		p->decrementAccelerationY();
+	}
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
+		p->incrementAccelerationY();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
+		p->impulseLeft();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
+		p->impulseRight();
+	}
+	InputHandler::Instance()->clean();
 };
 
 void PlayState::render() {
@@ -51,16 +75,25 @@ bool PlayState::onEnter() {
 	e4->load(le);
 	m_gobjects.push_back(e4);
 
+	if (!TextureManager::Instance()->load("player.bmp", "Player", Game::Instance()->getRender()) || !TextureManager::Instance()->load("llave.bmp", "Key", Game::Instance()->getRender()) || !TextureManager::Instance()->load("tim.bmp", "Tim", Game::Instance()->getRender())) {
+		return false;
+	}
+	//Este método permitirá almacenar el tamaño del sprite de origen, para poder jugar con el tamaño del sprite final.
+	TextureManager::Instance()->setSizeFrames("Player", 40, 31);
+	TextureManager::Instance()->setSizeFrames("Key", 18, 32);
+	TextureManager::Instance()->setSizeFrames("Tim", 26, 18);
+
 	return true;
 };
 
 const std::string PlayState::s_menuID = "Play";
 
 bool PlayState::onExit() {
-
+	m_gobjects.clear();
 	return true;
 };
 
 std::string PlayState::getStateID() const {
 	return PlayState::s_menuID;
 };
+
