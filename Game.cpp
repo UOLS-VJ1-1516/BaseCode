@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "LoaderParams.h"
 
+
 Game* Game::s_pInstance = 0;
 
 Game::Game() {
@@ -10,7 +11,7 @@ Game::Game() {
 	m_screenWidth = 800;
 	m_screenHeight = 600;
 	//Inicializamos los objetos.
-	p = new Player();
+	/*p = new Player();
 	o = new StaticObjects();
 	e = new Enemy();
 	e2 = new Enemy();
@@ -19,7 +20,8 @@ Game::Game() {
 	//Cargamos los parámetros de cada uno.
 	lp = new LoaderParams(0, 0, 70, 61, "Player",  8, 0, 0, 30, 0.1); 
 	lo = new LoaderParams(300, 500, 36, 64, "Key",  8, 0, 0, 0, 0.1); 
-	le = new LoaderParams(250, 150, 60, 35, "Tim", 3, 3, 0, 10, 0.1);
+	le = new LoaderParams(250, 150, 60, 35, "Tim", 3, 3, 0, 10, 0.1);*/
+	plstate = new PlayState();
 	TheTextureManager = TextureManager::Instance();
 	TheInputHandler = InputHandler::Instance();
 }
@@ -41,12 +43,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_screenWidth = width;
 		m_screenHeight = height;
 		SDL_GetWindowSize(g_pWindow, &width, &height);
-
+		
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-			
+			//plstate->onEnter();
 			//Ejemplo de player
-			p->load(lp);
+			/*p->load(lp);
 			m_gobjects.push_back(p);
 			//Ejemplo de objeto estático
 			o->load(lo);
@@ -62,7 +64,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			m_gobjects.push_back(e3);
 			le = new LoaderParams(500, 600, 60, 35, "Tim", 3, 5, 0, 10, 0.1);
 			e4->load(le);
-			m_gobjects.push_back(e4);
+			m_gobjects.push_back(e4);*/
 			
 
 			if (!TheTextureManager->load("player.bmp", "Player", g_pRenderer) || !TheTextureManager->load("llave.bmp", "Key", g_pRenderer) || !TheTextureManager->load("tim.bmp", "Tim", g_pRenderer)) {
@@ -85,18 +87,19 @@ void Game::render() {
 	//Vamos refrescando el fondo cuando renderizamos, para que no quede imagenes residuales. Ponemos color negro como fondo.
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
-
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
+	plstate->render();
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
 		m_gobjects[i]->draw();
-	}
+	}*/
 
 	SDL_RenderPresent(g_pRenderer);
 }
 
 void Game::update() {
 	//Recalculamos los valores de cada uno de los ojbetos de la pantalla.
-	e->update(m_screenWidth);
+	plstate->update();
+	/*e->update(m_screenWidth);
 	e2->update(m_screenWidth);
 	e3->update(m_screenWidth);
 	e4->update(m_screenWidth);
@@ -104,7 +107,7 @@ void Game::update() {
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
 		m_gobjects[i]->update();
-	}
+	}*/
 }
 
 void Game::handleEvents() {
