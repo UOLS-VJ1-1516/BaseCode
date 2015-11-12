@@ -12,6 +12,8 @@ class InputHandler {
 		InputHandler();
 		static InputHandler* s_pInstance;
 		const Uint8* m_keystates;
+		std::vector<bool> m_mouseButtonStates;
+		Vector2D m_mousePosition;
 		bool m_exitClicked;
 
 	public:
@@ -29,6 +31,8 @@ class InputHandler {
 		//Metodos de acceso
 		bool isKeyDown(SDL_Scancode key);
 		bool isExitClicked();
+		bool getMouseButtonState(int buttonNumber);
+		Vector2D getMousePosition();
 
 };
 

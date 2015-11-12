@@ -6,12 +6,13 @@ Game::Game() {
 	m_pWindow = 0;
 	m_pRenderer = 0;
 	running = false;
-	player1 = new Player();
+	m_pGameStateMachine = new GameStateMachine();
+	/*player1 = new Player();
 	enemy1 = new Enemy();
 	stObj1 = new StaticObject();
 	paramsPlayer1 = new LoaderParams(0, 400, 100, 101, "Player", 6, 0, 0, 30, 0.1);
 	paramsEnemy1 = new LoaderParams(350, 100, 256, 256, "Zombie", 6, 3, 0, 10, 0.1);
-	paramsStObj1 = new LoaderParams(150, 50, 44, 40, "coin", 10, 0, 0, 0, 0);
+	paramsStObj1 = new LoaderParams(150, 50, 44, 40, "coin", 10, 0, 0, 0, 0);*/
 }
 
 Game::~Game() {
@@ -28,7 +29,9 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		
-			player1->load(paramsPlayer1);
+			m_pGameStateMachine->changeState(new PlayState());
+
+			/*player1->load(paramsPlayer1);
 			enemy1->load(paramsEnemy1);
 			stObj1->load(paramsStObj1);
 			m_gameObjects.push_back(player1);
@@ -38,7 +41,7 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 			//load img in my img list
 			TextureManager::Instance()->load("buffon.bmp", "Player", m_pRenderer);
 			TextureManager::Instance()->load("coin.bmp", "coin", m_pRenderer);
-			TextureManager::Instance()->load("zombie1.bmp", "Zombie", m_pRenderer);
+			TextureManager::Instance()->load("zombie1.bmp", "Zombie", m_pRenderer);*/
 		}
 		
 		//app starts
@@ -57,9 +60,11 @@ void Game::render() {
 	//clean screen
 	SDL_RenderClear(m_pRenderer);
 
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+	/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
-	}
+	}*/
+
+	m_pGameStateMachine->render();
 
 	//show print buffer
 	SDL_RenderPresent(m_pRenderer);
@@ -67,13 +72,15 @@ void Game::render() {
 
 void Game::update() {
 	
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+	/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
-	}
+	}*/
+
+	m_pGameStateMachine->update();
 }
 
 void Game::handleEvents() {
-	InputHandler::Instance()->update();
+	/*InputHandler::Instance()->update();
 
 	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
 		running = false;
@@ -87,11 +94,11 @@ void Game::handleEvents() {
 		player1->decrementAcceleration();
 	}
 
-	InputHandler::Instance()->clean();
+	InputHandler::Instance()->clean();*/
 }
 
 void Game::clean() { 
-	m_gameObjects.clear();
+	//m_gameObjects.clear();
 	SDL_RenderClear(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
@@ -116,4 +123,8 @@ int Game::getWindowWidth() {
 
 int Game::getWindowHeight() {
 	return (SDL_GetWindowSurface(m_pWindow)->h);
+}
+
+void Game::setIsRunning(bool run) {
+	running = run;
 }
