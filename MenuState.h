@@ -20,6 +20,6 @@ private:
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
 	MenuButton* mb;
-	LoaderParams* lmb;
+	MenuButton* mb2;
 };
 #endif MENUSTATE_H

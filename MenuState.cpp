@@ -1,26 +1,29 @@
 #include "MenuState.h"
+#include "Game.h"
 
 void MenuState::update() {
-	//o->update();
-	mb->update();
+	for (int i = 0; i < m_gameObjects.size(); i++) {
+		m_gameObjects[i]->update();
+	}
 };
 
 void MenuState::render() {
-	//o->draw
-	mb->draw();
+	for (int i = 0; i < m_gameObjects.size(); i++) {
+		m_gameObjects[i]->draw();
+	}
 };
 
 bool MenuState::onEnter() {
-	lmb = new LoaderParams(150, 250, 223, 52, "Button", 2, 0, 0, 0, 0);
-	mb = new MenuButton(lmb, s_menuToPlay);
-	
+	mb = new MenuButton(new LoaderParams(150, 250, 135, 34, "play.bmp", 3, 0, 0, 0, 0), s_menuToPlay);
 	m_gameObjects.push_back(mb);
+	mb2 = new MenuButton(new LoaderParams(150, 300, 135, 34, "exit.bmp", 3, 0, 0, 0, 0), s_exitFromMenu);
+	m_gameObjects.push_back(mb2);
 
 	return true;
 };
 
 bool MenuState::onExit() {
-
+	m_gameObjects.clear();
 	return true;
 };
 
@@ -32,5 +35,11 @@ std::string MenuState::getStateID() const{
 };
 
 void MenuState::s_menuToPlay() {
-
+	Game::Instance()->getGameStateMachine()->changeState(new   PlayState());
 };
+
+void MenuState::s_exitFromMenu() {
+	Game::Instance()->getGameStateMachine()->popState();
+	Game::Instance()->getGameStateMachine()->voidAllOldStates();
+	Game::Instance()->clean();
+}; 

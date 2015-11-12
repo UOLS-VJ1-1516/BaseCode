@@ -115,6 +115,11 @@ void Game::update() {
 }
 
 void Game::handleEvents() {
+	//if (TheInputHandler->getMouseButtonState(0) == true && ms->) {
+		//flag = false;
+	//	gsm->changeState(ps);
+	//	TheInputHandler->clean();
+	//}
 	//TheInputHandler->update();
 	//if (TheInputHandler->isKeyDown(SDL_SCANCODE_ESCAPE) || TheInputHandler->isExitRequired()) {
 		//flag = false;
@@ -176,4 +181,8 @@ void Game::setflag(bool b){
 
 bool Game::getflag(){
 	return flag;
+};
+
+GameStateMachine* Game::getGameStateMachine() {
+	return gsm;
 };

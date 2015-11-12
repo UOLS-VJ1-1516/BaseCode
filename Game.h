@@ -61,6 +61,7 @@ public:
 	int getScreenHeight();
 	void setflag(bool b);
 	bool getflag();
+	GameStateMachine* getGameStateMachine();
 };
 
 #endif

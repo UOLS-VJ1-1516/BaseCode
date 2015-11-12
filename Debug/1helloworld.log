@@ -1,19 +1,69 @@
-﻿Build started 24/10/2015 13:54:06.
-     1>Project "C:\Users\Bill_2\Source\Repos\BaseCode\1helloworld.vcxproj" on node 2 (Build target(s)).
+﻿Build started 13/11/2015 0:51:31.
+     1>Project "C:\Users\Bill_2\Source\BaseCode\1helloworld.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp TextureManager.cpp
-         Game.cpp
-         Generating Code...
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Enemy.cpp Game.cpp GameStateMachine.cpp InputHandler.cpp main.cpp MenuButton.cpp MenuState.cpp Player.cpp PlayState.cpp StaticObjects.cpp TextureManager.cpp Vector2D.cpp
+         Vector2D.cpp
          TextureManager.cpp
+         StaticObjects.cpp
+     1>c:\users\bill_2\source\basecode\staticobjects.cpp(11): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\staticobjects.cpp(18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\staticobjects.cpp(19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         PlayState.cpp
+     1>c:\users\bill_2\source\basecode\playstate.cpp(55): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\bill_2\source\basecode\playstate.cpp(56): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\bill_2\source\basecode\playstate.cpp(57): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\bill_2\source\basecode\playstate.cpp(68): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\bill_2\source\basecode\playstate.cpp(71): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\bill_2\source\basecode\playstate.cpp(74): warning C4305: 'argument': truncation from 'double' to 'float'
+         Player.cpp
+     1>c:\users\bill_2\source\basecode\player.cpp(12): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(16): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(103): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(104): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(112): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(116): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\player.cpp(124): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+         MenuState.cpp
+     1>c:\users\bill_2\source\basecode\menustate.cpp(5): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\bill_2\source\basecode\menustate.cpp(11): warning C4018: '<': signed/unsigned mismatch
+         MenuButton.cpp
+         main.cpp
+         InputHandler.cpp
+     1>c:\users\bill_2\source\basecode\inputhandler.cpp(35): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\inputhandler.cpp(36): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\inputhandler.cpp(57): warning C4800: 'const Uint8': forcing value to bool 'true' or 'false' (performance warning)
+         GameStateMachine.cpp
+         Game.cpp
+         Enemy.cpp
+     1>c:\users\bill_2\source\basecode\enemy.cpp(12): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\enemy.cpp(15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\basecode\enemy.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\basecode\enemy.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib SDL2.lib SDL2main.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Game.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bill_2\Source\BaseCode\Debug\Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib SDL2.lib SDL2main.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Bill_2\Source\BaseCode\Debug\Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Bill_2\Source\BaseCode\Debug\Game.lib" /MACHINE:X86 Debug\Enemy.obj
+         Debug\Game.obj
+         Debug\GameStateMachine.obj
+         Debug\InputHandler.obj
          Debug\main.obj
+         Debug\MenuButton.obj
+         Debug\MenuState.obj
+         Debug\Player.obj
+         Debug\PlayState.obj
+         Debug\StaticObjects.obj
          Debug\TextureManager.obj
-         1helloworld.vcxproj -> C:\Users\Bill_2\Source\Repos\BaseCode\Debug\1-helloworld.exe
-     1>Done Building Project "C:\Users\Bill_2\Source\Repos\BaseCode\1helloworld.vcxproj" (Build target(s)).
+         Debug\Vector2D.obj
+         1helloworld.vcxproj -> C:\Users\Bill_2\Source\BaseCode\Debug\Game.exe
+     1>Done Building Project "C:\Users\Bill_2\Source\BaseCode\1helloworld.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.18
+Time Elapsed 00:00:05.59

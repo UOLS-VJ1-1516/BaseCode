@@ -1,44 +1,46 @@
 #include "MenuButton.h"
 #include "Game.h"
 
-enum button_state
-{
-	MOUSE_OUT = 0,
-	MOUSE_OVER = 1,
-	CLICKED = 2
-};
-
-MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) {
+MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callback(callback) {
 	MenuButton::Params = pParams;
-	if (TextureManager::Instance()->load("button.bmp", "Button", Game::Instance()->getRender())) {
-		TextureManager::Instance()->setSizeFrames("Button", 223, 52);
+
+	m_bReleased = false;
+	if (TextureManager::Instance()->load(pParams->getTextureID(), pParams->getTextureID(), Game::Instance()->getRender())) {
+		TextureManager::Instance()->setSizeFrames(pParams->getTextureID(), pParams->getWidth(), pParams->getHeight());
 	}
-	
 };
 
-MenuButton::~MenuButton(){
-};
-
-void MenuButton::load(const LoaderParams* pParam) {
-
-};
+MenuButton::~MenuButton(){};
+void MenuButton::load(const LoaderParams* pParam) {};
 
 void MenuButton::draw() {
-	//printf("* %d", InputHandler::Instance()->getMouseButtonState(0));
-	if (InputHandler::Instance()->getMouseButtonState(0)) {
-		//if (InputHandler::Instance()->getMousePosition().getX() > Params->getX() && InputHandler::Instance()->getMousePosition().getX()< (Params->getX() + Params->getWidth())) {
-		//	if (InputHandler::Instance()->getMousePosition().getX() > Params->getY() && InputHandler::Instance()->getMousePosition().getY()< (Params->getY() + Params->getHeight())) {
-				TextureManager::Instance()->drawFrame(Params->getTextureID(), Params->getX(), Params->getY(), Params->getWidth(), Params->getHeight(), 0, 1, Game::Instance()->getRender(), SDL_FLIP_NONE);
-		//	}
-		//}
-	}
-	else {
-		TextureManager::Instance()->drawFrame(Params->getTextureID(), Params->getX(), Params->getY(), Params->getWidth(), Params->getHeight(), 0, 0, Game::Instance()->getRender(), SDL_FLIP_NONE);
-	}
+	TextureManager::Instance()->drawFrame(Params->getTextureID(), Params->getX(), Params->getY(), Params->getWidth(), Params->getHeight(), 0, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
 };
 
 void MenuButton::update() {
 	InputHandler::Instance()->update();
+	
+	Vector2D* pMousePos = InputHandler::Instance()->getMousePosition();
+	printf("x: %f - y: %f\n", pMousePos->getX(), pMousePos->getY());
+
+	if (pMousePos->getX() < (Params->getX() + Params->getWidth())
+		&& pMousePos->getX() > Params->getX()
+		&& pMousePos->getY() < (Params->getY() + Params->getHeight())
+		&& pMousePos->getY() > Params->getY())
+	{
+		if (InputHandler::Instance()->getMouseButtonState(0) && m_bReleased) {
+			m_currentFrame = CLICKED;
+			m_callback(); 
+			m_bReleased = false;
+		}
+		else if (!InputHandler::Instance()->getMouseButtonState(0)) {
+			m_bReleased = true;      
+			m_currentFrame = MOUSE_OVER; 
+		}
+	}
+	else { 
+		m_currentFrame = MOUSE_OUT; 
+	}
 };
 
 void MenuButton::clean() {

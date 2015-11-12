@@ -13,6 +13,7 @@ public:
 	void popState();
 	void update();
 	void render();
+	void voidAllOldStates();
 private:
 	std::vector< GameState* > m_gameStates;
 	std::vector< GameState* > m_statesToDelete;
