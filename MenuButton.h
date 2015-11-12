@@ -13,12 +13,14 @@ public:
 		CLICKED = 2
 	};
 	MenuButton(const LoaderParams* pParams, void(*callback)());
-	~MenuButton() {};
+	void load(const LoaderParams* pParams);
+	~MenuButton();
 	void draw();
 	void update();
 	void clean();
 protected:
 	void(*m_callback)();
 	bool m_bReleased;
+	const LoaderParams* Params;
 };
 #endif MENUBUTTON_H

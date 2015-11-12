@@ -1,5 +1,11 @@
 #pragma once
 #include "vector"
+#include "GameObject.h"
+#include "Player.h"
+#include "StaticObjects.h"
+#include "Enemy.h"
+#include "SDL.h"
+#include "InputHandler.h"
 
 #ifndef GAMESTATE_H
 #define GAMESTATE_H

@@ -1,7 +1,7 @@
 #pragma once
 #include "string"
 #include "GameState.h"
-#include "GameObject.h"
+#include "MenuButton.h"
 
 #ifndef MENUSTATE_H
 #define MENUSTATE_H
@@ -19,6 +19,7 @@ private:
 	std::vector<GameObject*> m_gameObjects;
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
-	void handleEvents();
+	MenuButton* mb;
+	LoaderParams* lmb;
 };
 #endif MENUSTATE_H
