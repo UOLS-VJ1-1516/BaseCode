@@ -11,7 +11,7 @@ void GameStateMachine::changeState(GameState* pState) {
 			return;  
 		}
 		if (m_gameStates.back()->onExit()) {
-			delete m_gameStates.back();     
+			m_statesToDelete.push_back(m_gameStates.back());
 			m_gameStates.pop_back(); 
 		}
 	}

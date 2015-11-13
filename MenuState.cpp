@@ -14,9 +14,9 @@ void MenuState::render() {
 };
 
 bool MenuState::onEnter() {
-	mb = new MenuButton(new LoaderParams(150, 250, 135, 34, "play.bmp", 3, 0, 0, 0, 0), s_menuToPlay);
+	mb = new MenuButton(new LoaderParams(150, 250, 135, 34, "playbtn.bmp", 3, 0, 0, 0, 0), s_menuToPlay);
 	m_gameObjects.push_back(mb);
-	mb2 = new MenuButton(new LoaderParams(150, 300, 135, 34, "exit.bmp", 3, 0, 0, 0, 0), s_exitFromMenu);
+	mb2 = new MenuButton(new LoaderParams(150, 300, 135, 34, "exitbtn.bmp", 3, 0, 0, 0, 0), s_exitFromMenu);
 	m_gameObjects.push_back(mb2);
 
 	return true;

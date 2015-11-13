@@ -147,6 +147,7 @@ void Game::handleEvents() {
 
 void Game::clean() {
 	//m_gobjects.clear();
+	flag = false;
 	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
 	SDL_DestroyRenderer(g_pRenderer);
