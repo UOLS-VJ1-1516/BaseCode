@@ -36,6 +36,8 @@ bool PlayState::onEnter() {
 	TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
 	TextureManager::Instance()->load("ZepS.bmp", "zep", m_pRenderer);
 	TextureManager::Instance()->load("GordoS.bmp", "gordo", m_pRenderer);
+
+	return true;
 }
 
 const std::string PlayState::s_playID = "PLAY";
@@ -44,6 +46,6 @@ bool PlayState::onExit() {
 	return true;
 }
 
-std::string PlayState::getStateID() const {
+/*std::string PlayState::getStateID() const {
 	return PlayState::s_playID;
-}
+}*/
