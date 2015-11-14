@@ -14,9 +14,25 @@ void MenuState::render() {
 };
 
 bool MenuState::onEnter() {
-	mb = new MenuButton(new LoaderParams(150, 250, 135, 34, "playbtn.bmp", 3, 0, 0, 0, 0), s_menuToPlay);
+	so = new StaticObjects;
+	if (so == NULL) {
+		return false;
+	}
+	so->load(new LoaderParams(theMiddle(375, 75)[0], theMiddle(375, 75)[1] - 200, 375, 75, "titlemain.bmp", 1, 0, 0, 0, 0));
+	if (!TextureManager::Instance()->load("titlemain.bmp", "titlemain.bmp", Game::Instance()->getRender())) {
+		return false;
+	}
+	TextureManager::Instance()->setSizeFrames("titlepause.bmp", 250, 50);
+	m_gameObjects.push_back(so);
+	mb = new MenuButton(new LoaderParams(theMiddle(236, 75)[0], theMiddle(236, 75)[1] - 50, 236, 75, "playbtn.bmp", 3, 0, 0, 0, 0), s_menuToPlay);
+	if (mb == NULL) {
+		return false;
+	}
 	m_gameObjects.push_back(mb);
-	mb2 = new MenuButton(new LoaderParams(150, 300, 135, 34, "exitbtn.bmp", 3, 0, 0, 0, 0), s_exitFromMenu);
+	mb2 = new MenuButton(new LoaderParams(theMiddle(236, 75)[0], theMiddle(236, 75)[1] + 50, 236, 75, "exitbtn.bmp", 3, 0, 0, 0, 0), s_exitFromMenu);
+	if (mb2 == NULL) {
+		return false;
+	}
 	m_gameObjects.push_back(mb2);
 
 	return true;
@@ -24,6 +40,11 @@ bool MenuState::onEnter() {
 
 bool MenuState::onExit() {
 	m_gameObjects.clear();
+	mb->clean();
+	mb2->clean();
+	so->clean();
+	TextureManager::Instance()->clean("playbtn.bmp");
+	TextureManager::Instance()->clean("exitbtn.bmp");
 	return true;
 };
 
@@ -35,11 +56,19 @@ std::string MenuState::getStateID() const{
 };
 
 void MenuState::s_menuToPlay() {
-	Game::Instance()->getGameStateMachine()->changeState(new   PlayState());
+	Game::Instance()->getGameStateMachine()->changeState(new PlayState());
 };
 
 void MenuState::s_exitFromMenu() {
 	Game::Instance()->getGameStateMachine()->popState();
 	Game::Instance()->getGameStateMachine()->voidAllOldStates();
-	Game::Instance()->clean();
+	Game::Instance()->setflag(false);
 }; 
+
+std::vector<int> MenuState::theMiddle(int width, int height) {
+	m_position = std::vector<int>(2, 0);
+	m_position[0] = (Game::Instance()->getScreenWidth() / 2) - width / 2;
+	m_position[1] = (Game::Instance()->getScreenHeight() / 2) - height / 2;
+
+	return m_position;
+};

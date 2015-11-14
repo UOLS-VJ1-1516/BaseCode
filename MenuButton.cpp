@@ -20,7 +20,7 @@ void MenuButton::draw() {
 void MenuButton::update() {
 	InputHandler::Instance()->update();
 	
-	Vector2D* pMousePos = InputHandler::Instance()->getMousePosition();
+	pMousePos = InputHandler::Instance()->getMousePosition();
 	printf("x: %f - y: %f\n", pMousePos->getX(), pMousePos->getY());
 
 	if (pMousePos->getX() < (Params->getX() + Params->getWidth())
@@ -28,12 +28,14 @@ void MenuButton::update() {
 		&& pMousePos->getY() < (Params->getY() + Params->getHeight())
 		&& pMousePos->getY() > Params->getY())
 	{
-		if (InputHandler::Instance()->getMouseButtonState(0) && m_bReleased) {
+		if (InputHandler::Instance()->getMouseButtonState(0)) {
 			m_currentFrame = CLICKED;
-			m_callback(); 
-			m_bReleased = false;
+			if (m_bReleased) {
+				m_bReleased = false;
+			}
 		}
 		else if (!InputHandler::Instance()->getMouseButtonState(0)) {
+			if (!m_bReleased && m_currentFrame == CLICKED) { m_callback(); };
 			m_bReleased = true;      
 			m_currentFrame = MOUSE_OVER; 
 		}

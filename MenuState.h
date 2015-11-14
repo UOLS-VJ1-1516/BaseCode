@@ -21,5 +21,8 @@ private:
 	static void s_exitFromMenu();
 	MenuButton* mb;
 	MenuButton* mb2;
+	std::vector<int> theMiddle(int width, int height);
+	std::vector<int> m_position;
+	StaticObjects* so;
 };
 #endif MENUSTATE_H

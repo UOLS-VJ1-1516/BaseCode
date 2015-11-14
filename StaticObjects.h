@@ -12,6 +12,7 @@ public:
 	void load(const LoaderParams* pParams);
 	void update();
 	void clean();
+	void drawRotation(int angle);
 };
 
 #endif STATICOBJECTS_H

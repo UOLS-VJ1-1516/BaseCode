@@ -22,5 +22,6 @@ protected:
 	void(*m_callback)();
 	bool m_bReleased;
 	const LoaderParams* Params;
+	Vector2D* pMousePos;
 };
 #endif MENUBUTTON_H

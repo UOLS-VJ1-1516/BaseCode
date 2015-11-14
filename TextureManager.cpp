@@ -21,9 +21,7 @@ bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer* pR
 	return true;
 };
 
-void TextureManager::draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip) {
-	//TextureManager::SrcR.x = 0;
-	//TextureManager::SrcR.y = 0;
+void TextureManager::draw(const char* id, int x, int y, int width, int height, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
 	TextureManager::SrcR.w = m_textureSizes[*id][0];
 	TextureManager::SrcR.h = m_textureSizes[*id][1];
 	TextureManager::SrcR.w = width;
@@ -34,7 +32,7 @@ void TextureManager::draw(const char* id, int x, int y, int width, int height, S
 	TextureManager::DestR.w = width;
 	TextureManager::DestR.h = height;
 
-	SDL_RenderCopyEx(pRender, m_textureMap[*id], &SrcR, &DestR, 0, 0, flip);
+	SDL_RenderCopyEx(pRender, m_textureMap[*id], &SrcR, &DestR, currentFrame, NULL, flip);
 };
 
 void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
@@ -44,12 +42,6 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	TextureManager::SrcR.w = m_textureSizes[*id][0];
 	TextureManager::SrcR.h = m_textureSizes[*id][1];
 	
-	//Recuadro de origen donde pasamos el frame y tamaño por el que nos vamos a desplazar en la imagen. Puntos de origen y tamaño del rectángulo.
-	//TextureManager::SrcR.x = currentFrame*width;
-	//TextureManager::SrcR.y = currentRow*height;
-	//TextureManager::SrcR.w = width;
-	//TextureManager::SrcR.h = height;
-
 	//Recuadro destino donde vamos a pintarlo
 	TextureManager::DestR.x = x;
 	TextureManager::DestR.y = y;
@@ -66,7 +58,16 @@ void TextureManager::setSizeFrames(const char* id, int w, int h) {
 }
 
 TextureManager::~TextureManager(){
-	
+	s_surface = NULL;
+	s_texture = NULL;
+	m_textureMap.clear();
 };
+
+void TextureManager::clean(const char* id) {
+	s_surface = NULL;
+	s_texture = NULL;
+	m_textureMap.erase(*id);
+};
+
 
 

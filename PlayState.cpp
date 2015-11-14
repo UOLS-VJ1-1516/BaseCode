@@ -1,4 +1,5 @@
 #include "PlayState.h"
+#include "PauseState.h"
 #include "Game.h"
 
 void PlayState::update() {
@@ -15,7 +16,8 @@ void PlayState::update() {
 
 	InputHandler::Instance()->update();
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE) || InputHandler::Instance()->isExitRequired()) {
-		Game::Instance()->setflag(false);
+		//Game::Instance()->setflag(false);
+		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
 	}
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		p->incrementAccelerationX();
@@ -90,10 +92,23 @@ const std::string PlayState::s_menuID = "Play";
 
 bool PlayState::onExit() {
 	m_gobjects.clear();
+	InputHandler::Instance()->clean();
+	TextureManager::Instance()->clean("Player");
+	TextureManager::Instance()->clean("Key");
+	TextureManager::Instance()->clean("Tim");
+	Game::Instance()->getGameStateMachine()->popState();
 	return true;
 };
 
 std::string PlayState::getStateID() const {
 	return PlayState::s_menuID;
+};
+
+std::vector<int> PlayState::theMiddle(int width, int height) {
+	m_position = std::vector<int>(2, 0);
+	m_position[0] = (Game::Instance()->getScreenWidth() / 2) - width / 2;
+	m_position[1] = (Game::Instance()->getScreenHeight() / 2) - height / 2;
+
+	return m_position;
 };
 

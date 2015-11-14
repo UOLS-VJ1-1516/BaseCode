@@ -11,6 +11,11 @@ void StaticObjects::draw()
 	TextureManager::Instance()->drawFrame(m_textureID, m_position.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
 }
 
+void StaticObjects::drawRotation(int angle) 
+{
+	TextureManager::Instance()->draw(m_textureID, m_position.getX(), m_position.getY(), m_width, m_height, angle, Game::Instance()->getRender(), SDL_FLIP_NONE);
+};
+
 void StaticObjects::load(const LoaderParams* pParams)
 {
 	m_width = pParams->getWidth();
@@ -33,4 +38,9 @@ void StaticObjects::load(const LoaderParams* pParams)
 void StaticObjects::update() {
 	int framesPorSegundo = 10;
 	m_currentFrame = (int)((((Game::Instance()->getTicks())*framesPorSegundo) / 1000) % m_spriteNum); //canvia 10 veces por segundo
+};
+
+void StaticObjects::clean()
+{
+
 };

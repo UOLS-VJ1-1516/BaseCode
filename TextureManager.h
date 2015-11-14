@@ -18,10 +18,11 @@ public:
 	~TextureManager();
 
 	bool load(const char* fileName, const char* id, SDL_Renderer* pRenderer);
-	void draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip);
+	void draw(const char* id, int x, int y, int width, int height, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
 	void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, 
 		SDL_RendererFlip flip);
 	void setSizeFrames(const char* id, int width, int height);
+	void clean(const char* id);
 
 private:
 	TextureManager();

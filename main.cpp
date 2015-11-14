@@ -1,8 +1,8 @@
 #include "Game.h"
 
 const long FIXED_TIME = 20;
-const int FIXED_WIDTH = 800;
-const int FIXED_HEIGHT = 600;
+const int FIXED_WIDTH = 1024;
+const int FIXED_HEIGHT = 768;
 
 int main(int argc, char* args[])
 {
@@ -10,7 +10,6 @@ int main(int argc, char* args[])
 		while (Game::Instance()->isRunning()) {
 			long frameStart = SDL_GetTicks();
 			Game::Instance()->render();
-			//Game::Instance()->handleEvents();
 			Game::Instance()->update();
 			long frameEnd = SDL_GetTicks();
 			long frameTime = frameEnd - frameStart;

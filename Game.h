@@ -23,15 +23,6 @@ private:
 	int m_screenWidth;
 	int m_screenHeight;
 	static Game* s_pInstance;
-	LoaderParams* lp;
-	Player* p;
-	LoaderParams* lo;
-	StaticObjects* o;
-	LoaderParams* le;
-	Enemy* e;
-	Enemy* e2;
-	Enemy* e3;
-	Enemy* e4;
 	InputHandler* TheInputHandler;
 	TextureManager* TheTextureManager;
 	GameStateMachine* gsm;
@@ -60,7 +51,6 @@ public:
 	int getScreenWidth();
 	int getScreenHeight();
 	void setflag(bool b);
-	bool getflag();
 	GameStateMachine* getGameStateMachine();
 };
 

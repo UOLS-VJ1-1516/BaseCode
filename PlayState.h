@@ -27,6 +27,8 @@ private:
 	Enemy* e2;
 	Enemy* e3;
 	Enemy* e4;
+	std::vector<int> theMiddle(int width, int height);
+	std::vector<int> m_position;
 };
 
 #endif PLAYSTATE_H
