@@ -1,9 +1,8 @@
-
-
 #include "Game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
-
+#include "MenuState.h"
+#include "PlayState.h"
 
 Game* Game::g_Instance = 0;
 
@@ -12,13 +11,14 @@ Game::Game() {
 	flag = true;
 	g_pRenderer = 0;
 	p1 = new Player();
-	p2 = new Player();
-	p3 = new Player();
-	lp = new LoaderParams(0, 0, 72.5, 91, "Player", 6);
-	lp2 = new LoaderParams(100, 200, 64, 58, "pajarito", 4);
-	lp3 = new LoaderParams(300, 200, 167, 90, "otro", 4);
-	screenWidth = 0;
-	screenHeigth = 0;
+	p2 = new StaticObject();
+	p3 = new Enemy();
+	lp = new LoaderParams(350, 100, 72.5, 91, "Player", 6,0,0,35,0.1);
+	lp2 = new LoaderParams(10, 300, 64, 58, "pajarito", 4,0, 0, 0, 0);
+	lp3 = new LoaderParams(300, 200, 167, 90, "otro", 4, 4, 0, 4, 1);
+	TheInputHandler = InputHandler::Instance();
+	screenWidth = 800;
+	screenHeigth = 600;
 }
 
 Game::~Game() {
@@ -33,6 +33,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		}
 
+		screenWidth = width;
+		screenHeigth = height;
 		SDL_GetWindowSize(g_pWindow, &width, &height);
 
 		if (g_pWindow != 0) {
@@ -50,10 +52,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			TextureManager::Instance()->load("animation1.png", "Player", g_pRenderer);
 			TextureManager::Instance()->load("bird1.png", "pajarito", g_pRenderer);
 			TextureManager::Instance()->load("pantera1.png", "otro", g_pRenderer);
+
+			m_pGameStateMachine = new GameStateMachine();
+			m_pGameStateMachine->changeState(new MenuState());
 			
 		}
-		
-
 		
 		return true;
 	}
@@ -71,6 +74,7 @@ void Game::render() {
 	{
 		m_gameObjects[i]->draw();
 	}
+	m_pGameStateMachine->render();
 
 	SDL_RenderPresent(g_pRenderer);
 
@@ -82,15 +86,32 @@ void Game::update() {
 	{
 		m_gameObjects[i]->update();
 	}
+	m_pGameStateMachine->update();
 }
 
 void Game::handleEvents() {
-	if (SDL_PollEvent(&event) == 1) {
-		if ((event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)) {
-			flag = false;
-		}
+	
+	TheInputHandler->update();
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_RIGHT))
+	{
+		p1->incrementAccelerationX();
+	}
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_LEFT))
+	{
+		p1->decrementAccelerationX();
 	}
 
+	if (TheInputHandler->Quit() || TheInputHandler->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		flag = false;
+	}
+	//
+	TheInputHandler->update();
+	if (TheInputHandler->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_pGameStateMachine->changeState(new PlayState());
+	}
+	
 }
 
 void Game::clean() {

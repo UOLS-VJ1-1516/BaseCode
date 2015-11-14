@@ -17,8 +17,8 @@ bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer* pR
 };
 
 void TextureManager::draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip) {
-	TextureManager::SrcR.x = x;
-	TextureManager::SrcR.y = y;
+	TextureManager::SrcR.x = 0;
+	TextureManager::SrcR.y = 0;
 	TextureManager::SrcR.w = width;
 	TextureManager::SrcR.h = height;
 

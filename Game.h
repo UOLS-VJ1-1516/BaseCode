@@ -6,6 +6,10 @@
 #include "vector"
 #include "GameObject.h"
 #include "Player.h"
+#include "InputHandler.h"
+#include "Enemy.h"
+#include "StaticObject.h"
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -45,13 +49,16 @@ private:
 	static Game* g_Instance;
 	int screenWidth;
 	int screenHeigth;
+	InputHandler* TheInputHandler;
 	
 	LoaderParams* lp;
 	LoaderParams* lp2;
 	LoaderParams* lp3;
 	Player* p1;
-	Player* p2;
-	Player* p3;
+	Enemy* p3;
+	StaticObject* p2;
+	
+	GameStateMachine* m_pGameStateMachine;
 	
 
 };
