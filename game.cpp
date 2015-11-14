@@ -29,7 +29,8 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		
-			m_pGameStateMachine->changeState(new PlayState());
+			//m_pGameStateMachine->changeState(new PlayState());
+			m_pGameStateMachine->pushState(new MenuState());
 
 			/*player1->load(paramsPlayer1);
 			enemy1->load(paramsEnemy1);
@@ -103,6 +104,8 @@ void Game::clean() {
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
+
+	running = false;
 }
 
 bool Game::isRunning() {
@@ -127,4 +130,8 @@ int Game::getWindowHeight() {
 
 void Game::setIsRunning(bool run) {
 	running = run;
+}
+
+GameStateMachine* Game::getGameStateMachine() {
+	return m_pGameStateMachine;
 }

@@ -4,6 +4,7 @@
 #define GAMESTATEMACHINE_H
 
 #include "GameState.h"
+#include "vector"
 
 class GameStateMachine {
 	public:
@@ -13,6 +14,8 @@ class GameStateMachine {
 
 		void update();
 		void render();
+
+		void deleteOldStates();
 
 	private:
 		std::vector<GameState* > m_gameStates;

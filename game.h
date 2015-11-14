@@ -11,6 +11,7 @@
 #include "InputHandler.h"
 #include "GameStateMachine.h"
 #include "PlayState.h"
+#include "MenuState.h"
 #include "vector"
 
 class Game {
@@ -50,6 +51,7 @@ class Game {
 		int getWindowWidth();
 		int getWindowHeight();
 		void setIsRunning(bool run);
+		GameStateMachine* getGameStateMachine();
 };
 
 #endif

@@ -12,7 +12,7 @@
 #include "TextureManager.h"
 #include "InputHandler.h"
 #include "GameStateMachine.h"
-#include "PlayState.h"
+#include "PauseState.h"
 
 class PlayState : public GameState {
 	public:

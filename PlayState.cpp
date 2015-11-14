@@ -13,6 +13,10 @@ void PlayState::update() {
 		Game::Instance()->setIsRunning(false);
 	}
 
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
+	}
+
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		player1->incrementAcceleration();
 	}
