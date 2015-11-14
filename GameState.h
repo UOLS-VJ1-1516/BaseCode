@@ -1,5 +1,11 @@
 #pragma once
 #include "iostream"
+#include "Player.h"
+#include "Gordo.h"
+#include "Zep.h"
+#include "GameObject.h"
+#include "vector"
+
 class GameState
 {
 public:

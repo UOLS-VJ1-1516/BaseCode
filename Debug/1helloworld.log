@@ -1,23 +1,25 @@
-﻿Build started 14/11/2015 11:55:39.
+﻿Build started 14/11/2015 13:47:39.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp GameStateMachine.cpp Gordo.cpp InputHandler.cpp MenuState.cpp PlayState.cpp Player.cpp Zep.cpp main.cpp
+         PlayState.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(47): error C2084: function 'std::string PlayState::getStateID(void) const' already has a body
+         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(13): note: see previous definition of 'getStateID'
+         MenuState.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(8): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(15): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(34): error C2084: function 'std::string MenuState::getStateID(void) const' already has a body
+         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(15): note: see previous definition of 'getStateID'
+         InputHandler.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
+         Generating Code...
+         Compiling...
          main.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\main.cpp(6): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
          Zep.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(6): warning C4305: 'argument': truncation from 'double' to 'float'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(8): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -27,17 +29,6 @@
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(33): warning C4305: 'argument': truncation from 'double' to 'float'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(39): warning C4305: 'argument': truncation from 'double' to 'float'
          Player.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C2039: 'vector': is not a member of 'std'
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\map(15): note: see declaration of 'std'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.cpp(11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.cpp(12): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -47,136 +38,7 @@
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.cpp(30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.cpp(46): warning C4305: 'argument': truncation from 'double' to 'float'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.cpp(61): warning C4305: 'argument': truncation from 'double' to 'float'
-         PlayState.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(19): error C2039: 'vector': is not a member of 'std'
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\string(17): note: see declaration of 'std'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(19): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(19): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(20): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(20): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(21): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(21): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(24): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(24): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(25): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(25): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(26): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(26): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(9): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(9): error C2228: left of '.size' must have class/struct/union
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(9): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(10): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(10): error C2227: left of '->update' must point to class/struct/union/generic type
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(14): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(14): error C2228: left of '.size' must have class/struct/union
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(14): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(15): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(15): error C2227: left of '->draw' must point to class/struct/union/generic type
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(19): error C2065: 'player': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(20): error C2065: 'zep': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(21): error C2065: 'gordo': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(23): error C2065: 'load': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(24): error C2065: 'load2': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(25): error C2065: 'load3': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(27): error C2065: 'player': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(27): error C2227: left of '->load' must point to class/struct/union/generic type
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(27): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(27): error C2065: 'load': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(28): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(28): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(28): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(28): error C2065: 'player': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(30): error C2065: 'zep': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(30): error C2227: left of '->load' must point to class/struct/union/generic type
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(30): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(30): error C2065: 'load2': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(31): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(31): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(31): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(31): error C2065: 'zep': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(33): error C2065: 'gordo': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(33): error C2227: left of '->load' must point to class/struct/union/generic type
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(33): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(33): error C2065: 'load3': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(34): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(34): error C2228: left of '.push_back' must have class/struct/union
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(34): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(34): error C2065: 'gordo': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(36): error C2065: 'm_pRenderer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(37): error C2065: 'm_pRenderer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(38): error C2065: 'm_pRenderer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(43): error C2065: 'm_gObjects': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(43): error C2228: left of '.clear' must have class/struct/union
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(43): note: type is 'unknown-type'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.cpp(47): error C2084: function 'std::string PlayState::getStateID(void) const' already has a body
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\playstate.h(13): note: see previous definition of 'getStateID'
-         MenuState.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(8): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(15): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(34): error C2084: function 'std::string MenuState::getStateID(void) const' already has a body
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(15): note: see previous definition of 'getStateID'
-         InputHandler.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C2039: 'vector': is not a member of 'std'
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stddef.h(18): note: see declaration of 'std'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C2143: syntax error: missing ';' before '<'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(27): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(28): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(28): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.h(28): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(30): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(33): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(36): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(41): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(44): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(47): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(55): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(56): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(57): error C2065: 'm_mouseButtonStates': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\inputhandler.cpp(76): error C2065: 'm_mouseButtonStates': undeclared identifier
          Gordo.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\gordo.cpp(6): warning C4305: 'argument': truncation from 'double' to 'float'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\gordo.cpp(8): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -185,19 +47,12 @@
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\gordo.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\gordo.cpp(34): warning C4305: 'argument': truncation from 'double' to 'float'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\gordo.cpp(40): warning C4305: 'argument': truncation from 'double' to 'float'
+         GameStateMachine.cpp
          Game.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(22): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2143: syntax error: missing ';' before '*'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.h(23): error C2238: unexpected token(s) preceding ';'
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
          Generating Code...
-         Skipping... (no relevant changes detected)
-         GameStateMachine.cpp
      1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:06.00
+Time Elapsed 00:00:07.71

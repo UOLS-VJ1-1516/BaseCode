@@ -19,7 +19,7 @@ private:
 	std::vector<GameObject*>m_gameObjects;
 	static void s_menuTOplay();
 	static void s_exitMenu();
-	MenuButton * menuButton;
-	MenuButton * menuButton2;
+	//MenuButton * menuButton;
+	//MenuButton * menuButton2;
 
 };
