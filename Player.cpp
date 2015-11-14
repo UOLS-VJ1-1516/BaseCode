@@ -8,10 +8,10 @@ Player::Player() {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_maxVelocity.setX(1);
-	m_acceleration.setX(m_velocity.getX() + 0.02);
-	m_desacceleration.setX(m_velocity.getX() - 0.02);
-	m_frictionRight.setX(m_velocity.getX() - 0.08);
-	m_frictionLeft.setX(m_velocity.getX() - 0.02);
+	m_acceleration.setX(m_velocity.getX() + 0.05);
+	m_desacceleration.setX(m_velocity.getX() - 0.05);
+	m_frictionRight.setX(m_velocity.getX() - 0.02);
+	m_frictionLeft.setX(m_velocity.getX() + 0.02);
 
 };
 Player::~Player() {};
@@ -35,30 +35,41 @@ void Player::load(const LoaderParams* pParams)
 
 }
 void Player::update() {
-	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+	
 	//m_velocity.setX(0.1);
 	
 	
 	if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
-		
+
+		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 		m_velocity.setX(0.1);
 		m_velocity.setX(m_acceleration.getX()+(m_velocity.getX() - m_frictionRight.getX()));
+		m_maxVelocity.setX(m_velocity.getX());
 		turn = SDL_FLIP_NONE;
-		if (m_maxVelocity.getX()>=1) {
-			m_velocity.setX(0.1);
+		if (m_velocity.getX()==m_maxVelocity.getX()) {
+			m_velocity.setX(m_velocity.getX()-m_desacceleration.getX());
 		}
+		if (m_position.getX() >= 600) {
+			m_position.setX(600);
+		}
+
 	}
 	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
+		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 		m_velocity.setX(-0.1);
 		m_velocity.setX(m_desacceleration.getX() + (m_velocity.getX() - m_frictionLeft.getX()));
 		turn = SDL_FLIP_HORIZONTAL;
-		if (m_maxVelocity.getX() <= -1) {
-			m_velocity.setX(-0.1);
+		if (m_velocity.getX() == m_maxVelocity.getX()) {
+			m_velocity.setX(m_velocity.getX()+m_acceleration.getX());
+		}
+		if (m_position.getX() <= 0) {
+			m_position.setX(0);
 		}
 	}
 	else {
+		m_currentFrame = 3;
 		m_velocity.setX(0);
 		
 		

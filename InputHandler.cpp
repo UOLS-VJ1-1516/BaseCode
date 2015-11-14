@@ -25,11 +25,36 @@ void InputHandler::update()
 		default:
 			break;
 		}
+		if (event.button.type == SDL_MOUSEBUTTONDOWN) {
+			if (event.button.button == SDL_BUTTON_LEFT) {
+				m_mouseButtonStates[0] = true;
+			}
+			else if (event.button.button == SDL_BUTTON_MIDDLE) {
+				m_mouseButtonStates[1] = true;
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT) {
+				m_mouseButtonStates[2] = true;
+			}
+		}
+		else if (event.button.type == SDL_MOUSEBUTTONUP) {
+			if (event.button.button == SDL_BUTTON_LEFT) {
+				m_mouseButtonStates[0] = false;
+			}
+			else if (event.button.button == SDL_BUTTON_MIDDLE) {
+				m_mouseButtonStates[1] = false;
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT) {
+				m_mouseButtonStates[2] = false;
+			}
+		}
 	}
 }
 
 void InputHandler::clean()
 {
+	m_mouseButtonStates[0] = false;
+	m_mouseButtonStates[1] = false;
+	m_mouseButtonStates[2] = false;
 }
 
 bool InputHandler::isKeyDown(SDL_Scancode key)
@@ -46,4 +71,8 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
 		}
 	}
 	return false;
+}
+bool InputHandler::getMouseButtonState(int buttonNumber) {
+	return m_mouseButtonStates[buttonNumber];
+
 }

@@ -3,6 +3,8 @@
 #include "LoaderParams.h"
 #include "InputHandler.h"
 
+
+
 //#include "SDL_keycode.h"
 
 
@@ -10,25 +12,31 @@
 //int g = 0;
 //int b = 10;
 
+
 Game * Game::s_pInstance = 0;
 
 Game::Game() {
 	//Nom de la classe :: Nom
 	m_pWindow = 0;
 	m_pRenderer = 0;
-	player = new Player();
+	/*player = new Player();
 	enemy1 = new Zep();
 	enemy2 = new Gordo();
+	
 	load = new LoaderParams(100, 100, 35, 32, "player", 10);
 	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
-	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);
-
+	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);*/
+	playState = new PlayState();
+	menuState = new MenuState();
+	m_pGameStateMachine = new GameStateMachine();
+	
 }
 Game::~Game() {
 
 }
 bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
+	
 
 
 	//inicialitzem el SDL
@@ -44,8 +52,12 @@ bool Game::init(const char* title, int xpos, int
 		// if the window creation succeeded create our renderer
 		if (m_pWindow != 0)
 		{
-
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+			m_pGameStateMachine->pushState(menuState);
+			/*m_pGameStateMachine = new GameStateMachine();
+			m_pGameStateMachine->changeState(new MenuState());
+
+			
 			player->load(load);
 			m_gameObjects.push_back(player);
 
@@ -58,6 +70,9 @@ bool Game::init(const char* title, int xpos, int
 			TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
 			TextureManager::Instance()->load("ZepS.bmp", "zep", m_pRenderer);
 			TextureManager::Instance()->load("GordoS.bmp", "gordo", m_pRenderer);
+			
+			*/
+
 			
 		}
 
@@ -72,26 +87,32 @@ bool Game::init(const char* title, int xpos, int
 void Game::render() {
 	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(m_pRenderer);
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->draw();
-	}
-	
+	}*/
+	m_pGameStateMachine->render();
 	SDL_RenderPresent(m_pRenderer);
 	
 }
 
 void Game::update() {
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
-	}
+	}*/
+	
+	m_pGameStateMachine->update();
+	
 
 }
 
 void Game::handleEvents(SDL_Event event) {
 
 	InputHandler::Instance()->update();
+	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+		m_pGameStateMachine->changeState(new PlayState());
+	}
 	/*if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym = SDLK_ESCAPE) {
 			running = false;
@@ -120,3 +141,6 @@ SDL_Renderer* Game::getRender() {
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
 };
+GameStateMachine * Game::getGameStateMachine() {
+	return m_pGameStateMachine;
+}

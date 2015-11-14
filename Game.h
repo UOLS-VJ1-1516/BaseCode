@@ -7,6 +7,11 @@
 #include "Player.h"
 #include "Zep.h"
 #include "Gordo.h"
+#include "GameStateMachine.h"
+#include "PlayState.h"
+#include "MenuState.h"
+
+
 
 class Game
 {
@@ -23,6 +28,9 @@ private:
 	LoaderParams* load3;
 	Gordo* enemy2;
 	int spriteNum;
+	GameStateMachine *m_pGameStateMachine;
+	PlayState* playState;
+	MenuState * menuState;
 
 
 	bool running = true;
@@ -47,5 +55,6 @@ public:
 	SDL_Renderer* getRender();
 	int getTicks();
 	std::vector<GameObject*> m_gameObjects;
+	GameStateMachine * getGameStateMachine();
 };
 #endif
