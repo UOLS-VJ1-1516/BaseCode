@@ -1,8 +1,11 @@
 #include "InputHandler.h"
-#include "game.h"
 
 InputHandler::InputHandler() {
 	m_keystates = SDL_GetKeyboardState(0);
+	for (int i = 0; i < 3; i++)
+	{
+		m_mouseButtonStates.push_back(false);
+	}
 };
 
 //Instancias
@@ -30,16 +33,40 @@ void InputHandler::update() {
 	while (SDL_PollEvent(&event))
 	{
 		switch (event.type) {
-			case SDL_KEYUP:
-				switch (event.key.keysym.sym)
-				{
-					case SDLK_ESCAPE:
-						Game::Instance()->exit();
-						break;
-				}
+		case SDL_MOUSEBUTTONDOWN:
+			switch (event.button.button)
+			{
+				case SDL_BUTTON_LEFT:
+					m_mouseButtonStates[LEFT] = true;
+					break;
+				case SDL_BUTTON_MIDDLE:
+					m_mouseButtonStates[MIDDLE] = true;
+					break;
+				case SDL_BUTTON_RIGHT:
+					m_mouseButtonStates[RIGHT] = true;
+					break;
+			}
+		break;
+		case SDL_MOUSEBUTTONUP:
+			switch (event.button.button)
+			{
+			case SDL_BUTTON_LEFT:
+				m_mouseButtonStates[LEFT] = false;
+				break;
+			case SDL_BUTTON_MIDDLE:
+				m_mouseButtonStates[MIDDLE] = false;
+				break;
+			case SDL_BUTTON_RIGHT:
+				m_mouseButtonStates[RIGHT] = false;
+				break;
+			}
+		break;
+		case SDL_MOUSEMOTION:
+			m_mousePosition.setX(event.motion.x);
+			m_mousePosition.setY(event.motion.y);
+		break;
+		default:
 			break;
-			default:
-					break;		
 		}
 	}
 };

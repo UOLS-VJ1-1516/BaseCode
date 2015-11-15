@@ -1,5 +1,14 @@
 #pragma once
 #include "game.h"
+#include "Vector2D.h"
+#include <vector>
+
+enum mouse_buttons
+{
+	LEFT = 0,
+	MIDDLE = 1,
+	RIGHT = 2
+};
 
 class InputHandler
 {
@@ -17,8 +26,12 @@ class InputHandler
 		void clean();
 		// Métodos de acceso
 		bool isKeyDown(SDL_Scancode key);
+		bool getMouseButtonState(int buttonNumber) { return m_mouseButtonStates[buttonNumber];};
+		Vector2D getMousePosition() { return m_mousePosition; };
 	private:
 		InputHandler();
 		static InputHandler* i_pInstance;
 		const Uint8* m_keystates;
+		std::vector<bool> m_mouseButtonStates;
+		Vector2D m_mousePosition;
 };

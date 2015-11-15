@@ -3,11 +3,11 @@
 
 class Enemy : public GameObject
 {
-	public:
-		Enemy();
-		~Enemy();
-		void load(const LoaderParams* pParams);
-		void draw();
-		void update();
-		void clean();
+public:
+	Enemy();
+	~Enemy();
+	void load(const LoaderParams* pParams);
+	void draw();
+	void update();
+	void clean();
 };

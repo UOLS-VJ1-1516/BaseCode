@@ -1,7 +1,5 @@
 //Class Enemy para crear un GameObject Enemy
 #include "Enemy.h"
-#include "TextureManager.h"
-#include "Game.h"
 
 //Constructor y destructor
 Enemy::Enemy() {
@@ -19,16 +17,7 @@ SDL_RendererFlip flipEnemy = SDL_FLIP_NONE;
 envia los parametros necesarios a la clase TextureManager para cargar la textura
 y envia los parametros para crear el mapa de texturas*/
 void Enemy::load(const LoaderParams* pParams) {
-	m_width = pParams->getWidth();
-	m_height = pParams->getHeight();
-	m_position.setX(pParams->getX());
-	m_position.setY(pParams->getY());
-	m_textureID = pParams->getTextureID();
-	m_fileName = pParams->getFileName();
-	m_spriteNum = pParams->getSpriteNum();
-	m_currentRow = pParams->getRowNum();
-	TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
-	TextureManager::Instance()->setFrame(m_textureID, m_width, m_height);
+	GameObject::load(pParams);
 };
 
 //Funcion para mostrar por pantalla la textura mediante la clase TextureManager

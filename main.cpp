@@ -6,12 +6,12 @@ const float DELAY_TIME = 1000.0f / FPS;
 int main(int argc, char* args[])
 {
 	Game* game = Game::Instance();
-	
+
 	// Iniciamos el game
-	game->init("Ejercicio 4", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, true);
+	game->init("Ejercicio 5", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
 	//Mientras no se quiera cerrar el game, se llama repetidamente a las funciones del while
-	while(game->isRunning())
+	while (game->isRunning())
 	{
 		Uint32 frameStart = SDL_GetTicks();
 		game->render();
@@ -20,7 +20,7 @@ int main(int argc, char* args[])
 
 		Uint32 frameEnd = SDL_GetTicks();
 		Uint32 frameTime = frameEnd - frameStart;
-		if(frameTime < DELAY_TIME)
+		if (frameTime < DELAY_TIME)
 		{
 			SDL_Delay((int)(DELAY_TIME - frameTime));
 		}

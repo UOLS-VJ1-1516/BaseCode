@@ -5,29 +5,27 @@
 
 class TextureManager
 {
-	private:
-		TextureManager();
+private:
+	TextureManager();
 
-	public:
-		static TextureManager* Instance()
+public:
+	static TextureManager* Instance()
+	{
+		if (s_pInstance == 0)
 		{
-			if (s_pInstance == 0)
-			{
-				s_pInstance = new TextureManager();
-			}
-			return s_pInstance;
+			s_pInstance = new TextureManager();
 		}
-		~TextureManager();
+		return s_pInstance;
+	}
+	~TextureManager();
 
-		bool load(char* fileName, const char* id, SDL_Renderer* pRenderer);
-		void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
-		void setFrame(const char* id, int width, int height);
-
-	private:
-		static TextureManager* s_pInstance;
-		SDL_Texture* texture;
-		SDL_Rect SrcR;
-		SDL_Rect DestR;
-		std::map<char, SDL_Texture* > m_textureMap;
-		std::map<char, int[2] > m_textureSizes;
+	bool load(std::string fileName, std::string id,	SDL_Renderer* pRenderer);
+	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer*	pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void TextureManager::clearFromTextureMap(std::string id) { m_textureMap.erase(id); };
+private:
+	static TextureManager* s_pInstance;
+	SDL_Texture* texture;
+	SDL_Rect SrcR;
+	SDL_Rect DestR;
+	std::map<std::string, SDL_Texture*> m_textureMap;
 };

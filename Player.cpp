@@ -1,38 +1,28 @@
 //Class Player para crear un GameObject Player
 #include "Player.h"
-#include "game.h"
 
 //Constructor y destructor
-Player::Player(){
+Player::Player() {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_maxVelocity.setX(10);
 	m_acceleration.setX(m_velocity.getX() + 0.02);
 	m_friction.setX(m_velocity.getX() - 0.08);
 };
-Player::~Player(){};
+Player::~Player() {};
 
-SDL_RendererFlip flip = SDL_FLIP_NONE;
+SDL_RendererFlip flipPlayer = SDL_FLIP_NONE;
 
 /*Funcion load que recibe todos lo parametros para hacer el load del Player,
 envia los parametros necesarios a la clase TextureManager para cargar la textura
 y envia los parametros para crear el mapa de texturas*/
-void Player::load(const LoaderParams* pParams){
-	m_width = pParams->getWidth();
-	m_height = pParams->getHeight();
-	m_position.setX(pParams->getX());
-	m_position.setY(pParams->getY());
-	m_textureID = pParams->getTextureID();
-	m_fileName = pParams->getFileName();
-	m_spriteNum = pParams->getSpriteNum();
-	m_currentRow = pParams->getRowNum();
-	TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
-	TextureManager::Instance()->setFrame(m_textureID, m_width, m_height);
+void Player::load(const LoaderParams* pParams) {
+	GameObject::load(pParams);
 };
 
 //Funcion para mostrar por pantalla la textura mediante la clase TextureManager
-void Player::draw(){
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), flip);
+void Player::draw() {
+	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), flipPlayer);
 };
 
 void Player::update()
@@ -50,13 +40,13 @@ void Player::update()
 	else {
 		noMoveX();
 	}
-	
+
 	controlPosition();
 };
 
-void Player::moveLeft(){
+void Player::moveLeft() {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-	flip = SDL_FLIP_HORIZONTAL;
+	flipPlayer = SDL_FLIP_HORIZONTAL;
 	m_acceleration.setX(m_acceleration.getX() + 0.001);
 	m_velocity.setX(m_velocity.getX() + (m_acceleration.getX() - m_friction.getX()));
 	if (m_velocity.getX() >= m_maxVelocity.getX()) {
@@ -67,7 +57,7 @@ void Player::moveLeft(){
 
 void Player::moveRight() {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-	flip = SDL_FLIP_NONE;
+	flipPlayer = SDL_FLIP_NONE;
 	m_acceleration.setX(m_acceleration.getX() + 0.001);
 	m_velocity.setX(m_velocity.getX() + (m_acceleration.getX() - m_friction.getX()));
 	if (m_velocity.getX() >= m_maxVelocity.getX()) {
@@ -91,4 +81,4 @@ void Player::controlPosition() {
 	}
 };
 
-void Player::clean(){};
+void Player::clean() {};
