@@ -1,6 +1,8 @@
 #pragma once
 #include "SDL.h"
 #include "game.h"
+#include "Vector2D.h"
+#include <vector>
 
 
 class InputHandler
@@ -17,45 +19,18 @@ class InputHandler
 			return s_pInstance;
 		}
 
-		~InputHandler() {}
+		~InputHandler();
 		
-		void update() {
-			
-			SDL_Event esc_event;
-
-			while (SDL_PollEvent(&esc_event)) {
-				m_keystates = SDL_GetKeyboardState(0);
-				switch (esc_event.type) {
-				case SDL_KEYUP:
-					switch (esc_event.key.keysym.sym) {
-					case SDLK_ESCAPE:
-						SDL_Quit();
-						break;
-					}
-				}
-			}
-
-		}
-		void clean() {};
-		// Métodos de acceso
-		bool isKeyDown(SDL_Scancode key) {
-			if (m_keystates != 0)
-			{
-				if (m_keystates[key] == 1)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			return false;
-
-		}
+		void update();
+		void clean();
+		bool isKeyDown(SDL_Scancode key);
+		Vector2D* getMousePosition();
+		bool getMouseButtonState(int buttonNumber);
 
 	private:
-		InputHandler() {}
+		InputHandler();
 		static InputHandler* s_pInstance;
 		const Uint8* m_keystates;
+		std::vector<bool> m_mouseButtonStates;
+		Vector2D* m_mousePosition;
 };

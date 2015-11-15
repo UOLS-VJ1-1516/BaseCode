@@ -2,11 +2,9 @@
 #include "game.h"
 #include "Player.h"
 #include "TextureManager.h"
-#include "Vector2D.h"
 #include "InputHandler.h"
+#include "Vector2D.h"
 
-
-InputHandler* InputHandler::s_pInstance = 0;
 
 Player::Player() {
 	m_velocity.setX(0);
@@ -16,7 +14,7 @@ Player::Player() {
 };
 Player::~Player() {};
 
-void Player::draw(SDL_Renderer* pRender) {
+void Player::draw() {
 	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), flip);
 }
 

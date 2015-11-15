@@ -10,7 +10,7 @@ Enemy::Enemy() {
 };
 Enemy::~Enemy() {};
 
-void Enemy::draw(SDL_Renderer* pRender) {
+void Enemy::draw() {
 	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), flip);
 }
 

@@ -1,19 +1,18 @@
 #pragma once
-#include "SDL.h"
-#include "game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "Vector2D.h"
-#include "InputHandler.h"
+
+
 
 class GameObject
 {
 
 	public:
-		GameObject() {}
-		virtual ~GameObject() {}
+		/*GameObject() {}
+		virtual ~GameObject() {}*/
 		virtual void load(const LoaderParams* pParams) = 0;
-		virtual void draw(SDL_Renderer* pRender) = 0;
+		virtual void draw() = 0;
 		virtual void update() = 0;
 		virtual void clean() = 0;
 

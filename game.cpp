@@ -3,6 +3,9 @@
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+#include "GameObject.h"
+#include "MenuState.h"
+#include "PlayState.h"
 
 
 Game* Game::s_pInstance = 0;
@@ -29,24 +32,27 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 
-		if (TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer)) {
+		/*if (TextureManager::Instance()->load("walker.bmp", "walker", m_pRenderer)) {
 			LoaderParams* load = new LoaderParams(300, 200, 60, 38, "walker", 12);
 			p1 = new Player();
 			p1->load(load);
-			m_players.push_back(p1);
+			m_gameObjects.push_back(p1);
 		}
 		if (TextureManager::Instance()->load("kirby.bmp", "kirby", m_pRenderer)) {
 			LoaderParams* load2 = new LoaderParams(50, 50, 30, 27, "kirby", 6);
 			p2 = new Enemy();
 			p2->load(load2);
-			m_enemies.push_back(p2);
+			m_gameObjects.push_back(p2);
 		}
 		if (TextureManager::Instance()->load("tanooki.bmp", "tanooki", m_pRenderer)) {
 			LoaderParams* load3 = new LoaderParams(550, 400, 37, 35, "tanooki", 4);
 			p3 = new Enemy();
 			p3->load(load3);
-			m_enemies.push_back(p3);
-		}
+			m_gameObjects.push_back(p3);
+		}*/
+
+		m_gameStateMachine = new GameStateMachine();
+		m_gameStateMachine->changeState(new PlayState());
 
 		return true;
 	}
@@ -58,15 +64,10 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 
-	for (std::vector<Player*>::size_type i = 0; i != m_players.size(); i++)
-	{
-		m_players[i]->draw(m_pRenderer);
-	}
-
-	for (std::vector<Enemy*>::size_type i = 0; i != m_enemies.size(); i++)
-	{
-		m_enemies[i]->draw(m_pRenderer);
-	}
+	m_gameStateMachine->render();
+	/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+		m_gameObjects[i]->draw();
+	}*/
 
 	SDL_RenderPresent(m_pRenderer);
 }
@@ -74,40 +75,27 @@ void Game::render()
 
 void Game::update()
 {	
-
-	for (std::vector<Player*>::size_type i = 0; i != m_players.size(); i++)
+	m_gameStateMachine->update();
+	/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
 	{
-		m_players[i]->update();
-	}
+		m_gameObjects[i]->update();
+	}*/
 
-	for (std::vector<Enemy*>::size_type i = 0; i != m_enemies.size(); i++)
-	{
-		m_enemies[i]->update();
-	}
 }
 
 void Game::handleEvents()
 {
 	InputHandler::Instance()->update();
 
-	/*SDL_Event esc_event;
-	
-	while (SDL_PollEvent(&esc_event)) {
-		switch (esc_event.type) {
-		case SDL_KEYUP:
-			switch (esc_event.key.keysym.sym) {
-				case SDLK_ESCAPE:
-					quit = 1;
-					break;
-			}				
-		}
-	}	*/
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_gameStateMachine->changeState(new PlayState());
+	}
 }
 
 void Game::clean()
 {
-	m_players.clear();
-	m_enemies.clear();
+	//m_gameObjects.clear();
 	SDL_RenderClear(m_pRenderer);
 	SDL_Quit();
 }
