@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 #include <vector>
 
+//Clase donde se define las diferentes entradas del usuario como el raton y el teclado
 enum mouse_buttons
 {
 	LEFT = 0,
@@ -24,7 +25,6 @@ class InputHandler
 		~InputHandler() {};
 		void update();
 		void clean();
-		// Métodos de acceso
 		bool isKeyDown(SDL_Scancode key);
 		bool getMouseButtonState(int buttonNumber) { return m_mouseButtonStates[buttonNumber];};
 		Vector2D getMousePosition() { return m_mousePosition; };

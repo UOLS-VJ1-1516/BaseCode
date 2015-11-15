@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "vector"
 
+//Clase State de Play para entrar el juego
 class PlayState : public GameState
 {
 	public:

@@ -8,7 +8,7 @@ int main(int argc, char* args[])
 	Game* game = Game::Instance();
 
 	// Iniciamos el game
-	game->init("Ejercicio 5", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+	game->init("Ejercicio 5", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, true);
 
 	//Mientras no se quiera cerrar el game, se llama repetidamente a las funciones del while
 	while (game->isRunning())

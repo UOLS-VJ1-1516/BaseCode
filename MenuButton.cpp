@@ -1,23 +1,25 @@
 #include "MenuButton.h"
 
-SDL_RendererFlip flipButton = SDL_FLIP_NONE;
-
+//Constructor
 MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callback(callback)
 {
 	GameObject::load(pParams);
 	m_bReleased = false;
-	m_currentFrame = MOUSE_OUT; // start at frame 0
+	m_currentFrame = MOUSE_OUT;
 }
 
+//Función load
 void MenuButton::load(const LoaderParams* pParams)
 {
 }
 
+//Función para printar los game objects boton
 void MenuButton::draw()
 {
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), flipButton);
+	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), m_flip);
 }
 
+//Función para updatear los game objects boton
 void MenuButton::update()
 {
 	Vector2D pMousePos = InputHandler::Instance()->getMousePosition();
@@ -29,7 +31,7 @@ void MenuButton::update()
 		if (InputHandler::Instance()->getMouseButtonState(LEFT)	&& m_bReleased)
 		{
 			m_currentFrame = CLICKED;
-			m_callback(); // call our callback function
+			m_callback();
 			m_bReleased = false;
 		}
 		else if (!InputHandler::Instance()->getMouseButtonState(LEFT))
@@ -44,6 +46,7 @@ void MenuButton::update()
 	}
 }
 
+//Función para limpiar los game objects boton
 void MenuButton::clean()
 {
 	GameObject::clean();

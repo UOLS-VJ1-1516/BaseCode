@@ -1,5 +1,6 @@
 #include "InputHandler.h"
 
+//Constructor
 InputHandler::InputHandler() {
 	m_keystates = SDL_GetKeyboardState(0);
 	for (int i = 0; i < 3; i++)
@@ -11,6 +12,7 @@ InputHandler::InputHandler() {
 //Instancias
 InputHandler* InputHandler::i_pInstance = 0;
 
+//Función para el control de si se ha pulsado una tecla
 bool InputHandler::isKeyDown(SDL_Scancode key) {
 	if (m_keystates != 0)
 	{
@@ -26,6 +28,7 @@ bool InputHandler::isKeyDown(SDL_Scancode key) {
 	return false;
 };
 
+//Función que updatea los diferentes estados de las entradas del usuario
 void InputHandler::update() {
 	m_keystates = SDL_GetKeyboardState(0);
 
@@ -71,4 +74,5 @@ void InputHandler::update() {
 	}
 };
 
+//Función para limpiar las entradas del usuario
 void InputHandler::clean() {};

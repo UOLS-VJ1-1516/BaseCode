@@ -1,7 +1,7 @@
 #include "game.h"
 #include "MenuState.h"
 #include "PlayState.h"
-#include <iostream>
+
 //Instancias
 Game* Game::g_pInstance = 0;
 
@@ -40,6 +40,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 };
 
+//Función para printar el juego
 void Game::render()
 {
 	// everything succeeded lets draw the window
@@ -56,20 +57,19 @@ void Game::render()
 	SDL_RenderPresent(g_pRenderer);
 };
 
+//Función para updatear el juego
 void Game::update()
 {
 	m_pGameStateMachine->update();
 };
 
+//Función para updatear las entradas del usuario
 void Game::handleEvents()
 {
 	InputHandler::Instance()->update();
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
-	{
-		Game::Instance()->getGameStateMachine()->changeState(new PlayState());
-	}
 };
 
+//Función para limpiar el juego
 void Game::clean()
 {
 	SDL_RenderClear(g_pRenderer);
@@ -78,32 +78,39 @@ void Game::clean()
 	SDL_Quit();
 };
 
+//Función para controlar si se ha salido o no del juego
 bool Game::isRunning()
 {
 	return running;
 };
 
+//Función para devolver el render
 SDL_Renderer* Game::getRenderer()
 {
 	return g_pRenderer;
 };
 
+//Función para devolver los ticks
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
 };
 
+//Función para devolver el alto de pantalla
 int Game::getScreenHeight() {
 	return screenHeigth;
 };
 
+//Función para devolver el ancho de pantalla
 int Game::getScreenWidth() {
 	return screenWidth;
 };
 
+//Función para salir del juego
 void Game::exit() {
 	running = false;
 };
 
+//Función para devolver la maquina de estados
 GameStateMachine* Game::getGameStateMachine() {
 	return m_pGameStateMachine;
 }

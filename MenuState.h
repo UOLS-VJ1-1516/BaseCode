@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "MenuButton.h"
 
+//Clase del estado menu donde se puede empezar a jugar o salir del juego
 class MenuState : public GameState
 {
 	public:
@@ -12,7 +13,6 @@ class MenuState : public GameState
 		virtual bool onExit();
 		virtual std::string getStateID() const { return s_menuID; }
 	private:
-		// call back functions for menu items
 		static void s_menuToPlay();
 		static void s_exitFromMenu();
 

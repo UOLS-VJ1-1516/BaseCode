@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "vector"
 
+//Clase para controlar los diferentes estados del juego
 class GameStateMachine
 {
 	public:
@@ -10,7 +11,7 @@ class GameStateMachine
 		void popState();
 		void update();
 		void render();
-		void voidAllOldStates();
+		void deleteAllStates();
 
 	private:
 		std::vector<GameState*> m_gameStates;

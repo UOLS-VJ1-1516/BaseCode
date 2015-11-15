@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
+//Clase que crea un game object del tipo boton
 class MenuButton : public GameObject
 {
 	public:

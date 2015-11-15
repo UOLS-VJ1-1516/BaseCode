@@ -22,21 +22,23 @@ void Enemy::load(const LoaderParams* pParams) {
 
 //Funcion para mostrar por pantalla la textura mediante la clase TextureManager
 void Enemy::draw() {
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), flipEnemy);
+	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), m_flip);
 };
 
+//Función para updatear las diferentes opciones del enemigo
 void Enemy::update()
 {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 	if (m_position.getX() <= 0) {
 		m_velocity.setX(5);
-		flipEnemy = SDL_FLIP_NONE;
+		m_flip = SDL_FLIP_NONE;
 	}
 	else if (m_position.getX() >= Game::Instance()->getScreenWidth() - m_width) {
 		m_velocity.setX(-5);
-		flipEnemy = SDL_FLIP_HORIZONTAL;
+		m_flip = SDL_FLIP_HORIZONTAL;
 	}
 	m_position += m_velocity;
 };
 
+//Función para limpiar
 void Enemy::clean() {};

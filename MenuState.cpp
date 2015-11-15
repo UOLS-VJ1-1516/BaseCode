@@ -1,9 +1,10 @@
 #include "MenuState.h"
 #include "PlayState.h"
-#include <iostream>
 
+//ID del estado menu
 const std::string MenuState::s_menuID = "MENU";
 
+//Función para cuando se crea el estado menu que crea los game objects de este estado
 bool MenuState::onEnter()
 {
 	if (!TextureManager::Instance()->load("assets/playButton.bmp","playbutton", Game::Instance()->getRenderer()))
@@ -15,15 +16,15 @@ bool MenuState::onEnter()
 		return false;
 	}
 
-	button1 = new MenuButton(new LoaderParams(100, 100,	300, 100, "playbutton", "assets/playButton.bmp", 0, 0), s_menuToPlay);
-	button2 = new MenuButton(new LoaderParams(100, 300, 300, 100, "exitbutton", "assets/exitButton.bmp", 0, 0), s_exitFromMenu);
+	button1 = new MenuButton(new LoaderParams(600, 250,	300, 100, "playbutton", "assets/playButton.bmp", 0, 0, SDL_FLIP_NONE), s_menuToPlay);
+	button2 = new MenuButton(new LoaderParams(600, 450, 300, 100, "exitbutton", "assets/exitButton.bmp", 0, 0, SDL_FLIP_NONE), s_exitFromMenu);
 
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
-	std::cout << "entering MenuState\n";
 	return true;
 }
 
+//Función para hacer el update de los game objects de este estado
 void MenuState::update()
 {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
@@ -31,6 +32,7 @@ void MenuState::update()
 	}
 }
 
+//Función para hacer el draw de los game objects de este estado
 void MenuState::render()
 {
 	
@@ -39,6 +41,7 @@ void MenuState::render()
 	}
 }
 
+//Función para cuando se sale del menu state que limpia los gameobjects y sus texturas
 bool MenuState::onExit()
 {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
@@ -47,18 +50,19 @@ bool MenuState::onExit()
 	m_gameObjects.clear();
 	TextureManager::Instance()->clearFromTextureMap("playbutton");
 	TextureManager::Instance()->clearFromTextureMap("exitbutton");
-	std::cout << "exiting MenuState\n";
 	return true;
 }
 
+//Callback para cambiar del estado del menu al estado del juego
 void MenuState::s_menuToPlay()
 {
 	Game::Instance()->getGameStateMachine()->changeState(new PlayState());
 }
 
+//Callback para finalizar el juego que limpiar los diferentes estados
 void MenuState::s_exitFromMenu()
 {
 	Game::Instance()->getGameStateMachine()->popState();
-	Game::Instance()->getGameStateMachine()->voidAllOldStates();
+	Game::Instance()->getGameStateMachine()->deleteAllStates();
 	Game::Instance()->exit();
 }

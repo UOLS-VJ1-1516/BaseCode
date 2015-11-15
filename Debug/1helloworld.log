@@ -1,11 +1,23 @@
-﻿Compilación iniciada a las 15/11/2015 12:37:40.
+﻿Compilación iniciada a las 15/11/2015 13:29:04.
      1>Proyecto "C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\1helloworld.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt PauseState.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Enemy.cpp GameObject.cpp GameStateMachine.cpp InputHandler.cpp MenuButton.cpp MenuState.cpp PauseState.cpp PlayState.cpp Player.cpp TextureManager.cpp game.cpp main.cpp
+         Enemy.cpp
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\enemy.cpp(9): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\enemy.cpp(10): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+         Generando código...
+         Omitiendo... (no se detectaron cambios relevantes)
+         TextureManager.cpp
+         main.cpp
+         game.cpp
+         Player.cpp
+         PlayState.cpp
          PauseState.cpp
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(18): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(26): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(52): warning C4018: '<': no coinciden signed/unsigned
+         MenuState.cpp
+         MenuButton.cpp
+         InputHandler.cpp
+         GameStateMachine.cpp
+         GameObject.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Enemy.obj
          Debug\game.obj
@@ -25,4 +37,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:01.17
+Tiempo transcurrido 00:00:01.15
