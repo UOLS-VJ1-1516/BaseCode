@@ -32,6 +32,7 @@ protected:
 	int m_currentFrame;
 	int m_currentRow;
 	const char* m_textureID;
+	int m_callbackID;
 };
 
 #endif 

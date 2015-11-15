@@ -109,7 +109,7 @@ void Game::update() {
 
 void Game::handleEvents(SDL_Event event) {
 
-	InputHandler::Instance()->update();
+	//InputHandler::Instance()->update();
 	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
 		m_pGameStateMachine->changeState(new PlayState());
 	}
@@ -127,7 +127,9 @@ void Game::handleEvents(SDL_Event event) {
 
 
 void Game::clean() {
-
+	SDL_RenderClear(m_pRenderer);
+	SDL_DestroyWindow(m_pWindow);
+	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
 }
 

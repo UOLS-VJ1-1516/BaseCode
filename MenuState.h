@@ -3,6 +3,8 @@
 #include "GameObject.h"
 #include "string"
 #include "vector"
+#include "MenuButton.h"
+#include "Bottones.h"
 
 class MenuState : public GameState{
 
@@ -19,7 +21,10 @@ private:
 	std::vector<GameObject*>m_gameObjects;
 	static void s_menuTOplay();
 	static void s_exitMenu();
-	//MenuButton * menuButton;
-	//MenuButton * menuButton2;
+	std::vector<int> m_position;
+	std::vector<int> mig(int width, int height);
+	MenuButton * menuButton;
+	MenuButton * menuButton2;
+	Bottones* bo;
 
 };
