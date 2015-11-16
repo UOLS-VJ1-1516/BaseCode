@@ -9,7 +9,7 @@ int main(int argc, char* args[])
 	const int FIXED_TIME = 16;
 	int frameStart, frameEnd;
 	Game* game = Game::getInstance();
-	game->init("Videojocs 1", 100, 100, 800, 600, fullscreen);
+	game->init("Videojocs 1", 100, 100, 800, 600, !fullscreen);
 	
 	while (game->isRunning()) {
 		frameStart = SDL_GetTicks();

@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="inputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -92,6 +93,7 @@
   <ItemGroup>
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="inputManager.h" />
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Player.h" />

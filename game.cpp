@@ -136,9 +136,9 @@ void Game::handleEvents() {
 
 		//INTERFACE
 			//EXIT
-			if (event.type == SDL_KEYUP && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
-				running = false;
-			}
+		if (event.type == SDL_KEYUP && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+			running = false;
+		}
 	}
 }
 
