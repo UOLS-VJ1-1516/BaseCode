@@ -35,7 +35,7 @@ void Enemy::load(const LoadPar* lPar)
 	m_sprits = lPar->getsprits();
 	m_flip = lPar->getflip();
 	
-	};
+	}; 
 void Enemy::draw()
 {
 	
