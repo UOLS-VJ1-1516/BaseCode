@@ -83,10 +83,16 @@
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LoaderParams.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenStateOnPause.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="MenuOnPause.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
@@ -94,16 +100,27 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="MenuOnPause.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MenuStateOnPause.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="boton_exit.bmp" />
+    <Image Include="boton_resume.bmp" />
     <Image Include="enemy.bmp" />
     <Image Include="fusion.bmp" />
+    <Image Include="main_menu.bmp" />
     <Image Include="majin.bmp" />
     <Image Include="mario.bmp" />
+    <Image Include="playbtn.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\SDL\lib\SDL2_image.lib" />

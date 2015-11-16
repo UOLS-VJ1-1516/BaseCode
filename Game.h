@@ -3,7 +3,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "InputHandler.h"
-#include "SDL_image.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "PlayState.h"
+#include "MenuStateOnPause.h"
 #include <vector>
 
 
@@ -17,6 +20,8 @@ private :
 	bool state;
 	int sprit;
 	Game();
+	static Game* s_pInstance;
+	GameStateMachine* m_pGameStateMachine;
 
 public:
 	static Game* Instance()
@@ -28,8 +33,6 @@ public:
 		return s_pInstance;
 	}
 	~Game();
-
-	static Game* s_pInstance;
 	bool init(const char* tittle, int xPos, int yPos, int typeWindow);
 	void render();
 	void update(int delay);
@@ -37,6 +40,7 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRenderer() const{ return g_pRenderer; }
+	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	int getTicks();
 	const int getwidthWindow() const;
 };

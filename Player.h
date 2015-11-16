@@ -23,6 +23,7 @@ public:
 	bool isCalculateAcceleration();
 	bool iscalculateFriction();
 	void resetParams();
+	void handleInput();
 
 
 private: 

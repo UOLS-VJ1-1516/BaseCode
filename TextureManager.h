@@ -23,6 +23,7 @@ public:
 	void draw(std::string textureID, float x, float y, int width, int height, SDL_Renderer* g_pRenderer, SDL_RendererFlip flip);
 	void drawFrame(std::string textureID, float x, float y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer,
 		int flip);
+	void TextureManager::clearFromTextureMap(std::string id);
 
 private:
 	static TextureManager* s_pInstance;
