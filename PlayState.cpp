@@ -20,9 +20,9 @@ bool PlayState::onEnter() {
 	zep = new Zep();
 	gordo = new Gordo();
 
-	load = new LoaderParams(100, 100, 35, 32, "player", 10,0,0,0,0);
-	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4,0,0,0,0);
-	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4,0,0,0,0);
+	load = new LoaderParams(100, 100, 35, 32, "player", 10);
+	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
+	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);
 
 	player->load(load);
 	m_gObjects.push_back(player);

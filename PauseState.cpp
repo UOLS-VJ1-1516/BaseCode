@@ -1,5 +1,5 @@
 #include "PauseState.h"
-#include "Game.h"
+
 
 void PauseState::update() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
@@ -14,16 +14,29 @@ void PauseState::render() {
 }
 
 bool PauseState::onEnter() {
-	mb = new MenuButton(new LoaderParams(mig(236, 75)[0], mig(236, 75)[1] - 50, 236, 75, "playButton.bmp", 3, 0, 0, 0, 0), s_menuTOPlay);
-	if (mb == NULL) {
+
+	if (!TextureManager::Instance()->load("playButton.bmp", "playbutton", Game::Instance()->getRender()))
+	{
+		printf("false");
 		return false;
 	}
-	m_gameObjects.push_back(mb);
-	mb2 = new MenuButton(new LoaderParams(mig(236, 75)[0], mig(236, 75)[1] - 50, 236, 75, "Exit.bmp", 3, 0, 0, 0, 0), s_menuTOMain);
-	if (mb2 == NULL) {
+	if (!TextureManager::Instance()->load("Exit.bmp", "exitbutton", Game::Instance()->getRender()))
+	{
 		return false;
 	}
-	m_gameObjects.push_back(mb2);
+
+	GameObject* menuButton = new MenuButton(new LoaderParams(200, 200, 201, 72, "playbutton", 3), s_menuTOPlay);
+	if (menuButton == NULL) {
+		return false;
+	}
+	m_gameObjects.push_back(menuButton);
+	GameObject* menuButton2 = new MenuButton(new LoaderParams(200, 200, 201, 72, "exitbutton", 3), s_menuTOMain);
+	if (menuButton2 == NULL) {
+		return false;
+	}
+	m_gameObjects.push_back(menuButton2);
+
+	return true;
 
 	
 }
@@ -46,11 +59,5 @@ void PauseState::s_menuTOMain() {
 
 void PauseState::s_menuTOPlay() {
 	Game::Instance()->getGameStateMachine()->popState();
-}
-
-std::vector<int>MenuState::mig(int width, int height) {
-	m_position = std::vector<int>(2, 0);
-
-	return m_position;
 }
 

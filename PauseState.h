@@ -2,7 +2,7 @@
 #include "string"
 #include "GameState.h"
 #include "MenuButton.h"
-#include "Bottones.h"
+#include "Game.h"
 
 class PauseState : public GameObject {
 public:
@@ -23,9 +23,8 @@ private:
 	MenuButton *mb2;
 	MenuButton *mb3;
 
-	Bottones *bo;
-	Bottones *bo1;
-	std::vector<int> mig(int width, int height);
+	
+	
 	std::vector<int> m_position;
 	
 

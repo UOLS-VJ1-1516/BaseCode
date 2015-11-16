@@ -16,8 +16,8 @@ void GameStateMachine::changeState(GameState * pState)
 			return;
 		}
 		if (m_gameStates.back()->onExit()) {
-				m_statesToDelete.back();
-				//m_statesToDelete.push_back(m_gameStates.back());
+				//m_statesToDelete.back();
+				m_statesToDelete.push_back(m_gameStates.back());
 				m_gameStates.pop_back();
 		}
 	}
@@ -32,8 +32,8 @@ void GameStateMachine::popState()
 	{
 		if (m_gameStates.back()->onExit())
 		{
-			m_statesToDelete.back();
-			//m_statesToDelete.push_back(m_gameStates.back());
+			//m_statesToDelete.back();
+			m_statesToDelete.push_back(m_gameStates.back());
 			m_gameStates.pop_back();
 		}
 	}

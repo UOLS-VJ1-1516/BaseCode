@@ -1,10 +1,10 @@
 #pragma once
 #include "GameState.h"
 #include "GameObject.h"
-#include "string"
-#include "vector"
+#include <string>
+#include <vector>
 #include "MenuButton.h"
-#include "Bottones.h"
+
 
 class MenuState : public GameState{
 
@@ -14,7 +14,7 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	virtual std::string getStateID() const { return s_menuID; };
+	virtual std::string getStateID() const { return s_menuID; }
 
 private:
 	static const std::string s_menuID;
@@ -22,9 +22,7 @@ private:
 	static void s_menuTOplay();
 	static void s_exitMenu();
 	std::vector<int> m_position;
-	std::vector<int> mig(int width, int height);
 	MenuButton * menuButton;
 	MenuButton * menuButton2;
-	Bottones* bo;
-
+	
 };

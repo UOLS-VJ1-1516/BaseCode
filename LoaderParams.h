@@ -1,12 +1,15 @@
 #pragma once
-
+#include <string>
 #ifndef LOADERPARAMS_H
 #define LOADERPARAMS_H
 class LoaderParams
 {
 public:
-	LoaderParams(int x, int y, int width, int height, const char* textureID, int spriteNum,int speedX,int speedY ,int maxSpeed, int friction):
-	m_x(x),m_y(y),m_width(width),m_height(height),m_num(spriteNum),m_textureID(textureID),m_speedX(speedX),m_speedY(speedY),m_maxSpeed(maxSpeed),m_friction(friction){
+
+	LoaderParams(int x, int y, int width, int height, const char* textureID, int spriteNum):
+	m_x(x),m_y(y),m_width(width),m_height(height),m_num(spriteNum),m_textureID(textureID)
+	
+{
 		
 	}
 	int getX() const { return m_x; }
@@ -23,8 +26,8 @@ private:
 	int m_height;
 	int m_num;
 	const char* m_textureID;
-	int m_speedX,m_speedY;
-	int m_maxSpeed;
+	int m_callbackID;
+	int m_animSpeed;
 	int m_friction;
 };
 #endif

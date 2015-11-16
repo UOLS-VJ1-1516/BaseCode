@@ -1,7 +1,7 @@
 #include "MenuState.h"
 #include "Game.h"
 
-
+const std::string MenuState::s_menuID = "MENU";
 
 void MenuState::update()
 {
@@ -21,12 +21,22 @@ bool MenuState::onEnter()
 {
 	
 	
-	menuButton = new MenuButton(new LoaderParams(mig(236, 75)[0], mig(236, 75)[1] - 50, 236, 75, "playButton.bmp", 3, 0, 0,0 , 0), s_menuTOplay);
+	if (!TextureManager::Instance()->load("playButton.bmp", "playbutton", Game::Instance()->getRender()))
+	{
+		
+		return false;
+	}
+	if (!TextureManager::Instance()->load("Exit.bmp", "exitbutton", Game::Instance()->getRender()))
+	{
+		return false;
+	}
+	
+	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 250, 69, "start",3), s_menuTOplay);
 	if (menuButton == NULL) {
 		return false;
 	}
 	m_gameObjects.push_back(menuButton);
-	menuButton2 = new MenuButton(new LoaderParams(mig(236, 75)[0], mig(236, 75)[1] - 50, 236, 75, "Exit.bmp", 3, 0, 0, 0, 0), s_exitMenu);
+	GameObject *menuButton2 = new MenuButton(new LoaderParams(200, 200, 250, 72, "exitbutton",3), s_exitMenu);
 	if (menuButton2 == NULL) {
 		return false;
 	}
@@ -39,29 +49,23 @@ bool MenuState::onEnter()
 
 bool MenuState::onExit()
 {
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->clean();
+	}
 	m_gameObjects.clear();
-	menuButton->clean();
-	menuButton2->clean();
+	
 	
 	std::cout << "Salida del MenuState\n";
 	return true;
 }
-const std::string MenuState::s_menuID = "MENU";
-/*std::string MenuState::getStateID() const {
-	return MenuState::s_menuID;
-}*/
+
+
 
 void MenuState::s_menuTOplay() {
 	Game::Instance()->getGameStateMachine()->changeState(new PlayState());
 }
 
 void MenuState::s_exitMenu() {
-	Game::Instance()->getGameStateMachine()->popState();
-	Game::Instance()->getGameStateMachine()->AllStates();
-	Game::Instance()->clean();
-}
-std::vector<int>MenuState::mig(int width, int height) {
-	m_position = std::vector<int>(2, 0);
-	
-	return m_position;
+	Game::Instance()->quit(); 
 }

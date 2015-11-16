@@ -1,6 +1,4 @@
 #pragma once
-#ifndef GAME_H
-#define GAME_H
 #include "SDL.h"
 #include "TextureManager.h"
 #include "vector"
@@ -10,7 +8,7 @@
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "MenuState.h"
-
+#include "PauseState.h"
 
 
 class Game
@@ -31,6 +29,8 @@ private:
 	GameStateMachine *m_pGameStateMachine;
 	PlayState* playState;
 	MenuState * menuState;
+//	PauseState * pauseState;
+
 
 
 	bool running = true;
@@ -57,4 +57,3 @@ public:
 	std::vector<GameObject*> m_gameObjects;
 	GameStateMachine * getGameStateMachine();
 };
-#endif

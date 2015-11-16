@@ -1,20 +1,11 @@
-﻿Build started 15/11/2015 17:10:06.
+﻿Build started 17/11/2015 0:10:21.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MenuState.cpp PauseState.cpp
-         PauseState.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MenuButton.cpp
+         MenuButton.cpp
      1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(5): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(11): warning C4018: '<': signed/unsigned mismatch
-         MenuState.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\game.h(53): warning C4553: '==': operator has no effect; did you intend '='?
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(8): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(15): warning C4018: '<': signed/unsigned mismatch
-         Generating Code...
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(29): warning C4715: 'PauseState::onEnter': not all control paths return a value
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Bottones.obj
-         Debug\Game.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Game.obj
          Debug\GameObject.obj
          Debug\GameStateMachine.obj
          Debug\InputHandler.obj
@@ -28,13 +19,9 @@
          Debug\TextureManager.obj
          Debug\Vector2D.obj
          Debug\Zep.obj
-     1>PauseState.obj : error LNK2005: "private: class std::vector<int,class std::allocator<int> > __thiscall MenuState::mig(int,int)" (?mig@MenuState@@AAE?AV?$vector@HV?$allocator@H@std@@@std@@HH@Z) already defined in MenuState.obj
-     1>MenuButton.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall GameObject::load(class LoaderParams const *)" (?load@GameObject@@UAEXPBVLoaderParams@@@Z) referenced in function "public: virtual void __thiscall MenuButton::load(class LoaderParams const *)" (?load@MenuButton@@UAEXPBVLoaderParams@@@Z)
-     1>MenuButton.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall GameObject::draw(void)" (?draw@GameObject@@UAEXXZ) referenced in function "public: virtual void __thiscall MenuButton::draw(void)" (?draw@MenuButton@@UAEXXZ)
-     1>PauseState.obj : error LNK2019: unresolved external symbol "private: class std::vector<int,class std::allocator<int> > __thiscall PauseState::mig(int,int)" (?mig@PauseState@@AAE?AV?$vector@HV?$allocator@H@std@@@std@@HH@Z) referenced in function "public: bool __thiscall PauseState::onEnter(void)" (?onEnter@PauseState@@QAE_NXZ)
-     1>C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe : fatal error LNK1120: 3 unresolved externals
-     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)) -- FAILED.
+         1helloworld.vcxproj -> C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe
+     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:03.02
+Time Elapsed 00:00:01.40

@@ -26,8 +26,8 @@ Game::Game() {
 	load = new LoaderParams(100, 100, 35, 32, "player", 10);
 	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
 	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);*/
-	playState = new PlayState();
-	menuState = new MenuState();
+	//playState = new PlayState();
+	//menuState = new MenuState();
 	m_pGameStateMachine = new GameStateMachine();
 	
 }
@@ -53,12 +53,14 @@ bool Game::init(const char* title, int xpos, int
 		if (m_pWindow != 0)
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-			m_pGameStateMachine->pushState(menuState);
-			/*m_pGameStateMachine = new GameStateMachine();
+			m_pGameStateMachine = new GameStateMachine();
 			m_pGameStateMachine->changeState(new MenuState());
+			//m_pGameStateMachine->pushState(menuState);
+			
+			
 
 			
-			player->load(load);
+			/*player->load(load);
 			m_gameObjects.push_back(player);
 
 			enemy1->load(load2);
@@ -102,7 +104,8 @@ void Game::update() {
 		m_gameObjects[i]->update();
 	}*/
 	
-	m_pGameStateMachine->update();
+	m_pGameStateMachine->update();
+
 	
 
 }
