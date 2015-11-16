@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "game.h"
+#include "TextureManager.h"
 
 GameObject::GameObject()
 {
@@ -26,7 +28,10 @@ void GameObject::load(const LoaderParams* pParams){
 
 void GameObject::draw()
 {
-	
+	TextureManager::Instance()->drawFrame(m_textureID,
+		(int)m_position.getX(), (int)m_position.getY(),
+		m_width, m_height,
+		m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
 }
 
 void GameObject::update()

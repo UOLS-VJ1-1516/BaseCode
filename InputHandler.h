@@ -1,5 +1,7 @@
 #pragma once
 #include "SDL.h"
+#include "Vector2D.h"
+#include "vector"
 class InputHandler
 {
 public:
@@ -17,10 +19,23 @@ public:
 	// Métodos de acceso
 //	void onKeyUp();
 //	void onKeyDown();
+
 	bool isKeyDown(SDL_Scancode key);
 	InputHandler();
 	static InputHandler* s_pInstance;
+
+	Vector2D* m_mousePosition;
+	Vector2D* GetMousePosition();
+	bool getMouseButtonState(int buttonNumber);
+	
+	enum mouse_buttons
+	{
+		LEFT = 0,
+		MIDDLE = 1,
+		RIGHT = 2
+	};
 private:
 	const Uint8* m_keystates;
+	std::vector<bool> m_mouseButtonStates;
 
 };

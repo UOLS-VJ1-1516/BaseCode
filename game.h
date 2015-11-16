@@ -2,6 +2,7 @@
 
 #include "SDL.h"
 #include "vector"
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -27,12 +28,13 @@ class Game
 	void quit() { running = false; };
 	bool isRunning();
 	SDL_Renderer* getRenderer();
+	GameStateMachine* getStateMachine();
 
 private:
 	bool running = true;
 
 	static Game* g_pInstance;
 	SDL_Renderer* m_pRenderer;
-
+	GameStateMachine* m_gameStateMachine;
 	
 };

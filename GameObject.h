@@ -26,4 +26,6 @@ protected:
 	int m_currentRow;
 	int m_numsprites;
 	std::string m_textureID;
+
+	int m_callbackID;
 };
