@@ -28,7 +28,7 @@ int main(int argc, char* args[])
 	// everything succeeded lets draw the window
 	// set to black // This function expects Red, Green, Blue and
 	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
+	SDL_SetRenderDrawColor(g_pRenderer, 0, 250, 40, 25);
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
@@ -37,7 +37,7 @@ int main(int argc, char* args[])
 	SDL_RenderPresent(g_pRenderer);
 
 	// set a delay before quitting
-	SDL_Delay(5000);
+	SDL_Delay(2000);
 
 	// clean up SDL
 	SDL_Quit();
