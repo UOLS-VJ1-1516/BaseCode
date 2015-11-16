@@ -11,7 +11,7 @@ int main(int argc, char* args[])
 	
 	if (Game::Instance()->init("Videjuegos 1 - bachelor",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		P_ANC, P_ALT, SDL_WINDOW_FULLSCREEN)) {
+		P_ANC, P_ALT,0)) {
 
 		while (Game::Instance()->isRunning())
 		{

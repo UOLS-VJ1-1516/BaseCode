@@ -44,7 +44,8 @@ void Player::draw() {
 }
 
 void Player::update() {
-	
+
+	Vector2D m_velocity_aux;
 	m_currentFrame = 5;
 
 	if (m_position.getX() + 100 <= (Game::Instance()->getP_ANC())) {
@@ -74,10 +75,10 @@ void Player::update() {
 		}
 	}
 
-	if (m_velocity.getX() > 0) {
+	if ((m_velocity.getX()>0)&&(m_velocity.getX()-m_friction.getX()>0)) {
 		m_velocity -= m_friction;
 	}
-	else if (m_velocity.getX() < 0) {
+	else if ((m_velocity.getX()<0) && (m_velocity.getX() + m_friction.getX()<0)) {
 		m_velocity += m_friction;
 	}
 	else {
@@ -87,7 +88,7 @@ void Player::update() {
 	m_position += m_velocity;
 
 
-	//------------------ LIMITS PANTALLA----------------------
+	//------------------ LIMITS PANTALLA ----------------------
 	if (m_position.getX() + m_width > Game::Instance()->getP_ANC()) {
 		m_position.setX(Game::Instance()->getP_ANC() - m_width);
 	}

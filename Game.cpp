@@ -39,7 +39,7 @@ bool Game::init(const char* title, int xpos, int
 		}
 
 		//Carguem sprits
-		TextureManager::Instance()->load("monster.png", "monster", ren);
+		TextureManager::Instance()->load("monsterivan.png", "monster", ren);
 		TextureManager::Instance()->load("ghost.png", "ghost", ren);
 
 		//Carguem parametres
