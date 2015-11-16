@@ -12,7 +12,7 @@ Game* Game::s_pInstance = 0;
 
 Game::Game()
 {
-
+	m_gameStateMachine = new GameStateMachine();
 }
 
 Game::~Game()
@@ -51,8 +51,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			m_gameObjects.push_back(p3);
 		}*/
 
-		m_gameStateMachine = new GameStateMachine();
-		m_gameStateMachine->changeState(new PlayState());
+		
+		m_gameStateMachine->pushState(new MenuState());
 
 		return true;
 	}
@@ -87,10 +87,6 @@ void Game::handleEvents()
 {
 	InputHandler::Instance()->update();
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
-	{
-		m_gameStateMachine->changeState(new PlayState());
-	}
 }
 
 void Game::clean()
@@ -110,4 +106,8 @@ bool Game::isRunning()
 
 SDL_Renderer* Game::getRender() {
 	return m_pRenderer;
+};
+
+GameStateMachine* Game::getGameStateMachine() {
+	return m_gameStateMachine;
 };

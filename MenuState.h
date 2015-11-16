@@ -2,6 +2,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "GameState.h"
+#include "MenuButton.h"
 
 class MenuState : public GameState
 {
@@ -20,5 +21,5 @@ class MenuState : public GameState
 
 		static void s_menuToPlay();
 		static void s_exitFromMenu();
-
+		
 };

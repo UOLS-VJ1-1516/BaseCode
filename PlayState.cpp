@@ -3,36 +3,28 @@
 #include "game.h"
 #include "GameObject.h"
 #include "InputHandler.h"
+#include "PauseState.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update() {
 
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
+	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
 
-	InputHandler::Instance()->update();
+	//InputHandler::Instance()->update();
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
-		Game::Instance()->clean();
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		Game::Instance()->getGameStateMachine()->pushState(new PauseState);
 	}
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-		p1->update();
-	}
-
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		p1->update();
-	}
-
-	InputHandler::Instance()->clean();
 }
 
 void PlayState::render() {
 
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
 	}
 }
@@ -43,9 +35,16 @@ bool PlayState::onEnter() {
 	p2 = new Enemy();
 	p3 = new Enemy();
 
-	TextureManager::Instance()->load("walker.bmp", "walker", Game::Instance()->getRender());
-	TextureManager::Instance()->load("kirby.bmp", "kirby", Game::Instance()->getRender());
-	TextureManager::Instance()->load("tanooki.bmp", "tanooki", Game::Instance()->getRender());
+	if (!TextureManager::Instance()->load("walker.bmp", "walker", Game::Instance()->getRender())) {
+		return false;
+	}
+	if (!TextureManager::Instance()->load("kirby.bmp", "kirby", Game::Instance()->getRender())) {
+		return false;
+	}
+
+	if (!TextureManager::Instance()->load("tanooki.bmp", "tanooki", Game::Instance()->getRender())) {
+		return false;
+	}
 
 	LoaderParams* load1 = new LoaderParams(300, 200, 60, 38, "walker", 12);
 	LoaderParams* load2 = new LoaderParams(50, 50, 30, 27, "kirby", 6);
@@ -63,6 +62,10 @@ bool PlayState::onEnter() {
 }
 
 bool PlayState::onExit() {
+
+	for (int i = 0; i < m_gameObjects.size(); i++) {
+		m_gameObjects[i]->clean();
+	}
 
 	m_gameObjects.clear();
 	return true;

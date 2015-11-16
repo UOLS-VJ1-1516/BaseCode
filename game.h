@@ -40,6 +40,7 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRender();
+	GameStateMachine* getGameStateMachine();
 
 private:
 	static Game* s_pInstance;

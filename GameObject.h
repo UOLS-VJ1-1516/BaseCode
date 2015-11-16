@@ -4,13 +4,12 @@
 #include "Vector2D.h"
 
 
-
 class GameObject
 {
 
 	public:
-		/*GameObject() {}
-		virtual ~GameObject() {}*/
+		GameObject() {}
+		virtual ~GameObject() {}
 		virtual void load(const LoaderParams* pParams) = 0;
 		virtual void draw() = 0;
 		virtual void update() = 0;
