@@ -3,6 +3,10 @@
 #include "Player.h"
 #include "Player2.h"
 #include "InputHandler.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "PlayState.h"
+#include "MenuStateOnPause.h"
 #include <vector>
 
 
@@ -13,9 +17,11 @@ private:
 	SDL_Window* g_pWindow;
 	SDL_Renderer* g_pRenderer;
 	std::vector< GameObject* > m_gameObjects;
-	bool state;
+	bool running;
 	int sprit;
 	Game();
+	static Game* s_pInstance;
+	GameStateMachine* m_pGameStateMachine;
 
 public:
 	static Game* Instance()
@@ -28,7 +34,7 @@ public:
 	}
 	~Game();
 
-	static Game* s_pInstance;
+	
 	bool init(const char* tittle, int xPos, int yPos, int typeWindow);
 	void render();
 	void update(int delay);
@@ -36,6 +42,7 @@ public:
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRenderer() const { return g_pRenderer; }
+	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	int getTicks();
 	const int get_ancho_ventana() const;
 };

@@ -18,6 +18,7 @@ public:
 	bool calcula_aceleracion();
 	bool calcula_friccion();
 	void inicio();
+	void handleInput();
 
 
 private:

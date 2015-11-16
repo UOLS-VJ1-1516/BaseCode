@@ -6,11 +6,11 @@ TextureManager::TextureManager() {};
 bool TextureManager::load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer) {
 
 	SDL_Surface *image = SDL_LoadBMP(fileName);
-	if (!image)	return 1;
+	if (image == 0) return false;
 
 	m_textureMap[textureID] = SDL_CreateTextureFromSurface(g_pRenderer, image);
 	SDL_FreeSurface(image);
-	return 0;
+	return true;
 
 };
 
@@ -56,3 +56,7 @@ void TextureManager::drawFrame(std::string textureID, float x, float y, int widt
 };
 
 
+void TextureManager::clearFromTextureMap(std::string id)
+{
+	m_textureMap.erase(id);
+}

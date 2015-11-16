@@ -10,7 +10,7 @@ Game::Game()
 {
 	g_pWindow = 0;
 	g_pRenderer = 0;
-	state = false;
+	running = false;
 }
 
 
@@ -20,25 +20,11 @@ bool Game::init(const char* tittle, int xPos, int yPos, int typeWindow)
 	{
 		g_pWindow = SDL_CreateWindow(tittle, xPos, yPos, ancho, altura, 0);
 		if (g_pWindow != 0) g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
-		state = true;
+		running = true;
 
-		GameObject *Player23 = new Player2();
-		Player23->load(new LoaderParams(300, 310, "dragon", 1, 8, 0, *(new Vector2D(0, 10)), *(new Vector2D(3, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0))));
-
-		m_gameObjects.push_back(Player23);
-		TextureManager::Instance()->load("dragon.bmp", "dragon", g_pRenderer);
-
-		GameObject *Player24 = new Player2();
-		Player24->load(new LoaderParams(125, 100, "vulture", 1, 6, 0, *(new Vector2D(50, 300)), *(new Vector2D(8, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0))));
-
-		m_gameObjects.push_back(Player24);
-		TextureManager::Instance()->load("vulture_sprites.bmp", "vulture", g_pRenderer);
-
-		GameObject *player = new Player();
-		player->load(new LoaderParams(116, 200, "player", 1, 6, 0, *(new Vector2D(300, 500)), *(new Vector2D(0, 0)), *(new Vector2D(18, 0)), *(new Vector2D(4, 0)), *(new Vector2D(4, 0))));
-
-		m_gameObjects.push_back(player);
-		TextureManager::Instance()->load("player1.bmp", "player", g_pRenderer);
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(new MenuState());
+		running = true;
 
 		return 0;
 
@@ -50,35 +36,25 @@ void Game::render()
 {
 	SDL_SetRenderDrawColor(g_pRenderer, 255, 255, 255, 255);
 	SDL_RenderClear(g_pRenderer);
-
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	m_pGameStateMachine->render();
 	SDL_RenderPresent(g_pRenderer);
+	
 }
 
 void Game::update(int delay)
 {
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
-
-
+	m_pGameStateMachine->update();
 }
 
 void Game::handleEvents()
 {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_KEYDOWN) {
-			InputHandler::Instance()->update(event.key.keysym.sym);
-		}
-		if (event.type == SDL_KEYUP) {
-			if (event.key.keysym.sym == SDLK_ESCAPE) { state = false; break; }
-			InputHandler::Instance()->updateKeyUp(event.key.keysym.sym);
-		}
+		if (event.type == SDL_KEYDOWN) InputHandler::Instance()->update(event.key.keysym.sym);
+		if (event.type == SDL_KEYUP) InputHandler::Instance()->updateKeyUp(event.key.keysym.sym);
+		if (event.type == SDL_MOUSEMOTION) InputHandler::Instance()->onMouseMotion(event.motion.x, event.motion.y);
+		if (event.type == SDL_MOUSEBUTTONDOWN) InputHandler::Instance()->onMouseButtonDown(event.button.button);
+		if (event.type == SDL_MOUSEBUTTONUP)InputHandler::Instance()->onMouseButtonUp(event.button.button);
 	}
 }
 
@@ -93,7 +69,7 @@ void Game::clean()
 
 bool Game::isRunning()
 {
-	return state;
+	return running;
 }
 
 
