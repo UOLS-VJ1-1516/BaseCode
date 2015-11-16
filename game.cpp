@@ -80,6 +80,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		GameObject* fons2 = new Fons();
 		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1, ancho, alto));
 
+		GameObject* play = new Enemy();
+		play->load(new LoadPar(200, 500, 500, 100, "play", 1, 3, 1, ancho, alto));
+
 
 		m_gameObjects.push_back(player1);
 		m_gameObjects.push_back(enemy1);
@@ -89,11 +92,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_gameObjects.push_back(coin1);
 		m_gameObjects.push_back(fons);
 		m_gameObjects.push_back(fons2);
+		m_gameObjects.push_back(play);
 		
 		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Renderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/Play.png", "play", Renderer)) { return false; }
 		
 		running = true;
 
