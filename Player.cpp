@@ -14,9 +14,6 @@ Player::Player() {
 };
 Player::~Player() {};
 
-/*Funcion load que recibe todos lo parametros para hacer el load del Player,
-envia los parametros necesarios a la clase TextureManager para cargar la textura
-y envia los parametros para crear el mapa de texturas*/
 void Player::load(const LoaderParams* pParams) {
 	m_width = pParams->getWidth();
 	m_height = pParams->getHeight();
@@ -27,6 +24,7 @@ void Player::load(const LoaderParams* pParams) {
 	m_spriteNum = pParams->getSpriteNum();
 	m_currentRow = pParams->getRowNum();
 	TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
+	TextureManager::Instance()->setFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height);
 
 };
 
@@ -47,7 +45,7 @@ void Player::update()
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		//m_position.setX(m_position.getX() + 1);
 		dreta = true;
-		
+
 		double velo = 0.1 + (m_velocity.getX() - 0.01);
 		m_velocity.setX(velo);
 
@@ -56,14 +54,15 @@ void Player::update()
 		}
 
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-		
-	}else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+
+	}
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 		//m_position.setX(m_position.getX() - 1);
 		dreta = false;
 		double velo = -0.1 + (m_velocity.getX() + 0.01);
 
 		m_velocity.setX(velo);
-		
+
 		if (m_velocity.getX() <= -3) {
 			m_velocity.setX(-3);
 		}
@@ -78,9 +77,8 @@ void Player::update()
 
 
 	//Variable para dar animacion a la textura
-	
-	GameObject::update();
 
+	GameObject::update();
 };
 
 void Player::clean() {};

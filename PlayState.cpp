@@ -7,6 +7,7 @@ const std::string PlayState::s_playID = "PLAY";
 //Función para cargar al entrar en el estado de Play donde se cargan y se crean los diferentes gameobjects
 bool PlayState::onEnter()
 {
+
 	if (!TextureManager::Instance()->load("gorda.bmp", "player", Game::Instance()->getRenderer()))
 	{
 		return false;

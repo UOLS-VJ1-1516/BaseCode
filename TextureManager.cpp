@@ -12,8 +12,22 @@ TextureManager::~TextureManager() {};
 
 // Carrgar Texturas
 bool TextureManager::load(char* fileName, const char* id, SDL_Renderer* pRenderer) {
-	texture = IMG_LoadTexture(pRenderer, fileName);
-	return true;
+
+	SDL_Surface* pTempSurface = IMG_Load(fileName);
+	if (pTempSurface == 0)
+	{
+		return false;
+	}
+	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+	SDL_FreeSurface(pTempSurface);
+
+	if (pTexture != 0)
+	{
+		m_textureMap[id] = pTexture;
+		return true;
+	}
+
+	return false;
 };
 
 void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
@@ -28,3 +42,10 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	SDL_RenderCopyEx(pRender, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 };
 
+void TextureManager::setFrame(const char* id, int x, int y, int w, int h) {
+	m_textureMap[id] = texture;
+	m_texturePositions[*id][0] = x;
+	m_texturePositions[*id][1] = y;
+	m_textureSizes[*id][0] = w;
+	m_textureSizes[*id][1] = h;
+}

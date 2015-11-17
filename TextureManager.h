@@ -24,10 +24,13 @@ public:
 	void TextureManager::clearFromTextureMap(std::string id) { 
 		m_textureMap.erase(id); 
 	};
+	void setFrame(const char* id, int x, int y, int width, int height);
 private:
 	static TextureManager* s_pInstance;
 	SDL_Texture* texture;
 	SDL_Rect SrcR;
 	SDL_Rect DestR;
 	std::map<std::string, SDL_Texture*> m_textureMap;
+	std::map<char, int[2] > m_texturePositions;
+	std::map<char, int[2] > m_textureSizes;
 };

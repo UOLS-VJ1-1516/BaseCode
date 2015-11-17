@@ -7,7 +7,7 @@ const std::string MenuState::s_menuID = "MENU";
 //Función para cuando se crea el estado menu que crea los game objects de este estado
 bool MenuState::onEnter()
 {
-	if (!TextureManager::Instance()->load("playbutton.bmp", "playbutton", Game::Instance()->getRenderer()))
+	if (!TextureManager::Instance()->load("playbutton.bmp", "playerbutton", Game::Instance()->getRenderer()))
 	{
 		return false;
 	}
@@ -18,9 +18,11 @@ bool MenuState::onEnter()
 
 	button1 = new MenuButton(new LoaderParams(300, 150, 300, 100, "playbutton", "playbutton.bmp", 0, 0), s_menuToPlay);
 	button2 = new MenuButton(new LoaderParams(300, 350, 300, 100, "exitbutton", "exitbutton.bmp", 0, 0), s_exitFromMenu);
-
+	
 	m_gameObjects.push_back(button1);
+	
 	m_gameObjects.push_back(button2);
+	
 	return true;
 }
 
