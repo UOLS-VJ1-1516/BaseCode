@@ -1,8 +1,8 @@
+#pragma once
 #include "SDL.h"
-#include "vector"
-#include "Player.h"
-#include "Enemy.h"
+#include "GameStateMachine.h"
 
+//Clase game para crear el juego
 class Game
 {
 private:
@@ -20,24 +20,23 @@ public:
 	~Game();
 
 	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-	void render(int r, int g, int b);
+	void render();
 	void update();
-	void handleEvents(SDL_Event event);
+	void handleEvents();
 	void clean();
 	bool isRunning();
 	SDL_Renderer* getRenderer();
 	int getTicks();
-
+	int getScreenHeight();
+	int getScreenWidth();
+	void exit();
+	GameStateMachine* getGameStateMachine();
 private:
+	GameStateMachine* m_pGameStateMachine;
 	static Game* g_pInstance;
 	SDL_Window* g_pWindow = 0;
 	SDL_Renderer* g_pRenderer = 0;
 	bool running = true;
-	std::vector< GameObject* > m_gameObjects;
-	LoaderParams* params1;
-	LoaderParams* params2;
-	LoaderParams* params3;
-	GameObject* player1;
-	GameObject* enemy1;
-	GameObject* enemy2;
+	int screenWidth;
+	int screenHeigth;
 };

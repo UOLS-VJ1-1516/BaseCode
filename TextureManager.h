@@ -21,14 +21,13 @@ public:
 
 	bool load(char* fileName, const char* id, SDL_Renderer* pRenderer);
 	void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
-	void setFrame(const char* id, int x, int y, int width, int height);
-
+	void TextureManager::clearFromTextureMap(std::string id) { 
+		m_textureMap.erase(id); 
+	};
 private:
 	static TextureManager* s_pInstance;
 	SDL_Texture* texture;
 	SDL_Rect SrcR;
 	SDL_Rect DestR;
-	std::map<char, SDL_Texture* > m_textureMap;
-	std::map<char, int[2] > m_texturePositions;
-	std::map<char, int[2] > m_textureSizes;
+	std::map<std::string, SDL_Texture*> m_textureMap;
 };
