@@ -13,7 +13,7 @@ MenuButton::MenuButton(const LoaderParams * pParams, void(*callback)()) :m_callb
 MenuButton::~MenuButton() {};
 void MenuButton::load(const LoaderParams * pParams) {
 	
-	//TextureManager::Instance()->load(pParams->getTextureID(), pParams->getTextureID(), Game::Instance()->getRender());
+	
 	m_currentFrame = MOUSE_OUT;
 };
 

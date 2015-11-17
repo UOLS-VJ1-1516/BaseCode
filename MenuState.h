@@ -22,7 +22,9 @@ private:
 	static void s_menuTOplay();
 	static void s_exitMenu();
 	std::vector<int> m_position;
-	MenuButton * menuButton;
-	MenuButton * menuButton2;
+	SDL_Renderer *m_pRenderer;
+	//MenuButton * menuButton;
+	//MenuButton * menuButton2;
 	
+
 };

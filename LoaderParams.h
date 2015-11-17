@@ -6,8 +6,8 @@ class LoaderParams
 {
 public:
 
-	LoaderParams(int x, int y, int width, int height, const char* textureID, int spriteNum):
-	m_x(x),m_y(y),m_width(width),m_height(height),m_num(spriteNum),m_textureID(textureID)
+	LoaderParams(int x, int y, int width, int height, const char* fileName, int spriteNum):
+	m_x(x),m_y(y),m_width(width),m_height(height),m_num(spriteNum),m_textureID(fileName)
 	
 {
 		

@@ -1,6 +1,5 @@
 #pragma once
 #ifndef TEXTUREMANAGER_H
-#define TEXTUREMANAGER_H
 #include "SDL.h"
 #include "map"
 
@@ -33,7 +32,7 @@ private:
 	static TextureManager* s_pInstance;
 	std::map<char, SDL_Texture*>m_pTextureMap;
 	std::map<char, int[2] > m_textureSizes;
-	SDL_Surface*img;
+	SDL_Surface * img;
 	SDL_Texture*texture;
 	SDL_Point*center;
 	SDL_Rect inicio;

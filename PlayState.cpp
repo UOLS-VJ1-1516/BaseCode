@@ -2,9 +2,7 @@
 #include "Game.h"
 
 void PlayState::update() {
-	/*player->update();
-	zep->update();
-	gordo->update();*/
+	
 
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->update();
@@ -20,6 +18,10 @@ bool PlayState::onEnter() {
 	zep = new Zep();
 	gordo = new Gordo();
 
+	TextureManager::Instance()->load("Kirby.bmp", "player", Game::Instance()->getRender());
+	TextureManager::Instance()->load("ZepS.bmp", "zep", Game::Instance()->getRender());
+	TextureManager::Instance()->load("GordoS.bmp", "gordo", Game::Instance()->getRender());
+
 	load = new LoaderParams(100, 100, 35, 32, "player", 10);
 	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
 	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);
@@ -33,9 +35,7 @@ bool PlayState::onEnter() {
 	gordo->load(load3);
 	m_gObjects.push_back(gordo);
 
-	TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
-	TextureManager::Instance()->load("ZepS.bmp", "zep", m_pRenderer);
-	TextureManager::Instance()->load("GordoS.bmp", "gordo", m_pRenderer);
+	
 
 	return true;
 }

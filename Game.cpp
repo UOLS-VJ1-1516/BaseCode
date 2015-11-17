@@ -26,8 +26,8 @@ Game::Game() {
 	load = new LoaderParams(100, 100, 35, 32, "player", 10);
 	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
 	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);*/
-	playState = new PlayState();
-	menuState = new MenuState();
+	//playState = new PlayState();
+//	menuState = new MenuState();
 	m_pGameStateMachine = new GameStateMachine();
 	
 }
@@ -60,7 +60,7 @@ bool Game::init(const char* title, int xpos, int
 			
 
 			
-			/*player->load(load);
+		/*	player->load(load);
 			m_gameObjects.push_back(player);
 
 			enemy1->load(load2);
@@ -71,9 +71,9 @@ bool Game::init(const char* title, int xpos, int
 
 			TextureManager::Instance()->load("Kirby.bmp", "player", m_pRenderer);
 			TextureManager::Instance()->load("ZepS.bmp", "zep", m_pRenderer);
-			TextureManager::Instance()->load("GordoS.bmp", "gordo", m_pRenderer);
+			TextureManager::Instance()->load("GordoS.bmp", "gordo", m_pRenderer);*/
 			
-			*/
+			
 
 			
 		}
@@ -113,7 +113,7 @@ void Game::update() {
 void Game::handleEvents(SDL_Event event) {
 
 	//InputHandler::Instance()->update();
-	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
 		m_pGameStateMachine->changeState(new PlayState());
 	}
 	/*if (event.type == SDL_KEYDOWN) {

@@ -8,7 +8,7 @@ TextureManager::~TextureManager() {};
 bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer *m_pRenderer) {
 
 	img = SDL_LoadBMP(fileName);
-
+	
 	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 0, 255));
 	texture = SDL_CreateTextureFromSurface(m_pRenderer, img);
 	//SDL_FreeSurface(img);
