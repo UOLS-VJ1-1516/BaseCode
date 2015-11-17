@@ -52,5 +52,6 @@ void PauseState::s_menuTOMain() {
 
 void PauseState::s_menuTOPlay() {
 	Game::Instance()->getGameStateMachine()->popState();
+	
 }
 

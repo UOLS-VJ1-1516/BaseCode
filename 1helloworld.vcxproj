@@ -54,12 +54,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/include;libs/tinyxml/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>libs/SDL/lib; libs/SDL_Image/lib;libs/tinyxml/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -99,6 +99,7 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="Gordo.h" />

@@ -50,7 +50,7 @@ public:
 	void update();
 	void handleEvents(SDL_Event event);
 	void clean();
-	void quit() {running == false; }
+	void quit() {running = false; }
 	bool isRunning();
 	SDL_Renderer* getRender();
 	int getTicks();

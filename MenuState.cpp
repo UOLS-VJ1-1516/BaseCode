@@ -46,6 +46,7 @@ bool MenuState::onExit()
 	m_gameObjects.clear();
 	
 	
+	
 	std::cout << "Salida del MenuState\n";
 	return true;
 }
@@ -58,5 +59,8 @@ void MenuState::s_menuTOplay() {
 
 void MenuState::s_exitMenu() {
 	Game::Instance()->getGameStateMachine()->popState();
+	
+
+	Game::Instance()->quit();
 	
 }

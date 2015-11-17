@@ -42,7 +42,8 @@ void Player::update() {
 	
 	if(InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
-
+		std::cout << m_velocity.getX();
+		printf("\n");
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 		m_velocity.setX(0.1);
 		m_velocity.setX(m_acceleration.getX()+(m_velocity.getX() - m_frictionRight.getX()));
@@ -58,6 +59,8 @@ void Player::update() {
 	}
 	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
+		std::cout << m_velocity.getX();
+		printf("\n");
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 		m_velocity.setX(-0.1);
 		m_velocity.setX(m_desacceleration.getX() + (m_velocity.getX() - m_frictionLeft.getX()));
