@@ -1,11 +1,20 @@
 #pragma once
-#include "Entity.h"
+#include "Loaders.h"
 #include <iostream>
+#include "EventHandler.h"
+#include "AllEntities.hpp"
 
-class Button : Entity
+#define WAIT 1
+#define HOVER 2
+#define PRESSED 3
+
+class Button : public Entity
 {
 private:
 	EntityParams * params;
+	std::string buttonID;
+	int state = WAIT;
+	LivingEntity * text;
 public:
 	enum State
 	{
@@ -14,14 +23,12 @@ public:
 
 	void Load(EntityParams * params, const char * textureFile);
 
-	void SetOnClickListener(void(*callback)());
+	void SetOnClickListener(void(*callback)());	
 	
-	void Check();
 	void Draw();	
 	void DrawFrame();
 	void Update();
 	void Clear();
 protected:
 	void(*callback)();
-	bool Released;
 };

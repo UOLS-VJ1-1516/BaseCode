@@ -4,11 +4,14 @@
 
 class StateManager
 {
+	std::string buttonWait = "buttonWait.png",
+				buttonHover = "buttonHover.png",
+				buttonPressed = "buttonPressed.png";
 private:
 	std::vector<GameState *> gameStates;
 	std::vector<GameState *> gsDelete;
 public:
-	StateManager();
+	StateManager(GameState *);
 
 	void PushState(GameState * state);
 	void ChangeState(GameState * state);

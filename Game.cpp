@@ -50,7 +50,7 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 	{		
 		return false;
 	}	
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	
 	int initFlags = IMG_INIT_PNG;
 	if (!(IMG_Init(initFlags) & initFlags))
@@ -58,7 +58,7 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
 	}
 
-	manager = new StateManager();
+	manager = new StateManager(new StateMenu());
 	
 	return true;
 }
@@ -75,6 +75,7 @@ void Game::Clear()
 
 void Game::EventHandler()
 {
+	EventHandler::GetInstance()->UpdateKeys();
 	delta = GetDeltaTime();
 	manager->HandleEvents();
 }

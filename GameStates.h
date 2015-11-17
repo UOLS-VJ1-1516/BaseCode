@@ -4,6 +4,7 @@
 #include "AllEntities.hpp"
 #include <SDL.h>
 #include "Button.h"
+#include "EventHandler.h"
 
 using namespace std;
 
@@ -26,8 +27,7 @@ class StateGame : public GameState
 private:
 	string gameID;
 	vector<Entity *> entitats;
-	Player * player = NULL;
-	void HandleKeys(SDL_Scancode code);
+	Player * player = NULL;	
 public:
 	void Update();
 	void Render();
@@ -44,7 +44,7 @@ class StateMenu : public GameState
 private:
 	string menuID;
 	vector<Entity *> entitats;
-	Button play, exit;
+	Button * play, * exit;
 public:
 	StateMenu();
 
@@ -58,5 +58,27 @@ public:
 	string GetStateID() const
 	{
 		return menuID;
+	}
+};
+
+class StatePause : public GameState
+{
+private:
+	string pauseID;
+	vector<Entity *> entitats;
+	Button * restore, * exit;
+public:
+	StatePause();
+
+	void Update();
+	void Render();
+	void HandleEvents();
+
+	bool OnEnter();
+	bool OnExit();
+
+	string GetStateID() const
+	{
+		return pauseID;
 	}
 };

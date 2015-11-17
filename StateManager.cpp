@@ -2,10 +2,12 @@
 
 using namespace std;
 
-StateManager::StateManager()
-{
-	GameState * state = new StateMenu();
+StateManager::StateManager(GameState * state)
+{	
 	PushState(state);
+	TextureManager::GetInstance()->Load(buttonWait.c_str(), "buttonWait");
+	TextureManager::GetInstance()->Load(buttonHover.c_str(), "buttonHover");
+	TextureManager::GetInstance()->Load(buttonPressed.c_str(), "buttonPressed");
 }
 
 void StateManager::PushState(GameState * state)
@@ -16,6 +18,7 @@ void StateManager::PushState(GameState * state)
 
 void StateManager::ChangeState(GameState * state)
 {
+	state->OnEnter();
 	gsDelete.push_back(gameStates.back());
 	gameStates.back() = state;
 }

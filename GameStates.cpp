@@ -3,21 +3,6 @@
 
 using namespace std;
 
-void StateGame::HandleKeys(SDL_Scancode code)
-{
-	switch (code)
-	{
-	case SDL_SCANCODE_ESCAPE:
-		break;
-	case SDL_SCANCODE_A:
-		player->xAccel = NEGATIVE;
-		break;
-	case SDL_SCANCODE_D:
-		player->xAccel = POSITIVE;
-		break;
-	}
-}
-
 void StateGame::Update()
 {
 	for each (LivingEntity * var in entitats)
@@ -42,22 +27,31 @@ void StateGame::Render()
 
 void StateGame::HandleEvents()
 {
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
-		if (&event == NULL)
-			return;
-		switch (event.type) {
-		case SDL_KEYDOWN:
-			HandleKeys(event.key.keysym.scancode);
-			break;
-		case SDL_KEYUP:
-			SDL_Scancode code = event.key.keysym.scancode;
-			if (code == SDL_SCANCODE_A || code == SDL_SCANCODE_D)
+	map<string, int> keys = EventHandler::GetInstance()->GetKeyEvents();
+	for each (auto key in keys)
+	{
+		if (key.second == DOWN)
+		{
+			if (key.first == "4")
+			{
+				player->xAccel = NEGATIVE;
+			}
+			else if (key.first == "7")
+			{
+				player->xAccel = POSITIVE;
+			}
+			else if (key.first == "41")
+			{
+				TheGame->GetManager()->PushState(new StatePause());
+			}
+		}
+		else if (key.second == UP)
+		{
+			if (key.first == "4" || key.first == "7")
 			{
 				player->xAccel = NULL;
 			}
-			break;
-		}
+		}		
 	}
 }
 
@@ -93,45 +87,47 @@ StateMenu::StateMenu()
 
 void StateMenu::Update()
 {
-
+	play->Update();
+	exit->Update();
 }
 
 void StateMenu::Render()
 {
-	play.Draw();
-	exit.Draw();
+	for each (Button * var in entitats)
+	{		
+		var->Draw();
+	}
 }
 
 void StateMenu::HandleEvents()
 {
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		if (event.type == SDL_MOUSEBUTTONDOWN)
-		{
-			play.Check();
-		}
-	}
+	
 }
 
 bool StateMenu::OnEnter()
 {
 	EntityParams * playParams = new EntityParams
-		("playButton", 100, 100, 150, 150, 0, 0);
+		("playButton", 100, 100, 400, 150, 0, 0);
 
 	EntityParams * exitParams = new EntityParams
-		("exitButton", 100, 100, 150, 150, 0, 0);
+		("exitButton", 100, 300, 400, 150, 0, 0);
 
-	play.Load(playParams, "playButton.png");
-	exit.Load(exitParams, "exitButton.png");
+	play = new Button();
+	exit = new Button();
 
-	play.SetOnClickListener([]() {
+	play->Load(playParams, "startButton.png");
+	exit->Load(exitParams, "exitButton.png");
+
+	play->SetOnClickListener([]() {
 		TheGame->GetManager()->ChangeState(new StateGame());
 	});
 
-	exit.SetOnClickListener([]() {
+	exit->SetOnClickListener([]() {
 		TheGame->Close();
 	});
+
+	entitats.push_back(play);
+	entitats.push_back(exit);
 
 	return true;
 }
@@ -140,3 +136,71 @@ bool StateMenu::OnExit()
 {
 	return true;
 }
+
+StatePause::StatePause()
+{
+	OnEnter();
+}
+
+void StatePause::Update()
+{
+	restore->Update();
+	exit->Update();
+}
+
+void StatePause::Render()
+{
+	for each (Button * var in entitats)
+	{
+		var->Draw();
+	}
+}
+
+void StatePause::HandleEvents()
+{
+	map<string, int> keys = EventHandler::GetInstance()->GetKeyEvents();
+	for each (auto var in keys)
+	{
+		if (var.second == DOWN)
+		{
+			if (var.first == "41")
+			{
+				TheGame->GetManager()->PopState();
+			}
+		}
+	}
+}
+
+bool StatePause::OnEnter()
+{
+	EntityParams * playParams = new EntityParams
+		("playButton", 100, 100, 400, 150, 0, 0);
+
+	EntityParams * exitParams = new EntityParams
+		("exitButton", 100, 300, 400, 150, 0, 0);
+
+	restore = new Button();
+	exit = new Button();
+
+	restore->Load(playParams, "restoreButton.png");
+	exit->Load(exitParams, "exitButton.png");
+
+	restore->SetOnClickListener([]() {
+		TheGame->GetManager()->PopState();
+	});
+
+	exit->SetOnClickListener([]() {
+		TheGame->GetManager()->ChangeState(new StateMenu());
+	});
+
+	entitats.push_back(restore);
+	entitats.push_back(exit);
+
+	return true;
+}
+
+bool StatePause::OnExit()
+{
+	return false;
+}
+
