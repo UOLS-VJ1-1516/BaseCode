@@ -16,11 +16,6 @@ private:
 	int state = WAIT;
 	LivingEntity * text;
 public:
-	enum State
-	{
-		MOUSE_OUT, MOUSE_OVER, CLICKED
-	};
-
 	void Load(EntityParams * params, const char * textureFile);
 
 	void SetOnClickListener(void(*callback)());	
