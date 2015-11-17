@@ -2,18 +2,26 @@
 #include <SDL.h>
 #include "Player.h"
 #include "Player2.h"
+#include "InputHandler.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "PlayState.h"
+#include "MenuStateOnPause.h"
 #include <vector>
+
 
 class Game
 {
 
 private:
 	SDL_Window* g_pWindow;
-	SDL_Renderer* imgRender;
+	SDL_Renderer* g_pRenderer;
 	std::vector< GameObject* > m_gameObjects;
 	bool running;
-	int sprite;
+	int sprit;
 	Game();
+	static Game* s_pInstance;
+	GameStateMachine* m_pGameStateMachine;
 
 public:
 	static Game* Instance()
@@ -26,12 +34,15 @@ public:
 	}
 	~Game();
 
-	static Game* s_pInstance;
-	bool init(const char * titulo, int xpos, int ypos, int typeWindow);
+	
+	bool init(const char* tittle, int xPos, int yPos, int typeWindow);
 	void render();
-	void update();
+	void update(int delay);
 	void handleEvents();
 	void clean();
 	bool isRunning();
-	SDL_Renderer* getRenderer() const { return imgRender; }
+	SDL_Renderer* getRenderer() const { return g_pRenderer; }
+	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
+	int getTicks();
+	const int get_ancho_ventana() const;
 };

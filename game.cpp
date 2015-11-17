@@ -1,110 +1,81 @@
-#include "game.h"
+#include "Game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
 
-const int WINDOW_HEIGHT = 800;
-const int WINDOW_WIDTH = 800;
 
+const int altura = 800;
+const int ancho = 800;
+Game * Game::s_pInstance = 0;
 Game::Game()
 {
-
 	g_pWindow = 0;
-	imgRender = 0;
+	g_pRenderer = 0;
 	running = false;
-
 }
-Game * Game::s_pInstance = 0;
 
 
-bool Game::init(const char* titulo, int xpos, int ypos, int typeWindow) {
-
+bool Game::init(const char* tittle, int xPos, int yPos, int typeWindow)
+{
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
-		// Creamos ventana
-		g_pWindow = SDL_CreateWindow(titulo, xpos, ypos, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
-		// Crear imagen memoria
-		if (g_pWindow != 0) imgRender = SDL_CreateRenderer(g_pWindow, -1, 0);
-		// añadir imagen en lista
-		TextureManager::Instance()->load("homer1.bmp", "homer", imgRender);
+		g_pWindow = SDL_CreateWindow(tittle, xPos, yPos, ancho, altura, 0);
+		if (g_pWindow != 0) g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		running = true;
 
-		//Parametros del LoaderParams
-		GameObject *player = new Player();
-		player->load(new LoaderParams(WINDOW_WIDTH / 2 - 60, WINDOW_HEIGHT / 2 + 80, 85, 200, "homer", 0, 6, 0));
-
-		GameObject *player2 = new Player();
-		player2->load(new LoaderParams(50, 150, 85, 200, "ryu", 0, 6, 0));
-
-		GameObject *player3 = new Player();
-		player3->load(new LoaderParams(350, 0, 87, 200, "homer2", 0, 6, 0));
-
-		//Vector
-		m_gameObjects.push_back(player);
-		m_gameObjects.push_back(player2);
-		m_gameObjects.push_back(player3);
-
-
-		//Cargar imagen
-		TextureManager::Instance()->load("homer1.bmp", "homer", imgRender);
-		TextureManager::Instance()->load("Ryu.bmp", "ryu", imgRender);
-		TextureManager::Instance()->load("homer2.bmp", "homer2", imgRender);
-
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(new MenuState());
+		running = true;
 
 		return 0;
-	}
 
+	}
 	return 1;
 }
 
-
-
-void Game::render() {
-	// Elijo el color con que voy a pintar la pantalla
-	SDL_SetRenderDrawColor(imgRender, 255, 255, 255, 255);
-	// Limpio la pantalla con el color seleccionado.
-	SDL_RenderClear(imgRender);
-
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw(imgRender);
-
-
-	}
-	SDL_RenderPresent(imgRender);
-
+void Game::render()
+{
+	SDL_SetRenderDrawColor(g_pRenderer, 255, 255, 255, 255);
+	SDL_RenderClear(g_pRenderer);
+	m_pGameStateMachine->render();
+	SDL_RenderPresent(g_pRenderer);
+	
 }
 
-
-void Game::update() {
-
-	//Mostra bufer pintat
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
-	SDL_Delay(60);
-
+void Game::update(int delay)
+{
+	m_pGameStateMachine->update();
 }
 
-
-void Game::handleEvents() {
+void Game::handleEvents()
+{
 	SDL_Event event;
-
 	while (SDL_PollEvent(&event)) {
-		if ((event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)) {
-		running = false;
-		}
+		if (event.type == SDL_KEYDOWN) InputHandler::Instance()->update(event.key.keysym.sym);
+		if (event.type == SDL_KEYUP) InputHandler::Instance()->updateKeyUp(event.key.keysym.sym);
+		if (event.type == SDL_MOUSEMOTION) InputHandler::Instance()->onMouseMotion(event.motion.x, event.motion.y);
+		if (event.type == SDL_MOUSEBUTTONDOWN) InputHandler::Instance()->onMouseButtonDown(event.button.button);
+		if (event.type == SDL_MOUSEBUTTONUP)InputHandler::Instance()->onMouseButtonUp(event.button.button);
 	}
 }
 
-
-void Game::clean() {
-
-	SDL_RenderClear(imgRender);
+void Game::clean()
+{
+	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
-	SDL_DestroyRenderer(imgRender);
+	SDL_DestroyRenderer(g_pRenderer);
 	SDL_Quit();
 }
 
 
-bool Game::isRunning() { return running; }
+bool Game::isRunning()
+{
+	return running;
+}
+
+
+int Game::getTicks() { return (int)(SDL_GetTicks()); };
+
+const int Game::get_ancho_ventana() const
+{
+	return ancho;
+}
