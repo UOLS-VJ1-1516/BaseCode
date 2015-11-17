@@ -30,15 +30,20 @@ void MenuButton::update() {
 	Vector2D* pMousePos = InputHandler::Instance()->getMousePosition();
 
 	if (pMousePos->getX() < (m_position.getX() + m_width) && pMousePos->getX() > m_position.getX() && pMousePos->getY() < (m_position.getY() + m_height) && pMousePos->getY() > m_position.getY()) {
-		if (!InputHandler::Instance()->getMouseButtonState(0)) {
+	if (InputHandler::Instance()->getMouseButtonState(0)) {
+		m_currentFrame = CLICKED;
+		if (m_bReleased) {
+			m_bReleased = false; 
+		}
+	}
+	else if (!InputHandler::Instance()->getMouseButtonState(0)) {
+		if (!m_bReleased && m_currentFrame == CLICKED) {
+			m_callback();
+		}
 			m_currentFrame = MOUSE_OVER;
 			m_bReleased = true;
 		}
-		else if (InputHandler::Instance()->getMouseButtonState(0) && m_bReleased) {
-			m_currentFrame = CLICKED;
-			m_callback();
-			m_bReleased = false;
-		}
+		
 	}
 	else {
 		m_currentFrame = MOUSE_OUT;

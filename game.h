@@ -10,7 +10,6 @@
 #include "TextureManager.h"
 #include "InputHandler.h"
 #include "GameStateMachine.h"
-#include "PlayState.h"
 #include "MenuState.h"
 #include "vector"
 
@@ -19,17 +18,9 @@ class Game {
 		Game();
 		SDL_Window* m_pWindow;
 		SDL_Renderer* m_pRenderer;
-		SDL_Event event;
 		bool running;
 		static Game* s_pInstance;
 		GameStateMachine* m_pGameStateMachine;
-		/*std::vector<GameObject*> m_gameObjects;
-		Player* player1;
-		Enemy* enemy1;
-		StaticObject* stObj1;
-		LoaderParams* paramsPlayer1;
-		LoaderParams* paramsEnemy1;
-		LoaderParams* paramsStObj1;*/
 
 	public:
 		static Game* Instance() {

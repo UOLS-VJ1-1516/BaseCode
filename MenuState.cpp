@@ -16,15 +16,14 @@ void MenuState::render() {
 }
 
 bool MenuState::onEnter() {
-	//startButton = new MenuButton((new LoaderParams(150, 50, 44, 40, "coin", 10, 0, 0, 0, 0)), s_menuToPlay);
-	startButton = new MenuButton(new LoaderParams(150, 200, 79, 45, "PlayButton", 3, 0, 0, 0, 0), s_menuToPlay);
-	exitButton = new MenuButton(new LoaderParams(150, 250, 79, 45, "ExitButton", 3, 0, 0, 0, 0), s_exitFromMenu);
+	startButton = new MenuButton(new LoaderParams(275, 225, 250, 75, "PlayButton", 3, 0, 0, 0, 0), s_menuToPlay);
+	exitButton = new MenuButton(new LoaderParams(275, 325, 250, 75, "ExitButton", 3, 0, 0, 0, 0), s_exitFromMenu);
 
 	m_gameObjects.push_back(startButton);
 	m_gameObjects.push_back(exitButton);
 
-	TextureManager::Instance()->load("test.bmp", "PlayButton", Game::Instance()->getRender());
-	TextureManager::Instance()->load("test.bmp", "ExitButton", Game::Instance()->getRender());
+	TextureManager::Instance()->load("playButton.bmp", "PlayButton", Game::Instance()->getRender());
+	TextureManager::Instance()->load("exitButton.bmp", "ExitButton", Game::Instance()->getRender());
 
 	return true;
 }
@@ -44,6 +43,7 @@ void MenuState::s_menuToPlay() {
 }
 
 void MenuState::s_exitFromMenu() {
+	Game::Instance()->setIsRunning(false);
 	Game::Instance()->getGameStateMachine()->popState();
 	Game::Instance()->clean();
 }

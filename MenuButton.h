@@ -13,11 +13,11 @@ class MenuButton : public GameObject {
 			CLICKED = 2
 		};
 		MenuButton(const LoaderParams* pParams, void(*callback)());
-		void load(const LoaderParams* pParams);
+		virtual void load(const LoaderParams* pParams);
 		~MenuButton();
-		void draw();
-		void update();
-		void clean();
+		virtual void draw();
+		virtual void update();
+		virtual void clean();
 
 	private:
 		void(*m_callback)();

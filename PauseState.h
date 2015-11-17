@@ -9,22 +9,22 @@
 #include "string"
 
 class PauseState : public GameState {
-public:
-	void update();
-	void render();
+	public:
+		virtual void update();
+		virtual void render();
 
-	bool onEnter();
-	bool onExit();
+		virtual bool onEnter();
+		virtual bool onExit();
 
-	std::string getStateID() const;
+		virtual std::string getStateID() const;
 
-private:
-	static const std::string s_pauseID;
-	std::vector<GameObject* > m_gameObjects;
-	static void s_pauseToMain();
-	static void s_resumePlay();
-	MenuButton* resumeButton;
-	MenuButton* mainMenuButton;
+	private:
+		static const std::string s_pauseID;
+		std::vector<GameObject* > m_gameObjects;
+		static void s_pauseToMain();
+		static void s_resumePlay();
+		MenuButton* resumeButton;
+		MenuButton* mainMenuButton;
 
 };
 

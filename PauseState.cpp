@@ -16,15 +16,14 @@ void PauseState::render() {
 }
 
 bool PauseState::onEnter() {
-	//startButton = new MenuButton((new LoaderParams(150, 50, 44, 40, "coin", 10, 0, 0, 0, 0)), s_menuToPlay);
-	resumeButton = new MenuButton(new LoaderParams(150, 200, 79, 45, "ResumeButton", 3, 0, 0, 0, 0), s_resumePlay);
-	mainMenuButton = new MenuButton(new LoaderParams(150, 250, 79, 45, "MainMenuButton", 3, 0, 0, 0, 0), s_pauseToMain);
+	resumeButton = new MenuButton(new LoaderParams(275, 225, 250, 75, "ResumeButton", 3, 0, 0, 0, 0), s_resumePlay);
+	mainMenuButton = new MenuButton(new LoaderParams(275, 325, 250, 75, "MainMenuButton", 3, 0, 0, 0, 0), s_pauseToMain);
 
 	m_gameObjects.push_back(resumeButton);
 	m_gameObjects.push_back(mainMenuButton);
 
-	TextureManager::Instance()->load("test.bmp", "ResumeButton", Game::Instance()->getRender());
-	TextureManager::Instance()->load("test.bmp", "MainMenuButton", Game::Instance()->getRender());
+	TextureManager::Instance()->load("resumeButton.bmp", "ResumeButton", Game::Instance()->getRender());
+	TextureManager::Instance()->load("mainMenuButton.bmp", "MainMenuButton", Game::Instance()->getRender());
 
 	return true;
 }

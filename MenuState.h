@@ -7,16 +7,17 @@
 #include "game.h"
 #include "MenuButton.h"
 #include "string"
+#include "PlayState.h"
 
 class MenuState : public GameState {
 	public:
-		void update();
-		void render();
+		virtual void update();
+		virtual void render();
 
-		bool onEnter();
-		bool onExit();
+		virtual bool onEnter();
+		virtual bool onExit();
 
-		std::string getStateID() const;
+		virtual std::string getStateID() const;
 
 	private:
 		static const std::string s_menuID;
