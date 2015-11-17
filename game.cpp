@@ -7,8 +7,8 @@
 	#include "InputHandler.h"
 	#include "MenuButton.h"
 	#include "MenuState.h"
+	#include "PlayState.h"
 	
-	int row=0;
 	std::vector<GameObject*> m_gameObjects;
 
 	Game* Game::g_pInstance = 0;

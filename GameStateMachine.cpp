@@ -8,7 +8,7 @@ void GameStateMachine::pushState(GameState * pState)
 
 void GameStateMachine::changeState(GameState * pState)
 { 
-	
+	std::cout << "change State\n";
 	if (!m_gameStates.empty())
 	{
 		if (m_gameStates.back()->getStateID() == pState->getStateID())
@@ -17,20 +17,20 @@ void GameStateMachine::changeState(GameState * pState)
 		}
 		if (m_gameStates.back()->onExit())
 		{
-			m_statesToDelete.back();
+			m_statesToDelete.push_back(m_gameStates.back());
 			m_gameStates.pop_back();
 		}
 	}
 	m_gameStates.push_back(pState);
 	m_gameStates.back()->onEnter();
-	///elimina (m_stateToDelete) el change state y coloques el nou pState(
+	//elimina (m_stateToDelete) el change state y coloques el nou pState(
 }
 
 void GameStateMachine::popState()
 {
-	if (m_gameStates.empty()) {
+	if (!m_gameStates.empty()) {
 		if (m_gameStates.back()->onExit()) {
-			m_statesToDelete.back();
+			m_statesToDelete.push_back(m_gameStates.back());
 			m_gameStates.pop_back();
 		}
 	}
@@ -51,4 +51,9 @@ void GameStateMachine::render()
 	{
 		m_gameStates.back()->render();
 	}
+}
+
+void GameStateMachine::voidAllOldStates()
+{
+	m_statesToDelete.clear();
 }

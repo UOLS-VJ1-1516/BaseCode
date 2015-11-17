@@ -1,10 +1,8 @@
 #pragma once
 #include "GameState.h"
+#include "GameObject.h"
 #include <string>
 #include <vector>
-
-class GameObject;				// forward declearation
-class SDL_GameObject;
 
 class PlayState : public GameState
 {
@@ -21,4 +19,7 @@ private:
 	static const std::string s_playID;
 	std::vector<GameObject*> m_gameObjects;
 
+	GameObject *player;
+	GameObject *enemy;
+	GameObject *enemy2;
 };

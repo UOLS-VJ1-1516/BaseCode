@@ -24,7 +24,7 @@ void InputHandler::update()
 			switch (event.key.keysym.sym)
 			{
 				case SDLK_ESCAPE:
-					Game::Instance()->quit();
+					//Game::Instance()->quit();
 					break;
 			}
 			break;

@@ -4,7 +4,8 @@
 
 MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()) : m_callback(callback)
 {
-	MenuButton::load(pParams);
+	m_currentFrame = MOUSE_OUT;
+	GameObject::load(pParams);
 	m_bReleased = false;
 }
 
@@ -41,7 +42,7 @@ void MenuButton::update()
 
 void MenuButton::clean()
 {
-	GameObject::clean();
+	InputHandler::Instance()->clean();
 }
 
 void MenuButton::load(const LoaderParams * pParams)

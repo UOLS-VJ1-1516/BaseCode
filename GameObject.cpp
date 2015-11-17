@@ -38,7 +38,4 @@ void GameObject::update()
 {
 	m_position += m_velocity;
 }
-void GameObject::clean()
-{
-	SDL_Quit();
-}
+
