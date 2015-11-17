@@ -4,7 +4,7 @@
 void Button::Load(EntityParams * params, const char * textureFile)
 {
 	this->params = params;
-	text = new LivingEntity();
+	text = new InertEntity();
 	text->params = params;
 
 	TextureManager::GetInstance()->Load(textureFile, params->GetId());
@@ -30,32 +30,50 @@ void Button::Draw()
 
 	SDL_RendererFlip flip = params->IsFlipped() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
 
-	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[params->GetId()];
-	SDL_RenderCopyEx(TheGame->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
-
+	SDL_Texture * textura = NULL;
 	switch (state)
 	{
 	case WAIT:
-		textura = TextureManager::GetInstance()->GetArray["waitButton.png"];
+		textura = TextureManager::GetInstance()->GetArray()["buttonWait"];
 		break;
 	case HOVER:
-		textura = TextureManager::GetInstance()->GetArray["hoverButton.png"];
+		textura = TextureManager::GetInstance()->GetArray()["buttonHover"];
 		break;
 	case PRESSED:
-		textura = TextureManager::GetInstance()->GetArray["pressedButton.png"];
+		textura = TextureManager::GetInstance()->GetArray()["buttonPressed"];
 		break;
 	}
 	SDL_RenderCopyEx(TheGame->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
+
+	SDL_Texture * text = TextureManager::GetInstance()->GetArray()[params->GetId()];
+	SDL_RenderCopyEx(TheGame->GetRenderer(), text, &img, &draw, 0, NULL, flip);
+
 }
 
 void Button::DrawFrame()
 {
-
+	Draw();
 }
 
 void Button::Update()
 {
+	int x = BigHandle->GetMousePosition().first;
+	int y = BigHandle->GetMousePosition().second;
 
+	if (x > params->GetXPos() && x < params->GetWidth() + params->GetXPos() &&
+		y > params->GetYPos() && y < params->GetHeight() + params->GetYPos())
+	{
+		state = HOVER;
+		if (BigHandle->GetMouseButtons().first)
+		{
+			state = PRESSED;
+			callback();
+		}
+	}
+	else
+	{
+		state = WAIT;
+	}
 }
 
 void Button::Clear()

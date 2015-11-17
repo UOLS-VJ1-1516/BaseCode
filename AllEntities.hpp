@@ -2,3 +2,4 @@
 #include "LivingEntity.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "InertEntity.h"

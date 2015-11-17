@@ -36,3 +36,12 @@ TextureManager::~TextureManager()
 	textures.~map();
 }
 
+
+void EntityFactory::Register(const string &, CreateEntity creator)
+{
+}
+
+Entity * EntityFactory::CreateEntity(const string &)
+{
+	return nullptr;
+}

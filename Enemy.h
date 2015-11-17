@@ -18,4 +18,5 @@ public:
 	Enemy(int);
 	~Enemy();
 	void Update(Player *);
+	static Enemy * Create(int type) { return new Enemy(type); }
 };

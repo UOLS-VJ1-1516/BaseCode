@@ -15,6 +15,7 @@ public:
 	LivingEntity();
 	~LivingEntity();
 
+	static LivingEntity * Create() { return new LivingEntity(); }
 	void Move(float, float);
 
 	void Accelerate(int, int);

@@ -11,4 +11,5 @@ public:
 	float xPos = 0;
 	void Accelerate(int, int);
 	void Update();
+	static Player * Create() { return new Player(); }
 };

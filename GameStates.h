@@ -44,7 +44,6 @@ class StateMenu : public GameState
 private:
 	string menuID;
 	vector<Entity *> entitats;
-	Button * play, * exit;
 public:
 	StateMenu();
 
@@ -66,7 +65,6 @@ class StatePause : public GameState
 private:
 	string pauseID;
 	vector<Entity *> entitats;
-	Button * restore, * exit;
 public:
 	StatePause();
 

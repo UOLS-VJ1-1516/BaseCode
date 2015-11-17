@@ -87,8 +87,10 @@ StateMenu::StateMenu()
 
 void StateMenu::Update()
 {
-	play->Update();
-	exit->Update();
+	for each (Button * var in entitats)
+	{
+		var->Update();
+	}
 }
 
 void StateMenu::Render()
@@ -106,6 +108,7 @@ void StateMenu::HandleEvents()
 
 bool StateMenu::OnEnter()
 {
+	Button * play, *exit;
 	EntityParams * playParams = new EntityParams
 		("playButton", 100, 100, 400, 150, 0, 0);
 
@@ -144,8 +147,10 @@ StatePause::StatePause()
 
 void StatePause::Update()
 {
-	restore->Update();
-	exit->Update();
+	for each (Button * var in entitats)
+	{
+		var->Update();
+	}
 }
 
 void StatePause::Render()
@@ -173,6 +178,7 @@ void StatePause::HandleEvents()
 
 bool StatePause::OnEnter()
 {
+	Button * restore, *exit;
 	EntityParams * playParams = new EntityParams
 		("playButton", 100, 100, 400, 150, 0, 0);
 
@@ -182,7 +188,7 @@ bool StatePause::OnEnter()
 	restore = new Button();
 	exit = new Button();
 
-	restore->Load(playParams, "restoreButton.png");
+	restore->Load(playParams, "backButton.png");
 	exit->Load(exitParams, "exitButton.png");
 
 	restore->SetOnClickListener([]() {

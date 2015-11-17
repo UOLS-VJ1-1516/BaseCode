@@ -9,6 +9,8 @@
 #define DOWN -1
 #define NULL 0
 
+#define BigHandle EventHandler::GetInstance()
+
 using namespace std;
 
 class EventHandler

@@ -14,7 +14,7 @@ private:
 	EntityParams * params;
 	std::string buttonID;
 	int state = WAIT;
-	LivingEntity * text;
+	InertEntity * text;
 public:
 	void Load(EntityParams * params, const char * textureFile);
 
