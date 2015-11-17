@@ -9,6 +9,7 @@ public:
 	void popState();
 	void update();
 	void render();
+	void cleanState();
 
 private:
 	std::vector< GameState* > m_gameStates;

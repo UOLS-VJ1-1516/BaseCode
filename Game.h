@@ -10,7 +10,9 @@
 #include "Enemy.h"
 #include "StaticObject.h"
 #include "GameStateMachine.h"
-
+#include "MenuState.h"
+#include "PlayState.h"
+#include "PauseState.h"
 class Game
 {
 public:
@@ -34,10 +36,12 @@ public:
 	void handleEvents();
 	void clean();
 	bool isRunning();
+	void setIsRunning(bool f);
 	SDL_Renderer* getRender();
 	int getScreenWidth();
 	int getScreenHeight();
 	int getTicks();
+	GameStateMachine* Game::getStateMachine();
 	//std::vector<Player*> m_players;
 private:
 	SDL_Window* g_pWindow;
@@ -51,12 +55,12 @@ private:
 	int screenHeigth;
 	InputHandler* TheInputHandler;
 	
-	LoaderParams* lp;
+	/*LoaderParams* lp;
 	LoaderParams* lp2;
 	LoaderParams* lp3;
 	Player* p1;
 	Enemy* p3;
-	StaticObject* p2;
+	StaticObject* p2;*/
 	
 	GameStateMachine* m_pGameStateMachine;
 	

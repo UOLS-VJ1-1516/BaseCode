@@ -3,6 +3,7 @@
 #define INPUTHANDLER_H
 #include "SDL.h"
 #include "Vector2D.h"
+#include <vector>
 
 class InputHandler
 {
@@ -17,18 +18,18 @@ public:
 	}
 	~InputHandler() {};
 	void update();
-	//void update();
 	void clean();
-	// Métodos de acceso
 	bool isKeyDown(SDL_Scancode key);
 	bool Quit();
-	bool getMouseButtonState();
+	bool getMouseButtonState(int buttonNumber);
 	Vector2D* getMousePosition();
-	void onMouseButtonDown();
-	const Uint8* m_state = NULL;
+	
 private:
 	InputHandler();
 	static InputHandler* s_pInstance;
 	Vector2D* m_mousePosition;
+	std::vector<bool> m_mouseButtonStates;
+	bool salida;
+	const Uint8* m_state;
 };
 #endif INPUTHANDLER_H
