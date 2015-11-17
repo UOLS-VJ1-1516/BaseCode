@@ -31,12 +31,12 @@ bool MenuState::onEnter()
 		return false;
 	}
 	
-	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 250, 69, "start",3), s_menuTOplay);
+	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 250, 69, "playbutton",3), s_menuTOplay);
 	if (menuButton == NULL) {
 		return false;
 	}
 	m_gameObjects.push_back(menuButton);
-	GameObject *menuButton2 = new MenuButton(new LoaderParams(200, 200, 250, 72, "exitbutton",3), s_exitMenu);
+	GameObject *menuButton2 = new MenuButton(new LoaderParams(200, 200, 250, 69, "exitbutton",3), s_exitMenu);
 	if (menuButton2 == NULL) {
 		return false;
 	}

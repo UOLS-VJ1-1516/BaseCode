@@ -26,8 +26,8 @@ Game::Game() {
 	load = new LoaderParams(100, 100, 35, 32, "player", 10);
 	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
 	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);*/
-	//playState = new PlayState();
-	//menuState = new MenuState();
+	playState = new PlayState();
+	menuState = new MenuState();
 	m_pGameStateMachine = new GameStateMachine();
 	
 }
