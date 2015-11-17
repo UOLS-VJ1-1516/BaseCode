@@ -20,7 +20,7 @@ public:
 
 	void Accelerate(int, int);
 
-	void Load(EntityParams *, const char *);
+	void Load(EntityParams *);
 	void Draw();
 	void DrawFrame();
 	virtual void Update();

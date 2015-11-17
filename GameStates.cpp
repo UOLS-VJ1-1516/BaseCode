@@ -1,5 +1,6 @@
 #include "GameStates.h"
 #include "Game.h"
+#include "StateParser.h"
 
 using namespace std;
 
@@ -57,21 +58,7 @@ void StateGame::HandleEvents()
 
 bool StateGame::OnEnter()
 {
-	player = new Player();
-	EntityParams * params = new EntityParams("player", 0, 0, 32, 32, 3, 6);
-	player->Load(params, "Actor3.png");
-	entitats.push_back(player);
-
-	Enemy * enemy1 = new Enemy(IGNORE_ENEMY);
-	EntityParams * enemy1Params = new EntityParams("enemy1", 150, 135, 32, 32, 3, 6);
-	enemy1->Load(enemy1Params, "Monster1.png");
-	entitats.push_back(enemy1);
-
-	Enemy * enemy2 = new Enemy(FOLLOWER_ENEMY);
-	EntityParams * enemy2Params = new EntityParams("enemy2", 150, 75, 32, 32, 3, 2);
-	enemy2->Load(enemy2Params, "Monster1.png");
-	entitats.push_back(enemy2);
-
+	StateParser::ParseState("game.xml", this->gameID, &entitats, &textures);
 	return true;
 }
 
@@ -108,30 +95,15 @@ void StateMenu::HandleEvents()
 
 bool StateMenu::OnEnter()
 {
-	Button * play, *exit;
-	EntityParams * playParams = new EntityParams
-		("playButton", 100, 100, 400, 150, 0, 0);
-
-	EntityParams * exitParams = new EntityParams
-		("exitButton", 100, 300, 400, 150, 0, 0);
-
-	play = new Button();
-	exit = new Button();
-
-	play->Load(playParams, "startButton.png");
-	exit->Load(exitParams, "exitButton.png");
-
-	play->SetOnClickListener([]() {
+	StateParser::ParseState("menu.xml", this->menuID, &entitats, &textures);
+	callbacks[0] = NULL;
+	callbacks[1] = ([]() {
 		TheGame->GetManager()->ChangeState(new StateGame());
 	});
 
-	exit->SetOnClickListener([]() {
+	callbacks[2] = ([]() {
 		TheGame->Close();
 	});
-
-	entitats.push_back(play);
-	entitats.push_back(exit);
-
 	return true;
 }
 
@@ -178,29 +150,16 @@ void StatePause::HandleEvents()
 
 bool StatePause::OnEnter()
 {
-	Button * restore, *exit;
-	EntityParams * playParams = new EntityParams
-		("playButton", 100, 100, 400, 150, 0, 0);
+	StateParser::ParseState("pause.xml", this->pauseID, &entitats, &textures);
 
-	EntityParams * exitParams = new EntityParams
-		("exitButton", 100, 300, 400, 150, 0, 0);
-
-	restore = new Button();
-	exit = new Button();
-
-	restore->Load(playParams, "backButton.png");
-	exit->Load(exitParams, "exitButton.png");
-
-	restore->SetOnClickListener([]() {
+	callbacks[0] = NULL;
+	callbacks[1] = ([]() {
 		TheGame->GetManager()->PopState();
 	});
 
-	exit->SetOnClickListener([]() {
+	callbacks[2] = ([]() {
 		TheGame->GetManager()->ChangeState(new StateMenu());
 	});
-
-	entitats.push_back(restore);
-	entitats.push_back(exit);
 
 	return true;
 }

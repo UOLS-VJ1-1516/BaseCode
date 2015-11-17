@@ -68,14 +68,13 @@ void LivingEntity::Accelerate(int aX, int aY)
 		params->AddFrame();	
 }
 
-void LivingEntity::Load(EntityParams * params, const char * file)
+void LivingEntity::Load(EntityParams * params)
 {
 	this->params = params;
 	position.X = params->GetXPos();
 	position.Y = params->GetYPos();
 	velocity = Vector2D(0, 0);
 	friction = Vector2D(0.15f, 0.15f);
-	TextureManager::GetInstance()->Load(file, params->GetId());
 }
 
 void LivingEntity::Draw()

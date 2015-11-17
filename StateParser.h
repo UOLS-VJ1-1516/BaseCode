@@ -1,6 +1,7 @@
 #pragma once
 #include <tinyxml.h>
 #include <vector>
+#define PATH "assets/xml/"
 
 using namespace std;
 

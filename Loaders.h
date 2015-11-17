@@ -2,11 +2,11 @@
 #include <map>
 #include <SDL.h>
 #include <SDL_image.h>
+#include<iostream>
 #include "AllEntities.hpp"
 
 #define Manager TextureManager::GetInstance()
 #define EntityCreator EntityFactory::GetInstance()
-#define NULL 0
 
 class TextureManager
 {
@@ -33,14 +33,14 @@ public:
 	~TextureManager();
 };
 
-typedef Entity* (*CreateEntity)();
+typedef Entity* (*CreateNewEntity)();
 
 class EntityFactory
 {
 private:
 	EntityFactory();
 	static EntityFactory * instance;
-	map<string, CreateEntity> factoryMap;
+	map<string, CreateNewEntity> factoryMap;
 public:
 	virtual ~EntityFactory() {}
 	static EntityFactory * GetInstance()
@@ -51,6 +51,6 @@ public:
 		}
 		return instance;
 	}
-	void Register(const string &, CreateEntity creator);
+	void Register(const string &, CreateNewEntity creator);
 	Entity * CreateEntity(const string &);
 };

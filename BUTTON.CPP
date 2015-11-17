@@ -1,13 +1,11 @@
 #include "Button.h"
 #include "Game.h"
 
-void Button::Load(EntityParams * params, const char * textureFile)
+void Button::Load(EntityParams * params)
 {
 	this->params = params;
 	text = new InertEntity();
 	text->params = params;
-
-	TextureManager::GetInstance()->Load(textureFile, params->GetId());
 }
 
 void Button::SetOnClickListener(void(*callback)())

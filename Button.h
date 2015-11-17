@@ -2,7 +2,7 @@
 #include "Loaders.h"
 #include <iostream>
 #include "EventHandler.h"
-#include "AllEntities.hpp"
+#include "Entity.h"
 
 #define WAIT 1
 #define HOVER 2
@@ -16,14 +16,16 @@ private:
 	int state = WAIT;
 	InertEntity * text;
 public:
-	void Load(EntityParams * params, const char * textureFile);
-
+	void Load(EntityParams * params);
+	
 	void SetOnClickListener(void(*callback)());	
 	
 	void Draw();	
 	void DrawFrame();
 	void Update();
 	void Clear();
+
+	int CallbackID;
 protected:
 	void(*callback)();
 };

@@ -11,10 +11,9 @@ InertEntity::~InertEntity()
 
 }
 
-void InertEntity::Load(EntityParams * params, const char * texture)
+void InertEntity::Load(EntityParams * params)
 {
 	this->params = params;
-	Manager->Load(texture, params->GetId());
 }
 
 void InertEntity::Draw()

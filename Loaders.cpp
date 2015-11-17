@@ -1,6 +1,5 @@
 #include "Loaders.h"
 #include "Game.h"
-#include "Entity.h"
 #include <string>
 #include <sstream>
 
@@ -37,11 +36,13 @@ TextureManager::~TextureManager()
 }
 
 
-void EntityFactory::Register(const string &, CreateEntity creator)
+void EntityFactory::Register(const string & name, CreateNewEntity creator)
 {
+	factoryMap[name] = creator;
 }
 
-Entity * EntityFactory::CreateEntity(const string &)
+Entity * EntityFactory::CreateEntity(const string & name)
 {
-	return nullptr;
+	Entity * ent = factoryMap[name]();
+	return ent;
 }
