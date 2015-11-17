@@ -29,7 +29,7 @@ private:
 	GameStateMachine *m_pGameStateMachine;
 	PlayState* playState;
 	MenuState * menuState;
-//	PauseState * pauseState;
+	PauseState * pauseState;
 
 
 
@@ -56,4 +56,6 @@ public:
 	int getTicks();
 	std::vector<GameObject*> m_gameObjects;
 	GameStateMachine * getGameStateMachine();
+	TextureManager* tx;
+	InputHandler* th;
 };

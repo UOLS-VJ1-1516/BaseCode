@@ -29,7 +29,9 @@ Game::Game() {
 	//playState = new PlayState();
 //	menuState = new MenuState();
 	m_pGameStateMachine = new GameStateMachine();
-	
+	tx = TextureManager::Instance();
+	th = InputHandler::Instance();
+
 }
 Game::~Game() {
 
@@ -38,7 +40,7 @@ bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
 	
 
-
+	
 	//inicialitzem el SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 
@@ -113,9 +115,9 @@ void Game::update() {
 void Game::handleEvents(SDL_Event event) {
 
 	//InputHandler::Instance()->update();
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
 		m_pGameStateMachine->changeState(new PlayState());
-	}
+	}*/
 	/*if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym = SDLK_ESCAPE) {
 			running = false;

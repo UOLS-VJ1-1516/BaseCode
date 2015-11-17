@@ -52,11 +52,12 @@ void InputHandler::update()
 				m_mouseButtonStates[RIGHT] = false;
 			}
 		}
-		if (event.type == SDL_MOUSEMOTION) {
-			m_mPosition->setX((float)event.motion.x);
-			m_mPosition->setY((float)event.motion.y);
-
+		if (event.button.type == SDL_MOUSEMOTION) {
+			m_mPosition->setX((int)event.button.x);
+			m_mPosition->setY((int)event.button.y);
+			//printf("x= %d | y= %d\n", (int)event.button.x, (int)event.button.y);
 		}
+		
 	}
 }
 

@@ -1,4 +1,5 @@
 #include "PauseState.h"
+#include "Game.h"
 
 
 void PauseState::update() {
@@ -15,35 +16,27 @@ void PauseState::render() {
 
 bool PauseState::onEnter() {
 
-	if (!TextureManager::Instance()->load("play.bmp", "playPausa", Game::Instance()->getRender()))
-	{
-		printf("false");
-		return false;
-	}
-	if (!TextureManager::Instance()->load("Exit.bmp", "exitPausa", Game::Instance()->getRender()))
-	{
-		return false;
-	}
-
-	GameObject* menuButton = new MenuButton(new LoaderParams(200, 200, 201, 72, "playPausa", 3), s_menuTOPlay);
+	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 250, 69, "playbtn.bmp", 3), s_menuTOPlay);
 	if (menuButton == NULL) {
 		return false;
 	}
+	TextureManager::Instance()->load("playbtn.bmp", "playbtn.bmp", Game::Instance()->getRender());
 	m_gameObjects.push_back(menuButton);
-	GameObject* menuButton2 = new MenuButton(new LoaderParams(200, 200, 201, 72, "exitPausa", 3), s_menuTOMain);
+	GameObject* menuButton2 = new MenuButton(new LoaderParams(200, 300, 250, 69, "exitbtn.bmp", 3), s_menuTOMain);
 	if (menuButton2 == NULL) {
 		return false;
 	}
 	m_gameObjects.push_back(menuButton2);
+	TextureManager::Instance()->load("exitbtn.bmp", "exitbtn.bmp", Game::Instance()->getRender());
 
+	std::cout << "Entrada al menuState\n";
 	return true;
 
 	
 }
 bool PauseState::onExit() {
 	m_gameObjects.clear();
-	mb->clean();
-	mb2->clean();
+	
 	return true;
 }
 
