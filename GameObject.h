@@ -16,11 +16,12 @@ class GameObject
 		virtual void clean() = 0;
 
 	protected:
+		std::string m_textureID;
+		std::string m_fileName;
 		int m_width;
 		int m_height;
 		int m_currentFrame;
 		int m_currentRow;
-		char* m_textureID;
 		int m_spriteNum;
 		Vector2D m_position;
 		Vector2D m_velocity;

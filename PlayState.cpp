@@ -46,9 +46,9 @@ bool PlayState::onEnter() {
 		return false;
 	}
 
-	LoaderParams* load1 = new LoaderParams(300, 200, 60, 38, "walker", 12);
-	LoaderParams* load2 = new LoaderParams(50, 50, 30, 27, "kirby", 6);
-	LoaderParams* load3 = new LoaderParams(550, 400, 37, 35, "tanooki", 4);
+	LoaderParams* load1 = new LoaderParams(300, 200, 60, 38, "walker", "walker.bmp", 12);
+	LoaderParams* load2 = new LoaderParams(50, 50, 30, 27, "kirby", "kirby.bmp", 6);
+	LoaderParams* load3 = new LoaderParams(550, 400, 37, 35, "tanooki", "tanooki.bmp", 4);
 
 	p1->load(load1);
 	p2->load(load2);

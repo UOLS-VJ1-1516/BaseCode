@@ -15,13 +15,7 @@ void Enemy::draw() {
 }
 
 void Enemy::load(const LoaderParams* pParams) {
-	m_width = pParams->getWidth();
-	m_height = pParams->getHeight();
-	m_position.setX(pParams->getX());
-	m_position.setY(pParams->getY());
-	m_textureID = pParams->getTextureID();
-	m_currentRow = 0;
-	m_spriteNum = pParams->getSpriteNum();
+	GameObject::load(pParams);
 }
 
 void Enemy::update() {
