@@ -1,9 +1,10 @@
 #pragma once
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
+#include "vector"
 #include <string>
 #include "LoadPar.h"
-#include "Vector2D.h"
+
 
 
 class GameObject

@@ -1,6 +1,4 @@
-#pragma once
-#include "SDL.h"
-#include "SDL_image.h"
+
 #include "texturemanager.h"
 
 TextureManager* TextureManager::s_pInstance = 0;
@@ -10,7 +8,7 @@ SDL_RendererFlip Sflip;
 
 
 bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_lRenderer) {
-
+	
 	SDL_Surface *imagen = IMG_Load(fileName);
 
 	if (!imagen) return false;

@@ -8,7 +8,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "SDL_image.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "Fons.h"
