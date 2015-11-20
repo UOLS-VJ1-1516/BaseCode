@@ -12,10 +12,10 @@ void PlayState::update() {
 	}
 	InputHandler::Instance()->update();
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
-		
+
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
-		
 	}
+
 }
 void PlayState::render() {
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
@@ -54,7 +54,3 @@ bool PlayState::onExit() {
 	m_gObjects.clear();
 	return true;
 }
-
-/*std::string PlayState::getStateID() const {
-	return PlayState::s_playID;
-}*/

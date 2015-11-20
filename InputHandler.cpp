@@ -23,7 +23,7 @@ void InputHandler::update()
 			switch (event.key.keysym.sym)
 			{
 			case SDLK_ESCAPE:
-				Game::Instance()->quit();
+				//Game::Instance()->quit();
 				break;
 			}
 			break;
@@ -57,6 +57,8 @@ void InputHandler::update()
 			m_mPosition->setY((int)event.button.y);
 			//printf("x= %d | y= %d\n", (int)event.button.x, (int)event.button.y);
 		}
+		
+		
 		
 	}
 }

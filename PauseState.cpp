@@ -16,18 +16,18 @@ void PauseState::render() {
 
 bool PauseState::onEnter() {
 
-	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 250, 69, "playbtn.bmp", 3), s_menuTOPlay);
+	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 200, 80, "resume.bmp", 3), s_menuTOPlay);
 	if (menuButton == NULL) {
 		return false;
 	}
-	TextureManager::Instance()->load("playbtn.bmp", "playbtn.bmp", Game::Instance()->getRender());
+	TextureManager::Instance()->load("resume.bmp", "resume.bmp", Game::Instance()->getRender());
 	m_gameObjects.push_back(menuButton);
-	GameObject* menuButton2 = new MenuButton(new LoaderParams(200, 300, 250, 69, "exitbtn.bmp", 3), s_menuTOMain);
+	GameObject* menuButton2 = new MenuButton(new LoaderParams(200, 300, 200, 80, "mainmenu.bmp", 3), s_menuTOMain);
 	if (menuButton2 == NULL) {
 		return false;
 	}
 	m_gameObjects.push_back(menuButton2);
-	TextureManager::Instance()->load("exitbtn.bmp", "exitbtn.bmp", Game::Instance()->getRender());
+	TextureManager::Instance()->load("mainmenu.bmp", "mainmenu.bmp", Game::Instance()->getRender());
 
 	std::cout << "Entrada al menuState\n";
 	return true;

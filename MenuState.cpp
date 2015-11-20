@@ -20,13 +20,13 @@ void MenuState::render()
 bool MenuState::onEnter()
 {
 	
-	GameObject *menuButton = new MenuButton(new LoaderParams(200, 200, 250, 69, "playbtn.bmp",3), s_menuTOplay);
+	GameObject *menuButton = new MenuButton(new LoaderParams(150, 150, 400, 100, "playbtn.bmp",3), s_menuTOplay);
 	if (menuButton == NULL) {
 		return false;
 	}
 	TextureManager::Instance()->load("playbtn.bmp", "playbtn.bmp", Game::Instance()->getRender());
 	m_gameObjects.push_back(menuButton);
-	GameObject* menuButton2 = new MenuButton(new LoaderParams(200, 300, 250, 69, "exitbtn.bmp",3), s_exitMenu);
+	GameObject* menuButton2 = new MenuButton(new LoaderParams(150, 300, 400, 100, "exitbtn.bmp",3), s_exitMenu);
 	if (menuButton2 == NULL) {
 		return false;
 	}
