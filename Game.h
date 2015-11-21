@@ -5,12 +5,18 @@
 #include "vector"
 #include "Player.h"
 #include "Ghost.h"
+#include "PlayState.h"
+#include "MenuState.h"
+#include "GameStateMachine.h"
+#include "InputHandler.h"
+#include "TextureManager.h"
+
 
 class Game
 {
 
 private:
-
+	Game();
 	SDL_Window* win;
 	SDL_Renderer* ren;
 	SDL_Surface* bmp;
@@ -23,8 +29,11 @@ private:
 	LoaderParams* loadghost;
 	LoaderParams* lp;
 	std::vector< GameObject* > m_gameObjects;
+	GameStateMachine * state;
+	PlayState * play;
+	MenuState * menu;
+	//PauseState * pauseState;
 
-	Game();
 	static Game* s_pInstance;
 
 public:
@@ -49,6 +58,8 @@ public:
 	int getP_ANC();
 	int getP_ALT();
 	SDL_Renderer* getRender();
+
+	GameStateMachine * getGameStateMachine();
 
 
 protected:

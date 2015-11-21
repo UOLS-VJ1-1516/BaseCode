@@ -1,7 +1,6 @@
 #pragma once
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-#include "string"
 #include "LoaderParams.h"
 #include "Vector2D.h"
 

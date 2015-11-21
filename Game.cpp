@@ -1,19 +1,15 @@
-#include "SDL.h"
-#include "SDL_image.h"
 #include "Game.h"
-#include "TextureManager.h"
-#include "vector"
-#include "GameObject.h"
-#include "Player.h"
 #include "LoaderParams.h"
-#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
 Game::Game() {  //Constructor
 	running = false;
-
+	play = new PlayState();
+	menu = new MenuState();
+	state = new GameStateMachine();
 }
+
 Game::~Game() {}
 
 bool Game::init(const char* title, int xpos, int
@@ -26,6 +22,9 @@ bool Game::init(const char* title, int xpos, int
 	bmp = NULL;
 	tex = NULL;
 
+	//m_pGameStateMachine = new GameStateMachine();
+	//m_pGameStateMachine->changeState(new MenuState());
+
 	// initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
@@ -36,26 +35,18 @@ bool Game::init(const char* title, int xpos, int
 		if (win != 0)
 		{
 			ren = SDL_CreateRenderer(win, -1, 0);
+			state->pushState(menu);
+
+			TextureManager::Instance()->load("play.png", "play", ren);
+			GameObject *player = new Player();
+			player->load(new LoaderParams(200, 150, 100, 100, "play", 1, 1, 0));
+			m_gameObjects.push_back(player);
+
+			TextureManager::Instance()->draw("play", 200, 200, 100, 100, ren, SDL_FLIP_NONE);
+
 		}
-
-		//Carguem sprits
-		TextureManager::Instance()->load("monsterivan.png", "monster", ren);
-		TextureManager::Instance()->load("ghost.png", "ghost", ren);
-
-		//Carguem parametres
-		GameObject *player = new Player();
-		player->load(new LoaderParams(200, 150, 100, 100, "monster", 1, 7, 0));
-
-		GameObject *ghost = new Ghost();
-		ghost->load(new LoaderParams(200, 350, 310, 245, "ghost", 1, 3, 0));
-
-		//Afegim gameObjects
-		m_gameObjects.push_back(player);
-		m_gameObjects.push_back(ghost);
-
 		running = true;
 		return true;
-
 	}
 	else
 	{
@@ -74,27 +65,19 @@ void Game::handleEvents() {
 
 
 void Game::update() {
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
 
+	state->update();
 }
 
 
 void Game::render() {
 
 	SDL_RenderClear(ren);
-	SDL_SetRenderDrawColor(ren, 200, 0, 0, 255);
+	//SDL_SetRenderDrawColor(ren, 200, 0, 0, 255);
 
-	
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	state->render();
 
- 	SDL_RenderPresent(ren);
-	
+ 	SDL_RenderPresent(ren);	
 	SDL_Delay(10);
 }
 
@@ -124,9 +107,13 @@ int Game::getP_ALT() {
 
 SDL_Renderer* Game::getRender() {
 	return ren;
-};
+}
 
 void Game::quit() {
 	running = false;
 	SDL_Quit();
 }
+
+GameStateMachine* Game::getGameStateMachine() {
+	return state;
+};

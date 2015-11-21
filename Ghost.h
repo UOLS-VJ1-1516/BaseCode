@@ -1,8 +1,8 @@
 #pragma once
+#include "GameObject.h"
+
 #ifndef GHOST_H
 #define GHOST_H
-#include "GameObject.h"
-#include "SDL.h"
 
 class Ghost : public GameObject	
 {

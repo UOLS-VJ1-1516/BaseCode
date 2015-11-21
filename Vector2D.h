@@ -12,7 +12,6 @@ public:
 	~Vector2D(void);
 
 	Vector2D(float x, float y) : m_x(x), m_y(y) {}
-	
 
 	float getX() { return m_x; }
 	float getY() { return m_y; }
@@ -38,10 +37,11 @@ public:
 	Vector2D& operator=(const Vector2D& v2);
 
 private:
+
 	float m_x;
 	float m_y;
+	
 };
 
 #endif VECTOR2D
-
 

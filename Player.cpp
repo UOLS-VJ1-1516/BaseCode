@@ -1,10 +1,7 @@
 #include "Player.h"
 #include "Game.h"
-#include "GameObject.h"
 #include "TextureManager.h"
 #include "string"
-#include "InputHandler.h"
-
 
 Player::Player() {}  //Constructor}
 Player::~Player() {}
