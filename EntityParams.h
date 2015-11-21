@@ -1,18 +1,19 @@
 #pragma once
+#include <iostream>
 
 class EntityParams
 {
 private:
-	const char * id;
+	std::string id;
 	float xPos, yPos;
 	int width, height;
 	int frame;
 	int maxFrame, row;
 	bool flipped;
 public:
-	EntityParams(const char * id, int xPos, int yPos, int width, int height, int maxFrame = 0, int row = 0);
+	EntityParams(std::string id, int xPos, int yPos, int width, int height, int maxFrame = 0, int row = 0);
 
-	const char * GetId() { return id; }
+	std::string GetId() { return id; }
 
 	void SetXPos(float xPos) { this->xPos = xPos; }
 	float GetXPos() { return xPos; }

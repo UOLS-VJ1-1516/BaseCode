@@ -1,13 +1,11 @@
-<?xml version=1.0>
+<?xml version="1.0"?>
 <state>
 	<textures>
-		<texture file="playButton.png" ID="playButton"/>
+		<texture file="startButton.png" ID="startButton"/>
 		<texture file="exitButton.png" ID="exitButton"/>
 	</textures>
 	<objects>
-		<object type="Button" x="100" y="100" width="400" height = "150" 
-		texture="playButton" numFrames="0" callback="1"/>
-		<object type="Button" x="100" y="300" width="400" height = "150" 
-		texture="exitButton" numFrames="0" callback="2"/>
+		<object type="Button" x="100" y="100" width="400" height = "150" row = "0" texture="startButton" numFrames="0" callback="1"/>
+		<object type="Button" x="100" y="300" width="400" height = "150" row = "0" texture="exitButton" numFrames="0" callback="2"/>
 	</objects>
 </state>

@@ -18,5 +18,6 @@ public:
 	Enemy(int);
 	~Enemy();
 	void Update(Player *);
-	static Enemy * Create(int type) { return new Enemy(type); }
+	static Entity * Create() { return new Enemy(STATIC_ENEMY); }
+	void SetType(int type) { this->type = type; }
 };

@@ -7,7 +7,7 @@ using namespace std;
 
 TextureManager * TextureManager::instancia = 0;
 
-bool TextureManager::Load(const char * filename, const char * id)
+bool TextureManager::Load(const char * filename, string id)
 {
 	stringstream ss;
 	ss << ASSETS_FOLDER << IMG_FOLDER << filename;
@@ -26,23 +26,11 @@ bool TextureManager::Load(const char * filename, const char * id)
 
 TextureManager::TextureManager()
 {
-	instancia = 0;
+	
 }
 
 TextureManager::~TextureManager()
 {
 	instancia = NULL;
 	textures.~map();
-}
-
-
-void EntityFactory::Register(const string & name, CreateNewEntity creator)
-{
-	factoryMap[name] = creator;
-}
-
-Entity * EntityFactory::CreateEntity(const string & name)
-{
-	Entity * ent = factoryMap[name]();
-	return ent;
 }

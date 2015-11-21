@@ -16,10 +16,11 @@ public:
 	void PushState(GameState * state);
 	void ChangeState(GameState * state);
 	void PopState();
-
+	
 	~StateManager();
 
 	void HandleEvents();
 	void Update();
 	void Render();
+	void Clean();
 };

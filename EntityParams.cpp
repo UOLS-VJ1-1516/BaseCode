@@ -1,6 +1,6 @@
 #include "EntityParams.h"
 
-EntityParams::EntityParams(const char * id, int xPos, int yPos, int width, int height, int maxFrame, int row)
+EntityParams::EntityParams(std::string id, int xPos, int yPos, int width, int height, int maxFrame, int row)
 {
 	this->id = id;
 	this->xPos = (float)xPos;

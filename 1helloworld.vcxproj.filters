@@ -37,6 +37,18 @@
     <ClCompile Include="StateManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="StateParser.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InertEntity.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityFactory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -76,6 +88,18 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="AllEntities.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StateParser.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InertEntity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityFactory.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

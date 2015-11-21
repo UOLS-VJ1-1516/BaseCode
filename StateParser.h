@@ -1,17 +1,17 @@
 #pragma once
-#include <tinyxml.h>
+#include "libs\TinyXML\include\tinyxml2.h"
 #include <vector>
 #define PATH "assets/xml/"
 
 using namespace std;
-
+using namespace tinyxml2;
 class Entity;
 
 class StateParser
 {
 private:
-	static void parseObjects(TiXmlElement * stateRoot, vector<Entity *> * entities);
-	static void parseTextures(TiXmlElement * stateRoot, vector<string> * textures);
+	static void parseObjects(XMLElement * stateRoot, vector<Entity *> * entities);
+	static void parseTextures(XMLElement * stateRoot, vector<string> * textures);
 public:
 	static bool ParseState(const char * stateFile, string stateID,
 		vector<Entity *> * entitats, vector<string> * textures);

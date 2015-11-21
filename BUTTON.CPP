@@ -3,9 +3,15 @@
 
 void Button::Load(EntityParams * params)
 {
+	this->id = params->GetId();
 	this->params = params;
 	text = new InertEntity();
 	text->params = params;
+}
+
+Entity * Button::Create()
+{
+	return new Button();
 }
 
 void Button::SetOnClickListener(void(*callback)())
@@ -43,7 +49,7 @@ void Button::Draw()
 	}
 	SDL_RenderCopyEx(TheGame->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
 
-	SDL_Texture * text = TextureManager::GetInstance()->GetArray()[params->GetId()];
+	SDL_Texture * text = TextureManager::GetInstance()->GetArray()[id.c_str()];
 	SDL_RenderCopyEx(TheGame->GetRenderer(), text, &img, &draw, 0, NULL, flip);
 
 }

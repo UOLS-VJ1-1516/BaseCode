@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<state>
+	<textures>
+		<texture file="Actor3.png" ID="player"/>
+		<texture file="Monster1.png" ID="enemy"/>
+		<texture file="Skeli.png" ID="skeli"/>
+		<texture file="Zubat.png" ID="zubat"/>
+	</textures>
+	<objects>
+		<object type="Player" x="0" y="0" width="32" height="32" row="6" texture="player" numFrames="3"/>
+		<object type="Enemy" x="150" y="135" width="32" height="32" row="2" texture="zubat" numFrames="3" enemy="2"/>
+		<object type="Enemy" x="150" y="75" width="32" height="32" row="2" texture="enemy" numFrames="3" enemy="1"/>
+		<object type="Enemy" x="150" y="175" width="32" height="32" row="2" texture="skeli" numFrames="3" enemy="0"/>
+	</objects>
+</state>

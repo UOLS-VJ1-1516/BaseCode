@@ -59,6 +59,13 @@ void StateGame::HandleEvents()
 bool StateGame::OnEnter()
 {
 	StateParser::ParseState("game.xml", this->gameID, &entitats, &textures);
+	for each (LivingEntity * var in entitats)
+	{
+		if (Player * pl = dynamic_cast<Player *>(var))
+		{
+			player = pl;
+		}
+	}
 	return true;
 }
 
@@ -96,25 +103,37 @@ void StateMenu::HandleEvents()
 bool StateMenu::OnEnter()
 {
 	StateParser::ParseState("menu.xml", this->menuID, &entitats, &textures);
-	callbacks[0] = NULL;
-	callbacks[1] = ([]() {
-		TheGame->GetManager()->ChangeState(new StateGame());
-	});
+	callbacks.push_back(NULL);
+	callbacks.push_back(
+		([]() {
+			TheGame->GetManager()->ChangeState(new StateGame());
+		})
+	);
 
-	callbacks[2] = ([]() {
-		TheGame->Close();
-	});
+	callbacks.push_back(
+		([]() {
+			TheGame->Close();
+		})
+	);
+
+	for each (Button * var in entitats)
+	{
+		var->SetOnClickListener(callbacks.at(var->CallbackID));
+	}
 	return true;
 }
 
 bool StateMenu::OnExit()
 {
+	callbacks.clear();
+	entitats.clear();
+	textures.clear();
 	return true;
 }
 
 StatePause::StatePause()
 {
-	OnEnter();
+	
 }
 
 void StatePause::Update()
@@ -152,20 +171,31 @@ bool StatePause::OnEnter()
 {
 	StateParser::ParseState("pause.xml", this->pauseID, &entitats, &textures);
 
-	callbacks[0] = NULL;
-	callbacks[1] = ([]() {
-		TheGame->GetManager()->PopState();
-	});
+	callbacks.push_back(NULL);
+	callbacks.push_back(
+		([]() {
+			TheGame->GetManager()->PopState();
+		})
+	);
 
-	callbacks[2] = ([]() {
-		TheGame->GetManager()->ChangeState(new StateMenu());
-	});
+	callbacks.push_back(
+		([]() {
+			TheGame->GetManager()->ChangeState(new StateMenu());
+		})
+	);
 
+	for each (Button * var in entitats)
+	{
+		var->SetOnClickListener(callbacks.at(var->CallbackID));
+	}
 	return true;
 }
 
 bool StatePause::OnExit()
 {
-	return false;
+	callbacks.clear();
+	entitats.clear();
+	textures.clear();
+	return true;
 }
 

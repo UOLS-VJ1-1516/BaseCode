@@ -26,7 +26,7 @@ public:
 	virtual void Update();
 	void Clear();
 
-	const char * GetId() { return params->GetId(); }
+	std::string GetId() { return params->GetId(); }
 	float GetXPos() { return position.X; }
 	float GetYPos() { return position.Y; }
 	int GetWidth() { return params->GetWidth(); }

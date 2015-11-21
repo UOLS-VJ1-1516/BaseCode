@@ -1,5 +1,6 @@
 #include "InertEntity.h"
 #include "Game.h"
+#include "Loaders.h"
 
 InertEntity::InertEntity()
 {

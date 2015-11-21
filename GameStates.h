@@ -25,7 +25,7 @@ public:
 class StateGame : public GameState
 {
 private:
-	string gameID;
+	string gameID = "game";
 	vector<Entity *> entitats;
 	vector<string> textures;
 	Player * player = NULL;	
@@ -43,7 +43,7 @@ public:
 class StateMenu : public GameState
 {
 private:
-	string menuID;
+	string menuID = "menu";
 	vector<Entity *> entitats;
 	vector<string> textures;
 	vector<void(*)()> callbacks;
@@ -66,7 +66,7 @@ public:
 class StatePause : public GameState
 {
 private:
-	string pauseID;
+	string pauseID = "pause";
 	vector<Entity *> entitats;
 	vector<string> textures;
 	vector<void(*)()> callbacks;
