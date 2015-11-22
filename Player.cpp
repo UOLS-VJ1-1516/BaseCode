@@ -4,7 +4,7 @@
 #include "inputManager.h"
 #include <iostream>
 
-using namespace std;
+	using namespace std;
 
 #define UP SDL_SCANCODE_W
 #define DOWN SDL_SCANCODE_S
@@ -46,22 +46,23 @@ void Player::draw() {
 }
 
 void Player::update() {
-	
+
 	if (xDirection != 0 || yDirection != 0) {
 		//VELOCITY
 		float acceleration = (accel - friction);
 		if (acceleration < 0) acceleration = 0;
 		if (startMove == 0) startMove = SDL_GetTicks();
-		speed += acceleration * (SDL_GetTicks()-startMove);
+		speed += acceleration * (SDL_GetTicks() - startMove);
 		startMove = SDL_GetTicks();
 		if (speed > maxSpeed) speed = maxSpeed;
-		
+
 		//MOVEMENT X
 		spriteCol = (int)((SDL_GetTicks() / 120) % nCols);
 		if (xDirection > 0) {
 			position += Vector2(speed, 0);
 			spriteRow = 2;
-		} else if (xDirection < 0) {
+		}
+		else if (xDirection < 0) {
 			position -= Vector2(speed, 0);
 			spriteRow = 1;
 		}
@@ -76,40 +77,41 @@ void Player::update() {
 		}
 		//FIX POSITION
 		if (position.getX() + (width / 2) >(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w))
-			position.setX(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w - (width/2));
+			position.setX(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w - (width / 2));
 		if (position.getX() < (width / 2))
 			position.setX((width / 2));
 		if (position.getY() + (height / 2) > (SDL_GetWindowSurface(Game::getInstance()->getWindow())->h))
-			position.setY(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h - (height/2));
+			position.setY(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h - (height / 2));
 		if (position.getY() < (height / 2))
 			position.setY((height / 2));
-	} else {
+	}
+	else {
 		startMove = 0;
 		speed = 0;
 	}
-	cout << "Velocidad: "<<speed;
+	cout << "Velocidad: " << speed;
 }
 
 void Player::handleEvents(SDL_Event e) {
 	InputManager* input = InputManager::getInstance();
 	//X AXIS
-		//A
+	//A
 	if (input->isKeyDown(e, LEFT))
 		xDirection = -1;
 	else if (input->isKeyUp(e, LEFT))
 		xDirection = 0;
-		//D
+	//D
 	if (input->isKeyDown(e, RIGHT))
 		xDirection = 1;
 	else if (input->isKeyUp(e, RIGHT))
 		xDirection = 0;
 	//Y AXIS
-		//W
+	//W
 	if (input->isKeyDown(e, UP))
 		yDirection = -1;
 	else if (input->isKeyUp(e, UP))
 		yDirection = 0;
-		//S
+	//S
 	if (input->isKeyDown(e, DOWN))
 		yDirection = 1;
 	else if (input->isKeyUp(e, DOWN))

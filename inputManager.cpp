@@ -16,10 +16,14 @@ bool InputManager::isKeyUp(SDL_Event e, SDL_Scancode key) {
 	return false;
 }
 
-bool InputManager::getMouseButtonState(SDL_Event e, int buttonNumber) {
-	return false;
+bool InputManager::getMouseButtonStateUp(SDL_Event e, int buttonNumber) {
+	return ((e.type == SDL_MOUSEBUTTONUP) && (e.button.button == buttonNumber)) ? true : false;
+}
+
+bool InputManager::getMouseButtonStateDown(SDL_Event e, int buttonNumber) {
+	return ((e.type == SDL_MOUSEBUTTONDOWN) && (e.button.button == buttonNumber)) ? true : false;
 }
 
 Vector2 InputManager::getMousePosition(SDL_Event e) {
-	return Vector2();
+	return Vector2(e.button.x, e.button.y);
 }

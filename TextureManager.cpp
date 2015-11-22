@@ -7,7 +7,6 @@ TextureManager * TextureManager::instance = 0;
 TextureManager::TextureManager(){/*VOID*/};
 
 bool TextureManager::load(string file, string id, SDL_Renderer * renderer) {
-	//const char* charFile = ;
 	SDL_Surface * surface = IMG_Load(file.c_str());
 	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
 
@@ -64,4 +63,15 @@ void TextureManager::drawFrame(string id, int x, int y, int width, int height, i
 		NULL,			//center point
 		flip			//SDL_FLIP_NONE/VERTICAL/HORIZONTAL
 	);
+}
+
+void TextureManager::clean() {
+	for each (auto texture in textures) {
+		SDL_DestroyTexture(texture.second);
+	}
+}
+
+void TextureManager::remove(std::string textureID) {
+	SDL_DestroyTexture(textures[textureID]);
+	textures.erase(textureID);
 }
