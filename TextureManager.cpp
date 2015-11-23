@@ -1,7 +1,4 @@
 #include "TextureManager.h"
-#include "game.h"
-#include "stdio.h"
-#include "SDL_image.h"
 
 // Instancia de TextureManager
 TextureManager* TextureManager::s_pInstance = 0;
@@ -10,10 +7,10 @@ TextureManager* TextureManager::s_pInstance = 0;
 TextureManager::TextureManager() {};
 TextureManager::~TextureManager() {};
 
-// Carrgar Texturas
-bool TextureManager::load(char* fileName, const char* id, SDL_Renderer* pRenderer) {
-
-	SDL_Surface* pTempSurface = IMG_Load(fileName);
+// Funcion para cargar la textura
+bool TextureManager::load(std::string fileName, std::string	id, SDL_Renderer* pRenderer)
+{
+	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 	if (pTempSurface == 0)
 	{
 		return false;
@@ -28,9 +25,10 @@ bool TextureManager::load(char* fileName, const char* id, SDL_Renderer* pRendere
 	}
 
 	return false;
-};
-
-void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
+}
+//Funcion para mostrar textura por pantalla
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
+{
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 	srcRect.x = width * currentFrame;
@@ -39,13 +37,5 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	srcRect.h = destRect.h = height;
 	destRect.x = x;
 	destRect.y = y;
-	SDL_RenderCopyEx(pRender, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
-};
-
-void TextureManager::setFrame(const char* id, int x, int y, int w, int h) {
-	m_textureMap[id] = texture;
-	m_texturePositions[*id][0] = x;
-	m_texturePositions[*id][1] = y;
-	m_textureSizes[*id][0] = w;
-	m_textureSizes[*id][1] = h;
+	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }

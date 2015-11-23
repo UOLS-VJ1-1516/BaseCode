@@ -11,7 +11,6 @@ public:
 	Player();
 	~Player();
 	bool dreta = true;
-	SDL_Event event;
 	void load(const LoaderParams* pParams);
 	void draw();
 	void update();

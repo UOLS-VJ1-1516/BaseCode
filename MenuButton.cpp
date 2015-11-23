@@ -16,6 +16,8 @@ MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callb
 //Función load
 void MenuButton::load(const LoaderParams* pParams)
 {
+	GameObject::load(pParams);
+	m_currentFrame = MOUSE_OUT;
 }
 
 //Función para printar los game objects boton
@@ -54,5 +56,6 @@ void MenuButton::update()
 //Función para limpiar los game objects boton
 void MenuButton::clean()
 {
-	GameObject::clean();
+	InputHandler::Instance()->clean();
+	//GameObject::clean();
 }

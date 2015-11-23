@@ -23,8 +23,11 @@ void GameStateMachine::changeState(GameState* pState) {
 
 //Función para eliminar el estado actual
 void GameStateMachine::popState() {
-	if (!m_gameStates.empty()) {
-		if (m_gameStates.back()->onExit()) {
+	if (!m_gameStates.empty())
+	{
+		if (m_gameStates.back()->onExit())
+		{
+			//m_statesToDelete.back();
 			m_statesToDelete.push_back(m_gameStates.back());
 			m_gameStates.pop_back();
 		}

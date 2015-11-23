@@ -58,12 +58,13 @@ void PlayState::render()
 //Función para limpiar el estado de play al salir, los gameobjects y las texturas de estos
 bool PlayState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++) {
-		m_gameObjects[i]->clean();
-	}
 
+	for (size_t i = 0; i < m_gameObjects.size(); i++)
+		 {
+			m_gameObjects[i]->clean();
+		}
 	m_gameObjects.clear();
-	TextureManager::Instance()->clearFromTextureMap("playbutton");
-	TextureManager::Instance()->clearFromTextureMap("exitbutton");
+
 	return true;
+
 }

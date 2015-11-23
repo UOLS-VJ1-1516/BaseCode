@@ -46,9 +46,11 @@ void MenuState::render()
 //Función para cuando se sale del menu state que limpia los gameobjects y sus texturas
 bool MenuState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++) {
+	/*for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->clean();
-	}
+	}*/
+	button1->clean();
+	button2->clean();
 	m_gameObjects.clear();
 	TextureManager::Instance()->clearFromTextureMap("playbutton");
 	TextureManager::Instance()->clearFromTextureMap("exitbutton");

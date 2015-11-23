@@ -24,7 +24,6 @@ void Player::load(const LoaderParams* pParams) {
 	m_spriteNum = pParams->getSpriteNum();
 	m_currentRow = pParams->getRowNum();
 	TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
-	TextureManager::Instance()->setFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height);
 
 };
 
@@ -70,11 +69,26 @@ void Player::update()
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 	}
 	else {
-		m_velocity.setX(0);
+		if (m_velocity.getX() != 0 && dreta) {
+			m_velocity.setX(m_velocity.getX() - 0.2);
+			if (m_velocity.getX() <= 0) {
+				m_velocity.setX(0);
+			}
+		}
+		else if (m_velocity.getX() != 0 && !dreta) {
+			m_velocity.setX(m_velocity.getX() + 0.2);
+			if (m_velocity.getX() >= 0) {
+				m_velocity.setX(0);
+			}
+		}
+		else if (m_velocity.getX() == 0) {
+			m_velocity.setX(0);
+		}
 		m_currentFrame = 3;
+	
 	}
 
-
+	m_position += m_velocity;
 
 	//Variable para dar animacion a la textura
 

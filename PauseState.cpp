@@ -45,8 +45,8 @@ bool PauseState::onEnter()
 	{
 		return false;
 	}
-	GameObject* button1 = new MenuButton(new LoaderParams(300, 150, 300, 100, "mainbutton", "mainMenuButton.bmp", 0, 0), s_pauseToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(300, 350, 300, 100, "resumebutton", "resumeButton.bmp", 0, 0), s_resumePlay);
+	button1 = new MenuButton(new LoaderParams(300, 150, 300, 100, "mainbutton", "mainMenuButton.bmp", 0, 0), s_pauseToMain);
+	button2 = new MenuButton(new LoaderParams(300, 350, 300, 100, "resumebutton", "resumeButton.bmp", 0, 0), s_resumePlay);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
 	return true;
@@ -55,11 +55,14 @@ bool PauseState::onEnter()
 //Función para cuando se sale del estado pause que se limpian los gameobjects creados en este estado como las texturas
 bool PauseState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
+	/*for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->clean();
 	}
+	m_gameObjects.clear();*/
 	m_gameObjects.clear();
+	button1->clean();
+	button2->clean();
 	TextureManager::Instance()->clearFromTextureMap("resumebutton");
 	TextureManager::Instance()->clearFromTextureMap("mainbutton");
 	return true;

@@ -75,4 +75,5 @@ void InputHandler::update() {
 };
 
 //Función para limpiar las entradas del usuario
-void InputHandler::clean() {};
+void InputHandler::clean() {
+};
