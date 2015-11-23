@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include "SDL_image.h"
 
 
 
@@ -20,6 +21,10 @@ private:
 	static void s_exitMenu();
 	std::vector<GameObject*> m_gameObjects;
 	LoadPar * load;
+	LoadPar * load2;
+	LoadPar * load3;
+	LoadPar * load4;
+		
 	Player * player;
 	Enemy * enemy1;
 	Enemy * enemy2;

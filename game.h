@@ -5,7 +5,12 @@
 #include <SDL.h>
 #include "SDL_image.h"
 #include "time.h"
+#include "PlayState.h"
+#include "InputHandler.h"
 #include <iostream>
+#include "GameStateMachine.h"
+#include "texturemanager.h"
+#include "MenuState.h"
 #include <cstdlib>
 #include <ctime>
 #include "Player.h"
@@ -43,16 +48,32 @@ public:
 		ypos, int width, int height, bool fullscreen);
 	void render();
 	void update();
-	int handleEvents();
+	void handleEvents();
 	void clean();
-	bool isRunning();
-
-	SDL_Rect dst;
-	SDL_Rect org;
 	
+	bool isRunning();
+	void quit() { running = false; }
 	SDL_Renderer* GetRenderer() const {
 		return g_lRenderer;
 	}
+	int GetAncho(){ return ancho; }
+	int GetAlto(){ return alto; }
+	int Game::getTicks() {
+		return (int)(SDL_GetTicks());
+	}
+	GameStateMachine * Game::getGameStateMachine() {
+		return m_pGameStateMachine;
+	}
+	int ancho;
+	int alto;
+	TextureManager* textmanager;
+	InputHandler* inputhan;
+	SDL_Rect dst;
+	SDL_Rect org;
+	GameStateMachine *m_pGameStateMachine;
+	PlayState* playState;
+	MenuState * menuState;
+	
 
 };
 #endif GAME_H

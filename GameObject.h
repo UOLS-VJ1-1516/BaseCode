@@ -3,6 +3,8 @@
 #define GAMEOBJECT_H
 #include "vector"
 #include <string>
+#include "SDL_image.h"
+#include "Vector2D.h"
 #include "LoadPar.h"
 
 
@@ -12,7 +14,7 @@ class GameObject
 	
 public:
 	
-	virtual void load(float x, float y, int width, int height, std::string texid) = 0;
+	//virtual void load(float x, float y, int width, int height, std::string texid) = 0;
 	virtual void load(const LoadPar* lPar) = 0;
 	virtual void draw(SDL_Renderer* g_lRenderer)=0;
 	virtual void draw() = 0;
@@ -27,6 +29,7 @@ protected:
 	Vector2D m_maxacceleration;
 	Vector2D m_maxaccelerationneg;
 	Vector2D m_friction;
+	
 
 	float x;
 	float y;
@@ -41,6 +44,8 @@ protected:
 	int m_anchopantalla;
 	int m_altopantalla;
 	std::string m_texid;
+	int m_callbackID;
+	const char* m_textureID;
 
 
 };

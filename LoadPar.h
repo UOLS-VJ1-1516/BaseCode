@@ -8,7 +8,7 @@ class LoadPar {
 
 public:	
 
-	LoadPar(float x, float y, int width, int height, std::string id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla) {
+	LoadPar(float x, float y, int width, int height, const char* id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla) {
 		m_x = x;
 		m_y = y;
 		m_width = width;

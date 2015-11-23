@@ -1,5 +1,6 @@
 
 #include "texturemanager.h"
+#include "game.h"
 
 TextureManager* TextureManager::s_pInstance = 0;
 SDL_Texture* textura;
@@ -52,6 +53,7 @@ void TextureManager::draw(std::string id, float x, float y, int width, int heigh
 void TextureManager::drawFrame(std::string id, float x, float y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, int flip) {
 	SDL_Rect src;
 	SDL_Rect dest;
+	
 
 	//src-->origen, lo que cojo de la imagen
 	src.x = (currentFrame*width);  //Me voy a la fila que correspond del currentframe para coger la imagen que quiero

@@ -84,6 +84,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fons.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoadPar.h" />
     <ClInclude Include="MenuButton.h" />
