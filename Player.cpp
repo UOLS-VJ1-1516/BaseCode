@@ -9,7 +9,7 @@ Player::Player() {
 	m_maxVelocity.setX(1);
 	m_acceleration.setX(m_velocity.getX() + 0.02);
 	m_desacceleration.setX(m_velocity.getX() - 0.02);
-	m_frictionRight.setX(m_velocity.getX() - 0.08);
+	m_frictionRight.setX(m_velocity.getX() - 0.02);
 	m_frictionLeft.setX(m_velocity.getX() - 0.02);
 };
 
@@ -17,7 +17,7 @@ Player::~Player() {};
 SDL_RendererFlip turn = SDL_FLIP_NONE;
 
 void Player::draw() {
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, 
+	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width,  
 		m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), turn);
 }
 
@@ -40,14 +40,14 @@ void Player::update() {
 		m_velocity.setX(m_acceleration.getX()+(m_velocity.getX() - m_frictionRight.getX()));
 		turn = SDL_FLIP_NONE;
 		if (m_maxVelocity.getX()>=1) {
-			m_velocity.setX(0.1);
+			m_velocity.setX(0.04);
 		}
 	} else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		m_velocity.setX(-0.1);
+		m_velocity.setX(-0.05);
 		m_velocity.setX(m_desacceleration.getX() + (m_velocity.getX() - m_frictionLeft.getX()));
 		turn = SDL_FLIP_HORIZONTAL;
 		if (m_maxVelocity.getX() <= -1) {
-			m_velocity.setX(-0.1);
+			m_velocity.setX(-0.04);
 		}
 	} else {
 		m_velocity.setX(0);

@@ -5,8 +5,8 @@
 Enemy::Enemy() {
 	m_velocity.setX(0.1);
 	m_velocity.setY(0);
-	m_frictionRight.setX(m_velocity.getX() - 0.08);
-	m_frictionLeft.setX(m_velocity.getX() - 0.08);
+	m_frictionRight.setX(m_velocity.getX() - 0.02);
+	m_frictionLeft.setX(m_velocity.getX() - 0.02);
 };
 
 Enemy::~Enemy() {};

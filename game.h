@@ -1,14 +1,16 @@
 #pragma once
-#ifndef GAME_H
-#define GAME_H
 #include "SDL.h"
 #include "TextureManager.h"
 #include "vector"
 #include "Player.h"
 #include "Enemy.h"
-#include "Enemy2.h"
+#include "GameStateMachine.h"
+#include "PlayState.h"
+#include "MenuState.h"
+#include "PauseState.h"
 
 class Game {
+
 private:
 	Game();
 	SDL_Window* m_pWindow;
@@ -20,20 +22,21 @@ private:
 	LoaderParams* load2;
 	Enemy* enemy1;
 	LoaderParams* load3;
-	Enemy2* enemy2;
+	Enemy* enemy2;
 	int spriteNum;
+	GameStateMachine *m_pGameStateMachine;
+	PlayState* playState;
+	MenuState * menuState;
+	PauseState * pauseState;
 	bool running = true;
 
 public:
-	static Game* Instance()
-	{
-		if (s_pInstance == 0)
-		{
+	static Game* Instance() {
+		if (s_pInstance == 0) {
 			s_pInstance = new Game();
 		}
 		return s_pInstance;
 	}
-
 	~Game();
 	bool init(const char* title, int xpos, int
 		ypos, int width, int height, bool fullscreen);
@@ -41,10 +44,12 @@ public:
 	void update();
 	void handleEvents(SDL_Event event);
 	void clean();
-	void quit() {running == false; }
+	void quit() { running = false; }
 	bool isRunning();
 	SDL_Renderer* getRender();
 	int getTicks();
 	std::vector<GameObject*> m_gameObjects;
+	GameStateMachine * getGameStateMachine();
+	TextureManager* tx;
+	InputHandler* th;
 };
-#endif
