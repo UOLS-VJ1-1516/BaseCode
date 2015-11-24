@@ -10,7 +10,10 @@ Game * Game::s_pInstance = 0;
 
 
 // Constructor donde se inicializan variables y los GameObjects
+
+
 Game::Game() {
+
 
 	m_pWindow = 0;
 	m_pRenderer = 0;
@@ -31,7 +34,9 @@ Game::~Game() {
 // initialize SDL
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
+
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
+
 		m_pWindow = SDL_CreateWindow("Videojuegos VictorCordobes", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1800, 600, fullscreen);
 
 		if (m_pWindow != 0) {
@@ -86,7 +91,7 @@ void Game::render() {
 	//SDL_SetColorKey(texture, 1, SDL_MapRGB(texture->format, 255, 255, 255));
 
 
-	SDL_SetRenderDrawColor(m_pRenderer, 200, 100, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 200, 100, 255, 255); //rosita 
 	SDL_RenderClear(m_pRenderer);
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{

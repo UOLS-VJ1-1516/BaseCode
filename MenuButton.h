@@ -18,7 +18,6 @@ public:
 	};
 
 
-
 	MenuButton(const Params* pParams, void(*callback)());
 
 	void load(const Params * pParams);
