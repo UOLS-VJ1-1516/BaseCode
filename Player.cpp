@@ -21,6 +21,7 @@ void Player::draw() {
 		m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), turn);
 }
 
+//
 void Player::load(const Params* pParams) {
 
 	m_width = pParams->getWidth();
