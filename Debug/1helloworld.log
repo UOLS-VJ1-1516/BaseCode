@@ -1,0 +1,56 @@
+﻿Build started 10/11/2015 23:38:43.
+     1>Project "C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\1helloworld.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp InputHandler.cpp main.cpp Player.cpp TextureManager.cpp Vector2D.cpp Enemy.cpp
+         Enemy.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\game.h(30): warning C4553: '==': operator has no effect; did you intend '='?
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(6): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(8): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(9): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(34): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\enemy.cpp(38): warning C4305: 'argument': truncation from 'double' to 'float'
+         Vector2D.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\vector2d.cpp(73): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+         TextureManager.cpp
+         Player.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\game.h(30): warning C4553: '==': operator has no effect; did you intend '='?
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(12): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(13): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(39): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(43): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(46): warning C4305: 'argument': truncation from 'double' to 'float'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\player.cpp(50): warning C4305: 'argument': truncation from 'double' to 'float'
+         main.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\game.h(30): warning C4553: '==': operator has no effect; did you intend '='?
+         InputHandler.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\game.h(30): warning C4553: '==': operator has no effect; did you intend '='?
+         Game.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\game.h(30): warning C4553: '==': operator has no effect; did you intend '='?
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Game.obj
+         Debug\GameObject.obj
+         Debug\InputHandler.obj
+         Debug\main.obj
+         Debug\Player.obj
+         Debug\TextureManager.obj
+         Debug\Vector2D.obj
+         Debug\Enemy.obj
+     1>Player.obj : error LNK2019: unresolved external symbol "public: __thiscall GameObject::GameObject(void)" (??0GameObject@@QAE@XZ) referenced in function "public: __thiscall Player::Player(void)" (??0Player@@QAE@XZ)
+     1>Enemy.obj : error LNK2001: unresolved external symbol "public: __thiscall GameObject::GameObject(void)" (??0GameObject@@QAE@XZ)
+     1>Player.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall GameObject::~GameObject(void)" (??1GameObject@@UAE@XZ) referenced in function __unwindfunclet$??0Player@@QAE@XZ$0
+     1>Enemy.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall GameObject::~GameObject(void)" (??1GameObject@@UAE@XZ)
+     1>Player.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall GameObject::update(void)" (?update@GameObject@@UAEXXZ) referenced in function "public: virtual void __thiscall Player::update(void)" (?update@Player@@UAEXXZ)
+     1>Enemy.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall GameObject::update(void)" (?update@GameObject@@UAEXXZ)
+     1>C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\Debug\1-helloworld.exe : fatal error LNK1120: 3 unresolved externals
+     1>Done Building Project "C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\1helloworld.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.43
