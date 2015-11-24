@@ -1,4 +1,9 @@
 #pragma once
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
 class Vector2D
 {
 public:
@@ -26,5 +31,11 @@ public:
 
 	float lenght();
 	void normalize();
+
+	std::string toString() {
+		stringstream ss;
+		ss << "[Vector2D: X: " << X << ", Y:" << Y << "]";
+		return ss.str();
+	}
 };
 

@@ -3,7 +3,8 @@
 EventHandler * EventHandler::instance = 0;
 EventHandler::EventHandler()
 {
-
+	mouse1 = false;
+	mouse2 = false;
 }
 EventHandler::~EventHandler()
 {
@@ -32,10 +33,21 @@ void EventHandler::UpdateKeys()
 			{
 				mouse1 = true;
 			}
-			else if (event.button.button == 2)
+			else if (event.button.button == 3)
 			{
 				mouse2 = true;
 			}			
+		}
+		else if (event.type == SDL_MOUSEBUTTONUP)
+		{
+			if (event.button.button == 1)
+			{
+				mouse1 = false;
+			}
+			else if (event.button.button == 3)
+			{
+				mouse2 = false;
+			}
 		}
 		x = event.button.x;
 		y = event.button.y;
@@ -66,9 +78,4 @@ pair<bool, bool> EventHandler::GetMouseButtons()
 void EventHandler::ClearKeys()
 {
 	keys.clear();
-	keys["A"] = NULL;
-	keys["D"] = NULL;
-	keys["ESCAPE"] = NULL;
-	mouse1 = false;
-	mouse2 = false;
 }

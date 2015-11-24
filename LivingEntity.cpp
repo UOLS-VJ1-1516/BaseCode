@@ -28,9 +28,11 @@ void LivingEntity::Move(float xPos, float yPos)
 
 void LivingEntity::Accelerate(int aX, int aY)
 {		
-	velocity.X += (aX * 2 * acceleration.X);
-	velocity.Y += (aY * 2 * acceleration.Y);
-	velocity *= (float)Game::GetInstance()->delta / 1000;
+	velocity.X += (aX * acceleration.X);
+	if (aY == 0)
+		velocity.Y = 0;
+	else
+		velocity.Y += (aY * acceleration.Y);
 
 	if (velocity.X > 0)
 		velocity.X = fmin(velocity.X, maxVel.X);
@@ -41,17 +43,15 @@ void LivingEntity::Accelerate(int aX, int aY)
 	else if (velocity.Y < 0)
 		velocity.X = fmax(velocity.Y, -maxVel.Y);
 	
-	if (velocity.X > 0)
+	velocity.X *= (1 - friction.X);
+
+	if (abs(velocity.X) < 0.1)
 	{
-		velocity.X -= (float)(friction.X * Game::GetInstance()->delta / 1000);
-	}
-	else if (velocity.X < 0)
-	{
-		velocity.X += (float)(friction.X * Game::GetInstance()->delta / 1000);
+		velocity.X = 0;
 	}
 
-	position.X += velocity.X + (acceleration.X * aX);
-	position.Y += velocity.Y + (acceleration.Y * aY);
+	position.X += velocity.X;
+	position.Y += velocity.Y;
 
 	bool isFlipped;
 
@@ -74,7 +74,7 @@ void LivingEntity::Load(EntityParams * params)
 	position.X = params->GetXPos();
 	position.Y = params->GetYPos();
 	velocity = Vector2D(0, 0);
-	friction = Vector2D(0.15f, 0.15f);
+	friction = Vector2D(0.25, 0.25);
 }
 
 void LivingEntity::Draw()

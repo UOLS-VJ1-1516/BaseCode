@@ -66,12 +66,19 @@ void Button::Update()
 
 	if (x > params->GetXPos() && x < params->GetWidth() + params->GetXPos() &&
 		y > params->GetYPos() && y < params->GetHeight() + params->GetYPos())
-	{
-		state = HOVER;
-		if (BigHandle->GetMouseButtons().first)
+	{		
+		if (BigHandle->GetMouseButtons().first && state != WAIT)
 		{
-			state = PRESSED;
+			state = PRESSED;			
+		}
+		else if (state == PRESSED && !BigHandle->GetMouseButtons().first)
+		{
+			state = WAIT;
 			callback();
+		}
+		else if (!BigHandle->GetMouseButtons().first)
+		{
+			state = HOVER;
 		}
 	}
 	else

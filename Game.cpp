@@ -60,7 +60,7 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
 	}
 	
-	EntityCreator->Register("Button", & Button::Create);
+	EntityCreator->Register("Button", &Button::Create);
 	EntityCreator->Register("Inert", &InertEntity::Create);
 	EntityCreator->Register("Player", &Player::Create);
 	EntityCreator->Register("Enemy", &Enemy::Create);
@@ -85,7 +85,7 @@ void Game::Clear()
 void Game::EventHandler()
 {
 	BigHandle->UpdateKeys();
-	delta = GetDeltaTime();
+	delta = Tools::GetDeltaTime();
 	manager->HandleEvents();
 }
 
@@ -94,7 +94,7 @@ void Game::Update()
 	manager->Update();
 	if (takeScreenshot)
 	{
-		takeScreenShot(width, height);
+		Tools::takeScreenShot(width, height);
 		takeScreenshot = false;
 	}
 }

@@ -29,6 +29,7 @@ public:
 	std::string GetId() { return params->GetId(); }
 	float GetXPos() { return position.X; }
 	float GetYPos() { return position.Y; }
+	void SetYPos(float yPos) { this->position.Y = yPos; }
 	int GetWidth() { return params->GetWidth(); }
 	int GetHeight() { return params->GetHeight(); }
 	

@@ -8,6 +8,17 @@ void StateGame::Update()
 {
 	for each (LivingEntity * var in entitats)
 	{
+		if ((var->GetYPos() + var->GetHeight()) < Tools::GetHeight())
+		{
+			var->Accelerate(0, 1);
+		}
+		if ((var->GetYPos() + var->GetHeight()) >= Tools::GetHeight())
+		{
+			var->Accelerate(0, 0);
+			
+			var->SetYPos(Tools::GetHeight() - var->GetHeight());
+		}
+		
 		if (Enemy * en = dynamic_cast<Enemy *>(var)) {
 			en->Update(player);
 		}
@@ -44,6 +55,10 @@ void StateGame::HandleEvents()
 			else if (key.first == "41")
 			{
 				TheGame->GetManager()->PushState(new StatePause());
+			}
+			else if (key.first == "44" && player->GetYPos() != Tools::GetHeight())
+			{
+				player->Jump();
 			}
 		}
 		else if (key.second == UP)

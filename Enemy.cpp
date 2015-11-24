@@ -5,7 +5,7 @@
 void Enemy::FollowPlayer(Player * player)
 {
 	float xPos = position.X;
-	float playerXPos = player->xPos;
+	float playerXPos = player->GetXPos();
 	float delta = (float)Game::GetInstance()->delta;
 
 	if (abs(xPos - playerXPos) < 1) {
@@ -21,16 +21,15 @@ void Enemy::FollowPlayer(Player * player)
 void Enemy::BeStatic(Player * player)
 {
 	float xPos = position.X;
-	float playerXPos = player->xPos;
-	if ((SDL_GetTicks()) % 250 == 0)
-	{
-		if (xPos > playerXPos && !params->IsFlipped()) {
-			params->Flip();
-		}
-		else if (xPos < playerXPos && params->IsFlipped()) {
-			params->Flip();
-		}		
+	float playerXPos = player->GetXPos();
+	
+	if (xPos > playerXPos && !params->IsFlipped()) {
+		params->Flip();
 	}
+	else if (xPos < playerXPos && params->IsFlipped()) {
+		params->Flip();
+	}		
+	
 }
 
 void Enemy::TheIgnored()

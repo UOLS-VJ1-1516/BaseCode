@@ -6,13 +6,6 @@ Player::~Player()
 {
 }
 
-void Player::Accelerate(int aX, int aY)
-{
-	LivingEntity::Accelerate(aX, aY);
-	xPos = position.X;	
-}
-
-
 Player::Player() : LivingEntity()
 {
 	maxVel = Vector2D(10, 10);
@@ -21,6 +14,20 @@ Player::Player() : LivingEntity()
 
 void Player::Update()
 {
+	cout << "Player Speed: " << velocity.toString() << endl;
 	Accelerate(xAccel, yAccel);
 	LivingEntity::Update();	
+}
+
+bool Player::InBounds(LivingEntity * entitat)
+{
+	return Tools::InBounding(entitat, this);
+}
+
+void Player::Jump()
+{
+	if (GetYPos() + GetHeight() == Tools::GetHeight())
+	{
+		velocity.Y = -100;
+	}
 }
