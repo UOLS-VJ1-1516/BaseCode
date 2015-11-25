@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include <iostream>
+#include "StateParser.h"
 
 
 const std::string PlayState::s_playID = "PLAY";
@@ -28,7 +29,7 @@ void PlayState::update()
 	{
 		Game::Instance()->getStateMachine()->pushState(new PauseState);
 	}
-	//
+	
 }
 void PlayState::render()
 {
@@ -39,7 +40,7 @@ void PlayState::render()
 }
 bool PlayState::onEnter()
 {
-	p1 = new Player();
+	/*p1 = new Player();
 	p2 = new StaticObject();
 	p3 = new Enemy();
 	lp = new LoaderParams(350, 100, 72.5, 91, "Player", 6, 0, 0, 35, 0.1);
@@ -60,7 +61,11 @@ bool PlayState::onEnter()
 	TextureManager::Instance()->load("bird1.png", "pajarito", Game::Instance()->getRender());
 	TextureManager::Instance()->load("pantera1.png", "otro", Game::Instance()->getRender());
 	
-	std::cout << "entering PlayState\n";
+	std::cout << "entering PlayState\n";*/
+	// Parse the state.
+
+	StateParser::parseState("game.xml", s_playID, &m_gameObjects, &m_textureIDList);
+
 	return true;
 }
 bool PlayState::onExit()

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "LoaderParams.h"
+#include "GameObjectFactory.h"
 
 
 Game* Game::g_Instance = 0;
@@ -49,6 +50,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			TextureManager::Instance()->load("animation1.png", "Player", g_pRenderer);
 			TextureManager::Instance()->load("bird1.png", "pajarito", g_pRenderer);
 			TextureManager::Instance()->load("pantera1.png", "otro", g_pRenderer);*/
+			GameObjectFactory::Instance()->Register("PLAYER", &Player::Create);
 
 			m_pGameStateMachine = new GameStateMachine();
 			m_pGameStateMachine->changeState(new MenuState());

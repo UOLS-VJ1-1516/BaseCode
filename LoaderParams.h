@@ -42,4 +42,4 @@ private:
 	float m_friction;
 };
 
-#endif LOADERPARAMS_H#pragma once
+#endif LOADERPARAMS_H

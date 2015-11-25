@@ -27,6 +27,7 @@ private:
 	Enemy* p3;
 	StaticObject* p2;
 	std::vector< GameObject* > m_gameObjects;
+	std::vector< std::string > m_textureIDList;
 	InputHandler* TheInputHandler;
 };
 #endif
