@@ -9,12 +9,12 @@ void Enemy::FollowPlayer(Player * player)
 	float delta = (float)Game::GetInstance()->delta;
 
 	if (abs(xPos - playerXPos) < 1) {
-		Accelerate(NULL, NULL);	
+		xAccel = NULL;
 		xPos = playerXPos;
 	} else if (xPos > playerXPos) {
-		Accelerate(NEGATIVE, NULL);
+		xAccel = NEGATIVE;
 	} else if (xPos < playerXPos) {
-		Accelerate(POSITIVE, NULL);
+		xAccel = POSITIVE;
 	}	
 }
 
@@ -44,11 +44,11 @@ void Enemy::TheIgnored()
 	}
 	if (params->IsFlipped())
 	{
-		Accelerate(NEGATIVE, NULL);
+		xAccel = NEGATIVE;
 	}
 	else
 	{
-		Accelerate(POSITIVE, NULL);
+		xAccel = POSITIVE;
 	}
 	
 }
@@ -56,8 +56,8 @@ void Enemy::TheIgnored()
 Enemy::Enemy(int type)
 {
 	this->type = type;
-	maxVel = Vector2D(7.5, 7.5);
-	acceleration = Vector2D(0.75, 0.75);
+	maxVel = Vector2D(7.5, 10);
+	acceleration = Vector2D(0.75, 1);
 }
 
 
@@ -81,5 +81,5 @@ void Enemy::Update(Player * player)
 	default:
 		break;
 	}
-	
+	Accelerate(xAccel, yAccel);
 }

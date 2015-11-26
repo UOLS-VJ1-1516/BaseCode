@@ -20,12 +20,12 @@ void EventHandler::UpdateKeys()
 		if (event.type == SDL_KEYDOWN)
 		{
 			SDL_Scancode scan = event.key.keysym.scancode;
-			keys[to_string(scan)] = DOWN;
+			keys[scan] = DOWN;
 		}
 		else if (event.type == SDL_KEYUP)
 		{
 			SDL_Scancode scan = event.key.keysym.scancode;
-			keys[to_string(scan)] = UP;
+			keys[scan] = UP;
 		}
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
 		{
@@ -54,7 +54,7 @@ void EventHandler::UpdateKeys()
 	}
 }
 
-map<string, int> EventHandler::GetKeyEvents()
+map<int, int> EventHandler::GetKeyEvents()
 {
 	return keys;
 }

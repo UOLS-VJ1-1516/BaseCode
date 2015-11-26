@@ -18,7 +18,7 @@ class EventHandler
 private:
 	EventHandler();
 	static EventHandler * instance;
-	map<string, int> keys;
+	map<int, int> keys;
 	int x, y;
 	bool mouse1, mouse2;
 public:
@@ -33,7 +33,7 @@ public:
 	}
 
 	void UpdateKeys();
-	map<string, int> GetKeyEvents();
+	map<int, int> GetKeyEvents();
 	pair<int, int> GetMousePosition();
 	pair<bool, bool> GetMouseButtons();
 	void ClearKeys();

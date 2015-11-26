@@ -5,12 +5,17 @@
 
 class Player : public LivingEntity
 {
+private:
+	float salt;
 public:
-	int xAccel = 0, yAccel = 0;
 	Player();
 	~Player();	
 	void Update();
 	void Jump();
 	bool InBounds(LivingEntity *);
+	void SetJump(float jump)
+	{
+		salt = jump;
+	}
 	static Entity * Create() { return new Player(); }
 };

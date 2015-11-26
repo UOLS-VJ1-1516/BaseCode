@@ -15,6 +15,7 @@ public:
 	LivingEntity();
 	~LivingEntity();
 
+	int xAccel = 0, yAccel = 0;
 	static LivingEntity * Create() { return new LivingEntity(); }
 	void Move(float, float);
 

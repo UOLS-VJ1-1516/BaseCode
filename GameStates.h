@@ -21,6 +21,22 @@ public:
 	virtual string GetStateID() const = 0;
 };
 
+class StateIntro : public GameState
+{
+private:
+	string introID = "intro";
+	vector<string> textures;
+	vector<Entity *> entitats;
+public:
+	void Update();
+	void Render();
+	void HandleEvents();
+
+	bool OnEnter();
+	bool OnExit();
+
+	string GetStateID() const { return introID; }
+};
 
 class StateGame : public GameState
 {

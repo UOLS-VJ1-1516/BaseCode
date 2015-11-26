@@ -27,7 +27,11 @@ void StateParser::parseObjects(XMLElement * stateRoot, vector<Entity*>* entities
 	{
 		int enemyType = atoi(stateRoot->Attribute("enemy"));
 		enemy->SetType(enemyType);
-
+	}
+	if (Player * pl = dynamic_cast<Player *>(ent))
+	{
+		float jump = atof(stateRoot->Attribute("jump"));
+		pl->SetJump(jump);
 	}
 	EntityParams * params = new EntityParams(id.c_str(), x, y, width, height, numFrames, row);
 	ent->Load(params);

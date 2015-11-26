@@ -8,14 +8,14 @@ Player::~Player()
 
 Player::Player() : LivingEntity()
 {
-	maxVel = Vector2D(10, 10);
+	maxVel = Vector2D(10, 100);
 	acceleration = Vector2D(1, 1);
 }
 
 void Player::Update()
 {
-	cout << "Player Speed: " << velocity.toString() << endl;
 	Accelerate(xAccel, yAccel);
+	cout << "Player Speed: " << velocity.toString() << endl;
 	LivingEntity::Update();	
 }
 
@@ -26,8 +26,8 @@ bool Player::InBounds(LivingEntity * entitat)
 
 void Player::Jump()
 {
-	if (GetYPos() + GetHeight() == Tools::GetHeight())
+ 	if (this->GetYPos() + this->GetHeight() == Tools::GetHeight())
 	{
-		velocity.Y = -100;
+		velocity.Y = salt;
 	}
 }

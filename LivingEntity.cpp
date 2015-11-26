@@ -29,10 +29,7 @@ void LivingEntity::Move(float xPos, float yPos)
 void LivingEntity::Accelerate(int aX, int aY)
 {		
 	velocity.X += (aX * acceleration.X);
-	if (aY == 0)
-		velocity.Y = 0;
-	else
-		velocity.Y += (aY * acceleration.Y);
+	velocity.Y += (aY * acceleration.Y);
 
 	if (velocity.X > 0)
 		velocity.X = fmin(velocity.X, maxVel.X);
@@ -41,7 +38,7 @@ void LivingEntity::Accelerate(int aX, int aY)
 	if (velocity.Y > 0)
 		velocity.Y = fmin(velocity.Y, maxVel.Y);
 	else if (velocity.Y < 0)
-		velocity.X = fmax(velocity.Y, -maxVel.Y);
+		velocity.Y = fmax(velocity.Y, -maxVel.Y);
 	
 	velocity.X *= (1 - friction.X);
 
@@ -51,7 +48,11 @@ void LivingEntity::Accelerate(int aX, int aY)
 	}
 
 	position.X += velocity.X;
-	position.Y += velocity.Y;
+
+	if (position.Y + velocity.Y + this->GetHeight() >= Tools::GetHeight())	
+		position.Y = (float)(Tools::GetHeight() - this->GetHeight());
+	else
+		position.Y += velocity.Y;
 
 	bool isFlipped;
 

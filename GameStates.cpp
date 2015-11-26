@@ -10,13 +10,11 @@ void StateGame::Update()
 	{
 		if ((var->GetYPos() + var->GetHeight()) < Tools::GetHeight())
 		{
-			var->Accelerate(0, 1);
+			var->yAccel = POSITIVE;
 		}
-		if ((var->GetYPos() + var->GetHeight()) >= Tools::GetHeight())
+		else
 		{
-			var->Accelerate(0, 0);
-			
-			var->SetYPos(Tools::GetHeight() - var->GetHeight());
+			var->yAccel = NULL;
 		}
 		
 		if (Enemy * en = dynamic_cast<Enemy *>(var)) {
@@ -39,31 +37,33 @@ void StateGame::Render()
 
 void StateGame::HandleEvents()
 {
-	map<string, int> keys = EventHandler::GetInstance()->GetKeyEvents();
+	map<int, int> keys = EventHandler::GetInstance()->GetKeyEvents();
 	for each (auto key in keys)
 	{
 		if (key.second == DOWN)
 		{
-			if (key.first == "4")
+			cout << key.first;			
+
+			if (key.first == 4)
 			{
 				player->xAccel = NEGATIVE;
 			}
-			else if (key.first == "7")
+			else if (key.first == 7)
 			{
 				player->xAccel = POSITIVE;
 			}
-			else if (key.first == "41")
+			else if (key.first == 41)
 			{
 				TheGame->GetManager()->PushState(new StatePause());
 			}
-			else if (key.first == "44" && player->GetYPos() != Tools::GetHeight())
+			else if (key.first == 44 && player->GetYPos() != Tools::GetHeight())
 			{
 				player->Jump();
 			}
 		}
 		else if (key.second == UP)
 		{
-			if (key.first == "4" || key.first == "7")
+			if (key.first == 4 || key.first == 7)
 			{
 				player->xAccel = NULL;
 			}
@@ -169,12 +169,12 @@ void StatePause::Render()
 
 void StatePause::HandleEvents()
 {
-	map<string, int> keys = EventHandler::GetInstance()->GetKeyEvents();
+	map<int, int> keys = EventHandler::GetInstance()->GetKeyEvents();
 	for each (auto var in keys)
 	{
 		if (var.second == DOWN)
 		{
-			if (var.first == "41")
+			if (var.first == 41)
 			{
 				TheGame->GetManager()->PopState();
 			}
@@ -214,3 +214,33 @@ bool StatePause::OnExit()
 	return true;
 }
 
+void StateIntro::Update()
+{
+}
+
+void StateIntro::Render()
+{
+	for each (InertEntity * var in entitats)
+	{
+		var->Draw();
+	}
+
+	SDL_Delay(2000);
+	OnExit();
+}
+
+void StateIntro::HandleEvents()
+{
+}
+
+bool StateIntro::OnEnter()
+{
+	StateParser::ParseState("intro.xml", GetStateID(), &entitats, &textures);
+	return true;
+}
+
+bool StateIntro::OnExit()
+{
+	TheGame->GetManager()->ChangeState(new StateMenu());
+	return true;
+}
