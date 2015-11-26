@@ -17,12 +17,6 @@ private:
 	static void s_menuTOplay();
 	static void s_exitMenu();
 	std::vector<GameObject*> m_gObjects;
-	LoaderParams * load;
-	Player * player;
-	LoaderParams * load2;
-	Zep * zep;
-	LoaderParams * load3;
-	Gordo * gordo;
 	SDL_Renderer *m_pRenderer;
 
 

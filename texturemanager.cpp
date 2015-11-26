@@ -55,17 +55,23 @@ void TextureManager::drawFrame(std::string id, float x, float y, int width, int 
 	SDL_Rect src;
 	SDL_Rect dest;
 
+	//if (currentFrame == 1)currentFrame--;
 	//src-->origen, lo que cojo de la imagen
 	src.x = (currentFrame*width);  //Me voy a la fila que correspond del currentframe para coger la imagen que quiero
 	src.y = height*(currentRow -1);
+	
 	src.w = width;
 	src.h = height;
+	
 	//Donde y cuanto acabo pintando de la imagen seleccionada
 	
 	dest.x = x; //Ahora lo tengo que se mueve por la pantalla si lo quiero quieto sería 600 en el centro la pantalla;  
 	dest.y = y - (height / 2);
+
 	dest.w = width;
 	dest.h = height;
+
+	
 	if (flip == 1) Sflip = SDL_FLIP_NONE;
 	if (flip == 2) Sflip = SDL_FLIP_HORIZONTAL;
 	if (flip == 3) Sflip = SDL_FLIP_VERTICAL;
