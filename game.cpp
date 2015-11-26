@@ -6,8 +6,7 @@
 
 
 
-SDL_Renderer* g_lRenderer=0;
-SDL_Renderer* Renderer = 0;
+
 SDL_Window* g_lWindow = 0;
 int i = 0;
 int currrentFrame = 0;
@@ -16,16 +15,9 @@ int currrentFrame = 0;
 SDL_Texture* texture;
 Game * Game::s_pInstance = 0;
 
-int x,y, ancho, alto;
+int x, y;
 
 bool running = false;
-
-Game::Game() {  //Constructor
-	g_lRenderer = 0;
-}
-Game::~Game() {
-
-}
 
 
 
@@ -39,9 +31,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 
 		// if succeeded create our window
-		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, false);
-		ancho = width;
-		alto = height;
+		g_lWindow = SDL_CreateWindow(title, xpos, ypos, 500, 500, false);
+		m_Ancho = width;
+		m_Alto = height;
 
 		// if the window creation succeeded create our renderer
 		if (g_lWindow != 0)
@@ -49,36 +41,36 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			g_lRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 		}	
 		
-		Renderer = GetRenderer();
+	
 
 
 	//	flip=1->SDL_FLIP_NONE;  flip =2-> SDL_FLIP_HORIZONTAL; flip = 3 ->SDL_FLIP_VERTICAL;
 		
 		GameObject* player1 = new Player();
-		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1,ancho,alto));
+		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1,m_Ancho,m_Alto));
 
 
 		GameObject* enemy1 = new Player();
-		enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1, ancho, alto));
+		enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1, m_Ancho, m_Alto));
 
 		GameObject* enemy2 = new Enemy();
-		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2, ancho, alto));
+		enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2, m_Ancho, m_Alto));
 
 		GameObject* enemy3 = new Enemy();
-		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, 2, ancho, alto));
+		enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, 2, m_Ancho, m_Alto));
 
 		GameObject* enemy4 = new Enemy();
-		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2, ancho, alto));
+		enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2, m_Ancho, m_Alto));
 
 		GameObject* coin1 = new Enemy();
-		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2, ancho, alto));
+		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2, m_Ancho, m_Alto));
 
 	
 		GameObject* fons = new Fons();
-		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1, ancho, alto));
+		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1, m_Ancho, m_Alto));
 
 		GameObject* fons2 = new Fons();
-		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1, ancho, alto));
+		fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1, m_Ancho, m_Alto));
 
 
 		m_gameObjects.push_back(player1);
@@ -90,10 +82,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_gameObjects.push_back(fons);
 		m_gameObjects.push_back(fons2);
 		
-		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Renderer)) { return false; }
-		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Renderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/bird.png", "bird1", g_lRenderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", g_lRenderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", g_lRenderer)) { return false; }
+		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", g_lRenderer)) { return false; }
 		
 		running = true;
 
@@ -109,7 +101,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 void Game::update() {  //Actualitzara parametres diversos
 
 	
-	SDL_SetRenderDrawColor(Renderer, 25, 158, 218, 255);
+	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, 255);
 
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
@@ -123,7 +115,7 @@ void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
 
-		m_gameObjects[i]->draw(Renderer);
+		m_gameObjects[i]->draw(g_lRenderer);
 
 
 	}
@@ -142,9 +134,6 @@ void Game::clean() {
 
 
 
-}
-bool Game::isRunning() { 
-return running; 
 }
 
 

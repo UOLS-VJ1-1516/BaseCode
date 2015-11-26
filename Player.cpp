@@ -62,6 +62,7 @@ bool exit() { return quit; }
 
 void Player::update() {
 	quit = false;
+	
 	SDL_Scancode key = InputHandler::Instance()->update();
 	if (key == SDL_SCANCODE_ESCAPE) {
 

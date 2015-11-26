@@ -20,17 +20,24 @@
 class Game {
 
 private:
+	
+	Game() {}
+	~Game() {}
+	int m_Ancho;
+	int m_Alto;
+	
 	SDL_Window* g_lWindow;
 	SDL_Renderer* g_lRenderer;
 	std::vector <GameObject* > m_gameObjects;
 	bool running;
-	
+	static Game *s_pInstance;
 
-
+	//GameStateMachine *m_pGameStateMachine;
+	//  bool m_bHasPendingState;
+    //GameState *m_pPendingState;
 
 public:
 	
-	Game();
 	static Game* Instance() {
 		if (s_pInstance == 0) {
 			s_pInstance = new Game();
@@ -38,23 +45,29 @@ public:
 		return s_pInstance;
 
 	}
-	~Game();
-	static Game* s_pInstance;
+	
+	
 	bool init(const char* title, int xpos, int
 		ypos, int width, int height, bool fullscreen);
 	void render();
 	void update();
 	int handleEvents();
 	void clean();
-	bool isRunning();
+	bool isRunning() {
+		return running;
+	}
+	void quit() {
+		running = false; 
+	}
 
-	SDL_Rect dst;
-	SDL_Rect org;
-	
 	SDL_Renderer* GetRenderer() const {
 		return g_lRenderer;
 	}
+	int getAncho() const { return m_Ancho; }
+	int getAlto() const { return m_Alto; }
+	int m_currentFrame;
 
+	// void requestChangeState(GameState *pState);
 };
 #endif GAME_H
 
