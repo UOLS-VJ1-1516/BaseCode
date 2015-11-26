@@ -3,7 +3,6 @@
 #include "game.h"
 
 TextureManager* TextureManager::s_pInstance = 0;
-SDL_Texture* textura;
 SDL_Point* center;
 SDL_RendererFlip Sflip;
 
@@ -12,7 +11,9 @@ bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_
 	
 	SDL_Surface *imagen = IMG_Load(fileName);
 
-	if (!imagen) return false;
+	if (!imagen) {
+		return false;
+	}
 	SDL_SetColorKey(imagen, 1, SDL_MapRGB(imagen->format, 255, 255, 255));
 	SDL_Texture* textura = SDL_CreateTextureFromSurface(g_lRenderer, imagen);
 	

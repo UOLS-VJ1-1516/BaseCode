@@ -1,8 +1,8 @@
 
 #include "game.h"
-#include "texturemanager.h"
-#include "LoadPar.h"
-#include "InputHandler.h"
+
+
+
 
 
 
@@ -31,14 +31,27 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 
 		// if succeeded create our window
-		g_lWindow = SDL_CreateWindow(title, xpos, ypos, 500, 500, false);
+		g_lWindow = SDL_CreateWindow(title, xpos, ypos, width, height, false);
 		m_Ancho = width;
 		m_Alto = height;
+		
 
 		// if the window creation succeeded create our renderer
 		if (g_lWindow != 0)
 		{
-			g_lRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
+			play = new PlayState();
+			menu = new MenuState();
+			state = new GameStateMachine();
+			g_aRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
+			state->pushState(menu);
+
+			TextureManager::Instance()->load("./images/bird.png", "bird1", g_aRenderer);
+			GameObject* player1 = new Player();
+			player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1, m_Ancho, m_Alto));
+			m_gameObjects.push_back(player1);
+
+			TextureManager::Instance()->drawFrame("bird1", 200, 200, 100, 100,1,1, g_aRenderer, 1);
+
 		}	
 		
 	
@@ -46,7 +59,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	//	flip=1->SDL_FLIP_NONE;  flip =2-> SDL_FLIP_HORIZONTAL; flip = 3 ->SDL_FLIP_VERTICAL;
 		
-		GameObject* player1 = new Player();
+	/*	GameObject* player1 = new Player();
 		player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1,m_Ancho,m_Alto));
 
 
@@ -64,7 +77,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		GameObject* coin1 = new Enemy();
 		coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2, m_Ancho, m_Alto));
-
+		
 	
 		GameObject* fons = new Fons();
 		fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1, m_Ancho, m_Alto));
@@ -86,13 +99,16 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", g_lRenderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/coin.png", "coin1", g_lRenderer)) { return false; }
 		if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", g_lRenderer)) { return false; }
+		*/
 		
+
 		running = true;
 
 	}
 	else
 	{
-		return 1; // sdl could not initialize
+		return false; // sdl could not initialize
+		running = false;
 	}
 
 	return true;
@@ -101,33 +117,29 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 void Game::update() {  //Actualitzara parametres diversos
 
 	
-	SDL_SetRenderDrawColor(g_lRenderer, 25, 158, 218, 255);
+	SDL_SetRenderDrawColor(g_aRenderer, 25, 158, 218, 255);
 
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
-		m_gameObjects[i]->update();
-	}
+	state->update();
 
 	
 }
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
-	SDL_RenderClear(g_lRenderer); 
+	SDL_RenderClear(g_aRenderer); 
 	
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
-
-		m_gameObjects[i]->draw(g_lRenderer);
-
-
-	}
-	SDL_RenderPresent(g_lRenderer);
+	state->render();
+	SDL_RenderPresent(g_aRenderer);
+	SDL_Delay(10);
 
 
 }
 
 
 void Game::clean() {
+	//InputHandler::Instance()->clean();
+	m_gameObjects.clear();
     SDL_DestroyTexture(texture);
-	SDL_DestroyRenderer(g_lRenderer);
+	SDL_DestroyRenderer(g_aRenderer);
 	SDL_DestroyWindow(g_lWindow);
 	SDL_Quit();
 
@@ -137,16 +149,17 @@ void Game::clean() {
 }
 
 
-int Game::handleEvents() {
-	//InputHandler::Instance()->update();
+void Game::handleEvents() {
+	InputHandler::Instance()->update();
 
-	/*if (SDL_SCANCODE_ESCAPE) {
+	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		running = false;
 
 	}*/
-
-	return 1;
 }
+GameStateMachine* Game::getGameStateMachine() {
+	return state;
+};
 
 
 

@@ -25,7 +25,7 @@ bool MenuState::onEnter()
 	//GameObject* player1 = new Player();
 	
 	//player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1, ancho, alto));
-	GameObject *menuButton = new MenuButton(new LoadPar(150, 150, 300, 100, "playbtn.png",1,3,1, Game::Instance()->getAncho(),Game::Instance()->getAlto()), s_menuTOplay);
+	/*GameObject *menuButton = new MenuButton(new LoadPar(150, 150, 300, 100, "playbtn.png",1,3,1, Game::Instance()->getAncho(),Game::Instance()->getAlto()), s_menuTOplay);
 	if (menuButton == NULL) {
 		return false;
 	}
@@ -35,13 +35,13 @@ bool MenuState::onEnter()
 	GameObject* menuButton2 = new MenuButton(new LoadPar(150, 300, 400, 100, "playbtn.png", 1, 1, 1, Game::Instance()->GetAncho(), Game::Instance()->GetAlto()), s_exitMenu);
 	if (menuButton2 == NULL) {
 		return false;
-	}*/
+	}
 	m_gameObjects.push_back(menuButton);
 	//m_gameObjects.push_back(menuButton2);
 	TextureManager::Instance()->load("playbtn.png", "playbtn.png", Game::Instance()->GetRenderer());
 	//TextureManager::Instance()->load("playbtn2.png", "playbtn2.png", Game::Instance()->GetRenderer());
-
-	std::cout << "Entrada al menuState\n";
+	*/
+	printf("HE entrado en el MenuSTate\n\n");
 	return true;
 }
 
