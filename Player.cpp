@@ -11,8 +11,7 @@ using namespace std;
 #define RIGHT SDL_SCANCODE_D
 #define LEFT SDL_SCANCODE_A
 
-Player::Player(std::string id) {
-	Player::id = id;
+Player::Player() {
 	Player::spriteCol = 0;
 	Player::spriteRow = 0;
 	Player::xDirection = 0;
@@ -20,13 +19,18 @@ Player::Player(std::string id) {
 	Player::speed = 0;
 	Player::maxSpeed = 5;
 	Player::accel = 0.01;
-	Player::friction = 0;
+	Player::friction = 0.005;
 	Player::startMove = 0;
 }
 Player::~Player() {
 }
 
+GameObject * Player::create() {
+	return new Player();
+}
+
 void Player::load(LoaderParams* params) {
+	Player::setId(params->getId());
 	Player::position.setX((float)params->getX());
 	Player::position.setY((float)params->getY());
 	Player::width = params->getWidth();
@@ -46,22 +50,31 @@ void Player::draw() {
 }
 
 void Player::update() {
-	
+
+	//SET SPEED
 	if (xDirection != 0 || yDirection != 0) {
-		//VELOCITY
-		float acceleration = (accel - friction);
-		if (acceleration < 0) acceleration = 0;
+		//ACCELERATION
 		if (startMove == 0) startMove = SDL_GetTicks();
-		speed += acceleration * (SDL_GetTicks()-startMove);
+		speed += (accel - friction) * (SDL_GetTicks() - startMove);
 		startMove = SDL_GetTicks();
 		if (speed > maxSpeed) speed = maxSpeed;
-		
+	} else {
+		//DECELERATION
+		if (startMove == 0) startMove = SDL_GetTicks();
+		speed -= friction * (SDL_GetTicks() - startMove);
+		startMove = SDL_GetTicks();
+		if (speed < 0.0f) speed = 0.0f;
+		else if (speed == 0.0f) startMove = 0.0f;
+	}
+
+	if (speed != 0) {
 		//MOVEMENT X
 		spriteCol = (int)((SDL_GetTicks() / 120) % nCols);
 		if (xDirection > 0) {
 			position += Vector2(speed, 0);
 			spriteRow = 2;
-		} else if (xDirection < 0) {
+		}
+		else if (xDirection < 0) {
 			position -= Vector2(speed, 0);
 			spriteRow = 1;
 		}
@@ -76,46 +89,31 @@ void Player::update() {
 		}
 		//FIX POSITION
 		if (position.getX() + (width / 2) >(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w))
-			position.setX(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w - (width/2));
+			position.setX(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w - (width / 2));
 		if (position.getX() < (width / 2))
 			position.setX((width / 2));
 		if (position.getY() + (height / 2) > (SDL_GetWindowSurface(Game::getInstance()->getWindow())->h))
-			position.setY(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h - (height/2));
+			position.setY(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h - (height / 2));
 		if (position.getY() < (height / 2))
 			position.setY((height / 2));
-	} else {
-		startMove = 0;
-		speed = 0;
-	}
-	cout << "Velocidad: "<<speed;
+	} else spriteCol = 0;
+	cout << "Speed: " << speed << endl;
 }
 
 void Player::handleEvents(SDL_Event e) {
 	InputManager* input = InputManager::getInstance();
 	//X AXIS
-		//A
-	if (input->isKeyDown(e, LEFT))
-		xDirection = -1;
-	else if (input->isKeyUp(e, LEFT))
-		xDirection = 0;
-		//D
-	if (input->isKeyDown(e, RIGHT))
-		xDirection = 1;
-	else if (input->isKeyUp(e, RIGHT))
-		xDirection = 0;
-	//Y AXIS
-		//W
-	if (input->isKeyDown(e, UP))
-		yDirection = -1;
-	else if (input->isKeyUp(e, UP))
-		yDirection = 0;
-		//S
-	if (input->isKeyDown(e, DOWN))
-		yDirection = 1;
-	else if (input->isKeyUp(e, DOWN))
-		yDirection = 0;
-}
+	if (input->isKeyPressed(LEFT) || input->isKeyPressed(RIGHT)) {
+		if (input->isKeyPressed(LEFT)) xDirection = -1;
+		if (input->isKeyPressed(RIGHT)) xDirection = 1;
+	} else xDirection = 0;
 
+	//Y AXIS
+	if (input->isKeyPressed(DOWN) || input->isKeyPressed(UP)) {
+		if (input->isKeyPressed(DOWN)) yDirection = 1;
+		if (input->isKeyPressed(UP)) yDirection = -1;
+	} else yDirection = 0;
+}
 
 void Player::clean() {
 

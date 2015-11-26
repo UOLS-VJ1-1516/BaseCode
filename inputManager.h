@@ -16,9 +16,13 @@ public:
 	// Métodos de acceso
 	bool isKeyDown(SDL_Event e, SDL_Scancode key);
 	bool isKeyUp(SDL_Event e, SDL_Scancode key);
-	bool getMouseButtonState(SDL_Event e, int buttonNumber);
+	bool isKeyPressed(SDL_Scancode key);
+	bool isMouseButtonDown(SDL_Event e, int buttonNumber);
+	bool isMouseButtonUp(SDL_Event e, int buttonNumber);
+	bool isMouseButtonPressed(int buttonNumber);
 	Vector2 getMousePosition(SDL_Event e);
 private:
 	InputManager();
 	static InputManager* instance;
-};
+};
+

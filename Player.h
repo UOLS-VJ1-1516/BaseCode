@@ -9,8 +9,9 @@ class Player : public GameObject
 	int startMove;
 
 public:
-	Player(std::string id);
+	Player();
 	virtual ~Player();
+	static GameObject * create();
 	virtual void load(LoaderParams* params);
 	virtual void draw();
 	virtual void update();
