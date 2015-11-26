@@ -138,12 +138,12 @@ void Game::clean() {
 
 
 int Game::handleEvents() {
-	bool exit=InputHandler::Instance()->Quit();
+	//InputHandler::Instance()->update();
 
-	if (exit) {
+	/*if (SDL_SCANCODE_ESCAPE) {
 		running = false;
 
-	}
+	}*/
 
 	return 1;
 }

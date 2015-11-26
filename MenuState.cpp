@@ -25,7 +25,7 @@ bool MenuState::onEnter()
 	//GameObject* player1 = new Player();
 	
 	//player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1, ancho, alto));
-	GameObject *menuButton = new MenuButton(new LoadPar(150, 150, 300, 100, "playbtn.png",1,3,1, Game::Instance()->GetAncho(),Game::Instance()->GetAlto()), s_menuTOplay);
+	GameObject *menuButton = new MenuButton(new LoadPar(150, 150, 300, 100, "playbtn.png",1,3,1, Game::Instance()->getAncho(),Game::Instance()->getAlto()), s_menuTOplay);
 	if (menuButton == NULL) {
 		return false;
 	}
@@ -62,11 +62,11 @@ bool MenuState::onExit()
 
 
 void MenuState::s_menuTOplay() {
-	Game::Instance()->getGameStateMachine()->changeState(new PlayState());
+	//Game::Instance()->getGameStateMachine()->changeState(new PlayState());
 }
 
 void MenuState::s_exitMenu() {
-	Game::Instance()->getGameStateMachine()->popState();
+	//Game::Instance()->getGameStateMachine()->popState();
 
 
 	Game::Instance()->quit();

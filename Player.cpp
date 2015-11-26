@@ -63,13 +63,14 @@ bool exit() { return quit; }
 void Player::update() {
 	quit = false;
 	
-	SDL_Scancode key = InputHandler::Instance()->update();
-	if (key == SDL_SCANCODE_ESCAPE) {
+	InputHandler::Instance()->update();
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 
 		quit = true;
 	}
 	//Flag, 1->Right 2->Left 3->Up 4->Down
-	if (key == SDL_SCANCODE_RIGHT) {
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		m_velocity.setX(0);  //Velocidad inicial
 		m_acceleration.setY(0);
 		if (flag != 1) m_acceleration.setX(0);
@@ -83,7 +84,7 @@ void Player::update() {
 
 	}
 	else{
-		if (key == SDL_SCANCODE_LEFT) {
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 			m_velocity.setX(0); //Velocidad inicial
 			m_acceleration.setY(0);
 			if (flag != 2) m_acceleration.setX(0);
@@ -97,7 +98,7 @@ void Player::update() {
 
 		}
 		else {
-			if (key == SDL_SCANCODE_UP) {
+			if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
 				m_velocity.setY(0); //Velocidad inicial
 				m_acceleration.setX(0);
 				if (flag != 3) m_acceleration.setY(0);
@@ -109,7 +110,7 @@ void Player::update() {
 				flag = 3;
 			}
 			else {
-				if (key == SDL_SCANCODE_DOWN) {
+				if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
 					m_velocity.setY(0); //Velocidad inicial
 					m_acceleration.setX(0);
 					if (flag != 4) m_acceleration.setY(0);

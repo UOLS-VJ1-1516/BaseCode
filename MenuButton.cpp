@@ -107,5 +107,5 @@ void MenuButton::update() {
 
 }
 void MenuButton::clean() {
-	InputHandler::Instance()->clean();
+	//InputHandler::Instance()->clean();
 }

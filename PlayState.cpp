@@ -19,8 +19,8 @@ void PlayState::update() {
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
-	InputHandler::Instance()->update();
-	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
+/*	InputHandler::Instance()->update();
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
 	}*/
