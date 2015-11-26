@@ -109,8 +109,24 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="texturemanager.h" />
     <ClInclude Include="Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="1-helloworld.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\badbird.png" />
+    <Image Include="images\bird.png" />
+    <Image Include="images\coin.png" />
+    <Image Include="images\continue.png" />
+    <Image Include="images\Exit.png" />
+    <Image Include="images\Exit2.png" />
+    <Image Include="images\nubes2.png" />
+    <Image Include="images\pause.png" />
+    <Image Include="images\pause2.png" />
+    <Image Include="images\playbtn.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
