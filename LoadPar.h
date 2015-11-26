@@ -8,7 +8,7 @@ class LoadPar {
 
 public:	
 
-	LoadPar(float x, float y, int width, int height, std::string id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla) {
+	LoadPar(float x, float y, int width, int height, const char* id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla) {
 		m_x = x;
 		m_y = y;
 		m_width = width;
@@ -32,7 +32,7 @@ public:
 	int getflip() const { return m_flip; }
 	int getanchopantalla() const { return m_anchopantalla; }
 	int getaltopantalla() const { return m_altopantalla; }
-	std::string gettexid() const { return m_texid; }
+	const char* gettexid() const { return m_texid; }
 
 
 
@@ -47,7 +47,7 @@ private:
 	float m_y;
 	int m_flip;
 	int m_sprits;
-	std::string m_texid;
+	const char* m_texid;
 
 
 };

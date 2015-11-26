@@ -84,9 +84,13 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fons.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="texturemanager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
@@ -95,9 +99,14 @@
     <ClInclude Include="Fons.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoadPar.h" />
+    <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="texturemanager.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
