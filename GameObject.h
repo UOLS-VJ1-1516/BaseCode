@@ -13,7 +13,9 @@ class GameObject
 {
 	
 public:
-	
+	GameObject() {};
+	virtual ~GameObject() {};
+
 	//virtual void load(float x, float y, int width, int height, std::string texid) = 0;
 	virtual void load(const LoadPar* lPar) = 0;
 	virtual void draw(SDL_Renderer* g_lRenderer)=0;

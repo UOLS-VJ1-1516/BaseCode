@@ -44,13 +44,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			state = new GameStateMachine();
 			g_aRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 			state->pushState(menu);
-
-			TextureManager::Instance()->load("./images/bird.png", "bird1", g_aRenderer);
-			GameObject* player1 = new Player();
-			player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1, m_Ancho, m_Alto));
-			m_gameObjects.push_back(player1);
-
-			TextureManager::Instance()->drawFrame("bird1", 200, 200, 100, 100,1,1, g_aRenderer, 1);
+			printf("1.... - HE entrado en el Update del MenuState -->Gameobjects: %d\n", m_gameObjects.size());
+			
 
 		}	
 		
@@ -118,9 +113,8 @@ void Game::update() {  //Actualitzara parametres diversos
 
 	
 	SDL_SetRenderDrawColor(g_aRenderer, 25, 158, 218, 255);
-
 	state->update();
-
+	
 	
 }
 void Game::render() { //Actualitzara el buffer i mostrara per pantalla
@@ -129,7 +123,7 @@ void Game::render() { //Actualitzara el buffer i mostrara per pantalla
 	
 	state->render();
 	SDL_RenderPresent(g_aRenderer);
-	SDL_Delay(10);
+	
 
 
 }

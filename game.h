@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "InputHandler.h"
+#include "GameObject.h"
 #include "TextureManager.h"
 #include "LoadPar.h"
 #include <ctime>
@@ -27,7 +28,7 @@ class Game {
 
 private:
 	
-	Game();
+	Game() {}
 	
 	int m_Ancho;
 	int m_Alto;
@@ -35,7 +36,7 @@ private:
 	SDL_Window* g_lWindow;
 	SDL_Renderer* g_lRenderer;
 	SDL_Renderer* g_aRenderer;
-	std::vector <GameObject* > m_gameObjects;
+	
 	bool running;
 	static Game *s_pInstance;
 	GameStateMachine * state;
@@ -47,7 +48,7 @@ private:
     //GameState *m_pPendingState;
 
 public:
-	
+	~Game() {}
 	static Game* Instance() {
 		if (s_pInstance == 0) {
 			s_pInstance = new Game();
@@ -55,8 +56,8 @@ public:
 		return s_pInstance;
 
 	}
-	~Game();
 	
+	std::vector <GameObject* > m_gameObjects;
 	bool init(const char* title, int xpos, int
 		ypos, int width, int height, bool fullscreen);
 	void render();

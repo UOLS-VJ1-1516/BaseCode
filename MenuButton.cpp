@@ -46,14 +46,22 @@ MenuButton::MenuButton(const LoadPar * lPar, void(*callback)()) :m_callback(call
 	m_flip = lPar->getflip();*/
 	m_bR = false;
 	m_currentFrame = MOUSE_OUT;
-	//-----Cargo la misma textid y me ahorrro problemas
-	TextureManager::Instance()->load(lPar->gettexid(), lPar->gettexid(), Game::Instance()->GetRenderer());
+	
 
 };
 
 MenuButton::~MenuButton() {};
 void MenuButton::load(const LoadPar * lPar) {
-	
+	m_width = lPar->getwidth();
+	m_height = lPar->getheight();
+	m_position.setX(lPar->getx());
+	m_position.setY(lPar->gety());
+	m_texid = lPar->gettexid();
+	m_currentRow = lPar->getcurrentRow();
+	m_sprits = lPar->getsprits();
+	m_flip = lPar->getflip();
+	m_anchopantalla = lPar->getanchopantalla();  //Para que sea mas facil de adaptar
+	m_altopantalla = lPar->getaltopantalla();
 
 };
 
@@ -62,7 +70,7 @@ void MenuButton::draw(SDL_Renderer* Renderer) {
 	TextureManager::Instance()->drawFrame(Params->gettexid(),
 		(int)Params->getx(), (int)Params->gety(),
 		Params->getwidth(), Params->getheight(),
-		1, 1, Game::Instance()->GetRenderer(), 1);
+		Params->getcurrentRow(), m_currentFrame, Game::Instance()->GetRenderer(), 1);
 
 
 }
@@ -76,8 +84,9 @@ void MenuButton::draw() {
 };
 
 void MenuButton::update() {
+	
 	InputHandler::Instance()->update();
-
+	
 	pMPosition = InputHandler::Instance()->getMousePosition();
 
 	if ((int)pMPosition->getX() < (Params->getx() + Params->getwidth())
@@ -102,6 +111,7 @@ void MenuButton::update() {
 
 	}
 	else {
+		printf("\n-------------ENTRO En MOUSE OUT-----------\n");
 		m_currentFrame = MOUSE_OUT;
 	}
 

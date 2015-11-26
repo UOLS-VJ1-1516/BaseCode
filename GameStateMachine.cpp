@@ -42,7 +42,9 @@ void GameStateMachine::update()
 {
 	
 	if (!m_gameStates.empty()) {
+		printf("2  -  GameStateMachine no vacía... Llamo al update del estado!\n");
 		m_gameStates.back()->update();
+		
 		
 	}
 	

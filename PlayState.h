@@ -1,9 +1,6 @@
 #pragma once
 #include "GameState.h"
-#include "SDL_image.h"
-
-
-
+#include <string>
 
 class PlayState : public GameState {
 
@@ -19,19 +16,13 @@ private:
 	static const std::string s_playID;
 	static void s_menuTOplay();
 	static void s_exitMenu();
-	std::vector<GameObject*> m_gameObjects;
-	LoadPar * load;
-	LoadPar * load2;
-	LoadPar * load3;
-	LoadPar * load4;
-		
+	std::vector<GameObject*> m_gObjects;
+	LoaderParams * load;
 	Player * player;
-	Enemy * enemy1;
-	Enemy * enemy2;
-	Enemy * enemy3;
-	Enemy * coin;
-	Fons * nubes1;
-	Fons * nubes2;
+	LoaderParams * load2;
+	Zep * zep;
+	LoaderParams * load3;
+	Gordo * gordo;
 	SDL_Renderer *m_pRenderer;
 
 
