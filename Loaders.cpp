@@ -24,6 +24,19 @@ bool TextureManager::Load(const char * filename, string id)
 	return true;
 }
 
+bool TextureManager::Unload(std::string id)
+{
+	if (textures[id] == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		SDL_DestroyTexture(textures[id]); 
+		return true;
+	}
+}
+
 TextureManager::TextureManager()
 {
 	

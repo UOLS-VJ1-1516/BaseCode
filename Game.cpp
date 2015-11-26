@@ -65,7 +65,7 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 	EntityCreator->Register("Player", &Player::Create);
 	EntityCreator->Register("Enemy", &Enemy::Create);
 
-	manager = new StateManager(new StateMenu());
+	manager = new StateManager(new StateIntro());
 	
 	return true;
 }

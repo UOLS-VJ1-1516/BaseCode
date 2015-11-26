@@ -86,6 +86,12 @@ bool StateGame::OnEnter()
 
 bool StateGame::OnExit()
 {
+	for each (string var in textures)
+	{
+		Manager->Unload(var);
+	}
+	entitats.clear();
+	textures.clear();
 	return true;
 }
 
@@ -142,6 +148,10 @@ bool StateMenu::OnExit()
 {
 	callbacks.clear();
 	entitats.clear();
+	for each (string var in textures)
+	{
+		Manager->Unload(var);
+	}
 	textures.clear();
 	return true;
 }
@@ -224,9 +234,8 @@ void StateIntro::Render()
 	{
 		var->Draw();
 	}
-
-	SDL_Delay(2000);
-	OnExit();
+	if (SDL_GetTicks() - millis > 5000)
+		TheGame->GetManager()->ChangeState(new StateMenu());
 }
 
 void StateIntro::HandleEvents()
@@ -236,11 +245,17 @@ void StateIntro::HandleEvents()
 bool StateIntro::OnEnter()
 {
 	StateParser::ParseState("intro.xml", GetStateID(), &entitats, &textures);
+	millis = SDL_GetTicks();
 	return true;
 }
 
 bool StateIntro::OnExit()
 {
-	TheGame->GetManager()->ChangeState(new StateMenu());
+	for each (string var in textures)
+	{
+		Manager->Unload(var);
+	}
+	entitats.clear();
+	textures.clear();
 	return true;
 }

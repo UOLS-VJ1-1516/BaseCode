@@ -26,6 +26,7 @@ public:
 	}
 	
 	bool Load(const char* filename, std::string id);
+	bool Unload(std::string);
 	std::map<std::string, SDL_Texture *> GetArray() {
 		return textures;
 	};

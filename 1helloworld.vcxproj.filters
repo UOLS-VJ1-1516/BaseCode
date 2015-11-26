@@ -34,9 +34,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="StateManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="StateParser.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -47,6 +44,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="EntityFactory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

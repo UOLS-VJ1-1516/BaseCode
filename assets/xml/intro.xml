@@ -4,6 +4,6 @@
 		<texture file="Intro.png" ID="intro"/>
 	</textures>
 	<objects>
-		<object type="Inert" x="0" y="0" width="480" height="640" row="0" texture="intro" numFrames="0"/>
+		<object type="Inert" x="0" y="0" width="640" height="480" row="0" texture="intro" numFrames="0"/>
 	</objects>
 </state>
