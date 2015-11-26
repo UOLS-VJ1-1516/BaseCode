@@ -24,6 +24,7 @@ public:
 	void decrementAccelerationX();
 	void impulseRight();
 	void impulseLeft();
+	static GameObject * Create() { return new Player(); }
 };
 
 #endif PLAYER_H

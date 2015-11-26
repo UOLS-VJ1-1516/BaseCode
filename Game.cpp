@@ -1,5 +1,8 @@
 #include "Game.h"
 #include "LoaderParams.h"
+#include "InputHandler.h"
+#include "TextureManager.h"
+
 
 
 Game* Game::s_pInstance = 0;
@@ -10,12 +13,13 @@ Game::Game() {
 	g_pRenderer = 0;
 	m_screenWidth = 800;
 	m_screenHeight = 600;
-	//Inicializamos los objetos.
-	ps = new PlayState();
 	ms = new MenuState();
 	gsm = new GameStateMachine();
+	InputHandler* TheInputHandler;
+	TextureManager* TheTextureManager;
 	TheTextureManager = TextureManager::Instance();
 	TheInputHandler = InputHandler::Instance();
+	TheGameObjectFactory = GameObjectFactory::Instance();
 }
 
 Game::~Game() {
@@ -37,6 +41,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		SDL_GetWindowSize(g_pWindow, &width, &height);
 		
 		if (g_pWindow != 0) {
+			TheGameObjectFactory->Register("Player", &Player::Create);
+			TheGameObjectFactory->Register("Enemy", &Enemy::Create);
+			TheGameObjectFactory->Register("StaticObjects", &StaticObjects::Create);
+			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
+
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 			gsm->pushState(ms);
 		}
@@ -49,7 +58,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 }
 
 void Game::render() {
-	//Vamos refrescando el fondo cuando renderizamos, para que no quede imagenes residuales. Ponemos color negro como fondo.
 	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
 	gsm->render();
@@ -57,7 +65,6 @@ void Game::render() {
 }
 
 void Game::update() {
-	//Recalculamos los valores de cada uno de los ojbetos de la pantalla.
 	gsm->update();
 }
 

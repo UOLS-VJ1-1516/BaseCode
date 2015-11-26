@@ -6,11 +6,10 @@
 #include "Player.h"
 #include "StaticObjects.h"
 #include "Enemy.h"
-#include "InputHandler.h"
-#include "TextureManager.h"
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "GameObjectFactory.h"
 
 class Game
 {
@@ -23,11 +22,10 @@ private:
 	int m_screenWidth;
 	int m_screenHeight;
 	static Game* s_pInstance;
-	InputHandler* TheInputHandler;
-	TextureManager* TheTextureManager;
 	GameStateMachine* gsm;
-	PlayState* ps;
-	MenuState* ms;
+	GameState* ps;
+	GameState* ms;
+	GameObjectFactory* TheGameObjectFactory;
 public:
 	static Game* Instance()
 	{

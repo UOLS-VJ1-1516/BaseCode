@@ -18,17 +18,7 @@ private:
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
 	std::vector<GameObject*> m_gobjects;
-	LoaderParams* lp;
-	Player* p;
-	LoaderParams* lo;
-	StaticObjects* o;
-	LoaderParams* le;
-	Enemy* e;
-	Enemy* e2;
-	Enemy* e3;
-	Enemy* e4;
-	std::vector<int> theMiddle(int width, int height);
-	std::vector<int> m_position;
+	std::vector<const char*> m_textureIDList;
 };
 
 #endif PLAYSTATE_H

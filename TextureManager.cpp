@@ -67,7 +67,8 @@ void TextureManager::clean(const char* id) {
 	s_surface = NULL;
 	s_texture = NULL;
 	m_textureMap.erase(*id);
-};
+}
+
 
 
 

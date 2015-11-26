@@ -70,24 +70,41 @@ void Player::update() {
 	}
 	m_position += m_velocity + m_acceleration * 1 / 2;
 	m_currentFrame = (abs((int) (m_position - m_lastStop).length()) / pixelsToChangeFrame) % m_spriteNum;
-}
 
-void Player::update(int width, int height)
-{
+	InputHandler::Instance()->update();
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		incrementAccelerationX();
+	}
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+		decrementAccelerationX();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
+		decrementAccelerationY();
+	}
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
+		incrementAccelerationY();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
+		impulseLeft();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
+		impulseRight();
+	}
+
 	if (m_position.getX() < 0) {
 		stopX(0);
 	}
-	if (m_position.getX() > (width - m_width)) {
-		stopX(width - m_width);
+	if (m_position.getX() > (Game::Instance()->getScreenWidth() - m_width)) {
+		stopX(Game::Instance()->getScreenWidth() - m_width);
 	}
 	if (m_position.getY() < 0) {
 		stopY(0);
 	}
-	if (m_position.getY() > (height - m_height)) {
-		stopY(height - m_height);
+	if (m_position.getY() > (Game::Instance()->getScreenHeight() - m_height)) {
+		stopY(Game::Instance()->getScreenHeight() - m_height);
 	}
 }
-
 
 void Player::stopX(int positionX)
 {
