@@ -33,14 +33,14 @@ void Enemy::BeStatic(Player * player)
 }
 
 void Enemy::TheIgnored()
-{
-	int w = NULL;
-	SDL_GetWindowSize(Game::GetInstance()->GetWindow(), &w, NULL);
-	
-	float delta = (float)Game::GetInstance()->delta;
-	if (position.X <= 0 || position.X >= w)
+{		
+	if (position.X < 0)
 	{
-		params->Flip();
+		params->SetFlipped(false);
+	}
+	else if (position.X > Tools::GetWidth() - GetWidth())
+	{
+		params->SetFlipped(true);
 	}
 	if (params->IsFlipped())
 	{

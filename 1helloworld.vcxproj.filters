@@ -1,119 +1,128 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Tools.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="Loaders.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityParams.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
     <ClCompile Include="LivingEntity.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
     <ClCompile Include="GameStates.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="StateParser.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandler.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
     <ClCompile Include="InertEntity.cpp">
-      <Filter>Source</Filter>
+      <Filter>Entity Source</Filter>
     </ClCompile>
-    <ClCompile Include="EntityFactory.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="StateParser.cpp">
+      <Filter>Engine Source</Filter>
     </ClCompile>
     <ClCompile Include="StateManager.cpp">
-      <Filter>Source</Filter>
+      <Filter>Engine Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Loaders.cpp">
+      <Filter>Engine Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Engine Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityFactory.cpp">
+      <Filter>Engine Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityParams.cpp">
+      <Filter>Engine Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Tools.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Loaders.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityParams.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
     </ClInclude>
     <ClInclude Include="LivingEntity.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStates.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="StateManager.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
     </ClInclude>
     <ClInclude Include="AllEntities.hpp">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="StateParser.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
     </ClInclude>
     <ClInclude Include="InertEntity.h">
-      <Filter>Headers</Filter>
+      <Filter>Entity Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStates.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Loaders.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StateParser.h">
+      <Filter>Engine Headers</Filter>
     </ClInclude>
     <ClInclude Include="EntityFactory.h">
-      <Filter>Headers</Filter>
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityParams.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Headers">
+    <Filter Include="Main">
+      <UniqueIdentifier>{63c08023-6169-49c1-8229-dfdf065f50f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Headers">
+      <UniqueIdentifier>{a24f155e-dc81-4e61-8cb8-d8b2efd6167f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Source">
+      <UniqueIdentifier>{3822c7c1-324a-4935-945e-edf22ac64326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity Headers">
       <UniqueIdentifier>{37f3cde9-077a-4efa-a0ca-4ba52db7e434}</UniqueIdentifier>
       <Extensions>*.h</Extensions>
     </Filter>
-    <Filter Include="Source">
+    <Filter Include="Tools">
+      <UniqueIdentifier>{be3e2652-266b-4738-ad15-f438ffd05d5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity Source">
       <UniqueIdentifier>{fc810161-47fd-492d-9173-de61372a021f}</UniqueIdentifier>
       <Extensions>*.cpp;*.c</Extensions>
-    </Filter>
-    <Filter Include="Main">
-      <UniqueIdentifier>{63c08023-6169-49c1-8229-dfdf065f50f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
