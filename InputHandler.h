@@ -23,12 +23,13 @@ public:
 	bool getMouseButtonState(int buttonNumber);
 	Vector2D * getMousePosition();
 	InputHandler();
-	static InputHandler* s_pInstance;
+	
 private:
 	const Uint8* m_keystate;
 	std::vector<bool> m_mouseButtonStates;
 	Vector2D* m_mPosition;
 	bool m_exitClik;
+	static InputHandler* s_pInstance;
 
 };
 enum mouse_buttons {

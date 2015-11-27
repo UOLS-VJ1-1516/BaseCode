@@ -29,6 +29,20 @@
       <Filter>GameStates</Filter>
     </ClCompile>
     <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="tinystr.cpp">
+      <Filter>Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="StateParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -61,6 +75,14 @@
     </ClInclude>
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="StateParser.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="tinystr.h">
+      <Filter>Tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Tinyxml</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObjects">
@@ -69,5 +91,19 @@
     <Filter Include="GameStates">
       <UniqueIdentifier>{efe07aca-b959-4da0-b8e3-b54c61dba17f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tinyxml">
+      <UniqueIdentifier>{b812deec-4da2-4a9b-b3b0-25b8cd61640e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{248b34f6-348f-463a-b756-dd6270599c89}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="1-helloworld.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data\Tiny.xml">
+      <Filter>Data</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

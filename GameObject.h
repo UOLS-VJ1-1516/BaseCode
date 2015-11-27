@@ -20,8 +20,8 @@ protected:
 	int m_width;
 	int m_spriteNum;
 	int m_height;
-	//int m_x;
-	//int m_y;
+	int m_x;
+	int m_y;
 	Vector2D m_position;
 	Vector2D m_velocity;
 	Vector2D m_acceleration;
@@ -31,7 +31,7 @@ protected:
 	Vector2D m_maxVelocity;
 	int m_currentFrame;
 	int m_currentRow;
-	const char* m_textureID;
+	std::string m_textureID;
 	int m_callbackID;
 };
 

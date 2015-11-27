@@ -19,6 +19,8 @@ private:
 	static void s_menuTOplay();
 	static void s_exitMenu();
 	std::vector<GameObject*> m_gObjects;
+	std::vector<std::string> m_TextureIDList;
+	std::vector<void(*)()> m_callbacks;
 	LoaderParams * load;
 	Player * player;
 	LoaderParams * load2;
@@ -27,7 +29,11 @@ private:
 	Gordo * gordo;
 	SDL_Renderer *m_pRenderer;
 	
-	
+protected:
+	typedef void(*Callback)();
+	void setCallbacks(const std::vector<Callback>&callbacks);
+	std::vector<Callback>m_callbacksID;
+	virtual void setCallbacks();
 
 
 };

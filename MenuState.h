@@ -5,7 +5,7 @@
 #include <vector>
 #include "MenuButton.h"
 
-
+typedef void(*Callbacks)();
 class MenuState : public GameState{
 
 public:
@@ -19,8 +19,19 @@ public:
 private:
 	static const std::string s_menuID;
 	std::vector<GameObject*>m_gameObjects;
+	std::vector<std::string> m_TextureIDList;
 	static void s_menuTOplay();
 	static void s_exitMenu();
 	std::vector<int> m_position;
 	SDL_Renderer *m_pRenderer;
+
+protected:
+	typedef void(*Callback)();
+	//void setCallbacks();
+	void setCallbacks(const std::vector<Callback>&callbacks);
+	std::vector<Callback>m_callbacksID;
+
+
+
+	
 };

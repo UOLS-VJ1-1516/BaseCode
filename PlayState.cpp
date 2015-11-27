@@ -1,6 +1,7 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "Game.h"
+#include "StateParser.h"
 
 void PlayState::update() {
 	player->update();
@@ -23,6 +24,13 @@ void PlayState::render() {
 	}
 }
 bool PlayState::onEnter() {
+
+	StateParser stateParser;
+	stateParser.parseState("./Data/Tiny.xml", s_playID, &m_gObjects, &m_TextureIDList);
+
+	m_callbacks.push_back(0);
+	setCallbacks();
+
 	player = new Player();
 	zep = new Zep();
 	gordo = new Gordo();
@@ -31,9 +39,9 @@ bool PlayState::onEnter() {
 	TextureManager::Instance()->load("ZepS.bmp", "zep", Game::Instance()->getRender());
 	TextureManager::Instance()->load("GordoS.bmp", "gordo", Game::Instance()->getRender());
 
-	load = new LoaderParams(100, 100, 35, 32, "player", 10);
-	load2 = new LoaderParams(200, 200, 89, 78, "zep", 4);
-	load3 = new LoaderParams(400, 300, 50, 70, "gordo", 4);
+	load = new LoaderParams(100, 100, 35, 32,10, "player",0);
+	load2 = new LoaderParams(200, 200, 89, 78,4, "zep",0);
+	load3 = new LoaderParams(400, 300, 50, 70,4, "gordo", 0);
 
 	player->load(load);
 	m_gObjects.push_back(player);
@@ -51,6 +59,41 @@ bool PlayState::onEnter() {
 
 const std::string PlayState::s_playID = "PLAY";
 bool PlayState::onExit() {
+	for (unsigned int i = 0; i < m_gObjects.size(); i++)
+	{
+		m_gObjects[i]->clean();
+	}
 	m_gObjects.clear();
+	for (unsigned int i = 0; i < m_TextureIDList.size(); i++)
+	{
+		TextureManager::Instance()->clearFromTextureMap(m_TextureIDList[i]);
+	}
+	m_TextureIDList.clear();
+
+	std::cout << "Salida del PlayState\n";
 	return true;
+}
+
+//void PlayState::setCallbacks(const std::vector<Callback>& callbacks)
+//{
+//	for (int i = 0; i < m_gObjects.size(); i++)
+//	{
+//		if (dynamic_cast<MenuButton*>(m_gObjects[i]))
+//		{
+//			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gObjects[i]);
+//			pButton->setCallbacks(m_callbacks[pButton->getCallbackID()]);
+//		}
+//	}
+//}
+void PlayState::setCallbacks()
+{
+	for (int i = 0; i < m_gObjects.size(); i++)
+	{
+		if (dynamic_cast<MenuButton*>(m_gObjects[i]))
+		{
+			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gObjects[i]);
+			pButton->setCallbacks(m_callbacksID[pButton->getCallbackID()]);
+		}
+	}
+
 }

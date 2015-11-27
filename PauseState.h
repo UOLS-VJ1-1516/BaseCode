@@ -5,39 +5,27 @@
 #include "GameObject.h"
 #include <string>
 
+typedef void(*Callback)();
 class PauseState : public GameState {
 public:
 	void update();
 	void render();
 	bool onEnter();
 	bool onExit();
+	void setCallbacks(const std::vector<Callback>&callbacks);
 	std::string getStateID() const;
 private:
 	static const std::string s_pauseID;
 	std::vector<GameObject*>m_gameObjects;
 	static void s_menuTOPlay();
 	static void s_menuTOMain();
-
-	std::vector<int> m_position;
-
-};
-/*class PauseState : public GameState {
-public:
-
-	void update();
-	void render();
-	bool onEnter();
-	bool onExit();
-
-	std::string getStateID() const;
-
-private:
-	static const std::string s_pauseID;
-	std::vector<GameObject*>m_gameObjects;
-	static void s_menuTOPlay();
-	static void s_menuTOMain();
-
+	std::vector<GameObject*> m_gObjects;
+	std::vector<std::string> m_TextureIDList;
+	std::vector<void(*)()> m_callbacks;
 	std::vector<int> m_position;
 	
+	std::vector<Callback>m_callbacksID;
 
-};*/
+
+
+};

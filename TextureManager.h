@@ -1,6 +1,7 @@
 #pragma once
 #ifndef TEXTUREMANAGER_H
 #include "SDL.h"
+#include "SDL_image.h"
 #include "map"
 
 class TextureManager
@@ -19,19 +20,21 @@ public:
 	}
 	~TextureManager();
 
-	bool load(const char* fileName, const char* id, SDL_Renderer *m_pRenderer);
-	void draw(const char* id, int x, int y, int width, int height,
+	bool load(std::string fileName, std::string id, SDL_Renderer *m_pRenderer);
+	void draw(std::string id, int x, int y, int width, int height,
 		SDL_Renderer*pRender, SDL_RendererFlip flip);
 
-	void drawFrame(const char* id, int x, int y, int width, int height,
+	void drawFrame(std::string id, int x, int y, int width, int height,
 		int currentRow, int currentFrame,
 		SDL_Renderer* pRender, SDL_RendererFlip flip);
+
+	void TextureManager::clearFromTextureMap(std::string id) { m_pTextureMap.erase(id); };
 	
 
 private:
 	static TextureManager* s_pInstance;
-	std::map<char, SDL_Texture*>m_pTextureMap;
-	std::map<char, int[2] > m_textureSizes;
+	std::map<std::string, SDL_Texture*>m_pTextureMap;
+	std::map<std::string, int[2] > m_textureSizes;
 	SDL_Surface * img;
 	SDL_Texture*texture;
 	SDL_Point*center;

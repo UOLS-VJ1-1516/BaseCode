@@ -5,21 +5,21 @@ TextureManager::TextureManager() {};
 TextureManager::~TextureManager() {};
 
 
-bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer *m_pRenderer) {
+bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer *m_pRenderer) {
 
-	img = SDL_LoadBMP(fileName);
+	img = IMG_Load(fileName.c_str());
 	
 	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 0, 255));
 	texture = SDL_CreateTextureFromSurface(m_pRenderer, img);
 	//SDL_FreeSurface(img);
-	m_pTextureMap[*id] = texture;
+	m_pTextureMap[id] = texture;
 	return true;
 
 
 
 }
 
-void TextureManager::draw(const char* id, int x, int y, int width, int height,
+void TextureManager::draw(std::string id, int x, int y, int width, int height,
 	SDL_Renderer* pRender, SDL_RendererFlip flip = SDL_FLIP_NONE) {
 	TextureManager::inicio.w = 0;
 	TextureManager::inicio.h = 0;
@@ -31,11 +31,11 @@ void TextureManager::draw(const char* id, int x, int y, int width, int height,
 	TextureManager::dest.w = width;
 	TextureManager::dest.h = height;
 
-	SDL_RenderCopyEx(pRender, m_pTextureMap[*id], &inicio, &dest, 0, center, flip);
+	SDL_RenderCopyEx(pRender, m_pTextureMap[id], &inicio, &dest, 0, center, flip);
 
 }
 
-void TextureManager::drawFrame(const char* id, int x, int y, int width, int height,
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height,
 	int currentRow, int currentFrame,
 	SDL_Renderer* pRender, SDL_RendererFlip flip) {
 
@@ -50,7 +50,8 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 	TextureManager::dest.w = width;
 	TextureManager::dest.h = height;
 
-	SDL_RenderCopyEx(pRender, m_pTextureMap[*id], &inicio, &dest, 0, 0, flip);
+	SDL_RenderCopyEx(pRender, m_pTextureMap[id], &inicio, &dest, 0, 0, flip);
 
 
 }
+

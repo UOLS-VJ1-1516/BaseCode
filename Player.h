@@ -1,6 +1,5 @@
 #pragma once
-#ifndef PLAYER_H
-#define PLAYER_H
+
 #include "GameObject.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
@@ -12,10 +11,10 @@ public:
 	
 	Player();
 	~Player(); //Cabecera
-	void draw();
-	void load(const LoaderParams* pParams);
-	void update();
-	void clean();
+	virtual void draw();
+	virtual void load(const LoaderParams* pParams);
+	virtual void update();
+	virtual void clean();
+	static GameObject * Create() { return new Player(); }
 
 };
-#endif

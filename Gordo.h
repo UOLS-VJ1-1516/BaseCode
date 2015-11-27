@@ -1,6 +1,5 @@
 #pragma once
-#ifndef GORDO_H
-#define GORDO_H
+
 #include "GameObject.h"
 #include "LoaderParams.h"
 
@@ -10,10 +9,10 @@ class Gordo : public GameObject
 public:
 	Gordo();
 	~Gordo(); //Cabecera
-	void draw();
-	void load(const LoaderParams* pParams);
-	void update();
-	void clean();
+	virtual void draw();
+	virtual void load(const LoaderParams* pParams);
+	virtual void update();
+	virtual void clean();
+	static GameObject * Create() { return new Gordo(); }
 
 };
-#endif#pragma once

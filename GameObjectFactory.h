@@ -21,4 +21,4 @@ private:
 	GameObjectFactory(void);
 	static GameObjectFactory* s_pInstance;
 	std::map< std::string, CreateGameObjectFn > m_FactoryMap;
-};
+};

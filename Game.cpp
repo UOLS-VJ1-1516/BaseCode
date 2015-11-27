@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+#include "GameObjectFactory.h"
 
 
 
@@ -55,12 +56,16 @@ bool Game::init(const char* title, int xpos, int
 		if (m_pWindow != 0)
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
+			TheGameObjectFactory->Register("Player", &Player::Create);
+			TheGameObjectFactory->Register("Zep", &Zep::Create);
+			TheGameObjectFactory->Register("Gordo", &Gordo::Create);
 			m_pGameStateMachine = new GameStateMachine();
 			m_pGameStateMachine->changeState(new MenuState());
 			//m_pGameStateMachine->pushState(menuState);
 			
 			
-
+			
 			
 		/*	player->load(load);
 			m_gameObjects.push_back(player);
