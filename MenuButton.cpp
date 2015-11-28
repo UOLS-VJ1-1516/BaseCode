@@ -8,12 +8,17 @@ MenuButton::MenuButton() {
 	spriteCol = 0;
 }
 
+GameObject * MenuButton::create() {
+	return new MenuButton();
+}
+
 void MenuButton::load(LoaderParams * params) {
 	MenuButton::position.setX((float)params->getX());
 	MenuButton::position.setY((float)params->getY());
 	MenuButton::width = params->getWidth();
 	MenuButton::height = params->getHeight();
-	MenuButton::callback = params->f_callback;
+	//MenuButton::callback = params->f_callback; //ya no va???
+	//MenuButton::callbackID = params->getCallbackID();//setcallbackid
 }
 
 void MenuButton::draw() {
@@ -46,7 +51,7 @@ void MenuButton::handleEvents(SDL_Event e) {
 		&& mousePos.getY() <= this->position.getY() + (this->height / 2)) {
 		//HOVER
 		if (!input->isMouseButtonPressed(SDL_BUTTON_LEFT)) spriteRow = MOUSE_OVER;
-		else if (input->isMouseButtonPressed(SDL_BUTTON_LEFT)) spriteRow = MOUSE_PRESSED;
+		else spriteRow = MOUSE_PRESSED;
 		if (input->isMouseButtonUp(e, SDL_BUTTON_LEFT)) {
 			spriteRow = MOUSE_OVER;
 			callback();

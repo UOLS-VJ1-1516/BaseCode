@@ -16,6 +16,9 @@ public:
 private:
 	const std::string stateID = "MainMenu";
 	std::vector<GameObject*> gameObjects;
+	std::vector<std::string> textures;
+	std::vector<void(*)()> callbacks;
+	void (*callback) ();
 	static void menuToPlay();
 	static void exitFromMenu();
 };

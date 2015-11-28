@@ -1,6 +1,9 @@
 #include "game.h"
 #include "MenuState.h"
-//#include "PauseState.h"
+#include "GameObjectFactory.h"
+#include "Player.h"
+#include "NPC.h"
+#include "MenuButton.h"
 
 Game * Game::instance = 0;
 
@@ -40,6 +43,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 	running = true;
 	gs_machine = new GameStateMachine();
+
+	goFactory->Register("Player", &Player::create);
+	goFactory->Register("NPC", &NPC::create);
+	goFactory->Register("Button", &MenuButton::create);
 
 	gs_machine->pushState(new MenuState());
 

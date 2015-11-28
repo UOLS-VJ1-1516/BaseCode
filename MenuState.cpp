@@ -2,6 +2,8 @@
 #include "game.h"
 #include "MenuButton.h"
 #include "PlayState.h"
+#include <vector>
+#include "StateParser.h"
 
 MenuState::MenuState(){}
 
@@ -26,6 +28,16 @@ void MenuState::handleEvents(SDL_Event e) {
 
 bool MenuState::onEnter() {
 	//OBJECTS
+	StateParser::parseState("assets/xml/states_ini.xml", MenuState::getStateID(), &gameObjects, &textures);
+	callbacks.push_back(NULL);
+	callbacks.push_back(menuToPlay);
+	callbacks.push_back(exitFromMenu);
+	for each (GameObject * go in gameObjects) {
+		if (dynamic_cast<MenuButton*>(go) && ((MenuButton*)go)->getCallbackID() != 0)
+			((MenuButton*)go)->setCallback(callbacks[((MenuButton*)go)->getCallbackID()])
+	}
+
+
 	GameObject* playButton = new MenuButton();
 	playButton->load(new LoaderParams(
 		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2),
@@ -58,11 +70,12 @@ bool MenuState::onEnter() {
 }
 
 bool MenuState::onExit() {
-	for each(GameObject * go in gameObjects) {
+	for each(GameObject * go in gameObjects)
 		go->clean();
-		TextureManager::getInstance()->remove(go->getTextureId());
-	}
+	for each(std::string texture in textures)
+		TextureManager::getInstance()->remove(texture);
 	gameObjects.clear();
+	textures.clear();
 	return true;
 }
 
