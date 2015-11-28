@@ -17,6 +17,7 @@ public:
 	virtual std::string getStateID() const;
 	int red = 0, green = 0, blue = 0, alpha = 255;
 private:
-	const std::string stateID = "Level 1";
+	const std::string stateID = "LEVEL1";
 	std::vector<GameObject*> gameObjects;
+	std::vector<std::string> textures;
 };

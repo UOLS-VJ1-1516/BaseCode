@@ -3,6 +3,7 @@
 #include "NPC.h"
 #include "game.h"
 #include "PauseState.h"
+#include "StateParser.h"
 
 PlayState::PlayState() {}
 
@@ -47,64 +48,28 @@ void PlayState::handleEvents(SDL_Event e) {
 		go->handleEvents(e);
 	
 	//EXIT
-	if (e.type == SDL_KEYUP && e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+	if (e.type == SDL_KEYDOWN && e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
 		Game::getInstance()->getGameStateMachine()->pushState(new PauseState());
 	}
 }
 
 bool PlayState::onEnter() {
 	//OBJECTS
-	GameObject* player = new Player();
-	player->load(new LoaderParams(
-		"player",
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2),
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 2),
-		128 / 4,
-		48
-	));
-	((Player*)player)->setTexture("img_player", "assets/images/player_allmove.png", 4, 1);
-
-	GameObject* npc1 = new NPC();
-	npc1->load(new LoaderParams(
-		"princess",
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2) - (128 / 4),
-		((SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 3) * 2),
-		128 / 4,
-		196 / 4
-	));
-	((NPC*)npc1)->setTexture("img_princess", "assets/images/princess_allmove.png", 4, 4);
-
-	GameObject* npc2 = new NPC();
-	npc2->load(new LoaderParams(
-		"npc",
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w) - ((128 / 4) * 2),
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 3),
-		128 / 4,
-		196 / 4
-	));
-	((NPC*)npc2)->setTexture("img_npc", "assets/images/guy_allmove.png", 4, 4);
-
-	gameObjects.push_back(player);
-	gameObjects.push_back(npc1);
-	gameObjects.push_back(npc2);
-	//TEXTURES
-	TextureManager* tManager = TextureManager::getInstance();
-	tManager->load(((Player*)player)->getTexturePath(), ((Player*)player)->getTextureId(), Game::getInstance()->getRenderer());
-	tManager->load(((NPC*)npc1)->getTexturePath(), ((NPC*)npc1)->getTextureId(), Game::getInstance()->getRenderer());
-	tManager->load(((NPC*)npc2)->getTexturePath(), ((NPC*)npc2)->getTextureId(), Game::getInstance()->getRenderer());
+	StateParser::parseState("assets/xml/states_ini.xml", PlayState::getStateID(), &gameObjects, &textures);
 	return true;
 }
 
 bool PlayState::onExit() {
-	for each(GameObject * go in gameObjects) {
+	for each(GameObject * go in gameObjects)
 		go->clean();
-		TextureManager::getInstance()->remove(go->getTextureId());
-	}
+	for each(auto texture in textures)
+		TextureManager::getInstance()->remove(texture);
 	gameObjects.clear();
+	textures.clear();
 	return true;
 }
 
 std::string PlayState::getStateID() const {
-	return std::string();
+	return this->stateID;
 }
 

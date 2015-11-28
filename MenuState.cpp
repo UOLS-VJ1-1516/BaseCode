@@ -34,38 +34,8 @@ bool MenuState::onEnter() {
 	callbacks.push_back(exitFromMenu);
 	for each (GameObject * go in gameObjects) {
 		if (dynamic_cast<MenuButton*>(go) && ((MenuButton*)go)->getCallbackID() != 0)
-			((MenuButton*)go)->setCallback(callbacks[((MenuButton*)go)->getCallbackID()])
+			((MenuButton*)go)->setCallback(callbacks[((MenuButton*)go)->getCallbackID()]);
 	}
-
-
-	GameObject* playButton = new MenuButton();
-	playButton->load(new LoaderParams(
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2),
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 2 + 50),
-		130,
-		150/3,
-		menuToPlay
-	)); 
-	((MenuButton*)playButton)->setTexture("btn_play", "assets/buttons/btn_play_all.png", 1, 3);
-
-	GameObject* exitButton = new MenuButton();
-	exitButton->load(new LoaderParams(
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2),
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 2 + 150),
-		130,
-		150/3,
-		exitFromMenu
-	));
-	((MenuButton*)exitButton)->setTexture("btn_exit", "assets/buttons/btn_exit_all.png", 1, 3);
-
-
-	gameObjects.push_back(playButton);
-	gameObjects.push_back(exitButton);
-
-	//TEXTURES
-	TextureManager* tManager = TextureManager::getInstance();
-	tManager->load(((MenuButton*)playButton)->getTexturePath(), ((MenuButton*)playButton)->getTextureId(), Game::getInstance()->getRenderer());
-	tManager->load(((MenuButton*)exitButton)->getTexturePath(), ((MenuButton*)exitButton)->getTextureId(), Game::getInstance()->getRenderer());
 	return true;
 }
 

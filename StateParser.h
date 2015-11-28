@@ -1,5 +1,5 @@
 #pragma once
-#include "libs\tinyxml2\include\tinyxml2.h"
+#include "tinyxml2.h"
 #include <vector>
 class GameObject;
 

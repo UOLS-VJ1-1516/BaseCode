@@ -14,7 +14,7 @@ public:
 	virtual bool onExit();
 	virtual std::string getStateID() const;
 private:
-	const std::string stateID = "MainMenu";
+	const std::string stateID = "MAINMENU";
 	std::vector<GameObject*> gameObjects;
 	std::vector<std::string> textures;
 	std::vector<void(*)()> callbacks;

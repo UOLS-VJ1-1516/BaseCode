@@ -2,6 +2,7 @@
 #include "game.h"
 #include "MenuButton.h"
 #include "MenuState.h"
+#include "StateParser.h"
 
 PauseState::PauseState() {}
 
@@ -19,50 +20,31 @@ void PauseState::handleEvents(SDL_Event e) {
 		go->handleEvents(e);
 
 	//EXIT
-	if (e.type == SDL_KEYUP && e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
-		Game::getInstance()->setRunning(false);
+	if (e.type == SDL_KEYDOWN && e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+		resumeGame();
 	}
 }
 
 bool PauseState::onEnter() {
 	//OBJECTS
-	GameObject* resumeBtn = new MenuButton();
-	resumeBtn->load(new LoaderParams(
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2 - 160),
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 2 + 100),
-		130,
-		150 / 3,
-		resumeGame
-	));
-	((MenuButton*)resumeBtn)->setTexture("btn_resume", "assets/buttons/btn_resume_all.png", 1, 3);
-
-	GameObject* exitButton = new MenuButton();
-	exitButton->load(new LoaderParams(
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->w / 2 + 160),
-		(SDL_GetWindowSurface(Game::getInstance()->getWindow())->h / 2 + 100),
-		130,
-		150 / 3,
-		exitToMenu
-	));
-	((MenuButton*)exitButton)->setTexture("btn_backToMenu", "assets/buttons/btn_exit_all.png", 1, 3);
-
-
-	gameObjects.push_back(resumeBtn);
-	gameObjects.push_back(exitButton);
-
-	//TEXTURES
-	TextureManager* tManager = TextureManager::getInstance();
-	tManager->load(((MenuButton*)resumeBtn)->getTexturePath(), ((MenuButton*)resumeBtn)->getTextureId(), Game::getInstance()->getRenderer());
-	tManager->load(((MenuButton*)exitButton)->getTexturePath(), ((MenuButton*)exitButton)->getTextureId(), Game::getInstance()->getRenderer());
+	StateParser::parseState("assets/xml/states_ini.xml", PauseState::getStateID(), &gameObjects, &textures);
+	callbacks.push_back(NULL);
+	callbacks.push_back(resumeGame);
+	callbacks.push_back(exitToMenu);
+	for each (GameObject * go in gameObjects) {
+		if (dynamic_cast<MenuButton*>(go) && ((MenuButton*)go)->getCallbackID() != 0)
+			((MenuButton*)go)->setCallback(callbacks[((MenuButton*)go)->getCallbackID()]);
+	}
 	return true;
 }
 
 bool PauseState::onExit() {
-	for each(GameObject * go in gameObjects) {
+	for each(GameObject * go in gameObjects)
 		go->clean();
-		TextureManager::getInstance()->remove(go->getTextureId());
-	}
+	for each(auto texture in textures)
+		TextureManager::getInstance()->remove(texture);
 	gameObjects.clear();
+	textures.clear();
 	return true;
 }
 

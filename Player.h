@@ -18,6 +18,7 @@ public:
 	virtual void clean();
 	virtual void handleEvents(SDL_Event e);
 	void setTexture(std::string textureID, std::string texturePath, int nCols, int nRows);
+	void setTexture(std::string textureID, int nCols, int nRows);
 	std::string getTextureId();
 	std::string getTexturePath();
 

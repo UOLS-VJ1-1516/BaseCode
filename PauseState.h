@@ -16,8 +16,10 @@ public:
 	virtual std::string getStateID() const;
 
 private:
-	const std::string stateID = "Pause";
+	const std::string stateID = "PAUSE";
 	std::vector<GameObject*> gameObjects;
+	std::vector<std::string> textures;
+	std::vector<void(*)()> callbacks;
 	static void resumeGame();
 	static void exitToMenu();
 };

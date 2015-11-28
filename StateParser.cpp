@@ -2,9 +2,13 @@
 #include "GameObject.h"
 #include "LoaderParams.h"
 #include "MenuButton.h"
+#include "Player.h"
+#include "NPC.h"
 #include "TextureManager.h"
 #include "game.h"
 #include "GameObjectFactory.h"
+
+#include <iostream>
 
 using namespace std;
 
@@ -16,19 +20,19 @@ bool StateParser::parseState(string stateFile, std::string stateID, std::vector<
 		return false;
 	}
 	XMLElement * state = (xml.FirstChildElement("STATES"))->FirstChildElement(stateID.c_str());
-	StateParser::parseTextures(state->FirstChildElement("TEXTURES"), textureIDs);
 	StateParser::parseObjects(state->FirstChildElement("GAMEOBJECTS"), objects);
+	StateParser::parseTextures(state->FirstChildElement("TEXTURES"), textureIDs);
 	return true;
 }
 
 void StateParser::parseObjects(XMLElement * stateRoot, std::vector<GameObject*>* objects) {
-	for (auto object = stateRoot->FirstChildElement("TEXTURE");
+	for (auto object = stateRoot->FirstChildElement("GAMEOBJECT");
 		object != NULL;
-		object = object->NextSiblingElement("TEXTURE")) {
+		object = object->NextSiblingElement("GAMEOBJECT")) {
 		LoaderParams * params;
-		GameObject * go;
+		string type;
+		GameObject * go = GameObjectFactory::getInstance()->CreateGameObject(type = object->Attribute("type"));
 
-		string type = object->Attribute("type");
 		int x = atoi(object->Attribute("x"));
 		int y = atoi(object->Attribute("y"));
 		int width = atoi(object->Attribute("width"));
@@ -41,8 +45,13 @@ void StateParser::parseObjects(XMLElement * stateRoot, std::vector<GameObject*>*
 				height,
 				atoi(object->Attribute("callbackID"))
 			);
+			((MenuButton*)go)->setTexture(
+				((string)object->Attribute("textureID")),
+				atoi(object->Attribute("textureCols")),
+				atoi(object->Attribute("textureRows"))
+			);
 		}
-		else if (type == "Player" || type == "NPC") {
+		else if (type == "NPC") {
 			params = new LoaderParams(
 				object->Attribute("id"),
 				x,
@@ -50,8 +59,25 @@ void StateParser::parseObjects(XMLElement * stateRoot, std::vector<GameObject*>*
 				width,
 				height
 			);
-		}
-		else {
+			((NPC*)go)->setTexture(
+				((string)object->Attribute("textureID")),
+				atoi(object->Attribute("textureCols")),
+				atoi(object->Attribute("textureRows"))
+			);
+		} else if (type == "Player") {	
+			params = new LoaderParams(
+				object->Attribute("id"),
+				x,
+				y,
+				width,
+				height
+			);
+			((Player*)go)->setTexture(
+				((string)object->Attribute("textureID")),
+				atoi(object->Attribute("textureCols")),
+				atoi(object->Attribute("textureRows"))
+			);
+		} else {
 			params = new LoaderParams(
 				x,
 				y,
@@ -59,7 +85,7 @@ void StateParser::parseObjects(XMLElement * stateRoot, std::vector<GameObject*>*
 				height
 			);
 		}
-		go = GameObjectFactory::getInstance()->CreateGameObject(type);
+
 		go->load(params);
 		objects->push_back(go);
 	}

@@ -78,6 +78,12 @@ void NPC::setTexture(std::string textureID, std::string texturePath, int nCols, 
 	NPC::nRows = nRows;
 }
 
+void NPC::setTexture(std::string textureID, int nCols, int nRows) {
+	this->textureID = textureID;
+	this->nCols = nCols;
+	this->nRows = nRows;
+}
+
 std::string NPC::getTextureId() {
 	return textureID;
 }

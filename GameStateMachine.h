@@ -15,6 +15,7 @@ public:
 	void render();
 	void handleEvents(SDL_Event e);
 	void clean();
+	void cleanBrush();
 private:
 	std::vector< GameState* > gameStates;
 	std::vector< GameState* > statesToDelete;

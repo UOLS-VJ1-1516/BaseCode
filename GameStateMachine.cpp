@@ -7,20 +7,21 @@ GameStateMachine::GameStateMachine(GameState * State) {
 }
 
 void GameStateMachine::pushState(GameState * State) {
+	cleanBrush();
 	State->onEnter();
 	gameStates.push_back(State);
 }
 
 void GameStateMachine::changeState(GameState * State) {
-	for (int i = 0; i < gameStates.size(); i++) {
+	for (int i = 0; i < gameStates.size(); i++)
 		statesToDelete.push_back(gameStates[i]);
-	}
 	gameStates.clear();
 	State->onEnter();
 	gameStates.push_back(State);
 }
 
 void GameStateMachine::popState() {
+	cleanBrush();
 	statesToDelete.push_back(gameStates.back());
 	gameStates.pop_back();
 }
@@ -28,12 +29,6 @@ void GameStateMachine::popState() {
 void GameStateMachine::update() {
 	if (!gameStates.empty())
 		gameStates.back()->update();
-	if (!statesToDelete.empty()) {
-		for (int i = 0; i < statesToDelete.size(); i++) {
-			statesToDelete[i]->onExit();
-		}
-		statesToDelete.clear();
-	}
 }
 
 void GameStateMachine::render() {
@@ -48,4 +43,11 @@ void GameStateMachine::handleEvents(SDL_Event e) {
 void GameStateMachine::clean() {
 	for each (GameState * gs in gameStates)
 		gs->onExit();
+	gameStates.clear();
+}
+
+void GameStateMachine::cleanBrush() {
+	for each (GameState * gs in statesToDelete)
+		gs->onExit();
+	statesToDelete.clear();
 }

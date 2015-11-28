@@ -13,21 +13,21 @@ GameObject * MenuButton::create() {
 }
 
 void MenuButton::load(LoaderParams * params) {
-	MenuButton::position.setX((float)params->getX());
-	MenuButton::position.setY((float)params->getY());
-	MenuButton::width = params->getWidth();
-	MenuButton::height = params->getHeight();
-	//MenuButton::callback = params->f_callback; //ya no va???
-	//MenuButton::callbackID = params->getCallbackID();//setcallbackid
+	this->position.setX((float)params->getX());
+	this->position.setY((float)params->getY());
+	this->width = params->getWidth();
+	this->height = params->getHeight();
+	//this->callback = params->f_callback; //ya no va???
+	this->callbackID = params->getCallbackID(); //setcallbackid
 }
 
 void MenuButton::draw() {
 	TextureManager::getInstance()->drawFrame(
-		MenuButton::textureID,
-		MenuButton::position.getX(),
-		MenuButton::position.getY(),
-		MenuButton::width,
-		MenuButton::height,
+		this->textureID,
+		this->position.getX(),
+		this->position.getY(),
+		this->width,
+		this->height,
 		spriteRow,
 		spriteCol,
 		Game::getInstance()->getRenderer()
@@ -61,10 +61,16 @@ void MenuButton::handleEvents(SDL_Event e) {
 }
 
 void MenuButton::setTexture(std::string textureID, std::string texturePath, int nCols, int nRows) {
-	MenuButton::textureID = textureID;
-	MenuButton::texturePath = texturePath;
-	MenuButton::nCols = nCols;
-	MenuButton::nRows = nRows;
+	this->textureID = textureID;
+	this->texturePath = texturePath;
+	this->nCols = nCols;
+	this->nRows = nRows;
+}
+
+void MenuButton::setTexture(std::string textureID, int nCols, int nRows) {
+	this->textureID = textureID;
+	this->nCols = nCols;
+	this->nRows = nRows;
 }
 
 std::string MenuButton::getTextureId() {
@@ -73,4 +79,8 @@ std::string MenuButton::getTextureId() {
 
 std::string MenuButton::getTexturePath() {
 	return texturePath;
+}
+
+void MenuButton::setCallback(void(*callback)()) {
+	this->callback = callback;
 }

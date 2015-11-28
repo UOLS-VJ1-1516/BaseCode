@@ -1,0 +1,35 @@
+<STATES>
+	<MAINMENU>
+		<GAMEOBJECTS>
+			<GAMEOBJECT type="Button" x="400" y="350" width="130" height="50" textureID="btn_play" textureCols="1" textureRows="3" callbackID="1" />
+			<GAMEOBJECT type="Button" x="400" y="450" width="130" height="50" textureID="btn_exit" textureCols="1" textureRows="3" callbackID="2" />
+		</GAMEOBJECTS>
+		<TEXTURES>
+			<TEXTURE path="assets/buttons/btn_play_all.png" id="btn_play"/>
+			<TEXTURE path="assets/buttons/btn_exit_all.png" id="btn_exit"/>
+		</TEXTURES>
+	</MAINMENU>
+	<PAUSE>
+		<GAMEOBJECTS>
+			<GAMEOBJECT type="Button" x="240" y="400" width="130" height="50" textureID="btn_resume" textureCols="1" textureRows="3" callbackID="1" />
+			<GAMEOBJECT type="Button" x="560" y="400" width="130" height="50" textureID="btn_backToMenu" textureCols="1" textureRows="3" callbackID="2" />
+		</GAMEOBJECTS>
+		<TEXTURES>
+			<TEXTURE path="assets/buttons/btn_resume_all.png" id="btn_resume"/>
+			<TEXTURE path="assets/buttons/btn_exit_all.png" id="btn_backToMenu"/>
+		</TEXTURES>
+	</PAUSE>
+	<LEVEL1>
+		<GAMEOBJECTS>
+			<GAMEOBJECT type="Player" id="player" x="400" y="300" width="32" height="48" textureID="img_player" textureCols="4" textureRows="4" />
+			<GAMEOBJECT type="NPC" id="princess" x="368" y="400" width="32" height="49" textureID="img_princess" textureCols="4" textureRows="4" />
+			<GAMEOBJECT type="NPC" id="npc" x="736" y="200" width="32" height="49" textureID="img_npc" textureCols="4" textureRows="4" />
+		</GAMEOBJECTS>
+		<TEXTURES>
+			<TEXTURE path="assets/images/player_allmove.png" id="img_player"/>
+			<TEXTURE path="assets/images/princess_allmove.png" id="img_princess"/>
+			<TEXTURE path="assets/images/guy_allmove.png" id="img_npc"/>
+		</TEXTURES>
+	</LEVEL1>
+</STATES>
+	
