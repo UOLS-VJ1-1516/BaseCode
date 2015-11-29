@@ -3,9 +3,14 @@
 #include "GameObject.h"
 #include "MenuButton.h"
 
+
 //Clase del estado menu donde se puede empezar a jugar o salir del juego
 class MenuState : public GameState
 {
+	protected:
+		typedef void(*Callback)();
+		virtual void setCallbacks(const std::vector<Callback>& callbacks);
+		std::vector<Callback> m_callbacks;
 	public:
 		virtual void update();
 		virtual void render();

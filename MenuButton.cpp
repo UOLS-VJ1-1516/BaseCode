@@ -1,16 +1,18 @@
 #include "MenuButton.h"
 
 //Constructor
-MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callback(callback)
+MenuButton::MenuButton()
 {
-	GameObject::load(pParams);
-	m_bReleased = false;
-	m_currentFrame = MOUSE_OUT;
+	
 }
 
 //Función load
 void MenuButton::load(const LoaderParams* pParams)
 {
+	GameObject::load(pParams);
+	m_callbackID = pParams->getCallbackID();
+	m_bReleased = false;
+	m_currentFrame = MOUSE_OUT;
 }
 
 //Función para printar los game objects boton
@@ -28,7 +30,7 @@ void MenuButton::update()
 		&& pMousePos.getY() < (m_position.getY() + m_height)
 		&& pMousePos.getY() > m_position.getY())
 	{
-		if (InputHandler::Instance()->getMouseButtonState(LEFT)	&& m_bReleased)
+		if (InputHandler::Instance()->getMouseButtonState(LEFT) && m_bReleased)
 		{
 			m_currentFrame = CLICKED;
 			m_callback();

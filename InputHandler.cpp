@@ -39,17 +39,17 @@ void InputHandler::update() {
 		case SDL_MOUSEBUTTONDOWN:
 			switch (event.button.button)
 			{
-				case SDL_BUTTON_LEFT:
-					m_mouseButtonStates[LEFT] = true;
-					break;
-				case SDL_BUTTON_MIDDLE:
-					m_mouseButtonStates[MIDDLE] = true;
-					break;
-				case SDL_BUTTON_RIGHT:
-					m_mouseButtonStates[RIGHT] = true;
-					break;
+			case SDL_BUTTON_LEFT:
+				m_mouseButtonStates[LEFT] = true;
+				break;
+			case SDL_BUTTON_MIDDLE:
+				m_mouseButtonStates[MIDDLE] = true;
+				break;
+			case SDL_BUTTON_RIGHT:
+				m_mouseButtonStates[RIGHT] = true;
+				break;
 			}
-		break;
+			break;
 		case SDL_MOUSEBUTTONUP:
 			switch (event.button.button)
 			{
@@ -63,16 +63,13 @@ void InputHandler::update() {
 				m_mouseButtonStates[RIGHT] = false;
 				break;
 			}
-		break;
+			break;
 		case SDL_MOUSEMOTION:
 			m_mousePosition.setX(event.motion.x);
 			m_mousePosition.setY(event.motion.y);
-		break;
+			break;
 		default:
 			break;
 		}
 	}
 };
-
-//Función para limpiar las entradas del usuario
-void InputHandler::clean() {};

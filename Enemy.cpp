@@ -1,4 +1,3 @@
-//Class Enemy para crear un GameObject Enemy
 #include "Enemy.h"
 
 //Constructor y destructor

@@ -1,9 +1,11 @@
 #include "game.h"
 #include "MenuState.h"
 #include "PlayState.h"
+#include "GameObjectFactory.h"
 
 //Instancias
 Game* Game::g_pInstance = 0;
+GameObjectFactory* GameObjectFactory::s_pInstance = 0;
 
 // Constructor donde se inicializan variables y los GameObjects
 Game::Game() {
@@ -30,6 +32,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		screenWidth = width;
 		screenHeigth = height;
 
+		TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
+		TheGameObjectFactory->Register("Player", &Player::Create);
+		TheGameObjectFactory->Register("Enemy", &Enemy::Create);
 		m_pGameStateMachine->pushState(new MenuState());
 
 		return 0;

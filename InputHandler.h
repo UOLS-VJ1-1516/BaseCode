@@ -13,25 +13,25 @@ enum mouse_buttons
 
 class InputHandler
 {
-	public:
-		static InputHandler* Instance()
+public:
+	static InputHandler* Instance()
+	{
+		if (i_pInstance == 0)
 		{
-			if (i_pInstance == 0)
-			{
-				i_pInstance = new InputHandler();
-			}
-			return i_pInstance;
+			i_pInstance = new InputHandler();
 		}
-		~InputHandler() {};
-		void update();
-		void clean();
-		bool isKeyDown(SDL_Scancode key);
-		bool getMouseButtonState(int buttonNumber) { return m_mouseButtonStates[buttonNumber];};
-		Vector2D getMousePosition() { return m_mousePosition; };
-	private:
-		InputHandler();
-		static InputHandler* i_pInstance;
-		const Uint8* m_keystates;
-		std::vector<bool> m_mouseButtonStates;
-		Vector2D m_mousePosition;
+		return i_pInstance;
+	}
+	~InputHandler() {};
+	void update();
+	void clean();
+	bool isKeyDown(SDL_Scancode key);
+	bool getMouseButtonState(int buttonNumber) { return m_mouseButtonStates[buttonNumber]; };
+	Vector2D getMousePosition() { return m_mousePosition; };
+private:
+	InputHandler();
+	static InputHandler* i_pInstance;
+	const Uint8* m_keystates;
+	std::vector<bool> m_mouseButtonStates;
+	Vector2D m_mousePosition;
 };

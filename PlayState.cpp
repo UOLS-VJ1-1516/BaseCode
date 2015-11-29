@@ -1,5 +1,7 @@
 #include "PlayState.h"
 #include "PauseState.h"
+#include "StateParser.h"
+#include <iostream>
 
 //ID del estado
 const std::string PlayState::s_playID = "PLAY";
@@ -7,28 +9,8 @@ const std::string PlayState::s_playID = "PLAY";
 //Función para cargar al entrar en el estado de Play donde se cargan y se crean los diferentes gameobjects
 bool PlayState::onEnter()
 {
-	if (!TextureManager::Instance()->load("assets/sonic.bmp", "player", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("assets/enemy.bmp", "enemy", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("assets/enemy.bmp", "enemy1", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-
-	player = new Player();
-	player->load(new LoaderParams(500, 200, 103, 120, "player", "assets/sonic.bmp", 10, 0, SDL_FLIP_NONE));
-	enemy1 = new Enemy();
-	enemy1->load(new LoaderParams(800, 400, 110, 100, "enemy", "assets/enemy.bmp", 4, 0, SDL_FLIP_NONE));
-	enemy2 = new Enemy();
-	enemy2->load(new LoaderParams(100, 100, 110, 100, "enemy1", "assets/enemy.bmp", 4, 0, SDL_FLIP_NONE));
-	m_gameObjects.push_back(player);
-	m_gameObjects.push_back(enemy1);
-	m_gameObjects.push_back(enemy2);
+	StateParser stateParser;
+	stateParser.parseState("tiny.xml", s_playID, &m_gameObjects, &m_textureIDList);
 	return true;
 }
 
@@ -62,7 +44,12 @@ bool PlayState::onExit()
 	}
 
 	m_gameObjects.clear();
-	TextureManager::Instance()->clearFromTextureMap("playbutton");
-	TextureManager::Instance()->clearFromTextureMap("exitbutton");
+
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TheTextureManager->clearFromTextureMap(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
+
 	return true;
 }

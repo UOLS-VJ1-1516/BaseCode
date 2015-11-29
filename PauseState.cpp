@@ -1,5 +1,6 @@
 #include "PauseState.h"
 #include "MenuState.h"
+#include "StateParser.h"
 
 //ID del estado pause
 const std::string PauseState::s_pauseID = "PAUSE";
@@ -37,18 +38,12 @@ void PauseState::render()
 //Función para cuando se entra al estado de pause donde se carga y se crean los game objects de este estado
 bool PauseState::onEnter()
 {
-	if (!TextureManager::Instance()->load("assets/resumeButton.bmp","resumebutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("assets/mainMenuButton.bmp","mainbutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	GameObject* button1 = new MenuButton(new LoaderParams(600, 250,	300, 100, "mainbutton", "assets/mainMenuButton.bmp",0,0, SDL_FLIP_NONE), s_pauseToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(600, 450,	300, 100, "resumebutton", "assets/resumeButton.bmp", 0, 0, SDL_FLIP_NONE), s_resumePlay);
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
+	StateParser stateParser;
+	stateParser.parseState("tiny.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_pauseToMain);
+	m_callbacks.push_back(s_resumePlay);
+	setCallbacks(m_callbacks);
 	return true;
 }
 
@@ -60,7 +55,25 @@ bool PauseState::onExit()
 		m_gameObjects[i]->clean();
 	}
 	m_gameObjects.clear();
-	TextureManager::Instance()->clearFromTextureMap("resumebutton");
-	TextureManager::Instance()->clearFromTextureMap("mainbutton");
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TheTextureManager->clearFromTextureMap(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
+
 	return true;
+}
+
+//Función que crea los callbacks de ese estado
+void PauseState::setCallbacks(const std::vector<Callback>&callbacks)
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+			if (dynamic_cast<MenuButton*>(m_gameObjects[i]))
+			{
+				MenuButton* pButton =
+					dynamic_cast<MenuButton*>(m_gameObjects[i]);
+				pButton->setCallback(callbacks[pButton->getCallbackID()]);
+			}
+	}
 }

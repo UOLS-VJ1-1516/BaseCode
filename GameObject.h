@@ -24,7 +24,8 @@ class GameObject
 		int m_currentRow;
 		int m_spriteNum;
 		int m_rowNum;
-		SDL_RendererFlip m_flip;
+		int m_flip;
+		int m_callbackID;
 		Vector2D m_position;
 		Vector2D m_velocity;
 		Vector2D m_maxVelocity;
