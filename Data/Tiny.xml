@@ -22,8 +22,8 @@
       <texture filename="mainmenu.bmp" ID="mainmenu" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="MenuButton" x="325" y="125" width="200" height="80" spriteNum="0" textureID="resume" callbackID="1" />
-      <gameobject type="MenuButton" x="325" y="325" width="200" height="80" spriteNum="0" textureID="mainmenu" callbackID="2" />
+      <gameobject type="MenuButton" x="200" y="125" width="200" height="80" spriteNum="0" textureID="resume" callbackID="1" />
+      <gameobject type="MenuButton" x="200" y="325" width="200" height="80" spriteNum="0" textureID="mainmenu" callbackID="2" />
     </GAMEOBJECTS>
   </PAUSE>
 </STATES>

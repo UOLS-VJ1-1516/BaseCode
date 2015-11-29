@@ -20,8 +20,8 @@ protected:
 	int m_width;
 	int m_spriteNum;
 	int m_height;
-	int m_x;
-	int m_y;
+	//int m_x;
+	//int m_y;
 	Vector2D m_position;
 	Vector2D m_velocity;
 	Vector2D m_acceleration;

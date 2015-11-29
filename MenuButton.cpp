@@ -26,7 +26,7 @@ void MenuButton::load(const LoaderParams * pParams) {
 	m_textureID = pParams->getTextureID();
 	m_spriteNum = pParams->getNum();
 	m_currentRow = 0;
-	
+	m_currentFrame = 0;
 };
 
 void MenuButton::draw() {
@@ -34,7 +34,7 @@ void MenuButton::draw() {
 	TextureManager::Instance()->drawFrame(m_textureID,
 		m_position.getX(), m_position.getY(),
 		m_width, m_height,
-		0, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
+		m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
 		
 };
 
@@ -43,10 +43,10 @@ void MenuButton::update() {
 
 	pMPosition = InputHandler::Instance()->getMousePosition();
 	printf("x= %d | y= %d\n", (int)pMPosition->getX(), (int)pMPosition->getY());
-	if ((int)pMPosition->getX() < (pParams->getX() + pParams->getWidth())
-		&& (int)pMPosition->getX() > pParams->getX()
-		&& (int)pMPosition->getY() < (pParams->getY() + pParams->getHeight())
-		&& (int)pMPosition->getY() > pParams->getY()){
+	if ((int)pMPosition->getX() < (m_position.getX() + m_width)
+		&& (int)pMPosition->getX() > m_position.getX()
+		&& (int)pMPosition->getY() < (m_position.getY() + m_height)
+		&& (int)pMPosition->getY() > m_position.getY()){
 
 		if (InputHandler::Instance()->getMouseButtonState(0)) {
 			m_currentFrame = CLIKED;

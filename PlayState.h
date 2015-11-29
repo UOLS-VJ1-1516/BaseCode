@@ -31,7 +31,7 @@ private:
 	
 protected:
 	typedef void(*Callback)();
-	void setCallbacks(const std::vector<Callback>&callbacks);
+	//void setCallbacks(const std::vector<Callback>&callbacks);
 	std::vector<Callback>m_callbacksID;
 	virtual void setCallbacks();
 
