@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/incude;libs/tinyxml/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>libs/SDL/lib;libs/SDL_image/lib;libs/tinyxml/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,7 +81,134 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="MenuOnPause.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="MenuStateOnPause.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player2.cpp" />
+    <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="libs\SDL\include\begin_code.h" />
+    <ClInclude Include="libs\SDL\include\close_code.h" />
+    <ClInclude Include="libs\SDL\include\SDL.h" />
+    <ClInclude Include="libs\SDL\include\SDL_assert.h" />
+    <ClInclude Include="libs\SDL\include\SDL_atomic.h" />
+    <ClInclude Include="libs\SDL\include\SDL_audio.h" />
+    <ClInclude Include="libs\SDL\include\SDL_bits.h" />
+    <ClInclude Include="libs\SDL\include\SDL_blendmode.h" />
+    <ClInclude Include="libs\SDL\include\SDL_clipboard.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_android.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_iphoneos.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_macosx.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_minimal.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_pandora.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_psp.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_windows.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_winrt.h" />
+    <ClInclude Include="libs\SDL\include\SDL_config_wiz.h" />
+    <ClInclude Include="libs\SDL\include\SDL_copying.h" />
+    <ClInclude Include="libs\SDL\include\SDL_cpuinfo.h" />
+    <ClInclude Include="libs\SDL\include\SDL_egl.h" />
+    <ClInclude Include="libs\SDL\include\SDL_endian.h" />
+    <ClInclude Include="libs\SDL\include\SDL_error.h" />
+    <ClInclude Include="libs\SDL\include\SDL_events.h" />
+    <ClInclude Include="libs\SDL\include\SDL_filesystem.h" />
+    <ClInclude Include="libs\SDL\include\SDL_gamecontroller.h" />
+    <ClInclude Include="libs\SDL\include\SDL_gesture.h" />
+    <ClInclude Include="libs\SDL\include\SDL_haptic.h" />
+    <ClInclude Include="libs\SDL\include\SDL_hints.h" />
+    <ClInclude Include="libs\SDL\include\SDL_joystick.h" />
+    <ClInclude Include="libs\SDL\include\SDL_keyboard.h" />
+    <ClInclude Include="libs\SDL\include\SDL_keycode.h" />
+    <ClInclude Include="libs\SDL\include\SDL_loadso.h" />
+    <ClInclude Include="libs\SDL\include\SDL_log.h" />
+    <ClInclude Include="libs\SDL\include\SDL_main.h" />
+    <ClInclude Include="libs\SDL\include\SDL_messagebox.h" />
+    <ClInclude Include="libs\SDL\include\SDL_mouse.h" />
+    <ClInclude Include="libs\SDL\include\SDL_mutex.h" />
+    <ClInclude Include="libs\SDL\include\SDL_name.h" />
+    <ClInclude Include="libs\SDL\include\SDL_opengl.h" />
+    <ClInclude Include="libs\SDL\include\SDL_opengles.h" />
+    <ClInclude Include="libs\SDL\include\SDL_opengles2.h" />
+    <ClInclude Include="libs\SDL\include\SDL_pixels.h" />
+    <ClInclude Include="libs\SDL\include\SDL_platform.h" />
+    <ClInclude Include="libs\SDL\include\SDL_power.h" />
+    <ClInclude Include="libs\SDL\include\SDL_quit.h" />
+    <ClInclude Include="libs\SDL\include\SDL_rect.h" />
+    <ClInclude Include="libs\SDL\include\SDL_render.h" />
+    <ClInclude Include="libs\SDL\include\SDL_revision.h" />
+    <ClInclude Include="libs\SDL\include\SDL_rwops.h" />
+    <ClInclude Include="libs\SDL\include\SDL_scancode.h" />
+    <ClInclude Include="libs\SDL\include\SDL_shape.h" />
+    <ClInclude Include="libs\SDL\include\SDL_stdinc.h" />
+    <ClInclude Include="libs\SDL\include\SDL_surface.h" />
+    <ClInclude Include="libs\SDL\include\SDL_system.h" />
+    <ClInclude Include="libs\SDL\include\SDL_syswm.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_assert.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_common.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_compare.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_crc32.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_font.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_fuzzer.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_harness.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_images.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_log.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_md5.h" />
+    <ClInclude Include="libs\SDL\include\SDL_test_random.h" />
+    <ClInclude Include="libs\SDL\include\SDL_thread.h" />
+    <ClInclude Include="libs\SDL\include\SDL_timer.h" />
+    <ClInclude Include="libs\SDL\include\SDL_touch.h" />
+    <ClInclude Include="libs\SDL\include\SDL_types.h" />
+    <ClInclude Include="libs\SDL\include\SDL_version.h" />
+    <ClInclude Include="libs\SDL\include\SDL_video.h" />
+    <ClInclude Include="libs\SDL_image\include\SDL_image.h" />
+    <ClInclude Include="LoaderParams.h" />
+    <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="MenuOnPause.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MenuStateOnPause.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Player2.h" />
+    <ClInclude Include="PlayState.h" />
+    <ClInclude Include="StateParser.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\botones\boton_exit.bmp" />
+    <Image Include="assets\botones\boton_resume.bmp" />
+    <Image Include="assets\botones\main_menu.bmp" />
+    <Image Include="assets\botones\playbtn.bmp" />
+    <Image Include="boton_exit.bmp" />
+    <Image Include="boton_resume.bmp" />
+    <Image Include="dragon.bmp" />
+    <Image Include="player1.bmp" />
+    <Image Include="vulture_sprites.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="assets\game.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
