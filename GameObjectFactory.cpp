@@ -7,10 +7,10 @@
 GameObjectFactory* GameObjectFactory::s_pInstance = 0;
 
 GameObjectFactory::GameObjectFactory(void) {
-	Register("MenuButton", &MenuButton::Create);
+	/*Register("MenuButton", &MenuButton::Create);
 	Register("Player", &Player::Create);
 	Register("Zep", &Zep::Create);
-	Register("Gordo", &Gordo::Create);
+	Register("Gordo", &Gordo::Create);*/
 	
 }
 

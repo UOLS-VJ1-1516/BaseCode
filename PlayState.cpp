@@ -4,9 +4,9 @@
 #include "StateParser.h"
 
 void PlayState::update() {
-	player->update();
+	/*player->update();
 	zep->update();
-	gordo->update();
+	gordo->update();*/
 
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->update();
@@ -31,7 +31,7 @@ bool PlayState::onEnter() {
 	m_callbacks.push_back(0);
 	setCallbacks();
 
-	player = new Player();
+	/*player = new Player();
 	zep = new Zep();
 	gordo = new Gordo();
 
@@ -50,7 +50,7 @@ bool PlayState::onEnter() {
 	m_gObjects.push_back(zep);
 
 	gordo->load(load3);
-	m_gObjects.push_back(gordo);
+	m_gObjects.push_back(gordo);*/
 
 	
 

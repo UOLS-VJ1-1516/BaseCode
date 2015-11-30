@@ -29,18 +29,6 @@
       <Filter>GameStates</Filter>
     </ClCompile>
     <ClCompile Include="GameStateMachine.cpp" />
-    <ClCompile Include="tinystr.cpp">
-      <Filter>Tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="tinyxml.cpp">
-      <Filter>Tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="tinyxmlerror.cpp">
-      <Filter>Tinyxml</Filter>
-    </ClCompile>
-    <ClCompile Include="tinyxmlparser.cpp">
-      <Filter>Tinyxml</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="StateParser.cpp" />
   </ItemGroup>

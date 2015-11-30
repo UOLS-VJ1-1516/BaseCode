@@ -39,7 +39,7 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	int currentRow, int currentFrame,
 	SDL_Renderer* pRender, SDL_RendererFlip flip) {
 
-	
+
 	TextureManager::inicio.x=currentFrame*width;
 	TextureManager::inicio.y = height*currentRow;
 	TextureManager::inicio.w = width;
