@@ -1,26 +1,51 @@
 #pragma once
-#include "string"
 
 class LoaderParams
 {
-	public:
-		LoaderParams(int x, int y, int width, int height, const char* textureID, char* fileName, int spriteNum, int rowNum) 
-			: m_x(x), m_y(y), m_width(width), m_height(height), m_textureID(textureID), m_fileName(fileName),m_spriteNum(spriteNum), m_rowNum(rowNum){}
-		int m_x;
-		int m_y;
-		int m_width;
-		int m_height;
-		const char* m_textureID;
-		char* m_fileName;
-		int m_spriteNum;
-		int m_rowNum;
-		int getX() const { return m_x; }
-		int getY() const { return m_y; }
-		int getWidth() const { return m_width; }
-		int getHeight() const { return m_height; }
-		const char* getTextureID() const { return m_textureID; }
-		char* getFileName() const { return m_fileName; }
-		int getSpriteNum() const { return m_spriteNum; }
-		int getRowNum() const { return m_rowNum; }
-		
+public:
+	LoaderParams(int x, int y, int width, int height, const char* textureID, int numSprites, float speedX, float speedY, float maxSpeed, float friction) {
+		m_x = x;
+		m_y = y;
+		m_width = width;
+		m_height = height;
+		m_textureID = textureID;
+		m_num = numSprites;
+		m_speedX = speedX;
+		m_speedY = speedY;
+		m_maxSpeed = maxSpeed;
+		m_friction = friction;
+	}
+
+	LoaderParams(int x, int y, int width, int height, const char* textureID, int numSprites) {
+		m_x = x;
+		m_y = y;
+		m_width = width;
+		m_height = height;
+		m_textureID = textureID;
+		m_num = numSprites;
+	}
+
+
+	int getX() const { return m_x; }
+	int getY() const { return m_y; }
+	int getWidth() const { return m_width; }
+	int getHeight() const { return m_height; }
+	const char* getTextureID() const { return m_textureID; }
+	int getNum() const { return m_num; }
+	float getSpeedX() const { return m_speedX; }
+	float getSpeedY() const { return m_speedY; }
+	float getMaxSpeed() const { return m_maxSpeed; }
+	float getFrictionCoeficient() const { return m_friction; }
+
+private:
+	int m_x;
+	int m_y;
+	int m_width;
+	int m_height;
+	int m_num;
+	float m_speedX;
+	float m_speedY;
+	float m_maxSpeed;
+	float m_friction;
+	const char* m_textureID;
 };

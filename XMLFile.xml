@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<STATES>
+    <MENU>
+        <TEXTURES>
+          <texture filename="play.bmp" ID="play_button"/>
+          <texture filename="salir.bmp" ID="exit_button"/>
+        </TEXTURES>
+        <OBJECTS>
+          <object type="MenuButton" x="200" y="100" width="400" height="100" textureID="play_button" numFrames="0" callbackID="1"/>
+          <object type="MenuButton" x="200" y="300" width="400" height="100" textureID="salir_button" numFrames="0" callbackID="2"/>
+        </OBJECTS>
+    </MENU>
+</STATES>

@@ -1,93 +1,109 @@
-#include "game.h"
-#include "TextureManager.h"
+#include "Game.h"
+#include "LoaderParams.h"
+#include "GameObjectFactory.h"
 
-Game* Game::g_pInstance = 0;
 
-Game::Game(){
-	goku = new Player();
-	p1 = new LoaderParams(400, 150, 103, 120, "Goku", "dgz.bmp", 4, 0);
-	freezer = new Enemy();
-	p2 = new LoaderParams(400, 300, 110, 100, "Freezer", "enemy.bmp", 4, 0);
-	shenron = new Enemy();
-	p3 = new LoaderParams(400, 400, 100, 110, "dragon", "dragon.bmp", 4, 0);
-};
+Game* Game::s_pInstance = 0;
 
-Game::~Game(){};
+Game::Game() {
+	m_screenWidth = 800;
+	m_screenHeight = 800;
+	g_pWindow = 0;
+	Tancar= true;
+	g_pRenderer = 0;
+	PlayStates = new PlayState();
+	MenuStates = new MenuState();
+	GameMachine = new GameStateMachine();
+	TheTextureManager = TextureManager::Instance();
+	TheInputHandler = InputHandler::Instance();
+}
 
-bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
-{
-	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
-	{
-		g_pWindow = SDL_CreateWindow(title,	xpos, ypos,	width, height, fullscreen);
+Game::~Game() {
+}
 
-		if (g_pWindow != 0)
-		{
-			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
+	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
+
+		if (fullscreen) {
+			g_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_FULLSCREEN_DESKTOP);
+			SDL_GetWindowSize(g_pWindow, &width, &height);
+		}
+		else {
+			g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		}
 
-		goku->load(p1);
-		m_gameObjects.push_back(goku);
-		freezer->load(p2);
-		m_gameObjects.push_back(freezer);
-		shenron->load(p3);
-		m_gameObjects.push_back(shenron);
+		m_screenWidth = width;
+		m_screenHeight = height;
+		SDL_GetWindowSize(g_pWindow, &width, &height);
+		
+		if (g_pWindow != 0) {
+			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 
-		return 0;
+			TheGameObjectFactory->Register("Player", &Player::Create);
+			TheGameObjectFactory->Register("Enemy", &Enemy::Create);
+			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
+
+			GameMachine->pushState(MenuStates);
+		}
+
+		
+
+		return true;
 	}
-	else
-	{
-		return 1;
+	else {
+		return false;
 	}
-};
+}
 
-void Game::render(int r, int g, int b)
-{
-	SDL_SetRenderDrawColor(g_pRenderer, r, g, b, 255);
-
+void Game::render() {
+	SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(g_pRenderer);
-
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
-
+	GameMachine->render();
 	SDL_RenderPresent(g_pRenderer);
+}
 
-	SDL_Delay(10);
-};
+void Game::update() {
+	GameMachine->update();
+}
 
-void Game::update()
-{
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
-};
+void Game::handleEvents() {
+}
 
-void Game::handleEvents(SDL_Event event)
-{
-	if (event.type == SDL_KEYDOWN)
-		if (event.key.keysym.sym == SDLK_ESCAPE) 
-			running = false;
-};
-
-void Game::clean()
-{
+void Game::clean() {
+	Tancar = false;
+	SDL_RenderClear(g_pRenderer);
 	SDL_DestroyWindow(g_pWindow);
 	SDL_DestroyRenderer(g_pRenderer);
 	SDL_Quit();
-};
+}
 
-bool Game::isRunning()
-{
-	return running;
-};
+bool Game::isRunning() {
+	return Tancar;
+}
 
-SDL_Renderer* Game::getRenderer()
-{
+SDL_Renderer* Game::getRender() {
 	return g_pRenderer;
 };
 
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
 };
+
+int Game::getScreenWidth()
+{
+	return m_screenWidth;
+}
+
+int Game::getScreenHeight()
+{
+	return m_screenHeight;
+}
+
+void Game::setflag(bool b){
+	Tancar = b;
+};
+
+GameStateMachine* Game::getGameStateMachine() {
+	return GameMachine;
+};
+

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuButton.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticObjects.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Juego</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="StateParser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enemy.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuButton.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticObjects.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderParams.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="StateParser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Juego">
+      <UniqueIdentifier>{c86db09a-ffbe-4261-bd52-7f3d998db61f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externo">
+      <UniqueIdentifier>{aec4914f-e153-4e1e-b59a-5719dad04fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Motor">
+      <UniqueIdentifier>{ac480552-60a2-4752-873f-689ee4ea66ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

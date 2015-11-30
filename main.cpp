@@ -1,20 +1,25 @@
-#include "game.h"
+#include "Game.h"
+
+const long FIXED_TIME = 20;
+const int FIXED_WIDTH = 1024;
+const int FIXED_HEIGHT = 768;
 
 int main(int argc, char* args[])
 {
-	SDL_Event event;
-	int r = 0, g = 0, b = 0;
+	if (Game::Instance()->init("Dragon ball", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, FIXED_WIDTH, FIXED_HEIGHT, false)) {
+		while (Game::Instance()->isRunning()) {
+			long frameStart = SDL_GetTicks();
+			Game::Instance()->render();
+			Game::Instance()->update();
+			long frameEnd = SDL_GetTicks();
+			long frameTime = frameEnd - frameStart;
+			if (frameTime < FIXED_TIME)
+			{
+				SDL_Delay((int)(FIXED_TIME - frameTime));
+			}
 
-	Game::Instance()->init("Juego classe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
-
-	while(Game::Instance()->isRunning())
-	{
-		while (SDL_PollEvent(&event)) {
-			Game::Instance()->handleEvents(event);
 		}
-		Game::Instance()->update();
-		Game::Instance()->render(0, 0, 0);
+		Game::Instance()->clean();
 	}
-	Game::Instance()->clean();
 	return 0;
 }
