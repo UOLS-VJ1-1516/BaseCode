@@ -136,9 +136,7 @@
     <Library Include="libs\tinyxml\lib\tinyxmlSTL.lib" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="assets\game.xml">
-      <SubType>Designer</SubType>
-    </Xml>
+    <Xml Include="assets\game.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

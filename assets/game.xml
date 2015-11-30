@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<STATES>
+	<MENU>
+		<TEXTURES>
+			<texture filename="assets/buttons/playbtn.bmp" ID="play"/>
+			<texture filename="assets/buttons/boton_exit.bmp" ID="exit"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton"  width="135" height="34" textureID="play" currentRow="0" numFrames="1" flip="0" callbackID="1"
+					px="150" py="250" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+			<object type="MenuButton"  width="135" height="34" textureID="exit" currentRow="0" numFrames="1" flip="0" callbackID="2" 
+					px="350" py="250" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+		</OBJECTS>
+	</MENU>
+	<RESUME>
+		<TEXTURES>
+			<texture filename="assets/buttons/main_menu.bmp" ID="mainmenu"/>
+			<texture filename="assets/buttons/boton_resume.bmp" ID="resume"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton"  width="135" height="34" textureID="resume" currentRow="0" numFrames="1" flip="0" callbackID="1"
+					px="150" py="100" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+			<object type="MenuButton"  width="135" height="34" textureID="mainmenu" currentRow="0" numFrames="1" flip="0" callbackID="2"
+					px="350" py="100" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+		</OBJECTS>	
+	</RESUME>
+	<PLAY>
+		<TEXTURES>
+			<texture filename="assets/elements/enemy.bmp" ID="enemy"/>
+			<texture filename="assets/elements/mario.bmp" ID="mario"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="Player"  width="13" height="30" textureID="mario" currentRow="0" numFrames="2" flip="0" callbackID="0"
+					px="300" py="200" vx="0" vy="0" mvx="15" mvy="0" ax="1" ay="0" fx="1" fy="0" />	
+			
+			<object type="Enemy"  width="40" height="30" textureID="enemy" currentRow="120"  numFrames="2" flip="0" callbackID="0"
+					px="0" py="50" vx="2" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+			<object type="Enemy"  width="40" height="30" textureID="enemy" currentRow="80"  numFrames="2" flip="0" callbackID="0"
+					px="100" py="100" vx="15" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+			<object type="Enemy"  width="40" height="30" textureID="enemy" currentRow="120"  numFrames="2" flip="0" callbackID="0"
+					px="0" py="150" vx="1" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />			
+			<object type="Enemy"  width="40" height="30" textureID="enemy" currentRow="120"  numFrames="2" flip="0" callbackID="0"
+					px="50" py="250" vx="5" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+	
+		</OBJECTS>
+	</PLAY>
+	
+
+</STATES>
