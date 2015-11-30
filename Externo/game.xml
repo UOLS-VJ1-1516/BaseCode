@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!-- Game -->
+
+<States>
+  <Menu>
+    <Textures>
+      <texture filename="enemy.bmp" ID="enemy" />
+      <texture filename="Goku.bmp" ID="player" />
+    </Textures>
+    <objects>
+      <object type="enemy" x="200" y="100" width="400" height="100" textureID="enemy" numFrames="0" callbackID="1"/>
+      <object type="player" x="200" y="300" width="400" height="100" textureID="player" numFrames="0" callbackID="2"/>
+    </objects>
+  </Menu>
+</States>
