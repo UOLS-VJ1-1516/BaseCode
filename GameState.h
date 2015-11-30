@@ -1,5 +1,9 @@
 #pragma once
 #include <string>
+#include <vector>
+
+typedef void(*Callback)();
+
 
 class GameState
 {
@@ -9,4 +13,5 @@ public:
 	virtual bool onEnter() = 0;
 	virtual bool onExit() = 0;
 	virtual std::string getStateID() const = 0;
+	virtual void setCallbacks(const std::vector<Callback>& callbacks) = 0;
 };

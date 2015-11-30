@@ -7,7 +7,7 @@
 class LoaderParams
 {
 public:
-	LoaderParams(int width, int height, std::string textureID, int currentRow, int sprits, int flip, Vector2D position, Vector2D velocity, Vector2D maxVelocity, Vector2D acceleration, Vector2D friction) {
+	LoaderParams(int width, int height, std::string textureID, int currentRow, int sprits, int flip, Vector2D position, Vector2D velocity, Vector2D maxVelocity, Vector2D acceleration, Vector2D friction, int callBackID) {
 		m_width = width;
 		m_height = height;
 		m_textureID = textureID;
@@ -19,6 +19,8 @@ public:
 		m_maxVelocity = maxVelocity;
 		m_acceleration = acceleration;
 		m_friction = friction;
+		m_callbackID = callBackID;
+
 	}
 
 	int getWidth() const { return m_width; }
@@ -32,6 +34,8 @@ public:
 	Vector2D getAcceleration() const { return m_acceleration; }
 	Vector2D getFriction() const { return m_friction; }
 	std::string getTextureID() const { return m_textureID; }
+	int getCallbackID() const { return m_callbackID; }
+
 
 private:
 
@@ -46,5 +50,6 @@ private:
 	Vector2D m_maxVelocity;
 	Vector2D m_acceleration;
 	Vector2D m_friction;
+	int m_callbackID;
 };
 #endif LOADERPARAMS_H

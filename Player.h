@@ -10,6 +10,9 @@ public:
 	~Player();
 	void draw();
 	void load(const LoaderParams* pParams);
+	int getCallbackID() const { return m_callbackID; }
+	void setCallback(void(*callback)()) { m_callback = callback; }
+	static GameObject* Player::Create() { return new Player(); }
 	void update();
 	void clean();
 	void horizontal();
@@ -29,5 +32,7 @@ private:
 	bool ev_left_down;
 	bool ev_right_up;
 	bool ev_left_up;
+	void(*m_callback)();
+	int m_callbackID;
 };
 #endif PLAYER_H

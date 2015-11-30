@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "TextureManager.h"
+#include "GameObjectFactory.h"
 #include "LoaderParams.h"
 
 
@@ -22,6 +23,10 @@ bool Game::init(const char* tittle, int xPos, int yPos, int typeWindow)
 		if (g_pWindow != 0) g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		running = true;
 
+		GameObjectFactory::Instance()->Register("Player", &Player::Create);
+		GameObjectFactory::Instance()->Register("Player2", &Player2::Create);
+		GameObjectFactory::Instance()->Register("MenuButton", &MenuButton::Create);
+		
 		m_pGameStateMachine = new GameStateMachine();
 		m_pGameStateMachine->changeState(new MenuState());
 		running = true;

@@ -20,6 +20,7 @@ void Player::load(const LoaderParams* pParams)
 	m_acceleration = pParams->getAcceleration();
 	m_friction = pParams->getFriction();
 	cambio = true;
+	m_callbackID = pParams->getCallbackID();
 	inicio();
 };
 
@@ -120,7 +121,6 @@ void Player::friccion() {
 }
 
 
-void Player::clean() {};
 
 void Player::handleInput()
 {

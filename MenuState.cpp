@@ -1,4 +1,6 @@
 #include "MenuState.h"
+#include "StateParser.h"
+
 
 const std::string MenuState::s_menuID = "MENU";
 
@@ -17,20 +19,26 @@ void MenuState::render() {
 
 bool MenuState::onEnter()
 {
-	GameObject *btn = new MenuButton(s_menuToPlay);
-	btn->load(new LoaderParams(135, 34, "play", 0, 1, 0, *(new Vector2D(150, 250)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0))));
-
-	m_gameObjects.push_back(btn);
-	TextureManager::Instance()->load("playbtn.bmp", "play", Game::Instance()->getRenderer());
-
-	GameObject *btn2 = new MenuButton(s_exitFromMenu);
-	btn2->load(new LoaderParams(135, 34, "exit", 0, 1, 0, *(new Vector2D(350, 250)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0))));
-
-	m_gameObjects.push_back(btn2);
-	TextureManager::Instance()->load("boton_exit.bmp", "exit", Game::Instance()->getRenderer());
+	StateParser::parseState("assets/game.xml", s_menuID, &m_gameObjects, &m_textureIDList);
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_menuToPlay);
+	m_callbacks.push_back(s_exitFromMenu);
+	setCallbacks(m_callbacks);
 
 	return true;
 
+}
+
+void MenuState::setCallbacks(const std::vector<Callback>& callbacks)
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		if (dynamic_cast<MenuButton*>(m_gameObjects[i]))
+		{
+			MenuButton* pButton = dynamic_cast< MenuButton* >(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }
 
 bool MenuState::onExit()
@@ -41,8 +49,11 @@ bool MenuState::onExit()
 	}
 
 	m_gameObjects.clear();
-	TextureManager::Instance()->clearFromTextureMap("playbutton");
-	TextureManager::Instance()->clearFromTextureMap("exitbutton");
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
 	return true;
 }
 

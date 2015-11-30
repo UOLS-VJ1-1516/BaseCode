@@ -1,6 +1,7 @@
 #include "MenuStateOnPause.h"
+#include "StateParser.h" //lee los xml
 
-const std::string MenuStateOnPause::s_menuID = "RESUME";
+const std::string MenuStateOnPause::s_menuID = "PAUSE";
 
 
 
@@ -19,20 +20,26 @@ void MenuStateOnPause::render() {
 
 bool MenuStateOnPause::onEnter()
 {
-	GameObject *btn = new MenuButton(s_menuToPlay);
-	btn->load(new LoaderParams(135, 34, "resume", 0, 1, 0, *(new Vector2D(100, 300)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0))));
-
-	m_gameObjects.push_back(btn);
-	TextureManager::Instance()->load("boton_resume.bmp", "resume", Game::Instance()->getRenderer());
-
-	GameObject *btn_menu = new MenuButton(s_exitFromMenu);
-	btn_menu->load(new LoaderParams(135, 34, "mainmenu", 0, 1, 0, *(new Vector2D(300, 300)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0)), *(new Vector2D(0, 0))));
-
-	m_gameObjects.push_back(btn_menu);
-	TextureManager::Instance()->load("main_menu.bmp", "mainmenu", Game::Instance()->getRenderer());
+	StateParser::parseState("assets/game.xml", s_menuID, &m_gameObjects, &m_textureIDList);//para leer la conf del xml
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_menuToPlay);
+	m_callbacks.push_back(s_exitFromMenu);
+	setCallbacks(m_callbacks);
 
 	return true;
 
+}
+
+void MenuStateOnPause::setCallbacks(const std::vector<Callback>& callbacks)
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		if (dynamic_cast<MenuButton*>(m_gameObjects[i]))
+		{
+			MenuButton* pButton = dynamic_cast< MenuButton* >(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }
 
 bool MenuStateOnPause::onExit()
@@ -41,10 +48,13 @@ bool MenuStateOnPause::onExit()
 	{
 		m_gameObjects[i]->clean();
 	}
-
 	m_gameObjects.clear();
-	TextureManager::Instance()->clearFromTextureMap("resume");
-	TextureManager::Instance()->clearFromTextureMap("mainmenu");
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
+
 	return true;
 }
 

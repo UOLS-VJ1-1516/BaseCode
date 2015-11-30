@@ -1,5 +1,6 @@
 #include "MenuOnPause.h"
 
+
 MenuOnPause::MenuOnPause(void(*callback)()) : m_callback(callback) {
 
 };

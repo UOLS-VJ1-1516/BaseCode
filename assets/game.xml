@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<STATES>
+	<MENU>
+		<TEXTURES>
+			<texture filename="assets/botones/playbtn.bmp" ID="playbtn"/>
+			<texture filename="assets/botones/boton_exit.bmp" ID="exit"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton"  width="135" height="34" textureID="playbtn" currentRow="0" numFrames="1" flip="0" callbackID="1"
+					posicionx="150" posiciony="250" velocidadx="0" velocidady="0" mvelocidadx="0" mvelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
+			<object type="MenuButton"  width="135" height="34" textureID="exit" currentRow="0" numFrames="1" flip="0" callbackID="2" 
+					posicionx="350" posiciony="250" velocidadx="0" velocidady="0" mvelocidadx="0" mvelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
+		</OBJECTS>
+	</MENU>
+	<PAUSE>
+		<TEXTURES>
+			<texture filename="assets/botones/main_menu.bmp" ID="mainmenu"/>
+			<texture filename="assets/botones/boton_resume.bmp" ID="PAUSE"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton"  width="135" height="34" textureID="PAUSE" currentRow="0" numFrames="1" flip="0" callbackID="1"
+					posicionx="100" posiciony="300" velocidadx="0" velocidady="0" mvelocidadx="0" mvelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
+			<object type="MenuButton"  width="135" height="34" textureID="mainmenu" currentRow="0" numFrames="1" flip="0" callbackID="2"
+					posicionx="300" posiciony="300" velocidadx="0" velocidady="0" mvelocidadx="0" mvelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
+		</OBJECTS>	
+	</PAUSE>
+	<PLAY>
+		<TEXTURES>
+			<texture filename="assets/players/dragon.bmp" ID="dragon"/>
+			<texture filename="assets/players/vulture_sprites.bmp" ID="vulture"/>
+			<texture filename="assets/players/player1.bmp" ID="player"/>
+
+		</TEXTURES>
+		<OBJECTS>
+			<object type="Player"  width="116" height="200" textureID="player" currentRow="1" numFrames="6" flip="0" callbackID="0"
+					posicionx="300" posiciony="500" velocidadx="0" velocidady="0" maximavelocidadx="18" maximavelocidady="0" acelx="4" acely="0" friccionx="4" fricciony="0" />	
+			
+			<object type="Player2"  width="300" height="310" textureID="dragon" currentRow="1"  numFrames="8" flip="0" callbackID="0"
+					posicionx="0" posiciony="10" velocidadx="3" velocidady="0" maximavelocidadx="0" maximavelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
+					
+			<object type="Player2"  width="125" height="100" textureID="vulture" currentRow="1"  numFrames="6" flip="0" callbackID="0"
+					posicionx="50" posiciony="300" velocidadx="8" velocidady="0" maximavelocidadx="0" maximavelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
+			
+			
+	
+		</OBJECTS>
+	</PLAY>
+	
+
+</STATES>

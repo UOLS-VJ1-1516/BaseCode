@@ -19,6 +19,7 @@ void Player2::load(const LoaderParams* pParams)
 	m_acceleration = pParams->getAcceleration();
 	m_friction = pParams->getFriction();
 	stateFlip = true;
+	m_callbackID = pParams->getCallbackID();
 };
 
 void Player2::draw() {
@@ -42,4 +43,3 @@ void Player2::update() {
 	m_currentFrame = (int)((Game::Instance()->getTicks() / 100) % m_sprits);
 };
 
-void Player2::clean() {};
