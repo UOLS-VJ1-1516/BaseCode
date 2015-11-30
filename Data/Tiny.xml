@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<STATES>
+  <MENU>
+    <TEXTURES>
+      <texture filename="playbtn.bmp" ID="playbtn" />
+      <texture filename="exitbtn.bmp" ID="exitbtn" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="100" y="125" width="400" height="100" spriteNum="0" textureID="playbtn" callbackID="1" />
+      <gameobject type="MenuButton" x="100" y="325" width="400" height="100" spriteNum="0" textureID="exitbtn" callbackID="2" />
+    </GAMEOBJECTS>
+  </MENU>
+  <PLAY>
+    <TEXTURES>
+      <texture filename="Kirby.bmp" ID="kirby" />
+      <texture filename="GordoS.bmp" ID="gordo" />
+      <texture filename="ZepS.bmp" ID="zep" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="Player" x="100" y="100" width="35" height="32" spriteNum="10" textureID="kirby" callbackID="0" />
+      <gameobject type="Gordo" x="200" y="200" width="50" height="68" spriteNum="4" textureID="gordo" callbackID="0" />
+      <gameobject type="Zep" x="400" y="400" width="89" height="78" spriteNum="4" textureID="zep" callbackID="0" />
+    </GAMEOBJECTS>
+  </PLAY>
+  <PAUSE>
+    <TEXTURES>
+      <texture filename="resume.bmp" ID="resume" />
+      <texture filename="mainmenu.bmp" ID="mainmenu" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="200" y="125" width="200" height="80" spriteNum="0" textureID="resume" callbackID="1" />
+      <gameobject type="MenuButton" x="200" y="325" width="200" height="80" spriteNum="0" textureID="mainmenu" callbackID="2" />
+    </GAMEOBJECTS>
+  </PAUSE>
+</STATES>
+
