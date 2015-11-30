@@ -1,9 +1,10 @@
 #include "MenuButton.h"
 
-MenuButton::MenuButton(void(*callback)()) : m_callback(callback) {
+MenuButton::MenuButton() {
 	
 };
 MenuButton::~MenuButton() {};
+
 
 void MenuButton::load(const LoaderParams* pParams)
 {
@@ -19,6 +20,7 @@ void MenuButton::load(const LoaderParams* pParams)
 	m_acceleration = pParams->getAcceleration();
 	m_friction = pParams->getFriction();
 	m_currentFrame = MOUSE_OUT;
+	m_callbackID = pParams->getCallbackID();
 };
 
 

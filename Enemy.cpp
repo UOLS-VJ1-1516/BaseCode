@@ -18,6 +18,7 @@ void Enemy::load(const LoaderParams* pParams)
 	m_maxVelocity = pParams->getMaxVelocity();
 	m_acceleration = pParams->getAcceleration();
 	m_friction = pParams->getFriction();
+	m_callbackID = pParams->getCallbackID();
 	stateFlip = true;
 };
 
@@ -41,6 +42,4 @@ void Enemy::update() {
 	
 	m_currentFrame = (int)((Game::Instance()->getTicks() / 100) % m_sprits);
 };
-
-void Enemy::clean() {};
 

@@ -14,15 +14,20 @@ public:
 		CLICKED = 2
 	};
 
-	MenuButton(void(*callback)());
+	//MenuButton(void(*callback)());
+	MenuButton();
 	~MenuButton();
 
 	void draw();
 	void load(const LoaderParams* pParams);
+	static GameObject* Create() { return new MenuButton(); };// { return new MenuButton(s_menuToPlay); }
+	int getCallbackID() const { return m_callbackID; }
+	void setCallback(void(*callback)()) { m_callback = callback; }
 	virtual void update();
 	virtual void clean();
 protected:
 	void(*m_callback)();
 	bool m_bReleased;
+	int m_callbackID;
 
 };

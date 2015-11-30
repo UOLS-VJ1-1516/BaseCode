@@ -7,7 +7,6 @@ void GameStateMachine::pushState(GameState* pState) {
 
 void GameStateMachine::popState()
 {
-
 	if (!m_gameStates.empty())	
 		if (m_gameStates.back()->onExit())
 		{

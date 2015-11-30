@@ -20,8 +20,10 @@ void Player::load(const LoaderParams* pParams)
 	m_acceleration = pParams->getAcceleration();
 	m_friction = pParams->getFriction();
 	m_changes = true;
+	m_callbackID = pParams->getCallbackID();
 	resetParams();	
 };
+
 
 void Player::draw() {	
 	TextureManager::Instance()->drawFrame(m_textureID, (&m_position)->getX(), (&m_position)->getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), m_flip);
@@ -124,10 +126,6 @@ void Player::incrementAccelerationX() {
 void Player::incrementFriction() {
 	m_velocity.setX(m_velocity.getX() - m_friction.getX());
 }
-
-
-void Player::clean() {};
-
 
 void Player::handleInput()
 {

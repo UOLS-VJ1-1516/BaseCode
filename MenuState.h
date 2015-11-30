@@ -1,21 +1,22 @@
 #pragma once
 #include "GameState.h"
 #include "Game.h"
-#include "TextureManager.h"
-#include "MenuButton.h"
-#include <vector>
+
 
 class MenuState : public GameState
 {
 public:
-	virtual void update();
-	virtual void render();
-	virtual bool onEnter();
-	virtual bool onExit();
-	virtual std::string getStateID() const;
+	void update();
+	void render();
+	bool onEnter();
+	void setCallbacks(const std::vector<Callback>& callbacks);
+	bool onExit();
+	std::string getStateID() const;
 private:
 	static const std::string s_menuID;
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<std::string> m_textureIDList;
+	std::vector<Callback> m_callbacks;
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
 
