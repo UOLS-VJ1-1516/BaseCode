@@ -126,10 +126,10 @@
   <ItemGroup>
     <Image Include="assets\buttons\boton_exit.bmp" />
     <Image Include="assets\buttons\boton_resume.bmp" />
+    <Image Include="assets\buttons\main_menu.bmp" />
+    <Image Include="assets\buttons\playbtn.bmp" />
     <Image Include="assets\elements\enemy.bmp" />
     <Image Include="assets\elements\mario.bmp" />
-    <Image Include="assets\buttons\playbtn.bmp" />
-    <Image Include="assets\buttons\main_menu.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\SDL\lib\SDL2_image.lib" />
