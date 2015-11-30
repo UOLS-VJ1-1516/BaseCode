@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/include;libs/tinyxml/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>libs/SDL/lib;libs/SDL_image/lib;libs/tinyxml/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,7 +81,64 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="libs\tinyxml\include\tinystr.cpp" />
+    <ClCompile Include="libs\tinyxml\include\tinyxml.cpp" />
+    <ClCompile Include="libs\tinyxml\include\tinyxmlerror.cpp" />
+    <ClCompile Include="libs\tinyxml\include\tinyxmlparser.cpp" />
+    <ClCompile Include="LoaderParams.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenStateOnPause.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="MenuOnPause.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="libs\tinyxml\include\tinystr.h" />
+    <ClInclude Include="libs\tinyxml\include\tinyxml.h" />
+    <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="MenuOnPause.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MenuStateOnPause.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayState.h" />
+    <ClInclude Include="StateParser.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\buttons\boton_exit.bmp" />
+    <Image Include="assets\buttons\boton_resume.bmp" />
+    <Image Include="assets\elements\enemy.bmp" />
+    <Image Include="assets\elements\mario.bmp" />
+    <Image Include="assets\buttons\playbtn.bmp" />
+    <Image Include="assets\buttons\main_menu.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\SDL\lib\SDL2_image.lib" />
+    <Library Include="libs\tinyxml\lib\tinyxmlSTL.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="assets\game.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
