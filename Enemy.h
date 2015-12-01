@@ -1,10 +1,12 @@
 #pragma once
 #include "LivingEntity.h"
 #include "Player.h"
+#include <time.h>
 
 #define STATIC_ENEMY 0
 #define FOLLOWER_ENEMY 1
 #define IGNORE_ENEMY 2
+#define LITTLE_MOVEMENT 3
 
 class Enemy :
 	public LivingEntity
@@ -14,6 +16,7 @@ private:
 	void FollowPlayer(Player *);
 	void BeStatic(Player *);
 	void TheIgnored();
+	void MoveALittle();
 public:
 	Enemy(int);
 	~Enemy();

@@ -53,6 +53,24 @@ void Enemy::TheIgnored()
 	
 }
 
+void Enemy::MoveALittle()
+{	
+	srand(time(NULL));
+	int random = rand() % 10;
+	if (random > 2 && random < 8)
+	{
+		xAccel = NULL;
+	}
+	else if (random <= 2)
+	{
+		xAccel = NEGATIVE;
+	}
+	else if (random >= 8)
+	{
+		xAccel = POSITIVE;
+	}
+}
+
 Enemy::Enemy(int type)
 {
 	this->type = type;
@@ -77,6 +95,9 @@ void Enemy::Update(Player * player)
 		break;
 	case IGNORE_ENEMY:
 		TheIgnored();
+		break;
+	case LITTLE_MOVEMENT:
+		MoveALittle();
 		break;
 	default:
 		break;
