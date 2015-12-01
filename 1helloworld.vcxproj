@@ -95,6 +95,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
@@ -114,6 +115,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="StateParser.h" />
+    <ClInclude Include="TileLayer.h" />
+    <ClInclude Include="Tileset.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

@@ -42,8 +42,8 @@ long Tools::GetTime()
 
 bool Tools::InBounding(Entity * entitat, Entity * compare)
 {
-	int x = compare->params->GetXPos();
-	int y = compare->params->GetYPos();
+	int x = (int)compare->params->GetXPos();
+	int y = (int)compare->params->GetYPos();
 	int w = compare->params->GetWidth();
 	int h = compare->params->GetHeight();
 
@@ -52,8 +52,8 @@ bool Tools::InBounding(Entity * entitat, Entity * compare)
 
 bool Tools::InBounding(Entity * entitat, int x0, int y0)
 {
-	int x = entitat->params->GetXPos();
-	int y = entitat->params->GetYPos();
+	int x = (int)entitat->params->GetXPos();
+	int y = (int)entitat->params->GetYPos();
 	int w = entitat->params->GetWidth();
 	int h = entitat->params->GetHeight();
 

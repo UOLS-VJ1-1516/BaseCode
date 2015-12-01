@@ -49,6 +49,9 @@
     <ClCompile Include="Vector2D.cpp">
       <Filter>Tools</Filter>
     </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Engine Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -101,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Tileset.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Engine Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

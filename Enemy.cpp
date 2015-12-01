@@ -55,7 +55,7 @@ void Enemy::TheIgnored()
 
 void Enemy::MoveALittle()
 {	
-	srand(time(NULL));
+	srand((int)time(NULL));
 	int random = rand() % 10;
 	if (random > 2 && random < 8)
 	{

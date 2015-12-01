@@ -34,7 +34,7 @@ public:
 	
 	static Game * GetInstance() 
 	{
-		if (joc == NULL)
+		if (joc == 0)
 		{
 			joc = new Game();
 		}
