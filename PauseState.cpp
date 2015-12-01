@@ -1,4 +1,5 @@
 #include "PauseState.h"
+#include "StateParser.h"
 #include <iostream>
 
 const std::string PauseState::s_pauseID = "PAUSE";
@@ -27,22 +28,24 @@ bool PauseState::onEnter()
 {
 	
 	TheInputHandler = InputHandler::Instance();
-	buttonResume = new MenuButton(new LoaderParams(275.4, 200, 251, 67, "resume", 3, 0, 0, 0, 0),s_resumePlay);
-	buttonMenu = new MenuButton(new LoaderParams(275.4, 300, 251, 67, "btnmenu", 3, 0, 0, 0, 0),s_pauseToMain);
-
-	m_gameObjects.push_back(buttonResume);
-	m_gameObjects.push_back(buttonMenu);
-
-	TextureManager::Instance()->load("resume.png", "resume", Game::Instance()->getRender());
-	TextureManager::Instance()->load("menu.png", "btnmenu", Game::Instance()->getRender());
-
 
 	std::cout << "entering PlayState\n";
+	StateParser::parseState("game.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_resumePlay);
+	m_callbacks.push_back(s_pauseToMain);
+	setCallbacks(m_callbacks);
 	return true;
 }
 bool PauseState::onExit()
 {
 	m_gameObjects.clear();
+	for (unsigned int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TextureManager::Instance()->clean(m_textureIDList[i]);
+
+	}
+	m_textureIDList.clear();
 
 	std::cout << "exiting PlayState\n";
 	return true;
@@ -57,4 +60,16 @@ void PauseState::s_pauseToMain()
 void PauseState::s_resumePlay()
 {
 	Game::Instance()->getStateMachine()->popState();
+}
+
+void PauseState::setCallbacks(const std::vector<Callback>& callbacks)
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		if (dynamic_cast<MenuButton*>(m_gameObjects[i]))
+		{
+			MenuButton* pButton = dynamic_cast< MenuButton* >(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }

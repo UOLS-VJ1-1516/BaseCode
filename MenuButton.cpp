@@ -3,7 +3,7 @@
 #include "InputHandler.h"
 #include "Game.h"
 
-MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()):m_callback(callback)
+/*MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()):m_callback(callback)
 {
 	m_currentFrame = MOUSE_OUT; // start at frame 0
 	m_width = pParams->getWidth();
@@ -15,12 +15,23 @@ MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()):m_callba
 	m_position.setY(pParams->getY());
 	m_bReleased = false;
 	
-}
+}*/
+MenuButton::MenuButton() {};
 MenuButton::~MenuButton()
 {
 }
 void MenuButton::load(const LoaderParams * pParams)
 {
+	m_currentFrame = MOUSE_OUT; // start at frame 0
+	m_width = pParams->getWidth();
+	m_height = pParams->getHeight();
+	m_textureID = pParams->getTextureID();
+	m_spriteNum = pParams->getNum();
+	m_currentRow = 0;
+	m_position.setX(pParams->getX());
+	m_position.setY(pParams->getY());
+	m_bReleased = false;
+	m_callbackID= pParams->getCallbackID();
 }
 void MenuButton::draw()
 {

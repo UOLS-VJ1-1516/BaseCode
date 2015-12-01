@@ -47,7 +47,6 @@ void Player::load(const LoaderParams* pParams)
 	m_friction = m_velocity*m_frictionCoeficient;
 	m_Orientation = SDL_FLIP_NONE;
 
-
 };
 void Player::update() {
 	Vector2D velocityInicial = m_velocity;
@@ -79,6 +78,26 @@ void Player::update() {
 	}
 	m_position += m_velocity + m_acceleration * 1/2;
 	m_currentFrame = (abs((int)(m_position - m_lastPosition).length()) / pixelsToChangeFrame) % m_spriteNum;
+
+
+	InputHandler::Instance()->update();
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+	{
+		incrementAccelerationX();
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+	{
+		decrementAccelerationX();
+	}
+
+	if (InputHandler::Instance()->Quit())
+	{
+		Game::Instance()->setIsRunning(false);
+	}
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		Game::Instance()->getStateMachine()->pushState(new PauseState);
+	}
 };
 
 void Player::clean() {

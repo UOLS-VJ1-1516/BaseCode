@@ -27,6 +27,7 @@ public:
 	void draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip);
 	void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender,
 		SDL_RendererFlip flip);
+	void clean(const char* ID);
 
 private:
 	static TextureManager* s_pInstance;

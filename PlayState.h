@@ -20,14 +20,7 @@ public:
 	virtual std::string getStateID() const { return s_playID; }
 private:
 	static const std::string s_playID;
-	LoaderParams* lp;
-	LoaderParams* lp2;
-	LoaderParams* lp3;
-	Player* p1;
-	Enemy* p3;
-	StaticObject* p2;
 	std::vector< GameObject* > m_gameObjects;
-	std::vector< std::string > m_textureIDList;
-	InputHandler* TheInputHandler;
+	std::vector< const char * > m_textureIDList;
 };
 #endif

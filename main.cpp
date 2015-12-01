@@ -12,7 +12,7 @@ int main(int argc, char* args[])
 			long frameStart = SDL_GetTicks();
 
 			Game::Instance()->render();
-			Game::Instance()->handleEvents();
+			//Game::Instance()->handleEvents();
 			Game::Instance()->update();
 			long frameEnd = SDL_GetTicks();
 			long frameTime = frameEnd - frameStart;

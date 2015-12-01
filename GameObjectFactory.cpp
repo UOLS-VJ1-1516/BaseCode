@@ -14,6 +14,5 @@ void GameObjectFactory::Register(const std::string & gameObjectName, CreateGameO
 
 GameObject * GameObjectFactory::CreateGameObject(const std::string & gameObjectName)
 {
-	GameObject *GOF = m_FactoryMap[gameObjectName]();
-	return GOF;
+	return m_FactoryMap[gameObjectName]();
 }

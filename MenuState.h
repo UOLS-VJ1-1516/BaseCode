@@ -7,6 +7,7 @@
 #include "InputHandler.h"
 #include <vector>
 
+typedef void(*Callback)();
 
 class MenuState : public GameState
 {
@@ -16,14 +17,15 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 	virtual std::string getStateID() const;
+	void setCallbacks(const std::vector<Callback>& callbacks);
 private:
 	static const std::string s_menuID;
 	std::vector< GameObject* > m_gameObjects;
-	MenuButton* buttonInit;
-	MenuButton* buttonExit;
 	InputHandler* TheInputHandler;
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
+	std::vector< const char * > m_textureIDList;
+	std::vector< Callback > m_callbacks;
 
 	
 };

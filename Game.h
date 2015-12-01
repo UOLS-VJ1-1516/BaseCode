@@ -55,13 +55,6 @@ private:
 	int screenHeigth;
 	InputHandler* TheInputHandler;
 	
-	/*LoaderParams* lp;
-	LoaderParams* lp2;
-	LoaderParams* lp3;
-	Player* p1;
-	Enemy* p3;
-	StaticObject* p2;*/
-	
 	GameStateMachine* m_pGameStateMachine;
 	
 

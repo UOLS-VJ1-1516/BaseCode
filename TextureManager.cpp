@@ -47,3 +47,8 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 TextureManager::~TextureManager() {
 
 };
+void TextureManager::clean(const char* ID) {
+	s_surface = NULL;
+	s_texture = NULL;
+	m_textureMap.erase(*ID);
+}
