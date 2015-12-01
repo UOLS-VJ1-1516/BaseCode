@@ -5,23 +5,28 @@ TextureManager::TextureManager() {
 
 };
 
-bool TextureManager::load(const char* fileName, const char* key, SDL_Renderer* m_pRenderer) {
-	SDL_Surface* img = SDL_LoadBMP(fileName);
+TextureManager::~TextureManager() {
+	m_imgSurface = NULL;
+	m_textureMap.clear();
+}
 
-	if (!img) {
+bool TextureManager::load(const char* fileName, const char* key, SDL_Renderer* m_pRenderer) {
+	m_imgSurface = SDL_LoadBMP(fileName);
+
+	if (!m_imgSurface) {
 		return 1;
 	}
 
-	textureMap[*key] = SDL_CreateTextureFromSurface(m_pRenderer, img);
-	SDL_FreeSurface(img);
+	//SDL_SetColorKey(m_imgSurface, 1, SDL_MapRGB(m_imgSurface->format, 255, 255, 255));
+
+	m_textureMap[*key] = SDL_CreateTextureFromSurface(m_pRenderer, m_imgSurface);
+	SDL_FreeSurface(m_imgSurface);
 
 	return 0;
 };
 
 void TextureManager::draw(const char* key, int x, int y, int width, int height, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip) {
 	SDL_RenderClear(m_pRenderer);
-
-	SDL_Rect srcrect, dstrect;
 
 	srcrect.x = 0;
 	srcrect.y = 0;
@@ -33,13 +38,10 @@ void TextureManager::draw(const char* key, int x, int y, int width, int height, 
 	dstrect.w = width;
 	dstrect.h = height;
 
-	SDL_RenderCopyEx(m_pRenderer, textureMap[*key], &srcrect, &dstrect, 0, 0, m_pFlip);
+	SDL_RenderCopyEx(m_pRenderer, m_textureMap[*key], &srcrect, &dstrect, 0, 0, m_pFlip);
 };
 
 void TextureManager::drawFrame(const char* key, int x, int y, int width, int height, int currentFrame, int currentRow, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip) {
-
-	SDL_Rect srcrect, dstrect;
-
 	srcrect.x = currentFrame * width;
 	srcrect.y = currentRow * height;
 	srcrect.w = width;
@@ -50,5 +52,10 @@ void TextureManager::drawFrame(const char* key, int x, int y, int width, int hei
 	dstrect.w = width;
 	dstrect.h = height;
 
-	SDL_RenderCopyEx(m_pRenderer, textureMap[*key], &srcrect, &dstrect, 0, 0, m_pFlip);
+	SDL_RenderCopyEx(m_pRenderer, m_textureMap[*key], &srcrect, &dstrect, 0, 0, m_pFlip);
+};
+
+void TextureManager::clearFromTextureMap(const char * id){
+	m_imgSurface = NULL;
+	m_textureMap.erase(*id);
 };

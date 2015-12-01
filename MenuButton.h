@@ -12,16 +12,21 @@ class MenuButton : public GameObject {
 			MOUSE_OVER = 1,
 			CLICKED = 2
 		};
-		MenuButton(const LoaderParams* pParams, void(*callback)());
+		MenuButton();
 		virtual void load(const LoaderParams* pParams);
 		~MenuButton();
 		virtual void draw();
 		virtual void update();
 		virtual void clean();
+		static GameObject* Create() { return new MenuButton(); }
+
+		int getCallbackID() const { return m_callbackID; }
+		void setCallback(void(*callback)()) { m_callback = callback; }
 
 	private:
 		void(*m_callback)();
 		bool m_bReleased;
+		int m_callbackID;
 };
 
 #endif

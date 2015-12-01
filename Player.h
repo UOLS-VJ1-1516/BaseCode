@@ -16,12 +16,13 @@ class Player : public GameObject {
 		Player();
 		~Player();
 
-		void load(const LoaderParams* pParams);
-		void draw();
-		void update();
-		void clean();
+		virtual void load(const LoaderParams* pParams);
+		virtual void draw();
+		virtual void update();
+		virtual void clean();
 		void incrementAcceleration();
 		void decrementAcceleration();
+		static GameObject* Create() { return new Player(); }
 
 };
 

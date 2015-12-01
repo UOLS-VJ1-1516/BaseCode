@@ -7,6 +7,9 @@
 #include "game.h"
 #include "MenuButton.h"
 #include "string"
+#include "StateParser.h"
+
+typedef void(*Callback)();
 
 class PauseState : public GameState {
 	public:
@@ -18,13 +21,15 @@ class PauseState : public GameState {
 
 		virtual std::string getStateID() const;
 
+		void setCallbacks(const std::vector<Callback >& callbacks);
+
 	private:
 		static const std::string s_pauseID;
 		std::vector<GameObject* > m_gameObjects;
 		static void s_pauseToMain();
 		static void s_resumePlay();
-		MenuButton* resumeButton;
-		MenuButton* mainMenuButton;
+		std::vector<const char* > m_texturesIDList;
+		std::vector<Callback > m_callbacks;
 
 };
 

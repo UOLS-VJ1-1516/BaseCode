@@ -1,4 +1,5 @@
 #include "game.h"
+#include "GameObjectFactory.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -22,7 +23,12 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 		// if the window creation succeeded create our renderer
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-		
+
+			GameObjectFactory::Instance()->Register("Player", &Player::Create);
+			GameObjectFactory::Instance()->Register("Enemy", &Enemy::Create);
+			GameObjectFactory::Instance()->Register("StaticObject", &StaticObject::Create);
+			GameObjectFactory::Instance()->Register("MenuButton", &MenuButton::Create);
+
 			m_pGameStateMachine->pushState(new MenuState());
 		}
 		

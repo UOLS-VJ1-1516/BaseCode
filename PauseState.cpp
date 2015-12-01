@@ -16,26 +16,41 @@ void PauseState::render() {
 }
 
 bool PauseState::onEnter() {
-	resumeButton = new MenuButton(new LoaderParams(275, 225, 250, 75, "ResumeButton", 3, 0, 0, 0, 0), s_resumePlay);
-	mainMenuButton = new MenuButton(new LoaderParams(275, 325, 250, 75, "MainMenuButton", 3, 0, 0, 0, 0), s_pauseToMain);
+	StateParser::parseState("assets/xml/objects.xml", s_pauseID, &m_gameObjects, &m_texturesIDList);
 
-	m_gameObjects.push_back(resumeButton);
-	m_gameObjects.push_back(mainMenuButton);
-
-	TextureManager::Instance()->load("resumeButton.bmp", "ResumeButton", Game::Instance()->getRender());
-	TextureManager::Instance()->load("mainMenuButton.bmp", "MainMenuButton", Game::Instance()->getRender());
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_resumePlay);
+	m_callbacks.push_back(s_pauseToMain);
+	setCallbacks(m_callbacks);
 
 	return true;
 }
 
 bool PauseState::onExit() {
+	for (unsigned int i = 0; i < m_gameObjects.size(); i++) {
+		m_gameObjects[i]->clean();
+	}
 	m_gameObjects.clear();
+
+	for (unsigned int i = 0; i < m_texturesIDList.size(); i++) {
+		TextureManager::Instance()->clearFromTextureMap(m_texturesIDList[i]);
+	}
+	m_texturesIDList.clear();
 
 	return true;
 }
 
 std::string PauseState::getStateID() const {
 	return s_pauseID;
+}
+
+void PauseState::setCallbacks(const std::vector<Callback>& callbacks) {
+	for (int i = 0; i < m_gameObjects.size(); i++) {
+		if (dynamic_cast<MenuButton*>(m_gameObjects[i])) {
+			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }
 
 void PauseState::s_pauseToMain() {

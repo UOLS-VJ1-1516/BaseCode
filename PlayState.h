@@ -13,6 +13,9 @@
 #include "InputHandler.h"
 #include "GameStateMachine.h"
 #include "PauseState.h"
+#include "GameObjectFactory.h"
+#include "StateParser.h"
+
 
 class PlayState : public GameState {
 	public:
@@ -27,12 +30,7 @@ class PlayState : public GameState {
 	private:
 		static const std::string s_playID;
 		std::vector<GameObject* > m_gameObjects; 
-		Player* player1;
-		Enemy* enemy1;
-		StaticObject* stObj1;
-		LoaderParams* paramsPlayer1;
-		LoaderParams* paramsEnemy1;
-		LoaderParams* paramsStObj1;
+		std::vector<const char* > m_texturesIDList;
 
 };
 

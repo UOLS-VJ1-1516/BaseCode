@@ -22,10 +22,14 @@ class TextureManager {
 		bool load(const char* fileName, const char* key, SDL_Renderer* m_pRenderer);
 		void draw(const char* key, int x, int y, int width, int height, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip);
 		void drawFrame(const char* key, int x, int y, int width, int height, int currentFrame, int currentRow, SDL_Renderer* m_pRenderer, SDL_RendererFlip m_pFlip);
+		void clearFromTextureMap(const char* id);
 
 	private:
 		static TextureManager* s_pInstance;
-		std::map<char, SDL_Texture* > textureMap;
+		std::map<char, SDL_Texture* > m_textureMap;
+		SDL_Surface* m_imgSurface;
+		SDL_Rect srcrect;
+		SDL_Rect dstrect;
 };
 
 #endif

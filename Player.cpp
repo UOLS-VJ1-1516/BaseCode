@@ -81,10 +81,28 @@ void Player::update() {
 
 	m_position += m_velocity + m_acceleration * 1/2;
 	m_currentFrame = (abs((int)(m_position - m_lastStop).length()) / pixels) % m_numSprite;
+
+	InputHandler::Instance()->update();
+
+	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+		Game::Instance()->setIsRunning(false);
+	}
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
+	}
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		incrementAcceleration();
+	}
+
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+		decrementAcceleration();
+	}
 }
 
 void Player::clean() {
-
+	InputHandler::Instance()->clean();
 }
 
 void Player::incrementAcceleration() {

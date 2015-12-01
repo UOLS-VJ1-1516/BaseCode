@@ -5,7 +5,7 @@
 
 class LoaderParams {
 	public:
-		LoaderParams(int x, int y, int width, int height, const char* textureID, int numSprite, float speedX, float speedY, float maxSpeed, float friction) {
+		LoaderParams(int x, int y, int width, int height, const char* textureID, int numSprite, float speedX, float speedY, float maxSpeed, float friction, int callbackID) {
 			m_x = x;
 			m_y = y;
 			m_width = width;
@@ -16,6 +16,7 @@ class LoaderParams {
 			m_speedY = speedY;
 			m_maxSpeed = maxSpeed;
 			m_friction = friction;
+			m_callbackID = callbackID;
 		}
 		int getX() const { return m_x;  }
 		int getY() const { return m_y;  }
@@ -27,6 +28,7 @@ class LoaderParams {
 		float getSpeedY() const { return m_speedY; }
 		float getMaxSpeed() const { return m_maxSpeed; }
 		float getFrictionCo() const { return m_friction; }
+		int getCallbackID() const { return m_callbackID; }
 		
 	private:
 		int m_x;
@@ -39,6 +41,7 @@ class LoaderParams {
 		float m_speedY;
 		float m_maxSpeed;
 		float m_friction;
+		int m_callbackID;
 };
 
 #endif
