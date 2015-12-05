@@ -30,7 +30,8 @@ private:
 	PlayState* playState;
 	MenuState * menuState;
 	PauseState * pauseState;
-
+	int m_gameWidth;
+	int m_gameHeight;
 
 
 	bool running = true;
@@ -58,4 +59,6 @@ public:
 	GameStateMachine * getGameStateMachine();
 	TextureManager* tx;
 	InputHandler* th;
+	int getGameWidth() const { return m_gameWidth; }
+	int getGameHeight() const { return m_gameHeight; }
 };

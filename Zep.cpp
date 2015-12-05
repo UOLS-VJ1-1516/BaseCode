@@ -35,7 +35,7 @@ void Zep::update() {
 		turnZep = SDL_FLIP_HORIZONTAL;
 	}
 
-	else if (m_position.getX() >= 550) {
+	else if (m_position.getX() >=1050) {
 		m_velocity.setX(-0.1);
 		m_velocity.setX((m_velocity.getX() + m_frictionLeft.getX()));
 		turnZep = SDL_FLIP_NONE;

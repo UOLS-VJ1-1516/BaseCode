@@ -39,17 +39,18 @@ Game::~Game() {
 }
 bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
-	
+	m_gameWidth = 1200;
+	m_gameHeight = 800;
 
 	
 	//inicialitzem el SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
-
+		
 		// if succeeded create our window
 		//Creeem la finestra i el renderer
 		m_pWindow = SDL_CreateWindow("Videjuegos 1 - bachelor",
 			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			640, 480,
+			m_gameWidth, m_gameHeight,
 			fullscreen);
 
 		// if the window creation succeeded create our renderer
@@ -94,7 +95,7 @@ bool Game::init(const char* title, int xpos, int
 }
 
 void Game::render() {
-	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 0, 61, 192, 232);
 	SDL_RenderClear(m_pRenderer);
 	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{

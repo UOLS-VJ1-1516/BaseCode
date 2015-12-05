@@ -52,8 +52,8 @@ void Player::update() {
 		if (m_velocity.getX()==m_maxVelocity.getX()) {
 			m_velocity.setX(m_velocity.getX()-m_desacceleration.getX());
 		}
-		if (m_position.getX() >= 600) {
-			m_position.setX(600);
+		if (m_position.getX() >= 1200) {
+			m_position.setX(800);
 		}
 
 	}
@@ -73,7 +73,7 @@ void Player::update() {
 		}
 	}
 	else {
-		m_currentFrame = 3;
+		m_currentFrame = 1;
 		m_velocity.setX(0);
 		
 		

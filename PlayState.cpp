@@ -2,6 +2,7 @@
 #include "PauseState.h"
 #include "Game.h"
 #include "StateParser.h"
+#include "LayerParser.h"
 
 void PlayState::update() {
 	/*player->update();
@@ -27,6 +28,9 @@ bool PlayState::onEnter() {
 
 	StateParser stateParser;
 	stateParser.parseState("./Data/Tiny.xml", s_playID, &m_gObjects, &m_TextureIDList);
+
+	LayerParser layerParser;
+	layerParser.parseTileLayer("./Data/mapa1.tmx");
 
 	m_callbacks.push_back(0);
 	setCallbacks();

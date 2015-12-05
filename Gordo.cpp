@@ -36,7 +36,7 @@ void Gordo::update() {
 		turnGordo = SDL_FLIP_NONE;
 	}
 
-	else if (m_position.getX() >= 600) {
+	else if (m_position.getX() >= 1100) {
 		m_velocity.setX(-0.1);
 		m_velocity.setX((m_velocity.getX() + m_frictionLeft.getX()));
 		turnGordo = SDL_FLIP_HORIZONTAL;
