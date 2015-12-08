@@ -19,6 +19,7 @@ public:
 		m_flip = flip;
 		m_anchopantalla = anchopantalla;
 		m_altopantalla = altopantalla;
+		
 	}
 
 

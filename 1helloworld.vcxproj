@@ -123,6 +123,7 @@
     <Image Include="images\continue.png" />
     <Image Include="images\Exit.png" />
     <Image Include="images\Exit2.png" />
+    <Image Include="images\ninja.png" />
     <Image Include="images\nubes2.png" />
     <Image Include="images\pause.png" />
     <Image Include="images\pause2.png" />

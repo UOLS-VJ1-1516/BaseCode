@@ -27,17 +27,17 @@ bool PlayState::onEnter() {
 
 
 	//-----Cargo la pantalla!
-	if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Game::Instance()->GetRenderer())) { return false; }
+	if (!TextureManager::Instance()->load("./images/ninja.png", "bird1", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Game::Instance()->GetRenderer())) { return false; }
 
 	GameObject* player1 = new Player();
-	player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 7, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
-	
+	player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
+	//(float x, float y, int width, int height, const char* id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla
 	
 
-	GameObject* enemy1 = new Player();
+	GameObject* enemy1 = new Enemy();
 	enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
 
 	GameObject* enemy2 = new Enemy();

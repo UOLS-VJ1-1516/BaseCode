@@ -4,9 +4,6 @@
 
 
 
-
-
-
 SDL_Window* g_lWindow = 0;
 int i = 0;
 int currrentFrame = 0;
