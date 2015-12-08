@@ -20,6 +20,7 @@ void Fons::load(float x, float y, int width, int height,
 	m_currentFrame = 1;
 	m_currentRow = 1;
 	m_sprits = 1;
+
 }
 
 void Fons::load(const LoadPar* lPar)
@@ -38,7 +39,7 @@ void Fons::load(const LoadPar* lPar)
 };
 void Fons::draw()
 {
-	TextureManager::Instance()->drawFrame(m_texid, m_position.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame(m_texid, m_position.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), m_flip);
 }
 
 
@@ -47,8 +48,8 @@ void Fons::draw(SDL_Renderer* Renderer) {
 }
 
 void Fons::update() {
-    m_position.setX(m_position.getX() -2);
-	if (m_position.getX()< -1600)m_position.setX(1600);
+   // m_position.setX(m_position.getX() -2);
+	//if (m_position.getX()< -1600)m_position.setX(1600);
 
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % 1);
 

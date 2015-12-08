@@ -27,47 +27,35 @@ bool PlayState::onEnter() {
 
 
 	//-----Cargo la pantalla!
-	if (!TextureManager::Instance()->load("./images/ninja.png", "bird1", Game::Instance()->GetRenderer())) { return false; }
-	if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Game::Instance()->GetRenderer())) { return false; }
+	if (!TextureManager::Instance()->load("./images/ninja.png", "ninja", Game::Instance()->GetRenderer())) { return false; }
+	if (!TextureManager::Instance()->load("./images/Enemy_Knight.png", "Enemy_Knight", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Game::Instance()->GetRenderer())) { return false; }
-	if (!TextureManager::Instance()->load("./images/nubes2.png", "fons", Game::Instance()->GetRenderer())) { return false; }
-
+	if (!TextureManager::Instance()->load("./images/teclas.png", "teclas", Game::Instance()->GetRenderer())) { return false; }
+	
 	GameObject* player1 = new Player();
-	player1->load(new LoadPar(200, 400, 200, 180, "bird1", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
+	player1->load(new LoadPar(200, Game::Instance()->getAlto() - 300, 200, 180, "ninja", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
 	//(float x, float y, int width, int height, const char* id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla
 	
 
 	GameObject* enemy1 = new Enemy();
-	enemy1->load(new LoadPar(230, 160, 200, 220, "badbird", 3, 6, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
-
-	GameObject* enemy2 = new Enemy();
-	enemy2->load(new LoadPar(100, 100, 200, 180, "badbird", 1, 7, 2, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
-
-	GameObject* enemy3 = new Enemy();
-	enemy3->load(new LoadPar(1200, 800, 200, 180, "badbird", 1, 7, 2, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
-
-	GameObject* enemy4 = new Enemy();
-	enemy4->load(new LoadPar(1500, 500, 200, 180, "badbird", 1, 7, 2, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
+	enemy1->load(new LoadPar(200, Game::Instance()->getAlto() - 300, 200, 180, "Enemy_Knight", 2, 4, 2, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
 
 	GameObject* coin1 = new Enemy();
 	coin1->load(new LoadPar(500, 300, 200, 200, "coin1", 1, 5, 2, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
 
 
-	GameObject* fons = new Fons();
-	fons->load(new LoadPar(0, 400, 1600, 850, "fons", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
+	GameObject* teclas = new Fons();
+	teclas->load(new LoadPar(Game::Instance()->getAncho()-500, Game::Instance()->getAlto()-150, 500, 230, "teclas", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
 
-	GameObject* fons2 = new Fons();
-	fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
+	//GameObject* fons2 = new Fons();
+	//fons2->load(new LoadPar(1600, 400, 1600, 850, "fons", 1, 1, 1, Game::Instance()->getAncho(), Game::Instance()->getAlto()));
 
 
 	m_gObjects.push_back(player1);
 	m_gObjects.push_back(enemy1);
-	m_gObjects.push_back(enemy2);
-	m_gObjects.push_back(enemy3);
-	m_gObjects.push_back(enemy4);
 	m_gObjects.push_back(coin1);
-	m_gObjects.push_back(fons);
-	m_gObjects.push_back(fons2);
+	m_gObjects.push_back(teclas);
+	//m_gObjects.push_back(fons2);
 
 	return true;
 }

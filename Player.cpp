@@ -43,7 +43,7 @@ void Player::load(const LoadPar* lPar)
 	m_maxaccelerationneg.setY(-20);
     m_anchopantalla=lPar->getanchopantalla();  //Para que sea mas facil de adaptar
     m_altopantalla=lPar->getaltopantalla();
-	m_friction.setX(0.5);  //Será mi frenada
+	m_friction.setX(0.1);  //Será mi frenada
 	
 
 };
@@ -137,46 +137,59 @@ void Player::update() {
 				}
 				
 			}
+
 			else {
-				if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
-					m_velocity.setY(0); //Velocidad inicial
-					m_acceleration.setX(0);
-					if (flag != 4) m_acceleration.setY(0);
-					m_acceleration.setY(m_acceleration.getY() + 0.5);
-					//---Controlo que no se vaya la aceleracion a infinito
-					if (m_acceleration.getY() >= m_maxacceleration.getY()) m_acceleration.setY(m_maxacceleration.getY());
-					m_velocity += m_acceleration;
-					m_position += m_velocity;
-					flag = 4;
-				}				else {
-					m_sprits = 1;
-					m_currentRow = 1;
+				if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+					m_sprits = 6;
+					m_currentRow = 4;
 					m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-					//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada, solo habrá fricción horizontal
-						//----Friccion en caso negativo
-					if (m_velocity.getX() < 0) {
-						if (m_velocity.getX() != 0) {
-							m_velocity += m_friction;
-							m_velocity.setY(0);
-							m_position += m_velocity;
-						}
-					}
-					else {
-						//Friccion caso positivo
-						if (m_velocity.getX() > 0) {
+					m_velocity.setX(0);  //Velocidad inicial
+					m_acceleration.setY(0);
+					flag = 4;
+				}				else {					if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
+						m_sprits = 1;
+						m_currentRow = 5;
+						m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+						m_velocity.setX(0);  //Velocidad inicial
+						m_acceleration.setY(0);
+						flag = 5;					}					else {
+						m_sprits = 1;
+						m_currentRow = 1;
+						m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+						//m_velocity.setX(0);  //Velocidad inicial
+						//m_acceleration.setY(0);
+						//-----Implemento friccion si el objeto esta en movimiento y no hay tecla pulsada, solo habrá fricción horizontal
+							//----Friccion en caso negativo
+						if (m_velocity.getX() < 0) {
 							if (m_velocity.getX() != 0) {
-								m_velocity -= m_friction;
+								printf("HOLA\n\n");
+								SDL_Delay(10);
+								m_velocity += m_friction;
 								m_velocity.setY(0);
 								m_position += m_velocity;
 							}
 						}
 						else {
-							m_velocity.setX(0);
-							m_velocity.setY(0);
-							m_acceleration.setX(0);
+							//Friccion caso positivo
+							if (m_velocity.getX() > 0) {
+								if (m_velocity.getX() != 0) {
+									printf("ADIOS\n\n");
+									SDL_Delay(10);
+									m_velocity -= m_friction;
+									m_velocity.setY(0);
+									m_position += m_velocity;
+								}
+							}
+							else {
+								printf("MASMADERA\n\n");
+								m_velocity.setX(0);
+								m_velocity.setY(0);
+								m_acceleration.setX(0);
+								m_velocity.setX(0);  //Velocidad inicial
+								m_acceleration.setY(0);
+							}
 						}
-					}
-				}			}		}	}	   // m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);	//printf("%d", & m_currentFrame);	//SDL_Delay(100);	//m_currentFrame = 2;
+					}				}			}		}	}	   // m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);	//printf("%d", & m_currentFrame);	//SDL_Delay(100);	//m_currentFrame = 2;
 	
 	
 	//------------------Netejo pantalla--------> para que salga por el otro lado eje vertical, limitando eje horizontal
