@@ -26,7 +26,7 @@ void PlayState::render() {
 bool PlayState::onEnter() {
 
 
-	//-----Cargo la pantalla!
+	//------Cargo la pantalla!
 	if (!TextureManager::Instance()->load("./images/ninja.png", "ninja", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/Enemy_Knight.png", "Enemy_Knight", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/coin.png", "coin1", Game::Instance()->GetRenderer())) { return false; }
