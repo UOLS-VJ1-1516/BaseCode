@@ -1,0 +1,17 @@
+﻿Compilación iniciada a las 27/11/2015 21:17:47.
+     1>Proyecto "C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\test.vcxproj" en el nodo 2 (Build destinos).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\temp\Win32-Debug-Dll\) contains files shared from another project (tinyxml2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D TINYXML2_IMPORT /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\temp\Win32-Debug-Dll\\" /Fd"C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\temp\Win32-Debug-Dll\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt ..\xmltest.cpp
+         xmltest.cpp
+     1>c:\users\filos\onedrive\documentos\githubvisualstudio\basecode\libs\tinyxml2\xmltest.cpp(1516): warning C4456: la declaración de 'fp' oculta la declaración local anterior
+         c:\users\filos\onedrive\documentos\githubvisualstudio\basecode\libs\tinyxml2\xmltest.cpp(326): note: vea la declaración de 'fp'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\bin\Win32-Debug-Dll\test.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\bin\Win32-Debug-Dll\test.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\bin\Win32-Debug-Dll\test.lib" /MACHINE:X86 "C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\temp\Win32-Debug-Dll\xmltest.obj"
+         "C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\bin\Win32-Debug-Dll\tinyxml2.lib"
+         test.vcxproj -> C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\bin\Win32-Debug-Dll\test.exe
+     1>Compilación del proyecto terminada "C:\Users\filos\OneDrive\Documentos\GitHubVisualStudio\BaseCode\libs\tinyxml2\tinyxml2\test.vcxproj" (Build destinos).
+
+Compilación correcta.
+
+Tiempo transcurrido 00:00:01.20
