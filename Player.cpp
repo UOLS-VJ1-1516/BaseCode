@@ -55,7 +55,6 @@ void Player::update() {
 		if (m_position.getX() >= 1200) {
 			m_position.setX(800);
 		}
-
 	}
 	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
