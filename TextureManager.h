@@ -3,6 +3,8 @@
 #include "SDL_image.h"
 #include "map"
 
+#define TheTextureManager TextureManager::Instance()
+
 class TextureManager
 {
 	private:
@@ -23,6 +25,7 @@ class TextureManager
 		bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer);
 		void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer*	pRenderer, int flip);
 		void TextureManager::clearFromTextureMap(std::string id) { m_textureMap.erase(id); };
+		void TextureManager::drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer);
 	private:
 		static TextureManager* s_pInstance;
 		SDL_Texture* texture;

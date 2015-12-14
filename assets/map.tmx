@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="48" height="9" tilewidth="100" tileheight="100" nextobjectid="1">
+ <tileset firstgid="1" name="platformers" tilewidth="100" tileheight="100" tilecount="60" spacing="0" margin="0">
+  <image source="assets/Tiles.png" trans="ffffff" width="600" height="1000"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="48" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztkMsKhDAMReuys3F0q1vHJzg4s9DO///XXEEhxEdTqF154EAINLmpUjc2jLB3NdOiIXUoMpgH3OcDmrmAr8D7fzvyPucoM88/CvbXsGG9GD5hAlPhGxuSzGf/P8AP/LJ+D98s9wOWsIJabe+gb6S0JNtcd5aaEgldc6/ZqdphztFs7VBTSw/yeypPcyV7/3YwEz0=
+  </data>
+ </layer>
+</map>

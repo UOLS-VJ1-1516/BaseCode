@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "StateParser.h"
-#include <iostream>
+#include "LayerParser.h"
 
 //ID del estado
 const std::string PlayState::s_playID = "PLAY";
@@ -9,7 +9,9 @@ const std::string PlayState::s_playID = "PLAY";
 //Función para cargar al entrar en el estado de Play donde se cargan y se crean los diferentes gameobjects
 bool PlayState::onEnter()
 {
+	LayerParser levelParser;
 	StateParser stateParser;
+	map = levelParser.parseLevel("assets/map.tmx");
 	stateParser.parseState("tiny.xml", s_playID, &m_gameObjects, &m_textureIDList);
 	return true;
 }
@@ -26,6 +28,7 @@ void PlayState::update()
 	{
 		m_gameObjects[i]->update();
 	}
+	map->update();
 }
 
 //Función que printa los diferentes gameobjects constantemente
@@ -34,6 +37,7 @@ void PlayState::render()
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
 	}
+	map->render();
 }
 
 //Función para limpiar el estado de play al salir, los gameobjects y las texturas de estos

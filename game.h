@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "GameStateMachine.h"
 
+#define TheGame Game::Instance()
 //Clase game para crear el juego
 class Game
 {

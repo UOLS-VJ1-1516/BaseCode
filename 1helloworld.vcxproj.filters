@@ -42,6 +42,18 @@
     <ClCompile Include="Vector2D.cpp">
       <Filter>Motor</Filter>
     </ClCompile>
+    <ClCompile Include="LayerParser.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="base64.cpp">
+      <Filter>Librerias</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -96,6 +108,21 @@
     <ClInclude Include="libs\tinyxml\include\tinystr.h">
       <Filter>Librerias</Filter>
     </ClInclude>
+    <ClInclude Include="LayerParser.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="base64.h">
+      <Filter>Librerias</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="tiny.xml" />
@@ -112,6 +139,9 @@
     </Filter>
     <Filter Include="Librerias">
       <UniqueIdentifier>{7bcc146e-6c4a-491b-b1bb-a7831081cb1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tile">
+      <UniqueIdentifier>{8475ca57-5df8-4b75-a45f-0eccc53f3b31}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

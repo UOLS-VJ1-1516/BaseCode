@@ -1,39 +1,23 @@
-﻿Compilación iniciada a las 29/11/2015 1:45:47.
+﻿Compilación iniciada a las 15/12/2015 0:26:44.
      1>Proyecto "C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\1helloworld.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt GameObjectFactory.cpp MenuState.cpp PauseState.cpp PlayState.cpp StateParser.cpp
-         StateParser.cpp
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\stateparser.cpp(85): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-         PlayState.cpp
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\playstate.cpp(12): warning C4101: 'stateParser': variable local sin referencia
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\playstate.cpp(25): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\playstate.cpp(34): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\playstate.cpp(42): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\playstate.cpp(48): warning C4018: '<': no coinciden signed/unsigned
-         PauseState.cpp
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(23): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(32): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(41): warning C4101: 'stateParser': variable local sin referencia
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(53): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(58): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\pausestate.cpp(70): warning C4018: '<': no coinciden signed/unsigned
-         MenuState.cpp
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\menustate.cpp(12): warning C4101: 'stateParser': variable local sin referencia
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\menustate.cpp(24): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\menustate.cpp(33): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\menustate.cpp(41): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\menustate.cpp(46): warning C4018: '<': no coinciden signed/unsigned
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\menustate.cpp(72): warning C4018: '<': no coinciden signed/unsigned
-         GameObjectFactory.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LayerParser.cpp PlayState.cpp TileLayer.cpp
+         LayerParser.cpp
          Generando código...
+         Omitiendo... (no se detectaron cambios relevantes)
+         TileLayer.cpp
+         PlayState.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\Enemy.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\base64.obj
+         Debug\Enemy.obj
          Debug\game.obj
          Debug\GameObject.obj
          Debug\GameObjectFactory.obj
          Debug\GameStateMachine.obj
          Debug\InputHandler.obj
+         Debug\LayerParser.obj
          Debug\main.obj
+         Debug\Map.obj
          Debug\MenuButton.obj
          Debug\MenuState.obj
          Debug\PauseState.obj
@@ -41,10 +25,11 @@
          Debug\PlayState.obj
          Debug\StateParser.obj
          Debug\TextureManager.obj
+         Debug\TileLayer.obj
          Debug\Vector2D.obj
          1helloworld.vcxproj -> C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.exe
      1>Compilación del proyecto terminada "C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\1helloworld.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:06.36
+Tiempo transcurrido 00:00:01.35
