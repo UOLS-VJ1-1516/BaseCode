@@ -1,10 +1,21 @@
 #include "PauseState.h"
 #include "MenuState.h"
+#include "StateParser.h"
 
-//ID del estado pause
 const std::string PauseState::s_pauseID = "PAUSE";
 
-//Callback para cuando se pulsa volver al estado de menu
+bool PauseState::onEnter()
+{
+	StateParser stateParser;
+	stateParser.parseState("xmljuego.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_pauseToMain);
+	m_callbacks.push_back(s_resumePlay);
+	setCallbacks(m_callbacks);
+
+	return true;
+}
+
 void PauseState::s_pauseToMain()
 {
 	Game::Instance()->getGameStateMachine()->changeState(new MenuState());
@@ -34,36 +45,30 @@ void PauseState::render()
 	}
 }
 
-//Función para cuando se entra al estado de pause donde se carga y se crean los game objects de este estado
-bool PauseState::onEnter()
-{
-	if (!TextureManager::Instance()->load("resumeButton.bmp", "resumebutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("mainMenuButton.bmp", "mainbutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	button1 = new MenuButton(new LoaderParams(300, 150, 300, 100, "mainbutton", "mainMenuButton.bmp", 0, 0), s_pauseToMain);
-	button2 = new MenuButton(new LoaderParams(300, 350, 300, 100, "resumebutton", "resumeButton.bmp", 0, 0), s_resumePlay);
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
-	return true;
-}
-
-//Función para cuando se sale del estado pause que se limpian los gameobjects creados en este estado como las texturas
 bool PauseState::onExit()
 {
-	/*for (int i = 0; i < m_gameObjects.size(); i++)
-	{
+	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->clean();
 	}
-	m_gameObjects.clear();*/
 	m_gameObjects.clear();
-	button1->clean();
-	button2->clean();
-	TextureManager::Instance()->clearFromTextureMap("resumebutton");
-	TextureManager::Instance()->clearFromTextureMap("mainbutton");
+
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TheTextureManager->clearFromTextureMap(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
+
 	return true;
+}
+void PauseState::setCallbacks(const std::vector<Callback>&callbacks)
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		if (dynamic_cast<MenuButton*>(m_gameObjects[i]))
+		{
+			MenuButton* pButton =
+				dynamic_cast<MenuButton*>(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }

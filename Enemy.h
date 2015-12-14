@@ -14,4 +14,5 @@ public:
 	void draw();
 	void update();
 	void clean();
+	static GameObject * Create() { return new Enemy(); }
 };

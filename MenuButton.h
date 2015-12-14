@@ -8,11 +8,16 @@
 class MenuButton : public GameObject
 {
 public:
+	MenuButton();
 	MenuButton(const LoaderParams* pParams, void(*callback)());
 	virtual void load(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	static GameObject * Create() { return new MenuButton(); }
+	void setCallback(void(*callback)()) { m_callback = callback; }
+	int getCallbackID() const { return m_callbackID; }
+
 private:
 	enum button_state
 	{

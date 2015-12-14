@@ -2,18 +2,18 @@
 #include "InputHandler.h"
 #include "MenuState.h"
 #include "PlayState.h"
+#include "PauseState.h"
+#include "GameObjectFactory.h"
 
 //Instancias
 Game* Game::g_pInstance = 0;
+GameObjectFactory* GameObjectFactory::s_pInstance = 0;
 
-// Constructor donde se inicializan variables y los GameObjects
 Game::Game() {
 	m_pGameStateMachine = new GameStateMachine();
 };
-// Destructor
 Game::~Game() {};
 
-// Inicializamos el game
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	// initialize SDL
@@ -31,6 +31,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		screenWidth = width;
 		screenHeigth = height;
 
+		TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
+		TheGameObjectFactory->Register("Player", &Player::Create);
+		TheGameObjectFactory->Register("Enemy", &Enemy::Create);
 		m_pGameStateMachine->pushState(new MenuState());
 
 		return 0;
@@ -41,13 +44,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 };
 
-//Función para printar el juego
 void Game::render()
 {
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(g_pRenderer, 109, 159, 185, 255);
 
 	// clear the window to black
 	SDL_RenderClear(g_pRenderer);
@@ -59,19 +58,16 @@ void Game::render()
 
 };
 
-//Función para updatear el juego
 void Game::update()
 {
 	m_pGameStateMachine->update();
 };
 
-//Función para updatear las entradas del usuario
 void Game::handleEvents()
 {
 	InputHandler::Instance()->update();
 };
 
-//Función para limpiar el juego
 void Game::clean()
 {
 	SDL_RenderClear(g_pRenderer);
@@ -80,39 +76,32 @@ void Game::clean()
 	SDL_Quit();
 };
 
-//Función para controlar si se ha salido o no del juego
 bool Game::isRunning()
 {
 	return running;
 };
 
-//Función para devolver el render
 SDL_Renderer* Game::getRenderer()
 {
 	return g_pRenderer;
 };
 
-//Función para devolver los ticks
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
 };
 
-//Función para devolver el alto de pantalla
 int Game::getScreenHeight() {
 	return screenHeigth;
 };
 
-//Función para devolver el ancho de pantalla
 int Game::getScreenWidth() {
 	return screenWidth;
 };
 
-//Función para salir del juego
 void Game::exit() {
 	running = false;
 };
 
-//Función para devolver la maquina de estados
 GameStateMachine* Game::getGameStateMachine() {
 	return m_pGameStateMachine;
 }

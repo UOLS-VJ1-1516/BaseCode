@@ -1,5 +1,7 @@
 #include "MenuState.h"
 #include "PlayState.h"
+#include "StateParser.h"
+#include "GameObjectFactory.h"
 
 //ID del estado menu
 const std::string MenuState::s_menuID = "MENU";
@@ -7,21 +9,12 @@ const std::string MenuState::s_menuID = "MENU";
 //Función para cuando se crea el estado menu que crea los game objects de este estado
 bool MenuState::onEnter()
 {
-	if (!TextureManager::Instance()->load("playbutton.bmp", "playerbutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("exitbutton.bmp", "exitbutton", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-
-	button1 = new MenuButton(new LoaderParams(300, 150, 300, 100, "playbutton", "playbutton.bmp", 0, 0), s_menuToPlay);
-	button2 = new MenuButton(new LoaderParams(300, 350, 300, 100, "exitbutton", "exitbutton.bmp", 0, 0), s_exitFromMenu);
-	
-	m_gameObjects.push_back(button1);
-	
-	m_gameObjects.push_back(button2);
+	StateParser stateParser;
+	stateParser.parseState("xmljuego.xml", s_menuID, &m_gameObjects, &m_textureIDList);
+	m_callbacks.push_back(0);
+	m_callbacks.push_back(s_menuToPlay);
+	m_callbacks.push_back(s_exitFromMenu);
+	setCallbacks(m_callbacks);
 	
 	return true;
 }
@@ -46,14 +39,17 @@ void MenuState::render()
 //Función para cuando se sale del menu state que limpia los gameobjects y sus texturas
 bool MenuState::onExit()
 {
-	/*for (int i = 0; i < m_gameObjects.size(); i++) {
+	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->clean();
-	}*/
-	button1->clean();
-	button2->clean();
+	}
 	m_gameObjects.clear();
-	TextureManager::Instance()->clearFromTextureMap("playbutton");
-	TextureManager::Instance()->clearFromTextureMap("exitbutton");
+
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TheTextureManager->clearFromTextureMap(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
+
 	return true;
 }
 
@@ -69,4 +65,15 @@ void MenuState::s_exitFromMenu()
 	Game::Instance()->getGameStateMachine()->popState();
 	Game::Instance()->getGameStateMachine()->deleteAllStates();
 	Game::Instance()->exit();
+}
+void MenuState::setCallbacks(const std::vector<Callback>&callbacks)
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		if (dynamic_cast<MenuButton*>(m_gameObjects[i]))
+		{
+			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gameObjects[i]);
+			pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }

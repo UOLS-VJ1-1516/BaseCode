@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<STATES>
+	<MENU>
+		<TEXTURES>
+			<texture filename="playbutton.bmp" ID="playbutton"/>
+			<texture filename="exitbutton.bmp" ID="exitbutton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="150" y="100" width="300" height="100" textureID="playbutton" rowNum="0" callbackID="1" spriteNum="0"/>
+			<object type="MenuButton" x="150" y="250" width="300" height="100" textureID="exitbutton" rowNum="0" callbackID="2" spriteNum="0"/>
+		</OBJECTS>
+	</MENU>
+  <PLAY>
+    <TEXTURES>
+      <texture filename="gorda.bmp" ID="player"/>
+      <texture filename="cine.bmp" ID="enemy"/>
+      <texture filename="cine.bmp" ID="enemy1"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="Player" x="100" y="50" width="92" height="70" textureID="player" rowNum="0" callbackID="0" spriteNum="8"/>
+      <object type="Enemy" x="500" y="250" width="41" height="62" textureID="enemy" rowNum="0" callbackID="0" spriteNum="6"/>
+      <object type="Enemy" x="120" y="400" width="41" height="62" textureID="enemy1" rowNum="0" callbackID="0" spriteNum="6"/>
+    </OBJECTS>
+  </PLAY>
+  <PAUSE>
+    <TEXTURES>
+      <texture filename="mainMenuButton.bmp" ID="mainbutton"/>
+      <texture filename="resumebutton.bmp" ID="resumebutton"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="MenuButton" x="450" y="100" width="300" height="100" textureID="mainbutton" rowNum="0" callbackID="1" spriteNum="0"/>
+      <object type="MenuButton" x="450" y="250" width="300" height="100" textureID="resumebutton" rowNum="0" callbackID="2" spriteNum="0"/>
+    </OBJECTS>
+  </PAUSE>
+
+</STATES>

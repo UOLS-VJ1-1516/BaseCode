@@ -20,6 +20,7 @@ void GameObject::load(const LoaderParams* pParams) {
 	m_fileName = pParams->getFileName();
 	m_spriteNum = pParams->getSpriteNum();
 	m_currentRow = pParams->getRowNum();
+	m_callbackID = pParams->getCallbackID();
 	TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
 }
 

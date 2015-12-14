@@ -16,8 +16,8 @@ public:
 	virtual void update() = 0;
 	virtual void clean() = 0;
 protected:
-	const char* m_textureID;
-	char* m_fileName;
+	std::string m_textureID;
+	std::string m_fileName;
 	int m_width;
 	int m_height;
 	int m_currentFrame;
@@ -33,4 +33,5 @@ protected:
 	Vector2D m_frictionL;
 	int m_spriteNum;
 	int m_rowNum;
+	int m_callbackID;
 };

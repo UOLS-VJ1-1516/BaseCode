@@ -4,6 +4,8 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "vector"
+#include "MenuButton.h"
+#include "LevelParser.h"
 
 //Clase State de Play para entrar el juego
 class PlayState : public GameState
@@ -21,4 +23,5 @@ private:
 	GameObject* enemy1;
 	GameObject* enemy2;
 	GameObject* enemy3;
+	Level* pLevel;
 };

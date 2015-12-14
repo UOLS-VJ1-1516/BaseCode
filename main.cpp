@@ -6,7 +6,7 @@ const float DELAY_TIME = 1000.0f / FPS;
 int main(int argc, char* args[]){
 
 	// Iniciamos el game
-	Game::Instance()->init("Ejercicio 5", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 500, false);
+	Game::Instance()->init("Ejercicio 5", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 512, false);
 
 	//Mientras no se quiera cerrar el game, se llama repetidamente a las funciones del while
 	while (Game::Instance()->isRunning())

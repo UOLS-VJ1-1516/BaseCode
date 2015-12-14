@@ -5,10 +5,15 @@
 #include "Vector2D.h"
 
 
+MenuButton::MenuButton()
+{
+}
+
 //Constructor
 MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callback(callback)
 {
 	GameObject::load(pParams);
+	
 	m_bReleased = false;
 	m_currentFrame = MOUSE_OUT;
 }

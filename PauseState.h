@@ -3,9 +3,12 @@
 #include "vector"
 #include "GameObject.h"
 
-//Clase con el estado Pause para pausar el juego que te da la opcion de continuar o volver al estado de menu
 class PauseState : public GameState
 {
+protected:
+	typedef void(*Callback)();
+	virtual void setCallbacks(const std::vector<Callback>& callbacks);
+	std::vector<Callback> m_callbacks;
 public:
 	virtual void update();
 	virtual void render();
