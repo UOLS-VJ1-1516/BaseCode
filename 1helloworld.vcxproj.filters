@@ -37,7 +37,12 @@
     <ClCompile Include="base64.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
-    <ClCompile Include="LayerParser.cpp" />
+    <ClCompile Include="LayerParser.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -78,9 +83,6 @@
     <ClInclude Include="tinyxml.h">
       <Filter>Tinyxml</Filter>
     </ClInclude>
-    <ClInclude Include="Tileset.h">
-      <Filter>Tile</Filter>
-    </ClInclude>
     <ClInclude Include="TileLayer.h">
       <Filter>Tile</Filter>
     </ClInclude>
@@ -94,6 +96,15 @@
       <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="base64.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParser.h">
       <Filter>Tile</Filter>
     </ClInclude>
   </ItemGroup>
@@ -123,7 +134,7 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\mapa1.tmx">
+    <None Include="Data\mapa4.tmx">
       <Filter>Data</Filter>
     </None>
   </ItemGroup>

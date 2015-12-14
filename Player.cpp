@@ -45,7 +45,7 @@ void Player::update() {
 		std::cout << m_velocity.getX();
 		printf("\n");
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-		m_velocity.setX(0.1);
+		m_velocity.setX(0.2);
 		m_velocity.setX(m_acceleration.getX()+(m_velocity.getX() - m_frictionRight.getX()));
 		m_maxVelocity.setX(m_velocity.getX());
 		turn = SDL_FLIP_NONE;
@@ -62,7 +62,7 @@ void Player::update() {
 		std::cout << m_velocity.getX();
 		printf("\n");
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-		m_velocity.setX(-0.1);
+		m_velocity.setX(-0.2);
 		m_velocity.setX(m_desacceleration.getX() + (m_velocity.getX() - m_frictionLeft.getX()));
 		turn = SDL_FLIP_HORIZONTAL;
 		if (m_velocity.getX() == m_maxVelocity.getX()) {

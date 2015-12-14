@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include <string>
+#include "TileLayer.h"
 
 
 
@@ -28,6 +29,7 @@ private:
 	LoaderParams * load3;
 	Gordo * gordo;
 	SDL_Renderer *m_pRenderer;
+	TileLayer * tl;
 	
 protected:
 	typedef void(*Callback)();

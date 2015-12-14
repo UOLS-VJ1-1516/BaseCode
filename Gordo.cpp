@@ -3,7 +3,7 @@
 #include "Game.h"
 
 Gordo::Gordo() {
-	m_velocity.setX(0.1);
+	m_velocity.setX(0.5);
 	m_velocity.setY(0);
 	m_frictionRight.setX(m_velocity.getX() - 0.08);
 	m_frictionLeft.setX(m_velocity.getX() - 0.08);
@@ -31,14 +31,14 @@ void Gordo::update() {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 	if (m_position.getX() <= 0) {
 		
-		m_velocity.setX(0.1);
+		m_velocity.setX(0.5);
 		m_velocity.setX((m_velocity.getX() - m_frictionRight.getX()));
 		turnGordo = SDL_FLIP_NONE;
 	}
 
-	else if (m_position.getX() >= 1100) {
-		m_velocity.setX(-0.1);
-		m_velocity.setX((m_velocity.getX() + m_frictionLeft.getX()));
+	else if (m_position.getX() >= 700) {
+		m_velocity.setX(-0.5);
+		m_velocity.setX((m_velocity.getX() - m_frictionLeft.getX()));
 		turnGordo = SDL_FLIP_HORIZONTAL;
 
 	}

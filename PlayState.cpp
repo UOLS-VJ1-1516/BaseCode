@@ -5,9 +5,7 @@
 #include "LayerParser.h"
 
 void PlayState::update() {
-	/*player->update();
-	zep->update();
-	gordo->update();*/
+
 
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->update();
@@ -17,12 +15,14 @@ void PlayState::update() {
 
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
 	}
+	tl->update();
 
 }
 void PlayState::render() {
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->draw();
 	}
+	tl->render();
 }
 bool PlayState::onEnter() {
 
@@ -30,7 +30,9 @@ bool PlayState::onEnter() {
 	stateParser.parseState("./Data/Tiny.xml", s_playID, &m_gObjects, &m_TextureIDList);
 
 	LayerParser layerParser;
-	layerParser.parseTileLayer("./Data/mapa1.tmx");
+	tl = layerParser.parseTileLayer("./Data/mapa4.tmx");
+	//layerParser.parseTileLayer("./Data/mapa1.tmx");
+	
 
 	m_callbacks.push_back(0);
 	setCallbacks();
@@ -78,17 +80,6 @@ bool PlayState::onExit() {
 	return true;
 }
 
-//void PlayState::setCallbacks(const std::vector<Callback>& callbacks)
-//{
-//	for (int i = 0; i < m_gObjects.size(); i++)
-//	{
-//		if (dynamic_cast<MenuButton*>(m_gObjects[i]))
-//		{
-//			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gObjects[i]);
-//			pButton->setCallbacks(m_callbacks[pButton->getCallbackID()]);
-//		}
-//	}
-//}
 void PlayState::setCallbacks()
 {
 	for (int i = 0; i < m_gObjects.size(); i++)

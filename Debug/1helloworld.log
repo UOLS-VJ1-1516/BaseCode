@@ -1,12 +1,9 @@
-﻿Build started 05/12/2015 16:10:49.
+﻿Build started 15/12/2015 0:48:32.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LayerParser.cpp
-         LayerParser.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(6): error C2011: 'TileLayer': 'class' type redefinition
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(6): note: see declaration of 'TileLayer'
-     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)) -- FAILED.
+     1>Link:
+         1helloworld.vcxproj -> C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe
+     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.88
+Time Elapsed 00:00:00.18

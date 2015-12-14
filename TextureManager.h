@@ -29,7 +29,8 @@ public:
 		SDL_Renderer* pRender, SDL_RendererFlip flip);
 
 	void TextureManager::clearFromTextureMap(std::string id) { m_pTextureMap.erase(id); };
-	void drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer);
+	void drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame,
+		SDL_Renderer *pRenderer);
 
 private:
 	static TextureManager* s_pInstance;

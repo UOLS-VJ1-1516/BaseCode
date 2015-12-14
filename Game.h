@@ -32,6 +32,7 @@ private:
 	PauseState * pauseState;
 	int m_gameWidth;
 	int m_gameHeight;
+	
 
 
 	bool running = true;

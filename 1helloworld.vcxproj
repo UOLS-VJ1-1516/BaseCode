@@ -60,7 +60,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>libs/SDL/lib; libs/SDL_Image/lib;libs/tinyxml/lib;libs/zlib/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib;zdll.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -88,6 +88,7 @@
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LayerParser.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -110,7 +111,10 @@
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="Gordo.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="LayerParser.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelParser.h" />
     <ClInclude Include="libs\zlib\include\zconf.h" />
     <ClInclude Include="libs\zlib\include\zlib.h" />
     <ClInclude Include="LoaderParams.h" />
@@ -123,7 +127,6 @@
     <ClInclude Include="StateParser.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TileLayer.h" />
-    <ClInclude Include="Tileset.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Vector2D.h" />
@@ -138,7 +141,7 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\mapa1.tmx" />
+    <None Include="Data\mapa4.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -39,8 +39,8 @@ Game::~Game() {
 }
 bool Game::init(const char* title, int xpos, int
 	ypos, int width, int height, bool fullscreen) {
-	m_gameWidth = 1200;
-	m_gameHeight = 800;
+	m_gameWidth = width;
+	m_gameHeight = height;
 
 	
 	//inicialitzem el SDL
@@ -154,6 +154,7 @@ SDL_Renderer* Game::getRender() {
 int Game::getTicks() {
 	return (int)(SDL_GetTicks());
 };
+
 GameStateMachine * Game::getGameStateMachine() {
 	return m_pGameStateMachine;
 }
