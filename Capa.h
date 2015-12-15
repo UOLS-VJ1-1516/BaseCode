@@ -3,7 +3,7 @@ class Capa
 {
 public:
 
-
+	//
 
 	virtual void render() = 0;
 
