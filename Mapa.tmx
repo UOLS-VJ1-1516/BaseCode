@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="left-up" width="48" height="9" tilewidth="100" tileheight="100" nextobjectid="1">
- <tileset firstgid="1" name="platformers" tilewidth="100" tileheight="100" tilecount="10" spacing="0" margin="0">
-  <image source="C:\Users\victo\Desktop\BaseCode-master\assets\Tiles.png" trans="ffffff" width="512" height="288"/>
+ <tileset firstgid="1" name="Textura" tilewidth="100" tileheight="100" tilecount="10" spacing="0" margin="0">
+  <image source="C:\Users\victo\Documents\GitHubVisualStudio\BaseCode" trans="ffffff" width="512" height="288"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="48" height="9">
   <data encoding="base64" compression="zlib">

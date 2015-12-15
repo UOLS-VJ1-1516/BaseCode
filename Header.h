@@ -30,6 +30,9 @@ public:
 	void update();
 	void render();
 
+	//void update();
+	//void render();
+
 
 	std::vector<Tileset>* getTilesets() { return &m_tilesets; }
 	std::vector<Capa*>* getLayers() { return &m_layers; }
