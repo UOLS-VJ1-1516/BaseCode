@@ -9,9 +9,9 @@
 		<OBJECTS>
 			<object type="Player" x="0" y="0" width="70" height="61" textureID="Player" numSprites="8" speedX="0" speedY="0" maxSpeed="30" friction="0.1" callbackId="0"/>
 			<object type="Enemy" x="250" y="150" width="60" height="35" textureID="Tim" numSprites="3" speedX="3" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
-			<object type="Enemy" x="250" y="250" width="60" height="35" textureID="Tim2" numSprites="3" speedX="6" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
-			<object type="Enemy" x="250" y="350" width="60" height="35" textureID="Tim3" numSprites="3" speedX="1" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
-			<object type="Enemy" x="250" y="450" width="60" height="35" textureID="Tim4" numSprites="3" speedX="9" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="250" width="60" height="35" textureID="Tim2" numSprites="3" speedX="4" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="350" width="60" height="35" textureID="Tim3" numSprites="3" speedX="10" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="450" width="60" height="35" textureID="Tim4" numSprites="3" speedX="8" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
 			<object type="StaticObjects" x="300" y="550" width="36" height="64" textureID="Key" numSprites="8" speedX="0" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
 		</OBJECTS>
 	</PLAYSTATE>

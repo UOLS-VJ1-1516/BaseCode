@@ -2,9 +2,14 @@
 #include "PauseState.h"
 #include "Game.h"
 #include "StateParser.h"
+//#include "LevelParser.h"
+#include "LayerParser.h"
 #include "TextureManager.h"
 
+//#include "Level.h"
+
 void PlayState::update() {
+	tl->update();
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
 		m_gobjects[i]->update();
@@ -16,9 +21,11 @@ void PlayState::update() {
 	}
 
 	InputHandler::Instance()->clean();
+	
 };
 
 void PlayState::render() {
+	tl->render();
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++){
 		m_gobjects[i]->draw();
 	}
@@ -26,7 +33,8 @@ void PlayState::render() {
 
 bool PlayState::onEnter() {
 	StateParser::parseState("assets/myxml.xml", "PLAYSTATE", &m_gobjects, &m_textureIDList);
-
+	LayerParser lp;
+	tl = lp.parseTileLayer("assets/background.tmx");
 	return true;
 };
 

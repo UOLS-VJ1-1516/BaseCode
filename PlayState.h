@@ -1,6 +1,7 @@
 #pragma once
 #include "string"
 #include "GameState.h"
+#include "TileLayer.h"
 
 #ifndef PLAYSTATE_H
 #define PLAYSTATE_H
@@ -19,6 +20,7 @@ private:
 	static void s_exitFromMenu();
 	std::vector<GameObject*> m_gobjects;
 	std::vector<const char*> m_textureIDList;
+	TileLayer* tl;
 };
 
 #endif PLAYSTATE_H

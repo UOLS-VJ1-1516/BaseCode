@@ -1,13 +1,14 @@
 #include "TextureManager.h"
 
+
 TextureManager* TextureManager::s_pInstance = 0;
 TextureManager::TextureManager() {};
 
 //Método de carga de imágenes.
 bool TextureManager::load(const char* fileName, const char* id, SDL_Renderer* pRenderer) {
-	//Cargamos el fichero de la imagen BMP. La almacenamos en la surface.
-	s_surface = SDL_LoadBMP(fileName);
-
+	//Cargamos el fichero de la imagen. La almacenamos en la surface.
+	//s_surface = SDL_LoadBMP(fileName);
+	s_surface = IMG_Load(fileName);
 	/*La imagen origen tiene de fondo un color rosa estridente, para dejar clara la parte que queremos trasparentar.
 	Con la siguiente línea, pasamos la surface, un 1 (para afirmar que queremos trasparentar un color) y por último
 	el color de formato del surface que queremos transparentar, en este caso el 255,0,255.*/
@@ -50,6 +51,20 @@ void TextureManager::drawFrame(const char* id, int x, int y, int width, int heig
 
 	SDL_RenderCopyEx(pRender, m_textureMap[*id], &SrcR, &DestR, 0, 0, flip);//Los tres últimos parametros son para girar o voltear el sprite, no los usamos.
 };
+
+void TextureManager::drawTile(const char* id, int margin, int spacing, int x, int y, int width, int height, int currentRow,
+	int currentFrame, SDL_Renderer *pRenderer)
+{
+	SDL_Rect srcRect;
+	SDL_Rect destRect;
+	srcRect.x = margin + (spacing + width) * currentFrame;
+	srcRect.y = margin + (spacing + height) * currentRow;
+	srcRect.w = destRect.w = width;
+	srcRect.h = destRect.h = height;
+	destRect.x = x;
+	destRect.y = y;
+	SDL_RenderCopyEx(pRenderer, m_textureMap[*id], &srcRect, &destRect, 0, 0, SDL_FLIP_NONE);
+}
 
 //Método que nos permitirá almacenar el tamaño del sprite.
 void TextureManager::setSizeFrames(const char* id, int w, int h) {

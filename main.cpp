@@ -1,8 +1,8 @@
 #include "Game.h"
 
 const long FIXED_TIME = 20;
-const int FIXED_WIDTH = 1024;
-const int FIXED_HEIGHT = 768;
+const int FIXED_WIDTH = 800;
+const int FIXED_HEIGHT = 600;
 
 int main(int argc, char* args[])
 {
