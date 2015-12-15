@@ -28,6 +28,11 @@ void TileLayer::update()
 		m_position += m_velocity;
 		m_velocity.setX(0.5);
 	}
+	if ((m_position.getX() / m_tileWidth + m_numColumns) == (m_tileWidth + 6)) {
+		m_velocity.setX(0);
+	}
+
+	
 }
 
 void TileLayer::render()
@@ -38,9 +43,9 @@ void TileLayer::render()
 	x2 = int(m_position.getX()) % m_tileWidth;
 	y2 = int(m_position.getY()) % m_tileHeight;
 
-	for (int i = 0; i < m_numRows-1; i++)
+	for (int i = 0; i < m_numRows+1; i++)
 	{
-		for (int j = 0; j < m_numColumns-1; j++)
+		for (int j = 0; j < m_numColumns+1; j++)
 		{
 			int id = m_tileIDs[i][j + x];
 			if (id == 0)
@@ -49,6 +54,7 @@ void TileLayer::render()
 			}
 			Tileset tileset = getTilesetByID(id);
 			id--;
+			
 			TextureManager::Instance()->drawTile(tileset.name.c_str(), tileset.margin, tileset.spacing, (j * m_tileWidth) - x2, (i * m_tileHeight) - y2,
 				m_tileWidth, m_tileHeight, (id - (tileset.firstGridID - 1)) / tileset.numColumns,
 				(id - (tileset.firstGridID - 1)) % tileset.numColumns, Game::Instance()->getRender());
