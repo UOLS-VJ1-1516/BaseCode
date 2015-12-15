@@ -1,6 +1,7 @@
 #include "GameStates.h"
 #include "Game.h"
 #include "StateParser.h"
+#include "LayerParser.h"
 
 using namespace std;
 
@@ -22,10 +23,12 @@ void StateGame::Update()
 		}
 		var->Update();
 	}
+	layer->Update(player);
 }
 
 void StateGame::Render()
 {
+	layer->Render();
 	for each (LivingEntity * var in entitats)
 	{
 		if (var->HaveAnimation())
@@ -81,6 +84,7 @@ bool StateGame::OnEnter()
 			player = pl;
 		}
 	}
+	layer = Layerer->ParseTileLayer("assets/xml/state.tmx");
 	return true;
 }
 

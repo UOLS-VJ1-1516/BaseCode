@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Vector2D.h"
 
 namespace Tools
 {
@@ -11,4 +12,6 @@ namespace Tools
 	bool InBounding(Entity *, int x0, int y0);
 	int GetWidth();
 	int GetHeight();
+	Vector2D CalcPosFromImage(int, int);
+	int Decomp(int, int, int);
 }

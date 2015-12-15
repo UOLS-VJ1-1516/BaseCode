@@ -87,6 +87,8 @@ void Game::EventHandler()
 	BigHandle->UpdateKeys();
 	delta = Tools::GetDeltaTime();
 	manager->HandleEvents();
+	int fps = (int)(1000 / delta);
+	SDL_SetWindowTitle(window, to_string(fps).c_str());
 }
 
 void Game::Update()

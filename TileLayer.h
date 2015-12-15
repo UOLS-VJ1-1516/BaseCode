@@ -3,6 +3,7 @@
 #include "Tileset.h"
 #include "Vector2D.h"
 #include <vector>
+#include "Player.h"
 
 class TileLayer
 {
@@ -10,13 +11,14 @@ private:
 	int tileWidth;
 	int tileHeight;
 	Vector2D position;
-	const std::vector<Tileset> &tilesets;
+	std::vector<Tileset> tilesets;
 	std::vector<std::vector<int>> tileIDs;
+	void Draw(std::string, int, int, int, int, int, int, int, int);
 public:
-	TileLayer(int, int, const std::vector<Tileset>&);
+	TileLayer(int, int, std::vector<Tileset>);
 	virtual ~TileLayer();
-	void Update();
+	void Update(Player *);
 	void Render();
 	void SetTileIDs(const std::vector<std::vector<int>>&);
-	const Tileset * GetTileset(int);
+	Tileset * GetTileset(int);
 };

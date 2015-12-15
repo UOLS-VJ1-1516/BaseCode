@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include "Button.h"
 #include "EventHandler.h"
+#include "TileLayer.h"
 
 using namespace std;
 
@@ -46,6 +47,7 @@ private:
 	vector<Entity *> entitats;
 	vector<string> textures;
 	Player * player = NULL;	
+	TileLayer * layer;
 public:
 	void Update();
 	void Render();

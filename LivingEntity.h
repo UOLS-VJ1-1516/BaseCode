@@ -9,9 +9,9 @@
 class LivingEntity :
 	public Entity
 {
-protected:
-	Vector2D position, velocity, maxVel, acceleration, friction;	
 public:
+	Vector2D position, velocity, maxVel, acceleration, friction;	
+
 	LivingEntity();
 	~LivingEntity();
 
@@ -23,7 +23,7 @@ public:
 
 	void Load(EntityParams *);
 	void Draw();
-	void DrawFrame();
+	virtual void DrawFrame();
 	virtual void Update();
 	void Clear();
 

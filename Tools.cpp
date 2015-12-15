@@ -73,3 +73,28 @@ int Tools::GetHeight()
 	SDL_GetWindowSize(TheGame->GetWindow(), NULL, &h);
 	return h;
 }
+
+Vector2D Tools::CalcPosFromImage(int ColumnElements, int Position)
+{
+	Vector2D vector;
+	if (Position < ColumnElements) {
+		vector.X = Position;
+		vector.Y = 0;
+	}
+	else {
+		int row = Tools::Decomp(Position, ColumnElements, 0);
+		vector.Y = row;
+		vector.X = Position - (row * ColumnElements);
+	}
+	return vector;
+}
+
+int Tools::Decomp(int element, int limit, int count)
+{
+	if (element < limit) {
+		return count;
+	}
+	else {
+		return Tools::Decomp(element - limit, limit, count++);
+	}
+}

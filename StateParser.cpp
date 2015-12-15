@@ -51,14 +51,9 @@ bool StateParser::ParseState(const char * stateFile, string stateID, vector<Enti
 	XMLDocument doc;
 	string path = PATH;
 	path.append(stateFile);
-	try 
-	{
-		doc.LoadFile(path.c_str());
-	}
-	catch (string exc)
-	{
-		cout << exc << endl;
-	}
+	
+	doc.LoadFile(path.c_str());
+	
 	if (doc.Error())
 	{
 		cout << doc.ErrorName() << endl;
