@@ -1,32 +1,39 @@
 #pragma once
+#include "GameState.h"
 #include "GameObject.h"
-#include "Game.h"
-#include <string>
-#include <vector>
 #include "MenuButton.h"
 
 
-class MenuState : public GameState {
+
+class MenuState : public GameState
+{
+
+
+protected:
+
+
+	typedef void(*Callback)();
+
+	virtual void setCallbacks(const std::vector<Callback>& callbacks);
+
+	std::vector<Callback> m_callbacks;
+
+
 
 public:
- 
-	//de momento todo public aunque se tiene que determinar como private
+
 	virtual void update();
 	virtual void render();
 	virtual bool onEnter();
 	virtual bool onExit();
-	//
+
 	virtual std::string getStateID() const { return s_menuID; }
+
+	static void s_menuToPlay();
+	static void s_exitFromMenu();
+
 	static const std::string s_menuID;
-	std::vector<GameObject*>m_gameObjects;
-
-	//
-
-
-	static void s_Mplay();
-	static void s_EMenu();
-	std::vector<int> m_position;
-
-
-
+	std::vector<GameObject*> m_gameObjects;
+	GameObject* button1;
+	GameObject* button2;
 };

@@ -1,75 +1,75 @@
-#include "Game.h"
-#include "TextureManager.h"
-#include "Params.h"
-#include "InputHandler.h"
+#include "game.h"
+#include "MenuState.h"
+#include "PlayState.h"
+#include "GameObjectFactory.h"
 
 
-
-//Instancias
-Game * Game::s_pInstance = 0;
-
-
-// Constructor donde se inicializan variables y los GameObjects
+Game* Game::g_pInstance = 0;
+GameObjectFactory* GameObjectFactory::s_pInstance = 0;
 
 
 Game::Game() {
+	m_pGameStateMachine = new GameStateMachine();
+};
 
 
-	m_pWindow = 0;
-	m_pRenderer = 0;
-	player = new Player();
-	enemigo = new Enemy();
-	load = new Params(350, 350, 100, 200, "player", 4);
-	load2 = new Params(0, 0, 110, 150,"enemigo", 4);
-	
-}
 
-Game::~Game() {
 
-}
+Game::~Game() {};
+
+
 
 //ahora añadimos las funciones declaradas en game.h y las rellenamos
 
 //en este caso añadimos el codigo que estaba incluido en el main.cpp
 // initialize SDL
 
-bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 
-		m_pWindow = SDL_CreateWindow("Videojuegos VictorCordobes", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1800, 600, fullscreen);
+bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
+{
 
-		if (m_pWindow != 0) {
+	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
+	{
 
+		g_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
+
+
+		if (g_pWindow != 0)
+		{
 
 			//TextureManager::Instance()->load("player1.bmp", "player", g_pRenderer);
 
-			m_pRenderer = SDL_CreateRenderer(m_pWindow, -100, 10);
-			player->load(load);
-			m_gameObjects.push_back(player);
-
-			enemigo->load(load2);
-			m_gameObjects.push_back(enemigo);
-
-
-	        //cargamos la textura del jugador
-			TextureManager::Instance()->load("Player.bmp", "player", m_pRenderer);
-			//cargamos la textura del enemigo
-			TextureManager::Instance()->load("Enemigo.bmp", "enemigo", m_pRenderer);
-		
-			
+			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 		}
 
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
+		screenWidth = width;
+		screenHeigth = height;
 
-void Game::render() {
 
+		//Se registran los botones que provienen de la factoria de objetos
+
+		TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
+		//cargamos la textura del jugador
+		TheGameObjectFactory->Register("Player", &Player::Create);
+		//cargamos la textura del enemigo
+		TheGameObjectFactory->Register("Enemy", &Enemy::Create);
+
+		m_pGameStateMachine->pushState(new MenuState());
+
+		return 0;
+
+
+
+	}
+	else {
+
+		return 1;
+	}
+};
+
+void Game::render()
+{
 
 	// everything succeeded lets draw the window
 	// set to black // This function expects Red, Green, Blue and
@@ -91,39 +91,110 @@ void Game::render() {
 	//SDL_SetColorKey(texture, 1, SDL_MapRGB(texture->format, 255, 255, 255));
 
 
-	SDL_SetRenderDrawColor(m_pRenderer, 200, 100, 255, 255); //rosita 
-	SDL_RenderClear(m_pRenderer);
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
-	// show the window
-	SDL_RenderPresent(m_pRenderer);	
-}
 
-void Game::update() {
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	SDL_SetRenderDrawColor(g_pRenderer, 200, 100, 255, 255);
 
-}
 
-void Game::handleEvents(SDL_Event event) {
+	SDL_RenderClear(g_pRenderer);
+
+	m_pGameStateMachine->render();
+
+	//muestra la pantala
+	SDL_RenderPresent(g_pRenderer);
+};
+
+
+void Game::update()
+{
+	m_pGameStateMachine->update();
+};
+
+
+void Game::handleEvents()
+{
 	InputHandler::Instance()->update();
-}
+};
 
-void Game::clean() {
+
+void Game::clean()
+{
+	SDL_RenderClear(g_pRenderer);
+	SDL_DestroyWindow(g_pWindow);
+	SDL_DestroyRenderer(g_pRenderer);
 	SDL_Quit();
-}
+};
 
-bool Game::isRunning() {
+
+bool Game::isRunning()
+{
 	return running;
-}
-SDL_Renderer* Game::getRender() {
-	return m_pRenderer;
-}
+};
+
+
+SDL_Renderer* Game::getRenderer()
+{
+	return g_pRenderer;
+};
+
+
+
+//Se inicializan las diferentes funciones 
 
 int Game::getTicks() {
+
 	return (int)(SDL_GetTicks());
+
+
+
 };
+
+
+
+
+
+
+int Game::getScreenHeight() {
+	return screenHeigth;
+
+
+
+
+
+
+
+
+};
+
+
+int Game::getScreenWidth() {
+	return screenWidth;
+
+
+
+
+
+
+};
+
+
+void Game::exit() {
+	running = false;
+
+
+
+
+
+
+
+};
+
+
+GameStateMachine* Game::getGameStateMachine() {
+
+	return m_pGameStateMachine;
+
+
+
+
+
+}

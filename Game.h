@@ -1,48 +1,57 @@
 #pragma once
 #include "SDL.h"
-#include "TextureManager.h"
-#include "vector"
-#include "Player.h"
-#include "Enemy.h"
+#include "GameStateMachine.h"
 
 
-class Game {
+class Game
+
+
+{
+
+private:
+	Game();
 public:
 
-	Game();
-	SDL_Window* m_pWindow;
-	SDL_Renderer* m_pRenderer;
-	SDL_Surface * img;
-	static Game* s_pInstance;
-
-	Params* load;
-	Params* load2;
-	Player* player;
-	Enemy* enemigo;
-	
-	int spriteNum;
-	bool running = true;
-	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-	void render();
-	void update();
-	void handleEvents(SDL_Event event);
-	void clean();
-	void quit() { running == false; }
-	bool isRunning();
-	SDL_Renderer* getRender();
-	int getTicks();
-	std::vector<GameObject*> m_gameObjects;
 
 	static Game* Instance()
 	{
-		if (s_pInstance == 0)
-		{
-			s_pInstance = new Game();
+		if (g_pInstance == 0) {
+
+			g_pInstance = new Game();
+
+
 		}
-		return s_pInstance;
+		return g_pInstance;
 	}
+
+
 
 	~Game();
 
-	
+
+
+
+
+	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
+
+
+	void render();
+	void update();
+	void handleEvents();
+	void clean();
+	bool isRunning();
+	SDL_Renderer* getRenderer();
+	int getTicks();
+	int getScreenHeight();
+	int getScreenWidth();
+	void exit();
+	GameStateMachine* getGameStateMachine();
+	GameStateMachine* m_pGameStateMachine;
+	static Game* g_pInstance;
+	SDL_Window* g_pWindow = 0;
+	SDL_Renderer* g_pRenderer = 0;
+	bool running = true;
+	int screenWidth;
+	int screenHeigth;
+
 };

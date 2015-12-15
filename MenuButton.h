@@ -1,33 +1,36 @@
 #pragma once
 #include "GameObject.h"
-#include "Game.h"
 
-
-class MenuButton : public GameObject {
+class MenuButton : public GameObject
+{
 
 
 public:
 
 
-	enum button_state {
+	MenuButton();
 
 
+	virtual void load(const Params* pParams);
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
+
+
+
+	static GameObject * Create() { return new MenuButton(); }
+
+	int getCallbackID() const { return m_callbackID; }
+
+	void setCallback(void(*callback)()) { m_callback = callback; }
+
+    enum button_state{
 		MOUSE_OUT = 0,
 		MOUSE_OVER = 1,
-		CLIKED = 2
+		CLICKED = 2
 	};
 
 
-	MenuButton(const Params* pParams, void(*callback)());
-
-	void load(const Params * pParams);
-	~MenuButton();
-	void draw();
-	void update();
-	void clean();
 	void(*m_callback)();
-	bool m_bR;
-	const Params * Params;
-	Vector2D* pMPosition;
-
+	bool m_bReleased;
 };

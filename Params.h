@@ -1,23 +1,38 @@
 #pragma once
+#include "string"
 
 
-class Params {
+class Params
+{
 public:
-	Params(int x, int y, int width, int height, const char* textureID, int spriteNum):
-	m_x(x),m_y(y),m_width(width),m_height(height),m_num(spriteNum),m_textureID(textureID){
-	}
+	Params(float x, float y, int width, int height, std::string textureID, std::string fileName, int spriteNum, int rowNum, int flip, int callbackID)
+		: m_x(x), m_y(y), m_width(width), m_height(height), m_textureID(textureID), m_fileName(fileName), m_spriteNum(spriteNum), m_rowNum(rowNum), m_flip(flip), m_callbackID(callbackID) {}
+	float getX() const { return m_x; }
+	float getY() const { return m_y; }
+	float m_x;
+	float m_y;
 
-	int m_x;
-	int m_y;
-	int m_width;
-	int m_height;
-	int m_num;
-	const char* m_textureID;
-	int getX() const { return m_x; }
-	int getY() const { return m_y; }
+
 	int getWidth() const { return m_width; }
 	int getHeight() const { return m_height; }
-	const char* getTextureID() const { return m_textureID; }
-	int getNum() const { return m_num; }
+	int getSpriteNum() const { return m_spriteNum; }
+	int getRowNum() const { return m_rowNum; }
+	int getFlip() const { return m_flip; }
+	int getCallbackID() const { return m_callbackID; }
+	int m_width;
+	int m_height;
+	int m_spriteNum;
+	int m_rowNum;
+	int m_flip;
+	int m_callbackID;
 
+	std::string m_textureID;
+	std::string m_fileName;
+	std::string getTextureID() const { return m_textureID; }
+	std::string getFileName() const { return m_fileName; }
+
+
+
+
+	
 };

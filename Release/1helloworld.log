@@ -1,25 +1,56 @@
-﻿Build started 10/11/2015 23:39:18.
+﻿Build started 15/12/2015 1:28:15.
      1>Project "C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp GameObject.cpp InputHandler.cpp main.cpp Player.cpp TextureManager.cpp Vector2D.cpp Enemy.cpp
-         Game.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\Game.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
-         GameObject.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\GameObject.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
-         InputHandler.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\InputHandler.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
-         main.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\game.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
-         Player.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\TextureManager.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
-         TextureManager.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\TextureManager.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
-         Vector2D.cpp
-     1>Vector2D.cpp(73): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-         Enemy.cpp
-     1>c:\users\victo\documents\githubvisualstudio\basecode\TextureManager.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt ObjectLayer.cpp Source.cpp
+         ObjectLayer.cpp
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(6): error C2653: 'ObjectLayer': is not a class or namespace name
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(8): warning C4508: 'ObjectLayer': function should return a value; 'void' return type assumed
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(11): error C2653: 'ObjectLayer': is not a class or namespace name
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(12): error C2084: function 'int ObjectLayer(void)' already has a body
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(6): note: see previous definition of 'ObjectLayer'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(15): error C2653: 'ObjectLayer': is not a class or namespace name
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(17): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(17): error C2228: left of '.size' must have class/struct/union
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(17): note: type is 'unknown-type'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(19): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(19): error C2227: left of '->update' must point to class/struct/union/generic type
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(22): error C2653: 'ObjectLayer': is not a class or namespace name
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(24): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(24): error C2228: left of '.size' must have class/struct/union
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(24): note: type is 'unknown-type'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(26): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(26): error C2227: left of '->draw' must point to class/struct/union/generic type
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.h(22): error C2011: 'ObjectLayer': 'class' type redefinition
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.h(6): note: see declaration of 'ObjectLayer'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(6): error C2027: use of undefined type 'ObjectLayer'
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.h(6): note: see declaration of 'ObjectLayer'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(11): error C2027: use of undefined type 'ObjectLayer'
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.h(6): note: see declaration of 'ObjectLayer'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(15): error C2027: use of undefined type 'ObjectLayer'
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.h(6): note: see declaration of 'ObjectLayer'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(16): error C2084: function 'void update(void)' already has a body
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(15): note: see previous definition of 'update'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(17): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(17): error C2228: left of '.size' must have class/struct/union
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(17): note: type is 'unknown-type'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(19): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(19): error C2227: left of '->update' must point to class/struct/union/generic type
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(22): error C2027: use of undefined type 'ObjectLayer'
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.h(6): note: see declaration of 'ObjectLayer'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(23): error C2084: function 'void render(void)' already has a body
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(22): note: see previous definition of 'render'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(24): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(24): error C2228: left of '.size' must have class/struct/union
+         c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(24): note: type is 'unknown-type'
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(26): error C2065: 'm_gameObjects': undeclared identifier
+     1>c:\users\victo\documents\githubvisualstudio\basecode\ObjectLayer.cpp(26): error C2227: left of '->draw' must point to class/struct/union/generic type
+         Source.cpp
      1>Done Building Project "C:\Users\victo\Documents\GitHubVisualStudio\BaseCode\1helloworld.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.40
+Time Elapsed 00:00:00.68

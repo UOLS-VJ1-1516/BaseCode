@@ -1,18 +1,33 @@
 #pragma once
 #include "GameObject.h"
-#include "Params.h"
 
-class Enemy : public GameObject {
+
+
+class Enemy : public GameObject
+{
 public:
 
 
 
 	Enemy();
 	~Enemy();
-	void draw();
+
+
+
+
 	void load(const Params* pParams);
+
+	//llamamos a las funciones
+
+
+	void draw();
 	void update();
 	void clean();
+
+
+
+	static GameObject * Create() { return new Enemy(); }
+
 
 
 
