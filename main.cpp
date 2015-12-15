@@ -6,7 +6,7 @@ int main(int argc, char* args[])
 {
 	Uint32 frameStart, frameEnd, frameTime;
 
-	Game::Instance()->init("videojocs 1", 100, 100, 800, 600, false);
+	Game::Instance()->init("videojocs 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, false);
 
 
 	while (Game::Instance()->isRunning() == true) {

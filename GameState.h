@@ -12,4 +12,11 @@ class GameState
 		virtual bool onExit() = 0;
 		virtual std::string getStateID() const = 0;
 
+		typedef void(*Callback)();
+		virtual void setCallbacks(const std::vector<Callback>& callbacks) {};
+		std::vector< Callback > m_callbacks;
+
+	protected:
+		std::vector<std::string> m_textureIDList;
+
 };

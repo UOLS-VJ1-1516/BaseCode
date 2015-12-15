@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "GameObject.h"
 #include "GameStateMachine.h"
+#include "GameObjectFactory.h"
 
 
 class Game
@@ -41,9 +42,14 @@ public:
 	bool isRunning();
 	SDL_Renderer* getRender();
 	GameStateMachine* getGameStateMachine();
+	int getGameWidth();
+	int getGameHeight();
 
 private:
 	static Game* s_pInstance;
 	GameStateMachine* m_gameStateMachine;
 	//std::vector<GameObject*> m_gameObjects;
+
+	int screenWidth;
+	int screenHeigth;
 };

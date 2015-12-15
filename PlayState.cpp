@@ -4,6 +4,10 @@
 #include "GameObject.h"
 #include "InputHandler.h"
 #include "PauseState.h"
+#include "StateParser.h"
+#include "MenuButton.h"
+#include "LevelParser.h"
+#include "Level.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -13,12 +17,11 @@ void PlayState::update() {
 		m_gameObjects[i]->update();
 	}
 
-	//InputHandler::Instance()->update();
-
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
-	{
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState);
 	}
+
+	pLevel->update();
 
 }
 
@@ -27,47 +30,35 @@ void PlayState::render() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
 	}
+
+	pLevel->render();
 }
 
 bool PlayState::onEnter() {
 
-	p1 = new Player();
-	p2 = new Enemy();
-	p3 = new Enemy();
+	// Parse the state
+	StateParser stateParser;
+	stateParser.parseState("XMLFile.xml", s_playID, &m_gameObjects, &m_textureIDList);
 
-	if (!TextureManager::Instance()->load("walker.bmp", "walker", Game::Instance()->getRender())) {
-		return false;
-	}
-	if (!TextureManager::Instance()->load("kirby.bmp", "kirby", Game::Instance()->getRender())) {
-		return false;
-	}
+	LevelParser levelParser;
+	pLevel = levelParser.parseLevel("map2.tmx");
 
-	if (!TextureManager::Instance()->load("tanooki.bmp", "tanooki", Game::Instance()->getRender())) {
-		return false;
-	}
-
-	LoaderParams* load1 = new LoaderParams(300, 200, 60, 38, "walker", "walker.bmp", 12);
-	LoaderParams* load2 = new LoaderParams(50, 50, 30, 27, "kirby", "kirby.bmp", 6);
-	LoaderParams* load3 = new LoaderParams(550, 400, 37, 35, "tanooki", "tanooki.bmp", 4);
-
-	p1->load(load1);
-	p2->load(load2);
-	p3->load(load3);
-
-	m_gameObjects.push_back(p1);
-	m_gameObjects.push_back(p2);
-	m_gameObjects.push_back(p3);
-	
 	return true;
 }
 
 bool PlayState::onExit() {
 
-	for (int i = 0; i < m_gameObjects.size(); i++) {
+	for (unsigned int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->clean();
 	}
-
 	m_gameObjects.clear();
+
+	for (unsigned int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TextureManager::Instance()->clearTexture(m_textureIDList[i]);
+	}
+	m_textureIDList.clear();
+
 	return true;
 }
 

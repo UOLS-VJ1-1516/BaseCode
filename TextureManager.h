@@ -28,6 +28,8 @@ class TextureManager
 		bool load(std::string fileName, std::string id, SDL_Renderer* m_pRenderer);
 		void draw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip);
 		void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
+		void clearTexture(std::string id);
+		void drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer);
 
 
 	private:

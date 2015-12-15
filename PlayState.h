@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "player.h"
 #include "Enemy.h"
-
+#include "LevelParser.h"
 
 class PlayState : public GameState
 {
@@ -20,6 +20,7 @@ public:
 private:
 	static const std::string s_playID;
 	std::vector<GameObject*> m_gameObjects;
+	std::vector< Callback > m_callbacks;
 
 	static void s_menuToPlay();
 	static void s_exitFromMenu();
@@ -27,5 +28,7 @@ private:
 	Player* p1;
 	Enemy* p2;
 	Enemy* p3;
+
+	Level* pLevel;
 
 };

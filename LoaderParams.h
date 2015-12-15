@@ -11,9 +11,10 @@ private:
 	std::string m_textureID;
 	std::string m_fileName;
 	int m_spriteNum;
+	int m_callbackID;
 
 public:
-	LoaderParams(int x, int y, int width, int height, std::string textureID, std::string fileName, int spriteNum) {
+	LoaderParams(int x, int y, int width, int height, std::string textureID, std::string fileName, int spriteNum, int callbackID) {
 		m_x = x;
 		m_y = y;
 		m_width = width;
@@ -21,6 +22,7 @@ public:
 		m_textureID = textureID;
 		m_fileName = fileName;
 		m_spriteNum = spriteNum;
+		m_callbackID = callbackID;
 	}
 
 	int getX() const { return m_x; }
@@ -30,4 +32,5 @@ public:
 	std::string getTextureID() const { return m_textureID; }
 	std::string getFileName() const { return m_fileName; }
 	int getSpriteNum() const { return m_spriteNum; }
+	int getCallbackID() const { return m_callbackID; }
 };

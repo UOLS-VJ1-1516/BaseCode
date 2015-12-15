@@ -4,14 +4,14 @@
 #include "GameObject.h"
 #include "TextureManager.h"
 
-MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callback(callback) {
-	GameObject::load(pParams);
-	m_currentFrame = MOUSE_OUT;
+MenuButton::MenuButton() {
+	
 }
 
 void MenuButton::load(const LoaderParams* pParams) {
-
-
+	GameObject::load(pParams);
+	m_currentFrame = MOUSE_OUT;
+	m_callbackID = pParams->getCallbackID();
 }
 
 void MenuButton::draw() {

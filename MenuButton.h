@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include <vector>
+#include "LoaderParams.h"
 
 class MenuButton : public GameObject
 {
@@ -14,16 +15,22 @@ public:
 		CLICKED = 2
 	};
 
-	MenuButton(const LoaderParams* pParams, void(*callback)());
+	MenuButton();
 	virtual ~MenuButton() {};
 	virtual void load(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+		
+	int getCallbackID() const { return m_callbackID; }
+	void setCallbacks(void(*callback)()) { m_callback = callback; }
+
+	static GameObject* Create() { return new MenuButton(); }
 
 protected:
 	void(*m_callback)();
 	bool m_bReleased;
+	int m_callbackID;
 	GameObject* b;
 	std::vector<GameObject*> m_gameObjects;
 };

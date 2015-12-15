@@ -11,6 +11,8 @@ public:
 	void update();
 	void clean();
 
+	static GameObject* Create() { return new Enemy(); }
+
 private:
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 

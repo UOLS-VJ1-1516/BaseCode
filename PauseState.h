@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "player.h"
 #include "Enemy.h"
+#include <vector>
 
 class PauseState : public GameState {
 
@@ -13,9 +14,12 @@ public:
 	bool onExit();
 	std::string getStateID() const;
 
+	virtual void setCallbacks(const std::vector<Callback>& callbacks);
+
 private:
-	static const std::string s_menuID;
+	static const std::string s_pauseID;
 	std::vector<GameObject*> m_gameObjects;
+	std::vector< Callback > m_callbacks;
 
 	static void s_menuToPlay();
 	static void s_menuToMain();
