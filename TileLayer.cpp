@@ -15,7 +15,7 @@ TileLayer::TileLayer(int tileSize, const std::vector<Tileset> &tilesets) : m_til
 
 void TileLayer::update() {
 
-	if (m_position.getX() < 1920) {
+	if (m_position.getX() < 1250) {
 		m_position += m_velocity;
 		m_velocity.setX(1);
 	}
@@ -48,7 +48,7 @@ Tileset TileLayer::getTilesetByID(int tileID)
 {
 	for (int i = 0; i < m_tilesets.size(); i++) {
 		if (i + 1 <= m_tilesets.size() - 1) {
-			if (tileID >= m_tilesets[i].firstGridID&&tileID < m_tilesets[i + 1].firstGridID) {
+			if (tileID >= m_tilesets[i].firstGridID && tileID < m_tilesets[i + 1].firstGridID) {
 				return m_tilesets[i];
 			}
 		}
@@ -59,4 +59,5 @@ Tileset TileLayer::getTilesetByID(int tileID)
 
 	Tileset t;
 	return t;
+
 }

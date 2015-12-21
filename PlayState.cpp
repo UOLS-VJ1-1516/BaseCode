@@ -36,10 +36,6 @@ void PlayState::render() {
 
 bool PlayState::onEnter() {
 
-	// Parse the state
-	StateParser stateParser;
-	stateParser.parseState("XMLFile.xml", s_playID, &m_gameObjects, &m_textureIDList);
-
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("map2.tmx");
 
