@@ -43,5 +43,6 @@ public:
 	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	int getTicks();
 	const int getwidthWindow() const;
+	const int getHeightWindow() const;
 };
 

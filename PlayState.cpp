@@ -4,8 +4,10 @@
 #include "InputHandler.h"
 #include "TextureManager.h"
 #include "StateParser.h"
+#include "LayerParser.h"
 
 void PlayState::update() {
+	tiled->update();
 	if (InputHandler::Instance()->isKeyDown(SDLK_ESCAPE)) Game::Instance()->getStateMachine()->pushState(new MenuStateOnPause());
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
@@ -14,15 +16,22 @@ void PlayState::update() {
 };
 
 void PlayState::render() {
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) {
+	tiled->render();
+	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) 
+	{
 		m_gameObjects[i]->draw();
 	}
 };
 
-bool PlayState::onEnter() {		
+bool PlayState::onEnter() {	
+	
 	StateParser::parseState("assets/game.xml", s_playID, &m_gameObjects,	&m_textureIDList);	
 	m_callbacks.push_back(0);
 	setCallbacks(m_callbacks);
+
+	LayerParser layerParse;
+	tiled = layerParse.parseTileLayer("assets/world/first.tmx");
+
 	return true;
 };
 

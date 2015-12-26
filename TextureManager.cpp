@@ -5,7 +5,7 @@ TextureManager::TextureManager() {};
 
 bool TextureManager::load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer) {
 	
-	SDL_Surface *image = SDL_LoadBMP(fileName);
+	SDL_Surface *image = IMG_Load(fileName);
 	if (image == 0) return false;
 	m_textureMap[textureID] = SDL_CreateTextureFromSurface(g_pRenderer, image);
 	SDL_FreeSurface(image);
