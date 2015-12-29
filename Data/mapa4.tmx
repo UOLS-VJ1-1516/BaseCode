@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="40" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" name="mapa" tilewidth="32" tileheight="32" spacing="0" margin="0" tilecount="15">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="50" height="19" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="mapa" tilewidth="32" tileheight="32" tilecount="15" spacing ="0" margin="0">
   <image source="mapa.png" width="96" height="160"/>
  </tileset>
- <layer name="Capa de Patrones 1" width="40" height="25">
+ <layer name="Capa de Patrones 1" width="50" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlOEKwyAMhG3Haldx7/+4FaZwHBfRtdA/+eAIsdVLYmkIjuM4jjPOVvUPH9DdtLpi1Sw77I01v4PWbyTN8hW6As+LtRtC3pNiLI8RHUWpKIffLFpcitaiF7zTiwfkuHeh5zPqeeCMuXYVM+R8R1moVxOexWvKg3tQ/Vi9xaDrwDqTOFP5WB54Js89kZ+a30hfVs1q9uyB6xzVmnW/6lvgHGu7+m9wHOdZTn9GCi8=
+   eJztkoEKwyAMRO3GplOy///cCUU4jjNbmYUNcvCwWk1y0ZRCoVAoFAr9mu7AWXoAqzVqz8AZfgrlKIvijr5kh5V+noJvpPr/DuWnTEDdDsKa5VhJ7bSOpb23Y9w6l84V9nhjhTme3ej/EZpAreN+Po/3yB7VaDDnd2ACr3aMxVT6bhCvJb8W9qp8z3qQk67XKD/H5LhcO9bv9UTVYRQf83v38Yn/mTdeM8rv3d0/8gKSww2V
   </data>
  </layer>
 </map>

@@ -16,7 +16,7 @@ Player::Player() {
 
 };
 Player::~Player() {};
-SDL_RendererFlip turn = SDL_FLIP_NONE;
+SDL_RendererFlip turn = SDL_FLIP_HORIZONTAL;
 
 void Player::draw()
 {
@@ -48,7 +48,7 @@ void Player::update() {
 		m_velocity.setX(0.2);
 		m_velocity.setX(m_acceleration.getX()+(m_velocity.getX() - m_frictionRight.getX()));
 		m_maxVelocity.setX(m_velocity.getX());
-		turn = SDL_FLIP_NONE;
+		turn = SDL_FLIP_HORIZONTAL;
 		if (m_velocity.getX()==m_maxVelocity.getX()) {
 			m_velocity.setX(m_velocity.getX()-m_desacceleration.getX());
 		}
@@ -63,7 +63,7 @@ void Player::update() {
 		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 		m_velocity.setX(-0.2);
 		m_velocity.setX(m_desacceleration.getX() + (m_velocity.getX() - m_frictionLeft.getX()));
-		turn = SDL_FLIP_HORIZONTAL;
+		turn = SDL_FLIP_NONE;
 		if (m_velocity.getX() == m_maxVelocity.getX()) {
 			m_velocity.setX(m_velocity.getX()+m_acceleration.getX());
 		}

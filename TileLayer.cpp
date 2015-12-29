@@ -28,9 +28,7 @@ void TileLayer::update()
 		m_position += m_velocity;
 		m_velocity.setX(0.5);
 	}
-	if ((m_position.getX() / m_tileWidth + m_numColumns) == (m_tileWidth + 6)) {
-		m_velocity.setX(0);
-	}
+
 
 	
 }
@@ -45,9 +43,11 @@ void TileLayer::render()
 
 	for (int i = 0; i < m_numRows+1; i++)
 	{
-		for (int j = 0; j < m_numColumns+1; j++)
+		for (int j = 0; j < m_numColumns; j++)
 		{
+			
 			int id = m_tileIDs[i][j + x];
+			
 			if (id == 0)
 			{
 				continue;

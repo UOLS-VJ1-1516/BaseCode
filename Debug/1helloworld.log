@@ -1,37 +1,9 @@
-﻿Build started 15/12/2015 19:12:21.
+﻿Build started 29/12/2015 17:38:21.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt TileLayer.cpp
-         TileLayer.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(41): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(72): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(74): warning C4018: '<=': signed/unsigned mismatch
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_Image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.lib" /MACHINE:X86 "Debug\1-helloworld.res"
-         Debug\base64.obj
-         Debug\Game.obj
-         Debug\GameObject.obj
-         Debug\GameObjectFactory.obj
-         Debug\GameStateMachine.obj
-         Debug\InputHandler.obj
-         Debug\LayerParser.obj
-         Debug\Level.obj
-         Debug\main.obj
-         Debug\MenuButton.obj
-         Debug\MenuState.obj
-         Debug\PauseState.obj
-         Debug\Player.obj
-         Debug\Gordo.obj
-         Debug\PlayState.obj
-         Debug\StateParser.obj
-         Debug\TextureManager.obj
-         Debug\TileLayer.obj
-         Debug\Vector2D.obj
-         Debug\Zep.obj
+     1>Link:
          1helloworld.vcxproj -> C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe
      1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.38
+Time Elapsed 00:00:00.15
