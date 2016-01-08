@@ -82,7 +82,7 @@ void StateParser::parseObjects(TiXmlElement *pStateRoot, std::vector<GameObject 
 		textureID = e->Attribute("textureID");
 		fileName = e->Attribute("fileName");
 		GameObject* pGameObject = GameObjectFactory::Instance()->CreateGameObject(e->Attribute("type"));
-		pGameObject->load(new LoaderParams(x, y, width, height, textureID, fileName, spriteNum, rowNum, flip, callbackID));
+		pGameObject->load(new LoaderParams(x, y, width, height, textureID, spriteNum, rowNum, flip, callbackID));
 		pObjects->push_back(pGameObject);
 	}
 }

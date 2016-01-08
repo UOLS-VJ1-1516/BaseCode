@@ -15,6 +15,7 @@ bool TextureManager::load(std::string fileName, std::string	id, SDL_Renderer* pR
 	{
 		return false;
 	}
+	SDL_SetColorKey(pTempSurface, SDL_TRUE, SDL_MapRGB(pTempSurface->format, 255, 255, 255));
 	SDL_Texture* pTexture =	SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
 	SDL_FreeSurface(pTempSurface);
 

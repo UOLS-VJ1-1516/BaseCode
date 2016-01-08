@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Map.h"
+#include "Level.h"
 #include "vector"
 
 //Clase State de Play para entrar el juego
@@ -16,7 +16,7 @@ class PlayState : public GameState
 		virtual bool onExit();
 		virtual std::string getStateID() const { return s_playID; }
 	private:
-		Map* map;
+		Level* map;
 		static const std::string s_playID;
 		std::vector<GameObject*> m_gameObjects;
 		GameObject* player;

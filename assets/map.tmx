@@ -1,11 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="48" height="9" tilewidth="100" tileheight="100" nextobjectid="1">
- <tileset firstgid="1" name="platformers" tilewidth="100" tileheight="100" tilecount="60" spacing="0" margin="0">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="48" height="9" tilewidth="100" tileheight="100" nextobjectid="20">
+ <properties>
+  <property name="player" value="assets/sonic.bmp"/>
+  <property name="enemy" value="assets/enemy.bmp"/>
+  <property name="enemy2" value="assets/enemy2.bmp"/>
+ </properties>
+ <tileset firstgid="1" name="platformers" tilewidth="100" tileheight="100" tilecount="60" margin="0" spacing="0">
   <image source="assets/Tiles.png" trans="ffffff" width="600" height="1000"/>
+ </tileset>
+ <tileset firstgid="61" name="sonic" tilewidth="103" tileheight="120" tilecount="18">
+  <image source="assets/sonic.bmp" trans="ffffff" width="1024" height="352"/>
+ </tileset>
+ <tileset firstgid="79" name="enemy" tilewidth="110" tileheight="100" tilecount="15">
+  <image source="assets/enemy.bmp" trans="ffffff" width="551" height="304"/>
+ </tileset>
+ <tileset firstgid="94" name="enemy2" tilewidth="65" tileheight="65" tilecount="16">
+  <image source="assets/enemy2.bmp" trans="ffffff" width="320" height="320"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="48" height="9">
   <data encoding="base64" compression="zlib">
-   eJztkMsKhDAMReuys3F0q1vHJzg4s9DO///XXEEhxEdTqF154EAINLmpUjc2jLB3NdOiIXUoMpgH3OcDmrmAr8D7fzvyPucoM88/CvbXsGG9GD5hAlPhGxuSzGf/P8AP/LJ+D98s9wOWsIJabe+gb6S0JNtcd5aaEgldc6/ZqdphztFs7VBTSw/yeypPcyV7/3YwEz0=
+   eJztkLsKgDAMRauL1MXHqruPRVEHH///X95BIURrI9ROXjhQAklOqtQfW1Zh7essByt5+0oBSo/7XIQ6RyD0vH+7gdd5TM7cfxbsb0DLaglIQQZyYY8tEuen/x/ACCZW70DPvGNQgRpodb2D9kgjcTb5B0JO79Odol/MMc3WL96UygH8ntrRXMneHQx2EH8=
   </data>
  </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="10" name="player" type="Player" x="428" y="594" width="103" height="120">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="10"/>
+    <property name="textureID" value="player"/>
+   </properties>
+  </object>
+  <object id="11" name="enemy" type="Enemy" x="378" y="104" width="110" height="100">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy"/>
+   </properties>
+  </object>
+  <object id="13" name="enemy" type="Enemy" x="587" y="300" width="110" height="100">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy"/>
+   </properties>
+  </object>
+  <object id="14" name="enemy" type="Enemy" x="141" y="294" width="110" height="100">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy"/>
+   </properties>
+  </object>
+  <object id="15" name="enemy" type="Enemy" x="1329" y="354" width="110" height="100">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy"/>
+   </properties>
+  </object>
+  <object id="16" name="enemy2" type="Enemy" x="957.576" y="160.606" width="65" height="65">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy2"/>
+   </properties>
+  </object>
+  <object id="17" name="enemy2" type="Enemy" x="412.955" y="312.955" width="65" height="65">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy2"/>
+   </properties>
+  </object>
+  <object id="18" name="enemy2" type="Enemy" x="58.4091" y="40.2273" width="65" height="65">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy2"/>
+   </properties>
+  </object>
+  <object id="19" name="enemy2" type="Enemy" x="79.6212" y="470.53" width="65" height="65">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="rowNum" value="0"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureID" value="enemy2"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

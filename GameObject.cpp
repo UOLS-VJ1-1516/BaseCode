@@ -15,11 +15,11 @@ void GameObject::load(const LoaderParams* pParams) {
 	m_position.setX(pParams->getX());
 	m_position.setY(pParams->getY());
 	m_textureID = pParams->getTextureID();
-	m_fileName = pParams->getFileName();
+	//m_fileName = pParams->getFileName();
 	m_spriteNum = pParams->getSpriteNum();
 	m_currentRow = pParams->getRowNum();
 	m_flip = pParams->getFlip();
-	TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
+	//TextureManager::Instance()->load(m_fileName, m_textureID, Game::Instance()->getRenderer());
 }
 
 void GameObject::draw()

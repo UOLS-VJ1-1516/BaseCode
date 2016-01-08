@@ -42,16 +42,19 @@
     <ClCompile Include="Vector2D.cpp">
       <Filter>Motor</Filter>
     </ClCompile>
-    <ClCompile Include="LayerParser.cpp">
-      <Filter>Tile</Filter>
-    </ClCompile>
     <ClCompile Include="TileLayer.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
     <ClCompile Include="base64.cpp">
       <Filter>Librerias</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="Level.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParser.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,20 +111,23 @@
     <ClInclude Include="libs\tinyxml\include\tinystr.h">
       <Filter>Librerias</Filter>
     </ClInclude>
-    <ClInclude Include="LayerParser.h">
-      <Filter>Tile</Filter>
-    </ClInclude>
     <ClInclude Include="Layer.h">
       <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="TileLayer.h">
       <Filter>Tile</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Tile</Filter>
-    </ClInclude>
     <ClInclude Include="base64.h">
       <Filter>Librerias</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParser.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
+      <Filter>Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
