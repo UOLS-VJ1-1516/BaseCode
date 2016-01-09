@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
+  <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="80" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt2EtKA0EQxvFSyFIFSUB3oxvFZKeCEJe+vYGoRzDqDXzdQNcuzWW8k1/QISojON3VqZrOt/hBVvP4p6aHno6IdIiIiIiIiMi9dYqyQ1Ge4QX6FOQNhg6uo6mG7BeF88d+lnJ4fudgHhYMzp3D/BWwAqtT0k97XjZhC7anpF8hdvOSQz/Lecmh3yRtQLeGnkG/FO8/rWOG7GlD+h3AIRwFXGMh+utZimOmoDF/KdYzz2tkC2a/VPWLmUVvdiN+/9VuScbfT3N4f5zBMZzAqeJxr2AA13ADt9CWn9+f/7N/8z6Po37ncAGXsKjkDu7hAR7hqaJfLvM3I+M1KaVlpX6eZnLU7/dcTIqX7y8x/4dlP83nV3smq473/f1Y7i16zvqFvtutOvcd9Kvbpk6DPdhXbOWxX6r7Kvexqb8PW/V7T6yQz31suZdNdZ41o36vmbCaP+v7Zj8f2I/92K+52K+Z/T4AZnwgig==
+  </data>
+ </layer>
+</map>

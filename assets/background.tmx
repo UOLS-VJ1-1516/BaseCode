@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="36" tilewidth="16" tileheight="16" nextobjectid="25">
+ <properties>
+  <property name="player" value="player.png" sizeX="40" sizeY="31"/>
+  <property name="tim" value="tim.png" sizeX="26" sizeY="18"/>
+  <property name="tim2" value="tim.png" sizeX="26" sizeY="18"/>
+ </properties>
+ <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
+  <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
+ </tileset>
+ <tileset firstgid="210" name="Player" tilewidth="40" tileheight="32" tilecount="16">
+  <image source="player.png" width="320" height="64"/>
+ </tileset>
+ <tileset firstgid="226" name="tim" tilewidth="26" tileheight="18" tilecount="3">
+  <image source="tim.png" width="78" height="18"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="80" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt2E9OwlAQx/HRxKWYGElwV1wRZackJrAERL0BUY8A6g1UvIGuXcJlvBM/gg1/UhL73jxm+pjFJ2HVNl+mr30tE1HZGCE14+XaePmCb2gaJ2OYKLiOoppYPy82f9ZPUgz37yGU4Ejg3DHMXwJVONuRftzzcglX0NiRfgnJzUsM/STnJYZ+23QOFznUBfqFeP5xHdNlT+vSrws30HO4xoT417MQxwyBY/5CrGea18gD2P+T1c9nFrVpefze1K5Ci++nMTw/+nALd3DPeNwBDOEZXuAVTmj1+/N/9m/a53HW7wEe4QmOmbzBO3zACD4z+sUyf3u0WJNCOmXqp2kmZ/3W52JbtHx/8fk/JPtx3r/cM5l1vOXnY7q3qCvr5/psl+rcVNAvb5s8DdrQYWylqR/3O9O6dB8b+vuwVL/0nek3kITm+9h0LxvqPNL9fgrO+lk/61dc1s/6Wb/ikuo3Bblj4Co=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="21" name="Player" type="Player" gid="210" x="51" y="142" width="40" height="32">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="30"/>
+    <property name="numFrames" value="8"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="40"/>
+   </properties>
+  </object>
+  <object id="22" name="Tim" type="Enemy" gid="226" x="311" y="194" width="26" height="18">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="10"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="3"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="18"/>
+    <property name="textureID" value="tim"/>
+    <property name="textureWidth" value="26"/>
+   </properties>
+  </object>
+  <object id="23" name="Tim2" type="Enemy" gid="226" x="445" y="326" width="26" height="18">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="10"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="18"/>
+    <property name="textureID" value="tim2"/>
+    <property name="textureWidth" value="26"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
