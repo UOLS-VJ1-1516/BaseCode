@@ -9,7 +9,7 @@ void GameStateMachine::pushState(GameState * pState)
 }
 
 void GameStateMachine::changeState(GameState * pState)
-{
+{//
 	if (!m_gameStates.empty()) {
 		if (m_gameStates.back()->getStateID() == pState->getStateID()) {
 			return;
