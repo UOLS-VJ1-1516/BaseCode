@@ -1,4 +1,6 @@
 #pragma once
+#ifndef LEVERPARSER_H
+#define LEVERPARSER_H
 #include "Level.h"
 #include "tinyxml.h"
 
@@ -12,7 +14,12 @@ private:
 	void parseTileLayer(TiXmlElement* pTileElement,
 		std::vector<Layer*> *pLayers, const std::vector<Tileset>*
 		pTilesets);
-	int m_tileSize;
+	void parseTextures(TiXmlElement* pTextureRoot);
+	void parseObjectLayer(TiXmlElement* pObjectElement,
+		std::vector<Layer*> *pLayers);
+	int m_tileSizew;
+	int m_tileSizeh;
 	int m_width;
 	int m_height;
 };
+#endif

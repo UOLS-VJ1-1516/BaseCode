@@ -2,18 +2,18 @@
 #include "PauseState.h"
 #include "Game.h"
 #include "StateParser.h"
-//#include "LevelParser.h"
-#include "LayerParser.h"
+#include "LevelParser.h"
+//#include "LayerParser.h"
 #include "TextureManager.h"
 
 //#include "Level.h"
 
 void PlayState::update() {
-	tl->update();
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
+	lv->update();
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++)
 	{
 		m_gobjects[i]->update();
-	}
+	}*/
 
 	InputHandler::Instance()->update();
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE) || InputHandler::Instance()->isExitRequired()) {
@@ -25,16 +25,18 @@ void PlayState::update() {
 };
 
 void PlayState::render() {
-	tl->render();
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++){
-		m_gobjects[i]->draw();
-	}
+	lv->render();
+	//for (std::vector<GameObject*>::size_type i = 0; i < m_gobjects.size(); i++){
+	//	m_gobjects[i]->draw();
+	//}
 };
 
 bool PlayState::onEnter() {
-	StateParser::parseState("assets/myxml.xml", "PLAYSTATE", &m_gobjects, &m_textureIDList);
-	LayerParser lp;
-	tl = lp.parseTileLayer("assets/background.tmx");
+	//StateParser::parseState("assets/myxml.xml", "PLAYSTATE", &m_gobjects, &m_textureIDList);
+	//LayerParser lp;
+	LevelParser lp;
+	lv = lp.parseLevel("assets/background.tmx");
+	//tl = lp.parseTileLayer("assets/background.tmx");
 	return true;
 };
 

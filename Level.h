@@ -1,7 +1,23 @@
 #pragma once
+
+#ifndef LEVEL_H
+#define LEVEL_H
 #include <string>
 #include <vector>
 #include "Layer.h"
+
+/*struct Tileset
+{
+	int firstGridID;
+	int tileWidth;
+	int tileHeight;
+	int spacing;
+	int margin;
+	int width;
+	int height;
+	int numColumns;
+	const char* name;
+};*/
 
 struct Tileset
 {
@@ -13,7 +29,7 @@ struct Tileset
 	int width;
 	int height;
 	int numColumns;
-	const char* name;
+	std::string name;
 };
 
 class Level
@@ -37,3 +53,4 @@ private:
 	friend class LevelParser;
 	Level();
 };
+#endif

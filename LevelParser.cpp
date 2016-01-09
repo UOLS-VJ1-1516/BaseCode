@@ -1,9 +1,10 @@
-/*#include "LevelParser.h"
+#include "LevelParser.h"
 #include "TextureManager.h"
 #include "Game.h"
 #include "base64.h"
 #include "zlib.h"
 #include "TileLayer.h"
+#include "ObjectLayer.h"
 
 Level* LevelParser::parseLevel(const char *levelFile)
 {
@@ -13,27 +14,41 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	Level* pLevel = new Level();
 
 	TiXmlElement* pRoot = levelDocument.RootElement();
-	pRoot->Attribute("tilewidth", &m_tileSize);
+	pRoot->Attribute("tilewidth", &m_tileSizew);
+	pRoot->Attribute("tileheight", &m_tileSizeh);
 	pRoot->Attribute("width", &m_width);
 	pRoot->Attribute("height", &m_height);
 
-	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e =
-		e->NextSiblingElement())
+	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
 		if (e->Value() == std::string("tileset"))
 		{
 			parseTilesets(e, pLevel->getTilesets());
 		}
-	}
-
-	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e =
-		e->NextSiblingElement())
-	{
-		if (e->Value() == std::string("layer"))
+		if (e->Value() == std::string("properties"))
 		{
-			parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
+			TiXmlElement* pproperties = e;
+			for (TiXmlElement* e = pproperties->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
+			{
+				if (e->Value() == std::string("property"))
+				{
+					parseTextures(e);
+				}
+			}
+		}
+		if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer"))
+		{
+			if (e->FirstChildElement()->Value() == std::string("object"))
+			{
+				parseObjectLayer(e, pLevel->getLayers());
+			}
+			else if (e->FirstChildElement()->Value() == std::string("data"))
+			{
+				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
+			}
 		}
 	}
+
 	return pLevel;
 }
 
@@ -60,7 +75,7 @@ void LevelParser::parseTilesets(TiXmlElement * pTilesetRoot, std::vector<Tileset
 
 void LevelParser::parseTileLayer(TiXmlElement * pTileElement, std::vector<Layer*>* pLayers, const std::vector<Tileset>* pTilesets)
 {
-	TileLayer* pTileLayer = new TileLayer(m_tileSize, *pTilesets);
+	TileLayer* pTileLayer = new TileLayer(m_tileSizew, m_tileSizeh, *pTilesets);
 
 	std::vector<std::vector<int>> data;
 	std::string decodedIDs;
@@ -99,4 +114,88 @@ void LevelParser::parseTileLayer(TiXmlElement * pTileElement, std::vector<Layer*
 	}
  pTileLayer->setTileIDs(data);
  pLayers->push_back(pTileLayer);
-}*/
+}
+
+void LevelParser::parseTextures(TiXmlElement * pTextureRoot)
+{
+	TextureManager::Instance()->load(pTextureRoot->Attribute("value"), pTextureRoot->Attribute("name"), Game::Instance()->getRender());
+}
+
+void LevelParser::parseObjectLayer(TiXmlElement * pObjectElement, std::vector<Layer*>* pLayers)
+{
+		ObjectLayer* pObjectLayer = new ObjectLayer();
+		std::cout << pObjectElement->FirstChildElement()->Value();
+		for (TiXmlElement* e = pObjectElement->FirstChildElement(); e !=
+			NULL; e = e->NextSiblingElement())
+		{
+			std::cout << e->Value();
+			if (e->Value() == std::string("object"))
+			{
+				int x, y, width, height, numSprites, speedX, speedY, maxSpeed, callbackId;
+				double friction;
+				char* textureID; 
+
+				e->Attribute("x", &x);
+				e->Attribute("y", &y);
+				GameObject* pGameObject = GameObjectFactory::Instance()->CreateGameObject(e->Attribute("type"));
+
+				for (TiXmlElement* properties = e->FirstChildElement();
+				properties != NULL; properties = properties->NextSiblingElement())
+				{
+					if (properties->Value() == std::string("properties"))
+					{
+						for (TiXmlElement* property = properties->FirstChildElement(); property != NULL; property = property->NextSiblingElement())
+						{
+							if (property->Value() == std::string("property"))
+							{
+								if (property->Attribute("name") == std::string("textureWidth"))
+								{
+									property->Attribute("value", &width);
+								}
+								else if (property->Attribute("name") == std::string("textureHeight"))
+								{
+									property->Attribute("value", &height);
+								}
+								else if (property->Attribute("name") == std::string("speedY"))
+								{
+									property->Attribute("value", &speedY);
+								}
+								else if (property->Attribute("name") == std::string("textureID"))
+								{
+									const size_t len = strlen(property->Attribute("value"));
+									textureID = new char[len + 1];
+									strncpy(textureID, property->Attribute("value"), len);
+									textureID[len] = '\0';
+									//textureID = property->Attribute("value");
+								}
+								else if (property->Attribute("name") == std::string("speedX"))
+								{
+									property->Attribute("value", &speedX);
+								}
+								else if (property->Attribute("name") == std::string("numFrames"))
+								{
+									property->Attribute("value", &numSprites);
+								}
+								else if (property->Attribute("name") == std::string("maxSpeed"))
+								{
+									property->Attribute("value", &maxSpeed);
+								}
+								else if (property->Attribute("name") == std::string("callbackId"))
+								{
+									property->Attribute("value", &callbackId);
+								}
+								else if (property->Attribute("name") == std::string("friction"))
+								{
+									property->Attribute("value", &friction);
+								}
+							}
+						}
+					}
+				}
+				TextureManager::Instance()->setSizeFrames(textureID, width, height);
+				pGameObject->load(new LoaderParams(x, y, width, height, textureID, numSprites, speedX, speedY, maxSpeed, friction, callbackId));
+				pObjectLayer->getGameObjects()->push_back(pGameObject);
+			}
+		}
+		pLayers->push_back(pObjectLayer);
+}

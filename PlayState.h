@@ -20,7 +20,8 @@ private:
 	static void s_exitFromMenu();
 	std::vector<GameObject*> m_gobjects;
 	std::vector<const char*> m_textureIDList;
-	TileLayer* tl;
+	//TileLayer* tl;
+	Level* lv;
 };
 
 #endif PLAYSTATE_H

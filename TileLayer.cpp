@@ -13,7 +13,7 @@ TileLayer::TileLayer(int tileWidth, int tileHeight, const std::vector<Tileset>& 
 	m_position.setY(0);
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-	col = (Game::Instance()->getScreenWidth() / m_tileWidth);
+	col = (Game::Instance()->getScreenWidth() / m_tileWidth)+1; //printará más allá de la pantalla y no saldrá la franja negra a la derecha.
 	row = (Game::Instance()->getScreenHeight() / m_tileHeight);
 }
 
@@ -23,9 +23,10 @@ TileLayer::~TileLayer(void)
 
 void TileLayer::update()
 {
-	if (m_position.getX() / m_tileWidth + col+1 < m_tileIDs[0].size() && m_position.getY() / m_tileHeight + row < m_tileIDs.size()) {//con esto nos evitamos salirnos del array
-		m_position += m_velocity;
+	//if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size() && m_position.getY() / m_tileHeight + row < m_tileIDs.size()) {
+	if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size()) {
 		m_velocity.setX(1);
+		m_position += m_velocity;
 	}
 }
 
@@ -37,9 +38,9 @@ void TileLayer::render()
 	x2 = int(m_position.getX()) % m_tileWidth;
 	y2 = int(m_position.getY()) % m_tileHeight;
 
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i < row-1; i++)
 	{
-		for (int j = 0; j < col+1; j++)//col+1 para renderizar más allá del ancho de pantalla, así no se ven bordes negros.
+		for (int j = 0; j < col; j++)
 		{
 			int id = m_tileIDs[i][j + x];
 			if (id == 0)

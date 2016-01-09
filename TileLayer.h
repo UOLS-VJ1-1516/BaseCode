@@ -1,14 +1,17 @@
 #pragma once
+
+#ifndef TILELAYER_H
+#define TILELAYER_H
 #include <string>
 #include <vector>
-//#include "Level.h"
+#include "Level.h"
 #include "Vector2D.h"
 
-/*class TileLayer : public Layer
+class TileLayer : public Layer
 {
-public:
-	TileLayer(int tileSize, const std::vector<Tileset> &tilesets);
-	virtual void update();
+//public:
+	//TileLayer(int tileSize, const std::vector<Tileset> &tilesets);
+	/*virtual void update();
 	virtual void render();
 	void setTileIDs(const std::vector<std::vector<int>>& data)
 	{
@@ -28,7 +31,7 @@ private:
 	const std::vector<Tileset> &m_tilesets;
 	std::vector<std::vector<int>> m_tileIDs;
 };*/
-struct Tileset
+/*struct Tileset
 {
 	int firstGridID;
 	int tileWidth;
@@ -42,12 +45,14 @@ struct Tileset
 };
 
 class TileLayer
-{
+{*/
 public:
 	TileLayer(int tileWidth, int tileHeight, const std::vector<Tileset> & tilesets);
 	virtual ~TileLayer(void);
-	void update();
-	void render();
+	//void update();
+	//void render();
+	virtual void update();
+	virtual void render();
 	void setTileIDs(const std::vector< std::vector< int > >& data);
 	Tileset getTilesetByID(int tileID);
 private:
@@ -61,3 +66,4 @@ private:
 	std::vector< std::vector< int > > m_tileIDs; // ids de los tiles en cada posición
 };
 
+#endif
