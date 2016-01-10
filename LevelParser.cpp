@@ -27,17 +27,12 @@ Level * LevelParser::parseLevel(const char * levelFile) {
 				parseTextures(e);
 			}
 		}
-	//}
 
-	//for (TiXmlElement * e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
 		if (e->Value() == std::string("tileset")) {
 			parseTilesets(e, pLevel->getTilesets());
-		}
-	//}
 	
-	//for (TiXmlElement*e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
 		if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer")) {
-			//parseObjectLayer(e, pLevel->getLayers());
+			
 			if (e->FirstChildElement()->Value() == std::string("object"))
 			{
 				parseObjectLayer(e, pLevel->getLayers());
