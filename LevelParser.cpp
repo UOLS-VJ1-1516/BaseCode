@@ -27,9 +27,10 @@ Level * LevelParser::parseLevel(const char * levelFile) {
 				parseTextures(e);
 			}
 		}
-
+	
 		if (e->Value() == std::string("tileset")) {
 			parseTilesets(e, pLevel->getTilesets());
+		}
 	
 		if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer")) {
 			
