@@ -37,12 +37,6 @@ Level* LevelParser::parseLevel(const char *levelFile)
 		}
 	}
 
-	/*for (TiXmlElement* e = pProperties->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
-		if (e->Value() == std::string("property")) {
-			parseTextures(e);
-		}
-	}*/
-
 	// parse any object layers
 	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
 		if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer")) {
