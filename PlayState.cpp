@@ -2,35 +2,35 @@
 #include "PauseState.h"
 #include "Game.h"
 #include "StateParser.h"
-#include "LayerParser.h"
+#include "LevelParser.h"
 
 void PlayState::update() {
 
 
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->update();
-	}
+	}*/
 	InputHandler::Instance()->update();
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
 	}
-	tl->update();
+	pLevel->update();
 
 }
 void PlayState::render() {
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->draw();
-	}
-	tl->render();
+	}*/
+	pLevel->render();
 }
 bool PlayState::onEnter() {
 
 	StateParser stateParser;
 	stateParser.parseState("./Data/Tiny.xml", s_playID, &m_gObjects, &m_TextureIDList);
 
-	LayerParser layerParser;
-	tl = layerParser.parseTileLayer("./Data/mapa4.tmx");
+	LevelParser levelParser;
+	pLevel = levelParser.parseLevel("./Data/mapaObjetos.tmx");
 	//layerParser.parseTileLayer("./Data/mapa1.tmx");
 	
 

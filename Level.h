@@ -33,9 +33,12 @@ public:
 	{
 		return &m_layers;
 	}
+	
+
 private:
 	std::vector<Tileset> m_tilesets;
 	std::vector<Layer*> m_layers;
+	
 	friend class LevelParser;
 	Level();
 };

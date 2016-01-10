@@ -37,10 +37,13 @@
     <ClCompile Include="base64.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
-    <ClCompile Include="LayerParser.cpp">
+    <ClCompile Include="Level.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
+    <ClCompile Include="LevelParser.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,9 +89,6 @@
     <ClInclude Include="TileLayer.h">
       <Filter>Tile</Filter>
     </ClInclude>
-    <ClInclude Include="LayerParser.h">
-      <Filter>Tile</Filter>
-    </ClInclude>
     <ClInclude Include="libs\zlib\include\zconf.h">
       <Filter>Tile</Filter>
     </ClInclude>
@@ -102,6 +102,9 @@
       <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
       <Filter>Tile</Filter>
     </ClInclude>
     <ClInclude Include="LevelParser.h">
@@ -135,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\mapa4.tmx">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="Data\mapaObjetos.tmx">
       <Filter>Data</Filter>
     </None>
   </ItemGroup>

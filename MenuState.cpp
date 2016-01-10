@@ -58,7 +58,8 @@ bool MenuState::onExit()
 	{
 		TextureManager::Instance()->clearFromTextureMap(m_TextureIDList[i]);
 	}
-	m_TextureIDList.clear();
+	m_TextureIDList.clear();
+
 	
 	
 	std::cout << "Salida del MenuState\n";

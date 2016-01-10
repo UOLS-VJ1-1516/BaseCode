@@ -87,11 +87,12 @@
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
-    <ClCompile Include="LayerParser.cpp" />
+    <ClCompile Include="LevelParser.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Gordo.cpp" />
@@ -112,14 +113,14 @@
     <ClInclude Include="Gordo.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Layer.h" />
-    <ClInclude Include="LayerParser.h" />
-    <ClInclude Include="Level.h" />
     <ClInclude Include="LevelParser.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="libs\zlib\include\zconf.h" />
     <ClInclude Include="libs\zlib\include\zlib.h" />
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
@@ -141,7 +142,12 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\mapa4.tmx" />
+    <None Include="Data\mapa4.tmx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\mapaObjetos.tmx">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

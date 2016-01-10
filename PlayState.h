@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include <string>
 #include "TileLayer.h"
+#include "Level.h"
 
 
 
@@ -29,7 +30,7 @@ private:
 	LoaderParams * load3;
 	Gordo * gordo;
 	SDL_Renderer *m_pRenderer;
-	TileLayer * tl;
+	Level * pLevel;
 	
 protected:
 	typedef void(*Callback)();

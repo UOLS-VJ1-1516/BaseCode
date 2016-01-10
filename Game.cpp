@@ -120,7 +120,7 @@ void Game::update() {
 
 void Game::handleEvents(SDL_Event event) {
 
-	//InputHandler::Instance()->update();
+	InputHandler::Instance()->update();
 	/*if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
 		m_pGameStateMachine->changeState(new PlayState());
 	}*/

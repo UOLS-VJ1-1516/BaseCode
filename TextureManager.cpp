@@ -9,7 +9,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer *m_
 
 	img = IMG_Load(fileName.c_str());
 	
-	SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 0, 255));
+	//SDL_SetColorKey(img, 1, SDL_MapRGB(img->format, 255, 0, 255));
 	texture = SDL_CreateTextureFromSurface(m_pRenderer, img);
 	//SDL_FreeSurface(img);
 	m_pTextureMap[id] = texture;

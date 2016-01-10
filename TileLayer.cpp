@@ -2,29 +2,19 @@
 #include "Game.h"
 #include "TextureManager.h"
 
-std::vector<Tileset> TileLayer::m_tilesets = std::vector<Tileset>();
-
-
-TileLayer::TileLayer(int tileWidth, int tileHeight, const std::vector<Tileset> &tilesets) : m_position(0, 0), m_velocity(0, 0)
-{
-	m_tilesets = tilesets;
-	m_tileHeight = tileHeight;
-	m_tileWidth = tileWidth;
+TileLayer::TileLayer(int tileSize, const std::vector<Tileset>&tilesets) : m_tileSize(tileSize), m_tilesets(tilesets), m_position(0, 0), m_velocity(0, 0) {
+	m_numColumns = (Game::Instance()->getGameWidth() / m_tileSize);
+	m_numRows = (Game::Instance()->getGameHeight() / m_tileSize);
 	m_position.setX(0);
-	m_position.setY(0);
 	m_velocity.setX(0);
+	m_position.setY(0);
 	m_velocity.setY(0);
-	m_numColumns = (Game::Instance()->getGameWidth() / m_tileWidth);
-	m_numRows = (Game::Instance()->getGameHeight() / m_tileHeight);
 }
 
-TileLayer::~TileLayer(void)
-{
-}
 
 void TileLayer::update()
 {
-	if (m_position.getX() / m_tileWidth + m_numColumns < m_tileIDs[0].size() && m_position.getY() / m_tileHeight + m_numRows < m_tileIDs.size()) {
+	if (m_position.getX() / m_tileSize + m_numColumns < m_tileIDs[0].size() && m_position.getY() / m_tileSize + m_numRows < m_tileIDs.size()) {
 		m_position += m_velocity;
 		m_velocity.setX(0.5);
 	}
@@ -36,10 +26,10 @@ void TileLayer::update()
 void TileLayer::render()
 {
 	int x, y, x2, y2 = 0;
-	x = m_position.getX() / m_tileWidth;
-	y = m_position.getY() / m_tileHeight;
-	x2 = int(m_position.getX()) % m_tileWidth;
-	y2 = int(m_position.getY()) % m_tileHeight;
+	x = m_position.getX() / m_tileSize;
+	y = m_position.getY() / m_tileSize;
+	x2 = int(m_position.getX()) % m_tileSize;
+	y2 = int(m_position.getY()) % m_tileSize;
 
 	for (int i = 0; i < m_numRows+1; i++)
 	{
@@ -55,8 +45,8 @@ void TileLayer::render()
 			Tileset tileset = getTilesetByID(id);
 			id--;
 			
-			TextureManager::Instance()->drawTile(tileset.name.c_str(), tileset.margin, tileset.spacing, (j * m_tileWidth) - x2, (i * m_tileHeight) - y2,
-				m_tileWidth, m_tileHeight, (id - (tileset.firstGridID - 1)) / tileset.numColumns,
+			TextureManager::Instance()->drawTile(tileset.name.c_str(), tileset.margin, tileset.spacing, (j * m_tileSize) - x2, (i * m_tileSize) - y2,
+				m_tileSize, m_tileSize, (id - (tileset.firstGridID - 1)) / tileset.numColumns,
 				(id - (tileset.firstGridID - 1)) % tileset.numColumns, Game::Instance()->getRender());
 		}
 	}
