@@ -1,4 +1,5 @@
 #include "LevelParser.h"
+#include "GameObjectFactory.h"
 
 Level* LevelParser::parseLevel(const char *levelFile)
 {
@@ -12,24 +13,37 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	pRoot->Attribute("tilewidth", &m_tileSize);
 	pRoot->Attribute("width", &m_width);
 	pRoot->Attribute("height", &m_height);
+
 	// parse the tilesets
-	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e =
-		e->NextSiblingElement())
+	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
+		if (e->Value() == std::string("properties"))
+		{
+			parseTextures(e->FirstChildElement());
+		}
+
 		if (e->Value() == std::string("tileset"))
 		{
 			parseTilesets(e, pLevel->getTilesets());
 		}
 	}
+
 	// parse any object layers
-	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e =
-		e->NextSiblingElement())
+	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
-		if (e->Value() == std::string("layer"))
+		if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer"))
 		{
-			parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
+			if (e->FirstChildElement()->Value() == std::string("object"))
+			{
+				parseObjectLayer(e, pLevel->getLayers());
+			}
+			else if (e->FirstChildElement()->Value() == std::string("data"))
+			{
+				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
+			}
 		}
 	}
+
 	return pLevel;
 }
 void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot,
@@ -55,6 +69,7 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot,
 		tileset.spacing);
 	pTilesets->push_back(tileset);
 }
+
 
 void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers,
 	const std::vector<Tileset>* pTilesets)
@@ -98,4 +113,70 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 	}
 	pTileLayer->setTileIDs(data);
 	pLayers->push_back(pTileLayer);
+}
+
+void LevelParser::parseTextures(TiXmlElement* pTextureRoot)
+{
+	TextureManager::Instance()->load(pTextureRoot->Attribute("value"), pTextureRoot->Attribute("name"), Game::Instance()->getRenderer());
+	file = pTextureRoot->Attribute("value");
+}
+
+void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers)
+{
+	ObjectLayer* pObjectLayer = new ObjectLayer();
+
+	for (TiXmlElement* e = pObjectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
+	{
+		if (e->Value() == std::string("object"))
+		{
+
+			int x, y, width, height, spriteNum, rowNum, callbackID;
+			std::string textureID, fileName;
+			// get the initial node values type, x and y
+			e->Attribute("x", &x);
+			e->Attribute("y", &y);
+			e->Attribute("width", &m_width);
+			e->Attribute("height", &m_height);
+			
+			GameObject* pGameObject = GameObjectFactory::Instance()->CreateGameObject(e->Attribute("type"));
+			// get the property values
+			for (TiXmlElement* properties = e->FirstChildElement(); properties != NULL; properties = properties->NextSiblingElement())
+			{
+				if (properties->Value() == std::string("properties"))
+				{
+					for (TiXmlElement* property = properties->FirstChildElement(); property != NULL; property = property->NextSiblingElement())
+					{
+						if (property->Value() == std::string("property"))
+						{
+							if (property->Attribute("name") == std::string("callbackID"))
+							{
+								property->Attribute("value", &callbackID);
+							}
+							else if (property->Attribute("name") == std::string("rowNum"))
+							{
+								property->Attribute("value", &rowNum);
+							}
+							else if (property->Attribute("name") == std::string("spriteNum"))
+							{
+								property->Attribute("value", &m_spriteNum);
+							}
+							else if (property->Attribute("name") == std::string("fileName"))
+							{
+								property->Attribute("value", &m_fileName);
+							}
+							else if (property->Attribute("name") == std::string("textureID")) {
+								textureID = property->Attribute("value");
+							}
+							
+						}
+					}
+				}
+			}
+			if (m_fileName == 1) { file = "gorda.png"; }
+			else if (m_fileName == 2) { file = "cine.png"; }
+			pGameObject->load(new LoaderParams(x, y-40, m_width, m_height, textureID, file, m_spriteNum, rowNum, callbackID));
+			pObjectLayer->getGameObjects()->push_back(pGameObject);
+		}
+	}
+	pLayers->push_back(pObjectLayer);
 }

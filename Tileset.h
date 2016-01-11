@@ -16,14 +16,5 @@ public:
 	int height;
 	int numColumns;
 	std::string name;
-	/*int firstGridID;
-	int tileWidth;
-	int tileHeight;
-	int spacing;
-	int margin;
-	int numColumns;
-	std::string name;
-
-	int width;
-	int height;*/
+	
 };

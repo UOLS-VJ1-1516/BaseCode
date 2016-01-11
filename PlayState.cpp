@@ -13,11 +13,11 @@ const std::string PlayState::s_playID = "PLAY";
 //Función para cargar al entrar en el estado de Play donde se cargan y se crean los diferentes gameobjects
 bool PlayState::onEnter()
 {
-	StateParser stateParser;
-	//stateParser.parseState("xmljuego.xml", s_playID, &m_gameObjects, &m_textureIDList);
+	//StateParser stateParser;
+	//stateParser.parseState("xmljuego.xml", s_playID, &m_gameObjects, &m_textureIDList);*/
 
 	LevelParser levelParser;
-	pLevel = levelParser.parseLevel("mapa.tmx");
+	pLevel = levelParser.parseLevel("mapagame.tmx");
 	std::cout << "entering PlayState\n";
 	return true;
 }
