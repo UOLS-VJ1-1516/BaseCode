@@ -46,8 +46,6 @@ void StateGame::HandleEvents()
 	{
 		if (key.second == DOWN)
 		{
-			cout << key.first;			
-
 			if (key.first == 4)
 			{
 				player->xAccel = NEGATIVE;

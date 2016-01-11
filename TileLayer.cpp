@@ -19,7 +19,7 @@ TileLayer::~TileLayer()
 void TileLayer::Update(Player * player)
 {
 	position.X = player->position.X;
-	position.Y = player->position.Y;
+	position.Y = Tools::GetHeight() - player->position.Y;
 }
 
 void TileLayer::Render()
@@ -28,30 +28,28 @@ void TileLayer::Render()
 	int firstY = position.Y / tileHeight;
 	int lastX = (int)position.X % tileWidth;
 	int lastY = (int)position.Y % tileHeight;
-	Vector2D scr(Tools::GetWidth(), Tools::GetHeight());
+	Vector2D scr((float)Tools::GetWidth(), (float)Tools::GetHeight());
 	for (int row = 0; row < width; row++) 
 	{
 		for (int tile = 0; tile < height; tile++)
 		{
-			if (tile + firstX < 0 || tile + firstX >= tileIDs.size())
+			if (tile + firstX < 0 || tile + firstX >= (int)tileIDs.size())
 				continue;
 			int x1 = (row * tileWidth) - (position.X / tileWidth);
 			int x2 = x1 + tileWidth;
-			int y1 = (tile * tileHeight) - (position.Y / tileHeight);
-			int y2 = y1 + tileHeight;
+			int y1 = Tools::GetHeight() - (tile * tileHeight) - (position.Y / tileHeight);
+			int y2 = y1 - tileHeight;
 
-			if (((x1 < 0 && x2 < 0) || (x1 > Tools::GetWidth() && x2 > Tools::GetWidth())) && ((y1 < 0 && y2 < 0) || (y1 > Tools::GetHeight() && y2 > Tools::GetHeight())))
+			if (y1 < 0 && y2 < 0)
+				break;
+			if (x1 < 0 && x2 < 0 || x1 > Tools::GetWidth() && x1 > Tools::GetWidth())
 				continue;
 			int current = tileIDs[row][tile + firstX];
 			if (current == 1)
 				continue;
 			Tileset * ts = GetTileset(current);
 			current--;
-			/*Draw(ts->name, ts->margin, ts->spacing, (tile * ts->tileWidth) - lastX,
-				(row * ts->tileHeight) - lastY, ts->tileWidth, ts->tileHeight, 
-				(current - (ts->firstGridID - 1)) / ts->numColumns,
-				(current - (ts->firstGridID - 1)) % ts->numColumns);*/
-			Draw(ts->name, ts, (tile * ts->tileWidth) - lastX, (row * ts->tileHeight) - lastY, 
+			Draw(ts->name, ts, x1 - position.X, y2 + position.Y, 
 				(current - (ts->firstGridID - 1)) / ts->numColumns,
 				(current - (ts->firstGridID - 1)) % ts->numColumns);
 		}
@@ -66,7 +64,7 @@ void TileLayer::SetTileIDs(const std::vector<std::vector<int>>& tileIDs)
 Tileset * TileLayer::GetTileset(int ts)
 {
 	int f = 0;
-	for (int i = 0; i < tilesets.size(); i++)
+	for (unsigned int i = 0; i < tilesets.size(); i++)
 	{
 		if (tilesets.at(i).firstGridID <= ts)
 			f = i;
@@ -78,7 +76,7 @@ Tileset * TileLayer::GetTileset(int ts)
 
 void TileLayer::Draw(string id, Tileset * ts, int x, int y, int row, int frame)
 {
-	//source = IMATGE; draw = S
+	//source = IMATGE; draw = PANTALLA;
 	SDL_Rect source, draw;
 	
 	source.x = ts->margin + (ts->spacing + ts->tileWidth) * (frame - 1);
