@@ -43,8 +43,10 @@ TileLayer * LayerParser::ParseTileLayer(string file)
 	string data = layer->FirstChildElement("data")->FirstChild()->ToText()->Value();
 	int width = layer->IntAttribute("width");
 	int height = layer->IntAttribute("height");
+	int tilewidth = map->IntAttribute("tilewidth");
+	int tileheight = map->IntAttribute("tileheight");
 	vector<vector<int>> tiles = ParseData(data, width, height);
-	TileLayer * tl = new TileLayer(width, height, tilesets);
+	TileLayer * tl = new TileLayer(width, height, tilewidth, tileheight, tilesets);
 	tl->SetTileIDs(tiles);
 	return tl;
 }

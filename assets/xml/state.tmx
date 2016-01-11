@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="90" height="90" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" name="Patrons" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="90" height="90" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="Terrain" tilewidth="32" tileheight="32">
   <image source="Outside_A5.png" trans="000000" width="256" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="90" height="90">
-  <data encoding="base64" compression="zlib">eJzt0LENgDAMRcGskJG8DiX7F/RRgAY5xLriOhffr7fWOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQLL4wYbqQue0xjrnNNY5p7HOOY11zmkcw83qnTt7ajx21vq7rm+OidU/VXROrN5Ukc46AwAAcO8CZXQrvw==</data>
+  <data encoding="base64" compression="zlib">eJzt0EENwDAMALEMQvmTLYVJ+VQnP0zAZ2bOwscvm2PPnl/j2XOJZ88lnj2XePZc4tlziWfPJZ49l3j2XOLZc4lnzyWePZd49lzi2XOJZ88lnj2XePZc4tlziWfPJZ49l3j2XOLZc4lnzyWePZd49lzi2XOJZ88lnj2XePZc4tlziWfPJZ49l3j2XOLZc4lnzyWePZd49lzi2XOJZ88lnj2XePZcsn0GAOANF2iUmgU=</data>
  </layer>
 </map>

@@ -3,8 +3,10 @@
 #include "Loaders.h"
 #include "Game.h"
 
-TileLayer::TileLayer(int tileWidth, int tileHeight, std::vector<Tileset> tileSets)
+TileLayer::TileLayer(int width, int height, int tileWidth, int tileHeight, std::vector<Tileset> tileSets)
 {
+	this->width = width;
+	this->height = height;
 	this->tileWidth = tileWidth;
 	this->tileHeight = tileHeight;
 	this->tilesets = tileSets;
@@ -27,19 +29,29 @@ void TileLayer::Render()
 	int lastX = (int)position.X % tileWidth;
 	int lastY = (int)position.Y % tileHeight;
 	Vector2D scr(Tools::GetWidth(), Tools::GetHeight());
-	for (int row = 0; row < 20; row++) 
+	for (int row = 0; row < width; row++) 
 	{
-		for (int tile = 0; tile < 20; tile++)
+		for (int tile = 0; tile < height; tile++)
 		{
 			if (tile + firstX < 0 || tile + firstX >= tileIDs.size())
 				continue;
+			int x1 = (row * tileWidth) - (position.X / tileWidth);
+			int x2 = x1 + tileWidth;
+			int y1 = (tile * tileHeight) - (position.Y / tileHeight);
+			int y2 = y1 + tileHeight;
+
+			if (((x1 < 0 && x2 < 0) || (x1 > Tools::GetWidth() && x2 > Tools::GetWidth())) && ((y1 < 0 && y2 < 0) || (y1 > Tools::GetHeight() && y2 > Tools::GetHeight())))
+				continue;
 			int current = tileIDs[row][tile + firstX];
-			if (current == 0)
+			if (current == 1)
 				continue;
 			Tileset * ts = GetTileset(current);
 			current--;
-			Draw(ts->name, ts->margin, ts->spacing, (tile * ts->tileWidth) - lastX,
+			/*Draw(ts->name, ts->margin, ts->spacing, (tile * ts->tileWidth) - lastX,
 				(row * ts->tileHeight) - lastY, ts->tileWidth, ts->tileHeight, 
+				(current - (ts->firstGridID - 1)) / ts->numColumns,
+				(current - (ts->firstGridID - 1)) % ts->numColumns);*/
+			Draw(ts->name, ts, (tile * ts->tileWidth) - lastX, (row * ts->tileHeight) - lastY, 
 				(current - (ts->firstGridID - 1)) / ts->numColumns,
 				(current - (ts->firstGridID - 1)) % ts->numColumns);
 		}
@@ -64,19 +76,18 @@ Tileset * TileLayer::GetTileset(int ts)
 	return &tilesets.at(f);
 }
 
-void TileLayer::Draw(string id, int margin, int spacing, int x, int y,
-	int width, int height, int row, int frame)
+void TileLayer::Draw(string id, Tileset * ts, int x, int y, int row, int frame)
 {
-	if (x + width < 0 || x - width > Tools::GetWidth() || y + height < 0 || y - height > Tools::GetHeight())
-		return;
+	//source = IMATGE; draw = S
 	SDL_Rect source, draw;
 	
-	source.x = margin + (spacing + width) * (frame - 1);
-	source.y = margin + (spacing + height) * row;
-	source.w = width;
-	source.h = height;
-	draw.w = width;
-	draw.h = height;
+	source.x = ts->margin + (ts->spacing + ts->tileWidth) * (frame - 1);
+	source.y = ts->margin + (ts->spacing + ts->tileHeight) * row;
+	source.w = ts->tileWidth;
+	source.h = ts->tileHeight;
+
+	draw.w = tileWidth;
+	draw.h = tileHeight;
 	draw.x = x;
 	draw.y = y;
 

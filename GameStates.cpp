@@ -24,6 +24,7 @@ void StateGame::Update()
 		var->Update();
 	}
 	layer->Update(player);
+	cout << "Player: " << player->position.X << " " << player->position.Y << endl;
 }
 
 void StateGame::Render()
