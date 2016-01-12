@@ -83,9 +83,11 @@ void LayerParser::parseTileset(TiXmlElement * pTilesetRoot, Tileset * pTileset)
 	pTilesetRoot->Attribute("tileheight", &pTileset->tileHeight);
 	pTilesetRoot->FirstChildElement()->Attribute("width", &pTileset->width);
 	pTilesetRoot->FirstChildElement()->Attribute("height", &pTileset->height);
-	pTilesetRoot->Attribute("firstgid", &pTileset->firstGridID);	
+	pTilesetRoot->Attribute("firstgid", &pTileset->firstGridID);
+	pTilesetRoot->Attribute("spacing", &pTileset->spacing);
+	pTilesetRoot->Attribute("margin", &pTileset->margin);
 	pTileset->name = pTilesetRoot->Attribute("name");
-	pTileset->numColumns = pTileset->width / pTileset->tileWidth;
+	pTileset->numColumns = pTileset->width / (pTileset->tileWidth + pTileset->spacing);
 
 	m_tilesets.push_back(*pTileset);
 }

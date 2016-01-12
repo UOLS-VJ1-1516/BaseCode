@@ -4,6 +4,7 @@
 #include "InputHandler.h"
 #include "TextureManager.h"
 #include "StateParser.h"
+#include "LevelParser.h"
 #include "LayerParser.h"
 
 void PlayState::update() {
@@ -17,21 +18,19 @@ void PlayState::update() {
 
 void PlayState::render() {
 	tiled->render();
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) 
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++) 
 	{
 		m_gameObjects[i]->draw();
-	}
+	}*/
 };
 
 bool PlayState::onEnter() {	
-	
-	StateParser::parseState("assets/game.xml", s_playID, &m_gameObjects,	&m_textureIDList);	
+	//StateParser::parseState("assets/game.xml", s_playID, &m_gameObjects,	&m_textureIDList);	
 	m_callbacks.push_back(0);
 	setCallbacks(m_callbacks);
-
-	LayerParser layerParse;
-	tiled = layerParse.parseTileLayer("assets/world/first.tmx");
-
+	
+	LevelParser layerParser;
+	tiled = layerParser.parseLevel("assets/world/first.tmx");
 	return true;
 };
 

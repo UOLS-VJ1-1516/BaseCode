@@ -60,3 +60,4 @@ void TextureManager::clearFromTextureMap(std::string id)
 	m_textureMap.erase(id);
 }
 
+

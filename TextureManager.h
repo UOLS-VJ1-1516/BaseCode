@@ -25,7 +25,7 @@ public:
 	void drawFrame(std::string textureID, float x, float y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_pRenderer,
 		int flip);
 	void TextureManager::clearFromTextureMap(std::string id);
-
+	void setSizeFrames(const char* id, int width, int height);
 private:
 	static TextureManager* s_pInstance;
 	std::map<std::string, SDL_Texture* > m_textureMap;

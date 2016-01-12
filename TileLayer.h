@@ -2,25 +2,15 @@
 #include <string>
 #include <vector>
 #include "Vector2D.h"
+#include "Level.h"
 
-struct Tileset
-{
-	int firstGridID;
-	int tileWidth;
-	int tileHeight;	
-	int numColumns;
-	std::string name;
-	int width;
-	int height;
-};
-
-class TileLayer
+class TileLayer : public Layer
 {
 public:
 	TileLayer(int tileWidth, int tileHeight, const std::vector< Tileset> & tilesets);
 	virtual ~TileLayer(void);
-	void update();
-	void render();
+	virtual void update();
+	virtual void render();
 	void setTileIDs(const std::vector< std::vector< int > >& data);
 	Tileset getTilesetByID(int tileID);
 private:

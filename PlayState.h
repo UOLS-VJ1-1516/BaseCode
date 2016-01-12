@@ -21,5 +21,5 @@ private:
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<std::string> m_textureIDList;
 	std::vector<Callback> m_callbacks;
-	TileLayer* tiled;
+	Level* tiled;
 };
