@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="16" tileheight="16" nextobjectid="25">
+ <properties>
+  <property name="Tiles_32x32" value="assets/Tiles_32x32.png"/>
+  <property name="enemy" value="assets/elements/enemy.bmp"/>
+  <property name="mario" value="assets/elements/mario.bmp"/>
+ </properties>
+ <tileset firstgid="1" name="Tiles_32x32" tilewidth="16" tileheight="16" spacing="0" margin="0" tilecount="256">
+  <image source="Tiles_32x32.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="257" name="mario" tilewidth="12" tileheight="20" spacing="1" margin="0" tilecount="3">
+  <image source="../elements/mario.bmp" width="38" height="21"/>
+ </tileset>
+ <tileset firstgid="260" name="enemy" tilewidth="20" tileheight="20" spacing="20"  margin="0" tilecount="32">
+  <image source="../elements/enemy.bmp" width="334" height="140"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="64" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0ksKgDAMRdHoDnTbfjbgZ60GnAmCbZJB6j3w6Cy0rxERmTSzZtGs8j+bZtccmrNyRmSHGf6ntMOSN32ZHd2R93yPnYucVzvfs6cMe//k+Q9vszL24il612GXfUet98++o9nvDwAAAAAAgFtnSN/AORgyNnB69plxLzz7zLgXF0qlPH0=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="21" name="mario" type="Player" gid="257" x="234" y="420" width="13" height="30">
+   <properties>
+    <property name="ax" value="1"/>
+    <property name="ay" value="0"/>
+    <property name="callbackId" value="0"/>
+    <property name="currentRow" value="0"/>
+    <property name="flip" value="0"/>
+    <property name="fx" value="1"/>
+    <property name="fy" value="0"/>
+    <property name="mvx" value="15"/>
+    <property name="mvy" value="0"/>
+    <property name="numFrames" value="2"/>
+    <property name="px" value="234"/>
+    <property name="py" value="420"/>
+    <property name="textureID" value="mario"/>
+    <property name="vx" value="0"/>
+    <property name="vy" value="0"/>
+   </properties>
+  </object>
+  <object id="22" name="enemy" type="Enemy" gid="260" x="300" y="420" width="40" height="30">
+   <properties>
+    <property name="ax" value="1"/>
+    <property name="ay" value="0"/>
+    <property name="callbackId" value="0"/>
+    <property name="currentRow" value="120"/>
+    <property name="flip" value="0"/>
+    <property name="fx" value="1"/>
+    <property name="fy" value="0"/>
+    <property name="mvx" value="15"/>
+    <property name="mvy" value="0"/>
+    <property name="numFrames" value="2"/>
+    <property name="px" value="300"/>
+    <property name="py" value="420"/>
+    <property name="textureID" value="enemy"/>
+    <property name="vx" value="5"/>
+    <property name="vy" value="0"/>
+   </properties>
+  </object>
+  <object id="23" name="enemy" type="Enemy" gid="260" x="757" y="420" width="40" height="30">
+   <properties>
+    <property name="ax" value="1"/>
+    <property name="ay" value="0"/>
+    <property name="callbackId" value="0"/>
+    <property name="currentRow" value="80"/>
+    <property name="flip" value="0"/>
+    <property name="fx" value="1"/>
+    <property name="fy" value="0"/>
+    <property name="mvx" value="15"/>
+    <property name="mvy" value="0"/>
+    <property name="numFrames" value="2"/>
+    <property name="px" value="757"/>
+    <property name="py" value="420"/>
+    <property name="textureID" value="enemy"/>
+    <property name="vx" value="5"/>
+    <property name="vy" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <imagelayer name="Capa de Imagen 1"/>
+</map>
