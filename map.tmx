@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="64" height="45" tilewidth="16" tileheight="16" backgroundcolor="#00aaff" nextobjectid="1">
+ <tileset firstgid="1" name="Overworld" tilewidth="16" tileheight="16" spacing="1" margin="0" tilecount="2850">
+  <image source="Overworld.png" trans="a2d8ff" width="1283" height="654"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="64" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztlUEOgjAQRUHZ6HE8h+JGPY16EPV06kEcEiZpmtqhMMSF7yU/TRoY5jENVBUAAAAAAAAAAAAAAAAAAAAA/IKn5CV5T6xTSxZ9llObcuhDe2iMNUb3Qx8r3bO2kl2f1sGjhLDXR9TD3lhDmmA/9LHSVj7+K8m6st91R8o57qnjZqyKuuv+GP9730upv3ofJEfJyXjWkP5Keojdh9T3mH+J91z+Kfch9cf6h+c2532WCy+Sq2RT5/313JX6f3P38k/9E0rqzjn/nLuXf+qbkKqbmt8Ufz07ue9nzt3Tv3RuXvO37s+5/4O/Bf5lNT9cWIjB
+  </data>
+ </layer>
+</map>

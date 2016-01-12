@@ -7,7 +7,7 @@ int main(int argc, char* args[])
 	//Game game = Game();
 	
 
-	if (Game::Instance()->init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false)) {
+	if (Game::Instance()->init("Videjuegos 1 - bachelor", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 700, 600, false)) {
 		while (Game::Instance()->isRunning()) {
 			long frameStart = SDL_GetTicks();
 

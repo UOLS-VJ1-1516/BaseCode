@@ -1,6 +1,22 @@
 #pragma once
+#ifndef TILELAYER_H
+#define TILELAYER_H
 #include "vector"
 #include "vector2D.h"
+
+struct Tileset
+{
+	int firstGridID;
+	int tileWidth;
+	int tileHeight;
+	int width;
+	int height;
+	int spacing;
+	int margin;
+	int numColumns;
+	//const char* name;
+	std::string name;
+};
 
 class TileLayer
 {
@@ -14,7 +30,13 @@ public:
 private:
 	int m_tileWidth; // Ancho de un patrón
 	int m_tileHeight; // Alto de un patrón
+	int m_numColumns;
+	int m_numRows;
+	Vector2D m_velocity;
 	Vector2D m_position; // Posición del mapa
-	const std::vector< Tileset > &m_tilesets; // tilesets utilizados en esta capa
+	static std::vector< Tileset > m_tilesets; // tilesets utilizados en esta capa
 	std::vector< std::vector< int > > m_tileIDs; // ids de los tiles en cada posición
-};
+	int col;
+	int row;
+};
+#endif

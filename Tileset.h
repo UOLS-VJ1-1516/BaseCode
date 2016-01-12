@@ -9,4 +9,4 @@ struct Tileset
 	int margin;
 	int numColumns;
 	std::string name;
-};
+};

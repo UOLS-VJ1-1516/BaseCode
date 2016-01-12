@@ -28,6 +28,8 @@ public:
 	void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender,
 		SDL_RendererFlip flip);
 	void clean(const char* ID);
+	void drawTile(const char* id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame,
+		SDL_Renderer *pRenderer);
 
 private:
 	static TextureManager* s_pInstance;
