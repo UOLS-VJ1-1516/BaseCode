@@ -8,7 +8,7 @@
 		m_position.setY(0);
 		m_velocity.setX(0);
 		m_velocity.setY(0);
-		m_maxVelocity.setX(3);
+		m_maxVelocity.setX(5);
 		m_acceleration.setX(0.5);
 		m_friction.setX(-0.3);
 	}
@@ -47,8 +47,9 @@
 		}
 		else {
 			// in case of no key press, stay quiet.
-			m_currentFrame = 7;
-			//m_velocity.setX(0);
+			if (m_velocity.getX() == 0) {
+				m_currentFrame = 7;
+			}
 			if(m_velocity.getX() > 0)
 				m_velocity.setX(std::max(m_velocity.getX() + m_friction.getX(),(float)0));
 			else if (m_velocity.getX() < 0)

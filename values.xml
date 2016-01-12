@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<STATES>
+	<MENU>
+		<TEXTURES>
+			<texture filename="buttonstart.bmp" ID="playbutton"/>
+			<texture filename="buttonexit.bmp" ID="exitbutton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="400" y="100" width="201" height="72" numSprites="3" textureID="playbutton" callbackID="1"/>
+			<object type="MenuButton" x="400" y="300" width="201" height="72" numSprites="3" textureID="exitbutton" callbackID="2"/>
+		</OBJECTS>
+	</MENU>
+	<PLAY>
+		<TEXTURES>
+			<texture filename="61933.bmp" ID="player"/>
+			<texture filename="mantis.bmp" ID="mantis"/>
+			<texture filename="bat.bmp" ID="bat"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="Player" x="300" y="220" width="73" height="58" numSprites="8" textureID="player" callbackID="1"/>
+			<object type="Enemy" x="400" y="300" width="72" height="64" numSprites="10" textureID="mantis" callbackID="2"/>
+			<object type="Enemy" x="200" y="400" width="72" height="34" numSprites="6" textureID="bat" callbackID="3"/>
+		</OBJECTS>
+	</PLAY>
+	<PAUSE>
+		<TEXTURES>
+			<texture filename="buttonresume.bmp" ID="resumebutton"/>
+			<texture filename="buttonmenu.bmp" ID="backbutton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="300" y="200" width="201" height="72" numSprites="3" textureID="resumebutton" callbackID="1"/>
+			<object type="MenuButton" x="300" y="400" width="201" height="72" numSprites="3" textureID="backbutton" callbackID="2"/>
+		</OBJECTS>
+	</PAUSE>
+</STATES>

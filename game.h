@@ -27,12 +27,14 @@ class Game
 	void clean();
 	void quit() { running = false; };
 	bool isRunning();
+	int getVisibleWidth() const{return m_viewWidth;}
+	int getVisibleHeight() const {return m_viewHeight;}
 	SDL_Renderer* getRenderer();
 	GameStateMachine* getStateMachine();
 
 private:
 	bool running = true;
-
+	int m_viewWidth, m_viewHeight;
 	static Game* g_pInstance;
 	SDL_Renderer* m_pRenderer;
 	GameStateMachine* m_gameStateMachine;

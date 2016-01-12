@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "GameObject.h"
+#include "Level.h"
 #include <string>
 #include <vector>
 
@@ -18,8 +19,8 @@ public:
 private:
 	static const std::string s_playID;
 	std::vector<GameObject*> m_gameObjects;
-
-	GameObject *player;
-	GameObject *enemy;
-	GameObject *enemy2;
+	Level * pLevel;
+	GameObject * player;
+	GameObject * enemy1;
+	GameObject * enemy2;
 };

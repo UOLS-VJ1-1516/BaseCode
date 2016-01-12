@@ -2,6 +2,10 @@
 #include "InputHandler.h"
 #include "GameObject.h"
 
+MenuButton::MenuButton()
+{
+}
+
 MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()) : m_callback(callback)
 {
 	m_currentFrame = MOUSE_OUT;
@@ -48,5 +52,6 @@ void MenuButton::clean()
 void MenuButton::load(const LoaderParams * pParams)
 {
 	GameObject::load(pParams);
+	m_callbackID = pParams->getCallBackID();
 	m_currentFrame = MOUSE_OUT;
 }

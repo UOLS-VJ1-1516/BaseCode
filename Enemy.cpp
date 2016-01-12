@@ -3,11 +3,11 @@
 #include "TextureManager.h"
 #include "game.h"
 
-int velocity = -2;
+//int velocity = -2;
 Enemy::Enemy(): GameObject(){
 	m_position.setX(0);
 	m_position.setY(0);
-	m_velocity.setX(velocity);
+	m_velocity.setX(0);
 	m_velocity.setY(0);
 }
 
@@ -30,19 +30,20 @@ void Enemy::update() {
 	//m_position.setX(m_position.getX() + 1);
 	//m_position.setY(m_position.getY() + 1);
 //	m_velocity.setX(1);
-	GameObject::update();
+	
 //	printf("Position %d \n", m_position);
 //	printf("Velocity %d \n", m_velocity);
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_numsprites);
-	if (m_position.getX() >= 800)
+	if (m_position.getX() >= 900)
 	{
-		m_velocity.setX(velocity);
+		m_velocity.setX(m_velocity.getX());
 		flip = SDL_FLIP_NONE;
 	}
 	else if (m_position.getX() <= 0) {
-		m_velocity.setX(-velocity);
+		m_velocity.setX(-m_velocity.getX());
 		flip = SDL_FLIP_HORIZONTAL;
 	}
+	GameObject::update();
 }
 void Enemy::clean() {
 }

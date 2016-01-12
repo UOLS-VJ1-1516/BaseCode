@@ -8,19 +8,12 @@
 	#include "MenuButton.h"
 	#include "MenuState.h"
 	#include "PlayState.h"
-	
-	std::vector<GameObject*> m_gameObjects;
+	#include "GameObjectFactory.h"
 
 	Game* Game::g_pInstance = 0;
 
-	Game::Game()
-	{
-		
-	}
-	
-	Game::~Game(){
-		
-	}
+	Game::Game(){}
+	Game::~Game(){}
 	
 	bool Game::init( const char* title , int xpos , int
 		ypos , int width, int height , bool fullscreen )
@@ -39,7 +32,10 @@
 			
 			//afegir textura
 			//Gameobject crear tots els gameobjects
+			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);			TheGameObjectFactory->Register("Player", &Player::Create);			TheGameObjectFactory->Register("Enemy", &Enemy::Create);
 
+			m_viewWidth = width;
+			m_viewHeight = height;
 
 			m_gameStateMachine = new GameStateMachine();
 			m_gameStateMachine->changeState(new MenuState());
@@ -56,21 +52,12 @@
 		SDL_RenderClear(m_pRenderer);
 
 		m_gameStateMachine->render();
-	//	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	//	{
-	//		m_gameObjects[i]->draw();
-	//	}
-		// show the window
+
 		SDL_RenderPresent(m_pRenderer);
 	}
 	
 	void Game::update(){
 		m_gameStateMachine->update();
-
-		/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-		{
-			m_gameObjects[i]->update();
-		}*/
 
 	}
 	

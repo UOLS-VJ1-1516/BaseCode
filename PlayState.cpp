@@ -8,6 +8,9 @@
 #include "InputHandler.h"
 #include "GameObject.h"
 #include <iostream>
+#include "GameObjectFactory.h"
+#include "StateParser.h"
+#include "LevelParser.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -22,10 +25,14 @@ void PlayState::update()
 	{
 		m_gameObjects[i]->update();
 	}
+	pLevel->update();
 
 }
 void PlayState::render()
 {
+	
+	
+	pLevel->render();
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->draw();
@@ -33,42 +40,16 @@ void PlayState::render()
 }
 bool PlayState::onEnter()
 {
-	std::cout << "Enter PlayState \n";
-	if(!TextureManager::Instance()->load("61933.bmp", "player", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-
-	if(!TextureManager::Instance()->load("mantis.bmp", "mantis", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-
-	if(!TextureManager::Instance()->load("bat.bmp", "bat", Game::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	player = new Player();
-	enemy = new Enemy();
-	enemy2 = new Enemy();
-	player->load(new LoaderParams(300, 220, 73, 58, 8, "player"));
-	m_gameObjects.push_back(player);
-
-	enemy->load(new LoaderParams(200, 400, 72, 34, 6, "bat"));
-	m_gameObjects.push_back(enemy);
-
-	enemy2->load(new LoaderParams(400, 300, 72, 64, 10, "mantis"));
-	m_gameObjects.push_back(enemy2);
-	std::cout << "really entering MenuState???\n";
+	LevelParser levelParser;
+	pLevel = levelParser.parseLevel("longtile.tmx");
 	return true;
 }
 bool PlayState::onExit()
 {
-	std::cout << "exiting PlayState\n";
-	for (size_t i = 0; i < m_gameObjects.size(); i++)
+	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
-		m_gameObjects[i]->clean();
+		TextureManager::Instance()->
+			clearFromTextureMap(m_textureIDList[i]);
 	}
-	m_gameObjects.clear();
 	return true;
 }
