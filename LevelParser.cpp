@@ -40,11 +40,13 @@ Level* LevelParser::parseLevel(const char *levelFile)
 		{
 			if (e->FirstChildElement()->Value() == std::string("object"))
 			{
-				parseObjectLayer(e, pLevel->getLayers());
+				parseObjectLayer(e, pLevel->getLayers(), pLevel);
 			}
-			else if (e->FirstChildElement()->Value() == std::string("data"))
+			else if (e->FirstChildElement()->Value() == std::string("data") || (e->FirstChildElement()->NextSiblingElement() != 0
+				&& e ->FirstChildElement()->NextSiblingElement()->Value() == std::string("data")))
 			{
-				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
+				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(),
+					pLevel->getCollisionLayers());
 			}
 		}
 	}
@@ -73,23 +75,36 @@ void LevelParser::parseTilesets(TiXmlElement * pTilesetRoot, std::vector<Tileset
 	pTilesets->push_back(tileset);
 }
 
-void LevelParser::parseTileLayer(TiXmlElement * pTileElement, std::vector<Layer*>* pLayers, const std::vector<Tileset>* pTilesets)
+void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<Layer*> *m_CollisionsLayer)
 {
 	TileLayer* pTileLayer = new TileLayer(m_tileSizew, m_tileSizeh, *pTilesets);
+	bool collidable = false;
 
 	std::vector<std::vector<int>> data;
 	std::string decodedIDs;
 	TiXmlElement* pDataNode;
-	for (TiXmlElement* e = pTileElement->FirstChildElement(); e !=
-		NULL; e = e->NextSiblingElement())
+	for (TiXmlElement* e = pTileElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
+		if (e->Value() == std::string("properties"))
+		{
+			for (TiXmlElement* property = e->FirstChildElement(); property
+				!= NULL; property = property->NextSiblingElement())
+			{
+				if (property->Value() == std::string("property"))
+				{
+					if (property->Attribute("name") == std::string("collidable"))
+					{
+						collidable = true;
+					}
+				}
+			}
+		}
 		if (e->Value() == std::string("data"))
 		{
 			pDataNode = e;
 		}
 	}
-	for (TiXmlNode* e = pDataNode->FirstChild(); e != NULL; e =
-		e->NextSibling())
+	for (TiXmlNode* e = pDataNode->FirstChild(); e != NULL; e = e->NextSibling())
 	{
 		TiXmlText* text = e->ToText();
 		std::string t = text->Value();
@@ -98,8 +113,7 @@ void LevelParser::parseTileLayer(TiXmlElement * pTileElement, std::vector<Layer*
 
 	uLongf numGids = m_width * m_height * sizeof(int);
 	std::vector<unsigned> gids(numGids);
-	uncompress((Bytef*)&gids[0], &numGids, (const
-		Bytef*)decodedIDs.c_str(), decodedIDs.size());
+	uncompress((Bytef*)&gids[0], &numGids, (const Bytef*)decodedIDs.c_str(), decodedIDs.size());
 	std::vector<int> layerRow(m_width);
 	for (int j = 0; j < m_height; j++)
 	{
@@ -112,8 +126,13 @@ void LevelParser::parseTileLayer(TiXmlElement * pTileElement, std::vector<Layer*
 			 data[rows][cols] = gids[rows * m_width + cols];
 		 }
 	}
- pTileLayer->setTileIDs(data);
- pLayers->push_back(pTileLayer);
+
+	if (collidable)
+	{
+		m_CollisionsLayer->push_back(pTileLayer);
+	}
+	pTileLayer->setTileIDs(data);
+	pLayers->push_back(pTileLayer);
 }
 
 void LevelParser::parseTextures(TiXmlElement * pTextureRoot)
@@ -121,7 +140,7 @@ void LevelParser::parseTextures(TiXmlElement * pTextureRoot)
 	TextureManager::Instance()->load(pTextureRoot->Attribute("value"), pTextureRoot->Attribute("name"), Game::Instance()->getRender());
 }
 
-void LevelParser::parseObjectLayer(TiXmlElement * pObjectElement, std::vector<Layer*>* pLayers)
+void LevelParser::parseObjectLayer(TiXmlElement * pObjectElement, std::vector<Layer*>* pLayers, Level* pLevel)
 {
 		ObjectLayer* pObjectLayer = new ObjectLayer();
 		std::cout << pObjectElement->FirstChildElement()->Value();
@@ -194,6 +213,10 @@ void LevelParser::parseObjectLayer(TiXmlElement * pObjectElement, std::vector<La
 				}
 				TextureManager::Instance()->setSizeFrames(textureID, width, height);
 				pGameObject->load(new LoaderParams(x, y, width, height, textureID, numSprites, speedX, speedY, maxSpeed, friction, callbackId));
+				if (textureID == "player")
+				{
+					pLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
+				}
 				pObjectLayer->getGameObjects()->push_back(pGameObject);
 			}
 		}

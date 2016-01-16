@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 
 
-Player::Player() {};
+Player::Player() { nJump = 0; };
 Player::~Player() {};
 
 void Player::draw()
@@ -45,6 +45,10 @@ void Player::load(const LoaderParams* pParams)
 void Player::update() {
 	int pixelsToChangeFrame = 12;
 	Vector2D v0 = m_velocity;
+	SDL_Event event;
+	SDL_PollEvent(&event);
+	
+
 	if (m_velocity.getX() > 0) {
 		decrementAccelerationX();
 	}
@@ -82,8 +86,13 @@ void Player::update() {
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
 		decrementAccelerationY();
 	}
-	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
-		incrementAccelerationY();
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+		nJump += 0.1;
+		if (nJump < 2)
+			jump();
+	}
+	if (event.button.type == SDL_SCANCODE_SPACE && event.type == SDL_KEYUP) {
+		nJump = 0;
 	}
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
 		impulseLeft();
@@ -104,6 +113,14 @@ void Player::update() {
 	if (m_position.getY() > (Game::Instance()->getScreenHeight() - m_height)) {
 		stopY(Game::Instance()->getScreenHeight() - m_height);
 	}
+
+	incrementAccelerationY(); //gravedad
+	//checkPlayerTileCollision();
+	//printf("Acceleration: %f \n", m_acceleration.getY());
+}
+
+void Player::update(int width, int height)
+{
 }
 
 void Player::stopX(int positionX)
@@ -150,5 +167,15 @@ void Player::impulseLeft()
 	m_acceleration.setX(0);
 	m_velocity.setX(-m_maxVelocity);
 }
+
+void Player::jump()
+{
+	m_acceleration.setY(m_acceleration.getY() - 0.6);
+	//m_velocity.setX(-m_maxVelocity);
+}
+
+/*void Player::collision() {
+	return ;
+}*/
 ;
 

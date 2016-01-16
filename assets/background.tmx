@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="36" tilewidth="16" tileheight="16" nextobjectid="25">
  <properties>
-  <property name="player" value="player.png" sizeX="40" sizeY="31"/>
-  <property name="tim" value="tim.png" sizeX="26" sizeY="18"/>
-  <property name="tim2" value="tim.png" sizeX="26" sizeY="18"/>
+  <property name="player" value="player.png"/>
+  <property name="tim" value="tim.png"/>
+  <property name="tim2" value="tim.png"/>
  </properties>
  <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
   <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
@@ -14,13 +14,21 @@
  <tileset firstgid="226" name="tim" tilewidth="26" tileheight="18" tilecount="3">
   <image source="tim.png" width="78" height="18"/>
  </tileset>
- <layer name="Capa de Patrones 1" width="80" height="36">
+ <layer name="Capa Fondo" width="80" height="36" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt2E9OwlAQx/HRxKWYGElwV1wRZackJrAERL0BUY8A6g1UvIGuXcJlvBM/gg1/UhL73jxm+pjFJ2HVNl+mr30tE1HZGCE14+XaePmCb2gaJ2OYKLiOoppYPy82f9ZPUgz37yGU4Ejg3DHMXwJVONuRftzzcglX0NiRfgnJzUsM/STnJYZ+23QOFznUBfqFeP5xHdNlT+vSrws30HO4xoT417MQxwyBY/5CrGea18gD2P+T1c9nFrVpefze1K5Ci++nMTw/+nALd3DPeNwBDOEZXuAVTmj1+/N/9m/a53HW7wEe4QmOmbzBO3zACD4z+sUyf3u0WJNCOmXqp2kmZ/3W52JbtHx/8fk/JPtx3r/cM5l1vOXnY7q3qCvr5/psl+rcVNAvb5s8DdrQYWylqR/3O9O6dB8b+vuwVL/0nek3kITm+9h0LxvqPNL9fgrO+lk/61dc1s/6Wb/ikuo3Bblj4Co=
+   eJzt2LEJgDAQQNEskR0cQXAWnUprS11GdCSv0EYRjpyaHPzidSGEz6VIYgghAplUMKlh0otBNEgyibmAc3g108+E+aNfTtxfG+aPfvTzi370o59f9KMf/fw5/0/pl94uBt5v1n7MH/3+6PSE+2vrx/zRj35l0vTLfcaSafq1x9rlI9vF23uvSil7a/t1YsQN/ehHP7/oRz/6+aXptwMycV6G
   </data>
  </layer>
- <objectgroup name="Capa de Objetos 1">
-  <object id="21" name="Player" type="Player" gid="210" x="51" y="142" width="40" height="32">
+ <layer name="Capa Colisiones" width="80" height="36">
+  <properties>
+   <property name="collidable" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlz0OwjAMhQ0SI7BkYEwZgQ2YYAYEd+D+x8CVioBITRMS58f1Jz21jarIfXFeWwBBEARBSM8ctUAtcxdSKRrVoNaZ62ihXEuqufeoA+oYed5/0EC3lpRzlwLlWpbUJwIvuL0DUz+PBnu2nQyVjoa0WW3Ltlo8+yZnVpu9Fuodt2ywQdFrGnh/91Bnm3z3lMGYcoACDXxyYIaadkoFlxxovVvlLqJSuHp3Nq4vqCvq5jC+QW1RO+PeCXz26Futd02ckrNi+kWBAj+v+tahBFL4ZaK6I4d+cyXmv5cavsWboVzpk0sO2cZ9KNm/Goj1L+bq3x31gN+M6TsfEz799ySrol7Gun9jIf6FIf6FIf6FIf6FIf6FIf6F4erfC3V3GrM=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos" visible="0">
+  <object id="21" name="Player" type="Player" gid="210" x="35" y="365" width="40" height="32">
    <properties>
     <property name="callbackId" value="0"/>
     <property name="friction" value="0.1"/>
@@ -33,7 +41,7 @@
     <property name="textureWidth" value="40"/>
    </properties>
   </object>
-  <object id="22" name="Tim" type="Enemy" gid="226" x="311" y="194" width="26" height="18">
+  <object id="22" name="Tim" type="Enemy" gid="226" x="379" y="397" width="26" height="18">
    <properties>
     <property name="callbackId" value="0"/>
     <property name="friction" value="0.1"/>
@@ -46,7 +54,7 @@
     <property name="textureWidth" value="26"/>
    </properties>
   </object>
-  <object id="23" name="Tim2" type="Enemy" gid="226" x="445" y="326" width="26" height="18">
+  <object id="23" name="Tim2" type="Enemy" gid="226" x="1154" y="334" width="26" height="18">
    <properties>
     <property name="callbackId" value="0"/>
     <property name="friction" value="0.1"/>

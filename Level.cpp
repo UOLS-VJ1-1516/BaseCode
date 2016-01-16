@@ -6,6 +6,8 @@ void Level::render()
 	{
 		m_layers[i]->render();
 	}
+
+	//CollisionObject::checkPlayerTileCollision(getPlayer(), m_CollisionsLayer);
 }
 
 void Level::update()

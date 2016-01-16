@@ -11,6 +11,7 @@ private:
 	void stopY(int);
 	Vector2D m_lastStop;
 	SDL_RendererFlip m_lastTimeOrientation;
+	float nJump = 0;
 public:
 	Player();
 	~Player();
@@ -24,7 +25,9 @@ public:
 	void decrementAccelerationX();
 	void impulseRight();
 	void impulseLeft();
+	void jump();
 	static GameObject * Create() { return new Player(); }
+	void collision() {};
 };
 
 #endif PLAYER_H
