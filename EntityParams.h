@@ -29,6 +29,7 @@ public:
 
 	int GetMaxFrame() { return maxFrame; }
 	int GetRow() { return row; }
+	void SetRow(int row) { this->row = row; }
 
 	bool IsFlipped() { return flipped; }
 	void Flip() { flipped = !flipped; }

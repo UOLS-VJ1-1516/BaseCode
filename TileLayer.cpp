@@ -3,20 +3,19 @@
 #include "Loaders.h"
 #include "Game.h"
 
-TileLayer::TileLayer(int width, int height, int tileWidth, int tileHeight, std::vector<Tileset> tileSets)
+TileLayer::TileLayer(int width, int height, int tileWidth, int tileHeight, std::vector<Tileset> tileSets) : Layer(tileSets)
 {
 	this->width = width;
 	this->height = height;
 	this->tileWidth = tileWidth;
-	this->tileHeight = tileHeight;
-	this->tilesets = tileSets;
+	this->tileHeight = tileHeight;	
 }
 
 TileLayer::~TileLayer()
 {
 }
 
-void TileLayer::Update(Player * player)
+void TileLayer::Update()
 {
 	position.X = 0;
 	position.Y = 0;
@@ -39,11 +38,6 @@ void TileLayer::Render()
 			int y1 = Tools::GetHeight() - (90 - tile) * tileHeight;
 			int y2 = y1 + tileHeight;
 
-			// si tile = height, y2 = Tools::GetHeight(), x tant:
-			// si tile = 0, y2 = Tools::GetHeight() - 90 * tileHeight
-			// x tant, y2 = Tools::GetHeight() - (90 - tile) * tileHeight
-
-
 			if (y1 < 0 && y2 < 0)
 				continue;
 			if (x1 < 0 && x2 < 0 || x1 > Tools::GetWidth() && x1 > Tools::GetWidth())
@@ -61,19 +55,6 @@ void TileLayer::Render()
 void TileLayer::SetTileIDs(const std::vector<std::vector<int>>& tileIDs)
 {
 	this->tileIDs = tileIDs;
-}
-
-Tileset * TileLayer::GetTileset(int ts)
-{
-	int f = 0;
-	for (unsigned int i = 0; i < tilesets.size(); i++)
-	{
-		if (tilesets.at(i).firstGridID <= ts)
-			f = i;
-		else
-			break;
-	}
-	return &tilesets.at(f);
 }
 
 void TileLayer::Draw(string id, Tileset * ts, int x, int y, int row, int frame)

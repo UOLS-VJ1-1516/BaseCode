@@ -47,7 +47,7 @@ private:
 	vector<Entity *> entitats;
 	vector<string> textures;
 	Player * player = NULL;	
-	TileLayer * layer;
+	Level * level;
 public:
 	void Update();
 	void Render();

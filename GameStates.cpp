@@ -1,7 +1,7 @@
 #include "GameStates.h"
 #include "Game.h"
 #include "StateParser.h"
-#include "LayerParser.h"
+#include "LevelParser.h"
 
 using namespace std;
 
@@ -23,13 +23,13 @@ void StateGame::Update()
 		}
 		var->Update();
 	}
-	layer->Update(player);
+	level->Update();
 	cout << "Player: " << player->position.X << " " << player->position.Y << endl;
 }
 
 void StateGame::Render()
 {
-	layer->Render();
+	level->Render();
 	for each (LivingEntity * var in entitats)
 	{
 		if (var->HaveAnimation())
@@ -87,7 +87,7 @@ bool StateGame::OnEnter()
 		}
 	}
 	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x90, 0xFF, 0xFF);
-	layer = Layerer->ParseTileLayer("assets/xml/state.tmx");
+	level = LevelParser::ParseLevel("assets/xml/state.tmx");
 	return true;
 }
 

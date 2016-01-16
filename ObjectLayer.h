@@ -10,16 +10,11 @@ private:
 	std::vector<Entity *> entities;
 	std::vector<Tileset> tilesets;
 public:
-	ObjectLayer(std::vector<Tileset> tilesets)
-	{
-		this->tilesets = tilesets;
-	}
+	ObjectLayer(std::vector<Tileset> tilesets);
 
-	virtual void render();
-	virtual void update();
+	virtual void Render();
+	virtual void Update();
 
-	std::vector<Entity *> * getEntities() 
-	{
-		return &entities;
-	}
+	std::vector<Entity *> * getEntities();
+	void addEntity(Entity *);
 };
