@@ -15,6 +15,10 @@
 #include "PauseState.h"
 #include "GameObjectFactory.h"
 #include "StateParser.h"
+#include "TileLayer.h"
+#include "LevelParser.h"
+#include "Level.h"
+//#include "LayerParser.h"
 
 
 class PlayState : public GameState {
@@ -31,7 +35,8 @@ class PlayState : public GameState {
 		static const std::string s_playID;
 		std::vector<GameObject* > m_gameObjects; 
 		std::vector<const char* > m_texturesIDList;
-
+		//TileLayer* tl;
+		Level* level;
 };
 
 #endif

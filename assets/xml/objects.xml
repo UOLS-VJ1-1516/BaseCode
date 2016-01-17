@@ -12,7 +12,7 @@
 	</MENU>
 	<PLAY>
 		<TEXTURES>
-			<texture fileName="./assets/images/buffon.bmp" ID="Player"/>
+			<texture fileName="./assets/images/buffon.png" ID="Player"/>
 			<texture fileName="./assets/images/zombie.bmp" ID="Zombie"/>
 			<texture fileName="./assets/images/coin.bmp" ID="Coin"/>
 		</TEXTURES>
