@@ -16,8 +16,7 @@ LivingEntity::~LivingEntity()
 }
 
 void LivingEntity::Move(float xPos, float yPos)
-{
-	
+{	
 	if (xPos < 0 && !params->IsFlipped() || xPos > 0 && params->IsFlipped())
 		params->Flip();
 	if (SDL_GetTicks() % 100 / (int)Game::GetInstance()->delta == 0)

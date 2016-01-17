@@ -90,13 +90,13 @@ Vector2D Tools::CalcPosFromImage(int ColumnElements, int Position)
 {
 	Vector2D vector;
 	if (Position < ColumnElements) {
-		vector.X = Position;
-		vector.Y = 0;
+		vector.X = (float)Position;
+		vector.Y = 0.0f;
 	}
 	else {
 		int row = Tools::Decomp(Position, ColumnElements, 0);
-		vector.Y = row;
-		vector.X = Position - (row * ColumnElements);
+		vector.Y = (float)row;
+		vector.X = (float)Position - (row * ColumnElements);
 	}
 	return vector;
 }

@@ -2,6 +2,7 @@
 #include "Loaders.h"
 #include "Tools.h"
 #include "EntityFactory.h"
+#include "Enemy.h"
 
 using namespace std;
 using namespace tinyxml2;
@@ -72,6 +73,10 @@ void LevelParser::ParseObjectLayer(XMLElement * root, vector<Layer *> * layers, 
 			int height = e->IntAttribute("height");
 			int gid = e->IntAttribute("gid");
 
+			if (typeof == "Enemy") {
+				int type = e->FirstChildElement("properties")->FirstChildElement("property")->IntAttribute("value");
+				((Enemy *)entity)->SetType(type);
+			}
 			entity->Load(new EntityParams(id, x, y, width, height, 3, gid));
 			entity->gid = gid;
 			entity->texture = objLayer->GetTileset(gid)->name;

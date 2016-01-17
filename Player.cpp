@@ -11,9 +11,7 @@ Player::Player() : LivingEntity()
 {
 	position.X = 0;
 	maxVel = Vector2D(10, 10);
-	acceleration = Vector2D(1, 1);
-	if (TheGame->DEBUG)
-		friction = Vector2D(0, 0);
+	acceleration = Vector2D(1, 1);	
 }
 
 void Player::Update()

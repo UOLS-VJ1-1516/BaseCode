@@ -33,7 +33,7 @@ void TileLayer::Render()
 				continue;
 
 			
-			int x1 = (row * tileWidth) - (position.X / tileWidth);
+			int x1 = (row * tileWidth) - (int)(position.X / tileWidth);
 			int x2 = x1 + tileWidth;
 			int y1 = Tools::GetHeight() - (90 - tile) * tileHeight;
 			int y2 = y1 + tileHeight;
@@ -45,7 +45,7 @@ void TileLayer::Render()
 			
 			Tileset * ts = GetTileset(current);
 			current--;
-			Draw(ts->name, ts, x1 - position.X, y1 - position.Y, 
+			Draw(ts->name, ts, (int)(x1 - position.X), (int)(y1 - position.Y),
 				(current - (ts->firstGridID - 1)) / ts->numColumns,
 				(current - (ts->firstGridID - 1)) % ts->numColumns);
 		}
