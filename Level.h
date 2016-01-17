@@ -1,15 +1,18 @@
 #pragma once
+#include <vector>
+#include "Tileset.h"
+#include "Layer.h"
 
 class Level
 {
 private:
-	friend class LevelParser;
-	Level();
+	friend class LevelParser;	
 	std::vector<Tileset> tilesets;
 	std::vector<Layer *> layers;
 public:
-	void update();
-	void render();
+	Level(std::vector<Tileset>, std::vector<Layer *>);
+	void Update();
+	void Render();
 
 	std::vector<Tileset> * getTilesets()
 	{

@@ -10,7 +10,7 @@ void LevelParser::ParseTilesets(XMLElement * root, vector<Tileset> * tileset)
 {
 	for (auto e = root->FirstChildElement("tileset"); e != NULL; e = e->NextSiblingElement("tileset"))
 	{
-		Tileset * ts;
+		Tileset * ts = new Tileset();
 		ts->firstGridID = e->IntAttribute("firstgid");
 		ts->margin = e->IntAttribute("margin");
 		ts->name = e->Attribute("name");
@@ -31,7 +31,7 @@ void LevelParser::ParseTileLayer(XMLElement * root, vector<Layer *> * layers, ve
 	{
 		int width = e->IntAttribute("width");
 		int height = e->IntAttribute("height");
-		string data = e->Attribute("data");
+		string data = e->FirstChildElement("data")->FirstChild()->Value();
 		data = Tools::Clear(data);
 		data = base64_decode(data);
 
@@ -58,21 +58,49 @@ void LevelParser::ParseTileLayer(XMLElement * root, vector<Layer *> * layers, ve
 
 void LevelParser::ParseObjectLayer(XMLElement * root, vector<Layer *> * layers, vector<Tileset> * tilesets)
 {
-	ObjectLayer objLayer(*tilesets);
-	for (auto e = root->FirstChildElement("object"); e != NULL; e = e->NextSiblingElement("object"))
-	{
-		string typeof = e->Attribute("type");
-		string id = e->Attribute("name");
+	for (auto o = root->FirstChildElement("objectgroup"); o != NULL; o = o->NextSiblingElement("objectlayer")) {
+		ObjectLayer * objLayer = new ObjectLayer(*tilesets);
+		for (auto e = o->FirstChildElement("object"); e != NULL; e = e->NextSiblingElement("object"))
+		{
+			string typeof = e->Attribute("type");
+			string id = e->Attribute("name");
 
-		Entity * entity = EntityFactory::GetInstance()->CreateEntity(typeof);
-		int x = e->IntAttribute("x");
-		int y = 2912 - e->IntAttribute("y");
-		int width = e->IntAttribute("width");
-		int height = e->IntAttribute("height");
-		int gid = e->IntAttribute("gid");
+			Entity * entity = EntityFactory::GetInstance()->CreateEntity(typeof);
+			int x = e->IntAttribute("x");
+			int y = 2912 - e->IntAttribute("y");
+			int width = e->IntAttribute("width");
+			int height = e->IntAttribute("height");
+			int gid = e->IntAttribute("gid");
 
-		entity->Load(new EntityParams(id, x, y, width, height, 3, gid));
+			entity->Load(new EntityParams(id, x, y, width, height, 3, gid));
+			entity->gid = gid;
+			entity->texture = objLayer->GetTileset(gid)->name;
 
-		objLayer.addEntity(entity);
+			objLayer->addEntity(entity);
+		}
+		layers->push_back(objLayer);
 	}
+}
+
+Level * LevelParser::ParseLevel(string xml) {	
+	XMLDocument doc;
+	doc.LoadFile(xml.c_str());
+	if (doc.Error()) {
+		cout << "Error XML: " << doc.ErrorName() << endl;
+	}
+	XMLElement * map = doc.FirstChildElement("map");
+	int mapWidth = map->IntAttribute("width");
+	int mapHeight = map->IntAttribute("height");
+	int tileWidth = map->IntAttribute("tilewidth");
+	int tileHeight = map->IntAttribute("tileheight");
+
+	vector<Tileset> tilesets;
+	vector<Layer *> layers;
+
+	ParseTilesets(map, &tilesets);
+	ParseTileLayer(map, &layers, &tilesets, tileWidth, tileHeight);
+	ParseObjectLayer(map, &layers, &tilesets);
+
+	Level * lvl = new Level(tilesets, layers);
+	return lvl;
 }

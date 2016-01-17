@@ -24,6 +24,7 @@ void StateGame::Update()
 		var->Update();
 	}
 	level->Update();
+	
 	cout << "Player: " << player->position.X << " " << player->position.Y << endl;
 }
 
@@ -78,16 +79,19 @@ void StateGame::HandleEvents()
 
 bool StateGame::OnEnter()
 {
-	StateParser::ParseState("game.xml", this->gameID, &entitats, &textures);
-	for each (LivingEntity * var in entitats)
-	{
-		if (Player * pl = dynamic_cast<Player *>(var))
-		{
+	level = LevelParser::ParseLevel("assets/xml/state.tmx");
+	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x90, 0xFF, 0xFF);
+	
+	for each (Layer * layer in *level->getLayers()) {
+		if (ObjectLayer * objLayer = dynamic_cast<ObjectLayer *>(layer)) {
+			this->entitats = *objLayer->getEntities();
+		}
+	}
+	for each (Entity * entity in entitats) {
+		if (Player * pl = dynamic_cast<Player *>(entity)) {
 			player = pl;
 		}
 	}
-	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x90, 0xFF, 0xFF);
-	level = LevelParser::ParseLevel("assets/xml/state.tmx");
 	return true;
 }
 

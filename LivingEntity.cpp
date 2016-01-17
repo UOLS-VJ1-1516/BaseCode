@@ -114,7 +114,7 @@ void LivingEntity::DrawFrame()
 
 	SDL_RendererFlip flip = params->IsFlipped() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
 
-	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[params->GetId()];
+	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[texture];
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
 }
 

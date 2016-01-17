@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "EventHandler.h"
 #include "TileLayer.h"
+#include "Level.h"
 
 using namespace std;
 

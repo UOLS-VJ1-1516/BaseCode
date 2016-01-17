@@ -11,7 +11,9 @@ void ObjectLayer::Render() {
 }
 
 void ObjectLayer::Update() {
-
+	for each (Entity * e in entities) {
+		e->Update();
+	}
 }
 
 vector<Entity *> * ObjectLayer::getEntities() {
@@ -20,9 +22,9 @@ vector<Entity *> * ObjectLayer::getEntities() {
 
 void ObjectLayer::addEntity(Entity * entity) {
 	entities.push_back(entity);
-	int gid = *entity->params->GetRow();
+	int gid = entity->params->GetRow();
 	Tileset * ts = GetTileset(gid);
 	gid--;
 	int row = (gid - (ts->firstGridID - 1)) / ts->numColumns;
-	*entity->params->GetRow() = row;
+	entity->params->SetRow(row);
 }
