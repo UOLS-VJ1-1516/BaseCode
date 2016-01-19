@@ -3,6 +3,7 @@
 #include "Loaders.h"
 #include "Game.h"
 #include <cmath>
+#include "Camera.h"
 
 using namespace std;
 
@@ -102,6 +103,11 @@ void LivingEntity::Draw()
 
 void LivingEntity::DrawFrame()
 {
+	const Vector2D * camPos = TheCam->GetPosition();
+
+	if (position.X - camPos->X < 0 || position.X - camPos->X > Tools::GetWidth() ||
+		position.Y - camPos->Y < 0 || position.Y - camPos->Y > Tools::GetHeight())
+		return;
 	SDL_Rect img, draw;
 
 	img.x = params->GetWidth() * params->GetFrame();
@@ -109,8 +115,8 @@ void LivingEntity::DrawFrame()
 	img.w = params->GetWidth();
 	img.h = params->GetHeight();
 
-	draw.x = (int)position.X;
-	draw.y = (int)position.Y;
+	draw.x = (int)position.X - camPos->X;
+	draw.y = (int)position.Y - camPos->Y;
 	draw.w = params->GetWidth();
 	draw.h = params->GetHeight();
 
@@ -137,7 +143,9 @@ bool LivingEntity::IsCollidingWithTile(int x, int y) {
 		int size = layer->GetTileset(0)->tileWidth;
 		int row = yReal / size;
 		int cell = x / size;
-		if (row >= tiles.size() || row < 0 || cell >= tiles[row].size() || cell < 0)
+		if (row >= tiles.size())
+			return true;
+		if (x >= tiles.size() * size || x < 0 || yReal >= tiles[row].size() * size || yReal < 0)
 			return true;
 		int value = tiles[row][cell];
 		if (value != 0)

@@ -57,6 +57,7 @@ public:
 	bool OnEnter();
 	bool OnExit();
 
+	Player * GetPlayer() { return player; }
 	string GetStateID() const { return gameID; }
 };
 

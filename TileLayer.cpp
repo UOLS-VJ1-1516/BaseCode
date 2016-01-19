@@ -2,6 +2,8 @@
 #include "Tools.h"
 #include "Loaders.h"
 #include "Game.h"
+#include "GameStates.h"
+#include "Camera.h"
 
 TileLayer::TileLayer(int width, int height, int tileWidth, int tileHeight, std::vector<Tileset> tileSets) : Layer(tileSets)
 {
@@ -17,21 +19,25 @@ TileLayer::~TileLayer()
 
 void TileLayer::Update()
 {
-	position.X = 0;
+	position.X = TheCam->GetPosition()->X;
 	position.Y = 0;
 }
 
 void TileLayer::Render()
 {
 	Vector2D scr((float)Tools::GetWidth(), (float)Tools::GetHeight());
-	for (int row = 0; row < width; row++) 
+	int firstRow = TheCam->GetPosition()->X / tileWidth;
+	int lastRow = (TheCam->GetPosition()->X + Tools::GetWidth()) / tileWidth;
+	lastRow++;
+	for (int row = firstRow; row < lastRow; row++) 
 	{
 		for (int tile = 0; tile < height; tile++)
 		{		
+			if (row >= tileIDs.size())
+				continue;
 			int current = tileIDs[tile][row];
 			if (current == 1 || current == 0)
 				continue;
-
 			
 			int x1 = (row * tileWidth) - (int)(position.X / tileWidth);
 			int x2 = x1 + tileWidth;
@@ -40,9 +46,7 @@ void TileLayer::Render()
 
 			if (y1 < 0 && y2 < 0)
 				continue;
-			if (x1 < 0 && x2 < 0 || x1 > Tools::GetWidth() && x1 > Tools::GetWidth())
-				continue;
-			
+						
 			Tileset * ts = GetTileset(current);
 			current--;
 			Draw(ts->name, ts, (int)(x1 - position.X), (int)(y1 - position.Y),

@@ -24,7 +24,7 @@ public:
 	void Accelerate(int, int);
 
 	void Load(EntityParams *);
-	void Draw();
+	virtual void Draw();
 	virtual void DrawFrame();
 	virtual void Update();
 	void Clear();

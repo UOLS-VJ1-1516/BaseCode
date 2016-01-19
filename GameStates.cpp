@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "StateParser.h"
 #include "LevelParser.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -24,8 +25,6 @@ void StateGame::Update()
 		var->Update();
 	}
 	level->Update();
-	Vector2D playerCell = Tools::GetTileCoords(player->position);
-	cout << "Cell: " << playerCell.toString() << endl;
 }
 
 void StateGame::Render()
@@ -94,6 +93,9 @@ bool StateGame::OnEnter()
 		vector<TileLayer *> * colLayers = level->getCollidableTileLayers();
 		entity->LoadCollisionLayers(colLayers);
 	}
+	TheCam->SetTarget(player);
+	TheCam->SetMaxPosition(90 * 32);
+	TheCam->SetPosition(Vector2D::NULL_VECTOR);
 	return true;
 }
 

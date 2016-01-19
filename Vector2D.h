@@ -11,6 +11,7 @@ public:
 	Vector2D(float, float);
 	~Vector2D();
 
+	const static Vector2D * NULL_VECTOR;
 	float X;
 	float Y;
 

@@ -1,6 +1,8 @@
 #include "Vector2D.h"
 #include <cmath>
 
+const Vector2D * Vector2D::NULL_VECTOR = new Vector2D();
+
 Vector2D::Vector2D()
 {
 	X = 0;
