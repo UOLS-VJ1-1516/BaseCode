@@ -24,8 +24,8 @@ void StateGame::Update()
 		var->Update();
 	}
 	level->Update();
-	
-	cout << "Player: " << player->position.X << " " << player->position.Y << endl;
+	Vector2D playerCell = Tools::GetTileCoords(player->position);
+	cout << "Cell: " << playerCell.toString() << endl;
 }
 
 void StateGame::Render()
@@ -87,10 +87,12 @@ bool StateGame::OnEnter()
 			this->entitats = *objLayer->getEntities();
 		}
 	}
-	for each (Entity * entity in entitats) {
+	for each (LivingEntity * entity in entitats) {
 		if (Player * pl = dynamic_cast<Player *>(entity)) {
 			player = pl;
 		}
+		vector<TileLayer *> * colLayers = level->getCollidableTileLayers();
+		entity->LoadCollisionLayers(colLayers);
 	}
 	return true;
 }
@@ -152,6 +154,7 @@ bool StateMenu::OnEnter()
 	for each (Button * var in entitats)
 	{
 		var->SetOnClickListener(callbacks.at(var->CallbackID));
+		var->params->SetXPos((Tools::GetWidth() / 2) - (var->params->GetWidth() / 2));
 	}
 	return true;
 }
@@ -246,7 +249,7 @@ void StateIntro::Render()
 	{
 		var->Draw();
 	}
-	if (SDL_GetTicks() - millis > 5000)
+	if (SDL_GetTicks() - millis > 1500)
 		TheGame->GetManager()->ChangeState(new StateMenu());
 }
 
@@ -257,6 +260,8 @@ void StateIntro::HandleEvents()
 bool StateIntro::OnEnter()
 {
 	StateParser::ParseState("intro.xml", GetStateID(), &entitats, &textures);
+	entitats[0]->params->SetWidth(Tools::GetWidth());
+	entitats[0]->params->SetHeight(Tools::GetHeight());
 	millis = SDL_GetTicks();
 	return true;
 }

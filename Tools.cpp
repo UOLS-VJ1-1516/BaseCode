@@ -7,6 +7,7 @@
 #include "Game.h"
 
 using namespace std;
+using namespace tinyxml2;
 
 double lastFrame = Tools::GetTime();
 
@@ -109,4 +110,21 @@ int Tools::Decomp(int element, int limit, int count)
 	else {
 		return Tools::Decomp(element - limit, limit, count++);
 	}
+}
+
+string Tools::GetValueFromNode(string node, XMLElement * root) {	
+	string name = root->Attribute("name");
+	string value = root->Attribute("value");
+	cout << name << " " << value << endl;
+	if (name == node) {
+		return value;
+	}	
+	return "";
+}
+
+Vector2D Tools::GetTileCoords(Vector2D entityCoords) {	
+	int x = (entityCoords.X - ((int)entityCoords.X % 32)) / 32;
+	int coofY = (entityCoords.Y - Tools::GetHeight() + (91 * 32));
+	int y = (coofY - ((int)coofY % 32)) / 32;
+	return Vector2D(x, y);
 }

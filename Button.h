@@ -12,12 +12,12 @@
 class Button : public Entity
 {
 private:
-	std::string id;
-	EntityParams * params;
+	std::string id;	
 	std::string buttonID;
 	int state = WAIT;
 	InertEntity * text;
 public:
+	EntityParams * params;
 	void Load(EntityParams * params);
 	static Entity * Create();
 

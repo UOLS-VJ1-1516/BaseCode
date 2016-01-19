@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "Vector2D.h"
+#include <tinyxml2.h>
 
 namespace Tools
 {
@@ -15,4 +16,6 @@ namespace Tools
 	Vector2D CalcPosFromImage(int, int);
 	int Decomp(int, int, int);
 	string Clear(string str);
+	string GetValueFromNode(string node, tinyxml2::XMLElement * root);
+	Vector2D GetTileCoords(Vector2D);
 }

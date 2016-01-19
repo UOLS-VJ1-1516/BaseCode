@@ -23,6 +23,8 @@ public:
 
 	int GetWidth() { return width; }
 	int GetHeight() { return height; }
+	void SetWidth(int width) { this->width = width; }
+	void SetHeight(int height) { this->height = height; }
 
 	int GetFrame() { return frame; }
 	void SetFrame(int frame) { this->frame = frame; }

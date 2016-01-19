@@ -75,3 +75,15 @@ void TileLayer::Draw(string id, Tileset * ts, int x, int y, int row, int frame)
 	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[id];
 	SDL_RenderCopy(TheGame->GetRenderer(), textura, &source, &draw);
 }
+
+bool TileLayer::IsCollidable() {
+	return this->hasCollision;
+}
+
+void TileLayer::SetCollision(bool collidable) {
+	this->hasCollision = collidable;
+}
+
+vector<vector<int>> TileLayer::GetTiles() {
+	return tileIDs;
+}

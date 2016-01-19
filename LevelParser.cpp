@@ -52,12 +52,17 @@ void LevelParser::ParseTileLayer(XMLElement * root, vector<Layer *> * layers, ve
 		}
 
 		TileLayer * tl = new TileLayer(width, height, tileWidth, tileHeight, *tilesets);
+		bool hasCollision;
+		for (XMLElement * child = e->FirstChildElement("properties")->FirstChildElement("property"); child != NULL; child = child->NextSiblingElement("property")) {
+			hasCollision = atoi(Tools::GetValueFromNode("HasCollision", child).c_str());
+		}
+		tl->SetCollision(hasCollision);
 		tl->SetTileIDs(layer);
 		layers->push_back(tl);
 	}
 }
 
-void LevelParser::ParseObjectLayer(XMLElement * root, vector<Layer *> * layers, vector<Tileset> * tilesets)
+void LevelParser::ParseObjectLayer(XMLElement * root, vector<Layer *> * layers, vector<Tileset> * tilesets, int tileHeight, int mapHeight)
 {
 	for (auto o = root->FirstChildElement("objectgroup"); o != NULL; o = o->NextSiblingElement("objectlayer")) {
 		ObjectLayer * objLayer = new ObjectLayer(*tilesets);
@@ -68,18 +73,35 @@ void LevelParser::ParseObjectLayer(XMLElement * root, vector<Layer *> * layers, 
 
 			Entity * entity = EntityFactory::GetInstance()->CreateEntity(typeof);
 			int x = e->IntAttribute("x");
-			int y = 2912 - e->IntAttribute("y");
 			int width = e->IntAttribute("width");
 			int height = e->IntAttribute("height");
+			//realY = y - Tools::GetHeight() + (90 * 32);
+			//y = realY + Tools::GetHeight() - (90 * 32)
+			int y = e->IntAttribute("y") + Tools::GetHeight() - (mapHeight * tileHeight) - height;
+			
 			int gid = e->IntAttribute("gid");
 
 			if (typeof == "Enemy") {
-				int type = e->FirstChildElement("properties")->FirstChildElement("property")->IntAttribute("value");
+				int type;
+				XMLElement * child = e->FirstChildElement("properties");
+				for (XMLElement * child2 = child->FirstChildElement("property"); child2 != NULL; child2 = child2->NextSiblingElement("property")) {									
+					type = atoi(Tools::GetValueFromNode("Type", child2).c_str());
+				}
 				((Enemy *)entity)->SetType(type);
 			}
+
 			entity->Load(new EntityParams(id, x, y, width, height, 3, gid));
 			entity->gid = gid;
 			entity->texture = objLayer->GetTileset(gid)->name;
+
+			int collisionMargin;
+
+			XMLElement * child = e->FirstChildElement("properties");
+			for (XMLElement * child2 = child->FirstChildElement("property"); child2 != NULL; child2 = child2->NextSiblingElement("property")) {
+				collisionMargin = atoi(Tools::GetValueFromNode("CollisionMargin", child2).c_str());
+			}
+			
+			((LivingEntity *)entity)->collisionMargin = collisionMargin;
 
 			objLayer->addEntity(entity);
 		}
@@ -104,7 +126,7 @@ Level * LevelParser::ParseLevel(string xml) {
 
 	ParseTilesets(map, &tilesets);
 	ParseTileLayer(map, &layers, &tilesets, tileWidth, tileHeight);
-	ParseObjectLayer(map, &layers, &tilesets);
+	ParseObjectLayer(map, &layers, &tilesets, tileHeight, mapHeight - 1);
 
 	Level * lvl = new Level(tilesets, layers);
 	return lvl;

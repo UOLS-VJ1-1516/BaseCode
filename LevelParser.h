@@ -14,9 +14,9 @@
 class LevelParser
 {
 private:	
-	static void ParseTilesets(tinyxml2::XMLElement * root, vector<Tileset> * tilesets);
-	static void ParseTileLayer(tinyxml2::XMLElement * root, std::vector<Layer *> * layers, std::vector<Tileset> * tilesets, int width, int height);
-	static void ParseObjectLayer(tinyxml2::XMLElement * objElement, std::vector<Layer *> * layers, std::vector<Tileset> * tilesets);
+	static void ParseTilesets(tinyxml2::XMLElement *, vector<Tileset> *);
+	static void ParseTileLayer(tinyxml2::XMLElement *, std::vector<Layer *> *, std::vector<Tileset> *, int, int);
+	static void ParseObjectLayer(tinyxml2::XMLElement *, std::vector<Layer *> *, std::vector<Tileset> *, int, int);
 public:	
 	static Level * ParseLevel(std::string);
 };

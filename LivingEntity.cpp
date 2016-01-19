@@ -26,11 +26,10 @@ void LivingEntity::Move(float xPos, float yPos)
 }
 
 void LivingEntity::Accelerate(int aX, int aY)
-{		
+{
 	velocity.X += (aX * acceleration.X);
 	velocity.Y += (aY * acceleration.Y);
 
-	
 	if (velocity.X > 0)
 		velocity.X = fmin(velocity.X, maxVel.X);
 	else if (velocity.X < 0)
@@ -39,7 +38,7 @@ void LivingEntity::Accelerate(int aX, int aY)
 		velocity.Y = fmin(velocity.Y, maxVel.Y);
 	else if (velocity.Y < 0)
 		velocity.Y = fmax(velocity.Y, -maxVel.Y);
-	
+
 	velocity.X *= (1 - friction.X);
 
 	if (abs(velocity.X) < 0.1)
@@ -47,12 +46,16 @@ void LivingEntity::Accelerate(int aX, int aY)
 		velocity.X = 0;
 	}
 
-	position.X += velocity.X;
+	if (!IsCollidingWithTile(position.X + velocity.X, position.Y))
+		position.X += velocity.X;
 		
-	if (position.Y + velocity.Y + this->GetHeight() >= Tools::GetHeight())	
-		position.Y = (float)(Tools::GetHeight() - this->GetHeight());
-	else
+	if (!IsCollidingWithTile(position.X, position.Y + velocity.Y)) {
 		position.Y += velocity.Y;
+		inAir = true;
+	}
+	else {
+		inAir = false;
+	}
 
 	bool isFlipped;
 
@@ -125,4 +128,24 @@ void LivingEntity::Update()
 void LivingEntity::Clear()
 {
 	this->~LivingEntity();
+}
+
+bool LivingEntity::IsCollidingWithTile(int x, int y) {
+	int yReal = y - Tools::GetHeight() + (91 * 32);
+	for each (TileLayer * layer in collisionLayers) {
+		vector<vector<int>> tiles = layer->GetTiles();
+		int size = layer->GetTileset(0)->tileWidth;
+		int row = yReal / size;
+		int cell = x / size;
+		if (row >= tiles.size() || row < 0 || cell >= tiles[row].size() || cell < 0)
+			return true;
+		int value = tiles[row][cell];
+		if (value != 0)
+			return true;
+	}
+	return false;
+}
+
+void LivingEntity::LoadCollisionLayers(vector<TileLayer *> * layers) {
+	this->collisionLayers = *layers;
 }

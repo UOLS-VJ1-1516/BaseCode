@@ -19,6 +19,7 @@ void StateParser::parseObjects(XMLElement * stateRoot, vector<Entity*>* entities
 	if (dynamic_cast<Button *>(ent))
 	{
 		int callback = atoi(stateRoot->Attribute("callback"));
+		x = (Tools::GetWidth() / 2) - (width / 2);
 		if (callback != 0)
 			dynamic_cast<Button *>(ent)->CallbackID = callback;
 	}

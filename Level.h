@@ -2,6 +2,7 @@
 #include <vector>
 #include "Tileset.h"
 #include "Layer.h"
+#include "TileLayer.h"
 
 class Level
 {
@@ -14,13 +15,7 @@ public:
 	void Update();
 	void Render();
 
-	std::vector<Tileset> * getTilesets()
-	{
-		return & this->tilesets;
-	}
-
-	std::vector<Layer *> * getLayers()
-	{
-		return &this->layers;
-	}
+	std::vector<Tileset> * getTilesets();
+	std::vector<Layer *> * getLayers();
+	std::vector<TileLayer *> * getCollidableTileLayers();
 };

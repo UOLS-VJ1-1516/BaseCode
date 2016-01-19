@@ -1,6 +1,8 @@
 #pragma once
 #include "Entity.h"
 #include "Vector2D.h"
+#include "Layer.h"
+#include "TileLayer.h"
 
 #define NEGATIVE -1
 #define POSITIVE 1
@@ -37,5 +39,12 @@ public:
 	bool HaveAnimation() { return params->GetMaxFrame() > 1; }
 	int GetFrame() { return params->GetFrame(); }
 	int GetRow() { return params->GetRow(); }
+
+	bool IsCollidingWithTile(int, int);
+	int collisionMargin;
+	void LoadCollisionLayers(std::vector<TileLayer *> *);
+	bool inAir = false;
+private:
+	std::vector<TileLayer *> collisionLayers;	
 };
 
