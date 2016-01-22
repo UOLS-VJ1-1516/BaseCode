@@ -19,7 +19,6 @@ void Player::Update()
 {
 	Accelerate(xAccel, yAccel);	
 	LivingEntity::Update();	
-	SDL_SetWindowTitle(TheGame->GetWindow(), position.toString().c_str());
 }
 
 bool Player::InBounds(LivingEntity * entitat)

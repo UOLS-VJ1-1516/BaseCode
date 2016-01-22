@@ -46,5 +46,6 @@ public:
 	bool inAir = false;
 private:
 	std::vector<TileLayer *> collisionLayers;	
+	int getYGravity(int x, int y);
 };
 

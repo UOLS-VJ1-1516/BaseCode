@@ -46,19 +46,19 @@ void StateGame::HandleEvents()
 	{
 		if (key.second == DOWN)
 		{
-			if (key.first == 4)
+			if (key.first == SDL_SCANCODE_A)
 			{
 				player->xAccel = NEGATIVE;
 			}
-			else if (key.first == 7)
+			else if (key.first == SDL_SCANCODE_D)
 			{
 				player->xAccel = POSITIVE;
 			}
-			else if (key.first == 41)
+			else if (key.first == SDL_SCANCODE_ESCAPE)
 			{
 				TheGame->GetManager()->PushState(new StatePause());
 			}
-			else if (key.first == 44 && player->GetYPos() != Tools::GetHeight())
+			else if (key.first == SDL_SCANCODE_W && player->GetYPos() != Tools::GetHeight())
 			{
 				player->Jump();
 			}

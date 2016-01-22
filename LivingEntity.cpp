@@ -54,8 +54,9 @@ void LivingEntity::Accelerate(int aX, int aY)
 		position.Y += velocity.Y;
 		inAir = true;
 	}
-	else {
+	else if (inAir) {
 		inAir = false;
+		position.Y = getYGravity(position.X, position.Y);
 	}
 
 	bool isFlipped;
@@ -69,7 +70,7 @@ void LivingEntity::Accelerate(int aX, int aY)
 
 	params->SetFlipped(isFlipped);
 
-	if (SDL_GetTicks() % 3 == 0 && aX != 0 || aY != 0)
+	if (SDL_GetTicks() % 3 == 0 && aX != 0)
 		params->AddFrame();	
 }
 
@@ -137,23 +138,49 @@ void LivingEntity::Clear()
 }
 
 bool LivingEntity::IsCollidingWithTile(int x, int y) {
-	int yReal = y - Tools::GetHeight() + (91 * 32);
+	
 	for each (TileLayer * layer in collisionLayers) {
 		vector<vector<int>> tiles = layer->GetTiles();
 		int size = layer->GetTileset(0)->tileWidth;
+		int yReal = y - Tools::GetHeight() + ((tiles.size() + 1) * size);
 		int row = yReal / size;
 		int cell = x / size;
-		if (row >= tiles.size())
+		if (row >= tiles.size() || y >= Tools::GetHeight())
 			return true;
 		if (x >= tiles.size() * size || x < 0 || yReal >= tiles[row].size() * size || yReal < 0)
 			return true;
-		int value = tiles[row][cell];
-		if (value != 0)
-			return true;
+		int x2 = x + size;
+		int y2 = y + size;
+
+		//Check Horitzonal collision
+		if (x + collisionMargin >= cell * size || x2 - collisionMargin <= (1 + cell) * size)
+		{
+			if (tiles[row][cell] != 0 || tiles[row][cell + 1] != 0)
+				return true;
+		}
+		//Check Vertical collision
+		else if (y >= row * size || y2 <= (1 + row) * size)
+		{
+			if (tiles[row][cell] != 0 || tiles[row + 1][cell] != 0)
+				return true;
+		}
 	}
 	return false;
 }
 
 void LivingEntity::LoadCollisionLayers(vector<TileLayer *> * layers) {
 	this->collisionLayers = *layers;
+}
+
+int LivingEntity::getYGravity(int x, int y)
+{
+	for each (TileLayer * layer in collisionLayers) {
+		vector<vector<int>> tiles = layer->GetTiles();
+		int size = layer->GetTileset(0)->tileWidth;
+		int yReal = y - Tools::GetHeight() + ((tiles.size() + 1) * size);
+		int row = yReal / size;
+		int cell = x / size;
+		int newY = (row)* size - ((tiles.size() + 1) * size) + Tools::GetHeight();
+		return newY + size - 1;
+	}
 }

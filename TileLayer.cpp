@@ -39,7 +39,7 @@ void TileLayer::Render()
 			if (current == 1 || current == 0)
 				continue;
 			
-			int x1 = (row * tileWidth) - (int)(position.X / tileWidth);
+			int x1 = (row * tileWidth);
 			int x2 = x1 + tileWidth;
 			int y1 = Tools::GetHeight() - (90 - tile) * tileHeight;
 			int y2 = y1 + tileHeight;
