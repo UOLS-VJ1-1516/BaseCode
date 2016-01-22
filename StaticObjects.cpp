@@ -43,4 +43,8 @@ void StaticObjects::update() {
 void StaticObjects::clean()
 {
 
-};
+}
+void StaticObjects::onCollsion(GameObject * other)
+{
+}
+;

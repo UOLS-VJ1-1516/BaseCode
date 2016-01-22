@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 
 
-Player::Player() { nJump = 0; };
+Player::Player() { nJump = true; };
 Player::~Player() {};
 
 void Player::draw()
@@ -43,80 +43,89 @@ void Player::load(const LoaderParams* pParams)
 };
 
 void Player::update() {
-	int pixelsToChangeFrame = 12;
-	Vector2D v0 = m_velocity;
-	SDL_Event event;
-	SDL_PollEvent(&event);
-	
+	if (isCollisionWithTile()) {
+		printf("->%d\n", getCollisionDirection());
+		/*switch (getCollisionDirection())
+		{
+			case 2: stopY((int)m_position.getY()); break;
+			case 3: stopX((int)m_position.getX() + m_TileWith); break;
+			case 4: stopY((int)m_position.getY() + m_TileHeight); break;
+			case 1: stopX((int)m_position.getX()); break;
+		}*/
+		stopY((int)m_position.getY());
+		nJump = false;
+	}
+	nJump = false;
+		int pixelsToChangeFrame = 12;
+		Vector2D v0 = m_velocity;
+		SDL_Event event;
+		SDL_PollEvent(&event);
 
-	if (m_velocity.getX() > 0) {
-		decrementAccelerationX();
-	}
-	if (m_velocity.getX() < 0) {
-		incrementAccelerationX();
-	}
-	if (m_velocity.getY() > 0) {
-		decrementAccelerationY();
-	}
-	if (m_velocity.getY() < 0) {
-		incrementAccelerationY();
-	}
-	m_velocity += m_acceleration;
-	if (m_velocity.getX()*v0.getX() < 0 || m_velocity.getX() == 0) {
-		stopX(m_position.getX());
-	}
-	if (m_velocity.getY()*v0.getY() < 0 || m_velocity.getY() == 0) {
-		stopY(m_position.getY());
-	}
-	if (m_velocity.length() > m_maxVelocity) {
-		m_velocity = m_velocity.normalize()*m_maxVelocity;
-		m_acceleration.setX(0);
-	}
-	m_position += m_velocity + m_acceleration * 1 / 2;
-	m_currentFrame = (abs((int) (m_position - m_lastStop).length()) / pixelsToChangeFrame) % m_spriteNum;
 
-	InputHandler::Instance()->update();
+		if (m_velocity.getX() > 0) {
+			decrementAccelerationX();
+		}
+		if (m_velocity.getX() < 0) {
+			incrementAccelerationX();
+		}
+		if (m_velocity.getY() > 0) {
+			decrementAccelerationY();
+		}
+		if (m_velocity.getY() < 0) {
+			incrementAccelerationY();
+		}
+		m_velocity += m_acceleration;
+		if (m_velocity.getX()*v0.getX() < 0 || m_velocity.getX() == 0) {
+			stopX(m_position.getX());
+		}
+		if (m_velocity.getY()*v0.getY() < 0 || m_velocity.getY() == 0) {
+			stopY(m_position.getY());
+		}
+		if (m_velocity.length() > m_maxVelocity) {
+			m_velocity = m_velocity.normalize()*m_maxVelocity;
+			m_acceleration.setX(0);
+		}
+		m_position += m_velocity + m_acceleration * 1 / 2;
+		m_currentFrame = (abs((int)(m_position - m_lastStop).length()) / pixelsToChangeFrame) % m_spriteNum;
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-		incrementAccelerationX();
-	}
-	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		decrementAccelerationX();
-	}
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
-		decrementAccelerationY();
-	}
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
-		nJump += 0.1;
-		if (nJump < 2)
-			jump();
-	}
-	if (event.button.type == SDL_SCANCODE_SPACE && event.type == SDL_KEYUP) {
-		nJump = 0;
-	}
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
-		impulseLeft();
-	}
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
-		impulseRight();
-	}
+		InputHandler::Instance()->update();
 
-	if (m_position.getX() < 0) {
-		stopX(0);
-	}
-	if (m_position.getX() > (Game::Instance()->getScreenWidth() - m_width)) {
-		stopX(Game::Instance()->getScreenWidth() - m_width);
-	}
-	if (m_position.getY() < 0) {
-		stopY(0);
-	}
-	if (m_position.getY() > (Game::Instance()->getScreenHeight() - m_height)) {
-		stopY(Game::Instance()->getScreenHeight() - m_height);
-	}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+			incrementAccelerationX();
+		}
+		else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+			decrementAccelerationX();
+		}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
+			decrementAccelerationY();
+		}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+			if (!nJump) {
+				jump();
+				nJump = true;
+			}
 
+		}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
+			impulseLeft();
+		}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
+			impulseRight();
+		}
+
+		if (m_position.getX() < 0) {
+			stopX(0);
+		}
+		if (m_position.getX() > (Game::Instance()->getScreenWidth() - m_width)) {
+			stopX(Game::Instance()->getScreenWidth() - m_width);
+		}
+		if (m_position.getY() < 0) {
+			stopY(0);
+		}
+		if (m_position.getY() > (Game::Instance()->getScreenHeight() - m_height)) {
+			stopY(Game::Instance()->getScreenHeight() - m_height);
+		}
 	incrementAccelerationY(); //gravedad
-	//checkPlayerTileCollision();
-	//printf("Acceleration: %f \n", m_acceleration.getY());
 }
 
 void Player::update(int width, int height)
@@ -170,8 +179,13 @@ void Player::impulseLeft()
 
 void Player::jump()
 {
-	m_acceleration.setY(m_acceleration.getY() - 0.6);
-	//m_velocity.setX(-m_maxVelocity);
+	//m_acceleration.setY(m_acceleration.getY() - 0.6);
+
+	m_velocity.setY(-15);
+}
+
+void Player::onCollsion(GameObject * other)
+{
 }
 
 /*void Player::collision() {

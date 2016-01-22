@@ -42,5 +42,9 @@ void Enemy::update() {
 	if ((m_position.getX() < 0 && m_velocity.getX() < 0) || (m_position.getX() > (Game::Instance()->getScreenWidth() - m_width) && m_velocity.getX() > 0)) {
 		m_velocity *= -1;
 	}
-};
+}
+void Enemy::onCollsion(GameObject * other)
+{
+}
+;
 

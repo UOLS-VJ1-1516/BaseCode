@@ -1,6 +1,7 @@
 #include "TileLayer.h"
 #include "Game.h"
 #include "TextureManager.h"
+#include "Camera.h"
 
 std::vector<Tileset> TileLayer::m_tilesets = std::vector<Tileset>();
 
@@ -23,11 +24,13 @@ TileLayer::~TileLayer(void)
 
 void TileLayer::update()
 {
-	//if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size() && m_position.getY() / m_tileHeight + row < m_tileIDs.size()) {
-	if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size()) {
-		m_velocity.setX(1);
-		m_position += m_velocity;
+	if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size() && m_position.getY() / m_tileHeight + row < m_tileIDs.size()) {
+	//if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size()) {
+		//m_velocity.setX(1);
+		//m_position += m_velocity;
+		m_position -= TheCamera::Instance()->getPosition();
 	}
+	//m_position -= TheCamera::Instance()->getPosition();
 }
 
 void TileLayer::render()
@@ -47,11 +50,29 @@ void TileLayer::render()
 			{
 				continue;
 			}
-			Tileset tileset = getTilesetByID(id);
+			/*Tileset tileset = getTilesetByID(id);
 			id--;
 			TextureManager::Instance()->drawTile(tileset.name.c_str(), tileset.margin, tileset.spacing, (j * m_tileWidth) - x2, (i * m_tileHeight) - y2,
 				m_tileWidth, m_tileHeight, (id - (tileset.firstGridID - 1)) / tileset.numColumns,
-				(id - (tileset.firstGridID - 1)) % tileset.numColumns, Game::Instance()->getRender());
+				(id - (tileset.firstGridID - 1)) % tileset.numColumns, Game::Instance()->getRender());*/
+			if (((j * m_tileWidth) - x2) - TheCamera::Instance()->getPosition().getX() < - m_tileWidth || ((j * m_tileWidth) - x2) - TheCamera::Instance()->getPosition().getX()  > Game::Instance()->getScreenWidth())
+			{
+				continue;
+			}
+			Tileset tileset = getTilesetByID(id);
+			id--;
+			TextureManager::Instance()->drawTile(
+				tileset.name.c_str(),
+				tileset.margin,
+				tileset.spacing,
+				((j * m_tileWidth) - x2) - TheCamera::Instance()->getPosition().getX(),
+				((i * m_tileWidth) - y2),
+				m_tileWidth,
+				m_tileHeight,
+				(id - (tileset.firstGridID - 1)) / tileset.numColumns,
+				(id - (tileset.firstGridID - 1)) % tileset.numColumns,
+				Game::Instance()->getRender()
+				);
 		}
 	}
 }

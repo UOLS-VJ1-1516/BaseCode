@@ -10,6 +10,7 @@ public:
 	virtual void load(const LoaderParams* pParams) = 0;
 	virtual void draw() = 0;
 	virtual void update() = 0;
+	virtual void onCollsion(GameObject* other) = 0;
 	Vector2D getVelocity() {
 		return m_velocity;
 	}

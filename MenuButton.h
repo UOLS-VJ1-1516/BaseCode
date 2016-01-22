@@ -13,6 +13,7 @@ public:
 		CLICKED = 2
 	};
 	//MenuButton(const LoaderParams* pParams, void(*callback)());
+	virtual void onCollsion(GameObject* other);
 	MenuButton();
 	void load(const LoaderParams* pParams);
 	~MenuButton();
