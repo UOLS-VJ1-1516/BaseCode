@@ -16,8 +16,6 @@ public:
 		return s_pCamera;
 	}
 
-	void update(Vector2D velocity);
-
 	void setTarget(GameObject* target) {
 		m_pTarget = target; 
 	}
@@ -26,6 +24,11 @@ public:
 		m_position = position;
 	}
 
+	GameObject* getTarget() {
+		return m_pTarget;
+	}
+
+	void setMaxPosition(int m_maxPosition);
 	Vector2D getPosition() const;
 private:
 	Camera();
@@ -33,6 +36,7 @@ private:
 	GameObject* m_pTarget;
 	Vector2D m_position;
 	static Camera* s_pCamera;
+	int m_maxPosition;
 };
 typedef Camera TheCamera;
 #endif

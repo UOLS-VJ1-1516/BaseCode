@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "TextureManager.h"
+#include "Camera.h"
 
 
 Player::Player() { nJump = true; };
@@ -126,6 +127,7 @@ void Player::update() {
 			stopY(Game::Instance()->getScreenHeight() - m_height);
 		}
 	incrementAccelerationY(); //gravedad
+	TheCamera::Instance()->setPosition(m_position);
 }
 
 void Player::update(int width, int height)

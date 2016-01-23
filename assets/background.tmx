@@ -14,7 +14,7 @@
  <tileset firstgid="226" name="tim" tilewidth="26" tileheight="18" tilecount="3">
   <image source="tim.png" width="78" height="18"/>
  </tileset>
- <layer name="Capa Fondo" width="80" height="36" visible="0">
+ <layer name="Capa Fondo" width="80" height="36">
   <data encoding="base64" compression="zlib">
    eJzt2rEJgDAQQNEskR0cQXAWnUprS11GdCSv0EYtzpySHPzidSGEz6VQEkMIEcikgkkNk14MokGSScwFnMOrmX4mzB/9cuL+2jB/9KOfX/SjH/38oh/96OfP+f+UfuntYuD7zdqP+UtvR793rZ5wf239mD/60a9Mmn65z1gq7fuD9li//GS7+HrvVSllb22/Toy4oR/96OcX/ehHP780/XYU5V46
   </data>
