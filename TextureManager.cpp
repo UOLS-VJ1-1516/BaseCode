@@ -10,7 +10,10 @@ TextureManager::~TextureManager() {};
 // Funcion para cargar la textura
 bool TextureManager::load(std::string fileName, std::string	id, SDL_Renderer* pRenderer)
 {
-	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+	std::string path;
+
+	path = "assets/" + fileName;
+	SDL_Surface* pTempSurface = IMG_Load(path.c_str());
 	if (pTempSurface == 0)
 	{
 		return false;

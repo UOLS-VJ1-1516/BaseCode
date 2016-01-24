@@ -28,7 +28,6 @@ class Vector2D {
 
 		Vector2D operator=(const Vector2D& v2);
 
-	private:
 		float m_x;
 		float m_y;
 };

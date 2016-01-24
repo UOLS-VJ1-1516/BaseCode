@@ -45,6 +45,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 };
 
+//Función para updatear el juego
+void Game::update()
+{
+	m_pGameStateMachine->update();
+};
+
 //Función para printar el juego
 void Game::render()
 {
@@ -60,12 +66,6 @@ void Game::render()
 
 	// show the window
 	SDL_RenderPresent(g_pRenderer);
-};
-
-//Función para updatear el juego
-void Game::update()
-{
-	m_pGameStateMachine->update();
 };
 
 //Función para updatear las entradas del usuario

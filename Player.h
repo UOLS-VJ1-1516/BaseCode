@@ -1,8 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
 
 //Classe para crear un game object Player
-class Player : public GameObject
+class Player : public CollisionObject
 {
 public:
 	Player();
@@ -15,5 +15,6 @@ public:
 	void moveRight();
 	void noMoveX();
 	void controlPosition();
+	void jump();
 	static GameObject * Create() { return new Player(); }
 };

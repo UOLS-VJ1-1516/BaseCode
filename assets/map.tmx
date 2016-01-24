@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="left-up" width="48" height="9" tilewidth="100" tileheight="100" nextobjectid="20">
  <properties>
-  <property name="player" value="assets/sonic.bmp"/>
-  <property name="enemy" value="assets/enemy.bmp"/>
-  <property name="enemy2" value="assets/enemy2.bmp"/>
+  <property name="player" value="sonic.bmp"/>
+  <property name="enemy" value="enemy.bmp"/>
+  <property name="enemy2" value="enemy2.bmp"/>
  </properties>
  <tileset firstgid="1" name="platformers" tilewidth="100" tileheight="100" tilecount="60" margin="0" spacing="0">
-  <image source="assets/Tiles.png" trans="ffffff" width="600" height="1000"/>
+  <image source="Tiles.png" trans="ffffff" width="600" height="1000"/>
  </tileset>
  <tileset firstgid="61" name="sonic" tilewidth="103" tileheight="120" tilecount="18">
-  <image source="assets/sonic.bmp" trans="ffffff" width="1024" height="352"/>
+  <image source="sonic.bmp" trans="ffffff" width="1024" height="352"/>
  </tileset>
  <tileset firstgid="79" name="enemy" tilewidth="110" tileheight="100" tilecount="15">
-  <image source="assets/enemy.bmp" trans="ffffff" width="551" height="304"/>
+  <image source="enemy.bmp" trans="ffffff" width="551" height="304"/>
  </tileset>
  <tileset firstgid="94" name="enemy2" tilewidth="65" tileheight="65" tilecount="16">
-  <image source="assets/enemy2.bmp" trans="ffffff" width="320" height="320"/>
+  <image source="enemy2.bmp" trans="ffffff" width="320" height="320"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="48" height="9">
+  <properties>
+   <property name="collision" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztkLsKgDAMRauL1MXHqruPRVEHH///X95BIURrI9ROXjhQAklOqtQfW1Zh7essByt5+0oBSo/7XIQ6RyD0vH+7gdd5TM7cfxbsb0DLaglIQQZyYY8tEuen/x/ACCZW70DPvGNQgRpodb2D9kgjcTb5B0JO79Odol/MMc3WL96UygH8ntrRXMneHQx2EH8=
+   eJxjYBgFhIAVkWK0BpZQbIXEpheQBmIZOtpHDYDsZnYgZqKz/dZYMAMaGx3gcjO6+y2IsF8TiLVIcC+5eohxMznhrw/EBnTQQ4ybcbmfcRBgLiDmJIGNjNWpgDWwYGqYS4y9ALDQDcw=
+  </data>
+ </layer>
+ <layer name="Capa de patrones 2" width="48" height="9">
+  <properties>
+   <property name="collision" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKBAcZAbALEhlgwDGCTw4UJ6THCYieyHkJsdP2jYGABAFu3BvY=
   </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
-  <object id="10" name="player" type="Player" x="428" y="594" width="103" height="120">
+  <object id="10" name="player" type="Player" x="428" y="230" width="103" height="120">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="flip" value="0"/>

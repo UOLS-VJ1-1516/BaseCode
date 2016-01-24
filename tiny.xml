@@ -2,12 +2,12 @@
 <STATES>
   <MENU>
     <TEXTURES>
-      <texture filename="assets/playButton.bmp" ID="playbutton"/>
-      <texture filename="assets/exitButton.bmp" ID="exitbutton"/>
+      <texture filename="playButton.bmp" ID="playbutton"/>
+      <texture filename="exitButton.bmp" ID="exitbutton"/>
     </TEXTURES>
     <OBJECTS>
-      <object type="MenuButton" x="600" y="250" width="300" height="100" textureID="playbutton" fileName="assets/playButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="1"/>
-      <object type="MenuButton" x="600" y="450" width="300" height="100" textureID="exitbutton" fileName="assets/exitButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="2"/>
+      <object type="MenuButton" x="600" y="250" width="300" height="100" textureID="playbutton" fileName="playButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="1"/>
+      <object type="MenuButton" x="600" y="450" width="300" height="100" textureID="exitbutton" fileName="exitButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="2"/>
     </OBJECTS>
   </MENU>
   <PLAY>
@@ -28,12 +28,12 @@
   </PLAY>
   <PAUSE>
     <TEXTURES>
-      <texture filename="assets/resumeButton.bmp" ID="resumebutton"/>
-      <texture filename="assets/mainMenuButton.bmp" ID="mainbutton"/>
+      <texture filename="resumeButton.bmp" ID="resumebutton"/>
+      <texture filename="mainMenuButton.bmp" ID="mainbutton"/>
     </TEXTURES>
     <OBJECTS>
-      <object type="MenuButton" x="600" y="250" width="300" height="100" textureID="mainbutton" fileName="assets/mainMenuButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="1"/>
-      <object type="MenuButton" x="600" y="450" width="300" height="100" textureID="resumebutton" fileName="assets/resumeButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="2"/>
+      <object type="MenuButton" x="600" y="250" width="300" height="100" textureID="mainbutton" fileName="mainMenuButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="1"/>
+      <object type="MenuButton" x="600" y="450" width="300" height="100" textureID="resumebutton" fileName="resumeButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="2"/>
     </OBJECTS>
   </PAUSE>
 </STATES>

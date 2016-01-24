@@ -38,13 +38,6 @@ void TileLayer::render() {
 };
 
 void TileLayer::update() {
-
-	if (m_position.getX() < 3150)
-	{
-		m_position += m_velocity;
-		m_velocity.setX(2);
-	}
-	
 };
 
 Tileset TileLayer::getTilesetByID(int tileID) {

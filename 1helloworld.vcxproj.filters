@@ -57,6 +57,7 @@
     <ClCompile Include="ObjectLayer.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -129,6 +130,7 @@
     <ClInclude Include="ObjectLayer.h">
       <Filter>Tile</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="tiny.xml" />

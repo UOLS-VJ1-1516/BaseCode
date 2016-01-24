@@ -1,11 +1,20 @@
-﻿Compilación iniciada a las 08/01/2016 17:57:44.
+﻿Compilación iniciada a las 19/01/2016 21:00:25.
      1>Proyecto "C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\1helloworld.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LevelParser.cpp
-         LevelParser.cpp
-     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\levelparser.cpp(166): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt CollisionObject.cpp Player.cpp
+         Player.cpp
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\player.cpp(53): warning C4305: '+=': truncamiento de 'double' a 'float'
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\player.cpp(88): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\player.cpp(96): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+         CollisionObject.cpp
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\collisionobject.cpp(88): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\collisionobject.cpp(89): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\collisionobject.cpp(96): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+     1>c:\users\alune\desktop\lasalle\videojuegos1\basecode\collisionobject.cpp(98): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+         Generando código...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Desktop\LaSalle\Videojuegos1\BaseCode\Debug\1-helloworld.lib" /MACHINE:X86 Debug\base64.obj
+         Debug\CollisionObject.obj
          Debug\Enemy.obj
          Debug\game.obj
          Debug\GameObject.obj
@@ -30,4 +39,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:03.15
+Tiempo transcurrido 00:00:02.12

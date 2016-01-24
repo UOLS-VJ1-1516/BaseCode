@@ -1,8 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
 
 //Clase para crear un game object del tipo enemigo
-class Enemy : public GameObject
+class Enemy : public CollisionObject
 {
 public:
 	Enemy();
