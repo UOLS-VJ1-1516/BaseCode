@@ -18,4 +18,6 @@ void Level::update()
 	{
 		m_layers[i]->update();
 	}
+	
 }
+

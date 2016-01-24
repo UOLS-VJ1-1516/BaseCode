@@ -46,6 +46,15 @@
     <ClCompile Include="ObjectLayer.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionObject.cpp">
+      <Filter>Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -110,6 +119,18 @@
     <ClInclude Include="LevelParser.h">
       <Filter>Tile</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionObject.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\SDL2_mixer\include\SDL_mixer.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObjects">
@@ -126,6 +147,15 @@
     </Filter>
     <Filter Include="Tile">
       <UniqueIdentifier>{26713ab9-c853-4843-94e7-52ea8e40a060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collisions">
+      <UniqueIdentifier>{8160fae5-43cd-4396-9aac-16b8563523ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{f3ae57c2-5661-49e9-a65b-0e1ec26dc430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{bb66d4d3-c288-478d-9f63-49e6ae2267ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

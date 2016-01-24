@@ -26,7 +26,7 @@ int main(int argc, char* args[])
 		Game::Instance()->update(); 
 		
 		frameTime = SDL_GetTicks() - frameStart;
-		if (frameStart < DELAY_TIME) {
+		if (frameTime < DELAY_TIME) {
 			SDL_Delay((int)(DELAY_TIME - frameTime));
 		}
 

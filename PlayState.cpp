@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "StateParser.h"
 #include "LevelParser.h"
+#include "SoundManager.h"
 
 void PlayState::update() {
 
@@ -31,11 +32,14 @@ bool PlayState::onEnter() {
 
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("./Data/mapaObjetos.tmx");
+
 	//layerParser.parseTileLayer("./Data/mapa1.tmx");
 	
 
 	m_callbacks.push_back(0);
 	setCallbacks();
+
+	SoundManager::Instance()->playMusic("play", -1);
 
 	/*player = new Player();
 	zep = new Zep();

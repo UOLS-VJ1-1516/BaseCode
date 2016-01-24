@@ -56,7 +56,7 @@ void MenuButton::update() {
 			
 		}
 		else if (!InputHandler::Instance()->getMouseButtonState(0)) {
-			if (!m_bR && m_currentFrame == CLIKED) {
+			if (m_bR && m_currentFrame == MOUSE_OVER) {
 				m_callback();
 			}
 			m_bR = true;

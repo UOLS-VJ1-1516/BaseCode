@@ -16,6 +16,17 @@ public:
 	virtual void draw() = 0;
 	virtual void update() = 0;
 	virtual void clean() = 0;
+	Vector2D getPosition() {
+		return m_position;
+	}
+	Vector2D getVelocity() {
+		return m_velocity;
+	}
+	int getWidth() {
+		return m_width;
+	}
+	
+	virtual void onCollision(GameObject* other) {};
 protected:
 	int m_width;
 	int m_spriteNum;
@@ -28,7 +39,7 @@ protected:
 	Vector2D m_desacceleration;
 	Vector2D m_frictionLeft;
 	Vector2D m_frictionRight;
-	Vector2D m_maxVelocity;
+	float m_maxVelocity;
 	int m_currentFrame;
 	int m_currentRow;
 	std::string m_textureID;

@@ -20,6 +20,8 @@ void GameObject::load(const LoaderParams * pParams)
 	m_spriteNum = pParams->getNum();
 	m_currentFrame = 0;
 	m_currentRow = 0;
+
+	
 }
 
 void GameObject::update()
