@@ -3,6 +3,7 @@
 #include "StateParser.h"
 #include "LevelParser.h"
 #include "Camera.h"
+#include "AudioManager.h"
 
 using namespace std;
 
@@ -133,7 +134,9 @@ void StateGame::HandleEvents()
 
 bool StateGame::OnEnter()
 {
-	level = LevelParser::ParseLevel("assets/xml/test.tmx");
+	Audio->LoadMusic("darude");
+	Audio->PlayMusic("darude");
+	level = LevelParser::ParseLevel("assets/xml/state.tmx");
 	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x90, 0xFF, 0xFF);
 	
 	for each (Layer * layer in *level->getLayers()) {
@@ -179,7 +182,7 @@ bool StateGame::OnExit()
 	}
 	entitats.clear();
 	textures.clear();
-	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x00, 0x00, 0xFF);
+	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x00, 0x00, 0xFF);	
 	return true;
 }
 
@@ -230,6 +233,9 @@ bool StateMenu::OnEnter()
 		var->SetOnClickListener(callbacks.at(var->CallbackID));
 		var->params->SetXPos((Tools::GetWidth() / 2) - (var->params->GetWidth() / 2));
 	}
+
+	Audio->LoadMusic("mainmenu");
+	Audio->PlayMusic("mainmenu");
 	return true;
 }
 

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include <string>
 #include "Camera.h"
+#include "AudioManager.h"
 
 Player::~Player()
 {
@@ -69,6 +70,7 @@ void Player::Die()
 		lives--;
 		if (lives == 0)
 		{
+			Audio->PlaySound("nazgul");
 			TheGame->GameOver();
 		}
 		invulnerable = 120;

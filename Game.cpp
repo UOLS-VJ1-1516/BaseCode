@@ -2,6 +2,7 @@
 #include "StateManager.h"
 #include "EntityFactory.h"
 #include "AllEntities.hpp"
+#include "AudioManager.h"
 
 Game * Game::joc = 0;
 
@@ -60,6 +61,9 @@ bool Game::Init(const char * title, int xpos, int ypos, int width, int height, b
 		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());		
 	}
 	
+	Audio->LoadSound("button");
+	Audio->LoadSound("nazgul");
+
 	EntityCreator->Register("Button", &Button::Create);
 	EntityCreator->Register("Inert", &InertEntity::Create);
 	EntityCreator->Register("Player", &Player::Create);
@@ -78,7 +82,7 @@ bool Game::IsRunning()
 void Game::Clear()
 {	
 	EntityCreator->~EntityFactory();
-
+	Audio->~AudioManager();
 	Game::~Game();
 }
 

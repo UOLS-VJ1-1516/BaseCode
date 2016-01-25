@@ -57,7 +57,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>libs\zlib\lib;libs\SDL\lib;libs\TinyXML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;tinyxml2.lib;zdll.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;tinyxml2.lib;zdll.lib;SDL2_mixer.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -108,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllEntities.hpp" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Enemy.h" />

@@ -1,5 +1,6 @@
 #include "Button.h"
 #include "Game.h"
+#include "AudioManager.h"
 
 void Button::Load(EntityParams * params)
 {
@@ -74,7 +75,8 @@ void Button::Update()
 		else if (state == PRESSED && !BigHandle->GetMouseButtons().first)
 		{
 			state = WAIT;
-			callback();
+			Audio->PlaySound("button");
+			callback();			
 		}
 		else if (!BigHandle->GetMouseButtons().first)
 		{
