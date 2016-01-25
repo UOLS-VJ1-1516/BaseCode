@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Enemy.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuButton.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="StateParser.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="base64.cpp">
+      <Filter>Librerias</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParser.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h" />
+    <ClInclude Include="Enemy.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuButton.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="StateParser.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderParams.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\tinyxml\include\tinyxml.h">
+      <Filter>Librerias</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\tinyxml\include\tinystr.h">
+      <Filter>Librerias</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="base64.h">
+      <Filter>Librerias</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParser.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="tiny.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{25ae062a-0214-4baa-b405-bf1b35e10eb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStates">
+      <UniqueIdentifier>{b291e074-fc15-49ba-acfd-15e5dc4558b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Motor">
+      <UniqueIdentifier>{cc23fcd9-bd81-45f7-b2cd-3535ed274518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librerias">
+      <UniqueIdentifier>{7bcc146e-6c4a-491b-b1bb-a7831081cb1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tile">
+      <UniqueIdentifier>{8475ca57-5df8-4b75-a45f-0eccc53f3b31}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

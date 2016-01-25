@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<STATES>
+  <MENU>
+    <TEXTURES>
+      <texture filename="playButton.bmp" ID="playbutton"/>
+      <texture filename="exitButton.bmp" ID="exitbutton"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="MenuButton" x="600" y="250" width="300" height="100" textureID="playbutton" fileName="playButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="1"/>
+      <object type="MenuButton" x="600" y="450" width="300" height="100" textureID="exitbutton" fileName="exitButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="2"/>
+    </OBJECTS>
+  </MENU>
+  <PLAY>
+    <TEXTURES>
+      <texture filename="assets/sonic.bmp" ID="player"/>
+      <texture filename="assets/enemy.bmp" ID="enemy"/>
+      <texture filename="assets/enemy.bmp" ID="enemy1"/>
+      <texture filename="assets/enemy2.bmp" ID="enemy2"/>
+      <texture filename="assets/enemy.bmp" ID="enemy3"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="Player" x="500" y="200" width="103" height="120" textureID="player" fileName="assets/sonic.bmp" spriteNum="10" rowNum="0" flip="0" callbackID="0"/>
+      <object type="Enemy" x="800" y="400" width="110" height="100" textureID="enemy" fileName="assets/enemy.bmp" spriteNum="4" rowNum="0" flip="0" callbackID="0"/>
+      <object type="Enemy" x="100" y="100" width="110" height="100" textureID="enemy1" fileName="assets/enemy.bmp" spriteNum="4" rowNum="0" flip="0" callbackID="0"/>
+      <object type="Enemy" x="100" y="200" width="65" height="65" textureID="enemy2" fileName="assets/enemy2.bmp" spriteNum="4" rowNum="1" flip="0" callbackID="0"/>
+      <object type="Enemy" x="100" y="50" width="110" height="100" textureID="enemy3" fileName="assets/enemy.bmp" spriteNum="4" rowNum="0" flip="0" callbackID="0"/>
+    </OBJECTS>
+  </PLAY>
+  <PAUSE>
+    <TEXTURES>
+      <texture filename="resumeButton.bmp" ID="resumebutton"/>
+      <texture filename="mainMenuButton.bmp" ID="mainbutton"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="MenuButton" x="600" y="250" width="300" height="100" textureID="mainbutton" fileName="mainMenuButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="1"/>
+      <object type="MenuButton" x="600" y="450" width="300" height="100" textureID="resumebutton" fileName="resumeButton.bmp" spriteNum="0" rowNum="0" flip="0" callbackID="2"/>
+    </OBJECTS>
+  </PAUSE>
+</STATES>
+
