@@ -1,125 +1,30 @@
-﻿Build started 23/01/2016 13:43:54.
-     1>Project "C:\Users\Alune\Source\Repos\Videojuego\1helloworld.vcxproj" on node 2 (Build target(s)).
+﻿Build started 25/01/2016 23:47:37.
+     1>Project "C:\Users\Bill_2\Source\Repos\BaseCode\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp CollisionObject.cpp Enemy.cpp Game.cpp LayerParser.cpp Level.cpp LevelParser.cpp MenuButton.cpp MenuState.cpp PauseState.cpp PlayState.cpp Player.cpp StateParser.cpp StaticObjects.cpp TileLayer.cpp main.cpp
-         TileLayer.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\tilelayer.cpp(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\tilelayer.cpp(44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\tilelayer.cpp(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\tilelayer.cpp(85): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\tilelayer.cpp(87): warning C4018: '<=': signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/lib /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
          Player.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(13): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(139): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(140): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(148): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(149): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(157): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(161): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(165): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\player.cpp(169): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-         MenuState.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\menustate.cpp(7): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\menustate.cpp(13): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\menustate.cpp(30): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\menustate.cpp(55): warning C4018: '<': signed/unsigned mismatch
-         Camera.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-         Generating Code...
-         Compiling...
-         main.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-         StaticObjects.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\staticobjects.cpp(11): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\staticobjects.cpp(16): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\staticobjects.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\staticobjects.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-         StateParser.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\stateparser.cpp(75): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\stateparser.cpp(79): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\stateparser.cpp(64): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-         PlayState.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\playstate.cpp(48): warning C4018: '<': signed/unsigned mismatch
-         PauseState.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\pausestate.cpp(8): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\pausestate.cpp(15): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\pausestate.cpp(35): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\pausestate.cpp(60): warning C4018: '<': signed/unsigned mismatch
-         MenuButton.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\menubutton.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\menubutton.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\menubutton.cpp(30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-         LevelParser.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\levelparser.cpp(227): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\levelparser.cpp(227): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\levelparser.cpp(186): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-         Level.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\level.cpp(5): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\level.cpp(15): warning C4018: '<': signed/unsigned mismatch
-         LayerParser.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-         Game.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-         Enemy.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\enemy.cpp(12): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\enemy.cpp(15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\enemy.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\enemy.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-         CollisionObject.cpp
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(28): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.h(31): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(47): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(57): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(66): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(67): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(75): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(76): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(77): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\alune\source\repos\videojuego\collisionobject.cpp(86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-         Generating Code...
+     1>c:\users\bill_2\source\repos\basecode\collisionobject.h(27): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\collisionobject.h(30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(13): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(94): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(150): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(151): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(160): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(168): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(173): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(178): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(182): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\bill_2\source\repos\basecode\player.cpp(186): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alune\Source\Repos\Videojuego\Debug\Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib SDL2.lib SDL2main.lib tinyxmlSTL.lib zdll.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Alune\Source\Repos\Videojuego\Debug\Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alune\Source\Repos\Videojuego\Debug\Game.lib" /MACHINE:X86 Debug\base64.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib /LIBPATH:libs/SDL2_mixer/lib SDL2.lib SDL2main.lib tinyxmlSTL.lib zdll.lib SDL2_image.lib SDL2_mixer.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.lib" /MACHINE:X86 Debug\base64.obj
          Debug\Camera.obj
          Debug\CollisionManager.obj
          Debug\Enemy.obj
@@ -138,6 +43,7 @@
          Debug\Player.obj
          Debug\PlayState.obj
          Debug\CollisionObject.obj
+         Debug\SoundManager.obj
          Debug\StateParser.obj
          Debug\StaticObjects.obj
          Debug\TextureManager.obj
@@ -147,9 +53,9 @@
          Debug\tinyxmlerror.obj
          Debug\tinyxmlparser.obj
          Debug\Vector2D.obj
-         1helloworld.vcxproj -> C:\Users\Alune\Source\Repos\Videojuego\Debug\Game.exe
-     1>Done Building Project "C:\Users\Alune\Source\Repos\Videojuego\1helloworld.vcxproj" (Build target(s)).
+         1helloworld.vcxproj -> C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.exe
+     1>Done Building Project "C:\Users\Bill_2\Source\Repos\BaseCode\1helloworld.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:12.12
+Time Elapsed 00:00:00.97

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="36" tilewidth="16" tileheight="16" nextobjectid="27">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="36" tilewidth="16" tileheight="16" nextobjectid="28">
  <properties>
   <property name="player" value="player.png"/>
   <property name="tim" value="tim.png"/>
-  <property name="tim2" value="tim.png"/>
  </properties>
  <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
   <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
@@ -24,11 +23,11 @@
    <property name="collidable" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlsFuwjAMhs04sB2AC0NocEi5AAfYgSHt/Z9sjkSlErWUxLWTev6k75akzZ/ECYBhGIZhyDNHF+gy94+MFIdW6D7zf3g415Jr7Cv6g94GHjcFB3xryTX2b8PccK5lSfuEC861LGmflIa2O1B6Pg7KuQOHwIHsfLTVNun5cNa2HLVBU612oKs2SKOtNkgz1FnS9kaQxsH468AEfQuUQkMdWKGfd6u7Umi4U+v8KpDPT5K2c9Z0mtDHu4HH7LTm1zxnba5f7BNm1eYYiN1PB/T4xFPLNzTn5/OI3U+x5Mxvhr73+EFon7KfYuHIr37zhoZv4C902+OO0F6C1Py6MvG4jj7hG/iMXnr8JrSXIDW/rkw89Zs3dMxv4C448vtPWH40LD8alh8Ny4+G5UfD8qORmt8f7sg1PQ==
+   eJztlzELwjAQRquLOlgXXdShdVcHFYT+///lBSxoSHsml2vS+j14i4QQXoJJiwIAAAAYnjVZkpvUCxkpFVmTp8TrMGjupdbcN/JOPiLPG0JV6O2l1tzPD1OjuZc5nRMtNPcyp3MCAIhDaYl3nB+1ZQ7vuDGBfjLQTwbXr/1uwf/kN81brl/lGPPP57Sx5Lq03y22U/6O6cO3368syCXjSrLwDLDbxey3Jw+MR8Hah8TVqctY/c7khfEaOLcmdo+u37X7TQGfc4d+/eTcz/eu0R5vmJHzAFP0871rtMcbtuTO0vXu5Ryin+9doz3eMKZ+OYJ+MtBPBvrJQD8Z6CcD/WSgn4zQfi/I2UGm
   </data>
  </layer>
- <objectgroup name="Capa de Objetos" visible="0">
-  <object id="21" name="Player" type="Player" gid="210" x="30.1715" y="141.211" width="47.1774" height="43.1182" rotation="-1.47083">
+ <objectgroup name="Capa de Objetos">
+  <object id="21" name="Player" type="Player" gid="210" x="29.8311" y="127.954" width="37.1811" height="29.8572" rotation="-1.47083">
    <properties>
     <property name="callbackId" value="0"/>
     <property name="collitionmargin" value="0"/>

@@ -12,6 +12,8 @@ private:
 	Vector2D m_lastStop;
 	SDL_RendererFlip m_lastTimeOrientation;
 	bool nJump = false;
+	bool mjumping = false;
+	bool haycolision = false;
 public:
 	Player();
 	~Player();
@@ -26,6 +28,7 @@ public:
 	void impulseRight();
 	void impulseLeft();
 	void jump();
+	void gravity();
 	void onCollsion(GameObject* other);
 	static GameObject * Create() { return new Player(); }
 	void collision() {};
