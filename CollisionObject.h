@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
-#include "TileLayer.h"
+#include <vector>
+//#include "TileLayer.h"
+
+class TileLayer;
 
 class CollisionObject : public GameObject
 {

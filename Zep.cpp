@@ -1,6 +1,7 @@
 #include "TextureManager.h"
 #include "Zep.h"
 #include "Game.h"
+#include "Camera.h"
 
 Zep::Zep() {
 	m_velocity.setX(0);
@@ -28,7 +29,17 @@ void Zep::load(const LoaderParams* pParams)
 
 }
 void Zep::update() {
+	Vector2D cameraPos = Camera::Instance()->getPosition();
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+
+	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+		//m_position.setX(m_position.getX() + cameraPos.getX());
+	//}
+	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+		m_position.setX(m_position.getX() - cameraPos.getX());
+		m_position.setY(m_position.getY() - cameraPos.getY());
+	//}
+	
 	/*if (m_position.getX() <= 0) {
 		m_velocity.setX(0.1);
 		m_velocity.setX((m_velocity.getX() - m_frictionRight.getX()));

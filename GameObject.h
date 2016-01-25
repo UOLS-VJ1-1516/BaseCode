@@ -26,7 +26,7 @@ public:
 		return m_width;
 	}
 	
-	virtual void onCollision(GameObject* other) {};
+	//virtual void onCollision(GameObject* other) {};
 protected:
 	int m_width;
 	int m_spriteNum;

@@ -3,8 +3,9 @@
 #include <vector>
 #include <string>
 #include "Layer.h"
-#include "Level.h"
+//#include "Level.h"
 
+struct Tileset;
 
 class TileLayer : public Layer
 {

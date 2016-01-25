@@ -1,4 +1,11 @@
 #include "GameStateMachine.h"
+#include "SoundManager.h"
+
+GameStateMachine::GameStateMachine()
+{
+	SoundManager::Instance()->load("play.wav", "play", SOUND_MUSIC);
+	SoundManager::Instance()->load("jump.wav", "jump", SOUND_SFX);
+}
 
 void GameStateMachine::pushState(GameState * pState)
 {

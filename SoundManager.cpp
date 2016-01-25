@@ -15,7 +15,7 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 {
 	if (type == SOUND_MUSIC)
 	{
-		std::string url = "../audio/" + fileName;
+		std::string url = "./audio/" + fileName;
 		Mix_Music* pMusic = Mix_LoadMUS(url.c_str());
 		if (pMusic == 0)
 		{
@@ -27,7 +27,7 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 	}
 	else if (type == SOUND_SFX)
 	{
-		std::string url = "../audio/" + fileName;
+		std::string url = "./audio/" + fileName;
 		Mix_Chunk* pChunk = Mix_LoadWAV(url.c_str());
 		if (pChunk == 0)
 		{

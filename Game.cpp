@@ -3,6 +3,7 @@
 #include "LoaderParams.h"
 #include "InputHandler.h"
 #include "GameObjectFactory.h"
+#include "SoundManager.h"
 
 
 
@@ -61,6 +62,8 @@ bool Game::init(const char* title, int xpos, int
 			TheGameObjectFactory->Register("Player", &Player::Create);
 			TheGameObjectFactory->Register("Zep", &Zep::Create);
 			TheGameObjectFactory->Register("Gordo", &Gordo::Create);
+			//SoundManager::Instance()->load("play.mp3", "play", SOUND_MUSIC);
+			//SoundManager::Instance()->load("jump.wav", "jump", SOUND_SFX);
 			m_pGameStateMachine = new GameStateMachine();
 			m_pGameStateMachine->changeState(new MenuState());
 			//m_pGameStateMachine->pushState(menuState);

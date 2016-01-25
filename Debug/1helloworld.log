@@ -1,72 +1,41 @@
-﻿Build started 24/01/2016 19:54:36.
+﻿Build started 25/01/2016 23:16:34.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt CollisionObject.cpp Level.cpp LevelParser.cpp ObjectLayer.cpp TileLayer.cpp
-         TileLayer.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(14): error C2065: 'TileLayer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(14): error C2059: syntax error: '>'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(14): error C2976: 'std::vector': too few template arguments
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(23): error C2065: 'TileLayer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(23): error C2059: syntax error: '>'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(23): error C2976: 'std::vector': too few template arguments
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(79): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.cpp(81): warning C4018: '<=': signed/unsigned mismatch
-         ObjectLayer.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(14): error C2065: 'TileLayer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(14): error C2059: syntax error: '>'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(14): error C2976: 'std::vector': too few template arguments
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(23): error C2065: 'TileLayer': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(23): error C2059: syntax error: '>'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.h(23): error C2976: 'std::vector': too few template arguments
-         c:\program files (x86)\microsoft visual studio 14.0\vc\include\vector(678): note: see declaration of 'std::vector'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\objectlayer.cpp(7): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\objectlayer.cpp(14): warning C4018: '<': signed/unsigned mismatch
-         LevelParser.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(12): error C2065: 'Tileset': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(12): error C2923: 'std::vector': 'Tileset' is not a valid template type argument for parameter '_Ty'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(27): error C3646: 'getTilesetByID': unknown override specifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(27): error C2059: syntax error: '('
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(27): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(37): error C2065: 'Tileset': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(37): error C2923: 'std::vector': 'Tileset' is not a valid template type argument for parameter '_Ty'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\levelparser.cpp(72): error C2664: 'TileLayer::TileLayer(TileLayer &&)': cannot convert argument 2 from 'const std::vector<Tileset,std::allocator<_Ty>>' to 'const std::vector &'
-                 with
-                 [
-                     _Ty=Tileset
-                 ]
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\levelparser.cpp(72): note: Reason: cannot convert from 'const std::vector<Tileset,std::allocator<_Ty>>' to 'const std::vector'
-                 with
-                 [
-                     _Ty=Tileset
-                 ]
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\levelparser.cpp(72): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-         Level.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(12): error C2065: 'Tileset': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(12): error C2923: 'std::vector': 'Tileset' is not a valid template type argument for parameter '_Ty'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(27): error C3646: 'getTilesetByID': unknown override specifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(27): error C2059: syntax error: '('
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(27): error C2238: unexpected token(s) preceding ';'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(37): error C2065: 'Tileset': undeclared identifier
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\tilelayer.h(37): error C2923: 'std::vector': 'Tileset' is not a valid template type argument for parameter '_Ty'
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\level.cpp(5): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\level.cpp(17): warning C4018: '<': signed/unsigned mismatch
-         CollisionObject.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.h(8): error C2504: 'CollisionObject': base class undefined
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.h(18): error C2440: 'return': cannot convert from 'Player *' to 'GameObject *'
-         c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\player.h(18): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.cpp(36): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.cpp(43): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionobject.cpp(45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-         Generating Code...
-     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)) -- FAILED.
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Zep.cpp
+         Zep.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(9): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_Image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib /LIBPATH:libs/SDL2_mixer/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib SDL2_mixer.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.lib" /MACHINE:X86 "Debug\1-helloworld.res"
+         Debug\base64.obj
+         Debug\Camera.obj
+         Debug\CollisionObject.obj
+         Debug\Game.obj
+         Debug\GameObject.obj
+         Debug\GameObjectFactory.obj
+         Debug\GameStateMachine.obj
+         Debug\InputHandler.obj
+         Debug\LevelParser.obj
+         Debug\Level.obj
+         Debug\main.obj
+         Debug\MenuButton.obj
+         Debug\MenuState.obj
+         Debug\ObjectLayer.obj
+         Debug\PauseState.obj
+         Debug\Player.obj
+         Debug\Gordo.obj
+         Debug\PlayState.obj
+         Debug\SoundManager.obj
+         Debug\StateParser.obj
+         Debug\TextureManager.obj
+         Debug\TileLayer.obj
+         Debug\Vector2D.obj
+         Debug\Zep.obj
+         1helloworld.vcxproj -> C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe
+     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:04.11
+Time Elapsed 00:00:01.81

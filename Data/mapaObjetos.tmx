@@ -35,7 +35,7 @@
     <property name="textureWidth" value="100"/>
    </properties>
   </object>
-  <object id="20" name="Zep" type="Zep" gid="21" x="419" y="323" width="50" height="50">
+  <object id="20" name="Zep" type="Zep" gid="21" x="419" y="250" width="50" height="50">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="spriteNum" value="12"/>
