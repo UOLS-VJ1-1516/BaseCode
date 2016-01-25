@@ -5,7 +5,10 @@
 #include "Vector2D.h"
 
 //Constructor y destructor
-Enemy::Enemy() {};
+Enemy::Enemy() {
+	m_velocity.setX(0);
+	m_velocity.setY(0);
+};
 Enemy::~Enemy() {};
 
 /*Funcion load que recibe todos lo parametros para hacer el load del Enemy,
@@ -26,11 +29,11 @@ void Enemy::load(const LoaderParams* pParams) {
 //Funcion para mostrar por pantalla la textura mediante la clase TextureManager
 void Enemy::draw() {
 
-	if (dreta) {
+	if (lado == 1) {
 		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), SDL_FLIP_NONE);
 	}
 	else {
-		
+
 		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRenderer(), SDL_FLIP_HORIZONTAL);
 	}
 
@@ -38,29 +41,26 @@ void Enemy::draw() {
 
 void Enemy::update()
 {
-	
-	if ((int)m_position.getX() >= (900- m_width + 10)) {
-		dreta = false;
-		
-	}
-	else if((int)m_position.getX() <= 0){
-		dreta = true;
-	}
 
-	if (dreta) {
-		m_position.setX(m_position.getX() + 3);
+	if (!isCollisionWithTile(m_position)) {
+		m_velocity.setX(run);
 	}
 	else {
-		
-		//printf("%d, ", pos);
-		m_position.setX(m_position.getX() - 3);
-		
 	}
-	
+
+	if (!isCollisionWithTile(m_position)) {
+		double velo = 0.1 + (m_velocity.getY() - 0.01);
+		m_velocity.setY(velo);
+	}
+	else {
+		m_velocity.setY(0);
+	}
+
 	//Variable para dar animacion a la textura
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 
-
+	GameObject::update();
+	CollisionObject::update();
 };
 
 void Enemy::clean() {};

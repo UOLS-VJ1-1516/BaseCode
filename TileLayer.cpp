@@ -18,19 +18,13 @@ TileLayer::TileLayer(int tileSize, const
 
 void TileLayer::update()
 {
-	if (m_position.getX() < 1100) 
-	{
-		m_position += m_velocity;
-		m_velocity.setX(1);
-	}
-	else {
-		//m_position += m_velocity;
-		//m_velocity.setX(-1);
-	}
+	//Camera::Instance()->setPosition(GameObject::getPosition());
+	//m_position = Camera::Instance()->getPosition();
 }
 
 void TileLayer::render()
 {
+
 	int x, y, x2, y2 = 0;
 	x = m_position.getX() / m_tileSize;
 	y = m_position.getY() / m_tileSize;
@@ -90,3 +84,5 @@ Tileset TileLayer::getTilesetByID(int tileID)
 	Tileset t;
 	return t;
 }
+
+

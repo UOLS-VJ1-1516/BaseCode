@@ -29,23 +29,24 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	}
 
 	// parse any object layers
+	// parse any object layers
 	for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
-		if (e->Value() == std::string("objectgroup") || e->Value() == std::string("layer"))
+
+		if (e->Value() == std::string("objectgroup"))
 		{
-			if (e->FirstChildElement()->Value() == std::string("object"))
-			{
-				parseObjectLayer(e, pLevel->getLayers());
-			}
-			else if (e->FirstChildElement()->Value() == std::string("data"))
-			{
-				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
-			}
+			parseObjectLayer(e, pLevel->getLayers(), pLevel);
 		}
+		else if (e->Value() == std::string("layer"))
+		{
+			parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers());
+		}
+
 	}
 
 	return pLevel;
 }
+
 void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot,
 	std::vector<Tileset>* pTilesets)
 {
@@ -70,24 +71,41 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot,
 	pTilesets->push_back(tileset);
 }
 
-
-void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers,
-	const std::vector<Tileset>* pTilesets)
+void LevelParser::parseTileLayer(TiXmlElement * pTileElement, std::vector<Layer*>* pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*>* pCollisionLayers)
 {
+	bool collidable = false;
 	//crar un nuevo tileLayer
 	TileLayer* pTileLayer = new TileLayer(m_tileSize, *pTilesets);
 	// tile data
 	std::vector<std::vector<int>> data;
 	std::string decodedIDs;
 	TiXmlElement* pDataNode = NULL;
+	////////
+
 	for (TiXmlElement* e = pTileElement->FirstChildElement(); e !=
 		NULL; e = e->NextSiblingElement())
 	{
+		if (e->Value() == std::string("properties"))
+		{
+			for (TiXmlElement* property = e->FirstChildElement(); property
+				!= NULL; property = property->NextSiblingElement())
+			{
+				if (property->Value() == std::string("property"))
+				{
+					if (property->Attribute("name") == std::string("coli") && property->Attribute("value") == std::string("True"))
+					{
+						collidable = true;
+					}
+				}
+			}
+		}
 		if (e->Value() == std::string("data"))
 		{
 			pDataNode = e;
 		}
 	}
+
+	/////////
 	for (TiXmlNode* e = pDataNode->FirstChild(); e != NULL; e =
 		e->NextSibling())
 	{
@@ -112,8 +130,19 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 		}
 	}
 	pTileLayer->setTileIDs(data);
-	pLayers->push_back(pTileLayer);
+
+	if (collidable)
+	{
+		pCollisionLayers->push_back(pTileLayer);
+	}
+	
+		pLayers->push_back(pTileLayer);
+	
+
+	
 }
+
+
 
 void LevelParser::parseTextures(TiXmlElement* pTextureRoot)
 {
@@ -121,7 +150,7 @@ void LevelParser::parseTextures(TiXmlElement* pTextureRoot)
 	file = pTextureRoot->Attribute("value");
 }
 
-void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers)
+void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers, Level *pLevel)
 {
 	ObjectLayer* pObjectLayer = new ObjectLayer();
 
@@ -174,8 +203,19 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			}
 			if (m_fileName == 1) { file = "gorda.png"; }
 			else if (m_fileName == 2) { file = "cine.png"; }
-			pGameObject->load(new LoaderParams(x, y-40, m_width, m_height, textureID, file, m_spriteNum, rowNum, callbackID));
+
+			
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
+
+			if (pGameObject != NULL) {
+				pGameObject->load(new LoaderParams(x, y - m_height, m_width, m_height, textureID, file, m_spriteNum, rowNum, callbackID));
+			    pGameObject->setCollisionLayers(pLevel->getCollisionLayers());
+				if (textureID == "player") // check if it's the player
+				{
+					//Camera::Instance()->setTarget(pGameObject);
+				}
+				pObjectLayer->getGameObjects()->push_back(pGameObject);
+			}
 		}
 	}
 	pLayers->push_back(pObjectLayer);

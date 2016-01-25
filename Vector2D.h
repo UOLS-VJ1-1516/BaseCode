@@ -26,7 +26,7 @@ public:
 	float length();
 	void normalize();
 	Vector2D& operator=(const Vector2D& v2);
-private:
+
 	double m_x;
 	double m_y;
 };

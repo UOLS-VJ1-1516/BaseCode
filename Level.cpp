@@ -8,12 +8,18 @@ Level::Level() {
 
 }
 
-std::vector<Tileset>* Level::getTilesets() {
-	return &m_tilesets;
-}
+
 
 std::vector<Layer*>* Level::getLayers() {
 	return &m_layers;
+}
+
+
+
+std::vector<TileLayer*>* Level::getCollisionLayers()
+{
+
+	return &m_collisionLayers;
 }
 
 void Level::render()
@@ -23,6 +29,8 @@ void Level::render()
 		m_layers[i]->render();
 	}
 }
+
+
 void Level::update()
 {
 	for (int i = 0; i < m_layers.size(); i++)

@@ -1,19 +1,20 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
 #include "textureManager.h"
 #include "InputHandler.h"
 #include "Vector2D.h"
 #include "SDL.h"
+#include "LoaderParams.h"
 
-class Player : public GameObject
+class Player : public CollisionObject
 {
 public:
 	Player();
-	~Player();
+	virtual~Player();
 	bool dreta = true;
-	void load(const LoaderParams* pParams);
-	void draw();
-	void update();
-	void clean();
+	virtual void load(const LoaderParams* pParams);
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 	static GameObject * Create() { return new Player(); }
 };

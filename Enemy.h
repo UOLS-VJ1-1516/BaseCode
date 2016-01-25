@@ -1,18 +1,19 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
 #include "textureManager.h"
 #include "InputHandler.h"
 #include "Vector2D.h"
+#include "SDL.h"
 
-class Enemy : public GameObject
+class Enemy : public CollisionObject
 {
 public:
 	Enemy();
-	~Enemy();
-	bool dreta = true;
-	void load(const LoaderParams* pParams);
-	void draw();
-	void update();
-	void clean();
+	virtual~Enemy();
+	virtual void load(const LoaderParams* pParams);
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 	static GameObject * Create() { return new Enemy(); }
+	
 };

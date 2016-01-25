@@ -18,7 +18,11 @@ GameObject* GameObjectFactory::CreateGameObject(const std::string & gameObjectNa
 	if (it == m_FactoryMap.end())
 	{
 		std::cout << "No existe: " << gameObjectName << "\n";
+		return NULL;
 	}
-
-	return  m_FactoryMap[gameObjectName]();
+	else {
+		return  m_FactoryMap[gameObjectName]();
+	}
+	
+	
 }

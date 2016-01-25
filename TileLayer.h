@@ -24,12 +24,19 @@ public:
 		m_tileSize = tileSize;
 	}
 	Tileset getTilesetByID(int tileID);
+
+	std::vector<std::vector<int>> getTileIDs() { return m_tileIDs; }
+	Vector2D getPosition(){ return m_position; }
+	int getTileSize() { return m_tileSize; }
+
 private:
 	int m_numColumns;
 	int m_numRows;
 	int m_tileSize;
 	Vector2D m_position;
 	Vector2D m_velocity;
+	Vector2D camPos;
 	const std::vector<Tileset> &m_tilesets;
 	std::vector<std::vector<int>> m_tileIDs;
+	
 };

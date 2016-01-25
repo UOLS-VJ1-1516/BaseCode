@@ -9,8 +9,6 @@
 Player::Player() {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-	m_maxVelocity.setX(3);
-
 };
 Player::~Player() {};
 
@@ -41,58 +39,78 @@ void Player::draw() {
 
 void Player::update()
 {
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-		//m_position.setX(m_position.getX() + 1);
-		dreta = true;
-
-		double velo = 0.1 + (m_velocity.getX() - 0.01);
-		m_velocity.setX(velo);
-
-		if (m_velocity.getX() >= m_maxVelocity.getX()) {
-			m_velocity.setX(3);
+		if (!isCollisionWithTile(m_position)) {
+			double velo = 0.1 + (m_velocity.getY() - 0.01);
+			m_velocity.setY(velo);
 		}
-
-		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-
-	}
-	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		//m_position.setX(m_position.getX() - 1);
-		dreta = false;
-		double velo = -0.1 + (m_velocity.getX() + 0.01);
-
-		m_velocity.setX(velo);
-
-		if (m_velocity.getX() <= -3) {
-			m_velocity.setX(-3);
+		else {
+			m_velocity.setY(0);
 		}
+		
 
-		m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
-	}
-	else {
-		if (m_velocity.getX() != 0 && dreta) {
-			m_velocity.setX(m_velocity.getX() - 0.2);
-			if (m_velocity.getX() <= 0) {
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+			//m_position.setX(m_position.getX() + 1);
+			dreta = true;
+
+				double velo = 0.1 + (m_velocity.getX() - 0.01);
+				m_velocity.setX(velo);
+
+				if (m_velocity.getX() >= m_maxVelocity.getX()) {
+					m_velocity.setX(3);
+				}		
+
+			m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+
+		}
+		else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+			//m_position.setX(m_position.getX() - 1);
+
+			dreta = false;
+			double velo = -0.1 + (m_velocity.getX() + 0.01);
+
+			m_velocity.setX(velo);
+
+			if (m_velocity.getX() <= -3) {
+				m_velocity.setX(-3);
+			}
+
+			m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+		}
+		else {
+			if (m_velocity.getX() != 0 && dreta) {
+				m_velocity.setX(m_velocity.getX() - 0.2);
+				if (m_velocity.getX() <= 0) {
+					m_velocity.setX(0);
+				}
+			}
+			else if (m_velocity.getX() != 0 && !dreta) {
+				m_velocity.setX(m_velocity.getX() + 0.2);
+				if (m_velocity.getX() >= 0) {
+					m_velocity.setX(0);
+				}
+			}
+			else if (m_velocity.getX() == 0) {
 				m_velocity.setX(0);
 			}
-		}
-		else if (m_velocity.getX() != 0 && !dreta) {
-			m_velocity.setX(m_velocity.getX() + 0.2);
-			if (m_velocity.getX() >= 0) {
-				m_velocity.setX(0);
+			m_currentFrame = 3;
+
+		}	
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+		{
+			saltoMax += 0.1;
+			if (saltoMax < 1.5)
+			{
+				double velo = (m_velocity.getY() - 0.3);
+				m_velocity.setY(velo);
 			}
 		}
-		else if (m_velocity.getX() == 0) {
-			m_velocity.setX(0);
-		}
-		m_currentFrame = 3;
-	
-	}
-
-	m_position += m_velocity;
-
 	//Variable para dar animacion a la textura
 
 	GameObject::update();
+	CollisionObject::update();
 };
 
-void Player::clean() {};
+void Player::clean() {}
+
+
+;
