@@ -1,46 +1,28 @@
-#include "SDL.h"
+#include "game.h"
 
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
+const int FPS = 60;
+const float DELAY_TIME = 1000.0f / FPS;
 
-int main(int argc, char* args[])
-{
-	// initialize SDL
-	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0)
+int main(int argc, char* args[]){
+
+	// Iniciamos el game
+	Game::Instance()->init("Ejercicio 5", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 512, false);
+
+	//Mientras no se quiera cerrar el game, se llama repetidamente a las funciones del while
+	while (Game::Instance()->isRunning())
 	{
-		// if succeeded create our window
-		g_pWindow = SDL_CreateWindow("Videjuegos 1 - bachelor",
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		640, 480,
-		SDL_WINDOW_SHOWN);
+		Uint32 frameStart = SDL_GetTicks();
+		Game::Instance()->handleEvents();
+		Game::Instance()->update();
+		Game::Instance()->render();
 
-		// if the window creation succeeded create our renderer
-		if(g_pWindow != 0)
+		Uint32 frameEnd = SDL_GetTicks();
+		Uint32 frameTime = frameEnd - frameStart;
+		if (frameTime < DELAY_TIME)
 		{
-			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
+			SDL_Delay((int)(DELAY_TIME - frameTime));
 		}
 	}
-	else
-	{
-		return 1; // sdl could not initialize
-	}
-
-	// everything succeeded lets draw the window
-	// set to black // This function expects Red, Green, Blue and
-	// Alpha as color values
-	SDL_SetRenderDrawColor(g_pRenderer, 0, 10, 40, 255);
-
-	// clear the window to black
-	SDL_RenderClear(g_pRenderer);
-
-	// show the window
-	SDL_RenderPresent(g_pRenderer);
-
-	// set a delay before quitting
-	SDL_Delay(5000);
-
-	// clean up SDL
-	SDL_Quit();
-
+	Game::Instance()->clean();
 	return 0;
 }
