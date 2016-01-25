@@ -13,10 +13,20 @@ Player::Player() : LivingEntity()
 	maxVel = Vector2D(10, 15);
 	acceleration = Vector2D(1, 1);	
 	SetJump(-15);
+	lives = 3;
+}
+
+void Player::Load(EntityParams * params)
+{
+	LivingEntity::Load(params);
 }
 
 void Player::Update()
 {
+	if (invulnerable > 0)
+	{
+		invulnerable--;
+	}
 	Accelerate(xAccel, yAccel);	
 	LivingEntity::Update();	
 }
@@ -50,4 +60,17 @@ void Player::DrawFrame()
 
 	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[texture];
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
+}
+
+void Player::Die()
+{
+	if (invulnerable == 0)
+	{
+		lives--;
+		if (lives == 0)
+		{
+			TheGame->GameOver();
+		}
+		invulnerable = 120;
+	}
 }

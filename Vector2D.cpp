@@ -94,3 +94,28 @@ void Vector2D::normalize()
 {
 	*this /= lenght();
 }
+
+bool Vector2D::operator<(const Vector2D& vec) const
+{
+	return (X < vec.X) && (Y < vec.Y);
+}
+
+bool Vector2D::operator<=(const Vector2D& vec) const
+{
+	return (X <= vec.X) && (Y <= vec.Y);
+}
+
+bool Vector2D::operator>(const Vector2D& vec) const
+{
+	return (X > vec.X) && (Y > vec.Y);
+}
+
+bool Vector2D::operator>=(const Vector2D& vec) const
+{
+	return (X >= vec.X) && (Y >= vec.Y);
+}
+
+bool Vector2D::operator==(const Vector2D& vec) const
+{
+	return (X == vec.X) && (Y == vec.Y);
+}

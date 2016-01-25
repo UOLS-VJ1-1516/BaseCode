@@ -112,3 +112,8 @@ void Game::Close()
 {
 	Running = false;
 }
+
+void Game::GameOver()
+{
+	manager->ChangeState(new StateMenu());
+}

@@ -30,6 +30,12 @@ public:
 	Vector2D operator/(float);
 	Vector2D& operator/=(float);
 
+	bool operator<(const Vector2D&) const;
+	bool operator>(const Vector2D&) const;
+	bool operator<=(const Vector2D&) const;
+	bool operator>=(const Vector2D&) const;
+	bool operator==(const Vector2D&) const;
+
 	float lenght();
 	void normalize();
 

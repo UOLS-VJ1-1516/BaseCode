@@ -22,9 +22,61 @@ void StateGame::Update()
 		if (Enemy * en = dynamic_cast<Enemy *>(var)) {
 			en->Update(player);
 		}
+		var->CheckCollisions(entitats);
 		var->Update();
 	}
 	level->Update();
+	if (player->invulnerable == 0)
+	{
+		switch (player->lives)
+		{
+		case 3:
+			live1->texture = "live";
+			live2->texture = "live";
+			live3->texture = "live";
+			break;
+		case 2:
+			live1->texture = "death";
+			live2->texture = "live";
+			live3->texture = "live";
+			break;
+		case 1:
+			live1->texture = "death";
+			live2->texture = "death";
+			live3->texture = "live";
+			break;
+		case 0:
+			live1->texture = "death";
+			live2->texture = "death";
+			live3->texture = "death";
+			break;
+		}
+	}
+	else {
+		switch (player->lives)
+		{
+		case 3:
+			live1->texture = "glowing";
+			live2->texture = "glowing";
+			live3->texture = "glowing";
+			break;
+		case 2:
+			live1->texture = "death";
+			live2->texture = "glowing";
+			live3->texture = "glowing";
+			break;
+		case 1:
+			live1->texture = "death";
+			live2->texture = "death";
+			live3->texture = "glowing";
+			break;
+		case 0:
+			live1->texture = "death";
+			live2->texture = "death";
+			live3->texture = "death";
+			break;
+		}
+	}
 }
 
 void StateGame::Render()
@@ -37,6 +89,9 @@ void StateGame::Render()
 		else
 			var->Draw();
 	}
+	live1->Draw();
+	live2->Draw();
+	live3->Draw();
 }
 
 void StateGame::HandleEvents()
@@ -96,6 +151,23 @@ bool StateGame::OnEnter()
 	TheCam->SetTarget(player);
 	TheCam->SetMaxPosition(90 * 32);
 	TheCam->SetPosition(Vector2D::NULL_VECTOR);
+
+	Manager->Load("hearth.png", "live");
+	Manager->Load("antihearth.png", "death");
+	Manager->Load("glowing.png", "glowing");
+	
+	live1 = new InertEntity();
+	live1->Load(new EntityParams("live1", Tools::GetWidth() - (32 * 3.2), 15, 32, 32));
+	live1->texture = "live";
+
+	live2 = new InertEntity();
+	live2->Load(new EntityParams("live2", Tools::GetWidth() - (32 * 2.1), 15, 32, 32));
+	live2->texture = "live";
+
+	live3 = new InertEntity();
+	live3->Load(new EntityParams("live3", Tools::GetWidth() - 32, 15, 32, 32));
+	live3->texture = "live";
+
 	return true;
 }
 
@@ -264,6 +336,7 @@ bool StateIntro::OnEnter()
 	StateParser::ParseState("intro.xml", GetStateID(), &entitats, &textures);
 	entitats[0]->params->SetWidth(Tools::GetWidth());
 	entitats[0]->params->SetHeight(Tools::GetHeight());
+	entitats[0]->texture = entitats[0]->params->GetId();
 	millis = SDL_GetTicks();
 	return true;
 }

@@ -12,4 +12,5 @@ public:
 	void DrawFrame();
 	void Update();
 	void Clear();
+	EntityParams * getParams() { return params; }
 };

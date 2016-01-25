@@ -10,10 +10,14 @@ private:
 public:
 	Player();
 	~Player();	
+	int invulnerable = 0;
+	int lives = 3;
+	void Load(EntityParams *);
 	void Update();
 	void Jump();
 	bool InBounds(LivingEntity *);
 	void DrawFrame();
+	void Die();
 	void SetJump(float jump)
 	{
 		salt = jump;

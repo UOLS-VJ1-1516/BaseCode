@@ -15,6 +15,7 @@ InertEntity::~InertEntity()
 void InertEntity::Load(EntityParams * params)
 {
 	this->params = params;
+	texture = params->GetId();
 }
 
 void InertEntity::Draw()
@@ -32,7 +33,7 @@ void InertEntity::Draw()
 
 	SDL_RendererFlip flip = params->IsFlipped() ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
 
-	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[params->GetId()];
+	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[texture];
 	SDL_RenderCopyEx(TheGame->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
 }
 

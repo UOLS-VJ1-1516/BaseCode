@@ -22,11 +22,13 @@ public:
 	void Move(float, float);
 
 	void Accelerate(int, int);
+	virtual void Die();
 
-	void Load(EntityParams *);
+	virtual void Load(EntityParams *);
 	virtual void Draw();
 	virtual void DrawFrame();
 	virtual void Update();
+	void CheckCollisions(std::vector<Entity *>);
 	void Clear();
 
 	std::string GetId() { return params->GetId(); }
@@ -44,8 +46,8 @@ public:
 	int collisionMargin;
 	void LoadCollisionLayers(std::vector<TileLayer *> *);
 	bool inAir = false;
+	bool CollideWithAnotherEntity(LivingEntity *);
 private:
 	std::vector<TileLayer *> collisionLayers;	
 	int getYGravity(int x, int y);
 };
-

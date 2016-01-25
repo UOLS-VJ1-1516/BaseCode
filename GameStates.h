@@ -49,6 +49,7 @@ private:
 	vector<string> textures;
 	Player * player = NULL;	
 	Level * level;
+	InertEntity * live1, * live2, * live3;
 public:
 	void Update();
 	void Render();

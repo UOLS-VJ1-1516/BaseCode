@@ -47,6 +47,7 @@ public:
 	void Update();
 	void Render();
 	void Close();
+	void GameOver();
 
 	SDL_Renderer * GetRenderer() { return this->renderer; }
 	SDL_Window * GetWindow() { return this->window; }
