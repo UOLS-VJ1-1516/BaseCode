@@ -3,9 +3,9 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "GameObject.h"
+#include "CollisionObject.h"
 
-class Enemy : public GameObject {
+class Enemy : public CollisionObject {
 public:
 	Enemy();
 	~Enemy();
@@ -14,6 +14,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	void onCollision(GameObject* other);
 	static GameObject* Create() { return new Enemy(); }
 };
 

@@ -53,3 +53,7 @@ void MenuButton::update() {
 void MenuButton::clean() {
 	InputHandler::Instance()->clean();
 }
+
+void MenuButton::onCollision(GameObject * other)
+{
+}

@@ -39,3 +39,7 @@ void StaticObject::update() {
 void StaticObject::clean() {
 
 }
+
+void StaticObject::onCollision(GameObject * other) {
+
+}

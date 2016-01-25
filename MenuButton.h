@@ -18,6 +18,7 @@ class MenuButton : public GameObject {
 		virtual void draw();
 		virtual void update();
 		virtual void clean();
+		virtual void onCollision(GameObject* other);
 		static GameObject* Create() { return new MenuButton(); }
 
 		int getCallbackID() const { return m_callbackID; }

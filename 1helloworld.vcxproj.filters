@@ -48,6 +48,9 @@
     <ClCompile Include="LevelParser.cpp" />
     <ClCompile Include="base64.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
+    <ClCompile Include="CollisionObject.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -94,6 +97,9 @@
     <ClInclude Include="LevelParser.h" />
     <ClInclude Include="base64.h" />
     <ClInclude Include="ObjectLayer.h" />
+    <ClInclude Include="CollisionObject.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObjects">

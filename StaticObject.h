@@ -3,9 +3,9 @@
 #ifndef STATICOBJECT_H
 #define STATICOBJECT_H
 
-#include "GameObject.h"
+#include "CollisionObject.h"
 
-class StaticObject : public GameObject {
+class StaticObject : public CollisionObject {
 public:
 	StaticObject();
 	~StaticObject();
@@ -14,6 +14,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	void onCollision(GameObject* other);
 	static GameObject* Create() { return new StaticObject(); }
 };
 
