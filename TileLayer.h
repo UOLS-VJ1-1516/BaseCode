@@ -13,8 +13,11 @@ public:
 	virtual void render();
 
 	void setTileIDs(const std::vector<std::vector<int>>& data) { m_tileIDs = data; }
+	std::vector<std::vector<int>> getTileIDs() const { return m_tileIDs; }
 	void setTileSize(int tileSize) { m_tileSize = tileSize; }
+	int getTileSize() { return m_tileSize; }
 	Tileset getTilesetByID(int tileID);
+	Vector2D& getPosition() { return m_position; }
 
 
 private:

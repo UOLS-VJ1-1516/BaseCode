@@ -15,10 +15,10 @@ TileLayer::TileLayer(int tileSize, const std::vector<Tileset> &tilesets) : m_til
 
 void TileLayer::update() {
 
-	if (m_position.getX() < 1250) {
+	/*if (m_position.getX() < 1250) {
 		m_position += m_velocity;
 		m_velocity.setX(1);
-	}
+	}*/
 }
 
 void TileLayer::render()

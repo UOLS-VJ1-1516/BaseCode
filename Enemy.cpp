@@ -6,7 +6,16 @@
 #include <stdio.h>
 
 Enemy::Enemy() { 
-	m_velocity.setX(5);
+	m_velocity.m_x = 0;
+	m_velocity.m_y = 0;
+	m_maxVelocity.m_x = 10;
+	m_maxVelocity.m_y = 10;
+	m_minVelocity.m_x = -10;
+	m_minVelocity.m_y = -10;
+	m_acceleration.m_x = 1;
+	m_acceleration.m_y = 0;
+	m_friction.m_x = 0;
+	m_friction.m_y = 0;
 };
 Enemy::~Enemy() {};
 
@@ -21,20 +30,7 @@ void Enemy::load(const LoaderParams* pParams) {
 void Enemy::update() {
 	m_currentFrame = int((SDL_GetTicks() / 100) % m_spriteNum);
 
-	//m_position += m_velocity;
-	//Aquesta linea de codi hauria de funcionar amb la funció de adalt pero no ho fa
-	m_position.setX(m_position.getX() + m_velocity.getX());
-	
-	/*printf("Position: %d \n", m_position);
-	printf("Velocity: %d \n", m_velocity);*/
-	if (m_position.getX() >= 600) {
-		m_velocity.setX(-5);
-		flip = SDL_FLIP_HORIZONTAL;
-	}
-	else if (m_position.getX() <= 0) {
-		m_velocity.setX(5);
-		flip = SDL_FLIP_NONE;
-	}	
+	CollisionObject::update();
 }
 
 void Enemy::clean() {};

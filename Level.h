@@ -2,6 +2,8 @@
 #include <vector>
 #include "Layer.h"
 
+class TileLayer;
+
 struct Tileset
 {
 	int firstGridID;
@@ -24,10 +26,12 @@ public:
 
 	std::vector<Tileset>* getTilesets() { return &m_tilesets; }
 	std::vector<Layer*>* getLayers() { return &m_layers; }
+	std::vector<TileLayer* >* getCollisionLayers() { return &m_collisionLayers; };
 	
 private:
 	std::vector<Tileset> m_tilesets;
 	std::vector<Layer*> m_layers;
+	std::vector<TileLayer*> m_collisionLayers;
 	
 	friend class LevelParser;
 	Level();

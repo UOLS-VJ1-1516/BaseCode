@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<STATES>
+  
+  <!--MainMenuState-->
+  <MENU>
+    <TEXTURES>
+      <texture filename="play.bmp" ID="play"/>
+      <texture filename="exit.bmp" ID="exit"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="MenuButton" x="200" y="100" width="251" height="62" textureID="play" fileName="play.bmp" spriteNum="3" callbackID="1"/>
+      <object type="MenuButton" x="200" y="250" width="251" height="62" textureID="exit" fileName="exit.bmp" spriteNum="3" callbackID="2"/>
+    </OBJECTS>
+  </MENU>
+  
+  <!--PlayState-->
+  <PLAY>
+    <TEXTURES>
+      <texture filename="walker.bmp" ID="walker"/>
+      <texture filename="kirby.bmp" ID="kirby"/>
+      <texture filename="tanooki.bmp" ID="tanooki"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="Player" x="300" y="200" width="60" height="38" textureID="walker" fileName="walker.bmp" spriteNum="12" callbackID="0"/>
+      <object type="Enemy" x="50" y="50" width="30" height="27" textureID="kirby" fileName="kirby.bmp" spriteNum="6" callbackID="0"/>
+      <object type="Enemy" x="550" y="400" width="37" height="35" textureID="tanooki" fileName="tanooki.bmp" spriteNum="4" callbackID="0"/>
+    </OBJECTS>
+  </PLAY>
+  
+  <!--PauseState-->
+  <PAUSE>
+    <TEXTURES>
+      <texture filename="resume.bmp" ID="resume"/>
+      <texture filename="mainmenu.bmp" ID="mainmenu"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="MenuButton" x="200" y="100" width="251" height="62" textureID="resume" fileName="resume.bmp" numFrames="3" callbackID="1"/>
+      <object type="MenuButton" x="200" y="315" width="251" height="62" textureID="mainmenu" fileName="mainmenu.bmp" numFrames="3" callbackID="2"/>
+    </OBJECTS>
+  </PAUSE>
+  
+</STATES>

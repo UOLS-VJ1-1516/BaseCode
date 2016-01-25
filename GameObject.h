@@ -2,7 +2,7 @@
 #include "TextureManager.h"
 #include "LoaderParams.h"
 #include "Vector2D.h"
-
+#include "TileLayer.h"
 
 class GameObject
 {
@@ -14,6 +14,7 @@ class GameObject
 		virtual void draw() = 0;
 		virtual void update() = 0;
 		virtual void clean() = 0;
+		void setCollisionLayers(std::vector<TileLayer*>* layers) { m_pCollisionLayers = layers; }
 
 	protected:
 		std::string m_textureID;
@@ -28,4 +29,7 @@ class GameObject
 		Vector2D m_maxVelocity; 
 		Vector2D m_acceleration;
 		Vector2D m_friction;
+		Vector2D m_minVelocity;
+		std::vector<TileLayer*>* m_pCollisionLayers;
+
 };
