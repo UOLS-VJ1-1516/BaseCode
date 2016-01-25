@@ -133,7 +133,7 @@ void StateGame::HandleEvents()
 
 bool StateGame::OnEnter()
 {
-	level = LevelParser::ParseLevel("assets/xml/state.tmx");
+	level = LevelParser::ParseLevel("assets/xml/test.tmx");
 	SDL_SetRenderDrawColor(TheGame->GetRenderer(), 0x00, 0x90, 0xFF, 0xFF);
 	
 	for each (Layer * layer in *level->getLayers()) {
