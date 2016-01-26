@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="60" height="15" tilewidth="32" tileheight="32" nextobjectid="20">
+ <tileset firstgid="1" name="Tiles_32x32" tilewidth="32" tileheight="32" spacing ="0" margin ="0">
+  <image source="Tiles_32x32.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="walker" tilewidth="60" tileheight="38">
+  <image source="walker.bmp" width="719" height="77"/>
+ </tileset>
+ <tileset firstgid="87" name="kirby" tilewidth="30" tileheight="27">
+  <image source="kirby.bmp" width="181" height="27"/>
+ </tileset>
+ <tileset firstgid="93" name="tanooki" tilewidth="37" tileheight="35">
+  <image source="tanooki.bmp" width="147" height="35"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="60" height="15">
+  <properties>
+   <property name="m_isCollider" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlUsOwzAIRN1WXecqTQ+Q+x8rWdTSaDRgSOln4ZFYxCaGBzhpbWpq6oxuh10ChrJ8rt9JOS1k3A67v6xCkdp5tcwIObwckLGS9aws7lGdrF4x24h1IfP2lE9WnEc/c5R3Rb8wTvY9xW/VB304Xn9+tno+zvkX8925uj7VSxTPD657PauQ1d8Mp3f3lK91djRO1NR774jv+iLW2B851Wz9oyLfNGZRyva3Qtjn6Jwg19p8bm+Gorze3cjOKsZ8GDmPmFRfmTn6b4jkj3XHnHlf2Q5syArB
+  </data>
+ </layer>
+ <layer name="Capa de patrones 2" width="60" height="15">
+  <properties>
+   <property name="m_isCollider" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzNk70OwjAMhL2woW4MIHXlbweJAd7/sTBSKqKC1XN8Jpx0Upu2jr+rI9JPN/WmXO/Vh469ZOvF+lDf5c3M0ll9Kj6C32TmPbGuitnMF/VVvVXviHWzNFT2aOKcZ+nlrs8ZS2uC2Rrl85yNX97z/g8GazSjQdrnyJP50j9CajF4IzPCmMfIHCO9R3jZZ6/HPLfOY5TV2jsrF5TXU8Nas+rXzzw5LYmdmWdPJMtoP9lnwMuLzNY/9d6qKK9VB93n17xWX9b9fB3tGWF6Aqo0FvM=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="15" name="walker" type="Player" gid="65" x="7" y="116" width="60" height="38">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="fileName" value="walker.bmp"/>
+    <property name="spriteNum" value="12"/>
+    <property name="textureHeight" value="38"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="60"/>
+   </properties>
+  </object>
+  <object id="16" name="kirby" type="Enemy" gid="88" x="636" y="307" width="30" height="27">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="fileName" value="kirby.bmp"/>
+    <property name="spriteNum" value="6"/>
+    <property name="textureHeight" value="27"/>
+    <property name="textureID" value="enemy"/>
+    <property name="textureWidth" value="30"/>
+   </properties>
+  </object>
+  <object id="17" name="tanooki" type="Enemy" gid="93" x="227" y="150" width="37" height="35">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="fileName" value="tanooki.bmp"/>
+    <property name="spriteNum" value="4"/>
+    <property name="textureHeight" value="35"/>
+    <property name="textureID" value="enemy1"/>
+    <property name="textureWidth" value="37"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

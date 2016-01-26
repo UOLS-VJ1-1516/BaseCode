@@ -42,7 +42,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../libs/SDL/include;$(IncludePath)</IncludePath>
+    <IncludePath>../libs/tinyxml/include;../libs/SDL/include;../libs/SDL_image/include;../libs/zlib/include;../libs/SDL2_mixer/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/tinyxml/include;libs/SDL/include;libs/SDL_image/include;libs/zlib/include;libs/SDL2_mixer/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>libs/tinyxml/lib;libs/SDL/lib;libs/SDL_image/lib;libs/zlib/lib;libs/SDL2_mixer/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;zdll.lib;tinyxmlSTL.lib;SDL2_mixer.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,7 +81,79 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="base64.cpp" />
+    <ClCompile Include="CollisionObject.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelParser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="ObjectLayer.cpp" />
+    <ClCompile Include="PauseState.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="base64.h" />
+    <ClInclude Include="CollisionObject.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelParser.h" />
+    <ClInclude Include="LoaderParams.h" />
+    <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="ObjectLayer.h" />
+    <ClInclude Include="PauseState.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="PlayState.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="StateParser.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TileLayer.h" />
+    <ClInclude Include="Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libjpeg-9.dll" />
+    <None Include="libpng16-16.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libwebp-4.dll" />
+    <None Include="map2.tmx" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
+    <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="exit.bmp" />
+    <Image Include="kirby.bmp" />
+    <Image Include="mainmenu.bmp" />
+    <Image Include="play.bmp" />
+    <Image Include="player.bmp" />
+    <Image Include="resume.bmp" />
+    <Image Include="tanooki.bmp" />
+    <Image Include="Tiles_32x32.png" />
+    <Image Include="walker.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="XMLFile.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
