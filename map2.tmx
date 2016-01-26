@@ -17,7 +17,7 @@
    <property name="m_isCollider" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlUsOgzAMRNNWXXOV0gNw/2PBopFGo7FjU/ezyEheEAyZZzvQ2tTU1BndjrgEAmXlXL9jOS1k3I64v6JCkdp5tcwIOTwPyFjJelYW96hOVq+YbcS6UHj3VE5W7KO/c+S7ol+4T/Y5xW/VB3N4v379bPV87PkX8925uj7VSxTPD657PauQ1d8Mp3f2VK717ug+0VDPvSM+64tY43zkVLP1j4p805hFKdvfCmVnhDnX5nN7MxTl9c5GdlbR28PwPGJSfWXm6L8h4h/rjp75voodjPgK1Q==
+   eJztlUsOwzAIRN1WXecqTQ+Q+x8rWdTSaDRgSOln4ZFYxCaGBzhpbWpq6oxuh10ChrJ8rt9JOS1k3A67v6xCkdp5tcwIObwckLGS9aws7lGdrF4x24h1IfP2lE9WnEc/c5R3Rb8wTvY9xW/VB304Xn9+tno+zvkX8925uj7VSxTPD657PauQ1d8Mp3f3lK91djRO1NR774jv+iLW2B851Wz9oyLfNGZRyva3Qtjn6Jwg19p8bm+Gorze3cjOKsZ8GDmPmFRfmTn6b4jkj3XHnHlf2Q5syArB
   </data>
  </layer>
  <layer name="Capa de patrones 2" width="60" height="15">
@@ -39,7 +39,7 @@
     <property name="textureWidth" value="60"/>
    </properties>
   </object>
-  <object id="16" name="kirby" type="Enemy" gid="88" x="1766" y="202" width="30" height="27">
+  <object id="16" name="kirby" type="Enemy" gid="88" x="636" y="307" width="30" height="27">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="fileName" value="kirby.bmp"/>

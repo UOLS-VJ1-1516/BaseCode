@@ -39,16 +39,16 @@ void CollisionObject::update() {
 	}
 	else if (m_position.m_x <= 0) {
 		m_position.setX(0);
-		speed = speed * -1;
-		direction = direction * -1;
+		if (m_textureID == "enemy1" || m_textureID == "enemy") {
+			speed = speed * -1;
+			direction = direction * -1;
+		}
 	}
 
-	if (m_position.m_y >= Game::Instance()->getGameHeight() - m_height) {
-		m_position.setY(Game::Instance()->getGameHeight() - m_height);
+	if (m_position.m_y >= Game::Instance()->getGameHeight()) {
+		m_position.setY(Game::Instance()->getGameHeight() - m_height);		
 	}
-	else if (m_position.m_y <= 0) {
-		m_position.setY(0);
-	}
+	
 
 	nuevaPos = m_position;
 	//Velocidad maxima en Y
@@ -90,8 +90,8 @@ bool CollisionObject::isCollisionWithTile(Vector2D newPos) {
 			y = layerPos.getY() / pTileLayer->getTileSize();
 
 			Vector2D startPos = newPos;
-			startPos.m_x += 15;
-			startPos.m_y += 20;
+			startPos.m_x += 10;
+			startPos.m_y += 4;
 
 			Vector2D endPos;
 			endPos.m_x = newPos.m_x + (m_width - 15);
