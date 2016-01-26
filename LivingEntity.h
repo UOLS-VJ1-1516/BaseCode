@@ -18,6 +18,9 @@ public:
 	~LivingEntity();
 
 	int xAccel = 0, yAccel = 0;
+	bool inAir = false;
+	int collisionMargin;
+
 	static LivingEntity * Create() { return new LivingEntity(); }
 	void Move(float, float);
 
@@ -28,7 +31,16 @@ public:
 	virtual void Draw();
 	virtual void DrawFrame();
 	virtual void Update();
-	void CheckCollisions(std::vector<Entity *>);
+	static void CheckCollisions(LivingEntity * ent, std::vector<Entity *> entitats) {
+		for each (LivingEntity * entity in entitats)
+		{
+			bool collide = ent->CollideWithAnotherEntity(entity);
+			if (collide)
+			{
+				ent->onCollide();
+			}
+		}
+	}
 	void Clear();
 
 	std::string GetId() { return params->GetId(); }
@@ -43,11 +55,22 @@ public:
 	int GetRow() { return params->GetRow(); }
 
 	bool IsCollidingWithTile(int, int);
-	int collisionMargin;
 	void LoadCollisionLayers(std::vector<TileLayer *> *);
-	bool inAir = false;
+	
 	bool CollideWithAnotherEntity(LivingEntity *);
+	void setOnCollide(void(*cbk)(LivingEntity *))
+	{
+		this->callback = cbk;
+	}
+	void onCollide()
+	{
+		if (callback != nullptr)
+		{
+			callback(this);
+		}
+	}
 private:
 	std::vector<TileLayer *> collisionLayers;	
 	int getYGravity(int x, int y);
+	void(*callback)(LivingEntity *);
 };

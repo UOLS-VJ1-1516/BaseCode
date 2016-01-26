@@ -15,6 +15,20 @@ Player::Player() : LivingEntity()
 	acceleration = Vector2D(1, 1);	
 	SetJump(-15);
 	lives = 3;
+	setOnCollide(([](LivingEntity * le) {
+		Player * p = (Player *)le;
+		if (p->invulnerable == 0)
+		{
+			p->lives--;
+			if (p->lives == -1)
+			{
+				Audio->PlaySound("nazgul");
+				TheGame->GameOver();
+			}
+			p->invulnerable = 120;
+			p->Jump();
+		}
+	}));
 }
 
 void Player::Load(EntityParams * params)
@@ -61,18 +75,4 @@ void Player::DrawFrame()
 
 	SDL_Texture * textura = TextureManager::GetInstance()->GetArray()[texture];
 	SDL_RenderCopyEx(Game::GetInstance()->GetRenderer(), textura, &img, &draw, 0, NULL, flip);
-}
-
-void Player::Die()
-{
-	if (invulnerable == 0)
-	{
-		lives--;
-		if (lives == 0)
-		{
-			Audio->PlaySound("nazgul");
-			TheGame->GameOver();
-		}
-		invulnerable = 120;
-	}
 }

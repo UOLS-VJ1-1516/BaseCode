@@ -23,7 +23,7 @@ void StateGame::Update()
 		if (Enemy * en = dynamic_cast<Enemy *>(var)) {
 			en->Update(player);
 		}
-		var->CheckCollisions(entitats);
+		LivingEntity::CheckCollisions(var, entitats);
 		var->Update();
 	}
 	level->Update();

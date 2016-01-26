@@ -28,8 +28,8 @@ const Vector2D * Camera::GetPosition()
 		Vector2D * position = new Vector2D();
 		position->X = target->position.X - (Tools::GetWidth() / 2);
 		position->Y = 0;
-		position->X = fmax(position->X, 0);
-		position->X = fmin(position->X, maxPosition - Tools::GetWidth());
+		position->X = (float)fmax(position->X, 0);
+		position->X = (float)fmin(position->X, maxPosition - Tools::GetWidth());
 		return position;
 	}
 	else 

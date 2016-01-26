@@ -9,6 +9,7 @@ using namespace std;
 
 LivingEntity::LivingEntity() : Entity()
 {
+	callback = nullptr;
 }
 
 
@@ -117,8 +118,8 @@ void LivingEntity::DrawFrame()
 	img.w = params->GetWidth();
 	img.h = params->GetHeight();
 
-	draw.x = (int)position.X - camPos->X;
-	draw.y = (int)position.Y - camPos->Y;
+	draw.x = (int)position.X - (int)camPos->X;
+	draw.y = (int)position.Y - (int)camPos->Y;
 	draw.w = params->GetWidth();
 	draw.h = params->GetHeight();
 
@@ -198,24 +199,6 @@ bool LivingEntity::CollideWithAnotherEntity(LivingEntity * another)
 	Vector2D bMax = Vector2D(another->position.X + another->GetWidth() - another->collisionMargin, another->position.Y + another->GetHeight());
 
 	return (aMin.X < bMax.X) && (aMax.X > bMin.X) && (aMin.Y < bMax.Y) && (aMax.Y > bMin.Y);
-}
-
-void LivingEntity::CheckCollisions(vector<Entity *> entitats)
-{
-	for each (LivingEntity * entity in entitats)
-	{
-		bool collide = CollideWithAnotherEntity(entity);
-		if (collide)
-		{
-			if (Player * player = dynamic_cast<Player *>(entity))
-			{
-				if (Enemy * enemy = dynamic_cast<Enemy *>(this))
-				{
-					player->Die();
-				}
-			}
-		}
-	}
 }
 
 void LivingEntity::Die()

@@ -17,7 +17,6 @@ public:
 	void Jump();
 	bool InBounds(LivingEntity *);
 	void DrawFrame();
-	void Die();
 	void SetJump(float jump)
 	{
 		salt = jump;
