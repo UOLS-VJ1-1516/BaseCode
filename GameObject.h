@@ -1,7 +1,10 @@
 #pragma once
-#include "SDL.h"
+#include "game.h"
 #include "LoaderParams.h"
 #include "Vector2D.h"
+#include "TextureManager.h"
+#include "InputHandler.h"
+#include "TileLayer.h"
 
 class GameObject
 {
@@ -12,19 +15,23 @@ public:
 	virtual void draw()=0;
 	virtual void update() = 0;
 	virtual void clean() = 0;
-
-protected:
-
+	void setCollisionLayers(std::vector<TileLayer*>* layers) {
+		m_pCollisionLayers = layers;
+	}
+	bool isCollision() { return collision; }
 	Vector2D m_position;
 	Vector2D m_velocity;
+	int m_width;
+	int m_height;
+protected:
+	bool collision;
 	Vector2D m_maxVelocity;
 	Vector2D m_acceleration;
 	Vector2D m_friction;
-	int m_width;
-	int m_height;
 	int m_currentFrame;
 	int m_currentRow;
 	int m_numsprites;
 	std::string m_textureID;
 	int m_callbackID;
+	std::vector<TileLayer*>* m_pCollisionLayers;
 };

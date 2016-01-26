@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "game.h"
 #include "TextureManager.h"
+#include "Camera.h"
 
 GameObject::GameObject()
 {
@@ -15,7 +16,6 @@ void GameObject::load(const LoaderParams* pParams){
 	m_position.setX(pParams->getX());
 	m_position.setY(pParams->getY());
 	m_velocity.setX(pParams->getAnimSpeed());
-	m_velocity.setY(0);
 	m_width = pParams->getWidth();
 	m_height = pParams->getHeight();
 
@@ -37,7 +37,5 @@ void GameObject::draw()
 }
 
 void GameObject::update()
-{
-	m_position += m_velocity;
-}
+{}
 

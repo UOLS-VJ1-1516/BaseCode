@@ -1,5 +1,5 @@
-#include "GameObject.h"
-class Enemy : public GameObject
+#include "CollisionObject.h"
+class Enemy : public CollisionObject
 {
 public:
 	Enemy();

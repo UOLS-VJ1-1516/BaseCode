@@ -1,5 +1,6 @@
-#include "GameObject.h"
-class Player : public GameObject
+#pragma once
+#include "CollisionObject.h"
+class Player : public CollisionObject
 {
 public:
 	Player();

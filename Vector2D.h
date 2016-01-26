@@ -12,7 +12,7 @@ public:
 	void setY( float y);
 
 	Vector2D operator+(const Vector2D& v2) const;
-	Vector2D& operator+=(const Vector2D& v2);
+	Vector2D operator+=(const Vector2D& v2);
 
 	Vector2D operator*(float scalar);
 	Vector2D& operator*=(float scalar);
@@ -25,8 +25,8 @@ public:
 	void normalize();
 
 	Vector2D operator=(const Vector2D& v2);
-
-private:
 	float m_x;
 	float m_y;
+private:
+
 };

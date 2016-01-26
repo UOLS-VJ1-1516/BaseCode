@@ -7,6 +7,7 @@
 #include "PlayState.h"
 #include "GameObjectFactory.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 
 const std::string MenuState::s_menuID = "MENU";
 
@@ -70,6 +71,7 @@ std::string MenuState::getStateID() const
 
 void MenuState::s_menuToPlay()
 {
+	SoundManager::Instance()->playSound("button_effect", 0);
 	Game::Instance()->getStateMachine()->changeState(new PlayState());
 }
 void MenuState::s_exitFromMenu()

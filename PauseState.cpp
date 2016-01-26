@@ -6,14 +6,19 @@
 #include <string>
 #include "GameObjectFactory.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 
 const std::string PauseState::s_pauseID = "PAUSE";
 void PauseState::s_pauseToMain()
 {
+	SoundManager::Instance()->stopMusic();
+	SoundManager::Instance()->playSound("button_effect", 0);
 	Game::Instance()->getStateMachine()->changeState(new MenuState());
 }
 void PauseState::s_resumePlay()
 {
+	SoundManager::Instance()->playMusic("intro_music", -1);
+	SoundManager::Instance()->playSound("button_effect", 0);
 	Game::Instance()->getStateMachine()->popState();
 }
 void PauseState::setCallbacks(const std::vector<Callback>& callbacks)

@@ -1,14 +1,16 @@
-	#include "game.h"
-	#include "Player.h"
-	#include "Enemy.h"
-	#include "SDL_image.h"
-	#include "TextureManager.h"
-	#include "iostream"
-	#include "InputHandler.h"
-	#include "MenuButton.h"
-	#include "MenuState.h"
-	#include "PlayState.h"
-	#include "GameObjectFactory.h"
+#include "game.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "SDL_image.h"
+#include "TextureManager.h"
+#include "iostream"
+#include "InputHandler.h"
+#include "MenuButton.h"
+#include "MenuState.h"
+#include "PlayState.h"
+#include "GameObjectFactory.h"
+#include "TileLayer.h"
+#include "SoundManager.h"
 
 	Game* Game::g_pInstance = 0;
 
@@ -33,6 +35,8 @@
 			//afegir textura
 			//Gameobject crear tots els gameobjects
 			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);			TheGameObjectFactory->Register("Player", &Player::Create);			TheGameObjectFactory->Register("Enemy", &Enemy::Create);
+			SoundManager::Instance()->loadMusic("rsc/music/simulation_area.ogg", "intro_music");//intro music
+			SoundManager::Instance()->loadSound("rsc/sfx/button_select.wav", "button_effect");//button
 
 			m_viewWidth = width;
 			m_viewHeight = height;
