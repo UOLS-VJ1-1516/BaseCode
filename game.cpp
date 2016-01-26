@@ -10,6 +10,7 @@
 #include "MenuButton.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "SoundManager.h"
 
 
 Game* Game::s_pInstance = 0;
@@ -43,6 +44,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		TheGameObjectFactory->Register("Enemy", &Enemy::Create);
 		TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
 
+		SoundManager::Instance()->loadMusic("music.wav", "musicGame");
+		SoundManager::Instance()->loadSound("jump.wav", "soundJump");
+
+
 		m_gameStateMachine->pushState(new MenuState());
 		return true;
 	}
@@ -75,6 +80,7 @@ void Game::handleEvents()
 
 void Game::clean()
 {
+	quit = 1;
 	SDL_RenderClear(m_pRenderer);
 	SDL_Quit();
 }

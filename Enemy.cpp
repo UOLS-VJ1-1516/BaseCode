@@ -3,7 +3,6 @@
 #include "Enemy.h"
 #include "TextureManager.h"
 #include "Vector2D.h"
-#include <stdio.h>
 
 Enemy::Enemy() { 
 	m_velocity.m_x = 0;
@@ -29,6 +28,23 @@ void Enemy::load(const LoaderParams* pParams) {
 
 void Enemy::update() {
 	m_currentFrame = int((SDL_GetTicks() / 100) % m_spriteNum);
+	m_acceleration.m_y = 5;
+
+	if (!isCollisionWithTile(m_position)) {
+		m_velocity.setX(speed);
+		m_velocity.setY(m_velocity.getY());
+	}
+	else { //Si colisionan que cambie el simbolo de la velocidad
+		m_velocity.setY(0);
+		m_velocity.m_x = m_velocity.m_x * -1;
+	}
+
+	if (m_velocity.m_x > 0) {
+		flip = SDL_FLIP_NONE;
+	}
+	else {
+		flip = SDL_FLIP_HORIZONTAL;
+	}
 
 	CollisionObject::update();
 }

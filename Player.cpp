@@ -4,6 +4,7 @@
 #include "TextureManager.h"
 #include "InputHandler.h"
 #include "Vector2D.h"
+#include "SoundManager.h"
 
 
 Player::Player() {	
@@ -49,25 +50,12 @@ void Player::update() {
 	 }	
 
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+		SoundManager::Instance()->playSound("soundJump", 0);
 		maxJump += 3;
 		if (maxJump < 10) {
 			m_acceleration.m_y = -10;
 		}
-	}
-
-	if (m_position.m_x >= Game::Instance()->getGameWidth() - m_width) {
-		m_position.setX(Game::Instance()->getGameWidth() - m_width);
-	}
-	else if (m_position.m_x <= 0) {
-		m_position.setX(0);
-	}
-
-	if (m_position.m_y >= Game::Instance()->getGameHeight() - m_height) {
-		m_position.setY(Game::Instance()->getGameHeight() - m_height);
-	}
-	else if (m_position.m_y <= 0) {
-		m_position.setY(0);
-	}
+	}	
 	
 	CollisionObject::update();	
 }

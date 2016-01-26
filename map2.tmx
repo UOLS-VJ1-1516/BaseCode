@@ -17,7 +17,7 @@
    <property name="m_isCollider" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlUsOwjAMRAOo61wFOAD3P1aLRCRr5PEnMpRFRvKmceN5dtK2trS0NKPbEZdASLGc628spyUZX0dsn6hQpHdWLzOSHJYHyVjJOivG7fWJzQrZPNYOYa1pOVkxH57vinn1yT0YP+uPzMF6Y/3Z6vnQ8xnnG2t+a5ZSklXrNZtZhaK8lqy7p+WyvaN1oqG9N86trInPvPrDd1eeYb7k1Gr/o5Bp9vxn53uGkPPRbF7r3kV5rbuRvd/Zbzvjuhtr0X8D5nqesa7n/R07LwEKMQ==
+   eJztlUsOgzAMRNNWXXOV0gNw/2PBopFGo7FjU/ezyEheEAyZZzvQ2tTU1BndjrgEAmXlXL9jOS1k3I64v6JCkdp5tcwIOTwPyFjJelYW96hOVq+YbcS6UHj3VE5W7KO/c+S7ol+4T/Y5xW/VB3N4v379bPV87PkX8925uj7VSxTPD657PauQ1d8Mp3f2VK717ug+0VDPvSM+64tY43zkVLP1j4p805hFKdvfCmVnhDnX5nN7MxTl9c5GdlbR28PwPGJSfWXm6L8h4h/rjp75voodjPgK1Q==
   </data>
  </layer>
  <layer name="Capa de patrones 2" width="60" height="15">
@@ -25,7 +25,7 @@
    <property name="m_isCollider" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzFk7EOwjAMRLN0Q906wAcAZQeJofz/Z2GkVK0QDuf4LJ90Uock9nPPpeTpKZ7q91l8SewlWh/Wl3gpGzNLN/FcfQXvRM57ZR2q2cx38UN8FJ+I70Zp3NmilfN7llbu/Z6xdCA4QsieWf8Hg9U7o7H058gy83//CHmLwevJCiOPnhwjPWu8iNi7l5Hn3jx6WbXaUXNBea07od1rvY3WQYXW1HrtqY+cR3mzbJE1W9ls3ky1GFBe7R20DnInUi3eX+fQmSO9vwF9wRc9
+   eJzNk70OwjAMhL2woW4MIHXlbweJAd7/sTBSKqKC1XN8Jpx0Upu2jr+rI9JPN/WmXO/Vh469ZOvF+lDf5c3M0ll9Kj6C32TmPbGuitnMF/VVvVXviHWzNFT2aOKcZ+nlrs8ZS2uC2Rrl85yNX97z/g8GazSjQdrnyJP50j9CajF4IzPCmMfIHCO9R3jZZ6/HPLfOY5TV2jsrF5TXU8Nas+rXzzw5LYmdmWdPJMtoP9lnwMuLzNY/9d6qKK9VB93n17xWX9b9fB3tGWF6Aqo0FvM=
   </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
@@ -35,27 +35,27 @@
     <property name="fileName" value="walker.bmp"/>
     <property name="spriteNum" value="12"/>
     <property name="textureHeight" value="38"/>
-    <property name="textureID" value="walker"/>
+    <property name="textureID" value="player"/>
     <property name="textureWidth" value="60"/>
    </properties>
   </object>
-  <object id="16" name="kirby" type="Enemy" gid="88" x="385" y="144" width="30" height="27">
+  <object id="16" name="kirby" type="Enemy" gid="88" x="1766" y="202" width="30" height="27">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="fileName" value="kirby.bmp"/>
     <property name="spriteNum" value="6"/>
     <property name="textureHeight" value="27"/>
-    <property name="textureID" value="kirby"/>
+    <property name="textureID" value="enemy"/>
     <property name="textureWidth" value="30"/>
    </properties>
   </object>
-  <object id="17" name="tanooki" type="Enemy" gid="93" x="555" y="270" width="37" height="35">
+  <object id="17" name="tanooki" type="Enemy" gid="93" x="227" y="150" width="37" height="35">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="fileName" value="tanooki.bmp"/>
     <property name="spriteNum" value="4"/>
     <property name="textureHeight" value="35"/>
-    <property name="textureID" value="tanooki"/>
+    <property name="textureID" value="enemy1"/>
     <property name="textureWidth" value="37"/>
    </properties>
   </object>

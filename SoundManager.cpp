@@ -4,6 +4,7 @@ SoundManager* SoundManager::s_pInstance = 0;
 
 SoundManager::SoundManager() {
 	Mix_OpenAudio(22050, AUDIO_S16, 2, 4096);
+	Mix_VolumeMusic(35);
 }
 
 SoundManager::~SoundManager() {

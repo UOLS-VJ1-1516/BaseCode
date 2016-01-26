@@ -17,4 +17,6 @@ protected:
 	int m_collisionMargin;
 	Vector2D buenaPos;
 	float maxJump;
+	int speed;
+	int direction;
 };

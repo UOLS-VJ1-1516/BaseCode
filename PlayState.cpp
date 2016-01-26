@@ -8,6 +8,7 @@
 #include "MenuButton.h"
 #include "LevelParser.h"
 #include "Level.h"
+#include "SoundManager.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -39,6 +40,8 @@ bool PlayState::onEnter() {
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("map2.tmx");
 
+	SoundManager::Instance()->playMusic("musicGame", 4);
+
 	return true;
 }
 
@@ -54,6 +57,8 @@ bool PlayState::onExit() {
 		TextureManager::Instance()->clearTexture(m_textureIDList[i]);
 	}
 	m_textureIDList.clear();
+
+	SoundManager::Instance()->stopMusic();
 
 	return true;
 }

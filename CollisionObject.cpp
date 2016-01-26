@@ -9,10 +9,10 @@ void CollisionObject::load(const LoaderParams* pParams) {}
 void CollisionObject::draw() {}
 
 void CollisionObject::update() {
-
+	//Velocidad maxima en X
 	if (m_velocity.m_x >= m_maxVelocity.m_x) {
 		m_velocity.m_x = m_maxVelocity.m_x;
-	}else if (m_velocity.m_x <= m_minVelocity.m_x) {
+	} else if (m_velocity.m_x <= m_minVelocity.m_x) {
 		m_velocity.m_x = m_minVelocity.m_x;
 	}
 
@@ -21,16 +21,37 @@ void CollisionObject::update() {
 	Vector2D nuevaPos = m_position;
 
 	nuevaPos.m_x = m_position.m_x + m_velocity.m_x;
-
+	//Colisión en X
 	if (!isCollisionWithTile(nuevaPos)) {
 		m_position.m_x = nuevaPos.m_x;
 	}
 	else {
 		m_velocity.m_x = 0;
+		if (m_textureID == "enemy1" || m_textureID == "enemy") {
+			speed = speed * -1;
+			direction = direction * -1;
+		}
+	}
+
+	//Control margenes del mapa
+	if (m_position.m_x >= Game::Instance()->getGameWidth() - m_width) {
+		m_position.setX(Game::Instance()->getGameWidth() - m_width);
+	}
+	else if (m_position.m_x <= 0) {
+		m_position.setX(0);
+		speed = speed * -1;
+		direction = direction * -1;
+	}
+
+	if (m_position.m_y >= Game::Instance()->getGameHeight() - m_height) {
+		m_position.setY(Game::Instance()->getGameHeight() - m_height);
+	}
+	else if (m_position.m_y <= 0) {
+		m_position.setY(0);
 	}
 
 	nuevaPos = m_position;
-
+	//Velocidad maxima en Y
 	if (m_velocity.m_y >= m_maxVelocity.m_y) {
 		m_velocity.m_y = m_maxVelocity.m_y;
 	}
@@ -40,21 +61,14 @@ void CollisionObject::update() {
 
 	m_velocity.m_y += m_acceleration.m_y;
 	nuevaPos.m_y += m_velocity.m_y;
-
+	//Colisión en Y
 	if (!isCollisionWithTile(nuevaPos))	{
 		m_position.m_y = nuevaPos.m_y;
 	}
 	else {
 		maxJump = 0;
 		m_velocity.m_y = 0;
-		buenaPos = m_position;
-
-		if (m_velocity.m_x > 0) {
-			buenaPos.m_x -= 100;
-		}
-		else if (m_velocity.m_x < 0) {
-			buenaPos.m_x += 100;
-		}
+		buenaPos = m_position;		
 	}
 }
 
