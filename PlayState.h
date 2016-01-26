@@ -23,6 +23,6 @@ private:
 	static const std::string s_playID;
 	std::vector< GameObject* > m_gameObjects;
 	std::vector< const char * > m_textureIDList;
-	TileLayer* til;
+	Level* level;
 };
 #endif

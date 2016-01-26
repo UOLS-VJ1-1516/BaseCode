@@ -5,8 +5,12 @@
 #include "string"
 #include "vector"
 #include "Layer.h"
-/**/
-struct Tileset
+#include "CollisionManager.h"
+#include "Player.h"
+
+class TileLayer;
+
+/*struct Tileset
 {
 	int firstGridID;
 	int tileWidth;
@@ -16,8 +20,9 @@ struct Tileset
 	int spacing;
 	int margin;
 	int numColumns;
-	const char* name;
-};
+	std::string name;
+	//const char name;
+};*/
 
 class Level
 {
@@ -34,9 +39,26 @@ public:
 	{
 		return &m_tilesets;
 	}
+
+	std::vector<TileLayer*>* getCollisionLayers() {
+		return &m_CollisionsLayer;
+	}
+
+	Player* getPlayer() {
+		return m_pPlayer;
+	}
+
+	void setPlayer(Player* pPlayer) {
+		m_pPlayer = pPlayer;
+	}
+
 private:
+	Player* m_pPlayer;
+	CollisionManager m_collisionManager;
+
 	std::vector<Tileset> m_tilesets;
 	std::vector<Layer*> m_layers;
+	std::vector<TileLayer*> m_CollisionsLayer;
 	friend class LevelParser;
 	Level();
 };

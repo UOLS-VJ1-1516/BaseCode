@@ -2,10 +2,10 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "GameObject.h"
+#include "CollisionObject.h"
 #include "SDL.h"
 
-class Player : public GameObject
+class Player : public CollisionObject
 {
 public:
 	Player();
@@ -13,15 +13,22 @@ public:
 	void draw();
 	void load(const LoaderParams* pParams);
 	void update();
+	void jump();
 	void clean();
 	void incrementAccelerationX();
 	void decrementAccelerationX();
+	void incrementAccelerationY();
+	void decrementAccelerationY();
+	void onCollision(GameObject* other);
+	void collision() {};
 	static GameObject * Create() { return new Player(); }
 
 private:
 	SDL_RendererFlip m_Orientation;
 	Vector2D m_lastPosition;
 	void Stop(int position_x);
+	void StopY(int position_y);
+	bool m_jump=false;
 };
 
 #endif

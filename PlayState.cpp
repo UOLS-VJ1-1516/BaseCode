@@ -1,32 +1,37 @@
 #include "PlayState.h"
 #include <iostream>
 #include "StateParser.h"
-#include "LayerParser.h"
+//#include "LayerParser.h"
+#include "LevelParser.h"
 
 
 const std::string PlayState::s_playID = "PLAY";
 void PlayState::update()
 {
-	til->update();
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	//til->update();
+	level->update();
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
-	}	
+	}	*/
 }
 void PlayState::render()
 {
-	til->render();
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
+	level->render();
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->draw();
-	}
+	}*/
 }
 bool PlayState::onEnter()
 {
-	StateParser::parseState("game.xml", s_playID, &m_gameObjects, &m_textureIDList);
+	/*StateParser::parseState("game.xml", s_playID, &m_gameObjects, &m_textureIDList);
 
 	LayerParser lp;
-	til = lp.parseTileLayer("map.tmx");
+	til = lp.parseTileLayer("map.tmx");*/
+
+	LevelParser lp;
+	level = lp.parseLevel("map3.tmx");
 
 	return true;
 }

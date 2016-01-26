@@ -3,30 +3,44 @@
 #define TILELAYER_H
 #include "vector"
 #include "vector2D.h"
+#include "Level.h"
+#include "Layer.h"
 
-struct Tileset
-{
-	int firstGridID;
-	int tileWidth;
-	int tileHeight;
-	int width;
-	int height;
-	int spacing;
-	int margin;
-	int numColumns;
-	//const char* name;
-	std::string name;
-};
+//struct Tileset
+//{
+//	int firstGridID;
+//	int tileWidth;
+//	int tileHeight;
+//	int width;
+//	int height;
+//	int spacing;
+//	int margin;
+//	int numColumns;
+//	//const char* name;
+//	std::string name;
+//};
 
-class TileLayer
+class TileLayer : public Layer
 {
 public:
 	TileLayer(int tileWidth, int tileHeight, const std::vector< Tileset> & tilesets);
 	virtual ~TileLayer(void);
-	void update();
-	void render();
+	virtual void update();
+	virtual void render();
 	void setTileIDs(const std::vector< std::vector< int > >& data);
 	Tileset getTilesetByID(int tileID);
+	int getTileWith() {
+		return m_tileWidth;
+	}
+	int getTileHeight() {
+		return m_tileHeight;
+	}
+	Vector2D getPosition() {
+		return m_position;
+	}
+	std::vector<std::vector<int>> getTileIDs() {
+		return m_tileIDs;
+	}
 private:
 	int m_tileWidth; // Ancho de un patrón
 	int m_tileHeight; // Alto de un patrón

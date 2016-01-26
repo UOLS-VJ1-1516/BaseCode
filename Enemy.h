@@ -1,9 +1,9 @@
 #pragma once
-#include "GameObject.h"
 #ifndef ENEMY_H
 #define ENEMY_H
+#include "CollisionObject.h"
 
-class Enemy : public GameObject
+class Enemy : public CollisionObject
 {
 public:
 	Enemy();
@@ -12,6 +12,7 @@ public:
 	void load(const LoaderParams* pParams);
 	void update();
 	void clean();
+	void onCollision(GameObject* other);
 	static GameObject * Create() { return new Enemy(); }
 };
 

@@ -53,3 +53,7 @@ void Enemy::update() {
 
 void Enemy::clean() {
 };
+
+void Enemy::onCollision(GameObject * other)
+{
+};
