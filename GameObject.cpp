@@ -28,3 +28,8 @@ void GameObject::update()
 {
 	m_position += m_velocity;
 }
+
+void GameObject::onCollision(GameObject * other)
+{
+	
+}

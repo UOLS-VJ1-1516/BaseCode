@@ -4,6 +4,7 @@
 #include <string>
 #include "Layer.h"
 #include "Player.h"
+#include "CollisionManager.h"
 
 class TileLayer;
 struct Tileset
@@ -47,7 +48,9 @@ private:
 	std::vector<Tileset> m_tilesets;
 	std::vector<Layer*> m_layers;
 	std::vector<TileLayer*> m_CollisionLayers;
-
+	Player *m_Player;
+	std::vector<ObjectLayer*>*objectLayers;
+	CollisionManager m_CollisionManager;
 	friend class LevelParser;
 	Level();
 };

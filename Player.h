@@ -29,6 +29,8 @@ public:
 	void incrementAccelerationX();
 	SDL_RendererFlip turn = SDL_FLIP_HORIZONTAL;
 
+
+
 private:
 	void stopX(int);
 	void stopY(int);

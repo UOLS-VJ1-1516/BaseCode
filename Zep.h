@@ -15,4 +15,6 @@ public:
 	virtual void clean();
 	static GameObject * Create() { return new Zep(); }
 
+	
+
 };

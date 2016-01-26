@@ -1,6 +1,7 @@
 #include "TextureManager.h"
 #include "Gordo.h"
 #include "Game.h"
+#include "Camera.h"
 
 Gordo::Gordo() {
 	m_velocity.setX(0.5);
@@ -13,7 +14,11 @@ Gordo::~Gordo() {};
 SDL_RendererFlip turnGordo = SDL_FLIP_NONE;
 void Gordo::draw()
 {
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), turnGordo);
+	Vector2D cameraPos = Camera::Instance()->getPosition();
+	Vector2D posX;
+	Vector2D posY;
+	posX = m_position - cameraPos;
+	TextureManager::Instance()->drawFrame(m_textureID, posX.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), turnGordo);
 }
 void Gordo::load(const LoaderParams* pParams)
 {

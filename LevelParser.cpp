@@ -177,7 +177,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				co->setm_pCollisionLayers(pLevel->getCollisionLayers());
 				if (dynamic_cast<Player*>(pGameObject)) {
 					Camera::Instance()->setTarget(dynamic_cast<Player*>(pGameObject));
-					//
+					
 				}
 			}
 			pGameObject->load(new LoaderParams(x, y, width, height,spriteNum, textureID, callbackID));

@@ -1,16 +1,42 @@
-﻿Build started 25/01/2016 23:16:34.
+﻿Build started 26/01/2016 21:09:17.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Zep.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp CollisionManager.cpp CollisionObject.cpp Game.cpp Gordo.cpp InputHandler.cpp Level.cpp LevelParser.cpp MenuButton.cpp MenuState.cpp PauseState.cpp PlayState.cpp Player.cpp StateParser.cpp TileLayer.cpp Zep.cpp main.cpp
+         PauseState.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(7): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(13): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(20): warning C4101: 'stateParser': unreferenced local variable
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\pausestate.cpp(78): warning C4018: '<': signed/unsigned mismatch
+         MenuState.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(10): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(17): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(24): warning C4101: 'stateParser': unreferenced local variable
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\menustate.cpp(89): warning C4018: '<': signed/unsigned mismatch
+         LevelParser.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\levelparser.cpp(142): warning C4101: 'animSpeed': unreferenced local variable
+         CollisionManager.cpp
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionmanager.cpp(5): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\collisionmanager.cpp(8): warning C4018: '<': signed/unsigned mismatch
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         main.cpp
          Zep.cpp
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(9): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\laura\documents\lasalle\2n\videojuegos1\ejercicio1\zep.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         TileLayer.cpp
+         StateParser.cpp
+         Player.cpp
+         PlayState.cpp
+         MenuButton.cpp
+         Level.cpp
+         InputHandler.cpp
+         Gordo.cpp
+         Game.cpp
+         CollisionObject.cpp
+         Camera.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_Image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib /LIBPATH:libs/SDL2_mixer/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib SDL2_mixer.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.lib" /MACHINE:X86 "Debug\1-helloworld.res"
          Debug\base64.obj
          Debug\Camera.obj
+         Debug\CollisionManager.obj
          Debug\CollisionObject.obj
          Debug\Game.obj
          Debug\GameObject.obj
@@ -33,9 +59,11 @@
          Debug\TileLayer.obj
          Debug\Vector2D.obj
          Debug\Zep.obj
-         1helloworld.vcxproj -> C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe
-     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)).
+     1>Level.obj : error LNK2001: unresolved external symbol "private: static class CollisionManager * CollisionManager::s_pInstance" (?s_pInstance@CollisionManager@@0PAV1@A)
+     1>Player.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Player::onCollision(class GameObject *)" (?onCollision@Player@@UAEXPAVGameObject@@@Z)
+     1>C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe : fatal error LNK1120: 2 unresolved externals
+     1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.81
+Time Elapsed 00:00:04.45

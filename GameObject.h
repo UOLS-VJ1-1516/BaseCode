@@ -25,8 +25,9 @@ public:
 	int getWidth() {
 		return m_width;
 	}
-	
-	//virtual void onCollision(GameObject* other) {};
+	SDL_Rect m_pBoundingBox;
+	SDL_Rect getBoundingBox() { return m_pBoundingBox; }
+	virtual void onCollision(GameObject* other);
 protected:
 	int m_width;
 	int m_spriteNum;

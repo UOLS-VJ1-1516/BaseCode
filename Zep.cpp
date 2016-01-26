@@ -14,7 +14,16 @@ SDL_RendererFlip turnZep = SDL_FLIP_HORIZONTAL;
 
 void Zep::draw()
 {
-	TextureManager::Instance()->drawFrame(m_textureID,(int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), turnZep);
+	Vector2D cameraPos = Camera::Instance()->getPosition();
+	Vector2D posX;
+	Vector2D posY;
+	//m_position.setX(m_position.getX() - cameraPos.getX());
+	//m_position.setY(m_position.getY() - cameraPos.getY());
+	//posX.setX(m_position.getX()-cameraPos.getX());
+	//posX.setY(m_position.getY());
+	posX = m_position - cameraPos;
+	
+	TextureManager::Instance()->drawFrame(m_textureID,posX.getX(), posX.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), turnZep);
 }
 void Zep::load(const LoaderParams* pParams)
 {
@@ -29,15 +38,14 @@ void Zep::load(const LoaderParams* pParams)
 
 }
 void Zep::update() {
-	Vector2D cameraPos = Camera::Instance()->getPosition();
+	
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
 
 	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		//m_position.setX(m_position.getX() + cameraPos.getX());
 	//}
 	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		m_position.setX(m_position.getX() - cameraPos.getX());
-		m_position.setY(m_position.getY() - cameraPos.getY());
+		
 	//}
 	
 	/*if (m_position.getX() <= 0) {

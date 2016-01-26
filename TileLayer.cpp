@@ -24,8 +24,8 @@ void TileLayer::update()
 		//m_position += m_velocity;
 		//m_velocity.setX(0.2);
 	//if (m_position.getX() / m_tileSize + m_numColumns < m_tileIDs[0].size()){
-	    m_position = Camera::Instance()->getPosition();
-		m_position.setX(m_position.getX() + Camera::Instance()->getPosition().getX() + m_numColumns);
+	  //  m_position = Camera::Instance()->getPosition();
+		//m_position.setX(m_position.getX() + Camera::Instance()->getPosition().getX() + m_numColumns);
 		//m_position.setY(Camera::Instance()->getPosition().getY());
 	//}
 	//m_position = Camera::Instance()->getPosition();
@@ -35,12 +35,14 @@ void TileLayer::update()
 
 void TileLayer::render()
 {
+	
 	int x, y, x2, y2 = 0;
 	x = m_position.getX() / m_tileSize;
 	y = m_position.getY() / m_tileSize;
-	x2 = int(m_position.getX()) % m_tileSize;
-	y2 = int(m_position.getY()) % m_tileSize;
 	Vector2D tempCamPos = Camera::Instance()->getPosition();
+	x2 = tempCamPos.getX();
+	y2 = int(m_position.getY()) % m_tileSize;
+	
 	int firstCol = tempCamPos.getX() / m_tileSize;
 	for (int i = 0; i < m_numRows+1; i++)
 	{
@@ -61,7 +63,7 @@ void TileLayer::render()
 			Tileset tileset = getTilesetByID(id);
 			id--;
 			
-			TextureManager::Instance()->drawTile(tileset.name.c_str(), tileset.margin, tileset.spacing, (col * m_tileSize) - x2, (i * m_tileSize) - y2,
+			TextureManager::Instance()->drawTile(tileset.name.c_str(), tileset.margin, tileset.spacing, (j * m_tileSize) - x2, (i * m_tileSize) - y2,
 				m_tileSize, m_tileSize, (id - (tileset.firstGridID - 1)) / tileset.numColumns,
 				(id - (tileset.firstGridID - 1)) % tileset.numColumns, Game::Instance()->getRender());
 			col++;

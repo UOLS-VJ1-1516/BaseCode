@@ -39,7 +39,7 @@ void Player::load(const LoaderParams* pParams)
 	m_currentRow = 0;
 	m_lastStop = Vector2D(0, 0);
 	m_currentFrame = 0;
-	m_maxVelocity = 30;
+	m_maxVelocity = 10;
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_acceleration.setX(0);
