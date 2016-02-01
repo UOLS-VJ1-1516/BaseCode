@@ -7,7 +7,14 @@
 #include "MenuButton.h"
 
 
+typedef void(*Callbacks)();
+
 class MenuState : public GameState {
+
+protected:
+	typedef void(*Callback)();
+	void setCallbacks(const std::vector<Callback>&callbacks);
+	std::vector<Callback>m_callbacksID;
 
 public:
 	virtual void update();
@@ -20,8 +27,9 @@ public:
 private:
 	static const std::string s_menuID;
 	std::vector<GameObject*>m_gameObjects;
-	static void s_menuTOplay();
-	static void s_exitMenu();
+	std::vector<std::string> m_TextureIDList;
 	std::vector<int> m_position;
 	SDL_Renderer *m_lRenderer;
+	static void s_menuTOplay();
+	static void s_exitMenu();
 };

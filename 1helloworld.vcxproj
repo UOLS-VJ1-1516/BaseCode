@@ -84,6 +84,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fons.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="StateParser.cpp" />
     <ClCompile Include="texturemanager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
@@ -100,6 +102,7 @@
     <ClInclude Include="Fons.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
@@ -110,6 +113,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="StateParser.h" />
     <ClInclude Include="texturemanager.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
@@ -130,6 +134,9 @@
     <Image Include="images\pause2.png" />
     <Image Include="images\playbtn.png" />
     <Image Include="images\teclas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="assets\Tiny.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
