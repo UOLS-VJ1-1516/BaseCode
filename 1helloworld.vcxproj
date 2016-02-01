@@ -111,6 +111,8 @@
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="texturemanager.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
