@@ -50,7 +50,7 @@ private:
 	std::vector<TileLayer*> m_CollisionLayers;
 	Player *m_Player;
 	std::vector<ObjectLayer*>*objectLayers;
-	CollisionManager m_CollisionManager;
+	CollisionManager *m_CollisionManager;
 	friend class LevelParser;
 	Level();
 };

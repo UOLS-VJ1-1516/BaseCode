@@ -34,6 +34,10 @@ void Gordo::load(const LoaderParams* pParams)
 }
 void Gordo::update() {
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+	m_pBoundingBox.x = m_position.getX();
+	m_pBoundingBox.y = m_position.getY();
+	m_pBoundingBox.h = m_height;
+	m_pBoundingBox.w = m_width;
 	if (m_position.getX() <= 0) {
 		
 		m_velocity.setX(0.8);

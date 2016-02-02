@@ -1,5 +1,13 @@
 #include "CollisionManager.h"
 
+CollisionManager::CollisionManager()
+{
+}
+
+CollisionManager::~CollisionManager()
+{
+}
+
 void CollisionManager::checkCollision(GameObject * pPlayer, const std::vector<ObjectLayer*>* objectLayers)
 {
 	for (int i = 0; i < objectLayers->size(); i++)

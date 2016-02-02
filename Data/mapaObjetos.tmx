@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-up" width="60" height="19" tilewidth="32" tileheight="32" nextobjectid="22">
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="90" height="19" tilewidth="32" tileheight="32" nextobjectid="22">
  <properties>
   <property name="gordo" value="dragon.png"/>
   <property name="player" value="yoshi.png"/>
   <property name="zep" value="PlantaC.png"/>
  </properties>
- <tileset firstgid="1" name="mapa" tilewidth="32" tileheight="32" tilecount="15" spacing="0" margin="0">
+ <tileset firstgid="1" name="mapa" tilewidth="32" tileheight="32" tilecount="15" spacing ="0" margin="0">
   <image source="mapa.png" width="96" height="160"/>
  </tileset>
  <tileset firstgid="16" name="Gordo" tilewidth="100" tileheight="100" tilecount="5">
@@ -17,12 +17,12 @@
  <tileset firstgid="33" name="Player" tilewidth="43" tileheight="57" tilecount="9">
   <image source="yoshi.png" width="429" height="57"/>
  </tileset>
- <layer name="Capa de Patrones 1" width="60" height="19">
+ <layer name="Capa de Patrones 1" width="90" height="19">
   <properties>
    <property name="isCollision" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztk40KwyAMhNONrs5g3/9xJ2xCepyuUkHYcvBhTW1+rYjL5XK5XC7Xf+phmK2nYbRKjZthZt0BcgmD/Jb+bQ1m1L0TrojN8xtX6g4VrNZOzsYYCWr92HGNGc0kec+qrEvmlrmbM601mr39doH3PSiB2WMlZk/O9v5gL9iazB7vXyK0arS+kAjP5TyLyXLFGCxn7AnrT61Xm/C6bN1KfKJfrFHl2DeMuYMPNTYWh+WbiA+VY/5svmf6VOsB2hLEL+9ZTJztL8Hmy/7bF5IjD5o=
+   eJztVtEOgzAI5EXn2nT//7kz2UjwdmCr7kkuueCwA3rQRpFEIpFIJBKJRCKRSPRgNrwrnoZXQ7V9GN5R70W2GiwXxdW+PQLeSe8X4Rmw+d3jEb3nHf4bi0OLaZC9Oa4kYvr6mR3dg5eH+b36ysq6sslnNtVa6JrIFvMbUQ6yEjJ/cXLu1RxZVj/zV/Cf0Qp7wGwT3iOB98pIWxsLWeBZ17OcXq2lY0+sfubHu9OLh3vbm2evL6PzbPWu8hsT46K2Vbb9QrwgRjW+5jzbc832PzLPkV7R+dCasPYqW93YPPf0x9MefQ3y63uWE2cKtY/0tmiO3/bPrtVc0blk3xDRup7vj9H/HyHLye5HvD+sz+ptwfQU2WqIa9G+AbnwE/o=
   </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
@@ -54,12 +54,12 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Decoracion" width="60" height="19" visible="0">
+ <layer name="Decoracion" width="90" height="19">
   <properties>
    <property name="isCollision" value="false"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzcEJAAAIAzE3cP9tXUGk+ErepVcFAACkdWCz+Ug3L10A/g0xrgBb
+   eJztzcEJAAAIAzE3cP9tXUHEj5i8Sy8CAAAA4Idc2HQ+tpuTLgDARQVh9QBb
   </data>
  </layer>
 </map>

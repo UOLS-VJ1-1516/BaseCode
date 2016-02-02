@@ -40,6 +40,10 @@ void Zep::load(const LoaderParams* pParams)
 void Zep::update() {
 	
 	m_currentFrame = (int)(((Game::Instance()->getTicks()) / 100) % m_spriteNum);
+	m_pBoundingBox.x = m_position.getX();
+	m_pBoundingBox.y = m_position.getY();
+	m_pBoundingBox.h = m_height;
+	m_pBoundingBox.w = m_width;
 
 	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		//m_position.setX(m_position.getX() + cameraPos.getX());

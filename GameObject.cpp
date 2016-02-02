@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Game.h"
 
 GameObject::GameObject()
 {
@@ -31,5 +32,9 @@ void GameObject::update()
 
 void GameObject::onCollision(GameObject * other)
 {
+	Player * player = dynamic_cast<Player*>(other);
+	if (player != NULL) {
+		Game::Instance()->getGameStateMachine()->pushState(new MenuState());
+	}
 	
 }

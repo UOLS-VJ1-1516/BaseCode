@@ -2,11 +2,12 @@
 #include "Layer.h"
 #include <vector>
 #include "GameObject.h"
-#include "TileLayer.h"
+
+
 class ObjectLayer : public Layer
 {
 public:
-	
+	ObjectLayer();
 	virtual void render();
 	virtual void update();
 	std::vector< GameObject* >* getGameObjects()
@@ -15,5 +16,4 @@ public:
 	}
 private:
 	std::vector< GameObject* > m_gameObjects;
-	//const std::vector< Tileset > &m_tilesets; //tilesets owned by level
 };

@@ -53,6 +53,10 @@ void Player::update() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
 
+	m_pBoundingBox.x = m_position.getX();
+	m_pBoundingBox.y = m_position.getY();
+	m_pBoundingBox.h = m_height;
+	m_pBoundingBox.w = m_width;
 
 	if (m_velocity.getX() > 0) {
 		decrementAccelerationX();
@@ -138,11 +142,11 @@ void Player::stopY(int positionY)
 
 void Player::incrementAccelerationX()
 {
-	m_acceleration.setX(m_acceleration.getX() + 0.1);
+	m_acceleration.setX(m_acceleration.getX() + 0.05);
 }
 void Player::decrementAccelerationX()
 {
-	m_acceleration.setX(m_acceleration.getX() - 0.1);
+	m_acceleration.setX(m_acceleration.getX() - 0.05);
 }
 void Player::incrementAccelerationY()
 {
@@ -159,7 +163,19 @@ void Player::jump()
  	m_velocity.setY(-m_maxVelocity);
 	mJump = true;
 }
-
+void Player::onCollision(GameObject* go)
+{
+	string tipo = go->type();
+	if (tipo == "Zep")
+	{
+		printf("toco zep");
+		
+	}
+	if (tipo == "Gordo")
+	{
+		
+	}
+}
 
 void Player::clean() {
 };

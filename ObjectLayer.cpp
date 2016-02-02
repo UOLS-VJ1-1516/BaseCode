@@ -2,11 +2,16 @@
 
 
 
+
 void ObjectLayer::update()
 {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
+}
+
+ObjectLayer::ObjectLayer()
+{
 }
 
 void ObjectLayer::render()
