@@ -24,16 +24,19 @@ void Fons::load(float x, float y, int width, int height,
 
 void Fons::load(const LoadPar* lPar)
 {
-	m_width = lPar->getwidth();
-	m_height = lPar->getheight();
-	m_position.setX(lPar->getx());
-	m_position.setY(lPar->gety());
-	m_texid = lPar->gettexid();
-	m_currentRow = lPar->getcurrentRow();
-	m_sprits = lPar->getsprits();
-	m_anchopantalla = lPar->getanchopantalla();
-	m_altopantalla = lPar->getaltopantalla();
-	m_flip = lPar->getflip();
+	m_width = lPar->getWidth();
+	m_height = lPar->getHeight();
+	m_position.setX(lPar->getX());
+	m_position.setY(lPar->getY());
+	m_texid = lPar->getTextureID();
+	m_sprits = lPar->getNumSprites();
+	
+
+	m_currentFrame = 1;
+	m_currentRow = 1;
+	m_sprits = 1;
+	m_flip = 1;
+
 
 };
 void Fons::draw()

@@ -35,6 +35,8 @@
 
 		std::map<std::string, SDL_Texture*> m_textureMap;
 
+		void clearFromTextureMap(std::string id);
+
 	private:
 		
 		static TextureManager* s_pInstance;

@@ -8,6 +8,11 @@ Player::Player() {};
 Player::~Player() {};
 bool quit;
 int flag;
+
+
+
+
+
 void Player::load(float x, float y, int width, int height,
 	std::string texid)
 {
@@ -19,19 +24,25 @@ void Player::load(float x, float y, int width, int height,
 	m_currentFrame = 1;
 	m_currentRow = 1;
 	m_sprits = 1;
+	m_flip = 1;
 	
 }
 
 void Player::load(const LoadPar* lPar)
 {
-	m_width = lPar->getwidth();
-	m_height = lPar->getheight();
-	m_position.setX(lPar->getx());
-	m_position.setY(lPar->gety());
-	m_texid = lPar->gettexid();
-	m_currentRow = lPar->getcurrentRow();
-	m_sprits = lPar->getsprits();
-	m_flip = lPar->getflip();
+	m_width = lPar->getWidth();
+	m_height = lPar->getHeight();
+	m_position.setX(lPar->getX());
+	m_position.setY(lPar->getY());
+	m_texid = lPar->getTextureID();
+	m_sprits = lPar->getNumSprites();
+	
+
+	m_currentFrame = 1;
+	m_currentRow = 1;
+	m_sprits = 1;
+	m_flip = 1;
+
 
 	m_velocity.setX(0);  //Velocidad horizontal inicial
 	m_velocity.setY(0);  //Velocidad verical inicial
@@ -41,8 +52,6 @@ void Player::load(const LoadPar* lPar)
 	m_maxacceleration.setY(30);   
 	m_maxaccelerationneg.setX(-20);
 	m_maxaccelerationneg.setY(-30);
-    m_anchopantalla=lPar->getanchopantalla();  //Para que sea mas facil de adaptar
-    m_altopantalla=lPar->getaltopantalla();
 	m_friction.setX(0.5);  //Será mi frenada
 
 };

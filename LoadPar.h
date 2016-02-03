@@ -3,52 +3,48 @@
 #define LOADPAR_H
 #include <string>
 #include "Vector2D.h"
+#pragma once
+#include <string>
 
-class LoadPar {
+class LoadPar
+{
+public:
 
-public:	
-
-	LoadPar(float x, float y, int width, int height, const char* id, int currentRow, int sprits, int flip, int anchopantalla, int altopantalla) {
+	LoadPar(int x, int y, int width, int height, int Numsprites, std::string textureID, int callbackID=0, int animSpeed = 0)
+	{
 		m_x = x;
 		m_y = y;
-		m_width = width;
 		m_height = height;
-		m_currentRow = currentRow;
-		m_texid = id;
-		m_sprits = sprits;
-		m_flip = flip;
-		m_anchopantalla = anchopantalla;
-		m_altopantalla = altopantalla;
+		m_width = width;
+		m_textureID = textureID;
+		m_numsprites = Numsprites;
+		m_callbackID = callbackID;
+		m_animSpeed=animSpeed;
 	}
 
 
 
-	float getx() const { return m_x; }
-	float gety() const { return m_y; }
-	int getwidth() const { return m_width; }
-	int getheight() const { return m_height; }
-	int getcurrentRow() const { return m_currentRow; }
-	int getsprits() const { return m_sprits; }
-	int getflip() const { return m_flip; }
-	int getanchopantalla() const { return m_anchopantalla; }
-	int getaltopantalla() const { return m_altopantalla; }
-	const char* gettexid() const { return m_texid; }
-
-
+	int getX() const { return m_x; }
+	int getY() const { return m_y; }
+	int getWidth() const { return m_width; }
+	int getHeight() const { return m_height; }
+	int getAnimspeed() const { return m_animSpeed; }
+	int getCallbackID() const { return m_callbackID; }
+	std::string getTextureID() const { return m_textureID; }
+	int getNumSprites() const { return m_numsprites; }
 
 private:
+	int m_x;
+	int m_y;
 	int m_width;
 	int m_height;
-	int m_currentFrame;
-	int m_anchopantalla;
-	int m_altopantalla;
-	int m_currentRow;
-	float m_x;
-	float m_y;
-	int m_flip;
-	int m_sprits;
-	const char* m_texid;
-
+	int m_callbackID;
+	int m_animSpeed;
+	int m_friction;
+	int m_numsprites;
+	std::string m_textureID;
+	
+	
 
 };
 #endif LOADPAR_H

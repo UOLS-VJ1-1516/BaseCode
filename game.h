@@ -43,9 +43,7 @@ private:
 	PlayState * play;
 	MenuState * menu;
 
-	//GameStateMachine *m_pGameStateMachine;
-	//  bool m_bHasPendingState;
-    //GameState *m_pPendingState;
+
 
 public:
 	~Game() {}

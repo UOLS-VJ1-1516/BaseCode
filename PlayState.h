@@ -5,12 +5,12 @@
 class PlayState : public GameState {
 
 public:
-	virtual void update();
-	virtual void render();
-	virtual bool onEnter();
-	virtual bool onExit();
-
-	virtual std::string getStateID() const { return s_playID; };
+	void update();
+	void render();
+	bool onEnter();
+	bool onExit();
+	
+	std::string getStateID() const;
 
 private:
 	static const std::string s_playID;
@@ -18,6 +18,7 @@ private:
 	static void s_exitMenu();
 	std::vector<GameObject*> m_gObjects;
 	SDL_Renderer *m_pRenderer;
+	std::vector<std::string> m_textureIDList;
 
 
 

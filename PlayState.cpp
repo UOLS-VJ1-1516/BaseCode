@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "PauseState.h"
+#include "StateParser.h"
 #include "Game.h"
 
 const std::string PlayState::s_playID = "PLAY";
@@ -26,6 +27,16 @@ void PlayState::render() {
 bool PlayState::onEnter() {
 
 
+	// parse the state
+	StateParser stateParser;
+	stateParser.parseState("./images/Tiny.xml", s_playID, &m_gObjects,
+		&m_textureIDList);
+	std::cout << "entering PlayState\n";
+
+	
+	return true;
+
+	/*
 	//-----Cargo la pantalla!
 	if (!TextureManager::Instance()->load("./images/bird.png", "bird1", Game::Instance()->GetRenderer())) { return false; }
 	if (!TextureManager::Instance()->load("./images/badbird.png", "badbird", Game::Instance()->GetRenderer())) { return false; }
@@ -68,12 +79,26 @@ bool PlayState::onEnter() {
 	m_gObjects.push_back(coin1);
 	m_gObjects.push_back(fons);
 	m_gObjects.push_back(fons2);
-
-	return true;
+	
+	return true;*/
 }
 
 
 bool PlayState::onExit() {
-	m_gObjects.clear();
+	// clear the texture manager
+	for (int i = 0; i < m_textureIDList.size(); i++)
+	{
+		TextureManager::Instance()->
+			clearFromTextureMap(m_textureIDList[i]);
+	}
+
+	m_textureIDList.clear();
+	/*
+	m_gObjects.clear();*/
 	return true;
 }
+
+std::string PlayState::getStateID() const {
+	return PlayState::s_playID;
+};
+

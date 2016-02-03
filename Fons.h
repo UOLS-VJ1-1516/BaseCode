@@ -14,5 +14,6 @@ public:
 	void load(float x, float y, int width, int height, std::string texid);
 	void update();
 	void clean();
+	static GameObject * Create() { return new Fons(); }
 };
 #endif  FONS_H
