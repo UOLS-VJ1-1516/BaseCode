@@ -2,12 +2,12 @@
 <STATES>
   <MENU>
     <TEXTURES>
-      <texture filename="playbtn.bmp" ID="playbtn" />
-      <texture filename="exitbtn.bmp" ID="exitbtn" />
+      <texture filename="play.png" ID="playbtn" />
+      <texture filename="exit.png" ID="exitbtn" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="MenuButton" x="250" y="200" width="400" height="100" spriteNum="0" textureID="playbtn" callbackID="1" />
-      <gameobject type="MenuButton" x="250" y="400" width="400" height="100" spriteNum="0" textureID="exitbtn" callbackID="2" />
+      <gameobject type="MenuButton" x="300" y="200" width="200" height="100" spriteNum="0" textureID="playbtn" callbackID="1" />
+      <gameobject type="MenuButton" x="300" y="400" width="200" height="100" spriteNum="0" textureID="exitbtn" callbackID="2" />
     </GAMEOBJECTS>
   </MENU>
   <PLAY>
@@ -24,13 +24,23 @@
   </PLAY>
   <PAUSE>
     <TEXTURES>
-      <texture filename="resume.bmp" ID="resume" />
-      <texture filename="mainmenu.bmp" ID="mainmenu" />
+      <texture filename="resume.png" ID="resume" />
+      <texture filename="mainMenu.png" ID="mainmenu" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="MenuButton" x="250" y="200" width="200" height="80" spriteNum="0" textureID="resume" callbackID="1" />
-      <gameobject type="MenuButton" x="250" y="400" width="200" height="80" spriteNum="0" textureID="mainmenu" callbackID="2" />
+      <gameobject type="MenuButton" x="300" y="200" width="200" height="100" spriteNum="0" textureID="resume" callbackID="1" />
+      <gameobject type="MenuButton" x="300" y="400" width="200" height="100" spriteNum="0" textureID="mainmenu" callbackID="2" />
     </GAMEOBJECTS>
   </PAUSE>
+  <GAMEOVER>
+    <TEXTURES>
+      <texture filename="mainMenu.png" ID="mainmenu" />
+    <texture filename="gameOver.png" ID="gameOver" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="300" y="400" width="200" height="100" spriteNum="0" textureID="mainmenu" callbackID="1" />
+      <gameobject type="MenuButton" x="200" y="100" width="375" height="212" spriteNum="0" textureID="gameOver"/>
+    </GAMEOBJECTS>
+  </GAMEOVER>
 </STATES>
 

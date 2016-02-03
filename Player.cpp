@@ -7,6 +7,7 @@
 
 Player::Player() {
 	mJump = false; 
+	s_gameObjectID = "Player";
 	
 };
 
@@ -53,10 +54,6 @@ void Player::update() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
 
-	m_pBoundingBox.x = m_position.getX();
-	m_pBoundingBox.y = m_position.getY();
-	m_pBoundingBox.h = m_height;
-	m_pBoundingBox.w = m_width;
 
 	if (m_velocity.getX() > 0) {
 		decrementAccelerationX();
@@ -83,10 +80,13 @@ void Player::update() {
 	}
 	m_position += m_velocity + m_acceleration * 1 / 2;
 	m_currentFrame = (abs((int)(m_position - m_lastStop).length()) / pixelsToChangeFrame) % m_spriteNum;
-
+	/*if (m_position.getY() > 500) {
+		Game::Instance()->getGameStateMachine()->pushState(new GameOverState());
+	}*/
 	InputHandler::Instance()->update();
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) 
+	{
 		incrementAccelerationX();
 		turn = SDL_FLIP_HORIZONTAL;
 	}
@@ -122,6 +122,11 @@ void Player::update() {
 	incrementAccelerationY();
 	Camera::Instance()->setPosition(m_position);
 	CollisionObject::update();
+
+	m_pBoundingBox.x = m_position.getX();
+	m_pBoundingBox.y = m_position.getY();
+	m_pBoundingBox.h = m_height;
+	m_pBoundingBox.w = m_width;
 }
 
 void Player::stopX(int positionX)
@@ -166,14 +171,15 @@ void Player::jump()
 void Player::onCollision(GameObject* go)
 {
 	string tipo = go->type();
-	if (tipo == "Zep")
+	if (tipo == "zep")
 	{
-		printf("toco zep");
+		std::cout << "ZEP";
+		Game::Instance()->getGameStateMachine()->pushState(new GameOverState());
 		
 	}
-	if (tipo == "Gordo")
+	if (tipo == "gordo")
 	{
-		
+		Game::Instance()->getGameStateMachine()->pushState(new GameOverState());
 	}
 }
 

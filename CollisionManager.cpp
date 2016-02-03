@@ -12,14 +12,16 @@ void CollisionManager::checkCollision(GameObject * pPlayer, const std::vector<Ob
 {
 	for (int i = 0; i < objectLayers->size(); i++)
 	{
-		std::vector<GameObject*>* GOs = objectLayers->at(i)->getGameObjects();
-		for (int e = 0; e < GOs->size(); e++)
+		std::vector<GameObject*>* GameObjects = objectLayers->at(i)->getGameObjects();
+
+		
+			for (int e = 0; e < GameObjects->size(); e++)
 		{
-			if (pPlayer != GOs->at(e))
+			if (pPlayer != GameObjects->at(e))
 			{
-				if (RectRect(pPlayer->getBoundingBox(), GOs->at(e)->getBoundingBox()))
+				if (RectRect(pPlayer->getBoundingBox(), GameObjects->at(e)->getBoundingBox()))
 				{
-					pPlayer->onCollision(GOs->at(e));
+					pPlayer->onCollision(GameObjects->at(e));
 				}
 			}
 		}

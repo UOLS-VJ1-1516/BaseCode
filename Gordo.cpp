@@ -4,6 +4,7 @@
 #include "Camera.h"
 
 Gordo::Gordo() {
+	s_gameObjectID = "Gordo";
 	m_velocity.setX(0.5);
 	m_velocity.setY(0);
 	m_frictionRight.setX(m_velocity.getX() - 0.08);

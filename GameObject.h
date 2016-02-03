@@ -28,8 +28,9 @@ public:
 	SDL_Rect m_pBoundingBox;
 	SDL_Rect getBoundingBox() { return m_pBoundingBox; }
 	std::string s_gameObjectID;
-	virtual std::string type() { return s_gameObjectID; }
+	
 	virtual void onCollision(GameObject* other);
+	virtual std::string type() { return s_gameObjectID; }
 protected:
 	int m_width;
 	int m_spriteNum;

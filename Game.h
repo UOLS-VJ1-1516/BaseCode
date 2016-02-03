@@ -8,6 +8,7 @@
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "GameOverState.h"
 #include "PauseState.h"
 
 

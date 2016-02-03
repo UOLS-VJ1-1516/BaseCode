@@ -41,7 +41,10 @@ public:
 	std::vector<TileLayer*>* getCollisionLayers() {
 		return &m_CollisionLayers;
 	}
-
+	std::vector<ObjectLayer*>* getObjectLayers() { return &m_ObjectLayers; }
+	Player * getPlayer() {
+		return m_Player;
+	}
 	
 
 private:
@@ -49,7 +52,7 @@ private:
 	std::vector<Layer*> m_layers;
 	std::vector<TileLayer*> m_CollisionLayers;
 	Player *m_Player;
-	std::vector<ObjectLayer*>*objectLayers;
+	std::vector<ObjectLayer*>m_ObjectLayers;
 	CollisionManager *m_CollisionManager;
 	friend class LevelParser;
 	Level();

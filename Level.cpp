@@ -18,7 +18,7 @@ void Level::update()
 	{
 		m_layers[i]->update();
 	}
-	m_CollisionManager->checkCollision(m_Player,objectLayers);
+	m_CollisionManager->checkCollision(getPlayer() , getObjectLayers());
 	
 }
 

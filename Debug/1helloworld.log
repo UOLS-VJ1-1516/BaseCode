@@ -1,6 +1,9 @@
-﻿Build started 02/02/2016 16:59:47.
+﻿Build started 03/02/2016 17:19:14.
      1>Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp
+         Camera.cpp
+       Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_Image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib /LIBPATH:libs/SDL2_mixer/lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib SDL2_mixer.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.lib" /MACHINE:X86 "Debug\1-helloworld.res"
          Debug\base64.obj
          Debug\Camera.obj
@@ -9,6 +12,7 @@
          Debug\Game.obj
          Debug\GameObject.obj
          Debug\GameObjectFactory.obj
+         Debug\GameOverState.obj
          Debug\GameStateMachine.obj
          Debug\InputHandler.obj
          Debug\LevelParser.obj
@@ -27,12 +31,9 @@
          Debug\TileLayer.obj
          Debug\Vector2D.obj
          Debug\Zep.obj
-     1>tinyxmlSTL.lib(tinyxml.obj) : warning LNK4099: PDB 'tinyxmlSTL.pdb' was not found with 'tinyxmlSTL.lib(tinyxml.obj)' or at 'C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\tinyxmlSTL.pdb'; linking object as if no debug info
-     1>tinyxmlSTL.lib(tinyxmlerror.obj) : warning LNK4099: PDB 'tinyxmlSTL.pdb' was not found with 'tinyxmlSTL.lib(tinyxmlerror.obj)' or at 'C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\tinyxmlSTL.pdb'; linking object as if no debug info
-     1>tinyxmlSTL.lib(tinyxmlparser.obj) : warning LNK4099: PDB 'tinyxmlSTL.pdb' was not found with 'tinyxmlSTL.lib(tinyxmlparser.obj)' or at 'C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\tinyxmlSTL.pdb'; linking object as if no debug info
          1helloworld.vcxproj -> C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\Debug\1-helloworld.exe
      1>Done Building Project "C:\Users\Laura\Documents\LaSalle\2n\Videojuegos1\Ejercicio1\1helloworld.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.81
+Time Elapsed 00:00:01.49

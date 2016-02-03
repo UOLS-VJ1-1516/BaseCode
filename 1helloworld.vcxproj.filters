@@ -58,6 +58,9 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Collisions</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>GameStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

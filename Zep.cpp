@@ -4,6 +4,7 @@
 #include "Camera.h"
 
 Zep::Zep() {
+	s_gameObjectID = "Zep";
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_frictionRight.setX(m_velocity.getX() - 0.08);
@@ -45,26 +46,7 @@ void Zep::update() {
 	m_pBoundingBox.h = m_height;
 	m_pBoundingBox.w = m_width;
 
-	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-		//m_position.setX(m_position.getX() + cameraPos.getX());
-	//}
-	//if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		
-	//}
 	
-	/*if (m_position.getX() <= 0) {
-		m_velocity.setX(0.1);
-		m_velocity.setX((m_velocity.getX() - m_frictionRight.getX()));
-		turnZep = SDL_FLIP_HORIZONTAL;
-	}
-
-	else if (m_position.getX() >=1050) {
-		m_velocity.setX(-0.1);
-		m_velocity.setX((m_velocity.getX() + m_frictionLeft.getX()));
-		turnZep = SDL_FLIP_NONE;
-
-
-	}*/
 	GameObject::update();
 
 

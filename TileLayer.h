@@ -24,7 +24,7 @@ public:
 	void setNumColumns(int numCols) { m_numColumns = numCols; }
 	Vector2D& getPosition() { return m_position; }
 	int getTileSize() { return m_tileSize; }
-
+	
 	Tileset getTilesetByID(int tileID);
 private:
 
@@ -34,7 +34,7 @@ private:
 	//int m_tileHeight; 
 	Vector2D m_position;
 	Vector2D m_velocity;
-	bool isCollider;
+	bool m_isCollider;
 	static std::vector<Tileset> m_tilesets;
 	std::vector< std::vector< int > > m_tileIDs;
 };

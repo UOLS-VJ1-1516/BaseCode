@@ -27,6 +27,7 @@ public:
 	void decrementAccelerationX();
 	void decrementAccelerationY();
 	void incrementAccelerationX();
+	void checkCamera();
 	SDL_RendererFlip turn = SDL_FLIP_HORIZONTAL;
 
 
@@ -34,7 +35,9 @@ public:
 private:
 	void stopX(int);
 	void stopY(int);
+	int m_camState;
 	Vector2D m_lastStop;
 	bool mJump;
+	bool m_ResetCamera;
 
 };
