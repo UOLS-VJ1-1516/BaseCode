@@ -49,7 +49,7 @@ void Enemy::draw(SDL_Renderer* Renderer) {
 }
 
 void Enemy::update() {
-
+	
 	m_position.setX(m_position.getX()-3);
 	if (m_position.getX() < -200.00)m_position.setX((float)m_anchopantalla);
 	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
