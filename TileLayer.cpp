@@ -14,7 +14,7 @@ TileLayer::TileLayer(int tileWidth, int tileHeight, const std::vector<Tileset>& 
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_numCol = (Game::Instance()->getWindowWidth() / m_tileWidth);
-	m_numRow = (Game::Instance()->getWindowHeight() / m_tileHeight);
+	m_numRow = (Game::Instance()->getWindowHeight() / m_tileHeight)+1;
 }
 
 TileLayer::~TileLayer(void) {

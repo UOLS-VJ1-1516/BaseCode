@@ -2,6 +2,10 @@
 #include "TextureManager.h"
 #include "game.h"
 #include "Camera.h"
+#include "GameOverState.h"
+#include "SoundManager.h"
+#include "WinState.h"
+
 
 Player::Player() {
 	m_jump = true;
@@ -34,18 +38,18 @@ void Player::load(const LoaderParams* pParams) {
 void Player::draw() {
 	//Si la velocidad es negativa, el sprite mira hacia la izquierda
 	if (m_velocity.getX() < 0) {
-		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_HORIZONTAL);
+		TextureManager::Instance()->drawFrame(m_textureID, m_position.getX() - TheCamera::Instance()->getPosition().getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_HORIZONTAL);
 		m_orientation = SDL_FLIP_HORIZONTAL;
 	}
 	//Si la velocidad es positiva, el sprite mira hacia la derecha
 	else if (m_velocity.getX() > 0) {
 		//refresh img
-		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_NONE);
+		TextureManager::Instance()->drawFrame(m_textureID, m_position.getX() - TheCamera::Instance()->getPosition().getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_NONE);
 		m_orientation = SDL_FLIP_NONE;
 	}
 	else {
 		//refresh img
-		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, 3, m_currentRow, Game::Instance()->getRender(), m_orientation);
+		TextureManager::Instance()->drawFrame(m_textureID, m_position.getX() - TheCamera::Instance()->getPosition().getX()  , (int)m_position.getY(), m_width, m_height, 3, m_currentRow, Game::Instance()->getRender(), m_orientation);
 	}
 	
 }
@@ -75,7 +79,8 @@ void Player::update() {
 		stopX((Game::Instance()->getWindowWidth()) - m_width);
 	}
 	if (m_position.getY() > ((Game::Instance()->getWindowHeight()) - m_height)) {
-		stopY((Game::Instance()->getWindowHeight()) - m_height);
+		//stopY((Game::Instance()->getWindowHeight()) - m_height);
+		Game::Instance()->getGameStateMachine()->pushState(new WinState());
 	}
 	if (m_velocity.getX() < 0) {
 		incrementAccelerationX();
@@ -130,6 +135,7 @@ void Player::update() {
 	}
 
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+		SoundManager::Instance()->playSound("jump", 0);
 		if (!m_jump) {
 			jump();
 			m_jump = true;

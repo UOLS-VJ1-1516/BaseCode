@@ -1,5 +1,6 @@
 #include "PauseState.h"
 #include "game.h"
+#include "SoundManager.h"
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
@@ -55,8 +56,10 @@ void PauseState::setCallbacks(const std::vector<Callback>& callbacks) {
 
 void PauseState::s_pauseToMain() {
 	Game::Instance()->getGameStateMachine()->changeState(new MenuState());
+	SoundManager::Instance()->stopMusic();
 }
 
 void PauseState::s_resumePlay() {
 	Game::Instance()->getGameStateMachine()->popState();
+	SoundManager::Instance()->playMusic("intro", 0);
 }

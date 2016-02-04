@@ -1,7 +1,7 @@
 #include "game.h"
 #include "SDL.h"
 
-const long FIXED_TIME = 20;
+const long FIXED_TIME = 1000.0f / 60;
 const int WIDTH = 800;
 const int HEIGHT = 600;
 

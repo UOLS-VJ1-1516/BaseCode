@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "LevelParser.h"
+#include "SoundManager.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -13,10 +14,12 @@ void PlayState::update() {
 
 	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
 		Game::Instance()->setIsRunning(false);
+		SoundManager::Instance()->stopMusic();
 	}
 
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
+		SoundManager::Instance()->stopMusic();
 	}
 }
 
@@ -33,6 +36,7 @@ bool PlayState::onEnter() {
 	//StateParser::parseState("assets/xml/objects.xml", s_playID, &m_gameObjects, &m_texturesIDList);
 	//LayerParser lp;
 	//tl = lp.parseTileLayer("assets/tilMap.tmx");
+	SoundManager::Instance()->playMusic("intro", 0);
 	LevelParser levp;
 	level = levp.parseLevel("assets/mapBackground.tmx");
 	return true;
@@ -49,7 +53,7 @@ bool PlayState::onExit() {
 		TextureManager::Instance()->clearFromTextureMap(m_texturesIDList[i]);
 	}
 	m_texturesIDList.clear();
-
+	SoundManager::Instance()->stopMusic();
 	return true;
 }
 

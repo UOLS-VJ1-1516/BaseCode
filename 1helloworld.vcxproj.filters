@@ -51,6 +51,11 @@
     <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="WinState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -100,6 +105,13 @@
     <ClInclude Include="CollisionObject.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="GameOverState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="WinState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObjects">
