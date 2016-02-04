@@ -1,5 +1,6 @@
 #include "game.h"
 #include "GameObjectFactory.h"
+#include "SoundManager.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -29,6 +30,11 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 			GameObjectFactory::Instance()->Register("StaticObject", &StaticObject::Create);
 			GameObjectFactory::Instance()->Register("MenuButton", &MenuButton::Create);
 
+			//Carga de sonidos
+			SoundManager::Instance()->loadMusic("assets/sounds/intro.wav", "intro");
+			SoundManager::Instance()->loadSound("assets/sounds/jump.wav", "jump");
+			SoundManager::Instance()->loadMusic("assets/sounds/win.wav", "win");
+			SoundManager::Instance()->loadMusic("assets/sounds/gameOver.wav", "gameOver");
 			m_pGameStateMachine->pushState(new MenuState());
 		}
 		
