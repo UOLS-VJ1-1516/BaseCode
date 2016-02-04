@@ -26,7 +26,6 @@ bool PauseState::onEnter() {
 	m_callbacks.push_back(s_menuTOPlay);
 	m_callbacks.push_back(s_menuTOMain);
 	setCallbacks(m_callbacks);
-	std::cout << "entering PauseState\n";
 	return true;
 	
 
@@ -54,13 +53,13 @@ bool PauseState::onEnter() {
 }
 bool PauseState::onExit() {
 	
-	// clear the texture manager
+
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
 		TextureManager::Instance()->
 			clearFromTextureMap(m_textureIDList[i]);
 	}
-	//m_gameObjects.clear();
+	m_gameObjects.clear();
 
 	return true;
 }

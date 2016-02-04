@@ -3,21 +3,21 @@
   <MENU>
     <TEXTURES>
       <texture filename="./images/playbtn.png" ID="playbtn" />
-      <texture filename="./images/Exit2.png" ID="exitbtn" />
+      <texture filename="./images/Exit.png" ID="exitbtn" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="MenuButton" x="500"  y="200" width="500" height="100" Numsprites="0" textureID="playbtn" callbackID="1" />
-      <gameobject type="MenuButton" x="550" y="800" width="295" height="105" Numsprites="0" textureID="exitbtn" callbackID="2" />
+      <gameobject type="MenuButton" x="500"  y="350" width="500" height="100" Numsprites="3" textureID="playbtn" callbackID="1" />
+      <gameobject type="MenuButton" x="600" y="500" width="295" height="105" Numsprites="0" textureID="exitbtn" callbackID="2" />
     </GAMEOBJECTS>
   </MENU>
   <PLAY>
     <TEXTURES>
-      <texture filename="./images/bird.png" ID="bird" />
+      <texture filename="./images/ninja.png" ID="ninja" />
       <texture filename="./images/coin.png" ID="coin" />
       <texture filename="./images/badbird.png" ID="badbird" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="Player" x="200" y="400" width="200" height="220" Numsprites="6" textureID="bird" callbackID="0" />
+      <gameobject type="Player" x="200" y="400" width="200" height="200" Numsprites="6" textureID="ninja" callbackID="0" />
       <gameobject type="Enemy" x="400" y="500" width="200" height="200" Numsprites="5" textureID="coin" callbackID="0" />
       <gameobject type="Enemy" x="500" y="200" width="200" height="150" Numsprites="7" textureID="badbird" callbackID="0" />
     </GAMEOBJECTS>
@@ -28,8 +28,8 @@
       <texture filename="./images/Exit2.png" ID="saliramenu" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="MenuButton" x="250" y="200" width="200" height="80" Numsprites="3" textureID="continue" callbackID="1" />
-      <gameobject type="MenuButton" x="250" y="400" width="200" height="80" Numsprites="3" textureID="saliramenu" callbackID="2" />
+      <gameobject type="MenuButton" x="500" y="350" width="400" height="140" Numsprites="3" textureID="continue" callbackID="1" />
+      <gameobject type="MenuButton" x="600" y="650" width="295" height="105" Numsprites="3" textureID="saliramenu" callbackID="2" />
     </GAMEOBJECTS>
   </PAUSE>
 </STATES>
