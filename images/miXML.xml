@@ -28,8 +28,8 @@
       <texture filename="./images/Exit2.png" ID="saliramenu" />
     </TEXTURES>
     <GAMEOBJECTS>
-      <gameobject type="MenuButton" x="500" y="350" width="400" height="140" Numsprites="3" textureID="continue" callbackID="1" />
-      <gameobject type="MenuButton" x="600" y="650" width="295" height="105" Numsprites="3" textureID="saliramenu" callbackID="2" />
+      <gameobject type="MenuButton" x="550" y="250" width="400" height="140" Numsprites="3" textureID="continue" callbackID="1" />
+      <gameobject type="MenuButton" x="650" y="525" width="295" height="105" Numsprites="3" textureID="saliramenu" callbackID="2" />
     </GAMEOBJECTS>
   </PAUSE>
 </STATES>
