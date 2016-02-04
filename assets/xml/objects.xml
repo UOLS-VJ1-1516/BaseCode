@@ -32,4 +32,20 @@
 			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="2"/>
 		</OBJECTS>
 	</PAUSE>
+	<GAMEOVER>
+		<TEXTURES>
+			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+		</OBJECTS>
+	</GAMEOVER>
+	<WIN>
+		<TEXTURES>
+			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+		</OBJECTS>
+	</WIN>
 </STATES>
