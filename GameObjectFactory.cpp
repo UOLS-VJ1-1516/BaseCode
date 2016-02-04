@@ -1,5 +1,8 @@
 #pragma once
 #include "GameObjectFactory.h"
+#include "MenuButton.h"
+#include "Player.h"
+#include "Enemy.h"
 #include "TextureManager.h"
 
 
@@ -17,9 +20,7 @@ void GameObjectFactory::Register(const std::string & gameObjectName, CreateGameO
 }
 
 GameObject* GameObjectFactory::CreateGameObject(const std::string &gameObjectName) {
-	if (m_FactoryMap.find(gameObjectName) != m_FactoryMap.end()) {
-		return m_FactoryMap[gameObjectName]();
-	}
-
-	return NULL;
+	
+	return m_FactoryMap[gameObjectName]();
+	
 }

@@ -6,10 +6,12 @@
 const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update() {
-	 
+	
 
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
+		
 		m_gObjects[i]->update();
+		
 	}
 	//------Compruebo teclas y escapeeeeeeeee
 	InputHandler::Instance()->update();
@@ -18,20 +20,21 @@ void PlayState::update() {
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
 	}
 
-}
+};
 void PlayState::render() {
+	
 	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
-		m_gObjects[i]->draw();
+		m_gObjects[i]->draw(Game::Instance()->GetRenderer());
 	}
-}
+};
 bool PlayState::onEnter() {
 
-
+	printf("Entro en PlayState");
 	// parse the state
 	StateParser stateParser;
-	stateParser.parseState("./images/Tiny.xml", s_playID, &m_gObjects,
-		&m_textureIDList);
-	std::cout << "entering PlayState\n";
+	stateParser.parseState("./images/miXML.xml", s_playID, &m_gObjects, &m_textureIDList);
+	//m_callbacks.push_back(0);
+	//setCallbacks(m_callbacks);
 
 	
 	return true;
@@ -81,10 +84,11 @@ bool PlayState::onEnter() {
 	m_gObjects.push_back(fons2);
 	
 	return true;*/
-}
+};
 
 
 bool PlayState::onExit() {
+	InputHandler::Instance()->clean();
 	// clear the texture manager
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
@@ -93,12 +97,36 @@ bool PlayState::onExit() {
 	}
 
 	m_textureIDList.clear();
+
+	printf("Salgo del PlayState \n");
 	/*
 	m_gObjects.clear();*/
 	return true;
-}
+};
 
 std::string PlayState::getStateID() const {
 	return PlayState::s_playID;
 };
 
+/*
+void PlayState::setCallbacks(const std::vector<Callback>&callbacks)
+{
+	int x = 0;
+	int i = 0;
+	// go through the game objects
+	for (i = 0; i < m_gObjects.size(); i++)
+	{
+
+		// if they are of type MenuButton then assign a callback
+		//based on the id passed in from the file
+
+		if (dynamic_cast<MenuButton*>(m_gObjects[i])) {
+
+
+			MenuButton* pButton = dynamic_cast<MenuButton*>(m_gObjects[i]);
+			x = pButton->getCallbackID();
+			pButton->setCallback(callbacks[x]);
+		}
+
+	}
+}*/

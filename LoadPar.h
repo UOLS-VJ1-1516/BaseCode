@@ -2,6 +2,7 @@
 #ifndef LOADPAR_h
 #define LOADPAR_H
 #include <string>
+#include <vector>
 #include "Vector2D.h"
 #pragma once
 #include <string>
@@ -12,6 +13,7 @@ public:
 
 	LoadPar(int x, int y, int width, int height, int Numsprites, std::string textureID, int callbackID=0, int animSpeed = 0)
 	{
+		
 		m_x = x;
 		m_y = y;
 		m_height = height;
@@ -24,8 +26,8 @@ public:
 
 
 
-	int getX() const { return m_x; }
-	int getY() const { return m_y; }
+	float getX() const { return (float)m_x; }
+	float getY() const { return (float)m_y; }
 	int getWidth() const { return m_width; }
 	int getHeight() const { return m_height; }
 	int getAnimspeed() const { return m_animSpeed; }

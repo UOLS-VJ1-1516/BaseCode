@@ -15,5 +15,8 @@ class Enemy : public GameObject
 		void update();
 		void clean();
 		static GameObject * Create() { return new Enemy(); }
+
+ private:
+	 const LoadPar * Params;
 		};
 #endif ENEMY_H

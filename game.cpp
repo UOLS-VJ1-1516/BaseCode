@@ -38,9 +38,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			menu = new MenuState();*/
 			state = new GameStateMachine();
 			
-			GameObjectFactory::Instance()->Register("MenuButton", MenuButton::Create);
-			GameObjectFactory::Instance()->Register("Player", MenuButton::Create);
-			GameObjectFactory::Instance()->Register("Enemy", MenuButton::Create);
+			GameObjectFactory::Instance()->Register("MenuButton", &MenuButton::Create);
+			GameObjectFactory::Instance()->Register("Player", &Player::Create);
+			GameObjectFactory::Instance()->Register("Enemy", &Enemy::Create);
+			
+			
 			g_aRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 			state->changeState(new MenuState());
 			printf("1.... - HE entrado en el Update del MenuState -->Gameobjects: %d\n", m_gameObjects.size());

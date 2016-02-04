@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "GameObject.h"
 
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
 typedef void(*Callback)();
 class GameState
@@ -18,3 +20,6 @@ public:
 	//virtual void setCallbacks(const std::vector<Callback>& callbacks) = 0;
 	virtual std::string getStateID() const = 0;
 };
+
+
+#endif GAMESTATE_H

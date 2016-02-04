@@ -10,17 +10,21 @@ public:
 	bool onEnter();
 	bool onExit();
 	
-	std::string getStateID() const;
 
 private:
 	static const std::string s_playID;
 	static void s_menuTOplay();
 	static void s_exitMenu();
+	
 	std::vector<GameObject*> m_gObjects;
 	SDL_Renderer *m_pRenderer;
 	std::vector<std::string> m_textureIDList;
+	
 
-
-
+protected:
+	typedef void(*Callback)();
+	void setCallbacks(const std::vector<Callback>& callbacks);
+	std::string getStateID() const;
+	std::vector< Callback > m_callbacks;
 
 };

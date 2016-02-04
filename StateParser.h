@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "tinyxml.h"
-#include "tinystr.h"
+
 
 
 class GameObject;

@@ -14,11 +14,9 @@ public:
 	void load(const LoadPar * lPar);
 	~MenuButton();
 	void draw(SDL_Renderer* lRender);
-
 	void draw();
 	void update();
 	void clean();
-	
 	static GameObject * Create() { return new MenuButton(); }
 	int getCallbackID() const { return m_callbackID; };
 	void setCallback(void(*callback)()) {
@@ -27,7 +25,6 @@ public:
 
 protected:
 	void(*m_callback)();
-	
 	bool m_bR;
 	const LoadPar * Params;
 	Vector2D* pMPosition;

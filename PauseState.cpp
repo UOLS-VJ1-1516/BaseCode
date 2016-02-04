@@ -11,16 +11,17 @@ void PauseState::update() {
 
 void PauseState::render() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
-		m_gameObjects[i]->draw();
+		m_gameObjects[i]->draw(Game::Instance()->GetRenderer());
 		
 	}
 }
 
 bool PauseState::onEnter() {
 
+	int x;
 
 	StateParser stateParser;
-	stateParser.parseState("./images/Tiny.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
+	stateParser.parseState("./images/miXML.xml", s_pauseID, &m_gameObjects, &m_textureIDList);
 	m_callbacks.push_back(0);
 	m_callbacks.push_back(s_menuTOPlay);
 	m_callbacks.push_back(s_menuTOMain);

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-#include "vector"
+#include <vector>
 #include <string>
 #include "SDL_image.h"
 #include "Vector2D.h"
@@ -22,6 +22,11 @@ public:
 	virtual void draw() = 0;
 	virtual void update()=0;
 	virtual void clean()=0;
+	int getWidth() {return m_width;	}
+	int getHeight() {return m_height;}
+	Vector2D getPosition() {
+		return m_position;
+	}
 	
 	
 protected:
@@ -33,10 +38,7 @@ protected:
 	Vector2D m_friction;
 	
 
-	float x;
-	float y;
-
-
+	
 	int m_width;
 	int	m_height;
 	int	m_currentFrame;
@@ -46,7 +48,6 @@ protected:
 	int m_anchopantalla;
 	int m_altopantalla;
 	std::string m_texid;
-	int m_callbackID;
 	const char* m_textureID;
 
 

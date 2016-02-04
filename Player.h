@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "Vector2D.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -12,9 +13,11 @@ public:
 	void draw(SDL_Renderer* lRender);
 	void draw();
 	void load(const LoadPar* lPar);
-	void load(float x, float y, int width, int height, std::string texid);
+	void load(int x, int y, int width, int height, std::string texid);
 	void update();
 	void clean();
 	static GameObject * Create() { return new Player(); }
+private:
+	Vector2D m_pos;
 };
 #endif PLAYER_H

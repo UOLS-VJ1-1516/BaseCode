@@ -9,9 +9,11 @@ SDL_RendererFlip Sflip;
 
 bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_lRenderer) {
 	
+	
 	SDL_Surface *imagen = IMG_Load(fileName);
 
 	if (!imagen) {
+		printf("\nNo he podido cargar la imagen\n");
 		return false;
 	}
 	SDL_SetColorKey(imagen, 1, SDL_MapRGB(imagen->format, 255, 255, 255));
@@ -30,9 +32,12 @@ bool TextureManager::load(const char* fileName, std::string id, SDL_Renderer* g_
 	}
 	
 }
-void TextureManager::draw(std::string id, float x, float y, int width, int height, SDL_Renderer* g_lRenderer, int flip) {
+void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* g_lRenderer, int flip) {
 	//Cambio el flip a un int,  1->none 2->horitzontal 3->vertical
 	
+
+	
+
 	SDL_Rect src;
 	SDL_Rect dest;
 
@@ -51,10 +56,10 @@ void TextureManager::draw(std::string id, float x, float y, int width, int heigh
 
 }
 
-void TextureManager::drawFrame(std::string id, float x, float y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, int flip) {
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_lRenderer, int flip) {
 	SDL_Rect src;
 	SDL_Rect dest;
-
+	
 	//if (currentFrame == 1)currentFrame--;
 	//src-->origen, lo que cojo de la imagen
 	src.x = (currentFrame*width);  //Me voy a la fila que correspond del currentframe para coger la imagen que quiero

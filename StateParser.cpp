@@ -7,6 +7,7 @@
 bool StateParser::parseState(const char * stateFile, std::string stateID, std::vector<GameObject*>* pObjects, std::vector<std::string>* pTextureIDs)
 
 {
+	
 	// create the XML document
 	TiXmlDocument xmlDoc;
 	// load the state file
@@ -74,20 +75,26 @@ void StateParser::parseObjects(TiXmlElement * pStateRoot, std::vector<GameObject
 	for (TiXmlElement* e = pStateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
 	{
 
-		int x, y, width, height, spriteNum, callbackID, velocity;
+		int x, y, width, height, Numsprites, callbackID;
 		std::string textureID;
-
+		//type="Player" x="100" y="100" width="43" height="57" Numsprites="7" textureID="bird" callbackID="0"
 		e->Attribute("x", &x);
 		e->Attribute("y", &y);
 		e->Attribute("width", &width);
 		e->Attribute("height", &height);
-		e->Attribute("Numsprites", &spriteNum);
+		e->Attribute("Numsprites", &Numsprites);
 		textureID = e->Attribute("textureID");
 		e->Attribute("callbackID", &callbackID);
 
 		GameObject* pGameObject;
 		pGameObject = GameObjectFactory::Instance()->CreateGameObject(e->Attribute("type"));
-		pGameObject->load(new LoadPar(x, y, width, height, spriteNum, textureID, callbackID));
+		
+		//float x, float y, int width, int height,
+	//std::string texid
+		
+		pGameObject->load(new LoadPar(x, y, width, height, Numsprites, textureID, callbackID));
+		
+		
 		pObjects->push_back(pGameObject);
 	}
 }

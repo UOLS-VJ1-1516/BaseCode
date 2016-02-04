@@ -18,9 +18,9 @@
 
 		}
 	bool load(const char* fileName, std::string  id, SDL_Renderer* pRenderer);
-		void draw(std::string texid, float x, float y, int width, int height,
+		void draw(std::string texid, int x, int y, int width, int height,
 			SDL_Renderer* pRender, int flip);
-		void drawFrame(std::string texid, float x, float y, int width, int height, int
+		void drawFrame(std::string texid, int x, int y, int width, int height, int
 			currentRow, int currentFrame, SDL_Renderer* pRender,
 			int flip);
 		

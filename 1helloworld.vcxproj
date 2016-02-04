@@ -203,13 +203,16 @@
     <Image Include="images\bird.png" />
     <Image Include="images\coin.png" />
     <Image Include="images\continue.png" />
+    <Image Include="images\Enemy_Knight.png" />
     <Image Include="images\Exit.png" />
     <Image Include="images\Exit2.png" />
+    <Image Include="images\ninja.png" />
     <Image Include="images\nubes2.png" />
     <Image Include="images\pause.png" />
     <Image Include="images\pause2.png" />
     <Image Include="images\playbtn.png" />
     <Image Include="images\player.bmp" />
+    <Image Include="images\teclas.png" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="images\miXML.xml" />

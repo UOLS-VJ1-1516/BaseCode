@@ -4,8 +4,8 @@
 #include "InputHandler.h"
 
 
-Player::Player() {};
-Player::~Player() {};
+Player::Player() {  };
+Player::~Player() {  };
 bool quit;
 int flag;
 
@@ -13,7 +13,7 @@ int flag;
 
 
 
-void Player::load(float x, float y, int width, int height,
+void Player::load(int x, int y, int width, int height,
 	std::string texid)
 {
 	m_position.setX(x);
@@ -28,14 +28,16 @@ void Player::load(float x, float y, int width, int height,
 	
 }
 
-void Player::load(const LoadPar* lPar)
+void Player::load(const LoadPar * lPar)
 {
+	
 	m_width = lPar->getWidth();
 	m_height = lPar->getHeight();
 	m_position.setX(lPar->getX());
 	m_position.setY(lPar->getY());
 	m_texid = lPar->getTextureID();
 	m_sprits = lPar->getNumSprites();
+	
 	
 
 	m_currentFrame = 1;
@@ -159,10 +161,10 @@ void Player::update() {
 	
 	
 	//------------------Netejo pantalla--------> para que salga por el otro lado eje vertical, limitando eje horizontal
-	if (m_position.getX() > m_anchopantalla-175) { m_position.setX(m_anchopantalla-175);}
+	/*if (m_position.getX() > m_anchopantalla-175) { m_position.setX(m_anchopantalla-175);}
 	if (m_position.getX() < 0) { m_position.setX(0); }
 	if (m_position.getY() > m_altopantalla+80) { m_position.setY(0- 15); }
 	if (m_position.getY() < 0-150) { m_position.setY(m_altopantalla+ 15); }
-	
+	*/
 }
 void Player::clean() {}

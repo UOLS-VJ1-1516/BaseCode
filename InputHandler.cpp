@@ -82,3 +82,11 @@ void InputHandler::onKeyDown() {
 void InputHandler::onKeyUp() {
 	m_estado = SDL_GetKeyboardState(0);
 }
+
+
+void InputHandler::clean()
+{
+	m_mouseButtonStates[0] = false;
+	m_mouseButtonStates[1] = false;
+	m_mouseButtonStates[2] = false;
+}

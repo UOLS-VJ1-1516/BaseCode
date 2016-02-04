@@ -23,9 +23,9 @@ void MenuButton::load(const LoadPar * lPar) {
 	m_position.setY(lPar->getY());
 	m_texid = lPar->getTextureID();
 	m_sprits = lPar->getNumSprites();
-	
-	m_currentFrame = MOUSE_OUT;
-	
+	m_callbackID = lPar->getCallbackID();
+	m_currentRow = 1;
+	m_currentFrame = 1;
 
 };
 
@@ -34,10 +34,10 @@ void MenuButton::draw(SDL_Renderer* Renderer) {
 	TextureManager::Instance()->drawFrame(Params->getTextureID(),
 		(int)Params->getX(), (int)Params->getY(),
 		Params->getWidth(), Params->getHeight(),
-		1, 1, Game::Instance()->GetRenderer(), 1);
+		m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), 1);
 
 
-}
+};
 void MenuButton::draw() {
 
 	
@@ -67,22 +67,23 @@ void MenuButton::update() {
 
 		}
 		else if (!InputHandler::Instance()->getMouseButtonState(0)) {
-			if (!m_bR && m_currentFrame == CLIKED) {
-				m_callback();
-			}
+			if (!m_bR && m_currentFrame == CLIKED) { m_callback(); };
 			m_bR = true;
 			m_currentFrame = MOUSE_OVER;
 		}
 
+
 	}
+
+	
 	else {
 		
 		m_currentFrame = MOUSE_OUT;
 	}
 
-}
+};
 void MenuButton::clean() {
 
-	
-}
+	InputHandler::Instance()->clean();
+};
 
