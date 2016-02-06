@@ -13,6 +13,9 @@ public:
 	void draw();
 	void update();
 	void clean();
+	static GameObject * Create() { return new Dog(); }
+protected:
+	const LoaderParams *pParams;
 };
 #endif DOG_H
 

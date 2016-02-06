@@ -1,5 +1,7 @@
 #pragma once
 #include <math.h>
+#ifndef VECTOR2D_H
+#define VECTOR2D_H
 class Vector2D
 {
 public:
@@ -29,4 +31,5 @@ public:
 		float m_x;
 		float m_y;
 };
+#endif VECTOR2D_H
 

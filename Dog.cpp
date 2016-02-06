@@ -17,7 +17,8 @@ Dog::~Dog()
 
 
 void Dog::load(const LoaderParams* ppParams) {
-	pParams = new LoaderParams(ppParams->getX(), ppParams->getY(), ppParams->getWidth(), ppParams->getHeight(), ppParams->getTextureID());
+	//pParams = new LoaderParams(ppParams->getX(), ppParams->getY(), ppParams->getWidth(), ppParams->getHeight(), ppParams->getTextureID(), ppParams->getnumFrames, ppParams->getcallbackID);
+	Dog::pParams = ppParams;
 	TextureManager::Instance()->load("Dog.png", pParams->getTextureID(), Game::Instance()->getRender());
 	m_position.setX(0);
 	m_position.setY(300);

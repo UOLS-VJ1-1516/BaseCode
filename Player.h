@@ -15,5 +15,9 @@ public:
 	void draw();
 	void update();
 	void clean();
+	void Player::handleInput();
+	static GameObject * Create() { return new Player(); }
+protected:
+	const LoaderParams *pParams;
 };
 #endif PLAYER_H

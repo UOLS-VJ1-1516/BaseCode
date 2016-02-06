@@ -12,8 +12,6 @@ class GameObject
 		virtual void update() = 0;
 		virtual void clean() = 0;
 	protected:
-		GameObject();
-		virtual ~GameObject();
 		Vector2D m_position;
 		Vector2D m_velocity;
 		Vector2D m_maxVelocity;
