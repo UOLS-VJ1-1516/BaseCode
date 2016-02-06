@@ -1,0 +1,42 @@
+#pragma once
+#include "GameState.h"
+#include <string>
+#include "TileLayer.h"
+#include "Level.h"
+
+
+
+class PlayState : public GameState {
+
+public:
+	virtual void update();
+	virtual void render();
+	virtual bool onEnter();
+	virtual bool onExit();
+
+	virtual std::string getStateID() const { return s_playID; };
+
+private:
+	static const std::string s_playID;
+	static void s_menuTOplay();
+	static void s_exitMenu();
+	std::vector<GameObject*> m_gObjects;
+	std::vector<std::string> m_TextureIDList;
+	std::vector<void(*)()> m_callbacks;
+	LoaderParams * load;
+	Player * player;
+	LoaderParams * load2;
+	Zep * zep;
+	LoaderParams * load3;
+	Gordo * gordo;
+	SDL_Renderer *m_pRenderer;
+	Level * pLevel;
+	
+protected:
+	typedef void(*Callback)();
+	//void setCallbacks(const std::vector<Callback>&callbacks);
+	std::vector<Callback>m_callbacksID;
+	virtual void setCallbacks();
+
+
+};

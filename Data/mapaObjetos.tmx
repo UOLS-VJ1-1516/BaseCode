@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="100" height="19" tilewidth="32" tileheight="32" nextobjectid="25">
+ <properties>
+  <property name="gordo" value="dragon.png"/>
+  <property name="player" value="yoshi.png"/>
+  <property name="zep" value="PlantaC.png"/>
+ </properties>
+ <tileset firstgid="1" name="mapa" tilewidth="32" tileheight="32" tilecount="15" margin="0" spacing="0">
+  <image source="mapa.png" width="96" height="160"/>
+ </tileset>
+ <tileset firstgid="16" name="Gordo" tilewidth="100" tileheight="100" tilecount="5">
+  <image source="dragon.png" width="500" height="100"/>
+ </tileset>
+ <tileset firstgid="21" name="Zep" tilewidth="50" tileheight="50" tilecount="12">
+  <image source="PlantaC.png" width="600" height="50"/>
+ </tileset>
+ <tileset firstgid="33" name="Player" tilewidth="43" tileheight="57" tilecount="9">
+  <image source="yoshi.png" width="429" height="57"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="100" height="19">
+  <properties>
+   <property name="isCollision" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlsEOwiAQRDloWyH0/z9XjZKM09ndWnvwsC+ZbAWEhQHaUpIkSZIkSZIkSZLkf5hAic8NdDbDgxmUvtgs5XOtlpP6Hf7OjtKXLavQL6jzEOmIL1Ogf2ExxFy/0N4xzpTKdzHir3PYU67mzah9UR9qD/Xy2usjMg3aqljhN1MPqgmp8mqMGeXsRWsOXIf5RDkwF6G9a4peqdiL7WUX8jzAvliVnkd7NaaVaw3qvTlwHeYZ5cDgHXx5R16D6HxY/n17PtCXVrZ9cr/sQSufvjIr9dGgrBvPeE+oOahz4J2PaF2GBxitParywfXjdfS83OOj5RGXdRp/1Fv54v5kjzxfmG7UodcM3h2qnu+qGfKMvpmsdmf/96jUmOq9wPcWlqEvjLXu3n0VvT/4u/HpyR1MHRPa
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="19" name="Gordo" type="Gordo" gid="16" x="467" y="155" width="100" height="100">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="spriteNum" value="5"/>
+    <property name="textureHeight" value="100"/>
+    <property name="textureID" value="gordo"/>
+    <property name="textureWidth" value="100"/>
+   </properties>
+  </object>
+  <object id="20" name="Zep" type="Zep" gid="21" x="444" y="273" width="50" height="50">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="spriteNum" value="12"/>
+    <property name="textureHeight" value="50"/>
+    <property name="textureID" value="zep"/>
+    <property name="textureWidth" value="50"/>
+   </properties>
+  </object>
+  <object id="21" name="Player" type="Player" gid="2147483681" x="89" y="79" width="43" height="57">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="spriteNum" value="9"/>
+    <property name="textureHeight" value="57"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="43"/>
+   </properties>
+  </object>
+  <object id="22" name="Zep" type="Zep" gid="21" x="1244" y="251" width="50" height="50">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="spriteNum" value="12"/>
+    <property name="textureHeight" value="50"/>
+    <property name="textureID" value="zep"/>
+    <property name="textureWidth" value="50"/>
+   </properties>
+  </object>
+  <object id="23" name="Zep" type="Zep" gid="21" x="1961" y="387" width="50" height="50">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="spriteNum" value="12"/>
+    <property name="textureHeight" value="50"/>
+    <property name="textureID" value="zep"/>
+    <property name="textureWidth" value="50"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

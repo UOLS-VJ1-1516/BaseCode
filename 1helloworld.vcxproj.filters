@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Gordo.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Zep.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuButton.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="base64.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParser.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionObject.cpp">
+      <Filter>Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="LoaderParams.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Gordo.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Zep.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuButton.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="StateParser.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="tinystr.h">
+      <Filter>Tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\zlib\include\zconf.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\zlib\include\zlib.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="base64.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParser.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionObject.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\SDL2_mixer\include\SDL_mixer.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{7cab4483-0177-4c81-be01-ba284c45e13d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStates">
+      <UniqueIdentifier>{efe07aca-b959-4da0-b8e3-b54c61dba17f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tinyxml">
+      <UniqueIdentifier>{b812deec-4da2-4a9b-b3b0-25b8cd61640e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{248b34f6-348f-463a-b756-dd6270599c89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tile">
+      <UniqueIdentifier>{26713ab9-c853-4843-94e7-52ea8e40a060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collisions">
+      <UniqueIdentifier>{8160fae5-43cd-4396-9aac-16b8563523ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{f3ae57c2-5661-49e9-a65b-0e1ec26dc430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{bb66d4d3-c288-478d-9f63-49e6ae2267ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="1-helloworld.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data\Tiny.xml">
+      <Filter>Data</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\mapa4.tmx">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="Data\mapaObjetos.tmx">
+      <Filter>Data</Filter>
+    </None>
+  </ItemGroup>
+</Project>

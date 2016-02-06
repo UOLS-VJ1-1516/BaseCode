@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<STATES>
+  <MENU>
+    <TEXTURES>
+      <texture filename="play.png" ID="playbtn" />
+      <texture filename="exit.png" ID="exitbtn" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="300" y="200" width="200" height="100" spriteNum="0" textureID="playbtn" callbackID="1" />
+      <gameobject type="MenuButton" x="300" y="400" width="200" height="100" spriteNum="0" textureID="exitbtn" callbackID="2" />
+    </GAMEOBJECTS>
+  </MENU>
+  <PLAY>
+    <TEXTURES>
+      <texture filename="yoshi.png" ID="yoshi" />
+      <texture filename="dragon.png" ID="dragon" />
+      <texture filename="PlantaC.png" ID="planta" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="Player" x="100" y="100" width="43" height="57" spriteNum="10" textureID="yoshi" callbackID="0" />
+      <gameobject type="Gordo" x="200" y="200" width="100" height="100" spriteNum="4" textureID="dragon" callbackID="0" />
+      <gameobject type="Zep" x="150" y="150" width="50" height="50" spriteNum="4" textureID="planta" callbackID="0" />
+    </GAMEOBJECTS>
+  </PLAY>
+  <PAUSE>
+    <TEXTURES>
+      <texture filename="resume.png" ID="resume" />
+      <texture filename="mainMenu.png" ID="mainmenu" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="300" y="200" width="200" height="100" spriteNum="0" textureID="resume" callbackID="1" />
+      <gameobject type="MenuButton" x="300" y="400" width="200" height="100" spriteNum="0" textureID="mainmenu" callbackID="2" />
+    </GAMEOBJECTS>
+  </PAUSE>
+  <GAMEOVER>
+    <TEXTURES>
+      <texture filename="mainMenu.png" ID="mainmenu" />
+    <texture filename="gameOver.png" ID="gameOver" />
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="300" y="400" width="200" height="100" spriteNum="0" textureID="mainmenu" callbackID="1" />
+      <gameobject type="MenuButton" x="200" y="100" width="375" height="212" spriteNum="0" textureID="gameOver"/>
+    </GAMEOBJECTS>
+  </GAMEOVER>
+</STATES>
+
