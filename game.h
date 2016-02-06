@@ -24,26 +24,9 @@ public:
 	bool running = false;
 	int getGameWidth();
 	int getGameHeight();
-	/*
-	enum game_state
-	{
-		MENU = 0,
-		PLAY = 1,
-		GAMEOVER = 2
-	};
-	*/
-	//m_currentGameState;
 private:
 	SDL_Window* g_lWindow = 0;
 	SDL_Renderer* g_lRenderer = 0;
-	//bool running = false;
-	//int spriteNum;
-	/*
-	int mov = 0;
-	int pos = 0;
-	int animacion = 1;
-	int cont = 0;
-	*/
 	static Game* s_pInstanceG;
 	int m_gameWidth;
 	int m_gameHeight;

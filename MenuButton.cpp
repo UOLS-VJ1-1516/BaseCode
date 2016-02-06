@@ -4,16 +4,10 @@
 #include "Vector2D.h"
 
 const std::string MenuButton::s_ButtonID= "MENU";
-//MenuButton::MenuButton(const LoaderParams* ppParams, void(*callback)())
+
 MenuButton::MenuButton()
 {
-	/*
-	//m_callback = callback;
-	m_callbackID = ppParams->getcallbackID();
-	m_currentFrame = MOUSE_OUT; // start at frame 0
-	pParams = new LoaderParams(ppParams->getX(), ppParams->getY(), ppParams->getWidth(), ppParams->getHeight(), ppParams->getTextureID(), ppParams->getnumFrames, ppParams->getcallbackID, ppParams->getanimSpeed);
-	m_currentRow = 1;
-	*/
+
 }
 
 MenuButton::~MenuButton()
@@ -23,8 +17,8 @@ MenuButton::~MenuButton()
 
 void MenuButton::load(const LoaderParams* ppParams) {
 	m_callbackID = ppParams->getcallbackID();
+	//m_bReleased = false;
 	m_currentFrame = MOUSE_OUT; // start at frame 0
-	//pParams = new LoaderParams(ppParams->getX(), ppParams->getY(), ppParams->getWidth(), ppParams->getHeight(), ppParams->getTextureID(), ppParams->getnumFrames,0,0);
 	MenuButton::pParams = ppParams;
 	m_currentRow = 1;
 }
@@ -64,5 +58,5 @@ void MenuButton::update()
 
 void MenuButton::clean()
 {
-	//GameObject::clean();
+	InputHandler::Instance()->clean();
 }

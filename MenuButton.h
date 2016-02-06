@@ -19,7 +19,7 @@ public:
 		MIDDLE = 1,
 		RIGHT = 2
 	};
-	//MenuButton(const LoaderParams* ppParams, void(*callback)());
+	
 	MenuButton();
 	~MenuButton();
 	void load(const LoaderParams* pParams);

@@ -10,7 +10,6 @@ void InputHandler::update() {
 	while (SDL_PollEvent(&event))
 	{
 		m_keystates = SDL_GetKeyboardState(0);
-		//comprovar/////////////////////////////////////////////////////////////
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			if (event.button.button == SDL_BUTTON_LEFT)
 			{
@@ -46,8 +45,6 @@ void InputHandler::update() {
 			m_mousePosition.setX(event.motion.x);
 			m_mousePosition.setY(event.motion.y);
 		}
-
-		//////////////////////////////////////////////////////////////////
 	}
 	if (event.type == SDL_MOUSEBUTTONUP)
 	{
@@ -56,11 +53,6 @@ void InputHandler::update() {
 			m_mouseButtonStates[LEFT] = false;
 		}
 	}
-	/*
-	if (isKeyDown(SDL_SCANCODE_ESCAPE)) {
-		Game::Instance()->running = false;
-	}
-	*/
 }
 void InputHandler::clean() {}
 // Métodos de acceso

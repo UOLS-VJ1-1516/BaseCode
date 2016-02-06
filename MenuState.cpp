@@ -42,42 +42,24 @@ bool MenuState::onEnter()
 	// set the callbacks for menu items
 	setCallbacks(m_callbacksMenu);
 
-	/*
-	if (!TextureManager::Instance()->load("button_play.png","playbutton", Game::Instance()->getRender()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("button_exit.png","exitbutton", Game::Instance()->getRender()))
-	{
-		return false;
-	}
-
-	MenuButton* button1 = new MenuButton(new LoaderParams(160, 100, 322, 150, "playbutton"), s_menuToPlay);
-	MenuButton* button2 = new MenuButton(new LoaderParams(160, 250, 322, 150, "exitbutton"), s_exitFromMenu);
-	m_gameObjectsMenuState.push_back(button1);
-	m_gameObjectsMenuState.push_back(button2);
-	*/
 	return true;
 }
 
 bool MenuState::onExit()
 {
+	for (int i = 0; i < m_gameObjectsMenuState.size(); i++) {
+		m_gameObjectsMenuState[i]->clean();
+	}
+	m_gameObjectsMenuState.clear();
 	// clear the texture manager
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
 			TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
 	}
-	/*
-	for (int i = 0; i < m_gameObjectsMenuState.size(); i++)
-	{
-		m_gameObjectsMenuState[i]->clean();
-	}
-	m_gameObjectsMenuState.clear();
-	TextureManager::Instance()->clearFromTextureMap("playbutton");
-	TextureManager::Instance()->clearFromTextureMap("exitbutton");
-	*/
+
 	// reset the mouse button states to false
 	InputHandler::Instance()->reset();
+	m_textureIDList.clear();
 	return true;
 }
 

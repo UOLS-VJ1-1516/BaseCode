@@ -26,20 +26,6 @@ void PauseState::render() {
 	}
 }
 bool PauseState::onEnter() {
-	/*
-	if (!TextureManager::Instance()->load("Resume-button.png", "resumebutton", Game::Instance()->getRender()))
-	{
-		return false;
-	}
-	if (!TextureManager::Instance()->load("Main-button.png", "mainbutton", Game::Instance()->getRender()))
-	{
-		return false;
-	}
-
-	GameObject* button1 = new MenuButton(new LoaderParams(160, 250, 322, 150, "mainbutton"), s_pauseToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(160, 100, 322, 150, "resumebutton"), s_resumePlay);
-	
-	*/
 	StateParser stateParser;
 	stateParser.parseState("assets/images.xml", s_pauseID, &m_gameObjectsPauseState,&m_textureIDList);
 	m_callbacksPause.push_back(0);
@@ -50,24 +36,19 @@ bool PauseState::onEnter() {
 	return true;
 }
 bool PauseState::onExit() {
-	/*
-	for (int i = 0; i < m_gameObjectsPauseState.size(); i++)
-	{
+	InputHandler::Instance()->reset();
+	
+	for (int i = 0; i < m_gameObjectsPauseState.size(); i++) {
 		m_gameObjectsPauseState[i]->clean();
 	}
 	m_gameObjectsPauseState.clear();
-	TextureManager::Instance()->clearFromTextureMap("mainbutton");
-	TextureManager::Instance()->clearFromTextureMap("resumebutton");
-	*/
-	// reset the mouse button states to false
-	InputHandler::Instance()->reset();
-	
 
 	// clear the texture manager
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
 		TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
 	}
+	m_textureIDList.clear();
 	
 	return true;
 }

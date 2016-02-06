@@ -22,8 +22,8 @@
   </PLAY>
   <PAUSE>
     <TEXTURES>
-      <texture filename="Resume-button.png" ID="Pause_button"/>
-      <texture filename="Main-button.png" ID="Main_button"/>
+      <texture filename="Resume_button.png" ID="Pause_button"/>
+      <texture filename="Main_button.png" ID="Main_button"/>
     </TEXTURES>
     <OBJECTS>
       <object type="MenuButton" x="160" y="250" width="322" height="150" textureID="Pause_button" numFrames="0" callbackID="2"/>

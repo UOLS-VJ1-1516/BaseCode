@@ -35,40 +35,21 @@ bool PlayState::onEnter()
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("assets/mapaBueno.tmx");
 
-	/*
-	player = new Player();
-	dog = new Dog();
-
-	m_gameObjects.push_back(player);
-	m_gameObjects.push_back(dog);
-
-	l1 = new LoaderParams(0, 180, 97, 132, "imatge");
-	l2 = new LoaderParams(0, 230, 64, 80, "imatge2");
-
-	loader.push_back(l1);
-	loader.push_back(l2);
-
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->load(loader[i]);
-	}
-	*/
-
 	return true;
 }
 bool PlayState::onExit()
 {
+	InputHandler::Instance()->clean();
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
 		TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
 	}
-	/*
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->clean();
-	}
-	m_gameObjects.clear();
-	*/
+	m_textureIDList.clear();
+	//Game::Instance()->getStateMachine()->popState();
+	m_textureIDList.clear();
+
+	m_gameObjectsPlay.clear();
+	
 	return true;
 }
 

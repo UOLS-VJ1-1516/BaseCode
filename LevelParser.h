@@ -14,6 +14,4 @@ private:
 	int m_tileSize;
 	int m_width;
 	int m_height;
-	/*friend class LevelParser;
-	Level();*/
 };

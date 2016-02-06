@@ -6,20 +6,7 @@
 #include "string"
 #include "vector"
 #include "Layer.h"
-/*
-struct Tileset
-{
-	int firstGridID;
-	int tileWidth;
-	int tileHeight;
-	int spacing;
-	int margin;
-	int width;
-	int height;
-	int numColumns;
-	std::string name;
-};
-*/
+
 class Level
 {
 public:
