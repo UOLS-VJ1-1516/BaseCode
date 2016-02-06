@@ -42,7 +42,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;../libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\tinyxml\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\zlib\include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;../libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\tinyxml\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\include;libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\tinyxml\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\zlib\include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\include;C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\include;libs/SDL/include;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\tinyxml\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\lib;C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\lib;libs/SDL/lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\tinyxml\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\zlib\lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\SDL_image\lib;C:\Users\ralvarez\Documents\GitHubVisualStudio\BaseCode\libs\SDL_image\lib;libs/SDL/lib;C:\Users\Raul\Documents\GitHubVisualStudio\Git\BaseCode\libs\tinyxml\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib;zdll.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,12 +81,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="base64.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fons.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelParser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -95,9 +98,11 @@
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="StateParser.cpp" />
     <ClCompile Include="texturemanager.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base64.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Fons.h" />
     <ClInclude Include="game.h" />
@@ -106,6 +111,9 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelParser.h" />
     <ClInclude Include="libs\SDL\include\begin_code.h" />
     <ClInclude Include="libs\SDL\include\close_code.h" />
     <ClInclude Include="libs\SDL\include\SDL.h" />
@@ -194,6 +202,7 @@
     <ClInclude Include="StateParser.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texturemanager.h" />
+    <ClInclude Include="TileLayer.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Vector2D.h" />
@@ -201,11 +210,14 @@
   <ItemGroup>
     <Image Include="images\badbird.png" />
     <Image Include="images\bird.png" />
+    <Image Include="images\bueno.png" />
     <Image Include="images\coin.png" />
     <Image Include="images\continue.png" />
     <Image Include="images\Enemy_Knight.png" />
     <Image Include="images\Exit.png" />
     <Image Include="images\Exit2.png" />
+    <Image Include="images\map.jpg" />
+    <Image Include="images\mymap.png" />
     <Image Include="images\ninja.png" />
     <Image Include="images\nubes2.png" />
     <Image Include="images\pause.png" />
@@ -218,7 +230,22 @@
     <Xml Include="images\miXML.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\map.tmx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="images\mapa.tmx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="images\mapa3.tmx" />
+    <None Include="images\mapaBueno.tmx" />
     <None Include="images\Thumbs.db" />
+    <None Include="libjpeg-9.dll" />
+    <None Include="libpng16-16.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libwebp-4.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="zlib1.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

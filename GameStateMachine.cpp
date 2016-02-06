@@ -62,6 +62,4 @@ void GameStateMachine::render()
 	
 
 }
-void GameStateMachine::AllStates() {
-	m_statesToDelete.clear();
-}
+

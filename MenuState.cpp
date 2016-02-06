@@ -31,7 +31,6 @@ bool MenuState::onEnter()
 	
 	StateParser stateParser;
 	stateParser.parseState("./images/miXML.xml", s_menuID, &m_gameObjects, &m_textureIDList);
-	int i;
 
 	
 	m_callbacks.push_back(0);
