@@ -17,6 +17,7 @@ void PlayState::update()
 	{
 		m_gameObjectsPlay[i]->update();
 	}
+	pLevel->update();
 }
 void PlayState::render()
 {
