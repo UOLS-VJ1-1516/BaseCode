@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="20" height="15" tilewidth="15" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="patrones" tilewidth="15" tileheight="32" spacing="8" margin="14" tilecount="473">
+  <image source="../../../La salle/Curs 2/Videojocs/Sessió 7/8246060_orig.jpg" trans="9ef5d3" width="1000" height="459"/>
+ </tileset>
+ <tileset firstgid="474" name="patrones2" tilewidth="15" tileheight="32" spacing="8" margin="14" tilecount="243">
+  <image source="../../../La salle/Curs 2/Videojocs/Sessió 7/blocks2.png" trans="000000" width="640" height="376"/>
+ </tileset>
+ <tileset firstgid="717" name="blocks222" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="198">
+  <image source="../../../La salle/Curs 2/Videojocs/Sessió 7/blocks2.png" trans="000000" width="640" height="376"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBj8IJIZQkcxjwx78QF8bqK3ewdj+BADjKDuNYbSJkS6H5d/XaB8VyjtRmZ4hEL1hUHpcDRzSA3vdKi6DCidSWE8VUL1V0HpaiTzaqDsWjQ7ipgRuBkqV4gkhqwGBHqhdB+U7ofSE6A0APyxEb8=
+  </data>
+ </layer>
+</map>
