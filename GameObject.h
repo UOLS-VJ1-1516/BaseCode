@@ -24,6 +24,7 @@ public:
 	Vector2D m_velocity;
 	int m_width;
 	int m_height;
+	std::string m_textureID;
 protected:
 	bool collision = false;
 	Vector2D m_maxVelocity;
@@ -32,7 +33,7 @@ protected:
 	int m_currentFrame;
 	int m_currentRow;
 	int m_numsprites;
-	std::string m_textureID;
+	
 	int m_callbackID;
 	std::vector<TileLayer*>* m_pCollisionLayers;
 };

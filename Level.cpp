@@ -7,8 +7,9 @@ void Level::update()
 	{
 		m_layers[i]->update();
 	}
+	
 	CollisionManager cm;
-	cm.checkPlayerObjectsCollision(m_pPlayer, );
+	cm.checkPlayerObjectsCollision(m_pPlayer, getGameObjects());
 	//m_collisionManager.checkPlayerObjectsCollision(m_pPlayer, );
 }
 

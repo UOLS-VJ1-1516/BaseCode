@@ -196,7 +196,9 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			if (textureID == "player") {
 				Camera::Instance()->setTarget(pGameObject);
 				parseLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
+				
 			}
+			parseLevel->m_gameobjects.push_back(pGameObject);
 			pGameObject->setCollisionLayers(parseLevel->getCollisionLayers());
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}

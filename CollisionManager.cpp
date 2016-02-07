@@ -12,18 +12,23 @@ void CollisionManager::checkPlayerObjectsCollision(Player* pPlayer, const std::v
 	for (std::vector<GameObject*>::const_iterator it = g_objects->begin(); it != g_objects->end(); ++it)
 	{
 		GameObject* pGameObject = (*it);
-		
+		if (pGameObject->m_textureID == "player") {
+			continue;
+		}
 		SDL_Rect player;
 		player.x = pPlayer->m_position.getX();
 		player.y = pPlayer->m_position.getY();
-		player.w = pPlayer->m_width;
+		player.w = pPlayer->m_width-50;
 		player.h = pPlayer->m_height;
 		SDL_Rect enemy;
+		//printf("ID %s \n",pGameObject->m_textureID.c_str());
 		enemy.x = pGameObject->m_position.getX();
 		enemy.y = pGameObject->m_position.getY();
-		enemy.w = pGameObject->m_width;
+		enemy.w = pGameObject->m_width-50;
 		enemy.h = pGameObject->m_height;
-		isCollision(player, enemy);
+		if (isCollision(player, enemy)) {
+			pPlayer->setPlayerState(true);
+		}
 	}
 }
 bool CollisionManager::isCollision(SDL_Rect a, SDL_Rect b) {
@@ -46,25 +51,25 @@ bool CollisionManager::isCollision(SDL_Rect a, SDL_Rect b) {
 
 	if (bottomA <= topB)
 	{
-		printf("Top collision");
-		return true;
+		//printf("Top collision \n");
+		return false;
 	}
 
 	if (topA >= bottomB)
 	{
-		printf("Botom collision");
-		return true;
+		//printf("Botom collision \n");
+		return false;
 	}
 	if (rightA <= leftB)
 	{
-		printf("Right collision");
-		return true;
+		//printf("Right collision \n");
+		return false;
 	}
 	if (leftA >= rightB)
 	{
-		printf("Left collision");
-		return true;
+		//printf("Left collision \n");
+		return false;
 	}
 
-	return false;
+	return true;
 }
