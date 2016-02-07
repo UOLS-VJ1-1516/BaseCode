@@ -2,6 +2,7 @@
 #include "Player2.h"
 #include "TextureManager.h"
 
+
 Player2::Player2() {};
 Player2::~Player2() {};
 

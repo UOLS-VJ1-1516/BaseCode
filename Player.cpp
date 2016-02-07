@@ -62,7 +62,7 @@ void Player::update() {
 	else haycolision = false;
 
 	if (mjumping == false && mgravity == true && haycolision == false) {
-		m_position.setY(m_position.getY() + 7);
+		m_position.setY(m_position.getY() + 8);
 	}
 	registerEvents();
 
@@ -139,6 +139,11 @@ void Player::update() {
 		else inicio();
 	}
 
+	if (m_stopArriba) {
+		m_position.setY(m_position.getY() + 4);
+		m_position.setX(m_position.getX() - 4);
+	}
+
 	//framw
 
 	if (cambio == true)  m_currentFrame = (int)((Game::Instance()->getTicks() / 100) % m_sprits);
@@ -156,13 +161,19 @@ void Player::update() {
 	if (m_position.getY() > (Game::Instance()->get_alto_ventana() - m_height)) {
 		stopY(Game::Instance()->get_alto_ventana() - m_height);
 	}
-	m_lastStop.setX(m_position.getX());
-	m_lastStop.setY(m_position.getY());
+	if (isCollisionWithTile()) {
+		if (m_stopDerecha || m_stopIzquierda) {
+			stopX(m_lastStop.getX());
+			if (m_lastStop.getX() != m_position.getX()) {
+				m_lastStop = m_position;
+			}
+		}
+	}
+	else {
+		m_lastStop = m_position;
+	}
 
-	TheCamera::Instance()->setPosition(m_lastStop);
-
-
-};
+}
 
 
 
