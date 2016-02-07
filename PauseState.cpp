@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 
 void PauseState::update()
 {

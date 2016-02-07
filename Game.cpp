@@ -2,7 +2,7 @@
 #include "LoaderParams.h"
 #include "InputHandler.h"
 #include "TextureManager.h"
-
+#include "SoundManager.h"
 
 
 Game* Game::s_pInstance = 0;
@@ -20,6 +20,11 @@ Game::Game() {
 	TheTextureManager = TextureManager::Instance();
 	TheInputHandler = InputHandler::Instance();
 	TheGameObjectFactory = GameObjectFactory::Instance();
+
+	SoundManager::Instance()->load("Outside.wav", "play", SOUND_MUSIC);
+	SoundManager::Instance()->load("jump.wav", "jump", SOUND_SFX);
+	SoundManager::Instance()->load("Death.wav", "death", SOUND_MUSIC);
+	SoundManager::Instance()->load("menu.wav", "menu", SOUND_MUSIC);
 }
 
 Game::~Game() {
@@ -44,6 +49,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			TheGameObjectFactory->Register("Player", &Player::Create);
 			TheGameObjectFactory->Register("Enemy", &Enemy::Create);
 			TheGameObjectFactory->Register("StaticObjects", &StaticObjects::Create);
+			TheGameObjectFactory->Register("KeyObject", &KeyObject::Create);
 			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);
 
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
@@ -65,6 +71,7 @@ void Game::render() {
 }
 
 void Game::update() {
+	InputHandler::Instance()->update();
 	gsm->update();
 }
 

@@ -1,10 +1,12 @@
 #include "PlayState.h"
 #include "PauseState.h"
+#include "GameOver.h"
 #include "Game.h"
 #include "StateParser.h"
 #include "LevelParser.h"
 //#include "LayerParser.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
 
 //#include "Level.h"
 
@@ -34,8 +36,10 @@ void PlayState::render() {
 bool PlayState::onEnter() {
 	//StateParser::parseState("assets/myxml.xml", "PLAYSTATE", &m_gobjects, &m_textureIDList);
 	//LayerParser lp;
+	SoundManager::Instance()->playMusic("play", -1);
 	LevelParser lp;
 	lv = lp.parseLevel("assets/background.tmx");
+	
 	//tl = lp.parseTileLayer("assets/background.tmx");
 	return true;
 };
@@ -43,6 +47,7 @@ bool PlayState::onEnter() {
 const std::string PlayState::s_menuID = "Play";
 
 bool PlayState::onExit() {
+	SoundManager::Instance()->stopMusic();
 	m_gobjects.clear();
 	InputHandler::Instance()->clean();
 	for (int i = 0; i < m_textureIDList.size(); i++) {

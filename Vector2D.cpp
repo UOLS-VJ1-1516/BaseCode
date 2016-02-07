@@ -121,5 +121,5 @@ Vector2D Vector2D::normalize()
 		ret.m_x = 0;
 		ret.m_y = 0;
 	}
-	return *this;
+	return ret;
 }

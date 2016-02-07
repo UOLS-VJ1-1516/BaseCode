@@ -5,8 +5,6 @@
 #include <string>
 #include <vector>
 #include "Layer.h"
-#include "CollisionManager.h"
-#include "Player.h"
 
 class TileLayer;
 
@@ -30,18 +28,7 @@ public:
 		return &m_CollisionsLayer;
 	}
 
-	Player* getPlayer() {
-		return m_pPlayer; 
-	}
-
-	void setPlayer(Player* pPlayer) { 
-		m_pPlayer = pPlayer; 
-	}
 private:
-	Player* m_pPlayer;
-	CollisionManager m_collisionManager;
-	
-	
 	std::vector<Tileset> m_tilesets;
 	std::vector<Layer*> m_layers;
 	std::vector<TileLayer*> m_CollisionsLayer;

@@ -1,61 +1,9 @@
-﻿Build started 25/01/2016 23:47:37.
-     1>Project "C:\Users\Bill_2\Source\Repos\BaseCode\1helloworld.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs/SDL/include /Ilibs/SDL_image/include /Ilibs/tinyxml/include /Ilibs/zlib/include /Ilibs/SDL2_mixer/lib /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
-         Player.cpp
-     1>c:\users\bill_2\source\repos\basecode\collisionobject.h(27): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\collisionobject.h(30): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(13): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(94): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(150): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(151): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(160): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(168): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(173): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(178): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(182): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\bill_2\source\repos\basecode\player.cpp(186): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib /LIBPATH:libs/SDL2_mixer/lib SDL2.lib SDL2main.lib tinyxmlSTL.lib zdll.lib SDL2_image.lib SDL2_mixer.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.lib" /MACHINE:X86 Debug\base64.obj
-         Debug\Camera.obj
-         Debug\CollisionManager.obj
-         Debug\Enemy.obj
-         Debug\Game.obj
-         Debug\GameObjectFactory.obj
-         Debug\GameStateMachine.obj
-         Debug\InputHandler.obj
-         Debug\LayerParser.obj
-         Debug\Level.obj
-         Debug\LevelParser.obj
-         Debug\main.obj
-         Debug\MenuButton.obj
-         Debug\MenuState.obj
-         Debug\ObjectLayer.obj
-         Debug\PauseState.obj
-         Debug\Player.obj
-         Debug\PlayState.obj
-         Debug\CollisionObject.obj
-         Debug\SoundManager.obj
-         Debug\StateParser.obj
-         Debug\StaticObjects.obj
-         Debug\TextureManager.obj
-         Debug\TileLayer.obj
-         Debug\tinystr.obj
-         Debug\tinyxml.obj
-         Debug\tinyxmlerror.obj
-         Debug\tinyxmlparser.obj
-         Debug\Vector2D.obj
-         1helloworld.vcxproj -> C:\Users\Bill_2\Source\Repos\BaseCode\Debug\Game.exe
-     1>Done Building Project "C:\Users\Bill_2\Source\Repos\BaseCode\1helloworld.vcxproj" (Build target(s)).
+﻿Build started 07/02/2016 12:51:55.
+     1>Project "C:\Users\Bill_2\Source\Videojuego\1helloworld.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         1helloworld.vcxproj -> C:\Users\Bill_2\Source\Videojuego\Debug\Game.exe
+     1>Done Building Project "C:\Users\Bill_2\Source\Videojuego\1helloworld.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.97
+Time Elapsed 00:00:00.06

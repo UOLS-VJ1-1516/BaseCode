@@ -14,6 +14,7 @@ public:
 	bool onEnter();
 	bool onExit();
 	std::string getStateID() const;
+
 private:
 	static const std::string s_menuID;
 	static void s_menuToPlay();

@@ -13,7 +13,6 @@ public:
 		CLICKED = 2
 	};
 	//MenuButton(const LoaderParams* pParams, void(*callback)());
-	virtual void onCollsion(GameObject* other);
 	MenuButton();
 	void load(const LoaderParams* pParams);
 	~MenuButton();
@@ -25,6 +24,7 @@ public:
 		m_callback = callback;
 	};
 	static GameObject * Create() { return new MenuButton(); }
+	void onCollision(GameObject* go);
 protected:
 	void(*m_callback)();
 	int m_callbackID;

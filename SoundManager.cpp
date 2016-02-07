@@ -1,5 +1,6 @@
 #include "SoundManager.h"
 
+SoundManager* SoundManager::s_pInstance = 0;
 
 SoundManager::SoundManager()
 {
@@ -8,20 +9,17 @@ SoundManager::SoundManager()
 
 SoundManager::~SoundManager()
 {
-	Mix_CloseAudio();
-}
 
-SoundManager & SoundManager::operator=(const SoundManager &)
+}
+bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 {
-	// TODO: insert return statement here
-}
-
-bool SoundManager::load(std::string fileName, std::string id, sound_type type){
 	if (type == SOUND_MUSIC)
 	{
-		Mix_Music* pMusic = Mix_LoadMUS(fileName.c_str());
+		std::string url = "./audio/" + fileName;
+		Mix_Music* pMusic = Mix_LoadMUS(url.c_str());
 		if (pMusic == 0)
 		{
+			std::cout << "Could not load music: ERROR - " << Mix_GetError() << std::endl;
 			return false;
 		}
 		m_music[id] = pMusic;
@@ -29,9 +27,11 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type){
 	}
 	else if (type == SOUND_SFX)
 	{
-		Mix_Chunk* pChunk = Mix_LoadWAV(fileName.c_str());
+		std::string url = "./audio/" + fileName;
+		Mix_Chunk* pChunk = Mix_LoadWAV(url.c_str());
 		if (pChunk == 0)
 		{
+			std::cout << "Could not load SFX: ERROR - " << Mix_GetError() << std::endl;
 			return false;
 		}
 		m_sfxs[id] = pChunk;
@@ -39,12 +39,20 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type){
 	}
 	return false;
 }
-
+void SoundManager::playSound(std::string id, int loop, int channel)
+{
+	Mix_PlayChannel(channel, m_sfxs[id], loop);
+}
 void SoundManager::playMusic(std::string id, int loop)
 {
 	Mix_PlayMusic(m_music[id], loop);
 }
-void SoundManager::playSound(std::string id, int loop)
+void SoundManager::stopMusic()
 {
-	Mix_PlayChannel(-1, m_sfxs[id], loop);
+	Mix_HaltMusic();
+}
+
+SoundManager::SoundManager(const SoundManager&)
+{
+	Mix_CloseAudio();
 }

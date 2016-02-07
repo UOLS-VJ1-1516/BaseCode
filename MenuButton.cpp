@@ -10,9 +10,6 @@
 		TextureManager::Instance()->setSizeFrames(pParams->getTextureID(), pParams->getWidth(), pParams->getHeight());
 	}
 };*/
-void MenuButton::onCollsion(GameObject * other)
-{
-}
 MenuButton::MenuButton(){};
 MenuButton::~MenuButton(){};
 void MenuButton::load(const LoaderParams* pParam) {
@@ -60,5 +57,9 @@ void MenuButton::update() {
 
 void MenuButton::clean() {
 	InputHandler::Instance()->clean();
-};
+}
+void MenuButton::onCollision(GameObject * go)
+{
+}
+;
 

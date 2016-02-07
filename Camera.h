@@ -17,10 +17,10 @@ public:
 	}
 
 	void setTarget(GameObject* target) {
-		m_pTarget = target; 
+		m_pTarget = target;
 	}
 
-	void setPosition(const Vector2D& position) {
+	void setPosition(Vector2D& position) {
 		m_position = position;
 	}
 
@@ -28,8 +28,9 @@ public:
 		return m_pTarget;
 	}
 
-	void setMaxPosition(int m_maxPosition);
-	Vector2D getPosition() const;
+	void setMaxPosition(int m_maxPosition);
+
+	Vector2D getPosition();
 private:
 	Camera();
 	~Camera();

@@ -9,6 +9,7 @@
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "MenuState.h"
+#include "KeyObject.h"
 #include "GameObjectFactory.h"
 
 class Game
@@ -25,6 +26,7 @@ private:
 	GameStateMachine* gsm;
 	GameState* ps;
 	GameState* ms;
+	GameState* go;
 	GameObjectFactory* TheGameObjectFactory;
 public:
 	static Game* Instance()

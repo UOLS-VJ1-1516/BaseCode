@@ -14,8 +14,8 @@ TileLayer::TileLayer(int tileWidth, int tileHeight, const std::vector<Tileset>& 
 	m_position.setY(0);
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-	col = (Game::Instance()->getScreenWidth() / m_tileWidth); //printará más allá de la pantalla y no saldrá la franja negra a la derecha.
-	row = (Game::Instance()->getScreenHeight() / m_tileHeight);
+	col = (Game::Instance()->getScreenWidth() / m_tileWidth)+1; //printará más allá de la pantalla y no saldrá la franja negra a la derecha.
+	row = (Game::Instance()->getScreenHeight() / m_tileHeight)-1;
 }
 
 TileLayer::~TileLayer(void)
@@ -24,36 +24,33 @@ TileLayer::~TileLayer(void)
 
 void TileLayer::update()
 {
+	
 	//if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size() && m_position.getY() / m_tileHeight + row < m_tileIDs.size()) {
-	//if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size()) {
-	if (TheCamera::Instance()->getPosition().getX() / m_tileWidth + col < m_tileIDs[0].size()){
+	/*if (m_position.getX() / m_tileWidth + col < m_tileIDs[0].size()) {
 		//m_velocity.setX(1);
 		//m_position += m_velocity;
-		//m_position = TheCamera::Instance()->getPosition();
-		//m_position.setX(TheCamera::Instance()->getPosition().getX() / m_tileWidth);
-		//m_position.setY(TheCamera::Instance()->getPosition().getY());
-	}
+		m_position = TheCamera::Instance()->getPosition();
+	}*/
 
-	//m_position += TheCamera::Instance()->getPosition();
 }
 
 void TileLayer::render()
 {
 	int x, y, x2, y2 = 0;
-	x = m_position.getX() / m_tileWidth;
-	y = m_position.getY() / m_tileHeight;
-	x2 = int(m_position.getX()) % m_tileWidth;
+	//y = m_position.getY() / m_tileHeight;
+	x2 = TheCamera::Instance()->getPosition().getX();
 	y2 = int(m_position.getY()) % m_tileHeight;
-	int firstCol = TheCamera::Instance()->getPosition().getX() / m_tileWidth;
-	for (int i = 0; i < row-1; i++)
+	int firstCol = TheCamera::Instance()->getPosition().getX() / m_tileWidth;
+	m_position.setX(-TheCamera::Instance()->getPosition().getX());
+	for (int i = 0; i < row; i++)
 	{
-		int k = 0;
-		for (int j = firstCol; j < firstCol + col; j++)
+		//int k = 0;
+		for (int j = firstCol; j < col + firstCol-1; j++)
 		{
-			int id = m_tileIDs[i][j + x];
+			int id = m_tileIDs[i][j];
 			if (id == 0)
 			{
-				k++;
+				//k++;
 				continue;
 			}
 			Tileset tileset = getTilesetByID(id);
@@ -62,7 +59,7 @@ void TileLayer::render()
 				tileset.name.c_str(),
 				tileset.margin,
 				tileset.spacing,
-				((k * m_tileWidth) - x2),
+				((j * m_tileWidth) - x2),
 				((i * m_tileHeight) - y2),
 				m_tileWidth,
 				m_tileHeight,
@@ -70,7 +67,7 @@ void TileLayer::render()
 				(id - (tileset.firstGridID - 1)) % tileset.numColumns,
 				Game::Instance()->getRender()
 				);
-			k++;
+			//k++;
 		}
 	}
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="36" tilewidth="16" tileheight="16" nextobjectid="27">
+ <properties>
+  <property name="player" value="player.png"/>
+  <property name="tim" value="tim.png"/>
+  <property name="tim2" value="tim.png"/>
+ </properties>
+ <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
+  <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
+ </tileset>
+ <tileset firstgid="210" name="Player" tilewidth="40" tileheight="32" tilecount="16">
+  <image source="player.png" width="320" height="64"/>
+ </tileset>
+ <tileset firstgid="226" name="tim" tilewidth="26" tileheight="18" tilecount="3">
+  <image source="tim.png" width="78" height="18"/>
+ </tileset>
+ <layer name="Capa Fondo" width="80" height="36" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt2rEJgDAQQNEskR0cQXAWnUprS11GdCSv0EYtzpySHPzidSGEz6VQEkMIEcikgkkNk14MokGSScwFnMOrmX4mzB/9cuL+2jB/9KOfX/SjH/38oh/96OfP+f+UfuntYuD7zdqP+UtvR793rZ5wf239mD/60a9Mmn65z1gq7fuD9li//GS7+HrvVSllb22/Toy4oR/96OcX/ehHP780/XYU5V46
+  </data>
+ </layer>
+ <layer name="Capa Colisiones" width="80" height="36">
+  <properties>
+   <property name="collidable" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlsFuwjAMhs04sB2AC0NocEi5AAfYgSHt/Z9sjkSlErWUxLWTev6k75akzZ/ECYBhGIZhyDNHF+gy94+MFIdW6D7zf3g415Jr7Cv6g94GHjcFB3xryTX2b8PccK5lSfuEC861LGmflIa2O1B6Pg7KuQOHwIHsfLTVNun5cNa2HLVBU612oKs2SKOtNkgz1FnS9kaQxsH468AEfQuUQkMdWKGfd6u7Umi4U+v8KpDPT5K2c9Z0mtDHu4HH7LTm1zxnba5f7BNm1eYYiN1PB/T4xFPLNzTn5/OI3U+x5Mxvhr73+EFon7KfYuHIr37zhoZv4C902+OO0F6C1Py6MvG4jj7hG/iMXnr8JrSXIDW/rkw89Zs3dMxv4C448vtPWH40LD8alh8Ny4+G5UfD8qORmt8f7sg1PQ==
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos" visible="0">
+  <object id="21" name="Player" type="Player" gid="210" x="30.1715" y="141.211" width="47.1774" height="43.1182" rotation="-1.47083">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="8"/>
+    <property name="friction" value="0.2"/>
+    <property name="maxSpeed" value="10"/>
+    <property name="numFrames" value="8"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="40"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -39,4 +39,14 @@
 			<object type="MenuButton" x="236" y="275" width="236" height="76" textureID="mainbtn" numSprites="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="2"/>
 		</OBJECTS>
 	</PAUSESTATE>
+	<GAMEOVER>
+		<TEXTURES>
+			<texture filename="titlegameover.bmp" ID="titlegameover" width="375" height="75" sizeX="250" sizeY="50"/>
+			<texture filename="restart.png" ID="restart" width="375" height="75" sizeX="250" sizeY="50"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="StaticObjects" x="236" y="75" width="375" height="75" textureID="titlepause" numSprites="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="0"/>
+			<object type="StaticObjects" x="236" y="75" width="375" height="75" textureID="restart" numSprites="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="0"/>
+		</OBJECTS>
+	</GAMEOVER>
 </STATES>

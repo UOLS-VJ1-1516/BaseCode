@@ -2,8 +2,11 @@
 #include "Game.h"
 #include "StaticObjects.h"
 #include "TextureManager.h"
+#include "Camera.h"
 
-StaticObjects::StaticObjects() {};
+StaticObjects::StaticObjects() {
+	m_position = Vector2D(0, 0);
+};
 StaticObjects::~StaticObjects() {};
 
 void StaticObjects::draw()
@@ -14,7 +17,11 @@ void StaticObjects::draw()
 void StaticObjects::drawRotation(int angle) 
 {
 	TextureManager::Instance()->draw(m_textureID, m_position.getX(), m_position.getY(), m_width, m_height, angle, Game::Instance()->getRender(), SDL_FLIP_NONE);
-};
+}
+void StaticObjects::onCollision(GameObject * go)
+{
+}
+;
 
 void StaticObjects::load(const LoaderParams* pParams)
 {
@@ -43,8 +50,4 @@ void StaticObjects::update() {
 void StaticObjects::clean()
 {
 
-}
-void StaticObjects::onCollsion(GameObject * other)
-{
-}
-;
+};

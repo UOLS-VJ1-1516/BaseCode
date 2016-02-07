@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 
 void MenuState::update() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
@@ -16,6 +17,7 @@ void MenuState::render() {
 };
 
 bool MenuState::onEnter() {
+	SoundManager::Instance()->playMusic("menu", 1);
 	StateParser::parseState("assets/myxml.xml", "MENUSTATE", &m_gameObjects, &m_textureIDList);
 	m_callbacks.push_back(0); 
 	m_callbacks.push_back(s_menuToPlay);
@@ -26,6 +28,7 @@ bool MenuState::onEnter() {
 };
 
 bool MenuState::onExit() {
+	SoundManager::Instance()->stopMusic();
 	m_gameObjects.clear();
 	for (int i = 0; i < m_textureIDList.size(); i++) {
 		TextureManager::Instance()->clean(m_textureIDList[i]);

@@ -6,6 +6,7 @@
 #include "TileLayer.h"
 #include "ObjectLayer.h"
 #include "Camera.h"
+#include "CollisionManager.h"
 
 Level* LevelParser::parseLevel(const char *levelFile)
 {
@@ -13,7 +14,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	levelDocument.LoadFile(levelFile);
 
 	Level* pLevel = new Level();
-	
+
 	TiXmlElement* pRoot = levelDocument.RootElement();
 	pRoot->Attribute("tilewidth", &m_tileSizew);
 	pRoot->Attribute("tileheight", &m_tileSizeh);
@@ -222,15 +223,13 @@ void LevelParser::parseObjectLayer(TiXmlElement * pObjectElement, std::vector<La
 					pCollisionObj->setCollisionMargin(collitionmargin);
 					if (dynamic_cast<Player*>(pGameObject)) {
 						TheCamera::Instance()->setTarget(dynamic_cast<Player*>(pGameObject));
-						TheCamera::Instance()->setPosition(dynamic_cast<Player*>(pGameObject)->getPosition());
+						TheCamera::Instance()->setMaxPosition(m_width*m_tileSizew);
+						CollisionManager::Instance()->setTarget(dynamic_cast<Player*>(pGameObject));
+						//TheCamera::Instance()->setPosition(dynamic_cast<Player*>(pGameObject)->getPosition());	
 					}
 				}
 				TextureManager::Instance()->setSizeFrames(textureID, width, height);
 				pGameObject->load(new LoaderParams(x, y, width, height, textureID, numSprites, speedX, speedY, maxSpeed, friction, callbackId));
-				if (textureID == "Player")
-				{
-					pLevel->setPlayer(dynamic_cast<Player*>(pGameObject));			
-				}
 				pObjectLayer->getGameObjects()->push_back(pGameObject);
 			}
 		}
