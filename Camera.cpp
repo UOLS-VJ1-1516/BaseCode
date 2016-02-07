@@ -16,6 +16,9 @@ Vector2D Camera::getPosition() const {
 		if (pos.getX() < 0) {
 			pos.setX(0);
 		}
+		else if (pos.getX() >= m_maxPosition - Game::Instance()->getWindowWidth()) {
+			pos.setX(m_maxPosition - Game::Instance()->getWindowWidth());
+		}
 		return pos;
 	}
 	return m_position;

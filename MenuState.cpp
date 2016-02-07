@@ -7,6 +7,12 @@ void MenuState::update() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
+
+	InputHandler::Instance()->update();
+
+	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+		Game::Instance()->setIsRunning(false);
+	}
 }
 
 void MenuState::render() {

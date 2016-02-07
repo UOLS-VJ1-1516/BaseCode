@@ -48,14 +48,23 @@
     <ClCompile Include="LevelParser.cpp" />
     <ClCompile Include="base64.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
-    <ClCompile Include="CollisionObject.cpp" />
-    <ClCompile Include="CollisionManager.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="GameOverState.cpp">
       <Filter>GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="WinState.cpp" />
+    <ClCompile Include="WinState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Colisiones</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionObject.cpp">
+      <Filter>Colisiones</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -102,15 +111,24 @@
     <ClInclude Include="LevelParser.h" />
     <ClInclude Include="base64.h" />
     <ClInclude Include="ObjectLayer.h" />
-    <ClInclude Include="CollisionObject.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="GameOverState.h">
       <Filter>GameStates</Filter>
     </ClInclude>
     <ClInclude Include="WinState.h">
       <Filter>GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Colisiones</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionObject.h">
+      <Filter>Colisiones</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticText.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +140,12 @@
     </Filter>
     <Filter Include="tinyxml">
       <UniqueIdentifier>{51d13071-02e4-4eb9-95c7-965010f1fed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{f4d328c5-5283-4db6-bbbb-760143f3bf59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colisiones">
+      <UniqueIdentifier>{2a6ba0b6-1859-4f39-af09-56870fa49b7d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

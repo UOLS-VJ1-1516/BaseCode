@@ -2,11 +2,18 @@
 #include "game.h"
 #include "SoundManager.h"
 
-const std::string WinState::s_winID = "WIN";
+const std::string WinState::s_winID = "GAMEWIN";
 
 void WinState::update() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
+	}
+
+	InputHandler::Instance()->update();
+
+	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+		Game::Instance()->setIsRunning(false);
+		SoundManager::Instance()->stopMusic();
 	}
 }
 

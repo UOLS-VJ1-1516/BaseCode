@@ -6,6 +6,7 @@ void ObjectLayer::update()
 	{
 		m_gameObjects[i]->update();
 	}
+	
 }
 void ObjectLayer::render()
 {

@@ -41,7 +41,7 @@ class Level {
 
 	private:
 		Player* m_pPlayer;
-		CollisionManager m_collisionManager;
+		CollisionManager* m_collisionManager;
 		std::vector<Tileset> m_tilesets;
 		std::vector<Layer*> m_layers;
 		std::vector<TileLayer*> m_CollisionsLayer;

@@ -67,7 +67,7 @@ void LevelParser::parseTilesets(TiXmlElement * pTilesetRoot, std::vector<Tileset
 	pTilesetRoot->Attribute("margin", &tileset.margin);
 	tileset.name = pTilesetRoot->Attribute("name");
 	tileset.numColumns = tileset.width / (tileset.tileWidth + tileset.spacing);
-
+	
 	pTilesets->push_back(tileset);
 }
 
@@ -214,10 +214,8 @@ void LevelParser::parseObjectLayer(TiXmlElement * pObjectElement, std::vector<La
 				pCollisionObj->setCollisionMargin(collitionmargin);
 				if (dynamic_cast<Player*>(pGameObject)) {
 					TheCamera::Instance()->setTarget(dynamic_cast<Player*>(pGameObject));
-					TheCamera::Instance()->setPosition(dynamic_cast<Player*>(pGameObject)->getPosition());
+					TheCamera::Instance()->setMaxPosition(m_width*m_tileSizew);
 				}
-				//TheCamera::Instance()->setTarget(dynamic_cast<Player*>(pGameObject));
-				//TheCamera::Instance()->setPosition(dynamic_cast<Player*>(pGameObject)->getPosition());
 			}
 
 			pGameObject->load(new LoaderParams(x, y, width, height, textureID, numSprites, speedX, speedY, maxSpeed, friction, callbackId));

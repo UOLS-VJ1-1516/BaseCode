@@ -1,3 +1,4 @@
+
 #include "CollisionObject.h"
 #include <vector>
 #include "TileLayer.h"
@@ -19,20 +20,19 @@ void CollisionObject::draw() {
 }
 
 void CollisionObject::update() {
-
+	
 }
 
 void CollisionObject::clean() {
 
 }
 
-void CollisionObject::onCollision(GameObject * other)
-{
+void CollisionObject::onCollision(GameObject * other) {
+
 }
 
 bool CollisionObject::isCollisionWithTile() {
-	for (std::vector<TileLayer*>::const_iterator it = CollisionObject::m_pCollisionLayers->begin(); it != CollisionObject::m_pCollisionLayers->end(); ++it)
-	{
+	for (std::vector<TileLayer*>::const_iterator it = CollisionObject::m_pCollisionLayers->begin(); it != CollisionObject::m_pCollisionLayers->end(); ++it) {
 		TileLayer* pTileLayer = (*it);
 		int x, y, tileColumn, tileRow, tileid = 0;
 		x = pTileLayer->getPosition().getX() / pTileLayer->getTileWith();
@@ -40,8 +40,7 @@ bool CollisionObject::isCollisionWithTile() {
 		m_TileWith = pTileLayer->getTileWith();
 		m_TileHeight = pTileLayer->getTileHeight();
 
-		if (getVelocity().getX() >= 0 && getVelocity().getY() >= 0) //abajo y derecha
-		{
+		if (getVelocity().getX() >= 0 && getVelocity().getY() >= 0){ //abajo y derecha 
 			tileColumn = ((getPosition().getX() + getWidth() - m_collisionMargin) / pTileLayer->getTileWith());
 			tileRow = ((getPosition().getY() + getHeight()) / pTileLayer->getTileHeight());
 			if ((tileRow + y) >= pTileLayer->getTileIDs().size() || (tileColumn + x) >= pTileLayer->getTileIDs()[0].size()) {
@@ -50,8 +49,7 @@ bool CollisionObject::isCollisionWithTile() {
 			}
 			tileid = pTileLayer->getTileIDs()[tileRow + y][tileColumn + x - 1];
 		}
-		else if (getVelocity().getX() < 0 && getVelocity().getY() < 0)//arriba e izquierda
-		{
+		else if (getVelocity().getX() < 0 && getVelocity().getY() < 0){ //arriba e izquierda
 			tileColumn = ((getPosition().getX() + m_collisionMargin) / pTileLayer->getTileWith());
 			tileRow = (getPosition().getY() / pTileLayer->getTileHeight());
 			if ((tileRow + y) >= pTileLayer->getTileIDs().size() || (tileColumn + x) >= pTileLayer->getTileIDs()[0].size()) {
@@ -60,8 +58,7 @@ bool CollisionObject::isCollisionWithTile() {
 			}
 			tileid = pTileLayer->getTileIDs()[tileRow + y][tileColumn + x + 1];
 		}
-		else if (getVelocity().getX() >= 0 && getVelocity().getY() < 0)//arriba y derecha
-		{
+		else if (getVelocity().getX() >= 0 && getVelocity().getY() < 0){ //arriba y derecha
 			tileColumn = ((getPosition().getX() + getWidth() - m_collisionMargin) / pTileLayer->getTileWith());
 			tileRow = (getPosition().getY() / pTileLayer->getTileHeight());
 			if ((tileRow + y) >= pTileLayer->getTileIDs().size() || (tileColumn + x) >= pTileLayer->getTileIDs()[0].size()) {
@@ -70,8 +67,7 @@ bool CollisionObject::isCollisionWithTile() {
 			}
 			tileid = pTileLayer->getTileIDs()[tileRow + y][tileColumn + x - 1];
 		}
-		else if (getVelocity().getX() < 0 && getVelocity().getY() >= 0)//abajo e izquierda
-		{
+		else if (getVelocity().getX() < 0 && getVelocity().getY() >= 0){//abajo e izquierda
 			tileColumn = ((getPosition().getX() + m_collisionMargin) / pTileLayer->getTileWith());
 			tileRow = ((getPosition().getY() + getHeight()) / pTileLayer->getTileHeight());
 			if ((tileRow + y) >= pTileLayer->getTileIDs().size() || (tileColumn + x) >= pTileLayer->getTileIDs()[0].size()) {
@@ -81,8 +77,7 @@ bool CollisionObject::isCollisionWithTile() {
 			tileid = pTileLayer->getTileIDs()[tileRow + y][tileColumn + x + 1];
 		}
 
-		if (tileid != 0) //se trata de un tile que no es de aire, por lo tanto hay colision. 
-		{
+		if (tileid != 0){ //se trata de un tile que no es de aire, por lo tanto hay colision. 
 			m_CollisionDirection = CollisionDirection(tileColumn, tileRow, pTileLayer->getTileWith(), pTileLayer->getTileHeight());
 			return true;
 		}

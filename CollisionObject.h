@@ -42,6 +42,8 @@ class CollisionObject : public GameObject {
 		int m_CollisionDirection;
 		int m_TileWith;
 		int m_TileHeight;
+		Vector2D newGoodPosition;
+		float maxJump;
 
 	private:
 		std::vector<TileLayer*>* m_pCollisionLayers;

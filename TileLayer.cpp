@@ -13,7 +13,7 @@ TileLayer::TileLayer(int tileWidth, int tileHeight, const std::vector<Tileset>& 
 	m_position.setY(0);
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-	m_numCol = (Game::Instance()->getWindowWidth() / m_tileWidth);
+	m_numCol = (Game::Instance()->getWindowWidth() / m_tileWidth)+1;
 	m_numRow = (Game::Instance()->getWindowHeight() / m_tileHeight)+1;
 }
 
@@ -22,33 +22,38 @@ TileLayer::~TileLayer(void) {
 }
 
 void TileLayer::update() {
-	/*if (TheCamera::Instance()->getPosition().getX() / m_tileWidth + m_numCol < m_tileIDs[0].size()) {
 	
-	}*/
 }
 
 void TileLayer::render() {
 	int x, y, x2, y2 = 0;
-	x = m_position.getX() / m_tileWidth;
-	y = m_position.getY() / m_tileHeight;
-	x2 = int(m_position.getX()) % m_tileWidth;
+	x2 = TheCamera::Instance()->getPosition().getX();
 	y2 = int(m_position.getY()) % m_tileHeight;
 	int firstCol = TheCamera::Instance()->getPosition().getX() / m_tileWidth;
 
-	for (int i = 0; i < m_numRow; i++) {
-		int k = 0;
-		for (int j = firstCol; j < firstCol + m_numCol; j++) {
-			int id = m_tileIDs[i][j + x];
-			if (id == 0) {
-				k++;
+	for (int i = 0; i < m_numRow; i++){
+		for (int j = firstCol; j < m_numCol + firstCol-1; j++){
+			int id = m_tileIDs[i][j];
+			if (id == 0){
 				continue;
 			}
 			Tileset tileset = getTilesetByID(id);
 			id--;
-			TextureManager::Instance()->drawTileset( tileset.name.c_str(), tileset.margin, tileset.spacing, ((k * m_tileWidth) - x2), ((i * m_tileHeight) - y2), m_tileWidth, m_tileHeight, (id - (tileset.firstGridID - 1)) / tileset.numColumns, (id - (tileset.firstGridID - 1)) % tileset.numColumns, Game::Instance()->getRender());
-			k++;
+			TextureManager::Instance()->drawTileset(
+				tileset.name.c_str(),
+				tileset.margin,
+				tileset.spacing,
+				((j * m_tileWidth) - x2),
+				((i * m_tileHeight) - y2),
+				m_tileWidth,
+				m_tileHeight,
+				(id - (tileset.firstGridID - 1)) / tileset.numColumns,
+				(id - (tileset.firstGridID - 1)) % tileset.numColumns,
+				Game::Instance()->getRender()
+				);
 		}
 	}
+	
 }
 
 void TileLayer::setTileIDs(const std::vector<std::vector<int>>& data) {

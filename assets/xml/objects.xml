@@ -32,20 +32,24 @@
 			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="2"/>
 		</OBJECTS>
 	</PAUSE>
+	<GAMEWIN>
+		<TEXTURES>
+			<texture fileName="./assets/text/gameWin.png" ID="FinalText"/>
+			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="375" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+			<object type="StaticText" x="270" y="50" width="261" height="262" textureID="FinalText" numSprite="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="0"/>
+		</OBJECTS>
+	</GAMEWIN>
 	<GAMEOVER>
 		<TEXTURES>
+			<texture fileName="./assets/text/gameOver.png" ID="OverText"/>
 			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
 		</TEXTURES>
 		<OBJECTS>
 			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+			<object type="StaticText" x="235" y="200" width="330" height="70" textureID="OverText" numSprite="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="0"/>
 		</OBJECTS>
 	</GAMEOVER>
-	<WIN>
-		<TEXTURES>
-			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
-		</TEXTURES>
-		<OBJECTS>
-			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
-		</OBJECTS>
-	</WIN>
 </STATES>

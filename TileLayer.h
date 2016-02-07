@@ -8,18 +8,6 @@
 #include "Vector2D.h"
 #include "Level.h"
 #include "Layer.h"
-/*
-struct Tileset  {
-	int firstGridID;
-	int tileWidth;
-	int tileHeight;
-	int spacing;
-	int margin;
-	int width;
-	int height;
-	int numColumns;
-	std::string name;
-};*/
 
 class TileLayer : public Layer {
 	public:
@@ -38,6 +26,14 @@ class TileLayer : public Layer {
 		int getTileHeight() {
 			return m_tileHeight;
 		}
+
+		void setTileSize(int tileSize) {
+			m_tileSize = tileSize;
+		}
+		int getTileSize() { 
+			return m_tileSize; 
+		}
+
 		Vector2D getPosition() {
 			return m_position;
 		}
@@ -48,6 +44,7 @@ class TileLayer : public Layer {
 	private:
 		int m_tileWidth; // Ancho de un patrón
 		int m_tileHeight; // Alto de un patrón
+		int m_tileSize;
 		int m_numRow;
 		int m_numCol;
 		bool m_isCollider; 

@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "TextureManager.h"
 #include "game.h"
+#include "Camera.h"
 
 Enemy::Enemy() {
 
@@ -30,7 +31,7 @@ void Enemy::load(const LoaderParams* pParams) {
 void Enemy::draw() {
 	//Si la velocidad es negativa, el sprite mira hacia la izquierda
 	if (m_velocity.getX() > 0) {
-		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_NONE);
+		TextureManager::Instance()->drawFrame(m_textureID, m_position.getX() - TheCamera::Instance()->getPosition().getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_NONE);
 	}
 	//Si la velocidad es positiva, el sprite mira hacia la derecha
 	else if (m_velocity.getX() < 0) {

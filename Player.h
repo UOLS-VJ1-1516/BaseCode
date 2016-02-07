@@ -13,6 +13,7 @@ class Player : public CollisionObject {
 		void stopX(int xPos);
 		void stopY(int yPos);
 		bool m_jump = false;
+		bool m_collision = false;
 	
 	public:
 		Player();
@@ -23,10 +24,7 @@ class Player : public CollisionObject {
 		virtual void update();
 		virtual void clean();
 		void onCollision(GameObject* other);
-		void incrementAccelerationX();
-		void decrementAccelerationX();
-		void incrementAccelerationY();
-		void decrementAccelerationY();
+		void gravedad();
 		static GameObject* Create() { return new Player(); }
 		void jump();
 

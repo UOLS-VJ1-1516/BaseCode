@@ -8,6 +8,7 @@
 #include "string"
 #include "StateParser.h"
 #include "MenuState.h"
+#include "InputHandler.h"
 
 typedef void(*Callback)();
 

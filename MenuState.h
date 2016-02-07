@@ -9,6 +9,7 @@
 #include "string"
 #include "PlayState.h"
 #include "StateParser.h"
+#include "InputHandler.h"
 
 typedef void(*Callback)();
 

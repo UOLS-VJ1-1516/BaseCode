@@ -1,6 +1,7 @@
 #include "StaticObject.h"
 #include "TextureManager.h"
 #include "game.h"
+#include "Camera.h"
 
 StaticObject::StaticObject() {
 
@@ -29,7 +30,7 @@ void StaticObject::load(const LoaderParams* pParams) {
 
 void StaticObject::draw() {
 	//refresh img
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame(m_textureID, m_position.getX() - TheCamera::Instance()->getPosition().getX(), (int)m_position.getY(), m_width, m_height, m_currentFrame, m_currentRow, Game::Instance()->getRender(), SDL_FLIP_NONE);
 }
 
 void StaticObject::update() {

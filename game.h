@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "StaticObject.h"
+#include "StaticText.h"
 #include "TextureManager.h"
 #include "InputHandler.h"
 #include "GameStateMachine.h"

@@ -5,6 +5,7 @@
 
 #include "LoaderParams.h"
 #include "Vector2D.h"
+#include "SDL.h"
 
 class GameObject {
 	public:
@@ -26,6 +27,12 @@ class GameObject {
 		int getHeight() {
 			return m_height;
 		}
+		const char* getId() {
+			return m_textureID;
+		}
+		SDL_Rect getBoundingBox() {
+			return m_pBoundingBox;
+		}
 
 	protected:
 		Vector2D m_position;
@@ -40,6 +47,7 @@ class GameObject {
 		int m_numSprite;
 		float m_maxVelocity;
 		float m_frictionCo;
+		SDL_Rect m_pBoundingBox;
 
 };
 

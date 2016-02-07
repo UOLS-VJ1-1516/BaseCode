@@ -30,6 +30,9 @@ public:
 	}
 
 	void setMaxPosition(int m_maxPosition);
+	int getMaxPosition() {
+		return m_maxPosition;
+	}
 
 	Vector2D getPosition() const;
 private:

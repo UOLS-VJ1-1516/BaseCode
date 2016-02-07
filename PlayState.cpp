@@ -1,15 +1,12 @@
 #include "PlayState.h"
 #include "LevelParser.h"
 #include "SoundManager.h"
+#include "Camera.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update() {
-	//tl->update();
 	level->update();
-	/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
-		m_gameObjects[i]->update();
-	}*/
 	InputHandler::Instance()->update();
 
 	if (InputHandler::Instance()->isExitClicked() || InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
@@ -19,26 +16,18 @@ void PlayState::update() {
 
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		Game::Instance()->getGameStateMachine()->pushState(new PauseState());
-		SoundManager::Instance()->stopMusic();
 	}
 }
 
 void PlayState::render() {
-	//tl->render();
 	level->render();
-	/*for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
-		m_gameObjects[i]->draw();
-	}*/
-	
 }
 
 bool PlayState::onEnter() {
-	//StateParser::parseState("assets/xml/objects.xml", s_playID, &m_gameObjects, &m_texturesIDList);
-	//LayerParser lp;
-	//tl = lp.parseTileLayer("assets/tilMap.tmx");
 	SoundManager::Instance()->playMusic("intro", 0);
 	LevelParser levp;
-	level = levp.parseLevel("assets/mapBackground.tmx");
+	level = levp.parseLevel("assets/mapBackground2.tmx");
+	
 	return true;
 }
 

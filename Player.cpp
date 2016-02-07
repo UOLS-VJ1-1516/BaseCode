@@ -55,13 +55,18 @@ void Player::draw() {
 }
 
 void Player::update() {
+	m_pBoundingBox.x = m_position.getX() + m_collisionMargin;
+	m_pBoundingBox.y = m_position.getY();
+	m_pBoundingBox.h = m_height;
+	m_pBoundingBox.w = m_width - 2 * m_collisionMargin;
+
+	CollisionObject::update();
 	if (isCollisionWithTile()) {
 		stopY((int)m_position.getY());
 		m_jump = false;
-		
+		m_collision = true;
 	}
 	m_jump = false;
-
 	int pixels = 3;
 	Vector2D initVelocity = m_velocity;
 	SDL_Event event;
@@ -74,27 +79,12 @@ void Player::update() {
 	if (m_position.getY() < 0) {
 		stopY(0);
 	}
-
-	if (m_position.getX() > ((Game::Instance()->getWindowWidth()) - m_width)) {
-		stopX((Game::Instance()->getWindowWidth()) - m_width);
-	}
-	if (m_position.getY() > ((Game::Instance()->getWindowHeight()) - m_height)) {
-		//stopY((Game::Instance()->getWindowHeight()) - m_height);
+	
+	if (m_position.getX() > (TheCamera::Instance()->getMaxPosition() - m_width)) {
 		Game::Instance()->getGameStateMachine()->pushState(new WinState());
 	}
-	if (m_velocity.getX() < 0) {
-		incrementAccelerationX();
-	}
-
-	if (m_velocity.getX() > 0) {
-		decrementAccelerationX();
-	}
-	if (m_velocity.getY() < 0) {
-		incrementAccelerationY();
-	}
-
-	if (m_velocity.getY() > 0) {
-		decrementAccelerationY();
+	if (m_position.getY() > ((Game::Instance()->getWindowHeight()) - m_height)) {
+		Game::Instance()->getGameStateMachine()->pushState(new GameOverState());
 	}
 
 	m_velocity += m_acceleration;
@@ -112,8 +102,7 @@ void Player::update() {
 		m_acceleration.setX(0);
 	}
 
-
-	m_position += m_velocity + m_acceleration * 1/2;
+	m_position += m_velocity; 
 	m_currentFrame = (abs((int)(m_position - m_lastStop).length()) / pixels) % m_numSprite;
 
 	InputHandler::Instance()->update();
@@ -127,48 +116,33 @@ void Player::update() {
 	}
 
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-		incrementAccelerationX();
+		m_velocity.setX(7);
+	}
+	else {
+		m_velocity.setX(0);
 	}
 
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		decrementAccelerationX();
+		m_velocity.setX(-7);
 	}
-
+	
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
-		SoundManager::Instance()->playSound("jump", 0);
-		if (!m_jump) {
+		if (!m_jump && m_collision) {
 			jump();
 			m_jump = true;
-			
 		}
 	}
-	if (event.button.type == SDL_SCANCODE_SPACE && event.type == SDL_KEYUP) {
-		m_jump = false;
-	}
-
-	incrementAccelerationY();
-	TheCamera::Instance()->setPosition(m_position);
+	gravedad();
 }
 
 void Player::clean() {
 	InputHandler::Instance()->clean();
 }
 
-void Player::incrementAccelerationX() {
-	m_acceleration.setX(m_acceleration.getX() + 0.6);
-}
-
-void Player::decrementAccelerationX() {
-	m_acceleration.setX(m_acceleration.getX() - 0.6);
-}
-
-void Player::incrementAccelerationY() {
-	m_acceleration.setY(m_acceleration.getY() + 0.6);
-	
-}
-
-void Player::decrementAccelerationY() {
-	m_acceleration.setY(m_acceleration.getY() - 0.6);
+void Player::gravedad() {
+	//m_acceleration.setX(0);
+	//m_acceleration.setY(m_acceleration.getY()+0.2);
+	m_velocity.setY(m_velocity.getY()+1);
 }
 
 void Player::stopX(int xpos) {
@@ -189,8 +163,16 @@ void Player::stopY(int ypos) {
 
 void Player::jump() {
 	m_velocity.setY(-15);
+	m_collision = false;
+	SoundManager::Instance()->playSound("jump", 0);
 }
 
 void Player::onCollision(GameObject * other) {
-
+	if (std::strcmp(other->getId(), "plant") == 0)
+	{
+		Game::Instance()->getGameStateMachine()->pushState(new GameOverState());
+	}
+	else {
+		Game::Instance()->getGameStateMachine()->pushState(new MenuState());
+	}
 }

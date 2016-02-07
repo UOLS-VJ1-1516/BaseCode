@@ -29,6 +29,7 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, b
 			GameObjectFactory::Instance()->Register("Enemy", &Enemy::Create);
 			GameObjectFactory::Instance()->Register("StaticObject", &StaticObject::Create);
 			GameObjectFactory::Instance()->Register("MenuButton", &MenuButton::Create);
+			GameObjectFactory::Instance()->Register("StaticText", &StaticText::Create);
 
 			//Carga de sonidos
 			SoundManager::Instance()->loadMusic("assets/sounds/intro.wav", "intro");
