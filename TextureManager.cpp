@@ -5,7 +5,7 @@ TextureManager::TextureManager() {};
 
 bool TextureManager::load(const char* fileName, std::string textureID, SDL_Renderer* g_pRenderer) {
 
-	SDL_Surface *image = SDL_LoadBMP(fileName);
+	SDL_Surface *image = IMG_Load(fileName);
 	if (image == 0) return false;
 
 	m_textureMap[textureID] = SDL_CreateTextureFromSurface(g_pRenderer, image);
@@ -36,14 +36,14 @@ void TextureManager::drawFrame(std::string textureID, float x, float y, int widt
 	SDL_Rect source, destination;
 	SDL_RendererFlip rendererFlip;
 
-	// Imágen propiedades internas
-	source.x = currentFrame * width;
+	
+	source.x = currentFrame * width;//Propiedades de las imagenes
 	source.y = currentRow;
 	source.w = width;
 	source.h = height;
 
-	// Imagen respecto a la ventana.
-	destination.x = x;
+	
+	destination.x = x;// propiedades sobre la ventana
 	destination.y = y;
 	destination.w = width;
 	destination.h = height;
@@ -55,8 +55,23 @@ void TextureManager::drawFrame(std::string textureID, float x, float y, int widt
 	SDL_RenderCopyEx(g_pRenderer, m_textureMap[textureID], &source, &destination, 0, 0, rendererFlip);
 };
 
+void TextureManager::drawTile(std::string textureID, int margin, int spacing, int x, int y, int width, int height, int currentRow,
+	int currentFrame, SDL_Renderer *pRenderer)
+{
+	SDL_Rect srcRect;
+	SDL_Rect destRect;
+	srcRect.x = margin + (spacing + width) * currentFrame;
+	srcRect.y = margin + (spacing + height) * currentRow;
+	srcRect.w = destRect.w = width;
+	srcRect.h = destRect.h = height;
+	destRect.x = x;
+	destRect.y = y;
+	SDL_RenderCopyEx(pRenderer, m_textureMap[textureID], &srcRect, &destRect, 0, 0, SDL_FLIP_NONE);
+}
 
 void TextureManager::clearFromTextureMap(std::string id)
 {
 	m_textureMap.erase(id);
 }
+
+

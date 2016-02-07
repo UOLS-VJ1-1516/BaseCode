@@ -6,6 +6,8 @@
 
 const int altura = 800;
 const int ancho = 800;
+const int FIXED_TIME = 35;
+
 Game * Game::s_pInstance = 0;
 Game::Game()
 {
@@ -49,6 +51,13 @@ void Game::render()
 void Game::update(int delay)
 {
 	m_pGameStateMachine->update();
+	int frameStart = SDL_GetTicks();
+	int frameEnd = SDL_GetTicks();
+	int frameTime = frameEnd - frameStart;
+	if (frameTime < FIXED_TIME)
+	{
+		SDL_Delay((int)(FIXED_TIME - frameTime));
+	}
 }
 
 void Game::handleEvents()
@@ -83,4 +92,8 @@ int Game::getTicks() { return (int)(SDL_GetTicks()); };
 const int Game::get_ancho_ventana() const
 {
 	return ancho;
+}
+const int Game::get_alto_ventana() const
+{
+	return altura;
 }

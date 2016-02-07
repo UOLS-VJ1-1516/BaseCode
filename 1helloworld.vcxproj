@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/incude;libs/tinyxml/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>libs/SDL/include;libs/SDL_image/include;libs/tinyxml/include;libs/base64/include;libs/zlib/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>libs/SDL/lib;libs/SDL_image/lib;libs/tinyxml/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>libs/SDL/lib;libs/SDL_image/lib;libs/tinyxml/lib;libs/base64/include;libs/zlib/include;libs/zlib/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib;zdll.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,30 +81,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="LayerParser.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelParser.cpp" />
+    <ClCompile Include="libs\base64\include\base64.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuOnPause.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MenuStateOnPause.cpp" />
+    <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player2.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="StateParser.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="CollisionObject.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="LayerParser.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelParser.h" />
+    <ClInclude Include="libs\base64\include\base64.h" />
     <ClInclude Include="libs\SDL\include\begin_code.h" />
     <ClInclude Include="libs\SDL\include\close_code.h" />
     <ClInclude Include="libs\SDL\include\SDL.h" />
@@ -181,16 +199,20 @@
     <ClInclude Include="libs\SDL\include\SDL_version.h" />
     <ClInclude Include="libs\SDL\include\SDL_video.h" />
     <ClInclude Include="libs\SDL_image\include\SDL_image.h" />
+    <ClInclude Include="libs\zlib\include\zconf.h" />
+    <ClInclude Include="libs\zlib\include\zlib.h" />
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuOnPause.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="MenuStateOnPause.h" />
+    <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player2.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="StateParser.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TileLayer.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +220,12 @@
     <Image Include="assets\botones\boton_resume.bmp" />
     <Image Include="assets\botones\main_menu.bmp" />
     <Image Include="assets\botones\playbtn.bmp" />
+    <Image Include="assets\mapa.bmp" />
+    <Image Include="assets\mapa.png" />
+    <Image Include="assets\mapa\mapa.bmp" />
+    <Image Include="assets\mapa\mapa.png" />
+    <Image Include="assets\mapa\mapa_.png" />
+    <Image Include="assets\mapa_.png" />
     <Image Include="boton_exit.bmp" />
     <Image Include="boton_resume.bmp" />
     <Image Include="dragon.bmp" />
@@ -209,6 +237,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="assets\mapa.tmx" />
+    <None Include="assets\mapa\mapa.tmx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="libs\zlib\lib\zlib.def" />
+    <None Include="SDL2_image.dll" />
+    <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\zlib\lib\zdll.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

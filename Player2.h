@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "CollisionObject.h"
+
 
 class Player2 : public GameObject
 {
@@ -13,6 +15,8 @@ public:
 	static GameObject* Player2::Create() { return new Player2(); }
 	void update();
 	void clean();
+	void onCollsion(GameObject* other);
+
 private :
 	bool stateFlip;
 	int m_callbackID;

@@ -45,4 +45,6 @@ public:
 	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	int getTicks();
 	const int get_ancho_ventana() const;
+	const int get_alto_ventana() const;
+
 };

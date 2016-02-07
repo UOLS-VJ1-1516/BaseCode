@@ -22,7 +22,7 @@ public:
 	~InputHandler() {};
 	void update(Uint32 key);
 	void clean();
-	// Métodos de acceso
+
 	bool isKeyDown(Uint32 key);
 	void updateKeyUp(Uint32 key);
 	bool isKeyUp(Uint32 key);

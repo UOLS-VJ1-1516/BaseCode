@@ -1,8 +1,7 @@
 #include "GameObjectFactory.h"
-#include "TextureManager.h"
+//#include "TextureManager.h"
 
 
-GameObjectFactory * GameObjectFactory::s_pInstance = 0;
 GameObjectFactory::~GameObjectFactory(void)
 {
 }
@@ -15,7 +14,11 @@ void GameObjectFactory::Register(const std::string & gameObjectName, CreateGameO
 	m_FactoryMap[gameObjectName] = pCreate;
 }
 
-GameObject* GameObjectFactory::CreateGameObject(const std::string & gameObjectName) {
+GameObjectFactory * GameObjectFactory::s_pInstance = 0;
+
+
+GameObject* GameObjectFactory::CreateGameObject(const std::string & gameObjectName) 
+{
 	if (m_FactoryMap.find(gameObjectName) != m_FactoryMap.end()) {
 		return m_FactoryMap[gameObjectName]();
 	}

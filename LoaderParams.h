@@ -7,7 +7,7 @@
 class LoaderParams
 {
 public:
-	LoaderParams(int width, int height, std::string textureID, int currentRow, int sprits, int flip, Vector2D position, Vector2D velocity, Vector2D maxVelocity, Vector2D acceleration, Vector2D friction, int callBackID) {
+	LoaderParams(int width, int height, std::string textureID, int currentRow, int sprits, int flip, int callBackID, Vector2D position, Vector2D velocity, Vector2D maxVelocity, Vector2D acceleration, Vector2D friction) {
 		m_width = width;
 		m_height = height;
 		m_textureID = textureID;
@@ -28,13 +28,14 @@ public:
 	int getCurrentRow() const { return m_currentRow; }
 	int getSprits() const { return m_sprits; }
 	int getFlip() const { return m_flip; }
+	int getCallbackID() const { return m_callbackID; }
+
 	Vector2D getPosition() const { return m_position; }
 	Vector2D getVelocity() const { return m_velocity; }
 	Vector2D getMaxVelocity() const { return m_maxVelocity; }
 	Vector2D getAcceleration() const { return m_acceleration; }
 	Vector2D getFriction() const { return m_friction; }
 	std::string getTextureID() const { return m_textureID; }
-	int getCallbackID() const { return m_callbackID; }
 
 
 private:
@@ -44,12 +45,12 @@ private:
 	int m_currentRow;
 	int m_sprits;
 	int m_flip;
+	int m_callbackID;
 	std::string m_textureID;
 	Vector2D m_position;
 	Vector2D m_velocity;
 	Vector2D m_maxVelocity;
 	Vector2D m_acceleration;
 	Vector2D m_friction;
-	int m_callbackID;
 };
 #endif LOADERPARAMS_H

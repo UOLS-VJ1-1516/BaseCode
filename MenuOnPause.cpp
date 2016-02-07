@@ -40,7 +40,7 @@ void MenuOnPause::update()
 		if (InputHandler::Instance()->getMouseButtonState(SDL_BUTTON_LEFT) && m_bReleased)
 		{
 			m_currentFrame = CLICKED;
-			m_callback(); // call our callback function
+			m_callback(); 
 			m_bReleased = false;
 		}
 

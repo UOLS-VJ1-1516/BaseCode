@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "GameObject.h"
+#include "TileLayer.h"
 
 class PlayState : public GameState
 {
@@ -20,4 +21,6 @@ private:
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<std::string> m_textureIDList;
 	std::vector<Callback> m_callbacks;
+	Level* tiled;
+
 };

@@ -1,9 +1,9 @@
-#include "SDL.h"
+//#include "SDL.h"
 #include "game.h"
 
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
-const int FIXED_TIME = 35;
+//SDL_Window* g_pWindow = 0;
+//SDL_Renderer* g_pRenderer = 0;
+//const int FIXED_TIME = 35;
 
 
 int main(int argc, char* args[])
@@ -19,13 +19,13 @@ int main(int argc, char* args[])
 		Game::Instance()->handleEvents();
 		Game::Instance()->update(100);
 
-			int frameStart = SDL_GetTicks();
-	int frameEnd = SDL_GetTicks();
-	int frameTime = frameEnd - frameStart;
-	if (frameTime < FIXED_TIME)
-	{
-		SDL_Delay((int)(FIXED_TIME - frameTime));
-	}
+			//int frameStart = SDL_GetTicks();
+	//int frameEnd = SDL_GetTicks();
+	//int frameTime = frameEnd - frameStart;
+	//if (frameTime < FIXED_TIME)
+	//{
+		//SDL_Delay((int)(FIXED_TIME - frameTime));
+	//}
 
 	}
 

@@ -2,11 +2,11 @@
 <STATES>
 	<MENU>
 		<TEXTURES>
-			<texture filename="assets/botones/playbtn.bmp" ID="playbtn"/>
+			<texture filename="assets/botones/playbtn.bmp" ID="play"/>
 			<texture filename="assets/botones/boton_exit.bmp" ID="exit"/>
 		</TEXTURES>
 		<OBJECTS>
-			<object type="MenuButton"  width="135" height="34" textureID="playbtn" currentRow="0" numFrames="1" flip="0" callbackID="1"
+			<object type="MenuButton"  width="135" height="34" textureID="play" currentRow="0" numFrames="1" flip="0" callbackID="1"
 					posicionx="150" posiciony="250" velocidadx="0" velocidady="0" mvelocidadx="0" mvelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />
 			<object type="MenuButton"  width="135" height="34" textureID="exit" currentRow="0" numFrames="1" flip="0" callbackID="2" 
 					posicionx="350" posiciony="250" velocidadx="0" velocidady="0" mvelocidadx="0" mvelocidady="0" acelx="0" acely="0" friccionx="0" fricciony="0" />

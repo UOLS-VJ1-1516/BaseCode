@@ -43,3 +43,11 @@ void Player2::update() {
 	m_currentFrame = (int)((Game::Instance()->getTicks() / 100) % m_sprits);
 };
 
+void Player2::onCollsion(GameObject * other)
+{
+}
+;
+
+void Player2::clean() {
+
+}

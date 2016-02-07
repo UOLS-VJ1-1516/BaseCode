@@ -5,6 +5,11 @@ MenuButton::MenuButton() {
 };
 MenuButton::~MenuButton() {};
 
+void MenuButton::onCollsion(GameObject * other)
+{
+}
+
+
 void MenuButton::load(const LoaderParams* pParams)
 {
 	m_width = pParams->getWidth();
@@ -40,7 +45,7 @@ void MenuButton::update()
 		if (InputHandler::Instance()->getMouseButtonState(SDL_BUTTON_LEFT) && m_bReleased)
 		{
 			m_currentFrame = CLICKED;
-			m_callback(); // call our callback function
+			m_callback(); 
 			m_bReleased = false;
 		}
 

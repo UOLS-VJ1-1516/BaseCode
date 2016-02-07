@@ -1,8 +1,10 @@
-#include "GameObject.h"
+#pragma once
 #include <string>
+#include "GameObject.h"
+#include "map"
 
 
-#define TheGameObjectFactory GameObjectFactory::Instance()
+//#define TheGameObjectFactory GameObjectFactory::Instance()
 typedef GameObject* (*CreateGameObjectFn)();
 class GameObjectFactory
 {

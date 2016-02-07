@@ -16,6 +16,7 @@ public:
 
 	MenuButton();
 	~MenuButton();
+	virtual void onCollsion(GameObject* other);
 
 	void draw();
 	void load(const LoaderParams* pParams);

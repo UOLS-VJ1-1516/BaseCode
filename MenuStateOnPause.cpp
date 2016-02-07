@@ -44,12 +44,12 @@ void MenuStateOnPause::setCallbacks(const std::vector<Callback>& callbacks)
 
 bool MenuStateOnPause::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
+	for (unsigned int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->clean();
 	}
 	m_gameObjects.clear();
-	for (int i = 0; i < m_textureIDList.size(); i++)
+	for (unsigned int i = 0; i < m_textureIDList.size(); i++)
 	{
 		TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
 	}
