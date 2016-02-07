@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "PauseState.h"
+#include "GameOverState.h"
 #include "InputHandler.h"
 #include "GameObject.h"
 #include <iostream>
@@ -23,13 +24,18 @@ void PlayState::update()
 		SoundManager::Instance()->stopMusic();
 		Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
-
+	Player* player = dynamic_cast<Player*>(pLevel->getPlayer());
+	if (player->playerDies()) {
+		SoundManager::Instance()->stopMusic();
+		SoundManager::Instance()->playSound("dead", 0);
+		Game::Instance()->getStateMachine()->pushState(new GameOverState());
+	}
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
 	}
 	pLevel->update();
-
+	
 }
 void PlayState::render()
 {
@@ -44,11 +50,12 @@ void PlayState::render()
 bool PlayState::onEnter()
 {
 	LevelParser levelParser;
-	pLevel = levelParser.parseLevel("longtile.tmx");
+	pLevel = levelParser.parseLevel("finaltile.tmx");//("longtile.tmx");
 	SoundManager::Instance()->playMusic("intro_music",-1);
 	Camera::Instance()->setMaxPosition(
 		(pLevel->getCollisionLayers()->at(0)->getTileWidth() *
 			(pLevel->getCollisionLayers()->at(0)->getMapWidth()) - Game::Instance()->getVisibleWidth() / 2));
+	
 	return true;
 }
 bool PlayState::onExit()

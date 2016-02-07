@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "CollisionManager.h"
 
 void Level::update()
 {
@@ -6,6 +7,9 @@ void Level::update()
 	{
 		m_layers[i]->update();
 	}
+	CollisionManager cm;
+	cm.checkPlayerObjectsCollision(m_pPlayer, );
+	//m_collisionManager.checkPlayerObjectsCollision(m_pPlayer, );
 }
 
 void Level::render()

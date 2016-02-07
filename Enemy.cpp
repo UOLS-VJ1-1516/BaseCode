@@ -58,15 +58,3 @@ void Enemy::update() {
 }
 void Enemy::clean() {
 }
-/*
-if (flip == SDL_FLIP_HORIZONTAL) {
-	m_velocity.setX(-m_originalVelocity.getX());
-	m_position.setX(m_position.getX() + 2);
-	flip == SDL_FLIP_HORIZONTAL;
-}
-else
-{
-	m_velocity.setX(-m_originalVelocity.getX());
-	m_position.setX(m_position.getX() - 2);
-	flip == SDL_FLIP_NONE;
-}*/

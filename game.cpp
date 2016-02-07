@@ -37,6 +37,8 @@
 			TheGameObjectFactory->Register("MenuButton", &MenuButton::Create);			TheGameObjectFactory->Register("Player", &Player::Create);			TheGameObjectFactory->Register("Enemy", &Enemy::Create);
 			SoundManager::Instance()->loadMusic("rsc/music/simulation_area.ogg", "intro_music");//intro music
 			SoundManager::Instance()->loadSound("rsc/sfx/button_select.wav", "button_effect");//button
+			SoundManager::Instance()->loadSound("rsc/sfx/snd_dead.wav", "dead");
+			SoundManager::Instance()->loadMusic("rsc/music/gameover_screen.ogg", "over_music");
 
 			m_viewWidth = width;
 			m_viewHeight = height;
@@ -86,6 +88,8 @@
 	
 	void Game::clean(){
 		// clean up SDL
+		SDL_DestroyWindow(m_pWindow);
+		SDL_DestroyRenderer(m_pRenderer);
 		SDL_Quit();
 	}
 	

@@ -102,7 +102,6 @@ bool CollisionObject::isCollisionWithTile(Vector2D BPos)
 					}
 				}
 			}
-			GameObject::update();
 			//no hay colision
 			return false;
 		}

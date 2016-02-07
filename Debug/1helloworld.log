@@ -1,52 +1,20 @@
-﻿Build started 26/01/2016 23:39:07.
+﻿Build started 07/02/2016 17:26:16.
      1>Project "C:\Users\Víctor\Desktop\Multimedia\Videojocs1\videoGame1\1helloworld.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs\SDL\include /Ilibs\SDL_image\include /Ilibs\tinyxml\include /Ilibs\zlib\include /Ilibs\SDL2_mixer\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp CollisionObject.cpp Enemy.cpp GameObject.cpp GameObjectFactory.cpp Level.cpp LevelParser.cpp MenuButton.cpp MenuState.cpp ObjectLayer.cpp PauseState.cpp PlayState.cpp Player.cpp StateParser.cpp TileLayer.cpp game.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Ilibs\SDL\include /Ilibs\SDL_image\include /Ilibs\tinyxml\include /Ilibs\zlib\include /Ilibs\SDL2_mixer\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp CollisionManager.cpp CollisionObject.cpp Enemy.cpp GameOverState.cpp MenuState.cpp game.cpp
          game.cpp
-         TileLayer.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\tilelayer.cpp(27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\tilelayer.cpp(28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\tilelayer.cpp(32): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\tilelayer.cpp(58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\tilelayer.cpp(71): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\tilelayer.cpp(73): warning C4018: '<=': signed/unsigned mismatch
-         StateParser.cpp
-         Player.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\player.cpp(18): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\player.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\player.cpp(69): warning C4305: '+=': truncation from 'double' to 'float'
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\player.cpp(80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\player.cpp(87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-         PlayState.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\playstate.cpp(27): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\playstate.cpp(36): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\playstate.cpp(56): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\playstate.cpp(62): warning C4018: '<': signed/unsigned mismatch
-         PauseState.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\pausestate.cpp(26): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\pausestate.cpp(38): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\pausestate.cpp(46): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\pausestate.cpp(53): warning C4101: 'stateParser': unreferenced local variable
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\pausestate.cpp(80): warning C4018: '<': signed/unsigned mismatch
-         ObjectLayer.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\objectlayer.cpp(13): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\objectlayer.cpp(21): warning C4018: '<': signed/unsigned mismatch
          MenuState.cpp
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\menustate.cpp(16): warning C4018: '<': signed/unsigned mismatch
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\menustate.cpp(23): warning C4018: '<': signed/unsigned mismatch
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\menustate.cpp(30): warning C4101: 'stateParser': unreferenced local variable
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\menustate.cpp(60): warning C4018: '<': signed/unsigned mismatch
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\menustate.cpp(87): warning C4018: '<': signed/unsigned mismatch
-         MenuButton.cpp
-         LevelParser.cpp
-         Level.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\level.cpp(5): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\level.cpp(13): warning C4018: '<': signed/unsigned mismatch
-         GameObjectFactory.cpp
-         GameObject.cpp
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameobject.cpp(16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameobject.cpp(17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameobject.cpp(18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+         GameOverState.cpp
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameoverstate.cpp(28): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameoverstate.cpp(40): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameoverstate.cpp(48): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameoverstate.cpp(55): warning C4101: 'stateParser': unreferenced local variable
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\gameoverstate.cpp(67): warning C4018: '<': signed/unsigned mismatch
          Enemy.cpp
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\enemy.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
          CollisionObject.cpp
@@ -54,10 +22,15 @@
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionobject.cpp(85): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionobject.cpp(92): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionobject.cpp(94): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+         CollisionManager.cpp
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionmanager.cpp(17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionmanager.cpp(18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionmanager.cpp(22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionmanager.cpp(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
          Camera.cpp
      1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\camera.cpp(24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
          Generating Code...
-     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionobject.cpp(110): warning C4715: 'CollisionObject::isCollisionWithTile': not all control paths return a value
+     1>c:\users\víctor\desktop\multimedia\videojocs1\videogame1\collisionobject.cpp(109): warning C4715: 'CollisionObject::isCollisionWithTile': not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Víctor\Desktop\Multimedia\Videojocs1\videoGame1\Debug\1-helloworld.exe" /INCREMENTAL /NOLOGO /LIBPATH:libs/SDL/lib /LIBPATH:libs/SDL_image/lib /LIBPATH:libs/tinyxml/lib /LIBPATH:libs/zlib/lib /LIBPATH:libs\SDL2_mixer\lib SDL2.lib SDL2main.lib SDL2_image.lib tinyxmlSTL.lib zdll.lib SDL2_mixer.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Víctor\Desktop\Multimedia\Videojocs1\videoGame1\Debug\1-helloworld.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Víctor\Desktop\Multimedia\Videojocs1\videoGame1\Debug\1-helloworld.lib" /MACHINE:X86 Debug\base64.obj
          Debug\Camera.obj
@@ -67,6 +40,7 @@
          Debug\game.obj
          Debug\GameObject.obj
          Debug\GameObjectFactory.obj
+         Debug\GameOverState.obj
          Debug\GameStateMachine.obj
          Debug\InputHandler.obj
          Debug\LevelParser.obj
@@ -88,4 +62,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:23.10
+Time Elapsed 00:00:09.97

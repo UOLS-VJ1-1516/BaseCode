@@ -1,7 +1,13 @@
-/*#pragma once
+#pragma once
 #include "Player.h"
+#include <vector>
+#include "SDL.h"
 class CollisionManager
 {
 public:
-	void checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*> &collisionLayers);
-};*/
+	CollisionManager() {};
+	~CollisionManager() {};
+	void checkPlayerObjectsCollision(Player* pPlayer, const std::vector<GameObject*>* objects);
+	bool isCollision(SDL_Rect a, SDL_Rect b);
+
+};

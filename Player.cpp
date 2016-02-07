@@ -75,16 +75,11 @@ void Player::update() {
 		}
 	}
 	// block the sprite to go outside de screen
-	if (m_position.getX() > 1920-m_width)
-	{
-		m_position.setX(Game::Instance()->getVisibleWidth() - m_width);
-	}
 	else if (m_position.getX() < 0) {
 		m_position.setX(0);
 	}else if (m_position.getY() > Game::Instance()->getVisibleHeight() - m_height)
 	{
-		//
-		m_position.setY(Game::Instance()->getVisibleHeight()-m_height);
+		isDead = true;
 	}
 	else if (m_position.getY() < 0) {
 		m_position.setY(0);

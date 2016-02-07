@@ -2,7 +2,6 @@
 #include "string"
 #include <vector>
 #include "Layer.h"
-#include "CollisionManager.h"
 
 class TileLayer;
 
@@ -18,7 +17,7 @@ struct Tileset
 	int numColumns;
 	std::string name;
 };
-
+class Player;
 class Level
 {
 public:
@@ -29,15 +28,14 @@ public:
 	std::vector<Tileset>* getTilesets() { return &m_tilesets; }
 	std::vector<Layer*>* getLayers() { return &m_layers; }
 	std::vector<TileLayer*>* getCollisionLayers() { return &m_collisions; }
-//	Player* getPlayer() { return m_pPlayer; };
-//	void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
+	Player* getPlayer() { return m_pPlayer; }
+	void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
 private:
 	std::vector<Tileset> m_tilesets;
-	std::vector<TileLayer*> n_collisions;
 	std::vector<Layer*> m_layers;
 	std::vector<TileLayer*> m_collisions;
 	friend class LevelParser;
+
 	Level() {}
-//	Player* m_pPlayer;
-//	CollisionManager m_collisionManager;
+	Player* m_pPlayer;
 };

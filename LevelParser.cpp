@@ -3,6 +3,7 @@
 #include "GameObjectFactory.h"
 #include "game.h"
 #include "Camera.h"
+#include "Player.h"
 
 Level * LevelParser::parseLevel(const char * levelFile)
 {
@@ -194,7 +195,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			pGameObject->load(new LoaderParams(x, y, width, height, numFrames, textureID, callbackID, animSpeed));
 			if (textureID == "player") {
 				Camera::Instance()->setTarget(pGameObject);
-				//parseLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
+				parseLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
 			}
 			pGameObject->setCollisionLayers(parseLevel->getCollisionLayers());
 			pObjectLayer->getGameObjects()->push_back(pGameObject);

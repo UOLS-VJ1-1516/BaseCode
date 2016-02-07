@@ -37,6 +37,9 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
@@ -77,6 +80,9 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="GameOverState.h">
+      <Filter>GameStates</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObjects">
@@ -89,6 +95,7 @@
   <ItemGroup>
     <None Include="tilemap.tmx" />
     <None Include="longtile.tmx" />
+    <None Include="finaltile.tmx" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="values.xml" />
