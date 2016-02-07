@@ -7,9 +7,9 @@
 		</TEXTURES>
 		<OBJECTS>
 			<object type="MenuButton"  width="135" height="34" textureID="play" currentRow="0" numFrames="1" flip="0" callbackID="1"
-					px="150" py="250" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+					px="150" py="250" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" collision="0"/>
 			<object type="MenuButton"  width="135" height="34" textureID="exit" currentRow="0" numFrames="1" flip="0" callbackID="2" 
-					px="350" py="250" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+					px="350" py="250" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" collision="0" />
 		</OBJECTS>
 	</MENU>
 	<RESUME>
@@ -19,9 +19,9 @@
 		</TEXTURES>
 		<OBJECTS>
 			<object type="MenuButton"  width="135" height="34" textureID="resume" currentRow="0" numFrames="1" flip="0" callbackID="1"
-					px="150" py="100" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+					px="150" py="100" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" collision="20"/>
 			<object type="MenuButton"  width="135" height="34" textureID="mainmenu" currentRow="0" numFrames="1" flip="0" callbackID="2"
-					px="350" py="100" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" />
+					px="350" py="100" vx="0" vy="0" mvx="0" mvy="0" ax="0" ay="0" fx="0" fy="0" collision="20"/>
 		</OBJECTS>	
 	</RESUME>
 	<PLAY>

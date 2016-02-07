@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "Game.h"
+#include "GameOverState.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
 #include "TextureManager.h"
@@ -31,6 +32,8 @@ bool PlayState::onEnter() {
 	
 	LevelParser layerParser;
 	tiled = layerParser.parseLevel("assets/world/first.tmx");
+   
+
 	return true;
 };
 
@@ -58,7 +61,8 @@ bool PlayState::onExit() {
 	{
 		TextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
 	}
-	m_textureIDList.clear();	
+	m_textureIDList.clear();
+	
 	return true;
 };
 

@@ -1,12 +1,13 @@
-#include "GameObject.h"
+#pragma once
 #include <string>
+#include "GameObject.h"
+#include "map"
 
+//#define TheGameObjectFactory GameObjectFactory::Instance();
 
-#define TheGameObjectFactory GameObjectFactory::Instance()
 typedef GameObject* (*CreateGameObjectFn)();
 class GameObjectFactory
 {
-
 public:
 	virtual ~GameObjectFactory(void);
 	static GameObjectFactory* Instance()
@@ -19,7 +20,6 @@ public:
 	}
 	void Register(const std::string & gameObjectName, CreateGameObjectFn pCreate);
 	GameObject* CreateGameObject(const std::string & gameObjectName);
-
 private:
 	GameObjectFactory(void);
 	static GameObjectFactory* s_pInstance;

@@ -1,9 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
+#include "SDL.h"
 #ifndef PLAYER_H
 #define PLAYER_H
 
-class Player : public GameObject
+class Player : public CollisionObject
 {
 public:
 	Player();
@@ -13,7 +14,6 @@ public:
 	int getCallbackID() const { return m_callbackID; }
 	void setCallback(void(*callback)()) { m_callback = callback; }
 	void update();
-	static GameObject* Player::Create() { return new Player(); }
 	void clean();
 	void calculateAcceleration();
 	void calculateVelocity();
@@ -27,7 +27,18 @@ public:
 	bool iscalculateFriction();
 	void resetParams();
 	void handleInput();
-
+	void impulseRight();
+	void impulseLeft();
+	void jump();
+	void gravity();
+	void incrementAccelerationY();
+	void decrementAccelerationY();
+	void onCollsion(GameObject* other);
+	static GameObject * Create() { return new Player(); }
+	void collision() {};
+	bool nJump = false;
+	bool mjumping = false;
+	bool haycolision = false;
 
 private: 
 	bool m_changes;
@@ -38,6 +49,12 @@ private:
 	bool eventRightUp;
 	bool eventLeftUp;
 	void(*m_callback)();
+	void stopX(int);
+	void stopY(int);
+	bool aceleracionY;
+	bool frictionY;
+	bool mgravity;
+	Vector2D m_lastStop;
 	int m_callbackID;
 };
 #endif PLAYER_H

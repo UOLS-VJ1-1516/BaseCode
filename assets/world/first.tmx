@@ -5,78 +5,69 @@
   <property name="enemy" value="assets/elements/enemy.bmp"/>
   <property name="mario" value="assets/elements/mario.bmp"/>
  </properties>
- <tileset firstgid="1" name="Tiles_32x32" tilewidth="16" tileheight="16" spacing="0" margin="0" tilecount="256">
+ <tileset firstgid="1" name="Tiles_32x32" tilewidth="16" tileheight="16" tilecount="256"  spacing="0" margin="0">
   <image source="Tiles_32x32.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="257" name="mario" tilewidth="12" tileheight="20" spacing="1" margin="0" tilecount="3">
+ <tileset firstgid="257" name="mario" tilewidth="12" tileheight="20" spacing="1" tilecount="3">
   <image source="../elements/mario.bmp" width="38" height="21"/>
  </tileset>
- <tileset firstgid="260" name="enemy" tilewidth="20" tileheight="20" spacing="20"  margin="0" tilecount="32">
-  <image source="../elements/enemy.bmp" width="334" height="140"/>
+ <tileset firstgid="260" name="ene1" tilewidth="15" tileheight="24" tilecount="3">
+  <image source="../elements/enemy.bmp" trans="ffffff" width="40" height="23"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="64" height="32">
+  <properties>
+   <property name="collidable" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0ksKgDAMRdHoDnTbfjbgZ60GnAmCbZJB6j3w6Cy0rxERmTSzZtGs8j+bZtccmrNyRmSHGf6ntMOSN32ZHd2R93yPnYucVzvfs6cMe//k+Q9vszL24il612GXfUet98++o9nvDwAAAAAAgFtnSN/AORgyNnB69plxLzz7zLgXF0qlPH0=
+   eJzt1FEKgCAQRVGzFeT+t1PrKsHAD3XQJo28B4Y+CsdHOsYAAAAAAAAAwD8tmZrZNnoDg5F/bs7k50JqNpS+9WXf33I3qbOROy8uvHMKfW2oVWGtJ0bkt2GNu0bqmd9GVcov3b+auyypzS/Nktqq6S9p+S+a/Vt8If9+1RE9e+fX6u/znyQRCVE=
+  </data>
+ </layer>
+ <layer name="Capa de Patrones sin colicion" width="64" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztkkkOgDAMA/MF3s3yAZa3kjNQibQJUuiM5KtbOxYRGVWTalYt0h+ralPtqqPSI7LDDPexdmjJ9MY7uiNvf4/NRfrV+nv2lGH3VzzvUPLK2Isn0VuHdrJvtPX/2Tea/f8AAAAAAHBneFBPkJ/8PXdQym/tJWuP5Cd/ZP6vOrDmqBXv/+v9E/A7QSE=
   </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
-  <object id="21" name="mario" type="Player" gid="257" x="234" y="420" width="13" height="30">
+  <object id="21" name="mario" type="Player" gid="257" x="6" y="329" width="13" height="30">
    <properties>
     <property name="ax" value="1"/>
-    <property name="ay" value="0"/>
+    <property name="ay" value="1"/>
     <property name="callbackId" value="0"/>
     <property name="currentRow" value="0"/>
     <property name="flip" value="0"/>
     <property name="fx" value="1"/>
-    <property name="fy" value="0"/>
-    <property name="mvx" value="15"/>
-    <property name="mvy" value="0"/>
+    <property name="fy" value="1"/>
+    <property name="m_collisionMargin" value="5"/>
+    <property name="mvx" value="4"/>
+    <property name="mvy" value="8"/>
     <property name="numFrames" value="2"/>
-    <property name="px" value="234"/>
-    <property name="py" value="420"/>
+    <property name="px" value="5"/>
+    <property name="py" value="300"/>
     <property name="textureID" value="mario"/>
     <property name="vx" value="0"/>
     <property name="vy" value="0"/>
    </properties>
   </object>
-  <object id="22" name="enemy" type="Enemy" gid="260" x="300" y="420" width="40" height="30">
-   <properties>
-    <property name="ax" value="1"/>
-    <property name="ay" value="0"/>
-    <property name="callbackId" value="0"/>
-    <property name="currentRow" value="120"/>
-    <property name="flip" value="0"/>
-    <property name="fx" value="1"/>
-    <property name="fy" value="0"/>
-    <property name="mvx" value="15"/>
-    <property name="mvy" value="0"/>
-    <property name="numFrames" value="2"/>
-    <property name="px" value="300"/>
-    <property name="py" value="420"/>
-    <property name="textureID" value="enemy"/>
-    <property name="vx" value="5"/>
-    <property name="vy" value="0"/>
-   </properties>
-  </object>
-  <object id="23" name="enemy" type="Enemy" gid="260" x="757" y="420" width="40" height="30">
-   <properties>
-    <property name="ax" value="1"/>
-    <property name="ay" value="0"/>
-    <property name="callbackId" value="0"/>
-    <property name="currentRow" value="80"/>
-    <property name="flip" value="0"/>
-    <property name="fx" value="1"/>
-    <property name="fy" value="0"/>
-    <property name="mvx" value="15"/>
-    <property name="mvy" value="0"/>
-    <property name="numFrames" value="2"/>
-    <property name="px" value="757"/>
-    <property name="py" value="420"/>
-    <property name="textureID" value="enemy"/>
-    <property name="vx" value="5"/>
-    <property name="vy" value="0"/>
-   </properties>
-  </object>
+	 <object id="22" name="ene1" type="Enemy" gid="260" x="425" y="452" width="30" height="25">
+		 <properties>
+			 <property name="ax" value="1"/>
+			 <property name="ay" value="0"/>
+			 <property name="callbackId" value="0"/>
+			 <property name="currentRow" value="120"/>
+			 <property name="flip" value="0"/>
+			 <property name="fx" value="1"/>
+			 <property name="fy" value="0"/>
+			 <property name="m_collisionMargin" value="5"/>
+			 <property name="mvx" value="2"/>
+			 <property name="mvy" value="0"/>
+			 <property name="numFrames" value="2"/>
+			 <property name="px" value="420"/>
+			 <property name="py" value="435"/>
+			 <property name="textureID" value="enemy"/>
+			 <property name="vx" value="5"/>
+			 <property name="vy" value="0"/>
+		 </properties>
+	 </object>
  </objectgroup>
  <imagelayer name="Capa de Imagen 1"/>
 </map>

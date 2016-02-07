@@ -17,7 +17,7 @@ public:
 	//MenuButton(void(*callback)());
 	MenuButton();
 	~MenuButton();
-
+	virtual void onCollsion(GameObject* other);
 	void draw();
 	void load(const LoaderParams* pParams);
 	static GameObject* Create() { return new MenuButton(); };// { return new MenuButton(s_menuToPlay); }

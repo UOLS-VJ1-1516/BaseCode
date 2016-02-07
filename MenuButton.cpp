@@ -5,6 +5,9 @@ MenuButton::MenuButton() {
 };
 MenuButton::~MenuButton() {};
 
+void MenuButton::onCollsion(GameObject * other)
+{
+}
 
 void MenuButton::load(const LoaderParams* pParams)
 {

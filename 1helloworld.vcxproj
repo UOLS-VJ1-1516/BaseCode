@@ -81,10 +81,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LayerParser.cpp" />
@@ -110,10 +114,14 @@
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="CollisionObject.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
@@ -143,7 +151,11 @@
     <Image Include="assets\buttons\boton_resume.bmp" />
     <Image Include="assets\buttons\main_menu.bmp" />
     <Image Include="assets\buttons\playbtn.bmp" />
+    <Image Include="assets\elements\Captura.PNG" />
+    <Image Include="assets\elements\ene1.bmp" />
+    <Image Include="assets\elements\ene2.bmp" />
     <Image Include="assets\elements\enemy.bmp" />
+    <Image Include="assets\elements\gameover.bmp" />
     <Image Include="assets\elements\mario.bmp" />
     <Image Include="assets\Tiles_32x32.png" />
     <Image Include="assets\world.jpg" />
@@ -160,7 +172,9 @@
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\world\first.tmx" />
+    <None Include="assets\world\first.tmx">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="libjpeg-9.dll" />
     <None Include="libpng16-16.dll" />
     <None Include="libs\zlib\lib\zlib.def" />

@@ -14,6 +14,7 @@ public:
 	void setCallbacks(const std::vector<Callback>& callbacks);
 	bool onExit();
 	std::string getStateID()const;
+	bool checkCollision(GameObject* p1, GameObject* p2);
 
 private:
 

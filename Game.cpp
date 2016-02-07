@@ -4,7 +4,7 @@
 #include "LoaderParams.h"
 
 
-const int SIZE_WINDOW_WIDTH = 592;
+const int SIZE_WINDOW_WIDTH = 700;
 const int SIZE_WINDOW_HEIGHT = 512;
 const int FIXED_TIME = 35;
 

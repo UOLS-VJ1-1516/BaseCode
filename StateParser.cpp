@@ -95,6 +95,7 @@ void StateParser::parseObjects(TiXmlElement *pStateRoot, std::vector<GameObject 
 	int ax, ay;
 	int fx, fy;
 	int callbackId;
+	int collision;
 
 	for (TiXmlElement* e = pStateRoot->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
@@ -114,7 +115,8 @@ void StateParser::parseObjects(TiXmlElement *pStateRoot, std::vector<GameObject 
 		textureID = e->Attribute("textureID");
 		e->Attribute("currentRow", &currentRow);
 		e->Attribute("numFrames", &sprits);
-		e->Attribute("flip", &flip);		
+		e->Attribute("flip", &flip);
+		e->Attribute("collision", &collision);
 
 		position = *(new Vector2D(px, py));
 		velocity = *(new Vector2D(vx, vy));
