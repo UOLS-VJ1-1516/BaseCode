@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="36" tilewidth="16" tileheight="16" nextobjectid="61">
+ <properties>
+  <property name="key" value="llave.png"/>
+  <property name="player" value="player.png"/>
+  <property name="tim" value="tim.png"/>
+ </properties>
+ <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
+  <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
+ </tileset>
+ <tileset firstgid="210" name="Player" tilewidth="40" tileheight="32" tilecount="16">
+  <image source="player.png" width="320" height="64"/>
+ </tileset>
+ <tileset firstgid="226" name="tim" tilewidth="26" tileheight="18" tilecount="3">
+  <image source="tim.png" width="78" height="18"/>
+ </tileset>
+ <tileset firstgid="229" name="key" tilewidth="18" tileheight="32" tilecount="8">
+  <image source="llave.png" trans="ff00ff" width="144" height="33"/>
+ </tileset>
+ <tileset firstgid="237" name="xic" tilewidth="19" tileheight="25" tilecount="4">
+  <image source="xic.png" trans="ff00ff" width="78" height="25"/>
+ </tileset>
+ <layer name="Capa Fondo" width="200" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt2jFOxDAQBdAcYCskbgQFUEAHBWwBV4IzsMfE7ii8kjXgODt5T5o2tv7oS5GSZQEAAFjHZ5mv2ZdgKDuO+y5zmn0JhrLjuNMiu+z0I052+dlxnOzys+M471f56Uec7PKz47i9Z3eYfYEV7H3Hf7HX7A6/Jru97vg/yC4/O46TXX52HCe7/Ow4Tnb52XGc7PLLsuObMrcrnzkyu7sy92UeBj2fPln68VzmZeUzR2b3WuatzHHQ8+mTpR8z+L8kP/2Ik11+dhwnu/y2sOOryedHeb/q91jmafYlArbQj0slu37vZT5mXyLAjuNkd951x1wCO46T3Xn6AW093dCPdfjOvE36sQ2zvzP7vt2mH1T60aYfVPrRph9U+tGmH1T60aYfVPrRph9U+tGmH/wAf4dZQA==
+  </data>
+ </layer>
+ <layer name="Capa Colisiones" width="200" height="36">
+  <properties>
+   <property name="collidable" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztnM1O3TAQhQe6aFn0Ul0BC9rFQHsFLNouAIknAJ6wfYb2KXEEkaIQX//MjD125khHkSCe2Ik/eyZBnALAqdlsNpvNib42m81eP5jNZq9NJtN7/XH+yxDns/PG+ZghlsmkRf+c/zPEQecL50uGWFRJsmrrwLrExcet853zPUMsqhDkWJWMbdInLj401TKSrGpaB3qS1n2Ziw8Ocd0jSVY1rQM9CaHOvhyac5r4QLDcRbu2QnFr7csI++ecJj5q3KMS+7rW3CFH0mMpvS+H5pwmPmrkLgjye1aJa5QSQj9jGRSacyMfm5l7WOtiVGLP6qmm72ksMRr5uJhZ+/rAXcvvyD0KX6OHmr6nscQolw+pOi1WCLwcr+V5m9KUw8fAhuR6G6O17fOpqr1+9aJYPsZ8RludYuv+slp/Z7aFfMYpbeeK5QMXzmmhTlmrENp+Prs3p8zzkYtpWyonsXyM+czc8/yGk11TvlrLP335CdW5++e8P1z7wkfnTwEfZcY2pamV90zDeoqwnJ9QnTuPQ/3JjXvu/DXgb5mx16bWa4iQpvkQQlk+Hp2fnJ89vw/1J5ePn86/Av6dGXttQmi7hhgUmzf9gP3z8Qss5/ch5+aXGOhPyWdi9cqyWqshloQgtw9Mv1XugPfbZajfJfiY7q+5bTmuP9WB86HzB2Js7litCqFMHcFZZ8XUQyX4oNTyvrbU80/gdfxX8Dq3Kb55i3Xm6RO1vpBs78vPU3+OULfOjtXAxPR+hPpdgg9KLe9rSz1/4GP+v8Goz9bHBwLtXtdun3INrXwsMXEZ0e8SfFBqeV9b6vkl+aDWF7XbxwhBHx8hJrTwoVEl+ZCWhvfDCDr4SGHC+PCrJz4Q6j/LsQ9UfweZ7+u575uNj/b50PB+GIGHD202PtrnQ4MQ6s9l44NPxgevEOrPZSk+xm9nazpK8ZHal1rj5z4i1J/LUnyMf0O/pqMUH6l9qX0fuI7IcP/MuszNh7l9vwD9Q0Wj
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos">
+  <object id="21" name="Player" type="Player" gid="210" x="38.8311" y="172.954" width="37.1811" height="29.8572" rotation="-1.47083">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="8"/>
+    <property name="friction" value="0.8"/>
+    <property name="maxSpeed" value="6"/>
+    <property name="numFrames" value="8"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="40"/>
+   </properties>
+  </object>
+  <object id="22" name="Tim" type="Enemy" gid="226" x="1263" y="371" width="26" height="18">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="5"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="3"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="18"/>
+    <property name="textureID" value="tim"/>
+    <property name="textureWidth" value="26"/>
+   </properties>
+  </object>
+  <object id="23" name="Tim" type="Enemy" gid="226" x="2818" y="462" width="26" height="18">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="5"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="18"/>
+    <property name="textureID" value="tim"/>
+    <property name="textureWidth" value="26"/>
+   </properties>
+  </object>
+  <object id="29" name="Key" type="KeyObject" gid="229" x="2714" y="431" width="18" height="32">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="1"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="10"/>
+    <property name="numFrames" value="8"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="key"/>
+    <property name="textureWidth" value="18"/>
+   </properties>
+  </object>
+  <object id="48" name="Tim" type="Enemy" gid="226" x="1181" y="368" width="26" height="18">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="5"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="3"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="18"/>
+    <property name="textureID" value="tim"/>
+    <property name="textureWidth" value="26"/>
+   </properties>
+  </object>
+  <object id="49" name="Tim" type="Enemy" gid="226" x="1225" y="324" width="26" height="18">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="5"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="18"/>
+    <property name="textureID" value="tim"/>
+    <property name="textureWidth" value="26"/>
+   </properties>
+  </object>
+  <object id="53" name="Xic" type="Enemy" gid="237" x="591" y="134" width="19" height="25">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="3"/>
+    <property name="numFrames" value="4"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="25"/>
+    <property name="textureID" value="xic"/>
+    <property name="textureWidth" value="19"/>
+   </properties>
+  </object>
+  <object id="57" name="Xic" type="Enemy" gid="237" x="1870.5" y="166.5" width="19" height="25">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="3"/>
+    <property name="numFrames" value="4"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="25"/>
+    <property name="textureID" value="xic"/>
+    <property name="textureWidth" value="19"/>
+   </properties>
+  </object>
+  <object id="58" name="Xic" type="Enemy" gid="237" x="2742.5" y="127.5" width="19" height="25">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="3"/>
+    <property name="numFrames" value="4"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="25"/>
+    <property name="textureID" value="xic"/>
+    <property name="textureWidth" value="19"/>
+   </properties>
+  </object>
+  <object id="59" name="Xic" type="Enemy" gid="237" x="177.5" y="115.5" width="19" height="25">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="3"/>
+    <property name="numFrames" value="4"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="25"/>
+    <property name="textureID" value="xic"/>
+    <property name="textureWidth" value="19"/>
+   </properties>
+  </object>
+  <object id="60" name="Xic" type="Enemy" gid="237" x="1324.5" y="139.5" width="19" height="25">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="3"/>
+    <property name="numFrames" value="4"/>
+    <property name="speedX" value="4"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="25"/>
+    <property name="textureID" value="xic"/>
+    <property name="textureWidth" value="19"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

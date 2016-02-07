@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<STATES>
+	<PLAYSTATE>
+		<TEXTURES>
+			<texture filename="player.bmp" ID="Player" width="400" height="100" sizeX="40" sizeY="31"/>
+			<texture filename="llave.bmp" ID="Key" width="400" height="100" sizeX="18" sizeY="32"/>
+			<texture filename="tim.bmp" ID="Tim" width="400" height="100" sizeX="26" sizeY="18"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="Player" x="0" y="0" width="70" height="61" textureID="Player" numSprites="8" speedX="0" speedY="0" maxSpeed="30" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="150" width="60" height="35" textureID="Tim" numSprites="3" speedX="3" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="250" width="60" height="35" textureID="Tim2" numSprites="3" speedX="4" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="350" width="60" height="35" textureID="Tim3" numSprites="3" speedX="10" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="Enemy" x="250" y="450" width="60" height="35" textureID="Tim4" numSprites="3" speedX="8" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+			<object type="StaticObjects" x="300" y="550" width="36" height="64" textureID="Key" numSprites="8" speedX="0" speedY="0" maxSpeed="10" friction="0.1" callbackId="0"/>
+		</OBJECTS>
+	</PLAYSTATE>
+	<MENUSTATE>
+		<TEXTURES>
+			<texture filename="titlemain.bmp" ID="titlemain" width="375" height="75" sizeX="250" sizeY="50"/>
+			<texture filename="playbtn.bmp" ID="playbtn" width="236" height="75" sizeX="236" sizeY="75"/>
+			<texture filename="exitbtn.bmp" ID="exitbtn" width="236" height="75" sizeX="236" sizeY="75"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="StaticObjects" x="236" y="75" width="375" height="75" textureID="titlemain" numSprites="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="0"/>
+			<object type="MenuButton" x="236" y="275" width="236" height="75" textureID="playbtn" numSprites="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="1"/>
+			<object type="MenuButton" x="236" y="375" width="236" height="75" textureID="exitbtn" numSprites="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="2"/>
+		</OBJECTS>
+	</MENUSTATE>
+	<PAUSESTATE>
+		<TEXTURES>
+			<texture filename="titlepause.bmp" ID="titlepause" width="450" height="75" sizeX="450" sizeY="75"/>
+			<texture filename="resumebtn.bmp" ID="resumebtn" width="236" height="75" sizeX="236" sizeY="75"/>
+			<texture filename="mainbtn.bmp" ID="mainbtn" width="236" height="75" sizeX="236" sizeY="75"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="StaticObjects" x="236" y="75" width="375" height="75" textureID="titlepause" numSprites="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="0"/>
+			<object type="MenuButton" x="236" y="175" width="236" height="75" textureID="resumebtn" numSprites="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="1"/>
+			<object type="MenuButton" x="236" y="275" width="236" height="76" textureID="mainbtn" numSprites="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="2"/>
+		</OBJECTS>
+	</PAUSESTATE>
+	<GAMEOVER>
+		<TEXTURES>
+			<texture filename="titlegameover.bmp" ID="titlegameover" width="375" height="75" sizeX="250" sizeY="50"/>
+			<texture filename="restart.png" ID="restart" width="375" height="75" sizeX="250" sizeY="50"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="StaticObjects" x="236" y="75" width="375" height="75" textureID="titlepause" numSprites="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="0"/>
+			<object type="StaticObjects" x="236" y="75" width="375" height="75" textureID="restart" numSprites="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackId="0"/>
+		</OBJECTS>
+	</GAMEOVER>
+</STATES>

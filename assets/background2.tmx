@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="frigidseatiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="209">
+  <image source="frigidseatiles.png" trans="ff00ff" width="324" height="189"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzTYGBg0KAitqAyHuqAF4j5oJifCuYpALEiFCthkY8CYjcgdgdiDyLMMwZiEyg2xWEeKYBQ/KGbx0Ki+TCAy4/iFJiJDYgCMRsQMyFhZiR5GxxsfOahYzEi9OEym1zzkIEnEHsBsTce8y6QgGOAOBaI4/CYN58EjGweALCKImk=
+  </data>
+ </layer>
+</map>
