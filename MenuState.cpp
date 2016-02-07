@@ -17,7 +17,7 @@ void MenuState::render() {
 };
 
 bool MenuState::onEnter() {
-	SoundManager::Instance()->playMusic("menu", 1);
+	SoundManager::Instance()->playMusic("menu", -1);
 	StateParser::parseState("assets/myxml.xml", "MENUSTATE", &m_gameObjects, &m_textureIDList);
 	m_callbacks.push_back(0); 
 	m_callbacks.push_back(s_menuToPlay);
