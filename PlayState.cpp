@@ -34,10 +34,10 @@ bool PlayState::onEnter() {
 
 	printf("Entro en PlayState");
 	// parse the state
-	StateParser stateParser;
-	stateParser.parseState("./images/miXML.xml", s_playID, &m_gObjects, &m_textureIDList);
-	m_callbacks.push_back(0);
-	setCallbacks(m_callbacks);
+	//StateParser stateParser;
+	//stateParser.parseState("./images/miXML.xml", s_playID, &m_gObjects, &m_textureIDList);
+	//m_callbacks.push_back(0);
+	//setCallbacks(m_callbacks);
 	
 
 	LevelParser levelParser;

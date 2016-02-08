@@ -44,6 +44,7 @@ protected:
 	int	m_currentFrame;
 	int	m_currentRow;
 	int	m_sprits;
+	int Numsprites;
 	int	m_flip;
 	int m_anchopantalla;
 	int m_altopantalla;

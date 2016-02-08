@@ -93,6 +93,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="LoadPar.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
@@ -243,6 +245,7 @@
     <None Include="libpng16-16.dll" />
     <None Include="libtiff-5.dll" />
     <None Include="libwebp-4.dll" />
+    <None Include="images\mapa.tmx" />
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="zlib1.dll" />

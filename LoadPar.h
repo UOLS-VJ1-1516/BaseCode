@@ -21,7 +21,7 @@ public:
 		m_textureID = textureID;
 		m_numsprites = Numsprites;
 		m_callbackID = callbackID;
-		m_animSpeed=animSpeed;
+		m_animSpeed=0;
 	}
 
 
