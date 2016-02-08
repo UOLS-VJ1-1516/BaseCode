@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="left-up" width="200" height="125" tilewidth="16" tileheight="16" nextobjectid="13">
  <properties>
-  <property name="Ninja" value="ninja.png"/>
+  <property name="ninja" value="./images/ninja.png"/>
  </properties>
  <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
-  <image source="mymap.png" trans="aaffff" width="1283" height="654"/>
+  <image source="./images/mymap.png" trans="aaffff" width="1283" height="654"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="200" height="125">
   <data encoding="base64" compression="zlib">
@@ -12,7 +12,7 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="60" height="15">>
-  <object id="8" name="Ninja" type="Player" x="23" y="50" width="200" height="200">
+  <object id="8" name="ninja" type="Player" x="23" y="50" width="200" height="200">
    <properties>
     <property name="Numsprites" value="6"/>
     <property name="callbackID" value="0"/>

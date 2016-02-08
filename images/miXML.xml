@@ -10,18 +10,7 @@
       <gameobject type="MenuButton" x="600" y="500" width="295" height="105" Numsprites="0" textureID="exitbtn" callbackID="2" />
     </GAMEOBJECTS>
   </MENU>
-  <PLAY>
-    <TEXTURES>
-      <texture filename="./images/ninja.png" ID="ninja" />
-      <texture filename="./images/coin.png" ID="coin" />
-      <texture filename="./images/badbird.png" ID="badbird" />
-    </TEXTURES>
-    <GAMEOBJECTS>
-      <gameobject type="Player" x="200" y="400" width="200" height="200" Numsprites="6" textureID="ninja" callbackID="0" />
-      <gameobject type="Enemy" x="400" y="500" width="200" height="200" Numsprites="5" textureID="coin" callbackID="0" />
-      <gameobject type="Enemy" x="500" y="200" width="200" height="150" Numsprites="7" textureID="badbird" callbackID="0" />
-    </GAMEOBJECTS>
-  </PLAY>
+ 
   <PAUSE>
     <TEXTURES>
       <texture filename="./images/continue.png" ID="continue" />

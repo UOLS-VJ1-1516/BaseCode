@@ -24,10 +24,10 @@ void PlayState::update() {
 
 };
 void PlayState::render() {
-	
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
+	/*printf("TAMAÑO: %d", m_gObjects.size());
+	for ( int i = 0; i < m_gObjects.size(); i++) {
 		m_gObjects[i]->draw(Game::Instance()->GetRenderer());
-	}
+	}*/
 	m_level->render();
 };
 bool PlayState::onEnter() {
