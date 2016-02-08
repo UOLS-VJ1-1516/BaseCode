@@ -12,7 +12,7 @@ void TileLayer::update()
 {
 
 	m_position += m_velocity;
-	m_velocity.setX(0);
+	m_velocity.setX(5);
 }
 
 void TileLayer::render()

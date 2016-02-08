@@ -64,7 +64,7 @@ Level* LevelParser::parseLevel(const char *levelFile) {
 	
 	return pLevel;
 }
-
+//parseTileSEts-->Carga mapa
 void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>* pTilesets) {
 	// first add the tileset to texture manager
 	TextureManager::Instance()->load(pTilesetRoot->FirstChildElement()->Attribute("source"), pTilesetRoot->Attribute("name"), Game::Instance()->GetRenderer());
@@ -179,6 +179,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement,	std::vector<Lay
 			}
 			//Player" x="200" y="400" width="200" height="200" Numsprites="6" textureID="ninja" callbackID="0"
 			// pGameObject->load(new LoadPar(200, 400, 200, 200, 6, "ninja", 0));
+			
+			
 			pGameObject->load(new LoadPar(x, y, width, height, Numsprites, textureID, callbackID));
 			
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
