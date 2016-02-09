@@ -127,7 +127,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="StateParser.h" />
-    <ClInclude Include="texture.h" />
     <ClInclude Include="texturemanager.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="tinystr.h" />
@@ -140,9 +139,9 @@
     <Image Include="images\bueno.png" />
     <Image Include="images\coin.png" />
     <Image Include="images\continue.png" />
-    <Image Include="images\Enemy_Knight.png" />
     <Image Include="images\Exit.png" />
     <Image Include="images\Exit2.png" />
+    <Image Include="images\knight.png" />
     <Image Include="images\mymap.png" />
     <Image Include="images\ninja.png" />
     <Image Include="images\nubes2.png" />

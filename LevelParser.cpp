@@ -22,9 +22,11 @@ LevelParser::~LevelParser()
 Level* LevelParser::parseLevel(const char *levelFile) {
 	// create a TinyXML document and load the map XML
 	TiXmlDocument levelDocument;
+
 	levelDocument.LoadFile(levelFile);
 	// create the level object
 	Level* pLevel = new Level();
+	
 	// get the root node
 	TiXmlElement* pRoot = levelDocument.RootElement();
 	pRoot->Attribute("tilewidth", &m_tileSize);
@@ -32,6 +34,7 @@ Level* LevelParser::parseLevel(const char *levelFile) {
 	pRoot->Attribute("height", &m_height);
 	// parse the tilesets
 	for (TiXmlElement * e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
+		
 		if (e->Value() == std::string("properties")) {
 			TiXmlElement * pPropierties = e;
 			for (TiXmlElement * e = pPropierties->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
@@ -57,10 +60,11 @@ Level* LevelParser::parseLevel(const char *levelFile) {
 				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
 			}
 		}
+	
 
 	}
 	
-
+	
 	
 	return pLevel;
 }
@@ -83,7 +87,7 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>
 }
 
 void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets) {
-	TileLayer* pTileLayer = new TileLayer(m_tileSize, *pTilesets);
+	TileLayer* pTileLayer = new TileLayer(m_tileSize, *pTilesets,m_width);
 	// tile data
 	std::vector<std::vector<int>> data;
 	std::string decodedIDs;
@@ -136,7 +140,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement,	std::vector<Lay
 		std::cout << e->Value();
 		if (e->Value() == std::string("object"))
 		{
-			int x, y, width, height, Numsprites, callbackID, animSpeed;
+			int x, y, width, height, Numsprites, callbackID;
 			std::string textureID;
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);

@@ -2,7 +2,7 @@
 #include "game.h"
 
 
-TileLayer::TileLayer(int tileSize, const std::vector<Tileset> &tilesets) : m_tileSize(tileSize), m_tilesets(tilesets), m_position(0, 0), m_velocity(0, 0)
+TileLayer::TileLayer(int tileSize, const std::vector<Tileset> &tilesets, int width) : m_tileSize(tileSize), m_tilesets(tilesets), m_position(0, 0), m_velocity(0, 0), m_width( width)
 {
 	m_numColumns = (Game::Instance()->getAncho() / m_tileSize);
 	m_numRows = (Game::Instance()->getAlto() / m_tileSize);
@@ -24,10 +24,10 @@ void TileLayer::render()
 	y2 = int(m_position.getY()) % m_tileSize;
 	
 
-	//En principio
-	if (x > 99) {
+	//Lo hago generico.
+	if (x > m_width-101) {
 		x2 = 0;
-		x = 99;
+		x = m_width-101;
 	}
 
 	

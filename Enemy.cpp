@@ -18,7 +18,7 @@ void Enemy::load(const LoadPar* lPar)
 	 m_texid = lPar->getTextureID();
 	 m_sprits = lPar->getNumSprites();
 	 m_currentFrame = 1;
-	 m_currentRow = 1;
+	 m_currentRow = 2;
 	 m_flip = 2;
 	 m_anchopantalla = Game::Instance()->getAncho();
 	 m_altopantalla = Game::Instance()->getAlto();

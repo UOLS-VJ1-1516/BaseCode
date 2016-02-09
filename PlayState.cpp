@@ -8,11 +8,11 @@ const std::string PlayState::s_playID = "PLAY";
 void PlayState::update() {
 	
 	
-	for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
+	/*for (std::vector<GameObject*>::size_type i = 0; i < m_gObjects.size(); i++) {
 		
 		m_gObjects[i]->update();
 		
-	}
+	}*/
 	//------Compruebo teclas y escapeeeeeeeee
 	InputHandler::Instance()->update();
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE)) {

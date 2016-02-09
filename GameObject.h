@@ -49,7 +49,7 @@ protected:
 	int m_anchopantalla;
 	int m_altopantalla;
 	std::string m_texid;
-	const char* m_textureID;
+	//const char* m_textureID;
 
 
 };

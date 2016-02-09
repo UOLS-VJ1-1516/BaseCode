@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="200" height="125" tilewidth="16" tileheight="16" nextobjectid="13">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="14">
  <properties>
+  <property name="knight" value="./images/knight.png"/>
   <property name="ninja" value="./images/ninja.png"/>
  </properties>
  <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
   <image source="./images/mymap.png" trans="aaffff" width="1283" height="654"/>
  </tileset>
- <layer name="Capa de Patrones 1" width="200" height="125">
+ <layer name="Capa de Patrones 1" width="500" height="125">
   <data encoding="base64" compression="zlib">
-   eJzt101u1DAUAGC3M1W3sC6cgZ8F3AfO0vYM/FwBbgFr6BmALuAQGI2qetJxsSdxkkm/T3qKFWlqx36veQmBufl9FMKfo6lXQYncWQ1xhmPlwaHl26vjEF4ft5/n0PZljnJn9b8zLNn7sfIgN0/r/Jh7/o21/9w15t7vm4et17j0/Jt7/bOhH5nG0uv/oRgqr+UDqX3zqm8+Dv1/Wl7Twr7ftX3zUT4DAAAAAAAAAAAAAAAAAAAAAAAAAAAAwK13qxDex/iwmnolMD8/Yl38jPFLfcAdz9YhPI/xYj31SmBaeinIK+ml1NBhSc8rNx7ax9V2LEVJL+V7ZNt53IeLGJdJzEl6XrnxUG7q4boTS6uT+wz1PfLmNIS3p8OsaUrf4rl/j3GVxGVFpPXVQnpeuXFf3bp4ud6Oh1gn//R5R3+KtfF5AfVxFs//SYynSVytyiOtr5JeKLfnfXqn2nnTHN9VF11D1UnL/Sm9V2PXO7r2GcbqiVvbVSclkf6upBfK9UV9eqfaea+Tv3tfXXR16+RLHH9db665cXptuT+l92rsekfXPkPrnviQlPRCub6oT+9UO29aCyV10XVTJ49OQnh8srnmxum15f6U3uur9hla9cQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwN38B3PAMKg==
+   eJzt3QFu0zAUBuCsm8TuABxj24mAawwk2HWAkwDHYLsBIJFpq+ZWde2kTmqn3yc9KZo2Na0m/3nPqdJ11Ob+rOsezo59FgAsSSxbSmTOXLnVWj5er7ruZjX967T2uQAwXixbUpmTkxVz5VbsdabOs9rzcq7PH4B2zZkVY3Nz6nNcel7Wfr0CQFvMp49j6dcrANSlVA7LLwBaNDYHD83P0n2wHAbglI29j+zQ/JS/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZXw+77ovfd0FBQC05ferrrvv66GvX+dPdTegwusBAGB+j1l+ddl1133d9PX24qnWuZ5TP/r6+XwMAMzvMctv+/rY16e+3ly8ZHpuvb54+TuAGoRzx7DCn8OS3G7lOUCrYhl+c/lS4TwSluLxf1+WA63Kye+b5/VtXdY8lmh71g7Qgl05HstvaxtLt+7N5TnQiu0cj2U4nBK9OdCKWD8uwzl1enOgBal+HE6d3hyomX4c8ujNgRrtu8/NWgWbfEcNqE3OfW7AJrN2oBaxHDdXh/3cBwccW2qmbl2C/dbPXZHlwLGk+nEgbZ3l8hyYmxyHMszZgWOQ41COOTswJ/vjUJ4sB+aQ+3yU2oTnPeZYDaslPXd+zvccZrk8B6YSrlmtPR8lfBb6mGM1rFp47nxuTue830MzPXwtWQ5MZdfeeAsZHgrXxzHHaljVmkVDc/oq8/2uM31MnofnUvvnB7QntTcOOaacvb9bdd37vj6sNo9j57Gd4SWvT24vh/foenJgaqm5OuSacvb+tc/ub319X20ex85jV4aXzM+cufuu+YAsB0qK9eOtzdWpy9CcSvXZoT/97/zt699q8zh2HlPn5nruHub6vr14OQ6UtGtv3FydUobO21N9dmjIvH2u3Az301N78XIcOFRqb1w/TilD5+2pPjs0ZN4+t9buEwTakurFrTOUltOfx/rsVM89ZN4O0Dq9OLWL9dmpnntI9gO0KifHoQaxPjvVc9c8bwcoJdy3lOPUbkyvbd4OnILw3hs5Tu302gDQPr02AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl/Ac6ln19
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="60" height="15">>
-  <object id="8" name="ninja" type="Player" x="23" y="50" width="200" height="200">
+ <objectgroup name="Object Layer 1">
+  <object id="8" name="ninja" type="Player" x="64.6666" y="704.333" width="200" height="200">
    <properties>
     <property name="Numsprites" value="6"/>
     <property name="callbackID" value="0"/>
     <property name="height" value="200"/>
     <property name="textureID" value="ninja"/>
+    <property name="width" value="200"/>
+   </properties>
+  </object>
+  <object id="13" name="knight" type="Enemy" x="1160.66" y="702" width="200" height="200">
+   <properties>
+    <property name="Numsprites" value="4"/>
+    <property name="callbackID" value="0"/>
+    <property name="height" value="200"/>
+    <property name="textureID" value="knight"/>
     <property name="width" value="200"/>
    </properties>
   </object>
