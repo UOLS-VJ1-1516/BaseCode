@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="150" height="60" tilewidth="16" tileheight="16" nextobjectid="6">
+ <properties>
+  <property name="nina" value="./assets/spritesheet.png"/>
+ </properties>
+ <tileset firstgid="1" name="bueno" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
+  <image source="./assets/bueno.png" trans="55ffff" width="1283" height="654"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="150" height="60">
+  <data encoding="base64" compression="zlib">
+   eJztm21OBCEMQHUPoHs99bi693KNmYQ0LRSmMMzwXtI//gAWnuVj4OUFAAAAAAAAAAAAAAAAAADg2ny/6vHzjMfr0a2DsyD9ebvpgWdQIufRhxF4BhaaS9Kfz2d83f4dSaPGMxxbC80lzaP7rRw5z1ijrYV0aQvpzFdD5HJZyTecOyfWWGqO/UUtshzvGs3rHN7Ng2ePJ8c0auwsXy3fSs7h3RyU1ubamI4Yn9wc7GljrXe4FsfmlLXP00jdGjUWpXXeQ7Sj1jsci0M6lXNJ8jHYK1m35Zi3Ld79KX75kOuoFqfSso7sd8uv1rKkY+SwMrkzzhantjJn6Gvp1972WDlsht86E6lP3jWUt9yj+7rnfi/tK3KW/m040qetjq2PW+ee2vq0sPZ77zvmRI2Vcpa3r6NcknVvfRxZ7la21x9rvxf9e4/cp/Qgd7bn7eueTkXmhNzv8vqT/i06j17Jq9zZ3qj/VUmPXGWtAWt/k1zDR3Ilr0rne70dkqR9G9m/UfvTnv1yJa9mQs5/UfPMXh/k/qS3UyP2KSsgc1R6NyaCPT5o82dvr0bOD1dE8+neYcxafeh1hqLVQ66KQ/Znr7VwrQ9R36G8dck+gDasea8HtXOgnPfOuPddCelSz3kvpcWpI85TmP9sNHdkaPfWe+LxY8R+T6tz9fnP44v3/cyee+st5DyR5+9H5alVnLI88ry3Kr2fGY3mieUTTsVQm3e8b6xmInVlFp+u7NQftXnnbMgzhsfgdXnaDvkd4Yz96eVMeceLdi8svX+w5YuR6/Je3xFmJXdHZvZ71567PTIvyfcPMiLaZJ2lXD1HpZTewHnfYB4Rnrs96Txn+aW95dobR+5/Z6B0R8Z6CzdDtNzr0d7XWO8F98SKLrXg9W9kRK65S77VBgAAAAAAAAAAAAAAAADAKvwCDBoJAQ==
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="5" name="Nena" type="Player" x="0" y="180" width="97" height="132">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="numFrames" value="0"/>
+    <property name="textureHeight" value="132"/>
+    <property name="textureID" value="nina"/>
+    <property name="textureWitdh" value="97"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

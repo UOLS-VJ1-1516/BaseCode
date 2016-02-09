@@ -13,28 +13,30 @@ void PlayState::update()
 	{
 		Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
+	/*
 	for (int i = 0; i < m_gameObjectsPlay.size(); i++)
 	{
 		m_gameObjectsPlay[i]->update();
-	}
-	pLevel->update();
+	}*/
+	ppLevel->update();
 }
 void PlayState::render()
 {
-	for (int i = 0; i < m_gameObjectsPlay.size(); i++)
-	{
-		m_gameObjectsPlay[i]->draw();
-	}
-	pLevel->render();
+	
+	//for (int i = 0; i < m_gameObjectsPlay.size(); i++)
+	//{
+		//m_gameObjectsPlay[i]->draw();
+	//}
+	ppLevel->render();
 }
 bool PlayState::onEnter()
 {
 	// parse the state
-	StateParser stateParser;
-	stateParser.parseState("assets/images.xml", s_playID, &m_gameObjectsPlay, &m_textureIDList);
+	//StateParser stateParser;
+	//stateParser.parseState("assets/images.xml", s_playID, &m_gameObjectsPlay, &m_textureIDList);
 	
 	LevelParser levelParser;
-	pLevel = levelParser.parseLevel("assets/mapaBueno.tmx");
+	ppLevel = levelParser.parseLevel("assets/mapaBueno.tmx");
 
 	return true;
 }

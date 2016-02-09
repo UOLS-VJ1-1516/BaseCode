@@ -63,7 +63,7 @@ GameStateMachine* m_pGameStateMachine;
 		}
 
 		GameObjectFactory::Instance()->Register("MenuButton", MenuButton::Create);
-		GameObjectFactory::Instance()->Register("Player", Player::Create);
+		GameObjectFactory::Instance()->Register("Player", &Player::Create);
 		GameObjectFactory::Instance()->Register("Dog", Dog::Create);
 
 		m_pGameStateMachine = new GameStateMachine();

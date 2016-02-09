@@ -92,6 +92,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
@@ -213,16 +215,20 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bueno.png" />
+    <Image Include="assets\spritesheet.png" />
     <Image Include="button_exit.png" />
     <Image Include="button_play.png" />
-    <Image Include="Dog.png" />
+    <Image Include="assets\Dog.png" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\tinyxml\lib\tinyxmlSTL.lib" />
     <Library Include="libs\zlib\lib\zdll.lib" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\mapaBueno.tmx" />
+    <None Include="assets\mapaBueno.tmx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="assets\mapaBueno2.tmx" />
     <None Include="libs\zlib\lib\zlib.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

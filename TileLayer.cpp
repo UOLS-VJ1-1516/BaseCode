@@ -21,6 +21,10 @@ void TileLayer::render()
 	y = m_position.getY() / m_tileSize;
 	x2 = int(m_position.getX()) % m_tileSize;
 	y2 = int(m_position.getY()) % m_tileSize;
+	if (x > 100) {
+		x = 100;
+		x2 = 0;
+	}
 	for (int i = 0; i < m_numRows+1; i++)
 	{
 		for (int j = 0; j < m_numColumns+1; j++)

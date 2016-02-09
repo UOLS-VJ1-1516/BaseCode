@@ -20,13 +20,14 @@ private:
 	static const std::string s_playID;
 	std::vector<GameObject*> m_gameObjectsPlay;
 	static void s_playToPause();
-	GameObject* player;
-	GameObject* dog;
+	//GameObject* player;
+	//GameObject* dog;
 	std::vector<LoaderParams*> loader;
-	LoaderParams* l1;
-	LoaderParams* l2;
-	Level* pLevel;
+	//LoaderParams* l1;
+	//LoaderParams* l2;
+	
 protected:
 	std::vector	<std::string> m_textureIDList;
+	Level* ppLevel;
 };
 #endif PLAYSTATE_H

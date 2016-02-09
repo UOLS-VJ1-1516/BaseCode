@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef LEVEL_H
-#define LEVEL_H
+//#ifndef LEVEL_H
+//#define LEVEL_H
 
 #include "string"
 #include "vector"
@@ -30,5 +30,5 @@ private:
 	Level();
 };
 
-#endif
+//#endif
 

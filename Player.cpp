@@ -1,10 +1,12 @@
 #include "Player.h"
 #include "TextureManager.h"
 #include "game.h"
+#include "string"
 
 
 int dir = 0;
 int dreta = 1;
+std::string texture;
 
 Player::Player()
 {
@@ -18,13 +20,15 @@ Player::~Player()
 void Player::load(const LoaderParams* ppParams) {
 	//pParams = new LoaderParams(ppParams->getX(), ppParams->getY(), ppParams->getWidth(), ppParams->getHeight(), ppParams->getTextureID(), ppParams->getnumFrames, ppParams->getcallbackID);
 	Player::pParams = ppParams;
-	TextureManager::Instance()->load("spritesheet.png", pParams->getTextureID(), Game::Instance()->getRender());
+	//texture = pParams->getTextureID();
+	//TextureManager::Instance()->load("spritesheet.png", pParams->getTextureID(), Game::Instance()->getRender());
 	m_position.setX(0);
 	m_position.setY(180);
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_currentFrame = 0;
 	m_currentRow = 1;
+
 
 }
 void Player::draw() {

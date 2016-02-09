@@ -1,5 +1,5 @@
 #pragma once
-
+#include "string"
 
 #ifndef LAYER_H
 #define LAYER_H

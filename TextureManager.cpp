@@ -18,7 +18,7 @@
 		if (!surface) {
 			printf("No se ha cargado la imagen");
 		}
-		texture = SDL_CreateTextureFromSurface(pRenderer, surface);
+		SDL_Texture* texture = SDL_CreateTextureFromSurface(pRenderer, surface);
 		SDL_FreeSurface(surface);
 		if (texture != 0)
 		{
@@ -27,7 +27,7 @@
 		}
 		return false;
 	}
-	void TextureManager::draw(const char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip) {
+	void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip) {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 		srcRect.x = 0;
@@ -38,7 +38,7 @@
 		destRect.y = y;
 		SDL_RenderCopyEx(pRender, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 	}
-	void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
+	void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip) {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 		srcRect.x = width * currentFrame;

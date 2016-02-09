@@ -10,16 +10,6 @@
       <object type="MenuButton" x="160" y="250" width="322" height="150" textureID="exit_button" numFrames="0" callbackID="2"/>
     </OBJECTS>
   </MENU>
-  <PLAY>
-    <TEXTURES>
-      <texture filename="spritesheet.png" ID="player"/>
-      <texture filename="Dog.png" ID="dog"/>
-    </TEXTURES>
-    <OBJECTS>
-      <object type="Player" x="0" y="180" width="97" height="132" textureID="player" numFrames="0" callbackID="0"/>
-      <object type="Dog" x="0" y="230" width="64" height="80" textureID="dog" numFrames="0" callbackID="0"/>
-    </OBJECTS>
-  </PLAY>
   <PAUSE>
     <TEXTURES>
       <texture filename="Resume_button.png" ID="Pause_button"/>

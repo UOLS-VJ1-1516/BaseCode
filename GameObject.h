@@ -19,6 +19,7 @@ class GameObject
 		Vector2D m_friction;
 		int m_currentRow;
 		int m_currentFrame;
+		const char* texture;
 		LoaderParams* pParams;
 };
 #endif GAMEOBJECT_H

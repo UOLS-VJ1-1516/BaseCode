@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="150" height="60" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="bueno" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="150" height="60" tilewidth="16" tileheight="16" nextobjectid="10">
+ <properties>
+  <property name="nina" value="./assets/spritesheet.png"/>
+   <property name="dog" value="./assets/Dog.png"/>
+ </properties>
+ <tileset firstgid="1" name="./assets/bueno.png" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
   <image source="./assets/bueno.png" trans="55ffff" width="1283" height="654"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="150" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2D1uwkAQBtA1qcyxSEqSFnIykjZQJrlZQgl0GQpLK4SccYMl8570SVvM/hSjseRSAAAAAAAAAAAAAACAsyYyizyM/RAmZRl5jryM/RAmZRN5i7yP/RAmxby6T6t5KevI63zYvs+2lK/Id9tfZ17dp4/op21kN7CvDtFPx8hJX3HFT/TTb2Q/sK8WUf8Yefpnn+/g9DSJ1PMqU9+X7n9Cva7n1WVN5pzsndzOMpF6XmXq+9LNpew6c072Tm5nk0g9rzL1fenmUnadOSd7JwAAAAAAAAAAAAAAAAAAAAAAMMwfB45PAw==
+   eJzt2DFKxEAUgOFJrHYL9Uxqqba6ejC1VUv1ErrHUUu188kSCCLJSxAC2e+DH1JMkgkMb2FLAQAAAAAAAAAAAAAAflRRHe1MvRFm5Tg6iU6n3gizchVdRzdTb4RZMa+209mylPNotRx238OilMfoadG9zrzaTrdxnu6i+4Hn6iPO02f05Vzxh9c4T2/R+8BzdRDrD6Ojnvv8Ds5Plag9rzLru2r+T2hft+fV7zWZ52TfSc5zNb6XaF1tZkVf7XmVWd9VM5ey15nnZN9Jzm49vr1ov97Mir7a8yqzvqtmLmWvM8/JvpOcVT2+i+iynvoLAAAAAAAAAAAAAAAAAAAAAAD4L98EkWMr
   </data>
  </layer>
+ <objectgroup name="Objectes">
+  <object id="5" name="nina" type="Player" x="45" y="295" width="97" height="132">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="numFrames" value="5"/>
+    <property name="textureHeight" value="132"/>
+    <property name="textureID" value="nina"/>
+    <property name="textureWitdh" value="97"/>
+   </properties>
+  </object>
+  <object id="9" name="dog" type="Dog" x="765" y="273" width="79" height="100">
+   <properties>
+    <property name="callbackID" value="0"/>
+    <property name="numFrames" value="0"/>
+    <property name="textureHeight" value="80"/>
+    <property name="textureID" value="dog"/>
+    <property name="textureWitdh" value="64"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
