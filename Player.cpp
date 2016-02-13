@@ -36,7 +36,7 @@ void Player::load(const LoadPar * lPar)
 	m_velocity.setY(3);  //Velocidad verical inicial
 	m_acceleration.setX(0.1);
 	m_acceleration.setY(10);
-	m_maxvelocity.setX(3);   //Prefiero jugar con la aceleracion maxima antes que con la Velmax, creo que me ayudara en un futuro
+	m_maxvelocity.setX(3);   /
 	m_maxvelocity.setY(50);
 	//m_maxaccelerationneg.setX(-20);
 	//m_maxaccelerationneg.setY(-10);
