@@ -11,6 +11,18 @@ class GameObject
 		virtual void draw() = 0;
 		virtual void update() = 0;
 		virtual void clean() = 0;
+		Vector2D getVelocity() {
+			return m_velocity;
+		}
+		Vector2D getPosition() {
+			return m_position;
+		}
+		int getWidth() {
+			return width;
+		}
+		int getHeight(){
+			return height;
+		}
 	protected:
 		Vector2D m_position;
 		Vector2D m_velocity;
@@ -19,6 +31,8 @@ class GameObject
 		Vector2D m_friction;
 		int m_currentRow;
 		int m_currentFrame;
+		int width;
+		int height;
 		const char* texture;
 		LoaderParams* pParams;
 };

@@ -22,13 +22,16 @@ void Player::load(const LoaderParams* ppParams) {
 	Player::pParams = ppParams;
 	//texture = pParams->getTextureID();
 	//TextureManager::Instance()->load("spritesheet.png", pParams->getTextureID(), Game::Instance()->getRender());
-	m_position.setX(0);
-	m_position.setY(180);
+	//m_position.setX(0);
+	//m_position.setY(180);
+	m_position.setX(pParams->getX());
+	m_position.setY(pParams->getY());
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	m_currentFrame = 0;
 	m_currentRow = 1;
-
+	width = pParams->getWidth()-60;
+	height = pParams->getHeight();
 
 }
 void Player::draw() {
@@ -46,7 +49,11 @@ void Player::update() {
 	m_acceleration.setX(1);
 	m_velocity.setY(0);
 	m_acceleration.setY(0);
-
+	
+	if (isCollisionWithTile()) {
+		printf("Colision!!!");
+	}
+	
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
 		dir = 0;

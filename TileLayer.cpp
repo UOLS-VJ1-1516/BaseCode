@@ -64,3 +64,11 @@ Tileset TileLayer::getTilesetByID(int tileID)
 	Tileset t;
 	return t;
 }
+
+bool TileLayer::getisColision() {
+	return isColision;
+}
+
+void TileLayer::setisColision(bool colision) {
+	isColision = colision;
+}

@@ -1,12 +1,13 @@
 #pragma once
-#include "GameObject.h"
+//#include "GameObject.h"
 #include "LoaderParams.h"
 #include "SDL.h"
 #include "Vector2D.h"
+#include "CollisionObject.h"
 #ifndef PLAYER_H
 #define PLAYER_H
 
-class Player : public GameObject
+class Player : public CollisionObject
 {
 public:
 	Player();

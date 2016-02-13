@@ -38,6 +38,8 @@ bool PlayState::onEnter()
 	LevelParser levelParser;
 	ppLevel = levelParser.parseLevel("assets/mapaBueno.tmx");
 
+
+
 	return true;
 }
 bool PlayState::onExit()

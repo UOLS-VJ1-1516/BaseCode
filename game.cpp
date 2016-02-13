@@ -62,12 +62,16 @@ GameStateMachine* m_pGameStateMachine;
 			return false; // sdl could not initialize
 		}
 
+		//Registrem els objectes
 		GameObjectFactory::Instance()->Register("MenuButton", MenuButton::Create);
 		GameObjectFactory::Instance()->Register("Player", &Player::Create);
 		GameObjectFactory::Instance()->Register("Dog", Dog::Create);
 
+		//Creem la maquina d'estats
 		m_pGameStateMachine = new GameStateMachine();
+		//I fem un changeState per inciar en el estat de MenuState
 		m_pGameStateMachine->changeState(new MenuState());
+		//Posem el running a true per indicar que el programa esta en execució
 		running = true;
 		return true;
 	}

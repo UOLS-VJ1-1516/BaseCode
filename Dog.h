@@ -1,10 +1,11 @@
 #pragma once
-#include "GameObject.h"
+//#include "GameObject.h"
 #include "LoaderParams.h"
 #include "SDL.h"
+#include "CollisionObject.h"
 #ifndef DOG_H
 #define DOG_H
-class Dog : public GameObject
+class Dog : public CollisionObject
 {
 public:
 	Dog();

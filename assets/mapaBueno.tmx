@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="left-up" width="150" height="60" tilewidth="16" tileheight="16" nextobjectid="10">
  <properties>
+  <property name="dog" value="./assets/Dog.png"/>
   <property name="nina" value="./assets/spritesheet.png"/>
-   <property name="dog" value="./assets/Dog.png"/>
  </properties>
  <tileset firstgid="1" name="./assets/bueno.png" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
   <image source="./assets/bueno.png" trans="55ffff" width="1283" height="654"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="150" height="60">
+  <properties>
+   <property name="isColision" value="true"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt2DFKxEAUgOFJrHYL9Uxqqba6ejC1VUv1ErrHUUu188kSCCLJSxAC2e+DH1JMkgkMb2FLAQAAAAAAAAAAAAAAflRRHe1MvRFm5Tg6iU6n3gizchVdRzdTb4RZMa+209mylPNotRx238OilMfoadG9zrzaTrdxnu6i+4Hn6iPO02f05Vzxh9c4T2/R+8BzdRDrD6Ojnvv8Ds5Plag9rzLru2r+T2hft+fV7zWZ52TfSc5zNb6XaF1tZkVf7XmVWd9VM5ey15nnZN9Jzm49vr1ov97Mir7a8yqzvqtmLmWvM8/JvpOcVT2+i+iynvoLAAAAAAAAAAAAAAAAAAAAAAD4L98EkWMr
   </data>
  </layer>
  <objectgroup name="Objectes">
-  <object id="5" name="nina" type="Player" x="45" y="295" width="97" height="132">
+  <object id="5" name="nina" type="Player" x="0" y="295" width="97" height="132">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="numFrames" value="5"/>
@@ -22,7 +25,7 @@
     <property name="textureWitdh" value="97"/>
    </properties>
   </object>
-  <object id="9" name="dog" type="Dog" x="765" y="273" width="79" height="100">
+  <object id="9" name="dog" type="Dog" x="0" y="273" width="79" height="100">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="numFrames" value="0"/>
@@ -32,4 +35,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Capa de patrones 2 sin colisiones" width="150" height="60">
+  <properties>
+   <property name="isColision" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jENADAIAEEWlvqrfytY6AIkzZ2CHz4CAAAAAAAAAAAAAAAAAN7c3C7gR76ig6/ocHwFAAAAAAAAAAAAAAAAAAAAAAAAwJACexMBHg==
+  </data>
+ </layer>
 </map>

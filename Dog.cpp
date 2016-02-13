@@ -46,22 +46,22 @@ void Dog::update() {
 	m_acceleration.setY(0);
 
 			if (m_position.getX() > 580) {
-			cont2 = 1;
-			dir2 = 1;
+				cont2 = 1;
+				dir2 = 1;
 			}
 			if (m_position.getX() < 2) {
-			cont2 = 0;
-			dir2 = 0;
+				cont2 = 0;
+				dir2 = 0;
 			}
 			if (cont2 == 0) {
-			m_position.setX(m_position.getX() + 1);
-			m_velocity += m_acceleration;
-			m_position += m_velocity;
+				m_position.setX(m_position.getX() + 1);
+				m_velocity += m_acceleration;
+				m_position += m_velocity;
 			}
 			else {
-			m_position.setX(m_position.getX() - 1);
-			m_velocity += m_acceleration;
-			m_position -= m_velocity;
+				m_position.setX(m_position.getX() - 1);
+				m_velocity += m_acceleration;
+				m_position -= m_velocity;
 			}
 	
 }
