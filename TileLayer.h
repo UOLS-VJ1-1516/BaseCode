@@ -3,9 +3,12 @@
 #include "Layer.h"
 #include "Level.h"
 #include "Vector2D.h"
+
+
 class TileLayer : public Layer
 {
 public:
+	
 	TileLayer(int tileSize, const std::vector<Tileset> &tilesets, int width);
 	virtual void update();
 	virtual void render();
@@ -18,8 +21,33 @@ public:
 		m_tileSize = tileSize;
 	}
 	Tileset getTilesetByID(int tileID);
+
+	std::vector<std::vector<int>> getTileIDs() {
+		return m_tileIDs;
+	}
+	bool getIsCollider() {
+		return m_isCollider;
+	}
+	void setIsCollider(bool  collider) {
+		m_isCollider = collider;
+	}
+	int getTileWith() {
+		return m_tileWidth;
+	}
+	int getTileHeight() {
+		return m_tileHeight;
+	}
+	Vector2D getPosition() {
+		return m_position;
+	}
+	int getTileSize() {
+		return m_tileSize;
+	}
 private:
 	int m_numColumns;
+	int m_tileWidth; 
+	int m_tileHeight; 
+	bool m_isCollider;
 	int m_width;
 	int m_numRows;
 	int m_tileSize;

@@ -1,9 +1,9 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
 #ifndef ENEMY_H
 #define ENEMY_H
 
-class Enemy : public GameObject
+class Enemy : public CollisionObject
  {
 	public:
 		Enemy();

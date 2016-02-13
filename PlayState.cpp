@@ -3,6 +3,7 @@
 #include "StateParser.h"
 #include "Game.h"
 #include "LevelParser.h"
+#include "CollisionObject.h"
 const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update() {
@@ -32,7 +33,7 @@ void PlayState::render() {
 };
 bool PlayState::onEnter() {
 
-	printf("Entro en PlayState");
+	//printf("Entro en PlayState");
 	// parse the state
 	//StateParser stateParser;
 	//stateParser.parseState("./images/miXML.xml", s_playID, &m_gObjects, &m_textureIDList);
@@ -42,7 +43,7 @@ bool PlayState::onEnter() {
 
 	LevelParser levelParser;
 	m_level = levelParser.parseLevel("./images/mapa.tmx");
-	
+
 	return true;
 	
 };

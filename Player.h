@@ -1,11 +1,11 @@
 #pragma once
-#include "GameObject.h"
+#include "CollisionObject.h"
 #include "Vector2D.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
 
-class Player : public GameObject
+class Player : public CollisionObject
 {
 public:
 	Player();
@@ -17,7 +17,6 @@ public:
 	void update();
 	void clean();
 	static GameObject * Create() { return new Player(); }
-private:
-	Vector2D m_pos;
+
 };
 #endif PLAYER_H

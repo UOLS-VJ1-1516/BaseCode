@@ -27,6 +27,9 @@ public:
 	Vector2D getPosition() {
 		return m_position;
 	}
+	Vector2D getVelocity() {
+		return m_velocity;
+	}
 	
 	
 protected:
