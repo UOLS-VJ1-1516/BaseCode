@@ -7,6 +7,9 @@
 int dir = 0;
 int dreta = 1;
 std::string texture;
+int ultimaPos = 0;
+bool colisionLeft = false;
+bool colsionRight = false;
 
 Player::Player()
 {
@@ -30,7 +33,7 @@ void Player::load(const LoaderParams* ppParams) {
 	m_velocity.setY(0);
 	m_currentFrame = 0;
 	m_currentRow = 1;
-	width = pParams->getWidth()-60;
+	width = pParams->getWidth();
 	height = pParams->getHeight();
 
 }
@@ -49,45 +52,62 @@ void Player::update() {
 	m_acceleration.setX(1);
 	m_velocity.setY(0);
 	m_acceleration.setY(0);
-	
-	if (isCollisionWithTile()) {
-		printf("Colision!!!");
-	}
-	
+	ultimaPos = m_position.getX();
+	/*
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
-		dir = 0;
-		if (m_position.getX() > 599) {
-		}
-		else {
-			if (m_position.getX() < 0) {
+		if (colisionLeft != true) {
+			if (isCollisionWithTile()) {
+				printf("Colision!!!");
+				colsionRight = true;
 			}
-			else
-			{
+		}
+	}
+	
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+		if (colsionRight != true) {
+			if (isCollisionWithTile()) {
+				printf("Colision!!!");
+				colisionLeft = true;
+			}
+		}
+	}
+	*/
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+	{
+		if (colisionLeft != true) {
+			if (isCollisionWithTile()) {
+				printf("Colision!!!");
+				colsionRight = true;
+			}
+		}
+		if (colsionRight != true) {
+			dir = 0;
+			if (m_position.getX() < Game::Instance()->getGameWidth() - 30) {
 				m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
 				m_velocity.setX(-2);
 				m_velocity -= m_acceleration;
 				m_position -= m_velocity;
+				colisionLeft = false;
 			}
 		}
 	}
-	else {
-		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-		{
-			dir = 1;
-			if (m_position.getX() > 600) {
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)){
+		if (colsionRight != true) {
+			if (isCollisionWithTile()) {
+				printf("Colision!!!");
+				colisionLeft = true;
 			}
-			else {
-				if (m_position.getX() < 1) {
-				}
-				else {
-					m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
-					m_velocity.setX(2);
-					m_velocity += m_acceleration;
-					m_position -= m_velocity;
-				}
+		}
+		if (colisionLeft != true) {
+			if (m_position.getX() > 0) {
+				dir = 1;
+				m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
+				m_velocity.setX(2);
+				m_velocity += m_acceleration;
+				m_position -= m_velocity;
+				colsionRight = false;
 			}
-
 		}
 	}
 }

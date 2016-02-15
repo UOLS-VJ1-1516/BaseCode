@@ -16,7 +16,7 @@
   </data>
  </layer>
  <objectgroup name="Objectes">
-  <object id="5" name="nina" type="Player" x="0" y="295" width="97" height="132">
+  <object id="5" name="nina" type="Player" x="200" y="295" width="97" height="132">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="numFrames" value="5"/>
@@ -25,7 +25,7 @@
     <property name="textureWitdh" value="97"/>
    </properties>
   </object>
-  <object id="9" name="dog" type="Dog" x="0" y="273" width="79" height="100">
+  <object id="9" name="dog" type="Dog" x="0" y="273" width="64" height="80">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="numFrames" value="0"/>
