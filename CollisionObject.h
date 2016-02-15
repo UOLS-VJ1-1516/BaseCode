@@ -20,15 +20,44 @@ public:
 	void setCollisionLayers(std::vector< TileLayer* >* pCollisionLayers) {
 		m_pCollisionLayers = pCollisionLayers;
 	}
+	void setDerecha(bool estado) {
+		derecha = estado;
+	}
+	void setIzquierda(bool estado) {
+		izquierda = estado;
+	}
+	void setArriba(bool estado) {
+		arriba = estado;
+	}
+	void setAbajo(bool estado) {
+		abajo = estado;
+	}
+	bool getDerecha() {
+		return derecha;
+	}
+	bool getIzquierda() {
+		return izquierda;
+	}
+	bool getAbajo() {
+		return abajo;
+	}
+	bool getArriba() {
+		return arriba;
+	}
 	
-	bool isCollisionWithTile();  //Protected debe ser
+	
 protected:
 	
 	int m_collisionMargin; // Margen horizontal para evitar colisión.
 						   // Diferente para cada tipo de objeto
-
+	bool isCollisionWithTile(); //protected
+	bool isCollisionWithRight(); //protected
 	int m_TileWith;
 	int m_tileSize;
+	bool derecha = false;
+	bool izquierda = false;
+	bool arriba = false;
+	bool abajo = false;
 	int m_TileHeight;
 private:
 	std::vector< TileLayer* >* m_pCollisionLayers;// Puntero a todas las

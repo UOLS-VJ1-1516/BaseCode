@@ -17,6 +17,7 @@ public:
 	void update();
 	void clean();
 	static GameObject * Create() { return new Player(); }
+	int Player::Miraquepulsa();
 
 };
 #endif PLAYER_H
