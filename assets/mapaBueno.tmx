@@ -16,7 +16,7 @@
   </data>
  </layer>
  <objectgroup name="Objectes">
-  <object id="5" name="nina" type="Player" x="200" y="295" width="97" height="132">
+  <object id="5" name="nina" type="Player" x="250" y="0" width="97" height="132">
    <properties>
     <property name="callbackID" value="0"/>
     <property name="numFrames" value="5"/>

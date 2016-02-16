@@ -10,6 +10,10 @@ std::string texture;
 int ultimaPos = 0;
 bool colisionLeft = false;
 bool colsionRight = false;
+bool colisionBottom = false;
+bool exit2 = false;
+bool saltar = false;
+int entrada = 0;
 
 Player::Player()
 {
@@ -35,7 +39,7 @@ void Player::load(const LoaderParams* ppParams) {
 	m_currentRow = 1;
 	width = pParams->getWidth();
 	height = pParams->getHeight();
-
+	colisionBottom = false;
 }
 void Player::draw() {
 	SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
@@ -53,66 +57,70 @@ void Player::update() {
 	m_velocity.setY(0);
 	m_acceleration.setY(0);
 	ultimaPos = m_position.getX();
-	/*
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-	{
-		if (colisionLeft != true) {
-			if (isCollisionWithTile()) {
-				printf("Colision!!!");
-				colsionRight = true;
-			}
-		}
+	if(!isCollisionWithTile()&&colisionBottom==false) { ///////////////////////////////// Mirar!!! fa saltets, perque quan no detecta colisio intenta baixar el objecte, i en el else el pujem
+		printf("No Colision!!!");
+		//m_velocity.setY(3);
+		//m_velocity -= m_acceleration;
+		//m_position += m_velocity;
+		m_position.setY(m_position.getY()+1); //Vigilar con la velocidad, a veces se pasa de rango i se queda en colision
+		exit2 = true;
 	}
-	
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
-		if (colsionRight != true) {
-			if (isCollisionWithTile()) {
-				printf("Colision!!!");
-				colisionLeft = true;
+	else {
+		if (exit2 == true) {
+			colisionBottom = true;
+			//if (entrada == 1) {
+				m_position.setY(m_position.getY() - 1);
+			//}
+			exit2 = false;
+			saltar = true;
+		}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+		{
+			if (colisionLeft != true) {
+				if (isCollisionWithTile()) {
+					printf("Colision!!!");
+					colsionRight = true;
+				}
+			}
+			if (colsionRight != true) {
+				dir = 0;
+				if (m_position.getX() < Game::Instance()->getGameWidth() - 30) {
+					m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
+					m_velocity.setX(-2);
+					m_velocity -= m_acceleration;
+					m_position -= m_velocity;
+					colisionLeft = false;
+				}
 			}
 		}
-	}
-	*/
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-	{
-		if (colisionLeft != true) {
-			if (isCollisionWithTile()) {
-				printf("Colision!!!");
-				colsionRight = true;
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
+			if (colsionRight != true) {
+				if (isCollisionWithTile()) {
+					printf("Colision!!!");
+					colisionLeft = true;
+				}
+			}
+			if (colisionLeft != true) {
+				if (m_position.getX() > 0) {
+					dir = 1;
+					m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
+					m_velocity.setX(2);
+					m_velocity += m_acceleration;
+					m_position -= m_velocity;
+					colsionRight = false;
+				}
 			}
 		}
-		if (colsionRight != true) {
-			dir = 0;
-			if (m_position.getX() < Game::Instance()->getGameWidth() - 30) {
-				m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
-				m_velocity.setX(-2);
-				m_velocity -= m_acceleration;
-				m_position -= m_velocity;
-				colisionLeft = false;
-			}
-		}
-	}
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)){
-		if (colsionRight != true) {
-			if (isCollisionWithTile()) {
-				printf("Colision!!!");
-				colisionLeft = true;
-			}
-		}
-		if (colisionLeft != true) {
-			if (m_position.getX() > 0) {
-				dir = 1;
-				m_currentFrame = int(((SDL_GetTicks() / 100) % 7));
-				m_velocity.setX(2);
-				m_velocity += m_acceleration;
-				m_position -= m_velocity;
-				colsionRight = false;
-			}
+		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+			m_position.setY(m_position.getY() - 60);
+			colisionBottom = false;
+			saltar = false;
+			entrada = 0;
 		}
 	}
 }
 void Player::clean() {
-
+	colisionBottom = false;
 }
 
 void Player::handleInput()
