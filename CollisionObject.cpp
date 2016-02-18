@@ -1,6 +1,13 @@
 #include "CollisionObject.h"
 #include "game.h"
 
+int marginH = 62;
+int marginW = 30;
+int marginHLeft = 62;
+int marginWLeft = 50;
+int marginHDown = 48;
+int marginWDown = 0;
+
 
 CollisionObject::CollisionObject() {
 
@@ -27,10 +34,7 @@ bool CollisionObject::isCollisionWithTile()
 {
 	
 	
-	//Diria que... //y+1  x-1 -> Miro izquierda 
-			//y-1 x-1 -> Miro arriba 
-			//y+1 x+1 -> Miro abajo
-	// y-1][tileColumn + x+1];   Miro derecha
+	
 	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
 	{
 
@@ -41,25 +45,20 @@ bool CollisionObject::isCollisionWithTile()
 		Vector2D layerPos = pTileLayer->getPosition();
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
-
-		//m_TileWith = pTileLayer->getTileWith(); //Miro ancho de mi mapa
-		//m_TileHeight = pTileLayer->getTileHeight();  //Miro alto de mi mapa
-		//x = pTileLayer->getPosition().getX() / m_tileSize;  //Cojo la posicion del objeto que ha llamado esta funcion
-		//y = pTileLayer->getPosition().getY() / m_tileSize; //Cojo la posicion del objeto que ha llamado esta funcion
 		
 		 // Si me estoy moviedno a derecha o arriba
 		if (getVelocity().getX() > 0 || getVelocity().getY() > 0)
 		{
-			tileColumn = ((getPosition().getX() +getWidth()-30) / pTileLayer->getTileSize());
-			tileRow = ((getPosition().getY() + getHeight()-62)/ pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX() +getWidth()-marginW) / pTileLayer->getTileSize());
+			tileRow = ((getPosition().getY() + getHeight()-marginH)/ pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y][tileColumn + x];
 		}
 
 		// Si me estoy moviedno a izquierda o abajo
 		else if (getVelocity().getX() < 0 || getVelocity().getY() < 0) // if moving backwards or downwards
 		{
-			tileColumn =( getPosition().getX() + getWidth()-70) / pTileLayer ->getTileSize();
-			tileRow = (getPosition().getY() + getHeight()-62) / pTileLayer ->getTileSize();
+			tileColumn =( getPosition().getX() + getWidth()- marginW) / pTileLayer ->getTileSize();
+			tileRow = (getPosition().getY() + getHeight()- marginH) / pTileLayer ->getTileSize();
 			tileid = tiles[tileRow + y +1][tileColumn + x+1];  //Le digo que hay una posicion menos así puedo estar en colision
 		}
 		if (tileid != 0) // if the tile id not blank then collide
@@ -86,20 +85,13 @@ bool CollisionObject::isCollisionWithRight()
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
 
-		//m_TileWith = pTileLayer->getTileWith(); //Miro ancho de mi mapa
-		//m_TileHeight = pTileLayer->getTileHeight();  //Miro alto de mi mapa
-		//x = pTileLayer->getPosition().getX() / m_tileSize;  //Cojo la posicion del objeto que ha llamado esta funcion
-		//y = pTileLayer->getPosition().getY() / m_tileSize; //Cojo la posicion del objeto que ha llamado esta funcion
 
 		// Si me estoy moviedno a derecha o arriba
-		if (getVelocity().getX() > 0 || getVelocity().getY() > 0)
+		if (getVelocity().getX() > 0 )
 		{
-			tileColumn = ((getPosition().getX() + getWidth() - 30) / pTileLayer->getTileSize());
-			tileRow = ((getPosition().getY() + getHeight() - 62) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
+			tileRow = ((getPosition().getY() + getHeight() - marginH) / pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y-1][tileColumn + x+1];  //Aqui me aseguro que estaré mirando colisión derecha
-			//y+1  x-1 -> Miro izquierda 
-			//y-1 x-1 -> Miro arriba 
-			//y+1 x+1 -> Miro abajo
 		}  
 
 		
@@ -111,28 +103,95 @@ bool CollisionObject::isCollisionWithRight()
 	return false;
 }
 
-		/*
-		Vector2D cajainicial = posicio;
-		cajainicial.setX(cajainicial.getX()+100);
-		cajainicial.setY(cajainicial.getY() + 50);
 
-		Vector2D cajafinal;
-		cajafinal.setX(cajafinal.getX() -100);
-		cajafinal.setY(cajafinal.getY()-50);
+bool CollisionObject::isCollisionWithLeft()
+{
+	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
+	{
 
+		TileLayer* pTileLayer = (*it);
+		int x, y, tileColumn, tileRow, tileid = 0;
+		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
+		m_tileSize = pTileLayer->getTileSize();
+		Vector2D layerPos = pTileLayer->getPosition();
+		x = layerPos.getX() / pTileLayer->getTileSize();
+		y = layerPos.getY() / pTileLayer->getTileSize();
 
-		for (int i = cajainicial.getX(); i < cajafinal.getX(); i++) {
-			for (int j = cajainicial.getY(); j < cajafinal.getY(); j++) {
-				tileColumn = i / pTileLayer->getTileSize();
-				tileRow = j / pTileLayer->getTileSize();
-				tileid = tiles[tileRow + y][tileColumn + x]; 
-					if (tileid != 0) {
-						return true;
-					}
-			}
-		}
-					
-		}*/
-			
-			
 	
+	  if (getVelocity().getX() < 0 ){ // if moving backwards or downwards
+		
+			tileColumn = (getPosition().getX() + getWidth() - marginWLeft) / pTileLayer->getTileSize();
+			tileRow = (getPosition().getY() + getHeight() - marginHLeft) / pTileLayer->getTileSize();
+			tileid = tiles[tileRow + y - 1][tileColumn + x -1];  //Le digo que hay una posicion menos así puedo estar en colision
+		}
+		if (tileid != 0) // if the tile id not blank then collide
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool CollisionObject::isCollisionWithDown()
+{
+
+	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
+	{
+
+		TileLayer* pTileLayer = (*it);
+		int x, y, tileColumn, tileRow, tileid = 0;
+		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
+		m_tileSize = pTileLayer->getTileSize();
+		Vector2D layerPos = pTileLayer->getPosition();
+		x = layerPos.getX() / pTileLayer->getTileSize();
+		y = layerPos.getY() / pTileLayer->getTileSize();
+
+	
+		// Si me estoy moviedno a izquierda o abajo
+		 if (getVelocity().getY() >= 0) // if moving backwards or downwards
+		{
+			tileColumn = (getPosition().getX() + getWidth() -50) / pTileLayer->getTileSize();
+			tileRow = (getPosition().getY() + getHeight() - marginHDown) / pTileLayer->getTileSize();
+			tileid = tiles[tileRow + y - 1][tileColumn + x - 1];  //Le digo que hay una posicion menos así puedo estar en colision
+		}
+		if (tileid != 0) // if the tile id not blank then collide
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
+bool CollisionObject::isCollisionWithUp()
+{
+
+	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
+	{
+
+		TileLayer* pTileLayer = (*it);
+		int x, y, tileColumn, tileRow, tileid = 0;
+		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
+		m_tileSize = pTileLayer->getTileSize();
+		Vector2D layerPos = pTileLayer->getPosition();
+		x = layerPos.getX() / pTileLayer->getTileSize();
+		y = layerPos.getY() / pTileLayer->getTileSize();
+
+		// Si me estoy moviedno a derecha o arriba
+		if (getVelocity().getY() < 0)
+		{
+			tileColumn = ((getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
+			tileRow = ((getPosition().getY() + getHeight() - marginH) / pTileLayer->getTileSize());
+			tileid = tiles[tileRow + y + 1][tileColumn + x - 1];  //Aqui me aseguro que estaré mirando colisión derecha
+																  //y+1  x-1 -> Miro izquierda 
+																  //y-1 x-1 -> Miro arriba 
+																  //y+1 x+1 -> Miro abajo
+		}
+
+		if (tileid != 0) // if the tile id not blank then collide
+		{
+			return true;
+		}
+	}
+	return false;
+}

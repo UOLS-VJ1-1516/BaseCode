@@ -39,8 +39,9 @@ protected:
 	Vector2D m_maxvelocity;
 	Vector2D m_maxaccelerationneg;
 	Vector2D m_friction;
-	
-
+	Vector2D m_velocitySalto;
+	Vector2D m_accelerationSalto;
+	Vector2D m_maxvelocitySalto;
 	
 	int m_width;
 	int	m_height;

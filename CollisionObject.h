@@ -52,6 +52,9 @@ protected:
 						   // Diferente para cada tipo de objeto
 	bool isCollisionWithTile(); //protected
 	bool isCollisionWithRight(); //protected
+	bool isCollisionWithUp(); //protected
+	bool isCollisionWithDown(); //protected
+	bool isCollisionWithLeft(); //protected
 	int m_TileWith;
 	int m_tileSize;
 	bool derecha = false;
