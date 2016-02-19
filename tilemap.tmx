@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="25" height="19" tilewidth="32" tileheight="32" nextobjectid="16">
+ <tileset firstgid="1" name="tile" tilewidth="32" tileheight="32" spacing="0" margin="0" tilecount="112">
+  <image source="tile.png" trans="000000" width="512" height="224"/>
+ </tileset>
+ <tileset firstgid="113" name="mantis" tilewidth="72" tileheight="62" spacing="0" margin="0" tilecount="10">
+  <image source="mantis.bmp" trans="ffffff" width="720" height="62"/>
+ </tileset>
+ <tileset firstgid="123" name="61933" tilewidth="73" tileheight="58" spacing="0" margin="0" tilecount="156">
+  <image source="61933.bmp" trans="ffffff" width="876" height="762"/>
+ </tileset>
+ <tileset firstgid="279" name="bat" tilewidth="72" tileheight="34" spacing="0" margin="0" tilecount="6">
+  <image source="bat.bmp" trans="ffffff" width="432" height="34"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="25" height="19">
+  <data encoding="base64" compression="zlib">
+   eJzd0TkLwkAQhuEpPBuFCB5NUip4NB6VFlprnag/wOv/977BLCzBGNwwzQ48bDHsDB8TiEgPfQwwxAhLrLDGxqEfZHPTd4Y5FhhjIsX1T39qzd5i9+NflTKzjzgp7TCzNXN0RD9HKPo5fLlHOjuSz126SjtMjjDbpVE+3cOXHJFUzxHjYrlavXyOBpqOOxKcv+zI36OGusOuG+544IkXWmhbsw/Yl7xFvbJ/5n0D7eQhBw==
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="11" name="Enemy" gid="113" x="186" y="577" width="72" height="62"/>
+  <object id="13" name="Player" gid="130" x="441" y="581" width="73" height="58"/>
+  <object id="14" name="Enemy" gid="279" x="611" y="480" width="72" height="34"/>
+ </objectgroup>
+</map>

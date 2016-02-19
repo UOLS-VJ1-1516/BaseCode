@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="129" height="19" tilewidth="32" tileheight="32" nextobjectid="17">
+ <tileset firstgid="1" name="tile" tilewidth="32" tileheight="32" tilecount="112" margin="0" spacing="0">
+  <image source="tile.png" trans="000000" width="512" height="224"/>
+ </tileset>
+ <tileset firstgid="113" name="player" tilewidth="73" tileheight="58" tilecount="156">
+  <image source="61933.bmp" trans="ffffff" width="876" height="762"/>
+ </tileset>
+ <tileset firstgid="269" name="mantis" tilewidth="71" tileheight="61" tilecount="10">
+  <image source="mantis.bmp" trans="ffffff" width="720" height="62"/>
+ </tileset>
+ <tileset firstgid="279" name="bat" tilewidth="72" tileheight="34" tilecount="6">
+  <image source="bat.bmp" trans="ffffff" width="432" height="34"/>
+ </tileset>
+ <tileset firstgid="285" name="flybat" tilewidth="97" tileheight="73" spacing="2" tilecount="7">
+  <image source="flybat.bmp" trans="ffffff" width="784" height="74"/>
+ </tileset>
+ <imagelayer name="Capa de Imagen 1" x="521" y="-35"/>
+ <layer name="Capa de patrones 2" width="129" height="19">
+  <properties>
+   <property name="isCollision" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl8lOwzAURd+iUKaqLGDDJCSkSukGdmUSa/6AUWIDgrbA/y+5Vmxh3MhO7RAnzjvSleWkr0n6Tu2WqBucGPMNj/fwqWGay15NNUxzYQfsmGteimsgO2DHfNYUn50dsDN2zFOAHWDYge5xjmTa3GdtYwfai+p/5nqhRqZlIo+xA+0l1AFVxw60E73/IQ6ItSDF38ZdoAoHYnGJXEW8fgqY/Q/dC9qCcmdXxuQOuUcekM+C889GYnKKnCFfnvXbyI0cRUIciOHCRcljLlaRvjZ/RD7kWOSA7oh4zVPJ61R1vzpHyBB5Qb6XrD1GNpEtZECL/w1dFPV/Yq3ww7beV/WZ9pAV+nVhRrkDYixy4F2er9uBNfrrquB6iXqF6PtAGw+QQ/LbC0TPQ/aTUP7je1UG5cCUck/mJetc93srR+X9K/JGee/XadHVHfJzYJ/ynqtROTCiavaCOj2I5QDTHNgBpi4HfgC/liaZ
+  </data>
+ </layer>
+ <layer name="Capa de Patrones 1" width="129" height="19">
+  <properties>
+   <property name="isCollision" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztWslKA0EQbVwuXhQDbgcFQRQ3cD0prpeAEg9eNfmD+P8nq2EeaZ7d0z2TyiRt5sGjSKZT6dp6KjXpGWM+hEPhj7AvHJRIrLsSXgsvhJcKUkNHmU6LFQWdN8JbYa/wG+RaDRpH37qwI9wQbgq3hNuF3zkGvGboxMWVvnW8xso74b2zl9A6jn2O2FHUxXEZF/C/9e2h8CiyPmVNyjpbF2/Cd89eOIdyjj1wrKiLayNX2Lp4ED4GrqfmWi44UNQFv5X5LwfYHMD9rEU1cD+QK2wOoB+YFLoNfaZpVOkHUuyZls02B7gfsECPCrkwxnd0a3JasLYumvhZX6UfmGWbY/3APAJ5Hzvr234gX3wLn4TPhfyi66n3xrYf+L/w3Rt90J4PTAuhfmCekVoT/2FmZtH2A3/hqwmel+2b/GMPzGM/wLB1v2pGvwdC50DT8zK3Z/FJLcxzPwC7d4V7ZvR7YNbujb7nTD6cCE+FZ8Il4bIjy6DdD7j7OFfS6UKz/4LdkLFzIAfAlio5YJ+h1OkHyvyEs1ULNi6aPThiDV04W5s6B9gWzX4MceEcYMmzjTr9QJmftH1o48IzOb43vghfE/Uh1tCFnICuuucAzwtC80O2RbMfC50DHHveK/sgJrGePxd7H69jOepKxGpgRnWDGPULe/D+Z/EdoX3Dfp4F877hR66V2Fwwtb75+iTubz5fWj8i5rxXfjbQhEzJgU6xP9QM6gZ2sj2IofuMwz3zsZ5nwbw/1h+SjNT65uua/z/A3lP/Cwb5CxOzlKw=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="2" name="player" type="Player" gid="2147483768" x="133" y="440" width="73" height="58">
+   <properties>
+    <property name="animSpeed" value="0"/>
+    <property name="callbackID" value="1"/>
+    <property name="numSprites" value="156"/>
+    <property name="textureHeight" value="58"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="73"/>
+   </properties>
+  </object>
+  <object id="3" name="mantis" type="Enemy" gid="269" x="902" y="469" width="72" height="61">
+   <properties>
+    <property name="animSpeed" value="-3"/>
+    <property name="callbackID" value="2"/>
+    <property name="numSprites" value="10"/>
+    <property name="textureHeight" value="61"/>
+    <property name="textureID" value="mantis"/>
+    <property name="textureWidth" value="72"/>
+   </properties>
+  </object>
+  <object id="4" name="bat" type="Enemy" gid="2147483927" x="512" y="461" width="72" height="34">
+   <properties>
+    <property name="animSpeed" value="-2"/>
+    <property name="callbackID" value="3"/>
+    <property name="numSprites" value="6"/>
+    <property name="textureHeight" value="34"/>
+    <property name="textureID" value="bat"/>
+    <property name="textureWidth" value="72"/>
+   </properties>
+  </object>
+  <object id="12" name="flybat" type="Enemy" gid="2147483933" x="927" y="111" width="97" height="73">
+   <properties>
+    <property name="animSpeed" value="-1"/>
+    <property name="callbackID" value="3"/>
+    <property name="numSprites" value="7"/>
+    <property name="textureHeight" value="97"/>
+    <property name="textureID" value="flybat"/>
+    <property name="textureWidth" value="73"/>
+   </properties>
+  </object>
+  <object id="15" name="flybat" type="Enemy" gid="2147483933" x="2939.5" y="105.5" width="97" height="73">
+   <properties>
+    <property name="animSpeed" value="-1"/>
+    <property name="callbackID" value="3"/>
+    <property name="numSprites" value="7"/>
+    <property name="textureHeight" value="97"/>
+    <property name="textureID" value="flybat"/>
+    <property name="textureWidth" value="73"/>
+   </properties>
+  </object>
+  <object id="16" name="mantis" type="Enemy" gid="269" x="1550" y="438.5" width="72" height="61">
+   <properties>
+    <property name="animSpeed" value="-3"/>
+    <property name="callbackID" value="2"/>
+    <property name="numSprites" value="10"/>
+    <property name="textureHeight" value="61"/>
+    <property name="textureID" value="mantis"/>
+    <property name="textureWidth" value="72"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

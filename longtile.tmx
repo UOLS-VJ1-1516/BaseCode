@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="61" height="19" tilewidth="32" tileheight="32" nextobjectid="7">
+ <tileset firstgid="1" name="tile" tilewidth="32" tileheight="32" tilecount="112" margin="0" spacing="0">
+  <image source="tile.png" trans="000000" width="512" height="224"/>
+ </tileset>
+ <tileset firstgid="113" name="player" tilewidth="73" tileheight="58" tilecount="156">
+  <image source="61933.bmp" trans="ffffff" width="876" height="762"/>
+ </tileset>
+ <tileset firstgid="269" name="mantis" tilewidth="71" tileheight="61" tilecount="10">
+  <image source="mantis.bmp" trans="ffffff" width="720" height="62"/>
+ </tileset>
+ <tileset firstgid="279" name="bat" tilewidth="72" tileheight="34" tilecount="6">
+  <image source="bat.bmp" trans="ffffff" width="432" height="34"/>
+ </tileset>
+ <layer name="Capa de patrones 2" width="61" height="19">
+	 <properties>
+		 <property name="isCollision" value="false"/>
+	 </properties>
+  <data encoding="base64" compression="zlib">
+	eJztlTkLwjAcR/+DtxY7OHnhJOiioxfOfgNPcFG80O8/+itpoHRI0gyJpnnwCAlNmgeFEnk8+aEmmbtIWzJ3kbFk7vH8KjPbFzBM1DuyfQnD5K2Z9/pmd0n2ippPKW0ygVP41twfwnU8hoLntnAH9/AAj4rnzxXXstCHTXiGn4x7B7AOGzAg8b/qBu9kvrkCy6m1VYb9nKgzSIxd2CPxt82bH/AJX4rvkjVv4nEBl/ACr8Raq7AAi7BErL1Fes0dYo185M1DjbM8/80XA4QSJA==
+  </data>
+ </layer>
+ <layer name="Capa de Patrones 1" width="61" height="19">
+  <properties>
+   <property name="isCollision" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+	eJztl0trAjEUhYOjGzeFCtp2Xyy+wNYWCkq1danowr3+A/3/K09oDl6ik4ZxDJ3HgY/DjHHMMfcyyUoptQZ7cABbsHM4x72BERiCVw//D6obH4MJeAcf6pQpzpk1i3oyvgBLcZ/Zm6AFHsCjynZWqmP8C0xjxrTBS5DZhNGz8ZX67eci6NM4+7kIYma7n7XuQUN4JeC8bilmdvVz3sTMZT/nW65+zqvKfi6Gyn5OR13QA30wSOmZUjzbJdU1/eyqDf3ZXcI5XVKkzs+zSXVNP7tqI+33gN4H2ufZGfgW/gPmHs9iZr2vjC48J8453v7eX/d5XQU1T2fenTqtMWtMX0/F/Y35jbh5y3q299Yh3Cdzw2Th+nKNWUesT2bmfyvPCLIvZD0fAfqRNJk=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1" opacity="1">
+  <object id="2" name="player" type="Player" gid="2147483768" x="151" y="300" width="73" height="58">
+   <properties>
+    <property name="animSpeed" value="0"/>
+    <property name="callbackID" value="1"/>
+    <property name="numSprites" value="156"/>
+    <property name="textureHeight" value="58"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="73"/>
+   </properties>
+  </object>
+  <object id="3" name="mantis" type="Enemy" gid="269" x="647" y="247" width="72" height="61">
+   <properties>
+    <property name="animSpeed" value="-3"/>
+    <property name="callbackID" value="2"/>
+    <property name="numSprites" value="10"/>
+    <property name="textureHeight" value="61"/>
+    <property name="textureID" value="mantis"/>
+    <property name="textureWidth" value="72"/>
+   </properties>
+  </object>
+  <object id="4" name="bat" type="Enemy" gid="2147483927" x="698" y="167" width="72" height="34">
+   <properties>
+    <property name="animSpeed" value="-2"/>
+    <property name="callbackID" value="3"/>
+    <property name="numSprites" value="6"/>
+    <property name="textureHeight" value="34"/>
+    <property name="textureID" value="bat"/>
+    <property name="textureWidth" value="72"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
