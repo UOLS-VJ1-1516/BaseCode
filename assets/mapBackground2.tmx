@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="200" height="45" tilewidth="16" tileheight="16" nextobjectid="10">
+ <properties>
+  <property name="buffon" value="buffon.png"/>
+  <property name="plant" value="plant.png"/>
+ </properties>
+ <tileset firstgid="1" name="Fons" tilewidth="16" tileheight="16" spacing="1" margin="0" tilecount="2850">
+  <image source="Overworld.png" trans="a2d8ff" width="1283" height="654"/>
+ </tileset>
+ <tileset firstgid="2851" name="buffon" tilewidth="100" tileheight="101" spacing="1" tilecount="6">
+  <image source="buffon.png" width="700" height="101"/>
+  <terraintypes>
+   <terrain name="Nuevo Terreno" tile="-1"/>
+  </terraintypes>
+  <tile id="0" terrain=",,0,"/>
+ </tileset>
+ <tileset firstgid="2857" name="plant" tilewidth="51" tileheight="51" spacing="2" tilecount="3">
+  <image source="plant.png" width="204" height="51"/>
+ </tileset>
+ <layer name="Capa de Fondo" width="200" height="45">
+  <data encoding="base64" compression="zlib">
+   eJzt1jlOA0EURdGSHNE5M+yMgBl2RsywEbZCjBHfGZJfBaBu3LbOkV5eyf2q1jbrbGjtvPZYe629DRt+EMzEqo0HbcAabUCmDcjm0Mb+orWD2mHtqHZcO1n8/zvgpzm0sXJZLVzVrms3tdvanT4YyV/u71zagKn95v6+743fhv8Ru2CKNlb8j9h2U7UB204bkGkDMm1Apg3ItAGZNiDTBmTagEwbkGkDMm1Apg3ItAGZNiDTBmTagD5twLrTQRvQc68N6HquHl60AdFnNbGsfWkDAAAAAAAAds7FYGa9PZlZdx9m1h0AAOP6BkcKB0U=
+  </data>
+ </layer>
+ <layer name="Capa de Colisiones" width="200" height="45">
+  <properties>
+   <property name="collidable" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EtOw0AQRdGW4llgexDBZgMrA8TAmaX96UqVc47kKTL9fE1CawAAAAAAAAAAAAAAAAAAAP+up9a+Vl7fp0ffPYx1nlp7WXm9To++e5hdB7y79cFRnAc8m/rgKPSx3dLvWxm+Y235jnjvOpLbZ/lj2ud8Pp+sj7ffe35fcF0S/I5b3mH3rr17632fjHhPjTynZ+mjomy77/FMLP2den5utnMa2UfFz0F/eu576b1m232PZ2LE3/Fs5zSyjxHvlwg9uy/9zJZt96w7ZDsnfcTItnvWHbKd05r/EfR+ttDHLNvuWXeodE5bz08fs0q760Mf0Srtrg99RKu0uz70Ea3S7vrQR7RKu+tDH9Eq7a4PfUSrtLs+9BGt0u760Ee0SrvrQx/RKu2uD31Eq7S7PvQRrdLu+tBHtEq760Mf0Srtrg99RBu5+w/yogIB
+  </data>
+ </layer>
+ <objectgroup draworder="index" name="Capa de Objetos">
+  <object id="3" name="Player" type="Player" gid="2855" x="6" y="301" width="100" height="101">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="30"/>
+    <property name="numFrames" value="6"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="101"/>
+    <property name="textureID" value="buffon"/>
+    <property name="textureWidth" value="100"/>
+   </properties>
+  </object>
+  <object id="6" name="Enemy" type="StaticObject" gid="2857" x="528" y="352" width="51" height="51">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0"/>
+    <property name="maxSpeed" value="0"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="51"/>
+    <property name="textureID" value="plant"/>
+    <property name="textureWidth" value="51"/>
+   </properties>
+  </object>
+  <object id="8" name="Enemy" type="StaticObject" gid="2857" x="2958" y="319" width="51" height="51">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0"/>
+    <property name="maxSpeed" value="0"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="51"/>
+    <property name="textureID" value="plant"/>
+    <property name="textureWidth" value="51"/>
+   </properties>
+  </object>
+  <object id="9" name="Enemy" type="StaticObject" gid="2857" x="1351" y="255" width="51" height="51">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0"/>
+    <property name="maxSpeed" value="0"/>
+    <property name="numFrames" value="3"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="51"/>
+    <property name="textureID" value="plant"/>
+    <property name="textureWidth" value="51"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

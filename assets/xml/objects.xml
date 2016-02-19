@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<STATES>
+	<MENU>
+		<TEXTURES>
+			<texture fileName="./assets/buttons/playButton.bmp" ID="PlayButton"/>
+			<texture fileName="./assets/buttons/exitButton.bmp" ID="ExitButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="225" width="250" height="75" textureID="PlayButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="ExitButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="2"/>
+		</OBJECTS>
+	</MENU>
+	<PLAY>
+		<TEXTURES>
+			<texture fileName="./assets/images/buffon.png" ID="Player"/>
+			<texture fileName="./assets/images/zombie.bmp" ID="Zombie"/>
+			<texture fileName="./assets/images/coin.bmp" ID="Coin"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="Player" x="0" y="400" width="100" height="101" textureID="Player" numSprite="6" speedX="0" speedY="0" maxSpeed="30" friction="0.1" callbackID="0"/>
+			<object type="Enemy" x="350" y="100" width="256" height="256" textureID="Zombie" numSprite="6" speedX="3" speedY="0" maxSpeed="10" friction="0.1" callbackID="0"/>
+			<object type="StaticObject" x="150" y="50" width="44" height="40" textureID="Coin" numSprite="10" speedX="0" speedY="0" maxSpeed="0" friction="0.1" callbackID="0"/>
+		</OBJECTS>
+	</PLAY>
+	<PAUSE>
+		<TEXTURES>
+			<texture fileName="./assets/buttons/resumeButton.bmp" ID="ResumeButton"/>
+			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="225" width="250" height="75" textureID="ResumeButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="2"/>
+		</OBJECTS>
+	</PAUSE>
+	<GAMEWIN>
+		<TEXTURES>
+			<texture fileName="./assets/text/gameWin.png" ID="FinalText"/>
+			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="375" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+			<object type="StaticText" x="270" y="50" width="261" height="262" textureID="FinalText" numSprite="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="0"/>
+		</OBJECTS>
+	</GAMEWIN>
+	<GAMEOVER>
+		<TEXTURES>
+			<texture fileName="./assets/text/gameOver.png" ID="OverText"/>
+			<texture fileName="./assets/buttons/mainMenuButton.bmp" ID="MainMenuButton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="MenuButton" x="275" y="325" width="250" height="75" textureID="MainMenuButton" numSprite="3" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="1"/>
+			<object type="StaticText" x="235" y="200" width="330" height="70" textureID="OverText" numSprite="1" speedX="0" speedY="0" maxSpeed="0" friction="0" callbackID="0"/>
+		</OBJECTS>
+	</GAMEOVER>
+</STATES>

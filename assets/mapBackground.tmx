@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="80" height="40" tilewidth="16" tileheight="16" nextobjectid="6">
+ <properties>
+  <property name="buffon" value="buffon.png"/>
+ </properties>
+ <tileset firstgid="1" name="Fons" tilewidth="16" tileheight="16" spacing="1" margin="0" tilecount="2850">
+  <image source="Overworld.png" trans="a2d8ff" width="1283" height="654"/>
+ </tileset>
+ <tileset firstgid="2851" name="buffon" tilewidth="100" tileheight="101" spacing="1" tilecount="6">
+  <image source="buffon.png" width="700" height="101"/>
+  <terraintypes>
+   <terrain name="Nuevo Terreno" tile="-1"/>
+  </terraintypes>
+  <tile id="0" terrain=",,0,"/>
+ </tileset>
+ <layer name="Capa de Fondo" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1bkNwkAARNGVHOGc+yoLyLivsoAGOBoB6gAaAMQ4ICFiZ1e2vJ4nTWgMf4VtjIiIpKkcGVPBqlgNq2ONKPx7+zLE9x1hY2yCTbFZSr8hy3snQji/LNmc37lkzAW7lvzdvyjnl7Rrxca0sQ7Wjf18btb/vzR82y2wJbbC1p76he633RE7qd1fitrOxzO5qO0Srs/kIrdzpXY8teOpHU/teGrHUzue2vHUjqd2PLXjqR1P7dyoHacZq52Ludo52aPXQe1oTzR7YW+1ExGRnOnh3dXHBhbvMOaaUG3QYIvtLFow14TqhgZ37GHRgrkmVOrnJk/9PscfcYA=
+  </data>
+ </layer>
+ <layer name="Capa de Colisiones" width="80" height="40">
+  <properties>
+   <property name="collidable" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1kEKwkAQRcHemcupF1GvFwSXHky3AWEy+WrEVEHvOy8zIVUAAAAAANtw2lWdO4ap8dnk3jFM6ZfR77W537Xbj/Rr7Xv58rvrPVdr92vte9Uv2vdf+vX86/Tcv3f02w9Vh8Ych3X7LZ3W82/l/Omn3xz6ZfTL6JfRL6NfRr+Mfhn9Mvpl9Mvol9Ev86l+D/zRuT4=
+  </data>
+ </layer>
+ <objectgroup draworder="index" name="Capa de Objetos">
+  <object id="3" name="Player" type="Player" gid="2855" x="12" y="290" width="100" height="101">
+   <properties>
+    <property name="callbackId" value="0"/>
+    <property name="collitionmargin" value="0"/>
+    <property name="friction" value="0.1"/>
+    <property name="maxSpeed" value="30"/>
+    <property name="numFrames" value="6"/>
+    <property name="speedX" value="0"/>
+    <property name="speedY" value="0"/>
+    <property name="textureHeight" value="101"/>
+    <property name="textureID" value="buffon"/>
+    <property name="textureWidth" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
