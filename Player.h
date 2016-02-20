@@ -18,6 +18,8 @@ public:
 	void clean();
 	static GameObject * Create() { return new Player(); }
 	int Player::Miraquepulsa();
+	void RightJump();
+	void LeftJump();
 
 };
 #endif PLAYER_H
