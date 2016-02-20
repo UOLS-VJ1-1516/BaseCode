@@ -17,16 +17,20 @@ Dog::~Dog()
 
 
 void Dog::load(const LoaderParams* ppParams) {
-	//pParams = new LoaderParams(ppParams->getX(), ppParams->getY(), ppParams->getWidth(), ppParams->getHeight(), ppParams->getTextureID(), ppParams->getnumFrames, ppParams->getcallbackID);
 	Dog::pParams = ppParams;
-	//TextureManager::Instance()->load("Dog.png", pParams->getTextureID(), Game::Instance()->getRender());
-	m_position.setX(0);
-	m_position.setY(300);
+	m_position.setX(pParams->getX());
+	m_position.setY(pParams->getY());
 	m_velocity.setX(0);
 	m_velocity.setY(0);
+	m_maxVelocity.setY(5);
+	m_maxVelocity.setX(5);
+	m_acceleration.setY(0);
+	m_acceleration.setX(0);
+	m_friction.setX(1);
+	m_friction.setY(1);
+
 	m_currentFrame = 0;
 	m_currentRow = 1;
-
 }
 void Dog::draw() {
 
@@ -41,27 +45,27 @@ void Dog::draw() {
 void Dog::update() {
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 4));
 	m_velocity.setX(1);
-	m_acceleration.setX(1);
+	//m_acceleration.setX(1);
 	m_velocity.setY(0);
-	m_acceleration.setY(0);
+	//m_acceleration.setY(0);
 
-			if (m_position.getX() > 580) {
+			if (m_position.getX() > 1920) {
 				cont2 = 1;
 				dir2 = 1;
 			}
-			if (m_position.getX() < 2) {
+			if (m_position.getX() < 1) {
 				cont2 = 0;
 				dir2 = 0;
 			}
 			if (cont2 == 0) {
-				m_position.setX(m_position.getX() + 1);
+				m_acceleration.setX(2);
 				m_velocity += m_acceleration;
 				m_position += m_velocity;
 			}
 			else {
-				m_position.setX(m_position.getX() - 1);
+				m_acceleration.setX(-2);
 				m_velocity += m_acceleration;
-				m_position -= m_velocity;
+				m_position += m_velocity;
 			}
 	
 }
