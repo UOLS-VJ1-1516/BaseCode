@@ -16,6 +16,10 @@ public:
 	}
 protected:
 	bool isCollisionWithTile();
+	bool isCollisionWithTileRight();
+	bool isCollisionWithTileLeft();
+	bool isCollisionWithTileTop();
+	bool isCollisionWithTileBottom();
 	int m_collisionMargin; // Margen horizontal para evitar colisión.
 						   // Diferente para cada tipo de objeto
 private:

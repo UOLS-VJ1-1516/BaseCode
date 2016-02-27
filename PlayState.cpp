@@ -13,6 +13,7 @@ void PlayState::update()
 	{
 		Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
+
 	/*
 	for (int i = 0; i < m_gameObjectsPlay.size(); i++)
 	{

@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "game.h"
 #include "string"
+#include "PauseState.h"
 
 
 int dir = 0;
@@ -66,9 +67,10 @@ void Player::update() {
 	//m_velocity.setY(0);
 	//m_acceleration.setY(0);
 	if (m_position.getY() > 1000) { //Si la nina cau per algun forat, acabem el programa
-		exit(-1);
+		//exit(-1);
+		Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
-	if(!isCollisionWithTile()&&colisionBottom==false&&gravedad==true) { //La gravetat s'aplica quan no hi ha colisió, no esta tocant el terra, i gravedad igual a true (deixem de saltar)
+	if(!isCollisionWithTileBottom()&&gravedad==true) { //La gravetat s'aplica quan no hi ha colisió, no esta tocant el terra, i gravedad igual a true (deixem de saltar)
 		printf("No Colision!!!");
 		
 		//m_acceleration.setY(0.00001);
@@ -77,7 +79,7 @@ void Player::update() {
 		if (m_velocity.getY() > m_maxNegVelocity.getY()) {
 			m_velocity.setY(m_maxNegVelocity.getY());
 		}
-		if (m_position.getY() - m_velocity.getY() < 840) { //Si no esta tocant al terra
+		if ((m_position.getY() - m_velocity.getY() < 840)||(!isCollisionWithTileBottom())) { //Si no esta tocant al terra
 
 			//Perque no caigui recte quan saltem de canto
 
