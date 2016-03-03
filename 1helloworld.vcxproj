@@ -94,6 +94,7 @@
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
+    <ClCompile Include="OverState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectLayer.h" />
+    <ClInclude Include="OverState.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
@@ -141,6 +143,7 @@
     <Image Include="images\continue.png" />
     <Image Include="images\Exit.png" />
     <Image Include="images\Exit2.png" />
+    <Image Include="images\GameOver.png" />
     <Image Include="images\knight.png" />
     <Image Include="images\mymap.png" />
     <Image Include="images\ninja.png" />

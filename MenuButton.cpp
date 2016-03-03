@@ -8,8 +8,6 @@
 MenuButton::MenuButton() {
 	
 	
-	//m_currentFrame = MOUSE_OUT  ;
-	
 
 };
 

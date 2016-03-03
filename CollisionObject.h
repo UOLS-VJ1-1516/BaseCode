@@ -13,7 +13,7 @@ public:
 	virtual ~CollisionObject();
 	virtual void load(const LoadPar* pParams);
 	virtual void draw();
-	virtual void update();
+	virtual void update(Vector2D pos);
 	virtual void clean();
 
 
@@ -55,6 +55,7 @@ protected:
 	bool isCollisionWithUp(); //protected
 	bool isCollisionWithDown(); //protected
 	bool isCollisionWithLeft(); //protected
+	bool isCollisionEnemyWithDown(GameObject* enemy);
 	int m_TileWith;
 	int m_tileSize;
 	bool derecha = false;
@@ -65,5 +66,6 @@ protected:
 private:
 	std::vector< TileLayer* >* m_pCollisionLayers;// Puntero a todas las
 												  //capas de patrones con colisión
+	GameObject* mEnemy;
 };
 #endif

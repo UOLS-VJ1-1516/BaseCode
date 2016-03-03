@@ -19,6 +19,9 @@ public:
 	static GameObject * Create() { return new Player(); }
 	int Player::Miraquepulsa();
 	void RightJump();
+	void Right();
+	void Left();
+	void Jump();
 	void LeftJump();
 
 };

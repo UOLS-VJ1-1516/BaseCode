@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "TextureManager.h"
 #include "InputHandler.h"
+#include "OverState.h"
 
 
 Player::Player() {  };
@@ -18,7 +19,6 @@ int auxi = 0;
 int velocidadSalto=30;
 
 Vector2D lastpositionok;
-
 
 
 void Player::load(const LoadPar * lPar)
@@ -75,7 +75,7 @@ void Player::update() {
 	m_sprits = 1;
 	int tecla = 0;
 	InputHandler::Instance()->update();
-	
+	CollisionObject::update(m_position);
 		
 	tecla = Miraquepulsa(); //Flag, 1->Right 2->Left 3->Space 4->Down, 5->Escape
 	//printf("Pos X: %f \n Pos Y: %f \n", m_position.getX(), m_position.getY());
@@ -84,227 +84,36 @@ void Player::update() {
 	{
 		//------RIGHT---------------------------------
 	case(1) :
-		
-			m_currentRow = 2;
-			m_sprits = 6;
-			m_flip = 1;
-			flag = 1;
-			
-				if (isCollisionWithRight()) {
-					caigo = false;
-
-				}
-				if(!isCollisionWithRight()){
-				
-					if (!caigo) {
-
-						//Compruebo velocidad maxima, si es menor puedo sumar aceleracion sino no.
-						if (m_velocity.getX() < m_maxvelocity.getX()) {
-							m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
-
-						}
-						m_position.setX(m_position.getX() + m_velocity.getX());
-						if (!isCollisionWithDown() && jump) {
-							puedojump = false;
-							
-							m_currentRow = 3;
-							m_sprits = 6;
-							if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
-								m_velocitySalto.setY((m_velocitySalto.getY() - 3));
-								m_position.setY(m_position.getY() - 3);
-							}
-
-							else {
-								puedojump = true;
-								jump = false;
-							}
-						}
-
-						if (!isCollisionWithDown() && !jump) {
-							caigo = true;
-							m_currentRow = 3;
-							m_sprits = 6;
-							m_position.setY(m_position.getY() + gravedad-m_accelerationSalto.getY()); //Le meto gravedad
-							if (m_velocity.getX() < m_maxvelocity.getX()) {
-								m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
-
-							}
-							m_position.setX(m_position.getX() + m_velocity.getX());
-
-						}
-					}
-					else{
-						if (!isCollisionWithDown()) {
-							m_currentRow = 3;
-							m_sprits = 6;
-							m_position.setY(m_position.getY() + gravedad); //Le meto gravedad
-							if (m_velocity.getX() < m_maxvelocity.getX()) {
-								m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
-
-							}
-							m_position.setX(m_position.getX() + m_velocity.getX());
-						}
-					/*	else {
-							m_velocitySalto.setY(0);
-							m_currentRow = 3;
-							m_sprits = 6;
-							if (m_velocity.getX() < m_maxvelocity.getX()) {
-								m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
-
-							}
-							m_position.setX(m_position.getX() + m_velocity.getX());
-
-						}*/
-					}
-				}
-			break;
-
-
-
+		Right();
+		break;
 
 		//------LEFT---------------------------------
-		case(2) :
-		
-			m_currentRow = 2;
-			m_sprits = 6;
-			m_flip = 2;
-			flag = 2;
+	case(2) :
 
-			if (isCollisionWithLeft()) {
-				caigo = false;
-				
-			}
-			if (!isCollisionWithLeft()) {
-				if (!caigo) {
-						if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
-						m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
-					}
-					m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
-					if (!isCollisionWithDown() && jump) {
-						m_currentRow = 3;
-						m_sprits = 6;
-						puedojump = false;
-						if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
-							m_velocitySalto.setY((m_velocitySalto.getY() - 3));
-							m_position.setY(m_position.getY() - 3);
-						}
-						else {
-							puedojump = true;
-							jump = false;
-						}
-					}
-					if (!isCollisionWithDown() && !jump) {
-						caigo = true;
-						m_currentRow = 3;
-						m_sprits = 6;
-						m_position.setY(m_position.getY() + gravedad - m_accelerationSalto.getY()); //Le meto gravedad
-						if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
-							m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
-						}
-						m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
-
-					}
-				}
-				else {
-					if (!isCollisionWithDown()) {
-						m_currentRow = 3;
-						m_sprits = 6;
-						m_position.setY(m_position.getY() + gravedad); //Le meto gravedad
-						if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
-							m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
-						}
-						m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
-					}
-				/*	else {
-						m_velocitySalto.setY(0);
-						m_currentRow = 3;
-						m_sprits = 6;
-						if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
-							m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
-						}
-						m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
-					}*/
-					
-				}
-			}
-			break;
-
+		Left();
+		break;
 			
 		//------JUMP---------------------------------
-		case(3) :
-			if (puedojump) {
-				m_currentRow = 3;
-				m_sprits = 6;
-				flag = 3;
-				//---Encaro muñeco
-				switch (flag)
-				{
-				case (1) :
-					m_flip = 1;
-					break;
-				case(2) :
-					m_flip = 2;
-					break;
-				default:
-					break;
-				}
+	case(3) :
+		Jump();
+		break;
 
+		//---JUMP + Direcciones
+	case(6) :
+		RightJump();
+		break;
 
-				if (isCollisionWithDown()) {
-					
-					jump = true;
+	case(7) :
+		LeftJump();
+		break;
 
-					if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
-						m_velocitySalto.setY((m_velocitySalto.getY() - m_accelerationSalto.getY()));
-						m_position.setY(m_position.getY() + m_velocitySalto.getY());
-					}
-				}
-				//Estoy en pleno salto
-				else {
-					if (jump) {
-						
-						if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
-							
-							m_velocitySalto.setY((m_velocitySalto.getY() - 10));
-							m_position.setY(m_position.getY() - 10);
-						}
-						else {
-							jump = false;
-						}
-					}
-					if (!jump) {
-						
-						caigo = true;
-						m_position.setY(m_position.getY() + gravedad); //Le meto gravedad
-					}
-		
-				}
-			}
-			else {
-				if (m_position.getY() < Game::Instance()->getAlto()) {
-					m_sprits = 1;
-					m_currentRow = 4;
-					if(!isCollisionWithDown())m_position.setY(m_position.getY() + gravedad);
-					else m_currentRow = 1;
-
-				}
-			}
-			break;
-		case(6) :
-		//RightJump();
-			break;
-		case(7) :
-		//	LeftJump();
-			break;
-
-		//----ESCAPE-----------------------
-		case(5) :
+	//----ESCAPE-----------------------
+	case(5) :
 			quit = true;
 			break;
 
 		//----------------No hay tecla pulsada------------------
-		default:
-			
+	default:
 			m_currentRow = 1;
 			m_sprits = 1;
 		//---------------------Según de donde venga implemento un tipo de friccion
@@ -373,7 +182,10 @@ void Player::update() {
 			break;
 		}
 				m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);	
+	if (m_position.getY() > m_altopantalla) {
 
+			Game::Instance()->getGameStateMachine()->pushState(new OverState());
+	}
 
 		//------------------Netejo pantalla--------> para que salga por el otro lado eje vertical, limitando eje horizontal
 		/*if (m_position.getX() > m_anchopantalla - 175) { m_position.setX(m_anchopantalla - 175); }
@@ -406,7 +218,204 @@ int Player::Miraquepulsa() {
 	return tecla;
 
 }
+void Player::Jump() {
+	if (puedojump) {
+		m_currentRow = 3;
+		m_sprits = 6;
+		flag = 3;
+		//---Encaro muñeco
+		switch (flag)
+		{
+		case (1) :
 
+			m_flip = 1;
+			break;
+		case(2) :
+			m_flip = 2;
+			break;
+		default:
+			break;
+		}
+
+
+		if (isCollisionWithDown()) {
+
+			jump = true;
+
+			if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
+				m_velocitySalto.setY((m_velocitySalto.getY() - m_accelerationSalto.getY()));
+				m_position.setY(m_position.getY() + m_velocitySalto.getY());
+			}
+		}
+		//Estoy en pleno salto
+		else {
+			if (jump) {
+
+				if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
+
+					m_velocitySalto.setY((m_velocitySalto.getY() - 10));
+					m_position.setY(m_position.getY() - 10);
+				}
+				else {
+					jump = false;
+				}
+			}
+			if (!jump) {
+
+				caigo = true;
+				m_position.setY(m_position.getY() + gravedad); //Le meto gravedad
+			}
+
+		}
+	}
+	else {
+		if (m_position.getY() < Game::Instance()->getAlto()) {
+			m_sprits = 1;
+			m_currentRow = 4;
+			if (!isCollisionWithDown())m_position.setY(m_position.getY() + gravedad);
+			else m_currentRow = 1;
+
+		}
+	}
+}
+void Player::Left() {
+	m_currentRow = 2;
+	m_sprits = 6;
+	m_flip = 2;
+	flag = 2;
+
+	if (isCollisionWithLeft()) {
+		caigo = false;
+
+	}
+	if (!isCollisionWithLeft()) {
+		if (!caigo) {
+			if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
+				m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
+			}
+			m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
+			if (!isCollisionWithDown() && jump) {
+				m_currentRow = 3;
+				m_sprits = 6;
+				puedojump = false;
+				if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
+					m_velocitySalto.setY((m_velocitySalto.getY() - 3));
+					m_position.setY(m_position.getY() - 3);
+				}
+				else {
+					puedojump = true;
+					jump = false;
+				}
+			}
+			if (!isCollisionWithDown() && !jump) {
+				caigo = true;
+				m_currentRow = 3;
+				m_sprits = 6;
+				m_position.setY(m_position.getY() + gravedad - m_accelerationSalto.getY()); //Le meto gravedad
+				if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
+					m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
+				}
+				m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
+
+			}
+		}
+		else {
+			if (!isCollisionWithDown()) {
+				m_currentRow = 3;
+				m_sprits = 6;
+				m_position.setY(m_position.getY() + gravedad); //Le meto gravedad
+				if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
+					m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
+				}
+				m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
+			}
+			/*	else {
+			m_velocitySalto.setY(0);
+			m_currentRow = 3;
+			m_sprits = 6;
+			if (m_velocity.getX() > (m_maxvelocity.getX()*-1)) {
+			m_velocity.setX((m_velocity.getX() + m_acceleration.getX()*-1));
+			}
+			m_position.setX(m_position.getX() + m_velocity.getX()); //aqui la velocidad ya será negativa
+			}*/
+
+		}
+	}
+}
+void Player::Right() {
+	m_currentRow = 2;
+	m_sprits = 6;
+	m_flip = 1;
+	flag = 1;
+
+	if (isCollisionWithRight()) {
+		caigo = false;
+
+	}
+	if (!isCollisionWithRight()) {
+
+		if (!caigo) {
+
+			//Compruebo velocidad maxima, si es menor puedo sumar aceleracion sino no.
+			if (m_velocity.getX() < m_maxvelocity.getX()) {
+				m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
+
+			}
+			m_position.setX(m_position.getX() + m_velocity.getX());
+			if (!isCollisionWithDown() && jump) {
+				puedojump = false;
+
+				m_currentRow = 3;
+				m_sprits = 6;
+				if (m_velocitySalto.getY() > m_maxvelocitySalto.getY()) {
+					m_velocitySalto.setY((m_velocitySalto.getY() - 3));
+					m_position.setY(m_position.getY() - 3);
+				}
+
+				else {
+					puedojump = true;
+					jump = false;
+				}
+			}
+
+			if (!isCollisionWithDown() && !jump) {
+				caigo = true;
+				m_currentRow = 3;
+				m_sprits = 6;
+				m_position.setY(m_position.getY() + gravedad - m_accelerationSalto.getY()); //Le meto gravedad
+				if (m_velocity.getX() < m_maxvelocity.getX()) {
+					m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
+
+				}
+				m_position.setX(m_position.getX() + m_velocity.getX());
+
+			}
+		}
+		else {
+			if (!isCollisionWithDown()) {
+				m_currentRow = 3;
+				m_sprits = 6;
+				m_position.setY(m_position.getY() + gravedad); //Le meto gravedad
+				if (m_velocity.getX() < m_maxvelocity.getX()) {
+					m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
+
+				}
+				m_position.setX(m_position.getX() + m_velocity.getX());
+			}
+			/*	else {
+			m_velocitySalto.setY(0);
+			m_currentRow = 3;
+			m_sprits = 6;
+			if (m_velocity.getX() < m_maxvelocity.getX()) {
+			m_velocity.setX(m_velocity.getX() + m_acceleration.getX());
+
+			}
+			m_position.setX(m_position.getX() + m_velocity.getX());
+
+			}*/
+		}
+	}
+}
 void Player::RightJump() {
 
 
@@ -414,7 +423,7 @@ void Player::RightJump() {
 	m_sprits = 6;
 	m_flip = 1;
 	flag = 1;
-
+	
 	if (isCollisionWithDown()) {
 
 		jump = true;

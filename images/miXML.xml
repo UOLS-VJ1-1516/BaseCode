@@ -21,4 +21,15 @@
       <gameobject type="MenuButton" x="650" y="525" width="295" height="105" Numsprites="3" textureID="saliramenu" callbackID="2" />
     </GAMEOBJECTS>
   </PAUSE>
+  <PLAY>
+    <TEXTURES>
+      <texture filename="./images/GameOver.png" ID="Over" />
+     
+    </TEXTURES>
+    <GAMEOBJECTS>
+      <gameobject type="MenuButton" x="0" y="450" width="1600" height="900" Numsprites="3" textureID="Over" callbackID="2" />
+      
+    
+    </GAMEOBJECTS>
+  </PLAY>
 </STATES>

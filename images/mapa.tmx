@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="14">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="16">
  <properties>
   <property name="knight" value="./images/knight.png"/>
   <property name="ninja" value="./images/ninja_bueno.png"/>
@@ -33,7 +33,16 @@
     <property name="width" value="100"/>
    </properties>
   </object>
-  <object id="13" name="knight" type="Enemy" x="1160.66" y="702" width="200" height="200">
+  <object id="14" name="knight" type="Enemy" x="1168" y="531" width="200" height="200">
+   <properties>
+    <property name="Numsprites" value="4"/>
+    <property name="callbackID" value="0"/>
+    <property name="height" value="200"/>
+    <property name="textureID" value="knight"/>
+    <property name="width" value="200"/>
+   </properties>
+  </object>
+  <object id="15" name="knight" type="Enemy" x="358" y="398" width="200" height="200">
    <properties>
     <property name="Numsprites" value="4"/>
     <property name="callbackID" value="0"/>

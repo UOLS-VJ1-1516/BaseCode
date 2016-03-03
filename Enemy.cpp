@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Enemy.h"
+#include "CollisionObject.h"
 #include "TextureManager.h"
 
 
@@ -42,8 +43,29 @@ void Enemy::draw(SDL_Renderer* Renderer) {
 
 void Enemy::update() {
 	
-	m_position.setX(m_position.getX()-3);
-	if (m_position.getX() < -200.00)m_position.setX(m_anchopantalla);
-	m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+	
+	//if (m_position.getX() < -200.00)m_position.setX(m_anchopantalla);
+	
+	if (isCollisionEnemyWithDown(this)) {
+		
+		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+		m_position.setX(m_position.getX() - 3);
+		//caigo = false;
+		m_velocitySalto.setY(0);
+		//puedojump = true;
+	}
+	if (!isCollisionEnemyWithDown(this)) {
+		
+		//puedojump = false;
+		//caigo = true;
+		if (m_position.getY() < Game::Instance()->getAlto()) {
+			//m_sprits = 1;
+			//m_currentRow = 4;
+			m_position.setY(m_position.getY() + 5);
+
+		}
+
+
+	}
 }
 void Enemy::clean() {}
