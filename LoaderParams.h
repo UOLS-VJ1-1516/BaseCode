@@ -32,6 +32,7 @@ private:
 	int m_currentRow;
 	const char* m_textureID;
 	int m_num;
+
 	
 };
 

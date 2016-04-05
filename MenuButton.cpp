@@ -2,6 +2,7 @@
 #include "Game.h"
 
 
+
 MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) :m_callback(callback) {
 	MenuButton::Params = pParams;
 
@@ -9,6 +10,7 @@ MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) :m_callba
 	m_currentFrame = MOUSE_OUT;
 
 	TextureManager::Instance()->load(pParams->getTextureID(), pParams->getTextureID(), Game::Instance()->getRender());
+	m_textureID = pParams->getTextureID();
 }
 
 MenuButton::~MenuButton() {};
@@ -17,18 +19,18 @@ void MenuButton::load(const LoaderParams* pParam) {};
 
 void MenuButton::draw()
 {
-	TextureManager::Instance()->drawFrame(Params->getTextureID(), Params->getX(), Params->getY(), Params->getWidth(), Params->getHeight(), 1, 2, Game::Instance()->getRender(), SDL_FLIP_NONE);
-										//(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer * pRender, SDL_RendererFlip flip)
+		TextureManager::Instance()->drawFrame(m_textureID, Params->getX(), Params->getY(), Params->getWidth(), Params->getHeight(), 1, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
+		
 }
 
 void MenuButton::update()
 {
 	Vector2D* pMousePos = InputHandler::Instance()->getMousePosition();
 
-	if (pMousePos->getX() < (m_position.getX() + m_width)
-		&& pMousePos->getX() > m_position.getX()
-		&& pMousePos->getY() < (m_position.getY() + m_height)
-		&& pMousePos->getY() > m_position.getY())
+	if (pMousePos->getX() < (Params->getX() + Params->getWidth())
+		&& pMousePos->getX() > Params->getX()
+		&& pMousePos->getY() < (Params->getY() + Params->getHeight())	
+		&& pMousePos->getY() > Params->getY())
 	{
 		m_currentFrame = MOUSE_OVER;
 		if (InputHandler::Instance()->getMouseButtonState(0) && m_bR)
@@ -45,6 +47,7 @@ void MenuButton::update()
 	else
 	{
 		m_currentFrame = MOUSE_OUT;
+		m_bR = false;
 	}
 }
 

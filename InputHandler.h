@@ -26,6 +26,7 @@ class InputHandler
 		~InputHandler();
 		void update();
 		void clean();
+		void reset();
 
 		void onKeyDown();
 		void onKeyUp();

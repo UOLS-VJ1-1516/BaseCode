@@ -37,12 +37,12 @@ bool Game::init(const char* title, int xpos, int
 			ren = SDL_CreateRenderer(win, -1, 0);
 			state->pushState(menu);
 
-			TextureManager::Instance()->load("play.png", "play", ren);
+			/*TextureManager::Instance()->load("play.png", "play", ren);
 			GameObject *player = new Player();
 			player->load(new LoaderParams(200, 150, 100, 100, "play", 1, 1, 0));
 			m_gameObjects.push_back(player);
 
-			TextureManager::Instance()->draw("play", 200, 200, 100, 100, ren, SDL_FLIP_NONE);
+			TextureManager::Instance()->draw("play", 200, 200, 100, 100, ren, SDL_FLIP_NONE);*/
 
 		}
 		running = true;
