@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="16">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="20">
  <properties>
   <property name="knight" value="./images/knight.png"/>
   <property name="ninja" value="./images/ninja_bueno.png"/>
  </properties>
- <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
+ <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850" columns="75">
   <image source="./images/mymap.png" trans="aaffff" width="1283" height="654"/>
  </tileset>
  <layer name="Capa de patrones SinCol" width="500" height="125">
@@ -12,7 +12,7 @@
    <property name="m_isCollider" value="false"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1cENgkAQhtFljxSEpSjlaClodyK0wFSwCWQFQt5L/uMkc/tSAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCGb1Pe2Bz9YX33NqVHrG//ewMAe+lyebd89If1DdHkd+yzos1bbgBgL89c3uuCPf9Fk6fYvKLNW24A4Ayu2nMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgHBYxkxwU
+   eJzt2sENAiEUBFCW4xakpajlaClqd67agjTAQQLBb95L5v5vkyGkBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwncOa0rHktM6+BABodS09fiu563MACOtZevxV8tbnABCWfQ4A8dnnABCffQ7AKI+lnm2ZfV1/LX/Me/1Lt88BGGWX69nn2df117KRe+1q+xyAUc65nssf9nnLRu61q+1zAIjPPgeA+PQ5AMTnvR0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH7HB6o9NT4=
   </data>
  </layer>
  <layer name="Capa de Patrones 1" width="500" height="125">
@@ -20,7 +20,7 @@
    <property name="m_isCollider" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
@@ -33,22 +33,58 @@
     <property name="width" value="100"/>
    </properties>
   </object>
-  <object id="14" name="knight" type="Enemy" x="1168" y="531" width="200" height="200">
+  <object id="14" name="knight" type="Enemy" x="1168" y="531" width="100" height="100">
    <properties>
     <property name="Numsprites" value="4"/>
     <property name="callbackID" value="0"/>
-    <property name="height" value="200"/>
+    <property name="height" value="100"/>
     <property name="textureID" value="knight"/>
-    <property name="width" value="200"/>
+    <property name="width" value="100"/>
    </properties>
   </object>
-  <object id="15" name="knight" type="Enemy" x="358" y="398" width="200" height="200">
+  <object id="15" name="knight" type="Enemy" x="2333" y="445" width="100" height="100">
    <properties>
     <property name="Numsprites" value="4"/>
     <property name="callbackID" value="0"/>
-    <property name="height" value="200"/>
+    <property name="height" value="100"/>
     <property name="textureID" value="knight"/>
-    <property name="width" value="200"/>
+    <property name="width" value="100"/>
+   </properties>
+  </object>
+  <object id="16" name="knight" type="Enemy" x="754" y="726" width="100" height="100">
+   <properties>
+    <property name="Numsprites" value="4"/>
+    <property name="callbackID" value="0"/>
+    <property name="height" value="100"/>
+    <property name="textureID" value="knight"/>
+    <property name="width" value="100"/>
+   </properties>
+  </object>
+  <object id="17" name="knight" type="Enemy" x="434" y="524.667" width="100" height="100">
+   <properties>
+    <property name="Numsprites" value="4"/>
+    <property name="callbackID" value="0"/>
+    <property name="height" value="100"/>
+    <property name="textureID" value="knight"/>
+    <property name="width" value="100"/>
+   </properties>
+  </object>
+  <object id="18" name="knight" type="Enemy" x="3368.67" y="703.333" width="100" height="100">
+   <properties>
+    <property name="Numsprites" value="4"/>
+    <property name="callbackID" value="0"/>
+    <property name="height" value="100"/>
+    <property name="textureID" value="knight"/>
+    <property name="width" value="100"/>
+   </properties>
+  </object>
+  <object id="19" name="knight" type="Enemy" x="3454" y="376.667" width="100" height="100">
+   <properties>
+    <property name="Numsprites" value="4"/>
+    <property name="callbackID" value="0"/>
+    <property name="height" value="100"/>
+    <property name="textureID" value="knight"/>
+    <property name="width" value="100"/>
    </properties>
   </object>
  </objectgroup>

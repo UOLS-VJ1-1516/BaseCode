@@ -24,5 +24,6 @@ public:
 	void Jump();
 	void LeftJump();
 
+
 };
 #endif PLAYER_H

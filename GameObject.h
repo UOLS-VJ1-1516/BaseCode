@@ -30,6 +30,9 @@ public:
 	Vector2D getVelocity() {
 		return m_velocity;
 	}
+	
+	
+protected:
 	Vector2D m_position;
 	Vector2D m_velocity;
 	Vector2D m_acceleration;
@@ -39,10 +42,7 @@ public:
 	Vector2D m_velocitySalto;
 	Vector2D m_accelerationSalto;
 	Vector2D m_maxvelocitySalto;
-	
-protected:
-	
-	
+
 	int m_width;
 	int	m_height;
 	int	m_currentFrame;

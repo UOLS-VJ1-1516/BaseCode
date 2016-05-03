@@ -15,7 +15,11 @@ public:
 	virtual void draw();
 	virtual void update(Vector2D pos);
 	virtual void clean();
-
+	
+	bool getCollision() { return coli; }
+	void setCollision(bool colis) {
+		coli = colis;
+	}
 
 	void setCollisionLayers(std::vector< TileLayer* >* pCollisionLayers) {
 		m_pCollisionLayers = pCollisionLayers;
@@ -47,15 +51,19 @@ public:
 	
 	
 protected:
-	
+	bool coli = false;
 	int m_collisionMargin; // Margen horizontal para evitar colisión.
 						   // Diferente para cada tipo de objeto
 	bool isCollisionWithTile(); //protected
 	bool isCollisionWithRight(); //protected
 	bool isCollisionWithUp(); //protected
-	bool isCollisionWithDown(); //protected
+	bool isCollisionWithDown(GameObject* pPlayer); //protected
 	bool isCollisionWithLeft(); //protected
 	bool isCollisionEnemyWithDown(GameObject* enemy);
+	bool isCollisionEnemyWithLeft(GameObject* enemy);
+	bool isCollisionEnemyWithRight(GameObject* enemy);
+	bool checkCollision(GameObject* enemy);
+
 	int m_TileWith;
 	int m_tileSize;
 	bool derecha = false;
@@ -63,6 +71,7 @@ protected:
 	bool arriba = false;
 	bool abajo = false;
 	int m_TileHeight;
+	
 private:
 	std::vector< TileLayer* >* m_pCollisionLayers;// Puntero a todas las
 												  //capas de patrones con colisión

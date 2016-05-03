@@ -1,13 +1,16 @@
 #include "Game.h"
 #include "Enemy.h"
+#include "OverState.h"
 #include "CollisionObject.h"
 #include "TextureManager.h"
+#include "CollisionManager.h"
+
 
 
 Enemy::Enemy() {};
 Enemy::~Enemy() {};
 
-
+int coli = 1;
 
 void Enemy::load(const LoadPar* lPar)
  {
@@ -18,6 +21,8 @@ void Enemy::load(const LoadPar* lPar)
 	 m_position.setY(lPar->getY());
 	 m_texid = lPar->getTextureID();
 	 m_sprits = lPar->getNumSprites();
+	 m_velocity.setX(0);  //Velocidad horizontal inicial
+	 m_velocity.setY(0);  //Velocidad verical inicial
 	 m_currentFrame = 1;
 	 m_currentRow = 2;
 	 m_flip = 2;
@@ -43,29 +48,87 @@ void Enemy::draw(SDL_Renderer* Renderer) {
 
 void Enemy::update() {
 	
-	
-	//if (m_position.getX() < -200.00)m_position.setX(m_anchopantalla);
-	
-	if (isCollisionEnemyWithDown(this)) {
 		
-		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
-		m_position.setX(m_position.getX() - 3);
-		//caigo = false;
-		m_velocitySalto.setY(0);
-		//puedojump = true;
-	}
-	if (!isCollisionEnemyWithDown(this)) {
-		
-		//puedojump = false;
-		//caigo = true;
-		if (m_position.getY() < Game::Instance()->getAlto()) {
-			//m_sprits = 1;
-			//m_currentRow = 4;
-			m_position.setY(m_position.getY() + 5);
+		if (isCollisionEnemyWithDown(this)) {
+			m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
+
+			if (isCollisionEnemyWithLeft(this)) {
+
+				m_velocity.setX(3);
+				m_flip = 1;
+
+				m_position.setX(m_position.getX() + m_velocity.getX());
+
+			}
+			else {
+
+				if (m_flip == 2) {
+					m_velocity.setX(-3);
+					m_position.setX(m_position.getX() + m_velocity.getX());
+				}
+				if (m_flip == 1) {
+					m_velocity.setX(3);
+					m_position.setX(m_position.getX() + m_velocity.getX());
+
+				}
+
+			}
+			if (isCollisionEnemyWithRight(this)) {
+
+				m_velocity.setX(-3);
+				m_flip = 2;
+				m_position.setX(m_position.getX() + m_velocity.getX());
+			}
+			else {
+
+				if (m_flip == 2) {
+					m_velocity.setX(-3);
+					m_position.setX(m_position.getX() + m_velocity.getX());
+				}
+				if (m_flip == 1) {
+					m_velocity.setX(3);
+					m_position.setX(m_position.getX() + m_velocity.getX());
+
+				}
+
+			}
 
 		}
+		if (!isCollisionEnemyWithDown(this)) {
+
+			//puedojump = false;
+			//caigo = true;
+			if (m_position.getY() < Game::Instance()->getAlto()) {
+				//m_sprits = 1;
+				//m_currentRow = 4;
+				m_position.setY(m_position.getY() + 5);
+
+			}
 
 
+			if (m_position.getY() > m_altopantalla - 50) {
+
+				m_currentRow = 3;
+				m_currentFrame = 0;
+			}
+			if (m_position.getY() > m_altopantalla - 25) {
+
+				m_currentRow = 3;
+				m_currentFrame = 2;
+			}
+			if (m_position.getY() > m_altopantalla - 10) {
+
+				m_currentRow = 3;
+				m_currentFrame = 3;
+			}
+			if (m_position.getY() > m_altopantalla) {
+
+				m_currentRow = 3;
+				m_currentFrame = 4;
+			}
+
+
+		}
 	}
-}
+
 void Enemy::clean() {}
