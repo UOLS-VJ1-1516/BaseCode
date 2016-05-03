@@ -4,6 +4,7 @@
 #include "CollisionObject.h"
 #include "TextureManager.h"
 #include "CollisionManager.h"
+#include "Camera.h"
 
 
 
@@ -34,15 +35,22 @@ void Enemy::load(const LoadPar* lPar)
 	}; 
 void Enemy::draw()
 {
+	Vector2D cameraPos = Camera::Instance()->getPosition();
+	Vector2D posX;
+	Vector2D posY;
+	posX = m_position - cameraPos;
 	
-	TextureManager::Instance()->drawFrame(m_texid,m_position.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), m_flip);
-	
+
+	TextureManager::Instance()->drawFrame(m_texid, posX.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), m_flip);
 }
 
 
 void Enemy::draw(SDL_Renderer* Renderer) {
-	
-	TextureManager::Instance()->drawFrame(m_texid, m_position.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), m_flip);
+	Vector2D cameraPos = Camera::Instance()->getPosition();
+	Vector2D posX;
+	Vector2D posY;
+	posX = m_position - cameraPos;
+	TextureManager::Instance()->drawFrame(m_texid, posX.getX(), m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->GetRenderer(), m_flip);
 
 }
 

@@ -6,6 +6,7 @@
 #include "OverState.h"
 #include "PauseState.h"
 #include <iostream>
+#include "Camera.h"
 #include <windows.h>
 
 
@@ -68,7 +69,7 @@ bool exit() { return quit; }
 //SDL_SCANCODE_ESCAPE    RIGHT LEFT UP
 
 void Player::update() {
-	
+	Camera::Instance()->setPosition(m_position);
 	m_currentRow = 1;
 	m_sprits = 1;
 	int tecla = 0;

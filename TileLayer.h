@@ -8,7 +8,7 @@
 class TileLayer : public Layer
 {
 public:
-	
+
 	TileLayer(int tileSize, const std::vector<Tileset> &tilesets, int width);
 	virtual void update();
 	virtual void render();
@@ -45,8 +45,8 @@ public:
 	}
 private:
 	int m_numColumns;
-	int m_tileWidth; 
-	int m_tileHeight; 
+	int m_tileWidth;
+	int m_tileHeight;
 	bool m_isCollider;
 	int m_width;
 	int m_numRows;
