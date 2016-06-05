@@ -1,6 +1,7 @@
 
 #include "game.h"
 #include "GameObjectFactory.h"
+#include "SoundManager.h"
 
 SDL_Window* g_lWindow = 0;
 int i = 0;
@@ -19,6 +20,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 
+	SoundManager::Instance()->load("jump.wav", "jump", SOUND_SFX);
+
+	SoundManager::Instance()->load("Intro.wav", "Intro", SOUND_MUSIC);
+	SoundManager::Instance()->load("Worldmap.wav", "Worldmap", SOUND_MUSIC);
 	// initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
@@ -41,7 +46,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			GameObjectFactory::Instance()->Register("MenuButton", &MenuButton::Create);
 			GameObjectFactory::Instance()->Register("Player", &Player::Create);
 			GameObjectFactory::Instance()->Register("Enemy", &Enemy::Create);
-			
+			GameObjectFactory::Instance()->Register("Teclas", &Teclas::Create);
+
 			
 			g_aRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 			state->changeState(new MenuState());

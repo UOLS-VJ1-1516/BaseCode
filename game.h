@@ -7,6 +7,7 @@
 #include "time.h"
 #include <iostream>
 #include <cstdlib>
+#include "Teclas.h"
 #include "InputHandler.h"
 #include "GameObject.h"
 #include "TextureManager.h"

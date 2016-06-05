@@ -3,6 +3,7 @@
 #include "StateParser.h"
 #include "MenuButton.h"
 #include <iostream>
+#include "SoundManager.h"
 #include "texturemanager.h"
 
 
@@ -28,7 +29,7 @@ void MenuState::render()
 bool MenuState::onEnter()
 {
 
-	
+	SoundManager::Instance()->playMusic("Intro", -1);
 	StateParser stateParser;
 	stateParser.parseState("./images/miXML.xml", s_menuID, &m_gameObjects, &m_textureIDList);
 	m_callbacks.push_back(0);
@@ -80,7 +81,7 @@ bool MenuState::onExit(){
 	}
 	m_textureIDList.clear();
 	
-	
+	SoundManager::Instance()->stopMusic();
 	
 	
 	return true;

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObjectFactory.h"
 #include "MenuButton.h"
+#include "Teclas.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "TextureManager.h"

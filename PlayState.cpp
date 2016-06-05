@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "LevelParser.h"
 #include "CollisionObject.h"
+#include "SoundManager.h"
 const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update() {
@@ -40,7 +41,7 @@ bool PlayState::onEnter() {
 	//m_callbacks.push_back(0);
 	//setCallbacks(m_callbacks);
 	
-
+	SoundManager::Instance()->playMusic("Worldmap", -1);
 	LevelParser levelParser;
 	m_level = levelParser.parseLevel("./images/mapa.tmx");
 
@@ -61,6 +62,7 @@ bool PlayState::onExit() {
 	m_textureIDList.clear();
 
 	m_gObjects.clear();
+	SoundManager::Instance()->stopMusic();
 	return true;
 };
 

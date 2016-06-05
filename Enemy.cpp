@@ -55,8 +55,7 @@ void Enemy::draw(SDL_Renderer* Renderer) {
 }
 
 void Enemy::update() {
-	
-		
+
 		if (isCollisionEnemyWithDown(this)) {
 			m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprits);
 

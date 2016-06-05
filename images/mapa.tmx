@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="20">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="500" height="125" tilewidth="16" tileheight="16" nextobjectid="41">
  <properties>
   <property name="knight" value="./images/knight.png"/>
   <property name="ninja" value="./images/ninja_bueno.png"/>
+  <property name="teclas" value="./images/teclas.png"/>
  </properties>
  <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
   <image source="./images/mymap.png" trans="aaffff" width="1283" height="654"/>
@@ -12,7 +13,7 @@
    <property name="m_isCollider" value="false"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2sENAiEUBFCW4xakpajlaClqd67agjTAQQLBb95L5v5vkyGkBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwncOa0rHktM6+BABodS09fiu563MACOtZevxV8tbnABCWfQ4A8dnnABCffQ7AKI+lnm2ZfV1/LX/Me/1Lt88BGGWX69nn2df117KRe+1q+xyAUc65nssf9nnLRu61q+1zAIjPPgeA+PQ5AMTnvR0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH7HB6o9NT4=
+   eJzt2suNwjAUBVATiQ0FQSkM4lcLlDIz3fFrAS/ZRALjyDxyjvT2T0mU6xslJQAAAAAAgPFZT1Pa5Nnm2eXZT1tvBAB8I2cOABiWrB0f9xygnHfo+yJdw0i7AjAOsgkA4DnOTQC8Qm4AAABAGZ2aRy2eB88gAADwKfQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAalrOUvrJs5q13gQAKPWbc/wvz788B4CwLjnHr3lu8hwAwtLPASA+/RwA4tPPARjKadI/50nr7eor+ce81n/p+jkAQ5l3/bPoWm9XX0lHrtWr9XMAhnLo+uf4hXle0pFr9Wr9HADi088BID55DgDx+d4OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACf4w62Z1AK
   </data>
  </layer>
  <layer name="Capa de Patrones 1" width="500" height="125">
@@ -20,7 +21,7 @@
    <property name="m_isCollider" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
@@ -33,7 +34,7 @@
     <property name="width" value="100"/>
    </properties>
   </object>
-  <object id="14" name="knight" type="Enemy" x="1168" y="531" width="100" height="100">
+  <object id="14" name="knight" type="Enemy" x="758" y="695" width="100" height="100">
    <properties>
     <property name="Numsprites" value="4"/>
     <property name="callbackID" value="0"/>
@@ -51,25 +52,16 @@
     <property name="width" value="100"/>
    </properties>
   </object>
-  <object id="16" name="knight" type="Enemy" x="754" y="726" width="100" height="100">
+  <object id="39" name="teclas" type="Teclas" x="500" y="80" width="500" height="200">
    <properties>
-    <property name="Numsprites" value="4"/>
+    <property name="Numsprites" value="1"/>
     <property name="callbackID" value="0"/>
-    <property name="height" value="100"/>
-    <property name="textureID" value="knight"/>
-    <property name="width" value="100"/>
+    <property name="height" value="200"/>
+    <property name="textureID" value="teclas"/>
+    <property name="width" value="500"/>
    </properties>
   </object>
-  <object id="18" name="knight" type="Enemy" x="3368.67" y="703.333" width="100" height="100">
-   <properties>
-    <property name="Numsprites" value="4"/>
-    <property name="callbackID" value="0"/>
-    <property name="height" value="100"/>
-    <property name="textureID" value="knight"/>
-    <property name="width" value="100"/>
-   </properties>
-  </object>
-  <object id="19" name="knight" type="Enemy" x="3454" y="376.667" width="100" height="100">
+  <object id="40" name="knight" type="Enemy" x="5563.33" y="564.667" width="100" height="100">
    <properties>
     <property name="Numsprites" value="4"/>
     <property name="callbackID" value="0"/>

@@ -1,6 +1,7 @@
 #include "CollisionObject.h"
 #include "GameObject.h"
 #include "Enemy.h"
+#include "Teclas.h"
 #include "Camera.h"
 #include "game.h"
 #include "Player.h"
@@ -14,6 +15,7 @@ int marginWDown = 0;
 int global;
 Vector2D auxposplayer;
 Vector2D auxposenemys;
+Vector2D auxposteclas;
 bool colision = false;
 GameObject *mPlayer;
 

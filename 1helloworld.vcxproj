@@ -42,7 +42,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>./libs/zlib/include;./libs/SDL_image/include;./libs/SDL/include;./libs/libs/tinyxml/include;$(IncludePath)</IncludePath>
+    <IncludePath>./libs/SDL2_mixer/include;./libs/zlib/include;./libs/SDL_image/include;./libs/SDL/include;./libs/tinyxml/include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -54,13 +54,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>./libs/zlib/include;./libs/SDL_image/include;./libs/SDL/include;./libs/tinyxml/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./libs/SDL2_mixer/include;./libs/zlib/include;./libs/SDL_image/include;./libs/SDL/include;./libs/tinyxml/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>./libs/zlib/lib;./libs/SDL_image/lib;./libs/SDL/lib;./libs/tinyxml/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib;zdll.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>./libs/zlib/lib;./libs/SDL_image/lib;./libs/SDL/lib;./libs/SDL2_mixer/lib;./libs/tinyxml/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;tinyxmlSTL.lib;zdll.lib;SDL2_mixer.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,8 +100,10 @@
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="Teclas.cpp" />
     <ClCompile Include="texturemanager.cpp" />
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
@@ -121,6 +123,7 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelParser.h" />
+    <ClInclude Include="libs\SDL2_mixer\include\SDL_mixer.h" />
     <ClInclude Include="libs\SDL\include\begin_code.h" />
     <ClInclude Include="libs\SDL\include\close_code.h" />
     <ClInclude Include="libs\tinyxml\include\tinystr.h" />
@@ -133,7 +136,9 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StateParser.h" />
+    <ClInclude Include="Teclas.h" />
     <ClInclude Include="texturemanager.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="tinystr.h" />
@@ -173,6 +178,9 @@
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\SDL2_mixer\lib\SDL2_mixer.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
