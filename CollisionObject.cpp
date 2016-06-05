@@ -1,6 +1,7 @@
 #include "CollisionObject.h"
 #include "GameObject.h"
 #include "Enemy.h"
+#include "Camera.h"
 #include "game.h"
 #include "Player.h"
 
@@ -84,7 +85,7 @@ bool CollisionObject::isCollisionWithTile()
 		 // Si me estoy moviedno a derecha o arriba
 		if (getVelocity().getX() > 0 || getVelocity().getY() > 0)
 		{
-			tileColumn = ((getPosition().getX() +getWidth()-marginW) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX() + Camera::Instance()->getPosition().getX() +getWidth()-marginW) / pTileLayer->getTileSize());
 			tileRow = ((getPosition().getY() + getHeight()-marginH)/ pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y][tileColumn + x];
 		}
@@ -92,7 +93,7 @@ bool CollisionObject::isCollisionWithTile()
 		// Si me estoy moviedno a izquierda o abajo
 		else if (getVelocity().getX() < 0 || getVelocity().getY() < 0) // if moving backwards or downwards
 		{
-			tileColumn =( getPosition().getX() + getWidth()- marginW) / pTileLayer ->getTileSize();
+			tileColumn =( getPosition().getX() + Camera::Instance()->getPosition().getX() + getWidth()- marginW) / pTileLayer ->getTileSize();
 			tileRow = (getPosition().getY() + getHeight()- marginH) / pTileLayer ->getTileSize();
 			tileid = tiles[tileRow + y +1][tileColumn + x+1];  //Le digo que hay una posicion menos así puedo estar en colision
 		}
@@ -120,11 +121,12 @@ bool CollisionObject::isCollisionWithRight()
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
 
-
+		printf("Camara X:%f \n", Camera::Instance()->getPosition().getX());
+		printf("Player X:%f \n", getPosition().getX());
 		// Si me estoy moviedno a derecha o arriba
 		if (getVelocity().getX() > 0 )
 		{
-			tileColumn = ((getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX()+Camera::Instance()->getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
 			tileRow = ((getPosition().getY() + getHeight() - marginH) / pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y-1][tileColumn + x+1];  //Aqui me aseguro que estaré mirando colisión derecha
 		}  
@@ -189,7 +191,7 @@ bool CollisionObject::isCollisionWithLeft()
 	
 	  if (getVelocity().getX() < 0 ){ // if moving backwards or downwards
 		
-			tileColumn = (getPosition().getX() + getWidth() - marginWLeft) / pTileLayer->getTileSize();
+			tileColumn = (getPosition().getX() + Camera::Instance()->getPosition().getX() + getWidth() - marginWLeft) / pTileLayer->getTileSize();
 			tileRow = (getPosition().getY() + getHeight() - marginHLeft) / pTileLayer->getTileSize();
 			tileid = tiles[tileRow + y - 1][tileColumn + x -1];  //Le digo que hay una posicion menos así puedo estar en colision
 		}
@@ -286,7 +288,7 @@ bool CollisionObject::isCollisionWithDown(GameObject* pPlayer)
 		 if (m_velocity.getY() >= 0) 
 		{
 			//printf("Entro");
-			tileColumn = (m_position.getX() + m_width -50) / pTileLayer->getTileSize();
+			tileColumn = (m_position.getX() + Camera::Instance()->getPosition().getX() + m_width -50) / pTileLayer->getTileSize();
 			tileRow = (m_position.getY() + m_height - marginHDown) / pTileLayer->getTileSize();
 			tileid = tiles[tileRow + y - 1][tileColumn + x - 1];  //Le digo que hay una posicion menos así puedo estar en colision
 		}
@@ -316,7 +318,7 @@ bool CollisionObject::isCollisionWithUp()
 		// Si me estoy moviedno a derecha o arriba
 		if (getVelocity().getY() < 0)
 		{
-			tileColumn = ((getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX()+Camera::Instance()->getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
 			tileRow = ((getPosition().getY() + getHeight() - marginH) / pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y + 1][tileColumn + x - 1];  //Aqui me aseguro que estaré mirando colisión derecha
 																  //y+1  x-1 -> Miro izquierda 

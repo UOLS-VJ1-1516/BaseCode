@@ -1,4 +1,5 @@
 #include "CollisionManager.h"
+#include "Camera.h"
 bool Y = false;
 Vector2D auxpos;
 
@@ -13,7 +14,7 @@ CollisionManager::~CollisionManager()
 
 CollisionManager* CollisionManager::s_CollisionManager = 0;
 bool CajaArribaIzquierda(GameObject* GO,Vector2D caja) {
-	if ((GO->getPosition().getX() > caja.getX()) && (GO->getPosition().getY() < caja.getY())) {
+	if ((GO->getPosition().getX() - Camera::Instance()->getPosition().getX() > caja.getX()) && (GO->getPosition().getY() < caja.getY())) {
 		//printf("\nCajaArribaIzquierda SI");
 		return true;
 	}
@@ -21,7 +22,7 @@ bool CajaArribaIzquierda(GameObject* GO,Vector2D caja) {
 	return false;
 }
 bool CajaAbajoIzquierda(GameObject* GO, Vector2D caja) {
-	if ((GO->getPosition().getX() > caja.getX()) && (GO->getPosition().getY() > caja.getY())) {
+	if ((GO->getPosition().getX() - Camera::Instance()->getPosition().getX() > caja.getX()) && (GO->getPosition().getY() > caja.getY())) {
 		//printf("\nCajaAbajoIzquierda SI");
 		return true;
 	}
@@ -29,7 +30,7 @@ bool CajaAbajoIzquierda(GameObject* GO, Vector2D caja) {
 	return false;
 }
 bool CajaArribaDerecha(GameObject* GO, Vector2D caja) {
-	if ((GO->getPosition().getX() < caja.getX()) && (GO->getPosition().getY() < caja.getY())) {
+	if ((GO->getPosition().getX() - Camera::Instance()->getPosition().getX() < caja.getX()) && (GO->getPosition().getY() < caja.getY())) {
 		//printf("\nCajaArribaDerecha SI");
 		return true;
 	}
@@ -37,7 +38,7 @@ bool CajaArribaDerecha(GameObject* GO, Vector2D caja) {
 	return false;
 }
 bool CajaAbajoDerecha(GameObject* GO, Vector2D caja) {
-	if ((GO->getPosition().getX() < caja.getX()) && (GO->getPosition().getY() > caja.getY())) {
+	if ((GO->getPosition().getX() - Camera::Instance()->getPosition().getX() < caja.getX()) && (GO->getPosition().getY() > caja.getY())) {
 		//printf("\nCajaAbajoDerecha SI");
 		return true;
 	}

@@ -4,7 +4,7 @@
   <property name="knight" value="./images/knight.png"/>
   <property name="ninja" value="./images/ninja_bueno.png"/>
  </properties>
- <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850" columns="75">
+ <tileset firstgid="1" name="mymap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="2850">
   <image source="./images/mymap.png" trans="aaffff" width="1283" height="654"/>
  </tileset>
  <layer name="Capa de patrones SinCol" width="500" height="125">
@@ -52,15 +52,6 @@
    </properties>
   </object>
   <object id="16" name="knight" type="Enemy" x="754" y="726" width="100" height="100">
-   <properties>
-    <property name="Numsprites" value="4"/>
-    <property name="callbackID" value="0"/>
-    <property name="height" value="100"/>
-    <property name="textureID" value="knight"/>
-    <property name="width" value="100"/>
-   </properties>
-  </object>
-  <object id="17" name="knight" type="Enemy" x="434" y="524.667" width="100" height="100">
    <properties>
     <property name="Numsprites" value="4"/>
     <property name="callbackID" value="0"/>

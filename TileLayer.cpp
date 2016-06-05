@@ -26,7 +26,7 @@ void TileLayer::render()
 	x2 = tempCamPos.getX();
 	y2 = int(m_position.getY()) % m_tileSize;
 	int firstCol = tempCamPos.getX() / m_tileSize;
-
+	//printf("La posicion de la camara es: X: %f   Y:%f \n", tempCamPos.getX(), tempCamPos.getY());
 	//Lo hago generico.
 	/*if (x > m_width - 101) {
 		x2 = 0;
@@ -38,6 +38,7 @@ void TileLayer::render()
 	{
 		for (int j = firstCol; j < firstCol+m_numColumns + 1; j++)
 		{
+			
 			int id = m_tileIDs[i][j + x];
 			if (id == 0)
 			{
