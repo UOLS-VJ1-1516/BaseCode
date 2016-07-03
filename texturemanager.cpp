@@ -49,7 +49,7 @@ void TextureManager::draw(char* id, int x, int y, int width, int height, SDL_Ren
 	SDL_RenderCopyEx(g_Render, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 };
 
-void TextureManager::drawFrame(char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_Render, SDL_RendererFlip flip) {
+void TextureManager::drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* g_Render, SDL_RendererFlip flip) {
 	
 	SDL_Rect srcRect;
 	SDL_Rect destRect;

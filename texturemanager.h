@@ -20,7 +20,7 @@ class TextureManager
 
 		bool load(char* fileName, char* id, SDL_Renderer* pRenderer);
 		void draw(char* id, int x, int y, int width, int height, SDL_Renderer* pRender, SDL_RendererFlip flip);
-		void drawFrame(char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
+		void drawFrame(const char* id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRender, SDL_RendererFlip flip);
 
 		std::map<std::string, SDL_Texture*> m_textureMap;
 

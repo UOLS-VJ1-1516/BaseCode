@@ -1,26 +1,37 @@
 #include "game.h"
 
+const int FPS = 60;
+const float FIXED_TIME = 1000.0f / FPS;
 
 int main(int argc, char* args[])
 {
-	Game game;
+	Uint32 frameStart, frameTime, frameEnd;
 
-	game.init("Videjuegos 1 - bachelor",
+	if (Game::Instance()->init("Videjuegos 1 - bachelor",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		640, 480,
-		true);
+		1280, 720, 0)) {
 
-	while (game.isRunning() == true) {
+		while (Game::Instance()->isRunning()) {
 
-		game.handleEvents();
-		game.update();
-		game.render();
+			frameStart = SDL_GetTicks();
+
+			Game::Instance()->handleEvents();
+			Game::Instance()->render();
+			Game::Instance()->update();
+		
+		 
+			frameEnd = SDL_GetTicks();
+			frameTime = frameEnd – frameStart;
+			if (frameTime < FIXED_TIME)
+			{
+				SDL_Delay((int)(FIXED_TIME – frameTime));
+			}
+			
+
+
+		}
+
+		Game::Instance()->clean();
 	}
-
-	game.clean();
-
-	//SDL_Delay(1000);
-	SDL_Quit();
-
 	return 0;
 }
