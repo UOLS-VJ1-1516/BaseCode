@@ -16,15 +16,14 @@ int main(int argc, char* args[])
 			frameStart = SDL_GetTicks();
 
 			Game::Instance()->handleEvents();
-			Game::Instance()->render();
 			Game::Instance()->update();
-		
+			Game::Instance()->render();
 		 
 			frameEnd = SDL_GetTicks();
-			frameTime = frameEnd – frameStart;
+			frameTime = frameEnd - frameStart;
 			if (frameTime < FIXED_TIME)
 			{
-				SDL_Delay((int)(FIXED_TIME – frameTime));
+				SDL_Delay((int)(FIXED_TIME - frameTime));
 			}
 			
 

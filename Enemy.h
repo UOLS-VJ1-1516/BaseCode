@@ -15,19 +15,10 @@ class Enemy : public GameObject
 		virtual void update();
 		virtual void clean();
 
-	protected:
+		static GameObject* Create() { return new Enemy(); }
 
-		Vector2D m_position;
-		Vector2D m_velocity;
-		Vector2D m_maxVelocity;
-		Vector2D m_acceleration;
-		Vector2D m_friction;
+	private:
 
-		int m_width;
-		int m_height;
-		int m_currentFrame;
-		int m_currentRow;
-		int m_sprite;
 		const char* m_textureID;
 };
 

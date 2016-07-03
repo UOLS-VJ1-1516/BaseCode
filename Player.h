@@ -35,6 +35,8 @@ class Player : public GameObject
 		int m_sprite;
 		const char* m_textureID;
 
+		SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+
 };
 
 #endif PLAYER_H

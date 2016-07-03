@@ -13,22 +13,13 @@ void Enemy::load(const LoaderParams* pParams)
 	m_width = pParams->getWidth();
 	m_height = pParams->getHeight();
 	m_textureID = pParams->getTextureID();
-	m_currentRow = 1;
+	m_currentRow = 0;
 	m_sprite = pParams->getSprits();
-	m_currentFrame = 1;
-	m_velocity.setX(0);
-	m_velocity.setY(0);
-
+	m_currentFrame = 0;
 }
 
 void Enemy::draw() {
 	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
-	/*
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) { m_velocity.setX(2); }
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) { m_velocity.setX(-2); }
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) { m_velocity.setY(-2); }
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) { m_velocity.setY(2); }
-	*/
 
 }
 

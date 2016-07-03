@@ -33,8 +33,8 @@ class Game
 		static Game* s_pInstance;
 		bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 		void render();
+		void handleEvents();
 		void update();
-		int handleEvents();
 		void clean();
 		bool isRunning();
 		SDL_Renderer * getRender();
