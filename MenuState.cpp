@@ -5,6 +5,7 @@
 #include "game.h"
 #include "PlayState.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 
 typedef void(*Callback)();
 const std::string MenuState::s_menuID = "MENU";
@@ -33,6 +34,7 @@ void MenuState::render()
 
 bool MenuState::onEnter()
 {
+	SoundManager::Instance()->playMusic("SongMenu", -1);
 	// parse the state
 	StateParser stateParser;
 	stateParser.parseState("assets/images.xml", s_menuID, &m_gameObjectsMenuState, &m_textureIDList);
@@ -47,6 +49,7 @@ bool MenuState::onEnter()
 
 bool MenuState::onExit()
 {
+	SoundManager::Instance()->stopMusic();
 	for (int i = 0; i < m_gameObjectsMenuState.size(); i++) {
 		m_gameObjectsMenuState[i]->clean();
 	}

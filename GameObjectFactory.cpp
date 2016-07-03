@@ -12,7 +12,7 @@ GameObjectFactory * GameObjectFactory::s_pInstanceFact = 0;
 	}
 
 	void GameObjectFactory::Register(const std::string & gameObjectName, CreateGameObjectFn pCreate) {
-		m_FactoryMap[gameObjectName] = pCreate;
+		m_FactoryMap[gameObjectName] = pCreate;//guardem a la posicio del tipus d'objecte, la funcio per crear-lo
 	}
 
 	GameObject* GameObjectFactory::CreateGameObject(const std::string & gameObjectName) {

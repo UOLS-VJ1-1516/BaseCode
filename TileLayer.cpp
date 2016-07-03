@@ -1,11 +1,15 @@
 #include "TileLayer.h"
 #include "game.h"
+#include "Camera.h"
 
 
-TileLayer::TileLayer(int tileSize, const std::vector<Tileset> &tilesets) : m_tileSize(tileSize), m_tilesets(tilesets), m_position(0, 0), m_velocity(0, 0)
+TileLayer::TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vector<Tileset> &tilesets) : m_tileSize(tileSize), m_tilesets(tilesets), m_position(0, 0), m_velocity(0, 0)
 {
+	m_position.setX(0);
+	m_position.setY(0);
 	m_numColumns = (Game::Instance()->getGameWidth() /m_tileSize);
 	m_numRows = (Game::Instance()->getGameHeight() / m_tileSize);
+	m_mapWidth = mapWidth;
 }
 
 void TileLayer::update()
@@ -34,6 +38,16 @@ void TileLayer::render()
 			{
 				continue;
 			}
+			
+			// if outside the viewable area then skip the tile
+			if (((j * m_tileSize) - x2) - Camera::Instance()
+				->getPosition().getX() < -m_tileSize || ((j * m_tileSize) - x2)
+				- Camera::Instance()->getPosition().getX() > Game::Instance()->getGameWidth())
+			{
+				continue;
+			}
+			
+
 			Tileset tileset = getTilesetByID(id);
 			id--;
 			TextureManager::Instance()->drawTile(tileset.name, tileset.margin, tileset.spacing, (j * m_tileSize) - x2, (i *

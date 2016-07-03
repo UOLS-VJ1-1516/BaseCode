@@ -10,6 +10,7 @@
 #include "MenuState.h"
 #include "PlayState.h"
 #include "GameObjectFactory.h"
+#include "SoundManager.h"
 
 
 std::vector<GameObject*> m_gameObjects;
@@ -43,6 +44,10 @@ GameStateMachine* m_pGameStateMachine;
 	}
 
 	bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
+		//Cargamos todos los sonidos
+		SoundManager::Instance()->load("./sound/SongPlay.wav", "SongPlay", SOUND_MUSIC);
+		SoundManager::Instance()->load("./sound/SongMenu.wav", "SongMenu", SOUND_MUSIC);
+		SoundManager::Instance()->load("./sound/SongPause.wav", "SongPause", SOUND_MUSIC);
 		// initialize SDL
 		m_gameWidth = width;
 		m_gameHeight = height;

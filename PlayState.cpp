@@ -5,13 +5,15 @@
 #include "MenuState.h"
 #include "StateParser.h"
 #include "LevelParser.h"
+#include "SoundManager.h"
 
 const std::string PlayState::s_playID = "PLAY";
 void PlayState::update()
 {
 	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		Game::Instance()->getStateMachine()->pushState(new PauseState());
+		s_playToPause();
+		//Game::Instance()->getStateMachine()->pushState(new PauseState());
 	}
 
 	/*
@@ -35,7 +37,7 @@ bool PlayState::onEnter()
 	// parse the state
 	//StateParser stateParser;
 	//stateParser.parseState("assets/images.xml", s_playID, &m_gameObjectsPlay, &m_textureIDList);
-	
+	SoundManager::Instance()->playMusic("SongPlay", -1);
 	LevelParser levelParser;
 	ppLevel = levelParser.parseLevel("assets/mapaBueno.tmx");
 
@@ -45,6 +47,7 @@ bool PlayState::onEnter()
 }
 bool PlayState::onExit()
 {
+	SoundManager::Instance()->stopMusic();
 	InputHandler::Instance()->clean();
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
@@ -61,5 +64,7 @@ bool PlayState::onExit()
 
 void PlayState::s_playToPause()
 {
-	Game::Instance()->getStateMachine()->changeState(new PauseState());
+	SoundManager::Instance()->stopMusic();
+	Game::Instance()->getStateMachine()->pushState(new PauseState());
+	//Game::Instance()->getStateMachine()->changeState(new PauseState());
 }

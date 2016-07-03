@@ -28,8 +28,9 @@ public:
 	void normalize();
 	Vector2D& operator=(const Vector2D& v2);
 	private:
-		float m_x;
-		float m_y;
+	float m_x;
+	float m_y;
+		
 };
 #endif VECTOR2D_H
 

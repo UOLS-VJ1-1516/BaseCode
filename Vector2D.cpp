@@ -15,7 +15,7 @@ Vector2D::~Vector2D()
 {
 }
 
-float Vector2D::getX() 
+float Vector2D::getX()
 {
 	return m_x;
 }

@@ -7,7 +7,8 @@
 class TileLayer : public Layer
 {
 public:
-	TileLayer(int tileSize, const std::vector<Tileset> &tilesets);
+	//TileLayer(int tileSize, const std::vector<Tileset> &tilesets);
+	TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vector<Tileset> &tilesets);
 	virtual void update();
 	virtual void render();
 	void setTileIDs(const std::vector<std::vector<int>>& data)
@@ -34,6 +35,7 @@ public:
 	Tileset getTilesetByID(int tileID);
 	void setisColision(bool colision);
 	bool getisColision();
+	int m_mapWidth;
 private:
 	int m_numColumns;
 	int m_numRows;

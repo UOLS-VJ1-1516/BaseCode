@@ -98,7 +98,7 @@ bool CollisionObject::isCollisionWithTileRight() {
 		if (getVelocity().getX() > 0) //dreta
 		{
 			tileColumn = ((getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
-			tileRow = ((getPosition().getY() / pTileLayer->getTileSize());
+			tileRow = (getPosition().getY() / pTileLayer->getTileSize());
 			tileid = tiles[tileRow+y][tileColumn + x];//Li restem 1 a la y perque quan estiguem asobre la plataforma no ens doni colisio
 		}
 		if (tileid != 0) // if the tile id not blank then collide

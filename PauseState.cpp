@@ -3,6 +3,7 @@
 #include "MenuButton.h"
 #include "MenuState.h"
 #include "StateParser.h"
+#include "SoundManager.h"
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
@@ -26,6 +27,7 @@ void PauseState::render() {
 	}
 }
 bool PauseState::onEnter() {
+	SoundManager::Instance()->playMusic("SongPause", -1);
 	StateParser stateParser;
 	stateParser.parseState("assets/images.xml", s_pauseID, &m_gameObjectsPauseState,&m_textureIDList);
 	m_callbacksPause.push_back(0);
@@ -53,9 +55,13 @@ bool PauseState::onExit() {
 	return true;
 }
 void PauseState::s_pauseToMain() {
+	SoundManager::Instance()->stopMusic();
+	Game::Instance()->getStateMachine()->popState();
 	Game::Instance()->getStateMachine()->changeState(new MenuState());
 }
 void PauseState::s_resumePlay() {
+	SoundManager::Instance()->stopMusic();
+	SoundManager::Instance()->playMusic("SongPlay", -1);
 	Game::Instance()->getStateMachine()->popState();
 }
 
