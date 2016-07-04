@@ -30,6 +30,9 @@ public:
 	Vector2D getVelocity() {
 		return m_velocity;
 	}
+	std::string getTextureID() {
+		return m_texid;
+	}
 	
 	
 protected:

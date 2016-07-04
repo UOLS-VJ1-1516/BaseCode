@@ -64,6 +64,7 @@ protected:
 	bool isCollisionEnemyWithRight(GameObject* enemy);
 	bool checkCollision(GameObject* enemy);
 
+	bool isCollisionMetaWithRight(GameObject *meta);
 	int m_TileWith;
 	int m_tileSize;
 	bool derecha = false;
@@ -76,5 +77,7 @@ private:
 	std::vector< TileLayer* >* m_pCollisionLayers;// Puntero a todas las
 												  //capas de patrones con colisión
 	GameObject* mEnemy;
+	GameObject*  mMeta;
+	Vector2D MiCaja[3];
 };
 #endif

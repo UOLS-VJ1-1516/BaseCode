@@ -1,31 +1,32 @@
-#include "OverState.h"
+#pragma once
+#include "WinState.h"
 #include "StateParser.h"
 #include "SoundManager.h"
-#include "OverState.h"
 #include "Game.h"
 
-const std::string OverState::s_OverID = "PLAY";
-void OverState::update() {
+
+
+const std::string WinState::s_WinID = "PLAYS";
+void WinState::update() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
 }
 
-void OverState::render() {
-
+void WinState::render() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw(Game::Instance()->GetRenderer());
 
 	}
 }
 
-bool OverState::onEnter() {
+bool WinState::onEnter() {
 
 	int x;
 	SoundManager::Instance()->stopMusic();
-	SoundManager::Instance()->playMusic("gameOver", 0);
+	SoundManager::Instance()->playMusic("winner", -1);
 	StateParser stateParser;
-	stateParser.parseState("./images/miXML.xml", s_OverID, &m_gameObjects, &m_textureIDList);
+	stateParser.parseState("./images/miXML.xml", s_WinID, &m_gameObjects, &m_textureIDList);
 	m_callbacks.push_back(0);
 	m_callbacks.push_back(s_menuTOPlay);
 	m_callbacks.push_back(s_menuTOMain);
@@ -36,7 +37,7 @@ bool OverState::onEnter() {
 
 
 }
-bool OverState::onExit() {
+bool WinState::onExit() {
 
 
 	for (int i = 0; i < m_gameObjects.size(); i++)
@@ -57,22 +58,22 @@ bool OverState::onExit() {
 }
 
 
-std::string OverState::getStateID() const {
+std::string WinState::getStateID() const {
 
-	return OverState::s_OverID;
+	return WinState::s_WinID;
 };
 
 
-void OverState::s_menuTOMain() {
+void WinState::s_menuTOMain() {
 	Game::Instance()->getGameStateMachine()->changeState(new MenuState());
 }
 
-void OverState::s_menuTOPlay() {
+void WinState::s_menuTOPlay() {
 	Game::Instance()->getGameStateMachine()->popState();
 
 }
 
-void OverState::setCallbacks(const std::vector<Callback>&callbacks)
+void WinState::setCallbacks(const std::vector<Callback>&callbacks)
 {
 	// go through the game objects
 	for (int i = 0; i < m_gameObjects.size(); i++)

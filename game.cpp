@@ -20,10 +20,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 
-	SoundManager::Instance()->load("jump.wav", "jump", SOUND_SFX);
+	
 
 	SoundManager::Instance()->load("Intro.wav", "Intro", SOUND_MUSIC);
 	SoundManager::Instance()->load("Worldmap.wav", "Worldmap", SOUND_MUSIC);
+	SoundManager::Instance()->load("gameOver.wav", "gameOver", SOUND_MUSIC);
+	SoundManager::Instance()->load("winner.wav", "winner", SOUND_MUSIC);
+	SoundManager::Instance()->load("jump.wav", "jump", SOUND_SFX);
 	// initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
@@ -47,7 +50,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			GameObjectFactory::Instance()->Register("Player", &Player::Create);
 			GameObjectFactory::Instance()->Register("Enemy", &Enemy::Create);
 			GameObjectFactory::Instance()->Register("Teclas", &Teclas::Create);
-
+			GameObjectFactory::Instance()->Register("Meta", &Teclas::Create);
 			
 			g_aRenderer = SDL_CreateRenderer(g_lWindow, -1, 0);
 			state->changeState(new MenuState());

@@ -123,8 +123,8 @@ bool CollisionObject::isCollisionWithRight()
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
 
-		printf("Camara X:%f \n", Camera::Instance()->getPosition().getX());
-		printf("Player X:%f \n", getPosition().getX());
+		//printf("Camara X:%f \n", Camera::Instance()->getPosition().getX());
+		//printf("Player X:%f \n", getPosition().getX());
 		// Si me estoy moviedno a derecha o arriba
 		if (getVelocity().getX() > 0 )
 		{
@@ -158,6 +158,41 @@ bool CollisionObject::isCollisionEnemyWithRight(GameObject *enemy)
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
 		
+
+		// Si me estoy moviedno a derecha o arriba
+		if (mEnemy->getVelocity().getX() > 0)
+		{
+			tileColumn = ((mEnemy->getPosition().getX() + getWidth() - marginW) / pTileLayer->getTileSize());
+			tileRow = ((mEnemy->getPosition().getY() + getHeight() - marginH) / pTileLayer->getTileSize());
+			tileid = tiles[tileRow + y - 1][tileColumn + x + 1];  //Aqui me aseguro que estaré mirando colisión derecha
+		}
+
+
+		if (tileid != 0) // if the tile id not blank then collide
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
+bool CollisionObject::isCollisionMetaWithRight(GameObject *meta)
+{
+
+
+	mMeta = meta;
+	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
+	{
+
+		TileLayer* pTileLayer = (*it);
+		int x, y, tileColumn, tileRow, tileid = 0;
+		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
+		m_tileSize = pTileLayer->getTileSize();
+		Vector2D layerPos = pTileLayer->getPosition();
+		x = layerPos.getX() / pTileLayer->getTileSize();
+		y = layerPos.getY() / pTileLayer->getTileSize();
+
 
 		// Si me estoy moviedno a derecha o arriba
 		if (mEnemy->getVelocity().getX() > 0)
@@ -239,7 +274,7 @@ bool CollisionObject::isCollisionEnemyWithDown(GameObject* enemy)
 	mEnemy = enemy;
 	auxposenemys = mEnemy->getPosition();
 	//printf("\n Enemy  x:%.2f  y:%.2f ", m_position.getX(), mEnemy->m_velocity.getY());
-	
+
 	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
 	{
 
@@ -274,6 +309,9 @@ bool CollisionObject::isCollisionWithDown(GameObject* pPlayer)
 {
 	auxposplayer = m_position;
 	mPlayer = pPlayer;
+
+
+
 	for (std::vector<TileLayer*>::const_iterator it = m_pCollisionLayers->begin(); it != m_pCollisionLayers->end(); ++it)
 	{
 
@@ -289,10 +327,17 @@ bool CollisionObject::isCollisionWithDown(GameObject* pPlayer)
 		
 		 if (m_velocity.getY() >= 0) 
 		{
-			//printf("Entro");
-			tileColumn = (m_position.getX() + Camera::Instance()->getPosition().getX() + m_width -50) / pTileLayer->getTileSize();
+			//printf("Entro y %f",m_velocity.getX());
+			if (m_velocity.getX() >= 0) {
+				tileColumn = (m_position.getX() + Camera::Instance()->getPosition().getX() + m_width - 50) / pTileLayer->getTileSize();
+			}
+			else {
+				tileColumn = (m_position.getX() + Camera::Instance()->getPosition().getX() + m_width -15 ) / pTileLayer->getTileSize();
+			}
+
+			
 			tileRow = (m_position.getY() + m_height - marginHDown) / pTileLayer->getTileSize();
-			tileid = tiles[tileRow + y - 1][tileColumn + x - 1];  //Le digo que hay una posicion menos así puedo estar en colision
+			tileid = tiles[tileRow + y - 1][tileColumn + x -1];  //Le digo que hay una posicion menos así puedo estar en colision
 		}
 		if (tileid != 0) // if the tile id not blank then collide
 		{
