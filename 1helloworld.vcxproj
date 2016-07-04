@@ -138,6 +138,7 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StateParser.h" />
     <ClInclude Include="Teclas.h" />
@@ -168,6 +169,8 @@
     <Image Include="images\playbtn.png" />
     <Image Include="images\player.bmp" />
     <Image Include="images\teclas.png" />
+    <Image Include="images\tileset.png" />
+    <Image Include="images\Win.png" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="images\miXML.xml" />
@@ -183,6 +186,7 @@
     <None Include="libwebp-4.dll" />
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,7 @@ protected:
 	void setCallbacks(const std::vector<Callback>& callbacks);
 	std::string getStateID() const;
 	Level* m_level;
+
 	std::vector< Callback > m_callbacks;
 	std::vector<std::string> m_textureIDList;
 

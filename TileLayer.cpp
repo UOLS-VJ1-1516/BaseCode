@@ -71,7 +71,6 @@ Tileset TileLayer::getTilesetByID(int tileID)
 			return m_tilesets[i];
 		}
 	}
-	//std::cout << "did not find tileset, returning empty tileset\n";
 	Tileset t;
 	return t;
 }
