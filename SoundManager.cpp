@@ -15,7 +15,7 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 		Mix_Music* pMusic = Mix_LoadMUS(fileName.c_str());
 		if (pMusic == 0)
 		{
-			printf("Could not load music: ERROR - "); //Mix_GetError() << std::endl);
+			printf("Could not load music: ERROR - "); 
 			return false;
 		}
 		m_music[id] = pMusic;
@@ -27,7 +27,6 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 		if (pChunk == 0)
 		{
 			printf("Could not load SFX: ERROR - ");
-			//std::cout << "Could not load SFX: ERROR - " << Mix_GetError() << std::endl;
 			return false;
 		}
 		m_sfxs[id] = pChunk;

@@ -14,6 +14,7 @@ public:
 	bool init(const char* title, int xpos, int
 		ypos, int width, int height, bool fullscreen);
 	SDL_Renderer* getRender();
+	void setRender(SDL_Renderer* render);
 	void render();
 	void update();
 	void handleEvents();

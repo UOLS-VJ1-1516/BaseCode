@@ -1,5 +1,5 @@
 #include "CollisionObject.h"
-
+#include "Camera.h"
 
 
 CollisionObject::CollisionObject()
@@ -23,7 +23,7 @@ bool CollisionObject::isCollisionWithTileLeft() {
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
 
-		tileColumn = ((getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
+		tileColumn = ((getPosition().getX() + Camera::Instance()->getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
 		tileRow = ((getPosition().getY() + getHeight()) / pTileLayer->getTileSize());
 		tileid = tiles[tileRow + y][tileColumn + x]; //Li restem 1 a la y perque quan estiguem asobre la plataforma no ens doni colisio
 
@@ -97,7 +97,7 @@ bool CollisionObject::isCollisionWithTileRight() {
 
 		if (getVelocity().getX() > 0) //dreta
 		{
-			tileColumn = ((getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX() + Camera::Instance()->getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
 			tileRow = (getPosition().getY() / pTileLayer->getTileSize());
 			tileid = tiles[tileRow+y][tileColumn + x];//Li restem 1 a la y perque quan estiguem asobre la plataforma no ens doni colisio
 		}
@@ -124,13 +124,13 @@ bool CollisionObject::isCollisionWithTile() {
 		
 		if (getVelocity().getX() > 0 || getVelocity().getY() > 0) //Adalt i dreta
 		{
-			tileColumn = ((getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX() + Camera::Instance()->getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
 			tileRow = ((getPosition().getY() + getHeight())/ pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y - 1][tileColumn + x - 1.5];//Li restem 1 a la y perque quan estiguem asobre la plataforma no ens doni colisio
 		}
 		else if (getVelocity().getX() < 0 || getVelocity().getY() < 0) // Abaix i esquerra
 		{
-			tileColumn = ((getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
+			tileColumn = ((getPosition().getX() + Camera::Instance()->getPosition().getX() + getWidth()) / pTileLayer->getTileSize());
 			tileRow = ((getPosition().getY() + getHeight()) / pTileLayer->getTileSize());
 			tileid = tiles[tileRow + y - 1][tileColumn + x - 4]; //Li restem 1 a la y perque quan estiguem asobre la plataforma no ens doni colisio
 		}

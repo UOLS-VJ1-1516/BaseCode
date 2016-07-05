@@ -37,6 +37,10 @@ bool PlayState::onEnter()
 	// parse the state
 	//StateParser stateParser;
 	//stateParser.parseState("assets/images.xml", s_playID, &m_gameObjectsPlay, &m_textureIDList);
+	SDL_Renderer* render;
+	render = Game::Instance()->getRender();
+	SDL_SetRenderDrawColor(render, 133, 224, 255, 255);
+	Game::Instance()->setRender(render);
 	SoundManager::Instance()->playMusic("SongPlay", -1);
 	LevelParser levelParser;
 	ppLevel = levelParser.parseLevel("assets/mapaBueno.tmx");

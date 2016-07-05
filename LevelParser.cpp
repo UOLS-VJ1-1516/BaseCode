@@ -8,6 +8,7 @@
 #include "base64.h"
 #include "ObjectLayer.h"
 #include "GameObjectFactory.h"
+#include "Camera.h"
 
 
 LevelParser::LevelParser()
@@ -57,13 +58,6 @@ Level* LevelParser::parseLevel(const char *levelFile){
 				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers());
 			}
 		}
-		/*
-		if (flag == 1) {
-			pLevel2 = pLevel;
-			flag = 0;
-			//return pLevel2;
-		}
-		*/
 	}
 	return pLevel;
 }
@@ -198,6 +192,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			{
 				CollisionObject* pCollisionObj = dynamic_cast<CollisionObject*>(pGameObject);
 				pCollisionObj->setCollisionLayers(pLevel->getCollisionLayers());
+				if (dynamic_cast<Player*>(pGameObject)) {
+					Camera::Instance()->setTarget(dynamic_cast<Player*>(pGameObject));
+					Camera::Instance()->setPosition(dynamic_cast<Player*>(pGameObject)->getPosition());
+				}
 			}
 
 			pGameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID));

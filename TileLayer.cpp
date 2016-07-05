@@ -9,6 +9,7 @@ TileLayer::TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vecto
 	m_position.setY(0);
 	m_numColumns = (Game::Instance()->getGameWidth() /m_tileSize);
 	m_numRows = (Game::Instance()->getGameHeight() / m_tileSize);
+
 	m_mapWidth = mapWidth;
 }
 
@@ -23,15 +24,18 @@ void TileLayer::render()
 	int x, y, x2, y2 = 0;
 	x = m_position.getX() / m_tileSize;
 	y = m_position.getY() / m_tileSize;
-	x2 = int(m_position.getX()) % m_tileSize;
+
+	x2 = Camera::Instance()->getPosition().getX();
 	y2 = int(m_position.getY()) % m_tileSize;
+
+	int primeraColumn = Camera::Instance()->getPosition().getX() / m_tileSize;
 	if (x > 100) {
 		x = 100;
 		x2 = 0;
 	}
 	for (int i = 0; i < m_numRows+1; i++)
 	{
-		for (int j = 0; j < m_numColumns+1; j++)
+		for (int j = primeraColumn; j < primeraColumn + m_numColumns + 1; j++)
 		{
 			int id = m_tileIDs[i][j + x];
 			if (id == 0)
@@ -39,15 +43,6 @@ void TileLayer::render()
 				continue;
 			}
 			
-			// if outside the viewable area then skip the tile
-			if (((j * m_tileSize) - x2) - Camera::Instance()
-				->getPosition().getX() < -m_tileSize || ((j * m_tileSize) - x2)
-				- Camera::Instance()->getPosition().getX() > Game::Instance()->getGameWidth())
-			{
-				continue;
-			}
-			
-
 			Tileset tileset = getTilesetByID(id);
 			id--;
 			TextureManager::Instance()->drawTile(tileset.name, tileset.margin, tileset.spacing, (j * m_tileSize) - x2, (i *
@@ -74,7 +69,6 @@ Tileset TileLayer::getTilesetByID(int tileID)
 			return m_tilesets[i];
 		}
 	}
-	//std::cout << "did not find tileset, returning empty tileset\n";
 	Tileset t;
 	return t;
 }

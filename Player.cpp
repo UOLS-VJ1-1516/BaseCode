@@ -3,6 +3,9 @@
 #include "game.h"
 #include "string"
 #include "PauseState.h"
+#include "Camera.h"
+#include "GameOverState.h"
+#include "SoundManager.h"
 
 
 int dir = 0;
@@ -67,8 +70,7 @@ void Player::update() {
 	//m_velocity.setY(0);
 	//m_acceleration.setY(0);
 	if (m_position.getY() > 1000) { //Si la nina cau per algun forat, acabem el programa
-		//exit(-1);
-		Game::Instance()->getStateMachine()->pushState(new PauseState());
+		Game::Instance()->getStateMachine()->changeState(new GameOverState());
 	}
 	if(!isCollisionWithTileBottom()&&gravedad==true) { //La gravetat s'aplica quan no hi ha colisió, no esta tocant el terra, i gravedad igual a true (deixem de saltar)
 		printf("No Colision!!!");
@@ -195,6 +197,9 @@ void Player::update() {
 			}
 		}
 		if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+			
+			SoundManager::Instance()->playSound("Jump", 0);
+			
 			/*
 			m_acceleration.setX(0.5);
 			m_velocity += m_acceleration;
@@ -240,6 +245,7 @@ void Player::update() {
 			gravedad = true; //Lo ponem a true para que entre en el if de la gravedad al llegar a la maxima altura del salto
 		}
 	}
+	Camera::Instance()->setPosition(m_position);
 }
 void Player::clean() {
 	//colisionBottom = false;

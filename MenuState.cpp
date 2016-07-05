@@ -35,6 +35,10 @@ void MenuState::render()
 bool MenuState::onEnter()
 {
 	SoundManager::Instance()->playMusic("SongMenu", -1);
+	SDL_Renderer* render;
+	render = Game::Instance()->getRender();
+	SDL_SetRenderDrawColor(render, 255, 229, 204, 255);
+	Game::Instance()->setRender(render);
 	// parse the state
 	StateParser stateParser;
 	stateParser.parseState("assets/images.xml", s_menuID, &m_gameObjectsMenuState, &m_textureIDList);

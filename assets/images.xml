@@ -2,24 +2,40 @@
 <STATES>
   <MENU>
     <TEXTURES>
+      <texture filename="MainMenu.png" ID="MainMenu"/>
       <texture filename="button_play.png" ID="play_button"/>
       <texture filename="button_exit.png" ID="exit_button"/>
     </TEXTURES>
     <OBJECTS>
+      <object type="ImageSimple" x="670" y="100" width="495" height="105" textureID="MainMenu" numFrames="0" callbackID="0"/>
       <object type="MenuButton" x="750" y="350" width="322" height="150" textureID="play_button" numFrames="0" callbackID="1"/>
       <object type="MenuButton" x="750" y="500" width="322" height="150" textureID="exit_button" numFrames="0" callbackID="2"/>
     </OBJECTS>
   </MENU>
   <PAUSE>
     <TEXTURES>
+      <texture filename="PauseMenu.png" ID="PauseMenu"/>
       <texture filename="Resume_button.png" ID="Pause_button"/>
       <texture filename="Main_button.png" ID="Main_button"/>
     </TEXTURES>
     <OBJECTS>
+      <object type="ImageSimple" x="670" y="100" width="537" height="124" textureID="PauseMenu" numFrames="0" callbackID="0"/>
       <object type="MenuButton" x="750" y="500" width="322" height="150" textureID="Pause_button" numFrames="0" callbackID="2"/>
       <object type="MenuButton" x="750" y="350" width="322" height="150" textureID="Main_button" numFrames="0" callbackID="1"/>
     </OBJECTS>
   </PAUSE>
+  <GAMEOVER>
+    <TEXTURES>
+      <texture filename="GameOver.png" ID="GameOver"/>
+      <texture filename="Resume_button.png" ID="Pause_button"/>
+      <texture filename="Main_button.png" ID="Main_button"/>
+    </TEXTURES>
+    <OBJECTS>
+      <object type="ImageSimple" x="600" y="100" width="618" height="212" textureID="GameOver" numFrames="0" callbackID="0"/>
+      <object type="MenuButton" x="750" y="500" width="322" height="150" textureID="Pause_button" numFrames="0" callbackID="2"/>
+      <object type="MenuButton" x="750" y="350" width="322" height="150" textureID="Main_button" numFrames="0" callbackID="1"/>
+    </OBJECTS>
+  </GAMEOVER>
 </STATES>
 
 

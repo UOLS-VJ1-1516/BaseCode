@@ -11,6 +11,7 @@
 #include "PlayState.h"
 #include "GameObjectFactory.h"
 #include "SoundManager.h"
+#include "ImageSimple.h"
 
 
 std::vector<GameObject*> m_gameObjects;
@@ -48,6 +49,8 @@ GameStateMachine* m_pGameStateMachine;
 		SoundManager::Instance()->load("./sound/SongPlay.wav", "SongPlay", SOUND_MUSIC);
 		SoundManager::Instance()->load("./sound/SongMenu.wav", "SongMenu", SOUND_MUSIC);
 		SoundManager::Instance()->load("./sound/SongPause.wav", "SongPause", SOUND_MUSIC);
+		SoundManager::Instance()->load("./sound/SongGameOver.wav", "SongGameOver", SOUND_MUSIC);
+		SoundManager::Instance()->load("./sound/Jump.wav", "Jump", SOUND_SFX);
 		// initialize SDL
 		m_gameWidth = width;
 		m_gameHeight = height;
@@ -71,6 +74,7 @@ GameStateMachine* m_pGameStateMachine;
 		GameObjectFactory::Instance()->Register("MenuButton", MenuButton::Create);
 		GameObjectFactory::Instance()->Register("Player", &Player::Create);
 		GameObjectFactory::Instance()->Register("Dog", Dog::Create);
+		GameObjectFactory::Instance()->Register("ImageSimple", ImageSimple::Create);
 
 		//Creem la maquina d'estats
 		m_pGameStateMachine = new GameStateMachine();
@@ -83,7 +87,7 @@ GameStateMachine* m_pGameStateMachine;
 
 	void Game::render()
 	{
-		SDL_SetRenderDrawColor(g_lRenderer, 255, 229, 204, 255);
+		//SDL_SetRenderDrawColor(g_lRenderer, 255, 229, 204, 255);
 		SDL_RenderClear(g_lRenderer);
 		m_pGameStateMachine->render();
 		SDL_RenderPresent(g_lRenderer);
@@ -110,6 +114,10 @@ GameStateMachine* m_pGameStateMachine;
 	}
 	bool Game::isRunning() {
 		return running;
+	}
+
+	void Game::setRender(SDL_Renderer* render) {
+		g_lRenderer = render;
 	}
 	
 	GameStateMachine* Game::getStateMachine() {

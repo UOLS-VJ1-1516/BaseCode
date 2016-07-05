@@ -12,18 +12,21 @@ public:
 		}
 		return s_pCamera;
 	}
-	void update(Vector2D velocity);
-	void setTarget(Vector2D* target) { m_pTarget = target; }
 
-	void setPosition(const Vector2D& position) {
-		m_position = position;
+	void setTarget(GameObject* target) {
+		m_pTarget = target;
+	}
+
+	void setPosition(Vector2D position) {
+		m_position.setX(position.getX());
+		m_position.setY(position.getY());
 	}
 	Vector2D getPosition() const;
 private:
 	Camera();
 	~Camera();
 	// the camera's target
-	Vector2D* m_pTarget;
+	GameObject* m_pTarget;
 	// the camera's position
 	Vector2D m_position;
 	static Camera* s_pCamera;

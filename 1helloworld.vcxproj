@@ -87,7 +87,9 @@
     <ClCompile Include="Dog.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="ImageSimple.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelParser.cpp" />
@@ -113,8 +115,10 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
+    <ClInclude Include="ImageSimple.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Level.h" />

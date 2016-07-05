@@ -28,6 +28,10 @@ void PauseState::render() {
 }
 bool PauseState::onEnter() {
 	SoundManager::Instance()->playMusic("SongPause", -1);
+	SDL_Renderer* render;
+	render = Game::Instance()->getRender();
+	SDL_SetRenderDrawColor(render, 255, 229, 204, 255);
+	Game::Instance()->setRender(render);
 	StateParser stateParser;
 	stateParser.parseState("assets/images.xml", s_pauseID, &m_gameObjectsPauseState,&m_textureIDList);
 	m_callbacksPause.push_back(0);
@@ -60,6 +64,10 @@ void PauseState::s_pauseToMain() {
 	Game::Instance()->getStateMachine()->changeState(new MenuState());
 }
 void PauseState::s_resumePlay() {
+	SDL_Renderer* render;
+	render = Game::Instance()->getRender();
+	SDL_SetRenderDrawColor(render, 133, 224, 255, 255);
+	Game::Instance()->setRender(render);
 	SoundManager::Instance()->stopMusic();
 	SoundManager::Instance()->playMusic("SongPlay", -1);
 	Game::Instance()->getStateMachine()->popState();
