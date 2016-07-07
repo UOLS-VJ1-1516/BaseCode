@@ -47,8 +47,7 @@ void InputHandler::update()
 			m_mousePosition->setY(event.button.y);
 		}
 		else if (event.type == SDL_QUIT) {
-			break;
-			//m_exitClicked = true;
+			m_exitClicked = true;
 		}
 	}
 }

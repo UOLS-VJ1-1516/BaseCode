@@ -32,6 +32,7 @@ class InputHandler {
 		static InputHandler *s_pInstance;
 		std::vector<bool> m_mouseButtonStates;
 		Vector2D* m_mousePosition;
+		bool m_exitClicked;
 };
 
 #endif

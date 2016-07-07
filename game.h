@@ -3,8 +3,15 @@
 #define GAME_H
 #include "SDL.h"
 #include <vector>
+#include "SDL_image.h"
+#include "texturemanager.h"
+#include "GameObject.h"
+#include "LoaderParams.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "PlayState.h"
+#include "MenuState.h"
+#include "GameStateMachine.h"
 
 class Game
 {
@@ -14,10 +21,16 @@ class Game
 	
 		SDL_Window* g_pWindow;
 		SDL_Renderer* g_pRenderer;
-		std::vector< GameObject* > m_gameObjects;
 		
+		std::vector< GameObject* > m_gameObjects;
+		Player* player;
+		Enemy* player2;
+		Enemy* player3;
+		
+		//PlayState* play;
+		GameStateMachine* m_pGameStateMachine;
 	
-
+		
 	public:
 		static Game* Instance()
 		{
@@ -40,6 +53,10 @@ class Game
 		SDL_Renderer * getRender();
 		int getP();
 
+		
+		GameStateMachine * getStateMachine();
+
 };
 
 #endif
+

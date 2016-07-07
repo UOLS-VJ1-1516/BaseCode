@@ -15,24 +15,20 @@ void Enemy::load(const LoaderParams* pParams)
 	m_textureID = pParams->getTextureID();
 	m_currentRow = 0;
 	m_sprite = pParams->getSprits();
-	m_currentFrame = 0;
+	//m_currentFrame = 0;
 }
 
 void Enemy::draw() {
-	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_NONE);
+	TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, Game::Instance()->getRender(), SDL_FLIP_HORIZONTAL);
 
 }
 
 void Enemy::update() {
-	m_position.setX(m_position.getX() + 1);
-	m_position.setY(m_position.getY() + 1);
 
 	m_currentFrame = (int)((Game::Instance()->getP() / 100) % m_sprite);
 
-	m_acceleration.setX(1);
+	m_position.setX(m_position.getX() - 2);
 
-	m_velocity += m_acceleration;
-	m_position += m_velocity;
 }
 
 

@@ -44,42 +44,54 @@ void Player::draw() {
 
 void Player::update() {
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT) && (m_position.getX() < 600)) {
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 		m_velocity.setX(2);
 		m_acceleration.setX(25);
 		m_friction.setX(0.4);
 		m_maxVelocity.setX(10);
+		flip = SDL_FLIP_NONE;
+		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprite);
+		if (m_position.getX() >= 500) {
+			m_position.setX(500);
+			m_velocity.setX(0);
+		}
 		if (m_maxVelocity.getX() > (m_velocity.getX() + m_acceleration.getX())) {
 			m_position.setX(m_position.getX() + m_velocity.getX() + m_acceleration.getX() - m_friction.getX());
 		}
 		else {
 			m_position.setX(m_position.getX() + m_maxVelocity.getX() - m_friction.getX());
 		}
-		flip = SDL_FLIP_HORIZONTAL;
 	}
-	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT) && (m_position.getX() > 0)) {
+	else if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 		m_velocity.setX(-2);
 		m_acceleration.setX(-25);
 		m_friction.setX(-0.4);
 		m_maxVelocity.setX(-10);
+		flip = SDL_FLIP_HORIZONTAL;
+
+		m_currentFrame = (int)((SDL_GetTicks() / 100) % m_sprite);
+
+		if (m_position.getX() <= 0) {
+			m_position.setX(0);
+		}
+
 		if (m_maxVelocity.getX() < (m_velocity.getX() + m_acceleration.getX())) {
 			m_position.setX(m_position.getX() + m_velocity.getX() + m_acceleration.getX() - m_friction.getX());
 		}
 		else {
 			m_position.setX(m_position.getX() + m_maxVelocity.getX() - m_friction.getX());
+			m_velocity.setX(0);
 		}
-		flip = SDL_FLIP_NONE;
 	}
-
-
 	else {
 		m_acceleration.setX(0);
-		m_currentFrame = int((SDL_GetTicks() / 100) % 1);
-
+		flip = SDL_FLIP_NONE;
+		m_currentFrame = (int)((SDL_GetTicks() / 100) % 1);
 		if (m_velocity.getX() > 0 && m_friction.getX() > 0) {
 			m_velocity.setX(m_velocity.getX() - m_friction.getX());
 			m_position.setX(m_position.getX() + m_velocity.getX());
 		}
+
 		if (m_velocity.getX() < 0) {
 			if (m_friction.getX() < 0) {
 				m_velocity.setX(m_velocity.getX() - m_friction.getX());
@@ -87,15 +99,6 @@ void Player::update() {
 			}
 		}
 	}
-
-	if (m_position.getX() >= 600) {
-		m_velocity.setX(0);
-	}
-	else if (m_position.getX() <= 0) {
-		m_velocity.setX(0);
-	}
-	
 }
-
-
+	
 void Player::clean() {};
