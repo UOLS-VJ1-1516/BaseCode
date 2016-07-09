@@ -1,15 +1,16 @@
 #include "MenuButton.h"
 
-MenuButton::MenuButton(const LoaderParams* pParams, void(*callback)()) : m_callback(callback) {
-	
-	MenuButton::Params = pParams;
+MenuButton::MenuButton(void(*callback)()) : m_callback(callback) {
 
 	m_bReleased = false;
+	
+};
+
+void MenuButton::load(const LoaderParams* pParams) {
+	MenuButton::Params = pParams;
 	if (TextureManager::Instance()->load(pParams->getTextureID(), pParams->getTextureID(), Game::Instance()->getRender())) {
 	}
 };
-
-void MenuButton::load(const LoaderParams* pParam) {};
 
 void MenuButton::draw()
 {
@@ -20,10 +21,7 @@ void MenuButton::update()
 {
 	Vector2D* pMousePos = InputHandler::Instance()->getMousePosition();
 
-	if (pMousePos->getX() < (m_position.getX() + m_width)
-		&& pMousePos->getX() > m_position.getX()
-		&& pMousePos->getY() < (m_position.getY() + m_height)
-		&& pMousePos->getY() > m_position.getY())
+	if (pMousePos->getX() < (Params->getX() + Params->getWidth()) && pMousePos->getX() > Params->getX()	&& pMousePos->getY() < (Params->getY() + Params->getHeight()) && pMousePos->getY() > Params->getY())
 	{
 		if (InputHandler::Instance()->getMouseButtonState(0) && m_bReleased)
 		{
@@ -35,6 +33,7 @@ void MenuButton::update()
 			m_bReleased = true;
 			m_currentFrame = MOUSE_OVER;
 		}
+		
 	}
 	else
 	{

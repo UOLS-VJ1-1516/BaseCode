@@ -10,15 +10,15 @@
 class GameObject
 {
 	public:
-		
 		GameObject() {};
-
-		virtual ~GameObject() {};
-
 		virtual void load(const LoaderParams* pParams) = 0;
 		virtual void draw() = 0;
 		virtual void update() = 0;
 		virtual void clean() = 0;
+
+		Vector2D& getPosition() { return m_position; }
+		int getWidth() { return m_width; }
+		int getHeight() { return m_height; }
 
 
 	protected:
@@ -35,6 +35,8 @@ class GameObject
 		Vector2D m_maxVelocity;
 		Vector2D m_acceleration;
 		Vector2D m_friction;
+		
+		
 };
 
 #endif GAMEOBJECT_H

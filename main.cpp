@@ -26,8 +26,6 @@ int main(int argc, char* args[])
 				SDL_Delay((int)(FIXED_TIME - frameTime));
 			}
 			
-
-
 		}
 
 		Game::Instance()->clean();

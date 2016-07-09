@@ -82,29 +82,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatedGraphic.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LoaderParams.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="texturemanager.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedGraphic.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="texturemanager.h" />

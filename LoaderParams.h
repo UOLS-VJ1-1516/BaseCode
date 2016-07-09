@@ -6,7 +6,7 @@
 class LoaderParams
 {
 	public:
-		LoaderParams(int x, int y, int width, int height, char* textureID, int currentRow, int sprite, int m_callBackID){
+		LoaderParams(int x, int y, int width, int height, char* textureID, int currentRow, int sprite, int callBackID){
 			
 			m_x = x;
 			m_y = y;
@@ -14,7 +14,7 @@ class LoaderParams
 			m_width = width;
 			m_textureID = textureID;
 			m_sprite = sprite;
-//			m_callBackID = callBackID;
+			m_callBackID = callBackID;
 		}
 
 		int getX() const { return m_x; }

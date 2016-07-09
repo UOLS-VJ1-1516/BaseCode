@@ -1,5 +1,5 @@
 #include "InputHandler.h"
-#include "Game.h"
+
 
 InputHandler* InputHandler::s_pInstance = 0;
 
@@ -75,4 +75,9 @@ Vector2D* InputHandler::getMousePosition() {
 	return m_mousePosition;
 }
 
-void InputHandler::clean() {};
+void InputHandler::clean() {
+	m_mouseButtonStates[0] = false;
+	m_mouseButtonStates[0] = false;
+	m_mouseButtonStates[0] = false;
+	m_exitClicked = false;
+};

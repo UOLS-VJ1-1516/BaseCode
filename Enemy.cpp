@@ -3,10 +3,17 @@
 #include "TextureManager.h"
 #include "InputHandler.h"
 
-Enemy::Enemy() {};
+
+
+Enemy::Enemy()
+{
+	m_velocity.setY(2);
+	m_velocity.setX(0.001);
+}
+
 Enemy::~Enemy() {};
 
-void Enemy::load(const LoaderParams* pParams)
+void Enemy::load(const LoaderParams* pParams) 
 {
 	m_position.setX(pParams->getX());
 	m_position.setY(pParams->getY());
@@ -25,9 +32,19 @@ void Enemy::draw() {
 
 void Enemy::update() {
 
-	m_currentFrame = (int)((Game::Instance()->getP() / 100) % m_sprite);
+	//m_currentFrame = (int)((Game::Instance()->getP() / 100) % m_sprite);
 
-	m_position.setX(m_position.getX() - 2);
+	//m_position.setX(m_position.getX() - 2);
+
+	m_currentFrame = int(((SDL_GetTicks() / 100) % m_sprite));
+	if (m_position.getY() < 0)
+	{
+		m_velocity.setY(2);
+	}
+	else if (m_position.getY() > 400)
+	{
+		m_velocity.setY(-2);
+	}
 
 }
 

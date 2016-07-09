@@ -10,7 +10,7 @@ class MenuButton : public GameObject
 
 public:
 
-	MenuButton(const LoaderParams* pParams, void(*callback)());
+	MenuButton(void(*callback)());
 	void load(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();

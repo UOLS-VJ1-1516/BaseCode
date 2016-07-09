@@ -5,11 +5,14 @@
 #include "GameObject.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+#include "textureManager.h"
+#include "game.h"
 
 class Player : public GameObject
 {
 
 	public:
+		
 		Player();
 		~Player();
 
@@ -34,6 +37,8 @@ class Player : public GameObject
 		int m_currentRow;
 		int m_sprite;
 		const char* m_textureID;
+
+		const LoaderParams* Params;
 
 		SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
 

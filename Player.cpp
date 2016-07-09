@@ -1,22 +1,16 @@
-#include "Game.h"
 #include "Player.h"
-#include "textureManager.h"
-#include "InputHandler.h"
-
 
 Player::Player() {
+
 	m_velocity.setX(0.1);
 	m_velocity.setY(0);
 	m_friction.setX(m_velocity.getX() - 0.08);
-
-
 };
-Player::~Player() {};
 
+Player::~Player() {};
 
 void Player::load(const LoaderParams* pParams)
 {
-
 	m_textureID = pParams->getTextureID();
 	m_position.setX(pParams->getX());
 	m_position.setY(pParams->getY());
@@ -32,8 +26,6 @@ void Player::load(const LoaderParams* pParams)
 	//m_currentFrame = 0;
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-
-
 }
 
 void Player::draw() {
@@ -85,7 +77,6 @@ void Player::update() {
 	}
 	else {
 		m_acceleration.setX(0);
-		flip = SDL_FLIP_NONE;
 		m_currentFrame = (int)((SDL_GetTicks() / 100) % 1);
 		if (m_velocity.getX() > 0 && m_friction.getX() > 0) {
 			m_velocity.setX(m_velocity.getX() - m_friction.getX());
